@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!-- ═══════════════════════════════════════════
+     PRIMARY SEO META TAGS — LogicstIQ.com
+═══════════════════════════════════════════ -->
+<title>LogicstIQ.com – Where Logistics Meets Intelligence | Free Supply Chain Calculators</title>
+<meta name="description" content="LogicstIQ.com — Free supply chain calculators powered by logic and intelligence. EOQ, Reorder Point, Safety Stock, OTIF, Demand Forecasting, Landed Cost, Carbon Footprint & 14 more. No login. Instant results."/>
+<meta name="keywords" content="supply chain calculator, logistics calculator, EOQ calculator, reorder point calculator, safety stock calculator, OTIF calculator, fill rate calculator, demand forecasting tool, landed cost calculator, freight cost calculator, inventory turnover, warehouse utilization, ABC analysis, COGS calculator, lead time calculator, supplier scorecard, carbon footprint logistics, pick pack cost, MOQ optimizer, dead stock recovery, GST calculator supply chain, LogicstIQ"/>
+<meta name="author" content="Amit Kumar & Sachin Sirwani — LogicstIQ.com"/>
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<meta name="language" content="English"/>
+<meta name="category" content="Supply Chain, Logistics, Inventory Management, E-Commerce"/>
+<meta name="revisit-after" content="7 days"/>
+<link rel="canonical" href="https://logicstiq.com/"/>
+
+<!-- ═══ OPEN GRAPH ═══ -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://logicstiq.com/"/>
+<meta property="og:title" content="LogicstIQ.com – Where Logistics Meets Intelligence"/>
+<meta property="og:description" content="20 free supply chain calculators + AI Demand Planner. Where Logistics Meets Intelligence — EOQ, OTIF, Safety Stock, Landed Cost, Carbon Footprint & more. No login needed."/>
+<meta property="og:image" content="https://logicstiq.com/og-image.png"/>
+<meta property="og:site_name" content="LogicstIQ.com"/>
+<meta property="og:locale" content="en_IN"/>
+
+<!-- ═══ TWITTER CARD ═══ -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="LogicstIQ.com – Where Logistics Meets Intelligence"/>
+<meta name="twitter:description" content="20 free supply chain calculators + AI Demand Planner. No login. Instant results."/>
+<meta name="twitter:image" content="https://logicstiq.com/og-image.png"/>
+<meta name="twitter:creator" content="@LogicstIQ"/>
+
+<!-- ═══ SCHEMA.ORG ═══ -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"LogicstIQ.com",
+  "url":"https://logicstiq.com",
+  "description":"Free supply chain and logistics calculators for inventory management, demand planning, KPI tracking, cost analysis and ESG reporting.",
+  "author":[{"@type":"Person","name":"Amit Kumar"},{"@type":"Person","name":"Sachin Sirwani"}],
+  "potentialAction":{"@type":"SearchAction","target":"https://logicstiq.com/?q={search_term_string}","query-input":"required name=search_term_string"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"What is EOQ in supply chain?","acceptedAnswer":{"@type":"Answer","text":"Economic Order Quantity (EOQ) is the ideal order size that minimizes total inventory costs. Formula: EOQ = √(2DS/H) where D=annual demand, S=ordering cost, H=holding cost per unit."}},
+    {"@type":"Question","name":"How do you calculate Reorder Point?","acceptedAnswer":{"@type":"Answer","text":"Reorder Point = (Average Daily Demand × Lead Time) + Safety Stock. It signals when to place a new purchase order before stock runs out."}},
+    {"@type":"Question","name":"What is a good OTIF score?","acceptedAnswer":{"@type":"Answer","text":"A good OTIF (On Time In Full) score is 95%+ for most industries. Walmart and Amazon require 98%+ OTIF compliance from suppliers."}},
+    {"@type":"Question","name":"How is inventory turnover calculated?","acceptedAnswer":{"@type":"Answer","text":"Inventory Turnover = COGS / Average Inventory. A ratio of 4–6x is healthy for most industries."}}
+  ]
+}
+</script>
+
+<!-- ═══ GOOGLE ADSENSE — Replace publisher ID ═══ -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#06090f;
+  --surface:#0c1220;
+  --card:#101828;
+  --card2:#141f32;
+  --border:#1a2d4a;
+  --border2:#243d5e;
+  --gold:#f0c040;
+  --gold2:#ffd700;
+  --teal:#00d4aa;
+  --blue:#4da6ff;
+  --muted:#4a6480;
+  --text:#e8f0fa;
+  --text2:#8faabf;
+  --accent:#f0c040;
+  --font-head:'Clash Display',sans-serif;
+  --font-body:'Space Grotesk',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --success:#00d4aa;
+  --warn:#f0c040;
+  --danger:#ff6b6b;
+}
+
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh;overflow-x:hidden}
+
+/* GRID BG */
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(240,192,64,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(240,192,64,0.03) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0}
+
+/* GLOW ORBS */
+body::after{content:'';position:fixed;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(240,192,64,0.06) 0%,transparent 65%);pointer-events:none;z-index:0}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:62px;background:rgba(6,9,15,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.logo-wrap{display:flex;flex-direction:column}
+.logo{font-family:var(--font-head);font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;color:var(--text)}
+.logo .iq{color:var(--gold)}
+.logo-sub{font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.14em;color:var(--muted);text-transform:uppercase}
+.nav-right{display:flex;align-items:center;gap:0.75rem}
+.nav-tag{font-family:var(--font-mono);font-size:0.65rem;padding:4px 10px;border-radius:20px;border:1px solid var(--border);color:var(--muted);cursor:pointer;background:transparent;transition:all .2s}
+.nav-tag:hover,.nav-tag.active{border-color:var(--gold);color:var(--gold);background:rgba(240,192,64,0.07)}
+
+/* AD UNIT */
+.ad-wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:.6rem 2rem}
+.ad-unit{width:100%;overflow:hidden;text-align:center;background:rgba(12,18,32,0.6);border:1px dashed var(--border);border-radius:8px}
+.ad-unit::before{content:'ADVERTISEMENT';display:block;font-family:var(--font-mono);font-size:.55rem;letter-spacing:.12em;color:var(--border2);padding:3px 0 2px}
+.ad-leaderboard{min-height:90px}
+.ad-rect{min-height:250px;max-width:336px;margin:0 auto}
+.ad-resp{min-height:90px}
+
+/* HERO */
+.hero{position:relative;z-index:1;padding:4.5rem 2rem 2.5rem;text-align:center;max-width:900px;margin:0 auto}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;color:var(--gold);border:1px solid rgba(240,192,64,.3);background:rgba(240,192,64,.06);padding:5px 14px;border-radius:20px;margin-bottom:1.5rem}
+.hero-eyebrow::before{content:'◆';font-size:.5rem}
+.hero h1{font-family:var(--font-head);font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1rem}
+.hero h1 .hl{color:var(--gold)}
+.hero h1 .hl2{color:var(--teal)}
+.hero p{color:var(--text2);font-size:1.05rem;max-width:560px;margin:0 auto 2rem;line-height:1.75}
+.stat-bar{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;padding:1.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-top:1.5rem}
+.stat .n{font-family:var(--font-head);font-size:2rem;font-weight:700;color:var(--gold);display:block}
+.stat .l{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+
+/* MAIN LAYOUT */
+.main{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:1.75rem 2rem;display:grid;grid-template-columns:252px 1fr;gap:1.5rem;align-items:start}
+
+/* SIDEBAR */
+.sidebar{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:.85rem;position:sticky;top:74px;max-height:calc(100vh - 90px);overflow-y:auto}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
+.sb-head{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;padding:.25rem .5rem .65rem;border-bottom:1px solid var(--border);margin-bottom:.4rem}
+.sb-section{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.12em;color:var(--border2);text-transform:uppercase;padding:.6rem .5rem .3rem;display:block}
+.ci{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:.8rem;color:var(--muted);transition:all .15s;border:1px solid transparent}
+.ci:hover{background:rgba(240,192,64,.05);color:var(--text);border-color:var(--border)}
+.ci.active{background:rgba(240,192,64,.1);color:var(--gold);border-color:rgba(240,192,64,.25)}
+.ci .ico{font-size:.95rem;width:18px;text-align:center;flex-shrink:0}
+.ci .bx{margin-left:auto;font-family:var(--font-mono);font-size:.55rem;padding:2px 6px;border-radius:10px;background:rgba(240,192,64,.1);color:var(--gold)}
+.ci-ai{background:rgba(0,212,170,.06);border-color:rgba(0,212,170,.2)!important}
+.ci-ai .bx{background:rgba(0,212,170,.12);color:var(--teal)}
+
+/* CALC PANEL */
+.cp{display:none}
+.cp.active{display:block}
+.calc-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.cc-head{padding:1.5rem 1.75rem;border-bottom:1px solid var(--border);background:linear-gradient(135deg,rgba(240,192,64,.05) 0%,transparent 50%)}
+.cc-head h2{font-family:var(--font-head);font-size:1.45rem;font-weight:600;margin-bottom:.3rem}
+.cc-head p{color:var(--text2);font-size:.84rem;line-height:1.6}
+.cc-body{padding:1.6rem 1.75rem}
+
+/* FORM */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.fg3{grid-template-columns:1fr 1fr 1fr}
+.fg1{grid-template-columns:1fr}
+.fgroup{display:flex;flex-direction:column;gap:.35rem}
+.fgroup label{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.fgroup input,.fgroup select{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 13px;color:var(--text);font-family:var(--font-mono);font-size:.88rem;transition:border-color .2s;outline:none;width:100%}
+.fgroup input:focus,.fgroup select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(240,192,64,.08)}
+.fgroup select option{background:var(--surface)}
+
+/* BUTTONS */
+.calc-btn{margin-top:1.2rem;width:100%;padding:13px;background:var(--gold);color:#000;font-family:var(--font-head);font-size:.95rem;font-weight:700;border:none;border-radius:10px;cursor:pointer;letter-spacing:.02em;transition:all .2s}
+.calc-btn:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 6px 24px rgba(240,192,64,.25)}
+
+/* RESULT */
+.rb{margin-top:1.4rem;background:rgba(240,192,64,.05);border:1px solid rgba(240,192,64,.2);border-radius:12px;padding:1.2rem;display:none;animation:fadeUp .3s ease}
+.rb.show{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.rl{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;margin-bottom:.4rem}
+.rv{font-family:var(--font-head);font-size:2rem;font-weight:700;color:var(--text);margin-bottom:.4rem}
+.rg{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.7rem;margin-top:.9rem}
+.rc{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.7rem .9rem}
+.rc .rcl{font-family:var(--font-mono);font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.25rem}
+.rc .rcv{font-family:var(--font-head);font-size:1.1rem;font-weight:600;color:var(--gold)}
+.formula{margin-top:.9rem;background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:.9rem}
+.formula .ft{font-family:var(--font-mono);font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem}
+.formula .fv{font-family:var(--font-mono);font-size:.8rem;color:var(--teal);line-height:1.7}
+
+/* AI SECTION */
+.ai-badge-big{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:.65rem;letter-spacing:.1em;color:var(--teal);border:1px solid rgba(0,212,170,.3);background:rgba(0,212,170,.06);padding:4px 12px;border-radius:20px;margin-bottom:.75rem}
+.ai-badge-big::before{content:'✦'}
+.upload-zone{border:2px dashed var(--border);border-radius:14px;padding:2.5rem 1.5rem;text-align:center;cursor:pointer;transition:all .25s;background:var(--surface)}
+.upload-zone:hover,.upload-zone.drag-over{border-color:var(--teal);background:rgba(0,212,170,.04)}
+.uz-icon{font-size:2.5rem;margin-bottom:.75rem}
+.uz-title{font-family:var(--font-head);font-size:1.1rem;font-weight:600;margin-bottom:.4rem}
+.uz-sub{font-size:.82rem;color:var(--text2);line-height:1.6}
+.uz-types{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:.9rem}
+.uz-type{font-family:var(--font-mono);font-size:.62rem;padding:3px 9px;border-radius:20px;border:1px solid var(--border);color:var(--muted)}
+#file-input{display:none}
+.file-sel{display:none;margin-top:1rem;background:rgba(0,212,170,.06);border:1px solid rgba(0,212,170,.25);border-radius:10px;padding:.85rem 1rem;align-items:center;gap:.75rem}
+.file-sel.show{display:flex}
+.fi-name{font-family:var(--font-mono);font-size:.82rem;color:var(--teal)}
+.fi-size{font-size:.72rem;color:var(--muted)}
+.fi-rm{background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.1rem}
+.fi-rm:hover{color:var(--danger)}
+.fc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:1.4rem}
+.ai-btn{margin-top:1.4rem;width:100%;padding:14px;background:linear-gradient(135deg,var(--teal),#00b894);color:#000;font-family:var(--font-head);font-size:1rem;font-weight:700;border:none;border-radius:12px;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:8px}
+.ai-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,212,170,.3)}
+.ai-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.ai-loading{display:none;margin-top:1.4rem;text-align:center;padding:2rem}
+.ai-loading.show{display:block}
+.loader-bar{height:3px;background:var(--border);border-radius:3px;overflow:hidden;margin-bottom:.9rem}
+.loader-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--teal),var(--gold));border-radius:3px;animation:lp 6s ease forwards}
+@keyframes lp{0%{width:0%}40%{width:55%}80%{width:80%}100%{width:95%}}
+.l-step{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);display:flex;align-items:center;gap:8px;margin:.4rem 0;opacity:0;animation:fadeUp .4s ease forwards}
+.l-step:nth-child(1){animation-delay:.2s}
+.l-step:nth-child(2){animation-delay:1.2s}
+.l-step:nth-child(3){animation-delay:2.4s}
+.l-step:nth-child(4){animation-delay:3.6s}
+.l-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0}
+.fc-results{display:none;margin-top:1.4rem}
+.fc-results.show{display:block;animation:fadeUp .35s ease}
+.ftabs{display:flex;gap:.4rem;margin-bottom:1.2rem;flex-wrap:wrap}
+.ftab{font-family:var(--font-mono);font-size:.68rem;padding:7px 14px;border-radius:8px;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);transition:all .2s}
+.ftab.active,.ftab:hover{border-color:var(--teal);color:var(--teal);background:rgba(0,212,170,.08)}
+.ftp{display:none}
+.ftp.active{display:block}
+.sum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.9rem;margin-bottom:1.4rem}
+.sc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:.9rem 1rem}
+.sc .scl{font-family:var(--font-mono);font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
+.sc .scv{font-family:var(--font-head);font-size:1.4rem;font-weight:700;color:var(--teal)}
+.sc .scs{font-size:.7rem;color:var(--muted);margin-top:.2rem}
+.ai-table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border);margin-bottom:1.2rem}
+.ai-table{width:100%;border-collapse:collapse;font-family:var(--font-mono);font-size:.76rem}
+.ai-table th{background:var(--surface);color:var(--muted);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:10px 13px;text-align:left;white-space:nowrap;border-bottom:1px solid var(--border)}
+.ai-table td{padding:9px 13px;border-bottom:1px solid rgba(26,45,74,.5);color:var(--text);white-space:nowrap}
+.ai-table tr:last-child td{border-bottom:none}
+.ai-table tr:hover td{background:rgba(240,192,64,.02)}
+.pos{color:var(--teal);font-weight:600}
+.neg{color:var(--danger);font-weight:600}
+.neu{color:var(--blue)}
+.tu::before{content:'↑ ';color:var(--teal)}
+.td::before{content:'↓ ';color:var(--danger)}
+.tf::before{content:'→ ';color:var(--blue)}
+.insights-box{background:linear-gradient(135deg,rgba(0,212,170,.05),rgba(240,192,64,.03));border:1px solid rgba(0,212,170,.2);border-radius:12px;padding:1.2rem}
+.ib-title{font-family:var(--font-head);font-size:.95rem;font-weight:600;margin-bottom:.9rem;display:flex;align-items:center;gap:8px}
+.ins-item{display:flex;align-items:flex-start;gap:10px;padding:.6rem 0;border-bottom:1px solid rgba(26,45,74,.5);font-size:.83rem;line-height:1.6;color:var(--text)}
+.ins-item:last-child{border-bottom:none}
+.ins-dot{width:7px;height:7px;border-radius:50%;margin-top:6px;flex-shrink:0}
+.dg{background:var(--teal)}.do{background:var(--gold)}.db{background:var(--blue)}
+.dl-row{display:flex;gap:.7rem;margin-top:1.2rem;flex-wrap:wrap}
+.dl-btn{flex:1;min-width:130px;padding:10px 14px;border-radius:9px;cursor:pointer;font-family:var(--font-head);font-size:.8rem;font-weight:600;border:1px solid var(--border);background:var(--surface);color:var(--text);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:5px}
+.dl-btn:hover{border-color:var(--teal);color:var(--teal)}
+.dl-btn.primary{background:var(--teal);color:#000;border-color:var(--teal)}
+.dl-btn.primary:hover{background:#00f0c0}
+.sample-note{background:rgba(240,192,64,.06);border:1px solid rgba(240,192,64,.2);border-radius:10px;padding:.85rem 1rem;margin-top:1rem;font-size:.8rem;color:var(--text2);line-height:1.6}
+.sample-note strong{color:var(--gold)}
+.col-preview{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem;margin-top:.9rem;display:none}
+.cp-title{font-family:var(--font-mono);font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
+.cp-grid{display:grid;grid-template-columns:1fr 1fr;gap:.4rem}
+.cp-item{font-family:var(--font-mono);font-size:.72rem;color:var(--text);display:flex;align-items:center;gap:6px}
+.cp-item::before{content:'↳';color:var(--teal)}
+
+/* FOOTER */
+footer{position:relative;z-index:1;text-align:center;padding:2rem 2rem 3rem;border-top:1px solid var(--border);margin-top:2.5rem}
+.footer-logo{font-family:var(--font-head);font-size:1.3rem;font-weight:700;margin-bottom:.5rem}
+.footer-logo .iq{color:var(--gold)}
+footer p{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.05em;line-height:1.8}
+.footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:.75rem 0}
+.footer-links a{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .main{grid-template-columns:1fr}
+  .sidebar{position:relative;top:0}
+  .fg{grid-template-columns:1fr}
+  .fg3{grid-template-columns:1fr}
+  .fc-grid{grid-template-columns:1fr}
+  .nav-right{display:none}
+  .stat-bar{gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo-wrap">
+    <div class="logo">Logicst<span class="iq">IQ</span>.com</div>
+    <div class="logo-sub">Where Logistics Meets Intelligence</div>
+  </div>
+  <div class="nav-right">
+    <button class="nav-tag active">Calculators</button>
+    <button class="nav-tag">Formulas</button>
+    <button class="nav-tag">Blog</button>
+    <button class="nav-tag">About</button>
+  </div>
+</nav>
+
+<!-- AD: TOP LEADERBOARD -->
+<div class="ad-wrap">
+  <div class="ad-unit ad-leaderboard">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Where Logistics Meets Intelligence</div>
+  <h1>The <span class="hl">IQ</span> of Your<br/><span class="hl2">Supply Chain</span></h1>
+  <p>20 free calculators + AI Demand Planner. From EOQ to Carbon Footprint — every metric your supply chain needs, calculated in seconds.</p>
+  <div class="stat-bar">
+    <div class="stat"><span class="n">20</span><span class="l">Calculators</span></div>
+    <div class="stat"><span class="n">AI</span><span class="l">Demand Planner</span></div>
+    <div class="stat"><span class="n">0</span><span class="l">Login Required</span></div>
+    <div class="stat"><span class="n">∞</span><span class="l">Free Forever</span></div>
+  </div>
+</div>
+
+<!-- AD: BELOW HERO -->
+<div class="ad-wrap">
+  <div class="ad-unit ad-resp">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="2222222222" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-head">All Calculators</div>
+    <span class="sb-section">Inventory</span>
+    <div class="ci active" onclick="showCalc('eoq',this)"><span class="ico">📦</span>EOQ Calculator<span class="bx">INV</span></div>
+    <div class="ci" onclick="showCalc('rop',this)"><span class="ico">🔄</span>Reorder Point<span class="bx">INV</span></div>
+    <div class="ci" onclick="showCalc('safety',this)"><span class="ico">🛡️</span>Safety Stock<span class="bx">INV</span></div>
+    <div class="ci" onclick="showCalc('carrying',this)"><span class="ico">💰</span>Carrying Cost<span class="bx">INV</span></div>
+    <div class="ci" onclick="showCalc('abc',this)"><span class="ico">🔡</span>ABC Analysis<span class="bx">INV</span></div>
+    <div class="ci" onclick="showCalc('moq',this)"><span class="ico">🔢</span>MOQ Optimizer<span class="bx">INV</span></div>
+    <div class="ci" onclick="showCalc('dsr',this)"><span class="ico">📉</span>Dead Stock Recovery<span class="bx">INV</span></div>
+    <span class="sb-section">KPIs</span>
+    <div class="ci" onclick="showCalc('turnover',this)"><span class="ico">📊</span>Inventory Turnover<span class="bx">KPI</span></div>
+    <div class="ci" onclick="showCalc('dio',this)"><span class="ico">📅</span>Days Inventory Out.<span class="bx">KPI</span></div>
+    <div class="ci" onclick="showCalc('otif',this)"><span class="ico">✅</span>OTIF Rate<span class="bx">KPI</span></div>
+    <div class="ci" onclick="showCalc('fillrate',this)"><span class="ico">📈</span>Fill Rate<span class="bx">KPI</span></div>
+    <span class="sb-section">Logistics</span>
+    <div class="ci" onclick="showCalc('freight',this)"><span class="ico">🚚</span>Freight Cost Est.<span class="bx">LOG</span></div>
+    <div class="ci" onclick="showCalc('landed',this)"><span class="ico">🌐</span>Landed Cost<span class="bx">LOG</span></div>
+    <div class="ci" onclick="showCalc('leadtime',this)"><span class="ico">⏱️</span>Lead Time Analyzer<span class="bx">LOG</span></div>
+    <span class="sb-section">Finance & ESG</span>
+    <div class="ci" onclick="showCalc('cogs',this)"><span class="ico">💸</span>COGS Calculator<span class="bx">FIN</span></div>
+    <div class="ci" onclick="showCalc('carbon',this)"><span class="ico">🌱</span>Carbon Footprint<span class="bx">ESG</span></div>
+    <div class="ci" onclick="showCalc('gst',this)"><span class="ico">🧾</span>GST Calculator<span class="bx">TAX</span></div>
+    <span class="sb-section">Warehouse & SCM</span>
+    <div class="ci" onclick="showCalc('warehouse',this)"><span class="ico">🏭</span>Warehouse Util.<span class="bx">WH</span></div>
+    <div class="ci" onclick="showCalc('pick',this)"><span class="ico">📦</span>Pick & Pack Cost<span class="bx">WH</span></div>
+    <div class="ci" onclick="showCalc('supplier',this)"><span class="ico">🏆</span>Supplier Scorecard<span class="bx">SCM</span></div>
+    <!-- Sidebar Ad -->
+    <div style="margin-top:.75rem">
+      <div class="ad-unit" style="min-height:120px;border-radius:8px">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="3333333333" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
+      </div>
+    </div>
+    <div style="border-top:1px solid var(--border);margin:.75rem 0 .4rem"></div>
+    <div class="ci ci-ai" onclick="showCalc('ai',this)"><span class="ico">🤖</span><strong style="color:var(--teal)">AI Demand Planner</strong><span class="bx">NEW</span></div>
+  </aside>
+
+  <!-- PANELS -->
+  <div id="panels">
+
+    <!-- 1. EOQ -->
+    <div class="cp active" id="p-eoq">
+      <div class="calc-card">
+        <div class="cc-head"><h2>📦 EOQ Calculator</h2><p>Economic Order Quantity — find the optimal order size that minimizes total inventory costs including ordering and holding costs.</p></div>
+        <div class="cc-body">
+          <div class="fg">
+            <div class="fgroup"><label>Annual Demand (units)</label><input type="number" id="eoq-d" placeholder="e.g. 10000"/></div>
+            <div class="fgroup"><label>Ordering Cost per Order (₹/$)</label><input type="number" id="eoq-s" placeholder="e.g. 500"/></div>
+            <div class="fgroup"><label>Holding Cost per Unit/Year (₹/$)</label><input type="number" id="eoq-h" placeholder="e.g. 20"/></div>
+            <div class="fgroup"><label>Unit Price (₹/$)</label><input type="number" id="eoq-p" placeholder="e.g. 100"/></div>
+          </div>
+          <button class="calc-btn" onclick="calcEOQ()">Calculate EOQ →</button>
+          <div class="rb" id="r-eoq">
+            <div class="rl">Optimal Order Quantity</div>
+            <div class="rv" id="eoq-res">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">Orders/Year</div><div class="rcv" id="eoq-ord">—</div></div>
+              <div class="rc"><div class="rcl">Order Cycle</div><div class="rcv" id="eoq-cyc">—</div></div>
+              <div class="rc"><div class="rcl">Total Annual Cost</div><div class="rcv" id="eoq-cost">—</div></div>
+            </div>
+            <div class="formula"><div class="ft">Formula</div><div class="fv">EOQ = √(2 × D × S / H)</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. ROP -->
+    <div class="cp" id="p-rop">
+      <div class="calc-card">
+        <div class="cc-head"><h2>🔄 Reorder Point Calculator</h2><p>Determine exactly when to place a new order so you never run out of stock during lead time.</p></div>
+        <div class="cc-body">
+          <div class="fg">
+            <div class="fgroup"><label>Average Daily Demand (units)</label><input type="number" id="rop-d" placeholder="e.g. 50"/></div>
+            <div class="fgroup"><label>Lead Time (days)</label><input type="number" id="rop-lt" placeholder="e.g. 7"/></div>
+            <div class="fgroup"><label>Safety Stock (units)</label><input type="number" id="rop-ss" placeholder="e.g. 100"/></div>
+            <div class="fgroup"><label>Max Daily Demand (units)</label><input type="number" id="rop-md" placeholder="e.g. 70"/></div>
+          </div>
+          <button class="calc-btn" onclick="calcROP()">Calculate Reorder Point →</button>
+          <div class="rb" id="r-rop">
+            <div class="rl">Reorder Point</div><div class="rv" id="rop-res">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">During Lead Time</div><div class="rcv" id="rop-dlt">—</div></div>
+              <div class="rc"><div class="rcl">Safety Stock</div><div class="rcv" id="rop-ss2">—</div></div>
+              <div class="rc"><div class="rcl">Max Stock Needed</div><div class="rcv" id="rop-max">—</div></div>
+            </div>
+            <div class="formula"><div class="ft">Formula</div><div class="fv">ROP = (Avg Daily Demand × Lead Time) + Safety Stock</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. SAFETY STOCK -->
+    <div class="cp" id="p-safety">
+      <div class="calc-card">
+        <div class="cc-head"><h2>🛡️ Safety Stock Calculator</h2><p>Calculate the buffer stock needed to prevent stockouts due to demand variability or supply delays.</p></div>
+        <div class="cc-body">
+          <div class="fg">
+            <div class="fgroup"><label>Max Daily Demand (units)</label><input type="number" id="ss-max" placeholder="e.g. 80"/></div>
+            <div class="fgroup"><label>Average Daily Demand (units)</label><input type="number" id="ss-avg" placeholder="e.g. 50"/></div>
+            <div class="fgroup"><label>Max Lead Time (days)</label><input type="number" id="ss-mlt" placeholder="e.g. 12"/></div>
+            <div class="fgroup"><label>Average Lead Time (days)</label><input type="number" id="ss-alt" placeholder="e.g. 7"/></div>
+            <div class="fgroup"><label>Service Level</label><select id="ss-sl"><option value="1.28">90%</option><option value="1.65" selected>95%</option><option value="1.96">97.5%</option><option value="2.33">99%</option></select></div>
+            <div class="fgroup"><label>Demand Std Deviation</label><input type="number" id="ss-std" placeholder="e.g. 10"/></div>
+          </div>
+          <button class="calc-btn" onclick="calcSafety()">Calculate Safety Stock →</button>
+          <div class="rb" id="r-safety">
+            <div class="rl">Safety Stock Required</div><div class="rv" id="ss-res">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">Basic Method</div><div class="rcv" id="ss-basic">—</div></div>
+              <div class="rc"><div class="rcl">Statistical</div><div class="rcv" id="ss-stat">—</div></div>
+              <div class="rc"><div class="rcl">Service Level</div><div class="rcv" id="ss-sl2">—</div></div>
+            </div>
+            <div class="formula"><div class="ft">Formula</div><div class="fv">SS = Z × σ_demand × √(Lead Time)</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. CARRYING COST -->
+    <div class="cp" id="p-carrying">
+      <div class="calc-card">
+        <div class="cc-head"><h2>💰 Inventory Carrying Cost Calculator</h2><p>Calculate the true annual cost of holding inventory — typically 20–30% of inventory value.</p></div>
+        <div class="cc-body">
+          <div class="fg">
+            <div class="fgroup"><label>Average Inventory Value (₹/$)</label><input type="number" id="cc-inv" placeholder="e.g. 1000000"/></div>
+            <div class="fgroup"><label>Storage / Warehouse Cost (%)</label><input type="number" id="cc-storage" placeholder="e.g. 5"/></div>
+            <div class="fgroup"><label>Insurance Cost (%)</label><input type="number" id="cc-ins" placeholder="e.g. 1"/></div>
+            <div class="fgroup"><label>Obsolescence / Shrinkage (%)</label><input type="number" id="cc-obs" placeholder="e.g. 3"/></div>
+            <div class="fgroup"><label>Capital / Opportunity Cost (%)</label><input type="number" id="cc-cap" placeholder="e.g. 10"/></div>
+            <div class="fgroup"><label>Handling / Labor (%)</label><input type="number" id="cc-labor" placeholder="e.g. 3"/></div>
+          </div>
+          <button class="calc-btn" onclick="calcCarrying()">Calculate Carrying Cost →</button>
+          <div class="rb" id="r-carrying">
+            <div class="rl">Annual Carrying Cost</div><div class="rv" id="cc-res">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">Carrying Rate %</div><div class="rcv" id="cc-rate">—</div></div>
+              <div class="rc"><div class="rcl">Monthly Cost</div><div class="rcv" id="cc-mon">—</div></div>
+              <div class="rc"><div class="rcl">Cost per Day</div><div class="rcv" id="cc-day">—</div></div>
+            </div>
+            <div class="formula"><div class="ft">Formula</div><div class="fv">Carrying Cost = Inventory Value × (Sum of all % rates)</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. ABC -->
+    <div class="cp" id="p-abc">
+      <div class="calc-card">
+        <div class="cc-head"><h2>🔡 ABC Inventory Analysis</h2><p>Classify SKUs into A (high value), B (medium), C (low) to focus resources where they matter most.</p></div>
+        <div class="cc-body">
+          <div class="fg">
+            <div class="fgroup"><label>Total Annual Revenue / COGS (₹/$)</label><input type="number" id="abc-tot" placeholder="e.g. 5000000"/></div>
+            <div class="fgroup"><label>This SKU Annual Value (₹/$)</label><input type="number" id="abc-sku" placeholder="e.g. 1200000"/></div>
+            <div class="fgroup"><label>A-Class Threshold (%)</label><input type="number" id="abc-a" value="70"/></div>
+            <div class="fgroup"><label>B-Class Threshold (%)</label><input type="number" id="abc-b" value="20"/></div>
+          </div>
+          <button class="calc-btn" onclick="calcABC()">Classify SKU →</button>
+          <div class="rb" id="r-abc">
+            <div class="rl">SKU Classification</div><div class="rv" id="abc-res">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">% of Revenue</div><div class="rcv" id="abc-pct">—</div></div>
+              <div class="rc"><div class="rcl">Review Frequency</div><div class="rcv" id="abc-freq">—</div></div>
+              <div class="rc"><div class="rcl">Stock Policy</div><div class="rcv" id="abc-pol">—</div></div>
+            </div>
+            <div class="formula"><div class="ft">ABC Rule</div><div class="fv">A = Top 70% value · B = Next 20% · C = Bottom 10%</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. MOQ -->
+    <div class="cp" id="p-moq">
+      <div class="calc-card">
+        <div class="cc-head"><h2>🔢 MOQ Optimizer</h2><p>Evaluate whether a supplier's Minimum Order Quantity makes financial sense for your business.</p></div>
+        <div class="cc-body">
+          <div class="fg">
+            <div class="fgroup"><label>Supplier MOQ (units)</label><input type="number" id="moq-qty" placeholder="e.g. 1000"/></div>
+            <div class="fgroup"><label>Unit Cost at MOQ (₹/$)</label><input type="number" id="moq-cost" placeholder="e.g. 80"/></div>
+            <div class="fgroup"><label>Your Monthly Demand (units)</label><input type="number" id="moq-dem" placeholder="e.g. 300"/></div>
+            <div class="fgroup"><label>Monthly Holding Cost per Unit (₹/$)</label><input type="number" id="moq-hold" placeholder="e.g. 2"/></div>
+            <div class="fgroup"><label>Selling Price per Unit (₹/$)</label><input type="number" id="moq-price" placeholder="e.g. 150"/></div>
+            <div class="fgroup"><label>Alternative Supplier Cost (₹/$)</label><input type="number" id="moq-alt" placeholder="e.g. 100"/></div>
+          </div>
+          <button class="calc-btn" onclick="calcMOQ()">Analyze MOQ →</button>
+          <div class="rb" id="r-moq">
+            <div class="rl">MOQ Viability</div><div class="rv" id="moq-res">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">Months of Stock</div><div class="rcv" id="moq-mon">—</div></div>
+              <div class="rc"><div class="rcl">Extra Holding Cost</div><div class="rcv" id="moq-ext">—</div></div>
+              <div class="rc"><div class="rcl">Savings vs Alt.</div><div class="rcv" id="moq-sav">—</div></div>
+            </div>
+            <div class="formula"><div class="ft">Break-even Check</div><div class="fv">Viable if: Unit Savings × MOQ &gt; Extra Holding Cost</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. DEAD STOCK -->
+    <div class="cp" id="p-dsr">
+      <div class="calc-card">
+        <div class="cc-head"><h2>📉 Dead Stock Recovery Calculator</h2><p>Quantify capital trapped in obsolete stock and model clearance, liquidation or bundling recovery options.</p></div>
+        <div class="cc-body">
+          <div class="fg">
+            <div class="fgroup"><label>Dead Stock Units</label><input type="number" id="ds-units" placeholder="e.g. 500"/></div>
+            <div class="fgroup"><label>Original Cost per Unit (₹/$)</label><input type="number" id="ds-cost" placeholder="e.g. 200"/></div>
+            <div class="fgroup"><label>Days in Stock (age)</label><input type="number" id="ds-age" placeholder="e.g. 180"/></div>
+            <div class="fgroup"><label>Monthly Holding Cost/Unit (₹/$)</label><input type="number" id="ds-hold" placeholder="e.g. 5"/></div>
+            <div class="fgroup"><label>Clearance Sale Price (₹/$)</label><input type="number" id="ds-sale" placeholder="e.g. 80"/></div>
+            <div class="fgroup"><label>Liquidation Offer (₹/$)</label><input type="number" id="ds-liq" placeholder="e.g. 40"/></div>
+          </div>
+          <button class="calc-btn" onclick="calcDSR()">Analyze Recovery Options →</button>
+          <div class="rb" id="r-dsr">
+            <div class="rl">Total Capital Trapped</div><div class="rv" id="ds-trapped">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">Holding Cost Paid</div><div class="rcv" id="ds-hc">—</div></div>
+              <div class="rc"><div class="rcl">Clearance Recovery</div><div class="rcv" id="ds-cl">—</div></div>
+              <div class="rc"><div class="rcl">Liquidation Net</div><div class="rcv" id="ds-ln">—</div></div>
+            </div>
+            <div class="fv" id="ds-adv" style="margin-top:.75rem;font-size:.82rem;color:var(--text2)"></div>
+            <div class="formula"><div class="ft">Formula</div><div class="fv">Loss = (Cost − Recovery) × Units + Holding Cost Paid</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. INVENTORY TURNOVER -->
+    <div class="cp" id="p-turnover">
+      <div class="calc-card">
+        <div class="cc-head"><h2>📊 Inventory Turnover Calculator</h2><p>Measure how efficiently your business sells and replaces inventory over a given period.</p></div>
+        <div class="cc-body">
+          <div class="fg">
+            <div class="fgroup"><label>COGS / Net Sales (₹/$)</label><input type="number" id="ito-cogs" placeholder="e.g. 1200000"/></div>
+            <div class="fgroup"><label>Average Inventory Value (₹/$)</label><input type="number" id="ito-inv" placeholder="e.g. 300000"/></div>
+            <div class="fgroup"><label>Beginning Inventory (₹/$)</label><input type="number" id="ito-beg" placeholder="e.g. 250000"/></div>
+            <div class="fgroup"><label>Ending Inventory (₹/$)</label><input type="number" id="ito-end" placeholder="e.g. 350000"/></div>
+          </div>
+          <button class="calc-btn" onclick="calcITO()">Calculate Turnover →</button>
+          <div class="rb" id="r-turnover">
+            <div class="rl">Inventory Turnover Ratio</div><div class="rv" id="ito-res">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">Days to Sell</div><div class="rcv" id="ito-days">—</div></div>
+              <div class="rc"><div class="rcl">Avg Inventory</div><div class="rcv" id="ito-avg">—</div></div>
+              <div class="rc"><div class="rcl">Performance</div><div class="rcv" id="ito-perf">—</div></div>
+            </div>
+            <div class="formula"><div class="ft">Formula</div><div class="fv">ITR = COGS / Average Inventory · DIO = 365 / ITR</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. DIO -->
+    <div class="cp" id="p-dio">
+      <div class="calc-card">
+        <div class="cc-head"><h2>📅 Days Inventory Outstanding (DIO)</h2><p>How many days on average does inventory sit before being sold? Lower is better.</p></div>
+        <div class="cc-body">
+          <div class="fg">
+            <div class="fgroup"><label>Average Inventory (₹/$)</label><input type="number" id="dio-inv" placeholder="e.g. 500000"/></div>
+            <div class="fgroup"><label>COGS for Period (₹/$)</label><input type="number" id="dio-cogs" placeholder="e.g. 2000000"/></div>
+            <div class="fgroup"><label>Number of Days in Period</label><select id="dio-per"><option value="365">365 (Annual)</option><option value="90">90 (Quarterly)</option><option value="30">30 (Monthly)</option></select></div>
+            <div class="fgroup"><label>Industry Benchmark (days)</label><input type="number" id="dio-bench" placeholder="e.g. 30"/></div>
+          </div>
+          <button class="calc-btn" onclick="calcDIO()">Calculate DIO →</button>
+          <div class="rb" id="r-dio">
+            <div class="rl">Days Inventory Outstanding</div><div class="rv" id="dio-res">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">vs Benchmark</div><div class="rcv" id="dio-vs">—</div></div>
+              <div class="rc"><div class="rcl">Turnover Rate</div><div class="rcv" id="dio-itor">—</div></div>
+              <div class="rc"><div class="rcl">Assessment</div><div class="rcv" id="dio-ass">—</div></div>
+            </div>
+            <div class="formula"><div class="ft">Formula</div><div class="fv">DIO = (Average Inventory / COGS) × Number of Days</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. OTIF -->
+    <div class="cp" id="p-otif">
+      <div class="calc-card">
+        <div class="cc-head"><h2>✅ OTIF Rate Calculator</h2><p>On Time In Full — the gold standard KPI for delivery performance in supply chain.</p></div>
+        <div class="cc-body">
+          <div class="fg">
+            <div class="fgroup"><label>Total Orders Shipped</label><input type="number" id="otif-tot" placeholder="e.g. 500"/></div>
+            <div class="fgroup"><label>Orders Delivered On Time</label><input type="number" id="otif-ot" placeholder="e.g. 460"/></div>
+            <div class="fgroup"><label>Orders Delivered In Full</label><input type="number" id="otif-if" placeholder="e.g. 480"/></div>
+            <div class="fgroup"><label>Orders Both OT & IF</label><input type="number" id="otif-both" placeholder="e.g. 445"/></div>
+          </div>
+          <button class="calc-btn" onclick="calcOTIF()">Calculate OTIF →</button>
+          <div class="rb" id="r-otif">
+            <div class="rl">OTIF Score</div><div class="rv" id="otif-res">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">On-Time Rate</div><div class="rcv" id="otif-otr">—</div></div>
+              <div class="rc"><div class="rcl">In-Full Rate</div><div class="rcv" id="otif-ifr">—</div></div>
+              <div class="rc"><div class="rcl">Industry Avg</div><div class="rcv">~95%</div></div>
+            </div>
+            <div class="formula"><div class="ft">Formula</div><div class="fv">OTIF % = (Orders OT & IF / Total Orders) × 100</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. FILL RATE -->
+    <div class="cp" id="p-fillrate">
+      <div class="calc-card">
+        <div class="cc-head"><h2>📈 Fill Rate Calculator</h2><p>Measure the percentage of customer demand satisfied immediately from available inventory.</p></div>
+        <div class="cc-body">
+          <div class="fg">
+            <div class="fgroup"><label>Units Ordered by Customers</label><input type="number" id="fr2-ord" placeholder="e.g. 1000"/></div>
+            <div class="fgroup"><label>Units Shipped / Fulfilled</label><input type="number" id="fr2-shp" placeholder="e.g. 950"/></div>
+            <div class="fgroup"><label>Number of Orders</label><input type="number" id="fr2-orders" placeholder="e.g. 200"/></div>
+            <div class="fgroup"><label>Orders Fulfilled Completely</label><input type="number" id="fr2-comp" placeholder="e.g. 185"/></div>
+          </div>
+          <button class="calc-btn" onclick="calcFillRate()">Calculate Fill Rate →</button>
+          <div class="rb" id="r-fillrate">
+            <div class="rl">Line Fill Rate</div><div class="rv" id="fr-res">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">Order Fill Rate</div><div class="rcv" id="fr-ofr">—</div></div>
+              <div class="rc"><div class="rcl">Units Unfilled</div><div class="rcv" id="fr-miss">—</div></div>
+              <div class="rc"><div class="rcl">Backorder Rate</div><div class="rcv" id="fr-bo">—</div></div>
+            </div>
+            <div class="formula"><div class="ft">Formula</div><div class="fv">Fill Rate = (Units Shipped / Units Ordered) × 100</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12. FREIGHT -->
+    <div class="cp" id="p-freight">
+      <div class="calc-card">
+        <div class="cc-head"><h2>🚚 Freight Cost Estimator</h2><p>Estimate shipping costs based on weight, dimensions, distance and mode of transport.</p></div>
+        <div class="cc-body">
+          <div class="fg fg3">
+            <div class="fgroup"><label>Actual Weight (kg)</label><input type="number" id="fr-wt" placeholder="e.g. 15"/></div>
+            <div class="fgroup"><label>Length (cm)</label><input type="number" id="fr-l" placeholder="e.g. 50"/></div>
+            <div class="fgroup"><label>Width (cm)</label><input type="number" id="fr-w" placeholder="e.g. 40"/></div>
+            <div class="fgroup"><label>Height (cm)</label><input type="number" id="fr-h" placeholder="e.g. 30"/></div>
+            <div class="fgroup"><label>Rate per kg (₹/$)</label><input type="number" id="fr-rate" placeholder="e.g. 25"/></div>
+            <div class="fgroup"><label>Mode</label><select id="fr-mode"><option value="5000">Air (÷5000)</option><option value="6000" selected>Surface (÷6000)</option><option value="4000">Express (÷4000)</option></select></div>
+          </div>
+          <button class="calc-btn" onclick="calcFreight()">Calculate Freight Cost →</button>
+          <div class="rb" id="r-freight">
+            <div class="rl">Chargeable Weight</div><div class="rv" id="frt-res">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">Volumetric Weight</div><div class="rcv" id="frt-vol">—</div></div>
+              <div class="rc"><div class="rcl">Actual Weight</div><div class="rcv" id="frt-act">—</div></div>
+              <div class="rc"><div class="rcl">Estimated Cost</div><div class="rcv" id="frt-cost">—</div></div>
+            </div>
+            <div class="formula"><div class="ft">Formula</div><div class="fv">Vol. Weight = (L×W×H) / Divisor · Chargeable = MAX(Actual, Vol.)</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13. LANDED COST -->
+    <div class="cp" id="p-landed">
+      <div class="calc-card">
+        <div class="cc-head"><h2>🌐 Total Landed Cost Calculator</h2><p>Full cost of a shipment including product, freight, customs, insurance, handling and taxes.</p></div>
+        <div class="cc-body">
+          <div class="fg">
+            <div class="fgroup"><label>Product Cost (₹/$)</label><input type="number" id="lc-prod" placeholder="e.g. 50000"/></div>
+            <div class="fgroup"><label>Freight / Shipping (₹/$)</label><input type="number" id="lc-fr" placeholder="e.g. 5000"/></div>
+            <div class="fgroup"><label>Customs / Import Duty (%)</label><input type="number" id="lc-duty" placeholder="e.g. 10"/></div>
+            <div class="fgroup"><label>Insurance (%)</label><input type="number" id="lc-ins" placeholder="e.g. 0.5"/></div>
+            <div class="fgroup"><label>Handling / Other Fees (₹/$)</label><input type="number" id="lc-hand" placeholder="e.g. 1000"/></div>
+            <div class="fgroup"><label>GST / VAT (%)</label><input type="number" id="lc-tax" placeholder="e.g. 18"/></div>
+          </div>
+          <button class="calc-btn" onclick="calcLanded()">Calculate Landed Cost →</button>
+          <div class="rb" id="r-landed">
+            <div class="rl">Total Landed Cost</div><div class="rv" id="lc-res">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">Duty Amount</div><div class="rcv" id="lc-damt">—</div></div>
+              <div class="rc"><div class="rcl">Tax Amount</div><div class="rcv" id="lc-tamt">—</div></div>
+              <div class="rc"><div class="rcl">Cost Markup %</div><div class="rcv" id="lc-mkup">—</div></div>
+            </div>
+            <div class="formula"><div class="ft">Formula</div><div class="fv">Landed Cost = Product + Freight + Duty + Insurance + Handling + Tax</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14. LEAD TIME -->
+    <div class="cp" id="p-leadtime">
+      <div class="calc-card">
+        <div class="cc-head"><h2>⏱️ Lead Time Analyzer</h2><p>Break down total lead time into components and identify the bottleneck stage in your supply chain.</p></div>
+        <div class="cc-body">
+          <div class="fg fg3">
+            <div class="fgroup"><label>Supplier Processing (days)</label><input type="number" id="lt-sup" placeholder="e.g. 3"/></div>
+            <div class="fgroup"><label>Transit / Shipping (days)</label><input type="number" id="lt-tran" placeholder="e.g. 7"/></div>
+            <div class="fgroup"><label>Port / Customs (days)</label><input type="number" id="lt-cust" placeholder="e.g. 2"/></div>
+            <div class="fgroup"><label>Receiving / Unloading (days)</label><input type="number" id="lt-recv" placeholder="e.g. 1"/></div>
+            <div class="fgroup"><label>Inspection / QC (days)</label><input type="number" id="lt-qc" placeholder="e.g. 1"/></div>
+            <div class="fgroup"><label>Putaway / Stocking (days)</label><input type="number" id="lt-put" placeholder="e.g. 0.5"/></div>
+          </div>
+          <button class="calc-btn" onclick="calcLT()">Analyze Lead Time →</button>
+          <div class="rb" id="r-leadtime">
+            <div class="rl">Total Lead Time</div><div class="rv" id="lt-res">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">Bottleneck Stage</div><div class="rcv" id="lt-bot">—</div></div>
+              <div class="rc"><div class="rcl">Supply-Side Days</div><div class="rcv" id="lt-sup2">—</div></div>
+              <div class="rc"><div class="rcl">Internal Days</div><div class="rcv" id="lt-int">—</div></div>
+            </div>
+            <div class="formula"><div class="ft">Formula</div><div class="fv">Total LT = Supplier + Transit + Customs + Receiving + QC + Putaway</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15. COGS -->
+    <div class="cp" id="p-cogs">
+      <div class="calc-card">
+        <div class="cc-head"><h2>💸 COGS + Gross Margin Calculator</h2><p>Calculate Cost of Goods Sold — the backbone of gross margin, inventory valuation and profitability.</p></div>
+        <div class="cc-body">
+          <div class="fg">
+            <div class="fgroup"><label>Beginning Inventory (₹/$)</label><input type="number" id="cogs-beg" placeholder="e.g. 200000"/></div>
+            <div class="fgroup"><label>Purchases During Period (₹/$)</label><input type="number" id="cogs-pur" placeholder="e.g. 800000"/></div>
+            <div class="fgroup"><label>Ending Inventory (₹/$)</label><input type="number" id="cogs-end" placeholder="e.g. 150000"/></div>
+            <div class="fgroup"><label>Net Revenue / Sales (₹/$)</label><input type="number" id="cogs-rev" placeholder="e.g. 1200000"/></div>
+          </div>
+          <button class="calc-btn" onclick="calcCOGS()">Calculate COGS →</button>
+          <div class="rb" id="r-cogs">
+            <div class="rl">Cost of Goods Sold</div><div class="rv" id="cogs-res">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">Gross Profit</div><div class="rcv" id="cogs-gp">—</div></div>
+              <div class="rc"><div class="rcl">Gross Margin %</div><div class="rcv" id="cogs-gm">—</div></div>
+              <div class="rc"><div class="rcl">COGS % of Sales</div><div class="rcv" id="cogs-pct">—</div></div>
+            </div>
+            <div class="formula"><div class="ft">Formula</div><div class="fv">COGS = Beginning Inventory + Purchases − Ending Inventory</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 16. CARBON -->
+    <div class="cp" id="p-carbon">
+      <div class="calc-card">
+        <div class="cc-head"><h2>🌱 Logistics Carbon Footprint Calculator</h2><p>Estimate CO₂ emissions from shipments across different transport modes. Essential for Scope 3 ESG reporting.</p></div>
+        <div class="cc-body">
+          <div class="fg">
+            <div class="fgroup"><label>Cargo Weight (tonnes)</label><input type="number" id="co2-wt" placeholder="e.g. 5"/></div>
+            <div class="fgroup"><label>Distance (km)</label><input type="number" id="co2-dist" placeholder="e.g. 1000"/></div>
+            <div class="fgroup"><label>Transport Mode</label><select id="co2-mode"><option value="0.062">Road — HGV Truck</option><option value="0.028">Rail — Freight</option><option value="0.016">Sea — Container Ship</option><option value="0.602">Air Freight</option><option value="0.040">Road — LCV Van</option></select></div>
+            <div class="fgroup"><label>Number of Shipments</label><input type="number" id="co2-trips" placeholder="e.g. 12" value="1"/></div>
+          </div>
+          <button class="calc-btn" onclick="calcCarbon()">Calculate CO₂ Emissions →</button>
+          <div class="rb" id="r-carbon">
+            <div class="rl">Total CO₂ Emissions</div><div class="rv" id="co2-res">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">Per Shipment</div><div class="rcv" id="co2-per">—</div></div>
+              <div class="rc"><div class="rcl">Per Tonne-km</div><div class="rcv" id="co2-tkm">—</div></div>
+              <div class="rc"><div class="rcl">Trees to Offset</div><div class="rcv" id="co2-trees">—</div></div>
+            </div>
+            <div class="formula"><div class="ft">Formula (GHG Protocol)</div><div class="fv">CO₂ (kg) = Weight (tonnes) × Distance (km) × Emission Factor</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 17. GST -->
+    <div class="cp" id="p-gst">
+      <div class="calc-card">
+        <div class="cc-head"><h2>🧾 GST Calculator (India)</h2><p>Calculate GST inclusive/exclusive amounts for B2B invoicing and supply chain cost accounting.</p></div>
+        <div class="cc-body">
+          <div class="fg">
+            <div class="fgroup"><label>Amount (₹)</label><input type="number" id="gst-amt" placeholder="e.g. 10000"/></div>
+            <div class="fgroup"><label>GST Rate</label><select id="gst-rate"><option value="5">5%</option><option value="12">12%</option><option value="18" selected>18%</option><option value="28">28%</option></select></div>
+            <div class="fgroup"><label>Calculation Type</label><select id="gst-type"><option value="excl">Exclusive (Add GST)</option><option value="incl">Inclusive (Extract GST)</option></select></div>
+            <div class="fgroup"><label>Transaction Type</label><select id="gst-tx"><option value="intra">Intra-State (CGST+SGST)</option><option value="inter">Inter-State (IGST)</option></select></div>
+          </div>
+          <button class="calc-btn" onclick="calcGST()">Calculate GST →</button>
+          <div class="rb" id="r-gst">
+            <div class="rl">Total Amount Payable</div><div class="rv" id="gst-res">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">Base Amount</div><div class="rcv" id="gst-base">—</div></div>
+              <div class="rc"><div class="rcl">CGST / IGST</div><div class="rcv" id="gst-c">—</div></div>
+              <div class="rc"><div class="rcl">SGST</div><div class="rcv" id="gst-s">—</div></div>
+            </div>
+            <div class="formula"><div class="ft">Formula</div><div class="fv">Intra: CGST = SGST = Rate/2 · Inter: Full rate as IGST</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 18. WAREHOUSE -->
+    <div class="cp" id="p-warehouse">
+      <div class="calc-card">
+        <div class="cc-head"><h2>🏭 Warehouse Utilization Calculator</h2><p>Measure how efficiently your warehouse space is being used and identify optimization opportunities.</p></div>
+        <div class="cc-body">
+          <div class="fg">
+            <div class="fgroup"><label>Total Warehouse Area (sq ft)</label><input type="number" id="wh-tot" placeholder="e.g. 50000"/></div>
+            <div class="fgroup"><label>Used Storage Area</label><input type="number" id="wh-used" placeholder="e.g. 35000"/></div>
+            <div class="fgroup"><label>Total Pallet Capacity</label><input type="number" id="wh-cap" placeholder="e.g. 2000"/></div>
+            <div class="fgroup"><label>Pallets Currently Stored</label><input type="number" id="wh-stored" placeholder="e.g. 1500"/></div>
+            <div class="fgroup"><label>Warehouse Height (ft)</label><input type="number" id="wh-ht" placeholder="e.g. 30"/></div>
+            <div class="fgroup"><label>Usable Height (ft)</label><input type="number" id="wh-uht" placeholder="e.g. 25"/></div>
+          </div>
+          <button class="calc-btn" onclick="calcWH()">Calculate Utilization →</button>
+          <div class="rb" id="r-warehouse">
+            <div class="rl">Space Utilization Rate</div><div class="rv" id="wh-res">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">Pallet Utilization</div><div class="rcv" id="wh-pal">—</div></div>
+              <div class="rc"><div class="rcl">Cubic Utilization</div><div class="rcv" id="wh-cub">—</div></div>
+              <div class="rc"><div class="rcl">Status</div><div class="rcv" id="wh-stat">—</div></div>
+            </div>
+            <div class="formula"><div class="ft">Formula</div><div class="fv">Space Util. = (Used Area / Total Area) × 100 · Optimal: 80–85%</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 19. PICK & PACK -->
+    <div class="cp" id="p-pick">
+      <div class="calc-card">
+        <div class="cc-head"><h2>📦 Pick & Pack Cost Calculator</h2><p>Calculate the true cost of fulfilling each order — labor, packaging, error rates and overhead.</p></div>
+        <div class="cc-body">
+          <div class="fg fg3">
+            <div class="fgroup"><label>Orders Picked per Day</label><input type="number" id="pp-ord" placeholder="e.g. 500"/></div>
+            <div class="fgroup"><label>Workers on Floor</label><input type="number" id="pp-wrk" placeholder="e.g. 10"/></div>
+            <div class="fgroup"><label>Hourly Wage per Worker (₹/$)</label><input type="number" id="pp-wage" placeholder="e.g. 150"/></div>
+            <div class="fgroup"><label>Shift Hours per Day</label><input type="number" id="pp-hrs" placeholder="e.g. 8" value="8"/></div>
+            <div class="fgroup"><label>Packaging Cost per Order (₹/$)</label><input type="number" id="pp-pack" placeholder="e.g. 25"/></div>
+            <div class="fgroup"><label>Overhead Rate (%)</label><input type="number" id="pp-oh" placeholder="e.g. 20" value="20"/></div>
+          </div>
+          <button class="calc-btn" onclick="calcPP()">Calculate Cost →</button>
+          <div class="rb" id="r-pick">
+            <div class="rl">Cost per Order</div><div class="rv" id="pp-res">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">Daily Labor Cost</div><div class="rcv" id="pp-lab">—</div></div>
+              <div class="rc"><div class="rcl">Daily Pack Cost</div><div class="rcv" id="pp-pkc">—</div></div>
+              <div class="rc"><div class="rcl">Monthly Total</div><div class="rcv" id="pp-mon">—</div></div>
+            </div>
+            <div class="formula"><div class="ft">Formula</div><div class="fv">Cost/Order = (Labor + Packaging + Overhead) / Orders per Day</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 20. SUPPLIER SCORECARD -->
+    <div class="cp" id="p-supplier">
+      <div class="calc-card">
+        <div class="cc-head"><h2>🏆 Supplier Performance Scorecard</h2><p>Score your supplier across quality, delivery, cost, responsiveness and compliance for an overall vendor rating.</p></div>
+        <div class="cc-body">
+          <div class="fg">
+            <div class="fgroup"><label>Quality Score (0–100)</label><input type="number" id="sup-q" placeholder="e.g. 90" min="0" max="100"/></div>
+            <div class="fgroup"><label>On-Time Delivery Score (0–100)</label><input type="number" id="sup-d" placeholder="e.g. 85" min="0" max="100"/></div>
+            <div class="fgroup"><label>Pricing / Cost Score (0–100)</label><input type="number" id="sup-c" placeholder="e.g. 78" min="0" max="100"/></div>
+            <div class="fgroup"><label>Responsiveness Score (0–100)</label><input type="number" id="sup-r" placeholder="e.g. 88" min="0" max="100"/></div>
+            <div class="fgroup"><label>Compliance / Docs Score (0–100)</label><input type="number" id="sup-co" placeholder="e.g. 95" min="0" max="100"/></div>
+            <div class="fgroup"><label>Innovation / Support (0–100)</label><input type="number" id="sup-i" placeholder="e.g. 70" min="0" max="100"/></div>
+          </div>
+          <button class="calc-btn" onclick="calcSupplier()">Generate Scorecard →</button>
+          <div class="rb" id="r-supplier">
+            <div class="rl">Overall Supplier Score</div><div class="rv" id="sup-res">—</div>
+            <div class="rg">
+              <div class="rc"><div class="rcl">Grade</div><div class="rcv" id="sup-grade">—</div></div>
+              <div class="rc"><div class="rcl">Weakest Area</div><div class="rcv" id="sup-weak">—</div></div>
+              <div class="rc"><div class="rcl">Recommendation</div><div class="rcv" id="sup-rec">—</div></div>
+            </div>
+            <div class="formula"><div class="ft">Weighted Score</div><div class="fv">Quality 25% · Delivery 25% · Cost 20% · Response 15% · Compliance 10% · Innovation 5%</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AD: IN-CONTENT -->
+    <div style="margin:1.5rem 0">
+      <div class="ad-unit ad-rect">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="4444444444" data-ad-format="rectangle" data-full-width-responsive="false"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
+      </div>
+    </div>
+
+    <!-- AI DEMAND PLANNER -->
+    <div class="cp" id="p-ai">
+      <div class="calc-card">
+        <div class="cc-head" style="background:linear-gradient(135deg,rgba(0,212,170,.07) 0%,transparent 60%)">
+          <div class="ai-badge-big">AI-POWERED · CLAUDE ANALYSIS</div>
+          <h2>🤖 AI Demand Planner & Forecaster</h2>
+          <p>Upload your inventory or sales CSV. Our AI generates a full demand forecast, reorder plan, slow-mover alerts and 90-day demand plan — ready to download instantly.</p>
+        </div>
+        <div class="cc-body">
+          <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+            <div class="uz-icon">📂</div>
+            <div class="uz-title">Drop your inventory file here</div>
+            <div class="uz-sub">or click to browse · CSV, XLSX, XLS, TXT supported · Max 5MB</div>
+            <div class="uz-types"><span class="uz-type">.CSV</span><span class="uz-type">.XLSX</span><span class="uz-type">.XLS</span><span class="uz-type">.TXT</span></div>
+          </div>
+          <input type="file" id="file-input" accept=".csv,.xlsx,.xls,.txt" onchange="handleFileSelect(event)"/>
+          <div class="file-sel" id="file-sel">
+            <div style="font-size:1.4rem">📄</div>
+            <div style="flex:1">
+              <div class="fi-name" id="fi-name">—</div>
+              <div class="fi-size" id="fi-size">—</div>
+            </div>
+            <button class="fi-rm" onclick="removeFile()">✕</button>
+          </div>
+          <div class="sample-note">
+            <strong>Expected columns:</strong> SKU/Product, Date/Month, Sales/Units Sold/Demand, Stock/Inventory, Price (optional), Category (optional). AI maps columns automatically.<br/>
+            <strong>No file?</strong> <span style="color:var(--teal);cursor:pointer" onclick="loadSample()">→ Load sample data to demo</span>
+          </div>
+          <div class="col-preview" id="col-preview">
+            <div class="cp-title">📋 Detected Columns</div>
+            <div class="cp-grid" id="cp-grid"></div>
+          </div>
+          <div class="fc-grid">
+            <div class="fgroup"><label>Forecast Horizon</label><select id="fc-hor"><option value="30">30 Days</option><option value="60">60 Days</option><option value="90" selected>90 Days</option><option value="180">6 Months</option></select></div>
+            <div class="fgroup"><label>Method</label><select id="fc-meth"><option value="auto" selected>Auto (AI selects best)</option><option value="moving_avg">Moving Average</option><option value="exponential">Exponential Smoothing</option><option value="trend">Trend + Seasonality</option></select></div>
+            <div class="fgroup"><label>Currency</label><select id="fc-cur"><option value="INR" selected>₹ India</option><option value="USD">$ USA</option><option value="GBP">£ UK</option><option value="EUR">€ EU</option><option value="CAD">$ Canada</option></select></div>
+          </div>
+          <button class="ai-btn" id="ai-btn" onclick="runAI()" disabled><span>✦</span> Generate AI Demand Forecast</button>
+          <div class="ai-loading" id="ai-loading">
+            <div class="loader-bar"><div class="loader-fill" id="lf"></div></div>
+            <div class="l-step"><div class="l-dot"></div>Parsing inventory file and detecting columns…</div>
+            <div class="l-step"><div class="l-dot"></div>Running demand pattern analysis & trend detection…</div>
+            <div class="l-step"><div class="l-dot"></div>Generating SKU-level forecast…</div>
+            <div class="l-step"><div class="l-dot"></div>Compiling reorder alerts & slow-mover report…</div>
+          </div>
+          <div class="fc-results" id="fc-results">
+            <div class="sum-grid" id="sum-grid"></div>
+            <div class="ftabs">
+              <button class="ftab active" onclick="swTab('demand',this)">📈 Demand Forecast</button>
+              <button class="ftab" onclick="swTab('reorder',this)">🔄 Reorder Plan</button>
+              <button class="ftab" onclick="swTab('slow',this)">🐢 Slow Movers</button>
+              <button class="ftab" onclick="swTab('insights',this)">💡 AI Insights</button>
+            </div>
+            <div class="ftp active" id="ft-demand">
+              <div class="ai-table-wrap"><table class="ai-table"><thead><tr><th>SKU</th><th>Product</th><th>Avg/Month</th><th>Next 30d</th><th>Next 60d</th><th>Next 90d</th><th>Trend</th><th>Confidence</th></tr></thead><tbody id="tb-demand"></tbody></table></div>
+            </div>
+            <div class="ftp" id="ft-reorder">
+              <div class="ai-table-wrap"><table class="ai-table"><thead><tr><th>SKU</th><th>Product</th><th>Current Stock</th><th>Reorder Point</th><th>EOQ</th><th>Reorder By</th><th>Lead Time</th><th>Priority</th></tr></thead><tbody id="tb-reorder"></tbody></table></div>
+            </div>
+            <div class="ftp" id="ft-slow">
+              <div class="ai-table-wrap"><table class="ai-table"><thead><tr><th>SKU</th><th>Product</th><th>Days in Stock</th><th>Monthly Velocity</th><th>Value</th><th>Action</th><th>Risk</th></tr></thead><tbody id="tb-slow"></tbody></table></div>
+            </div>
+            <div class="ftp" id="ft-insights">
+              <div class="insights-box"><div class="ib-title">✦ AI Analysis & Recommendations</div><div id="ins-list"></div></div>
+            </div>
+            <div class="dl-row">
+              <button class="dl-btn primary" onclick="dlCSV('demand')">⬇ Demand Forecast CSV</button>
+              <button class="dl-btn" onclick="dlCSV('reorder')">⬇ Reorder Plan CSV</button>
+              <button class="dl-btn" onclick="dlCSV('slow')">⬇ Slow Movers CSV</button>
+              <button class="dl-btn" onclick="dlCSV('full')">⬇ Full Report CSV</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end panels -->
+</div><!-- end main -->
+
+<!-- AD: FOOTER LEADERBOARD -->
+<div class="ad-wrap">
+  <div class="ad-unit ad-leaderboard">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="5555555555" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Logicst<span class="iq">IQ</span>.com</div>
+  <p style="margin-top:.35rem;font-family:var(--font-mono);font-size:.72rem;color:var(--gold);letter-spacing:.08em">Where Logistics Meets Intelligence</p>
+
+  <!-- FOUNDERS -->
+  <div style="display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin:1.25rem 0;padding:1.25rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div style="text-align:center">
+      <div style="font-family:var(--font-mono);font-size:.58rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:.4rem">🧠 Co-Founder & Owner</div>
+      <div style="font-family:var(--font-head);font-size:1.1rem;font-weight:700;color:var(--text)">Amit Kumar</div>
+      <div style="font-family:var(--font-mono);font-size:.68rem;color:var(--gold);margin-top:.2rem">Supply Chain & E-Commerce Professional</div>
+      <div style="font-family:var(--font-mono);font-size:.62rem;color:var(--muted);margin-top:.15rem">India 🇮🇳</div>
+    </div>
+    <div style="width:1px;background:var(--border);align-self:stretch"></div>
+    <div style="text-align:center">
+      <div style="font-family:var(--font-mono);font-size:.58rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:.4rem">🧠 Co-Founder & Owner</div>
+      <div style="font-family:var(--font-head);font-size:1.1rem;font-weight:700;color:var(--text)">Sachin Sirwani</div>
+      <div style="font-family:var(--font-mono);font-size:.68rem;color:var(--gold);margin-top:.2rem">Supply Chain Professional</div>
+      <div style="font-family:var(--font-mono);font-size:.62rem;color:var(--muted);margin-top:.15rem">India 🇮🇳</div>
+    </div>
+  </div>
+
+  <div class="footer-links">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/terms.html">Terms of Service</a>
+    <a href="/disclaimer.html">Disclaimer</a>
+    <a href="/blog/">Blog</a>
+  </div>
+  <p>20 Free Supply Chain Calculators · AI Demand Planner · No Login Required · Instant Results</p>
+  <p style="margin-top:.4rem">Inventory · Logistics · KPIs · Warehousing · ESG · Finance · GST · Demand Planning</p>
+  <p style="margin-top:.6rem;color:var(--border2)">© 2025 LogicstIQ.com · Built by Amit Kumar & Sachin Sirwani · Where Logistics Meets Intelligence · Results are for reference only. Always validate with your ERP/WMS system.</p>
+</footer>
+
+<script>
+// ── UTILS ──
+function fmt(n){if(n>=100000)return(n/100000).toFixed(2)+'L';if(n>=1000)return(n/1000).toFixed(1)+'K';return n.toFixed(2)}
+function showR(id){const e=document.getElementById('r-'+id);if(e){e.classList.add('show')}}
+function showCalc(id,el){
+  document.querySelectorAll('.cp').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.ci').forEach(i=>i.classList.remove('active'));
+  document.getElementById('p-'+id).classList.add('active');
+  if(el)el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── CALCULATORS ──
+function calcEOQ(){
+  const D=+document.getElementById('eoq-d').value,S=+document.getElementById('eoq-s').value,H=+document.getElementById('eoq-h').value;
+  if(!D||!S||!H)return alert('Fill Annual Demand, Ordering Cost and Holding Cost.');
+  const eoq=Math.sqrt(2*D*S/H),orders=D/eoq,cycle=365/orders,cost=(D/eoq)*S+(eoq/2)*H;
+  document.getElementById('eoq-res').textContent=Math.round(eoq)+' units';
+  document.getElementById('eoq-ord').textContent=orders.toFixed(1)+'/yr';
+  document.getElementById('eoq-cyc').textContent=cycle.toFixed(0)+' days';
+  document.getElementById('eoq-cost').textContent='₹'+fmt(cost);
+  showR('eoq');
+}
+function calcROP(){
+  const d=+document.getElementById('rop-d').value,lt=+document.getElementById('rop-lt').value,ss=+document.getElementById('rop-ss').value||0,md=+document.getElementById('rop-md').value||d;
+  if(!d||!lt)return alert('Fill daily demand and lead time.');
+  const rop=d*lt+ss;
+  document.getElementById('rop-res').textContent=Math.round(rop)+' units';
+  document.getElementById('rop-dlt').textContent=Math.round(d*lt)+' units';
+  document.getElementById('rop-ss2').textContent=ss+' units';
+  document.getElementById('rop-max').textContent=Math.round(md*lt+ss)+' units';
+  showR('rop');
+}
+function calcSafety(){
+  const mx=+document.getElementById('ss-max').value,av=+document.getElementById('ss-avg').value,mlt=+document.getElementById('ss-mlt').value,alt=+document.getElementById('ss-alt').value,z=+document.getElementById('ss-sl').value,std=+document.getElementById('ss-std').value||0;
+  if(!mx||!av||!mlt||!alt)return alert('Fill all fields.');
+  const basic=(mx-av)*mlt,stat=std?Math.round(z*std*Math.sqrt(alt)):'Enter Std Dev';
+  const slMap={1.28:'90%',1.65:'95%',1.96:'97.5%',2.33:'99%'};
+  document.getElementById('ss-res').textContent=Math.round(basic)+' units';
+  document.getElementById('ss-basic').textContent=Math.round(basic)+' u';
+  document.getElementById('ss-stat').textContent=typeof stat==='number'?stat+' u':stat;
+  document.getElementById('ss-sl2').textContent=slMap[z]||z;
+  showR('safety');
+}
+function calcCarrying(){
+  const inv=+document.getElementById('cc-inv').value;
+  if(!inv)return alert('Enter inventory value.');
+  const r=[+document.getElementById('cc-storage').value||0,+document.getElementById('cc-ins').value||0,+document.getElementById('cc-obs').value||0,+document.getElementById('cc-cap').value||0,+document.getElementById('cc-labor').value||0].reduce((a,b)=>a+b,0);
+  const ann=inv*r/100;
+  document.getElementById('cc-res').textContent='₹'+fmt(ann);
+  document.getElementById('cc-rate').textContent=r.toFixed(1)+'%';
+  document.getElementById('cc-mon').textContent='₹'+fmt(ann/12);
+  document.getElementById('cc-day').textContent='₹'+fmt(ann/365);
+  showR('carrying');
+}
+function calcABC(){
+  const tot=+document.getElementById('abc-tot').value,sku=+document.getElementById('abc-sku').value;
+  if(!tot||!sku)return alert('Enter total and SKU value.');
+  const pct=sku/tot*100;
+  let cls,freq,pol;
+  if(pct>=10){cls='A';freq='Weekly';pol='Tight control';}
+  else if(pct>=3){cls='B';freq='Bi-weekly';pol='Moderate control';}
+  else{cls='C';freq='Monthly';pol='Minimal monitoring';}
+  const colors={'A':'var(--teal)','B':'var(--gold)','C':'var(--muted)'};
+  document.getElementById('abc-res').textContent='Class '+cls;
+  document.getElementById('abc-res').style.color=colors[cls];
+  document.getElementById('abc-pct').textContent=pct.toFixed(1)+'%';
+  document.getElementById('abc-freq').textContent=freq;
+  document.getElementById('abc-pol').textContent=pol;
+  showR('abc');
+}
+function calcMOQ(){
+  const qty=+document.getElementById('moq-qty').value,cost=+document.getElementById('moq-cost').value,dem=+document.getElementById('moq-dem').value,hold=+document.getElementById('moq-hold').value||0,alt=+document.getElementById('moq-alt').value||0;
+  if(!qty||!cost||!dem)return alert('Enter MOQ, cost and demand.');
+  const months=qty/dem,extraHold=(qty-dem)*hold*months,savingsVsAlt=alt?(alt-cost)*qty:0;
+  const viable=savingsVsAlt>extraHold?'✅ Viable':extraHold>0?'⚠️ Marginal':'📊 Assess';
+  document.getElementById('moq-res').textContent=viable;
+  document.getElementById('moq-mon').textContent=months.toFixed(1)+' mo';
+  document.getElementById('moq-ext').textContent='₹'+fmt(extraHold);
+  document.getElementById('moq-sav').textContent=alt?'₹'+fmt(savingsVsAlt):'N/A';
+  showR('moq');
+}
+function calcDSR(){
+  const units=+document.getElementById('ds-units').value,cost=+document.getElementById('ds-cost').value,age=+document.getElementById('ds-age').value||0,hold=+document.getElementById('ds-hold').value||0,sale=+document.getElementById('ds-sale').value||0,liq=+document.getElementById('ds-liq').value||0;
+  if(!units||!cost)return alert('Enter units and cost.');
+  const trapped=units*cost,hc=units*hold*(age/30),cl=units*sale,ln=units*liq;
+  const best=sale>liq?'Clearance Sale':'Liquidation';
+  document.getElementById('ds-trapped').textContent='₹'+fmt(trapped);
+  document.getElementById('ds-hc').textContent='₹'+fmt(hc);
+  document.getElementById('ds-cl').textContent=sale?'₹'+fmt(cl):'N/A';
+  document.getElementById('ds-ln').textContent=liq?'₹'+fmt(ln):'N/A';
+  document.getElementById('ds-adv').textContent=`💡 Best option: ${best}. Daily holding cost: ₹${fmt(units*hold)}/day.`;
+  showR('dsr');
+}
+function calcITO(){
+  const cogs=+document.getElementById('ito-cogs').value,beg=+document.getElementById('ito-beg').value||0,end=+document.getElementById('ito-end').value||0;
+  let inv=+document.getElementById('ito-inv').value;
+  if(!cogs)return alert('Enter COGS.');
+  if(!inv&&beg&&end)inv=(beg+end)/2;
+  if(!inv)return alert('Enter inventory value.');
+  const itor=cogs/inv,days=365/itor,perf=itor>6?'🟢 High':itor>3?'🟡 Avg':'🔴 Low';
+  document.getElementById('ito-res').textContent=itor.toFixed(2)+'x';
+  document.getElementById('ito-days').textContent=days.toFixed(0)+' days';
+  document.getElementById('ito-avg').textContent='₹'+fmt(inv);
+  document.getElementById('ito-perf').textContent=perf;
+  showR('turnover');
+}
+function calcDIO(){
+  const inv=+document.getElementById('dio-inv').value,cogs=+document.getElementById('dio-cogs').value,period=+document.getElementById('dio-per').value,bench=+document.getElementById('dio-bench').value||0;
+  if(!inv||!cogs)return alert('Enter inventory and COGS.');
+  const dio=inv/cogs*period,itor=period/dio;
+  document.getElementById('dio-res').textContent=dio.toFixed(1)+' days';
+  document.getElementById('dio-vs').textContent=bench?((dio-bench).toFixed(1)+' days'):'N/A';
+  document.getElementById('dio-itor').textContent=itor.toFixed(2)+'x';
+  document.getElementById('dio-ass').textContent=!bench?'—':dio<=bench?'🟢 Good':'🔴 High';
+  showR('dio');
+}
+function calcOTIF(){
+  const tot=+document.getElementById('otif-tot').value,ot=+document.getElementById('otif-ot').value,inf=+document.getElementById('otif-if').value,both=+document.getElementById('otif-both').value;
+  if(!tot||!both)return alert('Enter total orders and OTIF count.');
+  document.getElementById('otif-res').textContent=(both/tot*100).toFixed(1)+'%';
+  document.getElementById('otif-otr').textContent=ot?(ot/tot*100).toFixed(1)+'%':'—';
+  document.getElementById('otif-ifr').textContent=inf?(inf/tot*100).toFixed(1)+'%':'—';
+  showR('otif');
+}
+function calcFillRate(){
+  const ord=+document.getElementById('fr2-ord').value,shp=+document.getElementById('fr2-shp').value,orders=+document.getElementById('fr2-orders').value||0,comp=+document.getElementById('fr2-comp').value||0;
+  if(!ord||!shp)return alert('Enter units ordered and shipped.');
+  const lfr=shp/ord*100,miss=ord-shp,bo=(miss/ord*100).toFixed(1)+'%';
+  document.getElementById('fr-res').textContent=lfr.toFixed(1)+'%';
+  document.getElementById('fr-ofr').textContent=orders&&comp?(comp/orders*100).toFixed(1)+'%':'—';
+  document.getElementById('fr-miss').textContent=miss+' units';
+  document.getElementById('fr-bo').textContent=bo;
+  showR('fillrate');
+}
+function calcFreight(){
+  const wt=+document.getElementById('fr-wt').value,l=+document.getElementById('fr-l').value,w=+document.getElementById('fr-w').value,h=+document.getElementById('fr-h').value,rate=+document.getElementById('fr-rate').value,div=+document.getElementById('fr-mode').value;
+  if(!wt||!l||!w||!h||!rate)return alert('Fill all fields.');
+  const vol=l*w*h/div,chg=Math.max(wt,vol);
+  document.getElementById('frt-res').textContent=chg.toFixed(2)+' kg';
+  document.getElementById('frt-vol').textContent=vol.toFixed(2)+' kg';
+  document.getElementById('frt-act').textContent=wt+' kg';
+  document.getElementById('frt-cost').textContent='₹'+(chg*rate).toFixed(2);
+  showR('freight');
+}
+function calcLanded(){
+  const prod=+document.getElementById('lc-prod').value,fr=+document.getElementById('lc-fr').value||0,duty=+document.getElementById('lc-duty').value||0,ins=+document.getElementById('lc-ins').value||0,hand=+document.getElementById('lc-hand').value||0,tax=+document.getElementById('lc-tax').value||0;
+  if(!prod)return alert('Enter product cost.');
+  const da=prod*duty/100,ia=prod*ins/100,base=prod+fr+da+ia+hand,ta=base*tax/100,total=base+ta;
+  document.getElementById('lc-res').textContent='₹'+fmt(total);
+  document.getElementById('lc-damt').textContent='₹'+fmt(da);
+  document.getElementById('lc-tamt').textContent='₹'+fmt(ta);
+  document.getElementById('lc-mkup').textContent=((total-prod)/prod*100).toFixed(1)+'%';
+  showR('landed');
+}
+function calcLT(){
+  const sup=+document.getElementById('lt-sup').value||0,tran=+document.getElementById('lt-tran').value||0,cust=+document.getElementById('lt-cust').value||0,recv=+document.getElementById('lt-recv').value||0,qc=+document.getElementById('lt-qc').value||0,put=+document.getElementById('lt-put').value||0;
+  const tot=sup+tran+cust+recv+qc+put;
+  if(!tot)return alert('Enter at least one lead time component.');
+  const stages={Supplier:sup,Transit:tran,Customs:cust,Receiving:recv,QC:qc,Putaway:put};
+  const bot=Object.entries(stages).sort((a,b)=>b[1]-a[1])[0][0];
+  document.getElementById('lt-res').textContent=tot.toFixed(1)+' days';
+  document.getElementById('lt-bot').textContent=bot;
+  document.getElementById('lt-sup2').textContent=(sup+tran+cust).toFixed(1)+'d';
+  document.getElementById('lt-int').textContent=(recv+qc+put).toFixed(1)+'d';
+  showR('leadtime');
+}
+function calcCOGS(){
+  const beg=+document.getElementById('cogs-beg').value||0,pur=+document.getElementById('cogs-pur').value||0,end=+document.getElementById('cogs-end').value||0,rev=+document.getElementById('cogs-rev').value||0;
+  const cogs=beg+pur-end,gp=rev-cogs,gm=rev?gp/rev*100:0;
+  document.getElementById('cogs-res').textContent='₹'+fmt(cogs);
+  document.getElementById('cogs-gp').textContent=rev?'₹'+fmt(gp):'N/A';
+  document.getElementById('cogs-gm').textContent=rev?gm.toFixed(1)+'%':'N/A';
+  document.getElementById('cogs-pct').textContent=rev?(cogs/rev*100).toFixed(1)+'%':'N/A';
+  showR('cogs');
+}
+function calcCarbon(){
+  const wt=+document.getElementById('co2-wt').value,dist=+document.getElementById('co2-dist').value,ef=+document.getElementById('co2-mode').value,trips=+document.getElementById('co2-trips').value||1;
+  if(!wt||!dist)return alert('Enter weight and distance.');
+  const per=wt*dist*ef,tot=per*trips;
+  document.getElementById('co2-res').textContent=tot.toFixed(1)+' kg CO₂';
+  document.getElementById('co2-per').textContent=per.toFixed(1)+' kg';
+  document.getElementById('co2-tkm').textContent=ef+' kg/t-km';
+  document.getElementById('co2-trees').textContent=Math.ceil(tot/21)+' trees';
+  showR('carbon');
+}
+function calcGST(){
+  const amt=+document.getElementById('gst-amt').value,rate=+document.getElementById('gst-rate').value,type=document.getElementById('gst-type').value,tx=document.getElementById('gst-tx').value;
+  if(!amt)return alert('Enter amount.');
+  let base,gstAmt,total;
+  if(type==='excl'){base=amt;gstAmt=amt*rate/100;total=amt+gstAmt;}
+  else{total=amt;base=amt/(1+rate/100);gstAmt=total-base;}
+  const cgst=tx==='intra'?gstAmt/2:gstAmt;
+  document.getElementById('gst-res').textContent='₹'+total.toFixed(2);
+  document.getElementById('gst-base').textContent='₹'+base.toFixed(2);
+  document.getElementById('gst-c').textContent='₹'+cgst.toFixed(2);
+  document.getElementById('gst-s').textContent=tx==='inter'?'N/A':'₹'+(gstAmt/2).toFixed(2);
+  showR('gst');
+}
+function calcWH(){
+  const tot=+document.getElementById('wh-tot').value,used=+document.getElementById('wh-used').value,cap=+document.getElementById('wh-cap').value||0,stored=+document.getElementById('wh-stored').value||0,ht=+document.getElementById('wh-ht').value||0,uht=+document.getElementById('wh-uht').value||0;
+  if(!tot||!used)return alert('Enter total and used area.');
+  const su=used/tot*100;
+  document.getElementById('wh-res').textContent=su.toFixed(1)+'%';
+  document.getElementById('wh-pal').textContent=cap&&stored?(stored/cap*100).toFixed(1)+'%':'N/A';
+  document.getElementById('wh-cub').textContent=ht&&uht?(uht/ht*su/100*100).toFixed(1)+'%':'N/A';
+  document.getElementById('wh-stat').textContent=su>95?'🔴 Over':su>85?'🟡 High':su>70?'🟢 Optimal':'🔵 Under';
+  showR('warehouse');
+}
+function calcPP(){
+  const ord=+document.getElementById('pp-ord').value,wrk=+document.getElementById('pp-wrk').value,wage=+document.getElementById('pp-wage').value,hrs=+document.getElementById('pp-hrs').value||8,pack=+document.getElementById('pp-pack').value||0,oh=+document.getElementById('pp-oh').value||20;
+  if(!ord||!wrk||!wage)return alert('Enter orders, workers and wage.');
+  const lab=wrk*wage*hrs,pkc=ord*pack,daily=(lab+pkc)*(1+oh/100);
+  document.getElementById('pp-res').textContent='₹'+(daily/ord).toFixed(2);
+  document.getElementById('pp-lab').textContent='₹'+fmt(lab);
+  document.getElementById('pp-pkc').textContent='₹'+fmt(pkc);
+  document.getElementById('pp-mon').textContent='₹'+fmt(daily*26);
+  showR('pick');
+}
+function calcSupplier(){
+  const q=+document.getElementById('sup-q').value||0,d=+document.getElementById('sup-d').value||0,c=+document.getElementById('sup-c').value||0,r=+document.getElementById('sup-r').value||0,co=+document.getElementById('sup-co').value||0,i=+document.getElementById('sup-i').value||0;
+  const score=q*.25+d*.25+c*.20+r*.15+co*.10+i*.05;
+  const grade=score>=90?'A+':score>=80?'A':score>=70?'B':score>=60?'C':'D';
+  const labels=['Quality','Delivery','Cost','Responsiveness','Compliance','Innovation'];
+  const vals=[q,d,c,r,co,i];
+  const minIdx=vals.indexOf(Math.min(...vals));
+  document.getElementById('sup-res').textContent=score.toFixed(1)+'/100';
+  document.getElementById('sup-grade').textContent=grade;
+  document.getElementById('sup-weak').textContent=labels[minIdx];
+  document.getElementById('sup-rec').textContent=score>=80?'✅ Preferred':score>=60?'⚠️ Conditional':'🔴 Review';
+  showR('supplier');
+}
+
+// ── AI DEMAND PLANNER ──
+let fileContent='',fileName='',fcData={demand:[],reorder:[],slow:[],insights:[]};
+function handleDragOver(e){e.preventDefault();document.getElementById('upload-zone').classList.add('drag-over')}
+function handleDragLeave(){document.getElementById('upload-zone').classList.remove('drag-over')}
+function handleDrop(e){e.preventDefault();document.getElementById('upload-zone').classList.remove('drag-over');if(e.dataTransfer.files[0])processFile(e.dataTransfer.files[0])}
+function handleFileSelect(e){if(e.target.files[0])processFile(e.target.files[0])}
+function processFile(file){
+  fileName=file.name;
+  document.getElementById('fi-name').textContent=file.name;
+  document.getElementById('fi-size').textContent=(file.size/1048576).toFixed(2)+' MB';
+  document.getElementById('file-sel').classList.add('show');
+  document.getElementById('ai-btn').disabled=false;
+  const r=new FileReader();
+  r.onload=ev=>{fileContent=ev.target.result;showColPreview(fileContent)};
+  r.readAsText(file);
+}
+function removeFile(){
+  fileContent='';fileName='';
+  document.getElementById('file-sel').classList.remove('show');
+  document.getElementById('col-preview').style.display='none';
+  document.getElementById('ai-btn').disabled=true;
+  document.getElementById('file-input').value='';
+  document.getElementById('fc-results').classList.remove('show');
+  document.getElementById('ai-loading').classList.remove('show');
+}
+function showColPreview(csv){
+  const headers=csv.split('\n')[0].split(',').map(h=>h.replace(/"/g,'').trim());
+  document.getElementById('cp-grid').innerHTML=headers.map(h=>`<div class="cp-item">${h}</div>`).join('');
+  document.getElementById('col-preview').style.display='block';
+}
+function loadSample(){
+  fileContent=`SKU,Product,Month,Units_Sold,Stock,Unit_Price,Category
+SKU-001,Premium Widget A,Jan-2025,320,1200,450,Electronics
+SKU-001,Premium Widget A,Feb-2025,290,1050,450,Electronics
+SKU-001,Premium Widget A,Mar-2025,410,900,450,Electronics
+SKU-001,Premium Widget A,Apr-2025,380,780,450,Electronics
+SKU-001,Premium Widget A,May-2025,450,600,450,Electronics
+SKU-002,Basic Component B,Jan-2025,850,3000,120,Components
+SKU-002,Basic Component B,Feb-2025,790,2500,120,Components
+SKU-002,Basic Component B,Mar-2025,820,2100,120,Components
+SKU-002,Basic Component B,Apr-2025,780,1800,120,Components
+SKU-002,Basic Component B,May-2025,760,1400,120,Components
+SKU-003,Packaging Box L,Jan-2025,1200,5000,35,Packaging
+SKU-003,Packaging Box L,Feb-2025,1100,4200,35,Packaging
+SKU-003,Packaging Box L,Mar-2025,1300,3500,35,Packaging
+SKU-003,Packaging Box L,Apr-2025,1250,3100,35,Packaging
+SKU-003,Packaging Box L,May-2025,1400,2500,35,Packaging
+SKU-004,Slow Item D,Jan-2025,45,900,280,Accessories
+SKU-004,Slow Item D,Feb-2025,30,870,280,Accessories
+SKU-004,Slow Item D,Mar-2025,25,845,280,Accessories
+SKU-004,Slow Item D,Apr-2025,20,825,280,Accessories
+SKU-004,Slow Item D,May-2025,15,810,280,Accessories
+SKU-005,Fast Mover E,Jan-2025,2100,4000,85,FMCG
+SKU-005,Fast Mover E,Feb-2025,2300,3200,85,FMCG
+SKU-005,Fast Mover E,Mar-2025,2500,2800,85,FMCG
+SKU-005,Fast Mover E,Apr-2025,2800,2500,85,FMCG
+SKU-005,Fast Mover E,May-2025,3100,1800,85,FMCG`;
+  fileName='sample_inventory.csv';
+  document.getElementById('fi-name').textContent='sample_inventory.csv (Demo)';
+  document.getElementById('fi-size').textContent='Sample · 5 SKUs · 5 months';
+  document.getElementById('file-sel').classList.add('show');
+  document.getElementById('ai-btn').disabled=false;
+  showColPreview(fileContent);
+}
+async function runAI(){
+  if(!fileContent)return alert('Upload a file first.');
+  const horizon=document.getElementById('fc-hor').value,method=document.getElementById('fc-meth').value,currency=document.getElementById('fc-cur').value;
+  const sym={INR:'₹',USD:'$',GBP:'£',EUR:'€',CAD:'C$'}[currency]||'₹';
+  document.getElementById('ai-loading').classList.add('show');
+  document.getElementById('fc-results').classList.remove('show');
+  document.getElementById('ai-btn').disabled=true;
+  const lf=document.getElementById('lf');lf.style.animation='none';lf.offsetHeight;lf.style.animation='lp 6s ease forwards';
+  const prompt=`You are an expert Supply Chain Analyst for LogicstIQ.com. Analyze this inventory/sales CSV and return ONLY a valid JSON object (no markdown, no backticks).
+
+CSV DATA:
+${fileContent.substring(0,6000)}
+
+Generate demand planning for ${horizon}-day horizon using ${method} method. Currency: ${currency} (${sym}).
+
+Return EXACTLY this JSON:
+{"summary":{"totalSKUs":<n>,"avgMonthlyDemand":<n>,"totalInventoryValue":"<str>","forecastAccuracy":"<pct>","criticalAlerts":<n>,"slowMovers":<n>},"demandForecast":[{"sku":"<str>","product":"<str>","avgMonthlyDemand":<n>,"next30":<n>,"next60":<n>,"next90":<n>,"trend":"up|down|flat","trendPct":"<str>","confidence":"<pct>"}],"reorderPlan":[{"sku":"<str>","product":"<str>","currentStock":<n>,"reorderPoint":<n>,"eoq":<n>,"reorderBy":"<date>","leadTimeDays":<n>,"priority":"URGENT|HIGH|MEDIUM|LOW"}],"slowMovers":[{"sku":"<str>","product":"<str>","daysInStock":<n>,"monthlyVelocity":<n>,"inventoryValue":"<str>","action":"<str>","riskLevel":"HIGH|MEDIUM|LOW"}],"insights":[{"type":"green|orange|blue","text":"<str>"}]}
+
+Be data-driven. Return ONLY the JSON.`;
+  try{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:3000,messages:[{role:'user',content:prompt}]})});
+    const data=await resp.json();
+    const raw=data.content.map(b=>b.text||'').join('');
+    const result=JSON.parse(raw.replace(/```json|```/g,'').trim());
+    renderFC(result,sym);
+  }catch(err){console.error(err);alert('Analysis failed. Please check your file format and try again.');}
+  finally{document.getElementById('ai-loading').classList.remove('show');document.getElementById('ai-btn').disabled=false;}
+}
+function renderFC(data,sym){
+  fcData=data;
+  const s=data.summary;
+  document.getElementById('sum-grid').innerHTML=`
+    <div class="sc"><div class="scl">Total SKUs</div><div class="scv">${s.totalSKUs}</div><div class="scs">Analyzed</div></div>
+    <div class="sc"><div class="scl">Avg Monthly Demand</div><div class="scv">${Number(s.avgMonthlyDemand).toLocaleString()}</div><div class="scs">Units/month</div></div>
+    <div class="sc"><div class="scl">Inventory Value</div><div class="scv">${s.totalInventoryValue}</div><div class="scs">Total stock</div></div>
+    <div class="sc"><div class="scl">Forecast Accuracy</div><div class="scv">${s.forecastAccuracy}</div><div class="scs">Model confidence</div></div>
+    <div class="sc"><div class="scl">Critical Alerts</div><div class="scv" style="color:var(--danger)">${s.criticalAlerts}</div><div class="scs">Need attention</div></div>
+    <div class="sc"><div class="scl">Slow Movers</div><div class="scv" style="color:var(--muted)">${s.slowMovers}</div><div class="scs">Low velocity</div></div>`;
+  const pc={URGENT:'var(--danger)',HIGH:'#f59e0b',MEDIUM:'var(--blue)',LOW:'var(--muted)'};
+  const rc={HIGH:'var(--danger)',MEDIUM:'#f59e0b',LOW:'var(--muted)'};
+  document.getElementById('tb-demand').innerHTML=(data.demandForecast||[]).map(r=>`<tr><td class="neu">${r.sku}</td><td>${r.product}</td><td>${Number(r.avgMonthlyDemand).toLocaleString()}</td><td class="pos">${Number(r.next30).toLocaleString()}</td><td class="pos">${Number(r.next60).toLocaleString()}</td><td class="pos">${Number(r.next90).toLocaleString()}</td><td class="t${r.trend==='up'?'u':r.trend==='down'?'d':'f'}">${r.trendPct}</td><td>${r.confidence}</td></tr>`).join('');
+  document.getElementById('tb-reorder').innerHTML=(data.reorderPlan||[]).map(r=>`<tr><td class="neu">${r.sku}</td><td>${r.product}</td><td>${Number(r.currentStock).toLocaleString()}</td><td>${Number(r.reorderPoint).toLocaleString()}</td><td class="pos">${Number(r.eoq).toLocaleString()}</td><td>${r.reorderBy}</td><td>${r.leadTimeDays}d</td><td style="color:${pc[r.priority]||'var(--muted)'};font-weight:600">${r.priority}</td></tr>`).join('');
+  document.getElementById('tb-slow').innerHTML=(data.slowMovers||[]).map(r=>`<tr><td class="neu">${r.sku}</td><td>${r.product}</td><td>${r.daysInStock}d</td><td>${Number(r.monthlyVelocity).toLocaleString()} u/mo</td><td>${r.inventoryValue}</td><td style="font-size:.72rem">${r.action}</td><td style="color:${rc[r.riskLevel]||'var(--muted)'};font-weight:600">${r.riskLevel}</td></tr>`).join('');
+  const dm={green:'dg',orange:'do',blue:'db'};
+  document.getElementById('ins-list').innerHTML=(data.insights||[]).map(i=>`<div class="ins-item"><div class="ins-dot ${dm[i.type]||'db'}"></div><span>${i.text}</span></div>`).join('');
+  document.getElementById('fc-results').classList.add('show');
+  document.getElementById('fc-results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function swTab(id,el){
+  document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.ftp').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('ft-'+id).classList.add('active');
+}
+function dlCSV(type){
+  let csv='',fn='';
+  if(type==='demand'){
+    csv='SKU,Product,Avg Monthly,Next 30 Days,Next 60 Days,Next 90 Days,Trend,Confidence\n';
+    csv+=(fcData.demandForecast||[]).map(r=>`${r.sku},"${r.product}",${r.avgMonthlyDemand},${r.next30},${r.next60},${r.next90},${r.trend} ${r.trendPct},${r.confidence}`).join('\n');
+    fn='logicstiq_demand_forecast.csv';
+  }else if(type==='reorder'){
+    csv='SKU,Product,Current Stock,Reorder Point,EOQ,Reorder By,Lead Time,Priority\n';
+    csv+=(fcData.reorderPlan||[]).map(r=>`${r.sku},"${r.product}",${r.currentStock},${r.reorderPoint},${r.eoq},"${r.reorderBy}",${r.leadTimeDays},${r.priority}`).join('\n');
+    fn='logicstiq_reorder_plan.csv';
+  }else if(type==='slow'){
+    csv='SKU,Product,Days in Stock,Monthly Velocity,Value,Action,Risk\n';
+    csv+=(fcData.slowMovers||[]).map(r=>`${r.sku},"${r.product}",${r.daysInStock},${r.monthlyVelocity},"${r.inventoryValue}","${r.action}",${r.riskLevel}`).join('\n');
+    fn='logicstiq_slow_movers.csv';
+  }else{
+    csv='=== LOGICSTIQ.COM — FULL DEMAND PLAN REPORT ===\n\n';
+    csv+='DEMAND FORECAST\nSKU,Product,Avg Monthly,Next 30,Next 60,Next 90,Trend,Confidence\n';
+    csv+=(fcData.demandForecast||[]).map(r=>`${r.sku},"${r.product}",${r.avgMonthlyDemand},${r.next30},${r.next60},${r.next90},${r.trend} ${r.trendPct},${r.confidence}`).join('\n');
+    csv+='\n\nREORDER PLAN\nSKU,Product,Current Stock,Reorder Point,EOQ,Reorder By,Lead Time,Priority\n';
+    csv+=(fcData.reorderPlan||[]).map(r=>`${r.sku},"${r.product}",${r.currentStock},${r.reorderPoint},${r.eoq},"${r.reorderBy}",${r.leadTimeDays},${r.priority}`).join('\n');
+    csv+='\n\nSLOW MOVERS\nSKU,Product,Days in Stock,Monthly Velocity,Value,Action,Risk\n';
+    csv+=(fcData.slowMovers||[]).map(r=>`${r.sku},"${r.product}",${r.daysInStock},${r.monthlyVelocity},"${r.inventoryValue}","${r.action}",${r.riskLevel}`).join('\n');
+    csv+='\n\nAI INSIGHTS\n'+(fcData.insights||[]).map((i,n)=>`${n+1}. ${i.text}`).join('\n');
+    fn='logicstiq_full_report.csv';
+  }
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download=fn;a.click();
+}
+</script>
+</body>
+</html>
