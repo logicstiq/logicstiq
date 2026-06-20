@@ -353,6 +353,10 @@ footer p{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter
     <div class="ci" onclick="showCalc('warehouse',this)"><span class="ico">🏭</span>Warehouse Util.<span class="bx">WH</span></div>
     <div class="ci" onclick="showCalc('pick',this)"><span class="ico">📦</span>Pick & Pack Cost<span class="bx">WH</span></div>
     <div class="ci" onclick="showCalc('supplier',this)"><span class="ico">🏆</span>Supplier Scorecard<span class="bx">SCM</span></div>
+    <span class="sb-section" style="color:var(--accent2,var(--gold))">🔥 Viral & Shareable</span>
+    <div class="ci" onclick="showCalc('salary',this)"><span class="ico">💵</span>Salary Benchmark<span class="bx" style="background:rgba(240,107,53,.12);color:#ff6b35">HOT</span></div>
+    <div class="ci" onclick="showCalc('disrupt',this)"><span class="ico">🌍</span>Disruption Cost<span class="bx" style="background:rgba(240,107,53,.12);color:#ff6b35">HOT</span></div>
+    <div class="ci" onclick="showCalc('scale',this)"><span class="ico">🚢</span>Scale-It-Up<span class="bx" style="background:rgba(240,107,53,.12);color:#ff6b35">HOT</span></div>
     <!-- Sidebar Ad -->
     <div style="margin-top:.75rem">
       <div class="ad-unit" style="min-height:120px;border-radius:8px">
@@ -1335,12 +1339,19 @@ Return EXACTLY this JSON:
 
 Be data-driven. Return ONLY the JSON.`;
   try{
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:3000,messages:[{role:'user',content:prompt}]})});
+    const resp=await fetch('/api/forecast',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt})});
+    if(!resp.ok){
+      const errData=await resp.json().catch(()=>({}));
+      throw new Error(errData.error||'Server error: '+resp.status);
+    }
     const data=await resp.json();
     const raw=data.content.map(b=>b.text||'').join('');
     const result=JSON.parse(raw.replace(/```json|```/g,'').trim());
     renderFC(result,sym);
-  }catch(err){console.error(err);alert('Analysis failed. Please check your file format and try again.');}
+  }catch(err){
+    console.error(err);
+    alert('AI Demand Planner is not fully set up yet.\n\nError: '+err.message+'\n\nThis feature requires an Anthropic API key to be configured in Vercel. See the setup guide for instructions.');
+  }
   finally{document.getElementById('ai-loading').classList.remove('show');document.getElementById('ai-btn').disabled=false;}
 }
 function renderFC(data,sym){
