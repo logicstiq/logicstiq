@@ -1,512 +1,586 @@
-// /api/forecast.js — LogicstIQ AI Demand Planner v2
-// ─────────────────────────────────────────────────────────────────────────────
-// ARCHITECTURE: ALL numbers are computed in pure JavaScript code.
-// Gemini is called ONLY to write the insights text bullets.
-// If Gemini fails, the report is still 100% complete and correct.
-// Same file uploaded twice → identical numbers every time (deterministic).
-// ─────────────────────────────────────────────────────────────────────────────
+// /api/forecast.js — LogicstIQ AI Demand Planner v4
+// Supports: All E-Commerce, Quick Commerce + All Major ERPs globally
+// Gemini key stays server-side — users never see it
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed. Use POST.' });
-  }
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Use POST.' });
 
   const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) {
-    return res.status(500).json({
-      error: 'GEMINI_API_KEY is not configured in Vercel. Go to Project Settings > Environment Variables, add it, then redeploy.'
-    });
-  }
+  if (!apiKey) return res.status(500).json({ error: 'GEMINI_API_KEY not set in Vercel Environment Variables.' });
 
-  const { prompt } = req.body || {};
-  if (!prompt) {
-    return res.status(400).json({ error: 'Missing prompt in request body.' });
-  }
+  const { csvText, horizon, currency, region, channels, planLevel, erpSource } = req.body || {};
+  if (!csvText || csvText.trim().length < 10) return res.status(400).json({ error: 'No data received. Please upload a valid file.' });
 
-  // ── Detect currency symbol from prompt ────────────────────────────────────
-  const currMatch = prompt.match(/Currency:\s*\w+\s*\(([^)]+)\)/);
-  const sym = currMatch ? currMatch[1] : '$';
+  const sym = currency || '₹';
+  const horizDays = parseInt(horizon) || 90;
 
-  // ── Extract CSV text from the prompt ─────────────────────────────────────
-  const csvText = extractCSV(prompt);
-  if (!csvText || csvText.trim().length < 10) {
-    return res.status(400).json({
-      error: 'Could not find CSV data in your request. Please upload a valid CSV or XLSX file and try again.'
-    });
-  }
-
-  // ── Parse CSV into rows ───────────────────────────────────────────────────
-  const rows = parseCSV(csvText);
-  if (!rows || rows.length < 2) {
-    return res.status(400).json({
-      error: 'Your file has fewer than 2 rows. Please check the file format and re-upload.'
-    });
-  }
+  // Parse CSV with smart header detection
+  const rows = parseCSVSmart(csvText, erpSource || 'auto');
+  if (!rows || rows.length < 2) return res.status(400).json({ error: 'Could not read your file. Make sure it has at least 2 rows of data.' });
 
   const headers = rows[0];
-  const dataRows = rows.slice(1).filter(r => r.some(c => c && c.trim() !== ''));
+  const dataRows = rows.slice(1).filter(r => r.some(c => c && c.trim()));
+  if (!dataRows.length) return res.status(400).json({ error: 'No data rows found after the header row.' });
 
-  if (dataRows.length === 0) {
-    return res.status(400).json({ error: 'No data rows found after the header row. Please check your file.' });
-  }
-
-  // ── Map column names to internal schema ──────────────────────────────────
-  const mapping = mapColumns(headers);
-
-  // ── Detect data shape (snapshot vs time series) ───────────────────────────
-  const shape = detectShape(dataRows, mapping);
-
-  // ── Build SKU map from raw rows ───────────────────────────────────────────
-  const skuMap = buildSkuMap(dataRows, mapping, shape);
+  const map = mapColumns(headers, erpSource || 'auto');
+  const { skuMap, isTS } = buildSkuMap(dataRows, map);
   const skuList = Object.values(skuMap);
+  if (!skuList.length) return res.status(400).json({ error: 'No valid SKUs found. Ensure your file has a product name or SKU column.' });
 
-  if (skuList.length === 0) {
-    return res.status(400).json({
-      error: 'No valid SKUs could be identified. Ensure your file has a SKU, ASIN, or Product Name column.'
-    });
-  }
-
-  // ── Compute all numbers in code ───────────────────────────────────────────
   const today = new Date();
-  const computedSKUs = skuList.map(sku => computeSKU(sku, shape, today, sym));
+  const results = skuList.map(s => computeSKU(s, isTS, today, sym, horizDays));
 
-  // ── Build output sections ─────────────────────────────────────────────────
-  const demandForecast = computedSKUs
-    .filter(s => s.avgMonthlyDemand > 0)
-    .sort((a, b) => b.avgMonthlyDemand - a.avgMonthlyDemand)
-    .slice(0, 50)
-    .map(s => ({
-      sku: s.sku,
-      product: s.product,
-      avgMonthlyDemand: s.avgMonthlyDemand,
-      next30: s.next30,
-      next60: s.next60,
-      next90: s.next90,
-      trend: s.trend,
-      trendPct: s.trendPct,
-      confidence: s.confidence
-    }));
+  const active = results.filter(s => s.isActive);
+  const pOrd = { URGENT: 0, HIGH: 1, MEDIUM: 2, LOW: 3 };
 
-  const reorderPlan = computedSKUs
-    .filter(s => s.needsReorder)
-    .sort((a, b) => {
-      const pOrder = { URGENT: 0, HIGH: 1, MEDIUM: 2, LOW: 3 };
-      return (pOrder[a.priority] || 3) - (pOrder[b.priority] || 3);
-    })
-    .slice(0, 30)
-    .map(s => ({
-      sku: s.sku,
-      product: s.product,
-      currentStock: s.currentStock,
-      reorderPoint: s.reorderPoint,
-      eoq: s.eoq,
-      reorderBy: s.reorderBy,
-      leadTimeDays: s.leadTimeDays,
-      priority: s.priority
-    }));
-
-  const slowMoverObjects = computedSKUs
-    .filter(s => s.isSlowMover)
-    .sort((a, b) => b.inventoryValueRaw - a.inventoryValueRaw)
-    .slice(0, 15);
-
-  const slowMovers = slowMoverObjects.map(s => ({
-    sku: s.sku,
-    product: s.product,
-    daysInStock: s.daysOfCoverInclInbound >= 999 ? 999 : s.daysOfCoverInclInbound,
-    monthlyVelocity: s.avgMonthlyDemand,
-    inventoryValue: s.inventoryValue,
-    action: s.slowMoverAction,
-    riskLevel: s.slowMoverRisk
-  }));
-
-  // ── Summary (all numbers computed in code) ────────────────────────────────
-  const totalSKUs = computedSKUs.length;
-  const activeSKUs = computedSKUs.filter(s => s.avgMonthlyDemand > 0);
-  const avgMonthlyDemand = activeSKUs.length > 0
-    ? Math.round(activeSKUs.reduce((sum, s) => sum + s.avgMonthlyDemand, 0) / activeSKUs.length)
-    : 0;
-  const totalInventoryValueRaw = computedSKUs.reduce((sum, s) => sum + s.inventoryValueRaw, 0);
-  const totalInventoryValue = sym + Math.round(totalInventoryValueRaw).toLocaleString('en');
-  const criticalAlerts = computedSKUs.filter(s => s.priority === 'URGENT' || s.priority === 'HIGH').length;
-  const slowMoverCount = computedSKUs.filter(s => s.isSlowMover).length;
-
-  const mapeAccuracy = shape === 'timeseries' ? computeBacktestAccuracy(skuList) : null;
-  const forecastAccuracy = mapeAccuracy !== null
-    ? mapeAccuracy + '% (back-tested)'
-    : 'n/a — velocity projection';
+  const demandForecast = results.filter(s => s.isActive).sort((a, b) => b.avgMonthlyDemand - a.avgMonthlyDemand).slice(0, 100);
+  const reorderPlan = results.filter(s => s.needsReorder).sort((a, b) => (pOrd[a.priority] || 3) - (pOrd[b.priority] || 3)).slice(0, 60);
+  const slowMoversAll = results.filter(s => s.isSlowMover || s.isDead).sort((a, b) => b.invValue - a.invValue).slice(0, 50);
+  const stockoutRisk = results.filter(s => s.stockoutProb > 30).sort((a, b) => b.stockoutProb - a.stockoutProb).slice(0, 30);
 
   const summary = {
-    totalSKUs,
-    avgMonthlyDemand,
-    totalInventoryValue,
-    forecastAccuracy,
-    criticalAlerts,
-    slowMovers: slowMoverCount
+    totalSKUs: results.length, activeSKUs: active.length,
+    healthySKUs: results.filter(s => s.isHealthy).length,
+    deadSKUs: results.filter(s => s.isDead).length,
+    overstockSKUs: results.filter(s => s.isOverstock).length,
+    slowMoverSKUs: results.filter(s => s.isSlowMover && !s.isDead).length,
+    urgentSKUs: results.filter(s => s.priority === 'URGENT' || s.priority === 'HIGH').length,
+    totalInvValue: results.reduce((a, r) => a + r.invValue, 0),
+    totalAtRisk: results.reduce((a, r) => a + r.revenueAtRisk, 0),
+    totalExcess: results.reduce((a, r) => a + r.excessValue, 0),
+    avgDoC: active.length ? Math.round(active.reduce((a, r) => a + Math.min(r.daysOfCover, 365), 0) / active.length) : 0,
+    isTS, erpSource: erpSource || 'auto',
+    detectedColumns: Object.keys(map).join(', '),
   };
 
-  const engineOutput = { summary, demandForecast, reorderPlan, slowMovers };
+  // Gemini narrative
+  const narrativePrompt = `You are a world-class supply chain AI analyst. Write ONLY the insights JSON.
 
-  // ── Ask Gemini for NARRATIVE ONLY ─────────────────────────────────────────
-  const narrativePrompt = `You are a supply chain analyst reviewing a pre-computed inventory report.
+RULES:
+1. Use ONLY numbers from the JSON below — do not invent anything.
+2. Return ONLY valid JSON — no markdown, no backticks.
+3. Write exactly 6 insights: stockout urgency, dead stock, working capital, ERP data quality observation, quick commerce or seasonality opportunity, strategic recommendation.
+4. Each insight: specific, data-backed, one sentence.
+5. type: green/orange/red/blue/purple.
 
-STRICT RULES:
-1. Do NOT invent, estimate, or change any number. Every figure was computed by code.
-2. Do NOT recalculate anything.
-3. Write ONLY the insights array — 5 short actionable bullets for an operations manager.
-4. Reference only figures that appear in the JSON below.
-5. Return ONLY valid JSON. No markdown, no backticks, no extra text.
+REPORT: ${JSON.stringify({ totalSKUs: summary.totalSKUs, activeSKUs: summary.activeSKUs, healthySKUs: summary.healthySKUs, deadSKUs: summary.deadSKUs, overstockSKUs: summary.overstockSKUs, urgentSKUs: summary.urgentSKUs, totalInventoryValue: sym + Math.round(summary.totalInvValue).toLocaleString(), revenueAtRisk: sym + Math.round(summary.totalAtRisk).toLocaleString(), excessCapitalTied: sym + Math.round(summary.totalExcess).toLocaleString(), avgDaysOfCover: summary.avgDoC + ' days', channels: (channels || []).join(', '), region, horizon, erpSource })}
 
-PRE-COMPUTED REPORT SUMMARY:
-${JSON.stringify(summary)}
+TOP 5 URGENT: ${JSON.stringify(reorderPlan.slice(0, 5).map(r => ({ product: r.product, stock: r.currentStock, priority: r.priority, reorderBy: r.reorderBy })))}
+TOP 3 DEAD: ${JSON.stringify(slowMoversAll.filter(r => r.isDead).slice(0, 3).map(r => ({ product: r.product, value: sym + Math.round(r.invValue).toLocaleString() })))}
 
-TOP URGENT REORDER ITEMS (first 5):
-${JSON.stringify(reorderPlan.slice(0, 5).map(r => ({ sku: r.sku, product: r.product, currentStock: r.currentStock, priority: r.priority, reorderBy: r.reorderBy })))}
-
-TOP SLOW MOVERS (first 3):
-${JSON.stringify(slowMoverObjects.slice(0, 3).map(s => ({ sku: s.sku, product: s.product, inventoryValue: s.inventoryValue, monthlyVelocity: s.avgMonthlyDemand })))}
-
-Return EXACTLY:
-{"insights":[{"type":"green|orange|blue","text":"<one actionable sentence>"}]}`;
+Return EXACTLY: {"insights":[{"type":"green|orange|red|blue|purple","icon":"emoji","text":"sentence"}]}`;
 
   let insights = [
-    { type: 'orange', text: criticalAlerts + ' SKU' + (criticalAlerts !== 1 ? 's' : '') + ' require immediate attention — review the Reorder Plan tab and raise purchase orders for URGENT and HIGH priority items.' },
-    { type: 'blue', text: 'Total inventory value on hand is ' + totalInventoryValue + '. ' + slowMoverCount + ' slow-moving SKU' + (slowMoverCount !== 1 ? 's' : '') + ' may be tying up working capital.' },
-    { type: 'green', text: 'Average monthly demand across ' + activeSKUs.length + ' active SKUs is ' + avgMonthlyDemand.toLocaleString() + ' units. Demand Forecast tab shows top 50 SKUs by volume.' },
-    { type: 'blue', text: 'Forecast method: ' + (shape === 'timeseries' ? 'Moving average with trend detection (historical data detected).' : 'Velocity-based projection (snapshot data — upload monthly history for trend analysis).') }
+    { type: 'red', icon: '🚨', text: `${summary.urgentSKUs} SKUs need immediate reorders — act now to prevent stockouts and lost revenue.` },
+    { type: 'orange', icon: '📦', text: `${summary.deadSKUs} dead-stock SKUs are tying up capital — consider markdowns or liquidation.` },
+    { type: 'blue', icon: '📊', text: `Average days of cover is ${summary.avgDoC} days across ${summary.activeSKUs} active SKUs. Healthy target: 30–90 days.` },
+    { type: 'green', icon: '✅', text: `${summary.healthySKUs} SKUs are in healthy stock range — maintain current replenishment cadence.` },
+    { type: 'orange', icon: '⚠️', text: `${summary.overstockSKUs} overstocked SKUs are locking up ${sym}${Math.round(summary.totalExcess).toLocaleString()} in excess working capital.` },
+    { type: 'purple', icon: '🎯', text: `Revenue at risk from potential stockouts: ${sym}${Math.round(summary.totalAtRisk).toLocaleString()} over the next ${horizon}.` },
   ];
 
   try {
-    const MODEL = 'gemini-2.5-flash';
-    const url = 'https://generativelanguage.googleapis.com/v1beta/models/' + MODEL + ':generateContent?key=' + apiKey;
-
-    const aiResponse = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: narrativePrompt }] }],
-        generationConfig: {
-          temperature: 0.2,
-          maxOutputTokens: 800,
-          responseMimeType: 'application/json',
-          thinkingConfig: { thinkingBudget: 0 }
-        }
-      })
-    });
-
-    const aiData = await aiResponse.json();
-    const aiText = aiData && aiData.candidates && aiData.candidates[0] &&
-      aiData.candidates[0].content && aiData.candidates[0].content.parts
-      ? aiData.candidates[0].content.parts.map(function(p) { return p.text || ''; }).join('')
-      : '';
-
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+    const aiRes = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ parts: [{ text: narrativePrompt }] }], generationConfig: { temperature: 0.3, maxOutputTokens: 1200, responseMimeType: 'application/json', thinkingConfig: { thinkingBudget: 0 } } }) });
+    const aiData = await aiRes.json();
+    const aiText = (aiData?.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('');
     if (aiText && aiText.trim().length > 5) {
       const parsed = JSON.parse(aiText.replace(/```json|```/g, '').trim());
-      if (parsed.insights && Array.isArray(parsed.insights) && parsed.insights.length > 0) {
-        insights = parsed.insights;
-      }
+      if (parsed?.insights?.length) insights = parsed.insights;
     }
-  } catch (e) {
-    // Gemini failed — the computed report above is already 100% complete.
-  }
+  } catch (e) { /* fallback insights used */ }
 
-  engineOutput.insights = insights;
-
-  return res.status(200).json({
-    content: [{ type: 'text', text: JSON.stringify(engineOutput) }]
-  });
+  return res.status(200).json({ summary, demandForecast, reorderPlan, slowMoversAll, stockoutRisk, allSKUs: results, insights });
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// COMPUTATION ENGINE
-// ─────────────────────────────────────────────────────────────────────────────
+// ─── SMART CSV PARSER — skips ERP junk header rows ───────────────────────────
+function parseCSVSmart(text, erpSource) {
+  const allRows = [];
+  for (const line of text.split('\n')) {
+    const t = line.trim();
+    if (!t) continue;
+    // Support both comma-delimited and tab-delimited files
+    allRows.push(t.includes('\t') && !t.includes(',') ? t.split('\t').map(x=>x.trim()) : parseCSVLine(t));
+  }
+  if (!allRows.length) return [];
 
-function computeSKU(sku, shape, today, sym) {
-  const s = Object.assign({}, sku);
-  const leadTimeDays = s.leadTime > 0 ? s.leadTime : 30;
-  let dailyVel = 0;
+  // Known ERP header keywords to skip
+  const junkPatterns = [/^(company|organisation|organization|report|date|time|printed|generated|from|to|period|branch|financial year|fy|gst|gstin|pan|currency|page|sr\.?\s*no\.?$)/i, /^\d{2}[\/\-]\d{2}[\/\-]\d{4}$/, /^(tally|sap|oracle|netsuite|microsoft|dynamics|busy|marg|zoho|quickbooks|odoo|infor)/i];
 
-  if (shape === 'timeseries' && s.periods && s.periods.length > 0) {
-    const demands = s.periods.map(function(p) { return p.unitsSold; }).filter(function(d) { return d >= 0; });
-    const n = demands.length;
-    s.avgMonthlyDemand = n > 0 ? Math.round(demands.reduce(function(a,b){return a+b;},0) / n) : 0;
-    dailyVel = s.avgMonthlyDemand / 30;
+  // Find the first row that looks like a real header
+  let headerIdx = 0;
+  const dataKeywords = ['sku', 'asin', 'product', 'item', 'stock', 'qty', 'quantity', 'units', 'sales', 'available', 'inbound', 'price', 'cost', 'category', 'brand', 'description', 'material', 'part', 'code', 'name', 'article', 'variant', 'closing', 'opening', 'velocity', 'demand', 'warehouse', 'location', 'bin', 'batch', 'serial'];
 
-    if (n >= 4) {
-      const mid = Math.floor(n / 2);
-      const firstHalfAvg = demands.slice(0, mid).reduce(function(a,b){return a+b;},0) / mid;
-      const lastHalfAvg = demands.slice(mid).reduce(function(a,b){return a+b;},0) / (n - mid);
-      const pct = firstHalfAvg > 0 ? ((lastHalfAvg - firstHalfAvg) / firstHalfAvg) * 100 : 0;
-      s.trend = pct > 5 ? 'up' : pct < -5 ? 'down' : 'flat';
-      s.trendPct = (pct >= 0 ? '+' : '') + Math.round(pct) + '%';
-    } else {
-      s.trend = 'flat';
-      s.trendPct = 'n/a';
-    }
-
-    const lastDemand = demands[demands.length - 1] || s.avgMonthlyDemand;
-    const tf = s.trend === 'up' ? 1.05 : s.trend === 'down' ? 0.97 : 1.0;
-    s.next30 = Math.max(0, Math.ceil(lastDemand * tf));
-    s.next60 = Math.max(0, Math.ceil(lastDemand * tf * tf * 2));
-    s.next90 = Math.max(0, Math.ceil(lastDemand * tf * tf * tf * 3));
-
-    const mean = s.avgMonthlyDemand;
-    const demands2 = s.periods.map(function(p) { return p.unitsSold; }).filter(function(d) { return d >= 0; });
-    const n2 = demands2.length;
-    if (n2 > 1 && mean > 0) {
-      const variance = demands2.map(function(d){return Math.pow(d-mean,2);}).reduce(function(a,b){return a+b;},0) / (n2-1);
-      const coV = Math.sqrt(variance) / mean;
-      s.confidence = coV < 0.15 ? 'High' : coV < 0.35 ? 'Medium' : 'Low';
-    } else {
-      s.confidence = n2 >= 3 ? 'Medium' : 'Low';
-    }
-  } else {
-    dailyVel = s.dailyVelocity > 0 ? s.dailyVelocity : (s.unitsSold30 > 0 ? s.unitsSold30 / 30 : 0);
-    s.avgMonthlyDemand = Math.round(dailyVel * 30);
-    s.next30 = s.avgMonthlyDemand;
-    s.next60 = Math.round(dailyVel * 60);
-    s.next90 = Math.round(dailyVel * 90);
-    s.trend = 'flat';
-    s.trendPct = 'n/a';
-    s.confidence = dailyVel > 0 ? 'Velocity-based' : 'Low (no sales)';
+  for (let i = 0; i < Math.min(allRows.length, 15); i++) {
+    const rowText = allRows[i].join(' ').toLowerCase();
+    const matchCount = dataKeywords.filter(k => rowText.includes(k)).length;
+    if (matchCount >= 2) { headerIdx = i; break; }
   }
 
-  s.currentStock = s.available || 0;
-  const netStock = s.currentStock + (s.inbound || 0);
-  s.daysOfCoverInclInbound = dailyVel > 0 ? Math.round(netStock / dailyVel) : (netStock > 0 ? 999 : 0);
-  const safetyStock = Math.ceil(dailyVel * 7);
-  s.reorderPoint = s.dataReorderPoint > 0 ? s.dataReorderPoint : Math.ceil((dailyVel * leadTimeDays) + safetyStock);
-  const target90 = Math.ceil(dailyVel * 90);
-  s.eoq = s.dataRecommendedQty > 0 ? s.dataRecommendedQty : Math.max(0, target90 - netStock);
-
-  if (s.eoq > 0 && s.dataReorderDate) {
-    s.reorderBy = s.dataReorderDate;
-  } else if (s.currentStock === 0 && (s.inbound || 0) === 0) {
-    s.reorderBy = 'REORDER NOW';
-  } else {
-    const daysUntilReorder = Math.max(0, s.daysOfCoverInclInbound - leadTimeDays);
-    if (daysUntilReorder <= 0) {
-      s.reorderBy = 'REORDER NOW';
-    } else {
-      const d = new Date(today);
-      d.setDate(d.getDate() + daysUntilReorder);
-      s.reorderBy = d.toLocaleDateString('en-GB');
-    }
-  }
-
-  if (s.currentStock === 0 && (s.inbound || 0) === 0 && s.avgMonthlyDemand > 0) {
-    s.priority = 'URGENT';
-  } else if (s.daysOfCoverInclInbound < 14 && s.avgMonthlyDemand > 0) {
-    s.priority = 'HIGH';
-  } else if (s.daysOfCoverInclInbound < 30) {
-    s.priority = 'MEDIUM';
-  } else {
-    s.priority = 'LOW';
-  }
-
-  s.needsReorder = s.eoq > 0 && s.avgMonthlyDemand > 0;
-  s.leadTimeDays = leadTimeDays;
-  s.inventoryValueRaw = s.currentStock > 0 && s.price > 0 ? Math.round(s.currentStock * s.price * 100) / 100 : 0;
-  s.inventoryValue = sym + Math.round(s.inventoryValueRaw).toLocaleString('en');
-  s.isSlowMover = dailyVel < 1 && s.currentStock > 30;
-  s.slowMoverAction = s.inventoryValueRaw > 5000 ? 'Consider markdown pricing, bundling, or liquidation to recover capital'
-    : s.inventoryValueRaw > 1000 ? 'Monitor closely — avoid reordering until velocity improves'
-    : 'Low priority — hold and monitor';
-  s.slowMoverRisk = s.inventoryValueRaw > 5000 ? 'HIGH' : s.inventoryValueRaw > 1000 ? 'MEDIUM' : 'LOW';
-  return s;
-}
-
-function computeBacktestAccuracy(skuList) {
-  const eligible = skuList.filter(function(s) { return s.periods && s.periods.length >= 5; });
-  if (eligible.length === 0) return null;
-  const errors = [];
-  for (const sku of eligible) {
-    const periods = sku.periods;
-    const n = periods.length;
-    const trainDemands = periods.slice(0, n - 1).map(function(p){return p.unitsSold;});
-    const actual = periods[n - 1].unitsSold;
-    if (actual <= 0) continue;
-    const predicted = trainDemands.reduce(function(a,b){return a+b;},0) / trainDemands.length;
-    errors.push(Math.abs(actual - predicted) / actual * 100);
-  }
-  if (errors.length === 0) return null;
-  const mape = errors.reduce(function(a,b){return a+b;},0) / errors.length;
-  return Math.max(0, Math.round(100 - mape));
-}
-
-function detectShape(dataRows, mapping) {
-  const hasPeriod = mapping.period !== undefined;
-  if (!hasPeriod) return 'snapshot';
-  const skuIdx = mapping.sku !== undefined ? mapping.sku : mapping.asin !== undefined ? mapping.asin : -1;
-  if (skuIdx === -1) return 'snapshot';
-  const skuValues = dataRows.map(function(r){return r[skuIdx];}).filter(Boolean);
-  const uniqueCount = new Set(skuValues).size;
-  return uniqueCount < skuValues.length * 0.8 ? 'timeseries' : 'snapshot';
-}
-
-function buildSkuMap(dataRows, mapping, shape) {
-  const skuMap = {};
-  let rowIdx = 0;
-  for (const row of dataRows) {
-    const get = function(field) {
-      const idx = mapping[field];
-      return (idx !== undefined && row[idx] !== undefined) ? row[idx].toString().trim() : '';
-    };
-    const product = get('product');
-    const rawSku = get('sku') || get('asin') || (product ? product.substring(0, 40) : '');
-    const skuId = rawSku || ('item_' + rowIdx++);
-    if (!skuId) continue;
-    const price = parseNum(get('price'));
-    const unitsSold = parseNum(get('unitsSold'));
-    const dailyVelocity = parseNum(get('velocity'));
-    const available = parseNum(get('available') || get('onHand'));
-    const inbound = parseNum(get('inbound'));
-    const leadTime = parseNum(get('leadTime'));
-    const dataRecommendedQty = parseNum(get('amazonRecommendedQty'));
-    const dataReorderDate = get('amazonRecommendedDate') || '';
-    const alertVal = get('alert').toLowerCase();
-
-    if (!skuMap[skuId]) {
-      skuMap[skuId] = {
-        sku: (get('sku') || get('asin') || skuId).substring(0, 50),
-        asin: get('asin'),
-        product: (product || skuId).substring(0, 80),
-        country: get('country'),
-        price: price || 0,
-        available: available || 0,
-        inbound: inbound || 0,
-        leadTime: leadTime || 30,
-        dataReorderPoint: 0,
-        dataRecommendedQty: dataRecommendedQty || 0,
-        dataReorderDate: dataReorderDate,
-        alert: alertVal,
-        unitsSold30: unitsSold || 0,
-        dailyVelocity: dailyVelocity || 0,
-        periods: []
-      };
-    } else {
-      if (price > 0 && skuMap[skuId].price === 0) skuMap[skuId].price = price;
-      if (available > 0) skuMap[skuId].available = available;
-      if (dataRecommendedQty > 0) skuMap[skuId].dataRecommendedQty = dataRecommendedQty;
-      if (dataReorderDate) skuMap[skuId].dataReorderDate = dataReorderDate;
-    }
-    if (shape === 'timeseries') {
-      const period = get('period');
-      if (period && unitsSold >= 0) {
-        skuMap[skuId].periods.push({ period: period, unitsSold: unitsSold });
-      }
-    }
-  }
-  if (shape === 'timeseries') {
-    for (const sku of Object.values(skuMap)) {
-      sku.periods.sort(function(a,b){
-        const da = new Date(a.period).getTime() || 0;
-        const db = new Date(b.period).getTime() || 0;
-        return da - db || a.period.localeCompare(b.period);
-      });
-      if (sku.periods.length > 0) {
-        sku.unitsSold30 = sku.periods[sku.periods.length - 1].unitsSold;
-      }
-    }
-  }
-  return skuMap;
-}
-
-function mapColumns(headers) {
-  const synonyms = {
-    sku: ['merchant sku','sku','item id','product code','part no','part number','item_id','sku id','seller sku','fnsku','barcode','upc','mpn'],
-    asin: ['asin'],
-    product: ['product name','product','description','title','item','item name','product title','name','product description'],
-    period: ['date','month','week','period','order date','sale date','time period','sales month','sales period','reporting period'],
-    country: ['country','marketplace','region','market'],
-    price: ['price','unit price','selling price','rate','sale price','item price','cost','unit cost','asp'],
-    unitsSold: ['units sold last 30 days','units sold 30d','units sold','qty sold','sales 30d','sales last 30 days','demand','units moved','quantity sold','monthly sales','monthly demand','qty','quantity','sales units'],
-    velocity: ['daily velocity','velocity','daily demand','avg daily sales','run rate','daily run rate','units per day'],
-    available: ['available','on hand','qty available','stock','in stock','onhand','qty on hand','sellable units','sellable','fulfillable qty','warehouse stock'],
-    onHand: ['total units','total qty','total inventory','total stock'],
-    inbound: ['inbound','on order','in transit','po qty','incoming','ordered qty','receiving','working','shipped','fc transfer','inbound qty'],
-    reserved: ['reserved','customer order','pending','customer orders','unfulfilled orders'],
-    alert: ['alert','amazon alert','status','inventory alert','replenishment alert','stock status'],
-    amazonRecommendedQty: ['recommended replenishment qty','amazon recommended qty','reorder qty','recommended qty','recommended replenishment','suggested order qty','min order qty'],
-    amazonRecommendedDate: ['recommended ship date','amazon recommended ship date','reorder date','ship date','suggested ship date'],
-    leadTime: ['lead time','lt','supplier lead days','lead time days','replenishment lead time','supplier lead time','days to receive']
-  };
-  const mapping = {};
-  const lowerHeaders = headers.map(function(h){ return (h||'').toLowerCase().trim().replace(/_/g,' ').replace(/\s+/g,' '); });
-  for (const field in synonyms) {
-    const names = synonyms[field];
-    for (const name of names) {
-      const idx = lowerHeaders.indexOf(name);
-      if (idx !== -1 && mapping[field] === undefined) { mapping[field] = idx; break; }
-    }
-    if (mapping[field] === undefined) {
-      for (const name of names) {
-        const idx = lowerHeaders.findIndex(function(h){ return h.includes(name) || (name.length > 4 && name.includes(h)); });
-        if (idx !== -1) { mapping[field] = idx; break; }
-      }
-    }
-  }
-  return mapping;
-}
-
-function extractCSV(prompt) {
-  const marker = prompt.indexOf('CSV DATA:');
-  if (marker !== -1) {
-    const start = prompt.indexOf('\n', marker) + 1;
-    const endMarkers = ['\nGenerate demand planning', '\nReturn EXACTLY', '\n\nReturn', '\n\nBe data'];
-    let end = prompt.length;
-    for (const em of endMarkers) {
-      const pos = prompt.indexOf(em, start);
-      if (pos !== -1 && pos < end) end = pos;
-    }
-    const csv = prompt.substring(start, end).trim();
-    if (csv.length > 10) return csv;
-  }
-  const lines = prompt.split('\n');
-  const knownHeaders = ['sku','asin','product name','merchant sku','fnsku','product','units sold','daily velocity','available'];
-  for (let i = 0; i < lines.length; i++) {
-    const lower = lines[i].toLowerCase();
-    if (lines[i].includes(',') && knownHeaders.some(function(h){ return lower.includes(h); })) {
-      return lines.slice(i).join('\n');
-    }
-  }
-  return null;
-}
-
-function parseCSV(text) {
-  const rows = [];
-  const lines = text.split('\n');
-  for (const line of lines) {
-    const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith('//') || trimmed.startsWith('#')) continue;
-    rows.push(parseCSVLine(trimmed));
-  }
-  return rows;
+  return allRows.slice(headerIdx).filter(r => r.some(c => c && c.trim()));
 }
 
 function parseCSVLine(line) {
-  const cells = [];
-  let current = '';
-  let inQuotes = false;
+  const cells = []; let cur = ''; let inQ = false;
   for (let i = 0; i < line.length; i++) {
     const ch = line[i];
-    if (ch === '"') {
-      if (inQuotes && line[i+1] === '"') { current += '"'; i++; }
-      else inQuotes = !inQuotes;
-    } else if (ch === ',' && !inQuotes) {
-      cells.push(current.trim());
-      current = '';
-    } else {
-      current += ch;
-    }
+    if (ch === '"') { if (inQ && line[i + 1] === '"') { cur += '"'; i++; } else inQ = !inQ; }
+    else if ((ch === ',' || ch === '\t') && !inQ) { cells.push(cur.trim()); cur = ''; }
+    else cur += ch;
   }
-  cells.push(current.trim());
-  return cells;
+  cells.push(cur.trim()); return cells;
 }
 
-function parseNum(val) {
-  if (val === undefined || val === null || val === '') return 0;
-  const cleaned = val.toString().replace(/[$£€₹,\s]/g,'').replace(/[^\d.-]/g,'');
-  const num = parseFloat(cleaned);
-  return isNaN(num) || num < 0 ? 0 : num;
+// ─── COMPREHENSIVE COLUMN MAPPER — covers all ERPs + marketplaces ─────────────
+function mapColumns(headers, erpSource) {
+  const syn = {
+    sku: [
+      // Generic
+      'sku','sku id','sku code','item id','item code','item number','product code','product id',
+      'part no','part number','part no.','article no','article code','article number',
+      'stock code','stock id','material code','material number','material id',
+      // Amazon
+      'merchant sku','seller sku','asin','fnsku','barcode','upc','ean','isbn',
+      // SAP
+      'material','matnr','material number','article','article number',
+      // Tally / Busy / Marg
+      'stock item','stock item name','item name','godown item','voucher item',
+      // NetSuite / Dynamics
+      'internal id','item internal id','inventory item','assembly item',
+      // Cin7 / Linnworks / Brightpearl
+      'product reference','reference','sku reference','variant sku',
+      // Unicommerce / Increff
+      'skucode','sku_code','item_code','style code','style_code','color size sku',
+      // Flipkart / Myntra / Meesho
+      'listing id','fsn','product sku','vendor sku','seller article id',
+      // Shopify
+      'variant id','product variant','shopify sku',
+      // Odoo
+      'internal reference','default code',
+    ],
+    product: [
+      'product name','product','description','title','item name','item description',
+      'product description','product title','name','display name','item','goods',
+      // SAP
+      'material description','material text','short text','long text',
+      // Tally
+      'stock item name','item name','particulars','narration',
+      // NetSuite
+      'display name/code','salesdescription','purchase description',
+      // Dynamics
+      'product name','item name','released product',
+      // Cin7
+      'product name','option 1 value','option 2 value',
+      // Unicommerce
+      'item type name','channel product name','product listing name',
+      // Myntra / Meesho
+      'product name','article name','style name',
+      // Odoo
+      'product','product name','internal notes',
+    ],
+    period: [
+      'date','month','week','period','year','quarter',
+      'order date','sale date','sales month','sales period','reporting period',
+      'posting date','document date','billing date','invoice date',
+      'transaction date','movement date','fiscal period','accounting period',
+      'dispatch date','shipment date','fy','financial year','month year',
+    ],
+    price: [
+      'price','unit price','selling price','sale price','mrp','asp','rate',
+      'item price','cost price','standard cost','moving average price',
+      // SAP
+      'standard price','moving avg price','valuation price','map',
+      // Tally
+      'rate','sales rate','purchase rate','selling rate',
+      // NetSuite
+      'base price','online price','msrp',
+      // Dynamics
+      'unit cost','sales price','purchase price',
+      // Amazon
+      'your price','sale price','buy box price',
+      // Flipkart / Myntra
+      'mrp','selling price','your selling price','discounted price',
+      // Shopify
+      'price','compare at price','variant price',
+    ],
+    unitsSold: [
+      'units sold','qty sold','quantity sold','sales qty','sales quantity',
+      'units sold last 30 days','units sold 30d','sales last 30 days',
+      'demand','monthly demand','monthly sales','daily sales','sales units',
+      'sold qty','items sold','pieces sold','qty dispatched','dispatched qty',
+      // SAP
+      'sales quantity','delivery quantity','billed quantity','issued quantity',
+      // Tally
+      'sales qty','outward qty','consumption qty','issue qty',
+      // NetSuite
+      'quantity sold','units sold','quantity fulfilled',
+      // Dynamics
+      'sales quantity','shipped quantity','invoiced quantity',
+      // Cin7 / Linnworks
+      'quantity sold','total sold','units ordered','order quantity',
+      // Unicommerce
+      'dispatched quantity','shipped quantity','fulfilled quantity',
+      // Shopify
+      'net quantity','total sales','units ordered',
+    ],
+    velocity: [
+      'daily velocity','velocity','daily demand','avg daily sales',
+      'daily run rate','run rate','units per day','sales per day',
+      'average daily demand','add','average daily usage','adu',
+      // SAP
+      'average consumption','avg consumption','planned consumption',
+      // Tally / Busy
+      'daily avg','average daily sales',
+      // NetSuite
+      'average daily demand','daily demand rate',
+    ],
+    available: [
+      'available','on hand','qty available','stock','in stock','current stock',
+      'closing stock','closing balance','closing qty','closing quantity',
+      'sellable units','fulfillable qty','warehouse stock','physical stock',
+      'net stock','usable stock','unrestricted stock','free stock',
+      // SAP
+      'unrestricted','unrestricted stock','available quantity','mmbe stock',
+      'plant stock','storage location stock','shelf stock',
+      // Tally / Busy / Marg
+      'closing stock','closing balance','current stock','godown stock',
+      'current balance','stock in hand',
+      // NetSuite
+      'quantity on hand','quantity available','available quantity',
+      'location qty on hand','preferred location qty on hand',
+      // Dynamics
+      'on-hand inventory','physical inventory','available physical',
+      'on hand quantity','available quantity',
+      // Cin7 / Brightpearl
+      'available stock','in stock','quantity on hand','warehouse quantity',
+      // Unicommerce
+      'inventory on hand','available inventory','sellable inventory',
+      'good inventory','shelf inventory',
+      // Amazon
+      'available','fulfillable quantity','afn sellable quantity',
+      // Flipkart
+      'available inventory','fulfillable inventory',
+      // Shopify
+      'available','quantity','inventory quantity',
+      // Odoo
+      'on hand','quantity on hand','qty on hand',
+      // QuickBooks
+      'quantity on hand','qty on hand',
+      // Fishbowl
+      'qty on hand','quantity on hand','qty available',
+    ],
+    inbound: [
+      'inbound','on order','in transit','po qty','incoming','ordered qty',
+      'open po','open purchase order','purchase order qty','po quantity',
+      'receiving','working','shipped','fc transfer','inbound qty',
+      // SAP
+      'open po quantity','purchase order quantity','goods receipt pending',
+      'scheduled receipts','planned receipts','open delivery','in transit qty',
+      // Tally / Busy
+      'purchase order qty','po quantity','pending po','open po qty',
+      // NetSuite
+      'quantity on order','quantity in transit','pending receipt quantity',
+      'po quantity','purchase order quantity',
+      // Dynamics
+      'ordered quantity','purchase quantity','inbound quantity',
+      // Cin7 / Linnworks
+      'on order','incoming stock','purchase order quantity','due in',
+      // Unicommerce
+      'pending grn','grn pending','inbound quantity','pending receipt',
+      // Amazon
+      'inbound','working','shipped','receiving','reserved fc transfer',
+      // Shopify
+      'incoming','on order','committed',
+      // Odoo
+      'incoming quantity','qty in','quantity in',
+    ],
+    reserved: [
+      'reserved','customer order','unfulfilled','pending dispatch',
+      'committed','allocated','reserved stock','pick list qty',
+      // SAP
+      'sales order stock','delivery pending','wm transfer order',
+      // NetSuite
+      'quantity committed','quantity on order (sales)',
+      // Dynamics
+      'reserved ordered','reserved physical',
+    ],
+    leadTime: [
+      'lead time','lt','lead time days','supplier lead time',
+      'replenishment lead time','procurement lead time','purchase lead time',
+      'days to receive','delivery days','supplier lead days',
+      // SAP
+      'planned delivery time','goods receipt processing time','total replenishment lead time',
+      // Tally / Busy
+      'lead time','supplier lead days','order lead days',
+      // NetSuite
+      'lead time','purchase lead time','reorder lead time',
+      // Dynamics
+      'lead time','vendor lead time','purchase lead time',
+    ],
+    reorderQty: [
+      'reorder qty','reorder quantity','recommended replenishment qty',
+      'suggested order qty','min order qty','moq','economic order quantity',
+      'eoq','recommended order qty','amazon recommended qty',
+      // SAP
+      'reorder point quantity','fixed lot size','minimum lot size',
+      // NetSuite
+      'reorder point','preferred stock level',
+      // Dynamics
+      'reorder point','minimum order quantity','order quantity',
+    ],
+    reorderPoint: [
+      'reorder point','rop','reorder level','minimum stock level',
+      'safety stock level','minimum reorder level','stock alert level',
+      // SAP
+      'reorder point','minimum stock level',
+      // NetSuite / Dynamics
+      'reorder point','reorder level',
+    ],
+    safetyStock: [
+      'safety stock','buffer stock','minimum stock','reserve stock',
+      'minimum inventory','safety inventory',
+      // SAP
+      'safety stock','minimum safety stock',
+      // NetSuite
+      'safety stock level','minimum stock level',
+    ],
+    category: [
+      'category','department','product type','product category','type',
+      'item type','item category','product class','class','sub category',
+      'product group','item group','commodity','commodity type',
+      // SAP
+      'material group','product hierarchy','industry sector',
+      // Tally
+      'category','item category','stock group','sub group',
+      // NetSuite
+      'item type','class','department','location',
+      // Shopify
+      'product type','collection','tags',
+      // Amazon
+      'product type','browse node','category',
+      // Flipkart / Myntra
+      'category','sub-category','vertical','department',
+    ],
+    brand: [
+      'brand','brand name','manufacturer','vendor','supplier','make',
+      'marque','label',
+      // SAP
+      'vendor','supplier','manufacturer part number',
+      // Tally / Busy
+      'party name','vendor name','supplier name',
+      // NetSuite / Dynamics
+      'vendor','manufacturer','preferred vendor',
+      // Shopify / Marketplace
+      'vendor','brand','manufacturer',
+    ],
+    warehouse: [
+      'warehouse','location','fulfillment center','fc','dc',
+      'distribution center','storage location','godown','store',
+      'bin','rack','shelf','zone','aisle','plant','site',
+      // SAP
+      'plant','storage location','warehouse number','storage type',
+      // Tally / Busy
+      'godown','branch','location',
+      // NetSuite / Dynamics
+      'location','warehouse','bin','sublocation',
+      // Unicommerce
+      'facility','facility name','warehouse code',
+      // Amazon
+      'fulfillment center','fc name',
+    ],
+    country: [
+      'country','marketplace','region','market','territory','country code',
+    ],
+    channel: [
+      'channel','platform','source','marketplace','sales channel',
+      'order source','fulfillment channel','store',
+    ],
+    batchLot: [
+      'batch','lot','batch number','lot number','batch no','lot no',
+      'serial number','expiry date','manufacture date','mfg date','exp date',
+    ],
+    unitOfMeasure: [
+      'uom','unit of measure','unit','unit of measurement','base unit',
+      'sales unit','purchase unit',
+    ],
+  };
+
+  const map = {};
+  const lh = headers.map(h => (h || '').toLowerCase().trim().replace(/[_\-]/g, ' ').replace(/\s+/g, ' '));
+
+  for (const [field, names] of Object.entries(syn)) {
+    for (const name of names) {
+      const idx = lh.findIndex(h => h === name || h.includes(name) || (name.length > 4 && name.includes(h) && h.length > 3));
+      if (idx !== -1 && map[field] === undefined) { map[field] = idx; break; }
+    }
+  }
+  return map;
 }
+
+// ─── SKU MAP BUILDER ──────────────────────────────────────────────────────────
+function buildSkuMap(dataRows, map) {
+  const get = (row, field) => { const i = map[field]; return (i !== undefined && row[i] !== undefined) ? row[i].toString().trim() : ''; };
+  const skuMap = {}; let ri = 0;
+
+  for (const row of dataRows) {
+    const prod = get(row, 'product');
+    const rawSku = get(row, 'sku') || prod || ('item_' + ri++);
+    const skuId = rawSku.substring(0, 60);
+    if (!skuId) continue;
+
+    const unitsSold = pNum(get(row, 'unitsSold'));
+    const vel = pNum(get(row, 'velocity'));
+    const avail = pNum(get(row, 'available'));
+    const inbound = pNum(get(row, 'inbound'));
+    const reserved = pNum(get(row, 'reserved'));
+    const price = pNum(get(row, 'price'));
+    const lt = pNum(get(row, 'leadTime'));
+    const period = get(row, 'period');
+
+    if (!skuMap[skuId]) {
+      skuMap[skuId] = {
+        sku: skuId, product: (prod || skuId).substring(0, 80),
+        price, available: avail, inbound, reserved, leadTime: lt || 30,
+        unitsSold30: unitsSold, dailyVelocity: vel,
+        reorderQty: pNum(get(row, 'reorderQty')),
+        safetyStock: pNum(get(row, 'safetyStock')),
+        reorderPoint: pNum(get(row, 'reorderPoint')),
+        category: get(row, 'category') || 'General',
+        brand: get(row, 'brand') || '—',
+        warehouse: get(row, 'warehouse') || '—',
+        channel: get(row, 'channel') || '—',
+        batchLot: get(row, 'batchLot') || '',
+        uom: get(row, 'unitOfMeasure') || 'Units',
+        periods: [],
+      };
+    } else {
+      if (price > 0 && skuMap[skuId].price === 0) skuMap[skuId].price = price;
+      if (avail > 0) skuMap[skuId].available = Math.max(skuMap[skuId].available, avail);
+      if (inbound > 0) skuMap[skuId].inbound += inbound;
+      if (reserved > 0) skuMap[skuId].reserved += reserved;
+    }
+    if (period && unitsSold >= 0) skuMap[skuId].periods.push({ period: normalisePeriod(period), unitsSold });
+  }
+
+  const isTS = Object.values(skuMap).some(s => s.periods.length >= 2);
+  if (isTS) {
+    for (const s of Object.values(skuMap)) {
+      s.periods.sort((a, b) => (new Date(a.period) || 0) - (new Date(b.period) || 0) || a.period.localeCompare(b.period));
+    }
+  }
+  return { skuMap, isTS };
+}
+
+// Normalise diverse ERP date formats
+function normalisePeriod(raw) {
+  if (!raw) return raw;
+  const s = raw.toString().trim();
+  // DD/MM/YYYY or DD-MM-YYYY
+  const dmy = s.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})$/);
+  if (dmy) return `${dmy[3].length === 2 ? '20' + dmy[3] : dmy[3]}-${dmy[2].padStart(2,'0')}-${dmy[1].padStart(2,'0')}`;
+  // MM/YYYY or MM-YYYY
+  const my = s.match(/^(\d{1,2})[\/\-](\d{4})$/);
+  if (my) return `${my[2]}-${my[1].padStart(2,'0')}-01`;
+  // Apr-24 or Apr 2024
+  const mon = s.match(/^([A-Za-z]{3})[\s\-](\d{2,4})$/);
+  if (mon) { const months = {jan:'01',feb:'02',mar:'03',apr:'04',may:'05',jun:'06',jul:'07',aug:'08',sep:'09',oct:'10',nov:'11',dec:'12'}; const m = months[mon[1].toLowerCase()]; if (m) return `${mon[2].length===2?'20'+mon[2]:mon[2]}-${m}-01`; }
+  // Q1 FY25 or Q1 2024-25
+  const qtr = s.match(/Q(\d)\s*(?:FY)?(\d{2,4})/i);
+  if (qtr) { const qMonth = { '1':'04', '2':'07', '3':'10', '4':'01' }; return `${qtr[2].length===2?'20'+qtr[2]:qtr[2]}-${qMonth[qtr[1]]||'01'}-01`; }
+  return s;
+}
+
+// ─── COMPUTE ENGINE ───────────────────────────────────────────────────────────
+function computeSKU(s, isTS, today, sym, horizDays) {
+  const lt = s.leadTime > 0 ? s.leadTime : 30;
+  let dailyVel = 0, avgMonthly = 0, trend = 'flat', trendPct = 'n/a', conf = 'Low';
+  let nextH = 0, next30 = 0, next60 = 0, next90 = 0;
+
+  if (isTS && s.periods.length >= 2) {
+    const demands = s.periods.map(p => p.unitsSold).filter(d => d >= 0);
+    const n = demands.length;
+    avgMonthly = n > 0 ? Math.round(demands.reduce((a, b) => a + b, 0) / n) : 0;
+    dailyVel = avgMonthly / 30;
+    if (n >= 4) {
+      const mid = Math.floor(n / 2);
+      const f1 = demands.slice(0, mid).reduce((a, b) => a + b, 0) / mid;
+      const f2 = demands.slice(mid).reduce((a, b) => a + b, 0) / (n - mid);
+      const pct = f1 > 0 ? ((f2 - f1) / f1) * 100 : 0;
+      trend = pct > 5 ? 'up' : pct < -5 ? 'down' : 'flat';
+      trendPct = (pct >= 0 ? '+' : '') + Math.round(pct) + '%';
+    }
+    const last = demands[demands.length - 1] || avgMonthly;
+    const tf = trend === 'up' ? 1.05 : trend === 'down' ? 0.97 : 1.0;
+    nextH = Math.max(0, Math.ceil(last * tf * (horizDays / 30)));
+    next30 = Math.max(0, Math.ceil(last * tf));
+    next60 = Math.max(0, Math.ceil(last * tf * tf * 2));
+    next90 = Math.max(0, Math.ceil(last * tf * tf * tf * 3));
+    if (n > 1 && avgMonthly > 0) {
+      const vari = demands.map(d => Math.pow(d - avgMonthly, 2)).reduce((a, b) => a + b, 0) / (n - 1);
+      conf = Math.sqrt(vari) / avgMonthly < 0.15 ? 'High' : Math.sqrt(vari) / avgMonthly < 0.35 ? 'Medium' : 'Low';
+    } else conf = n >= 3 ? 'Medium' : 'Low';
+  } else {
+    dailyVel = s.dailyVelocity > 0 ? s.dailyVelocity : (s.unitsSold30 > 0 ? s.unitsSold30 / 30 : 0);
+    avgMonthly = Math.round(dailyVel * 30);
+    nextH = Math.round(dailyVel * horizDays);
+    next30 = avgMonthly; next60 = Math.round(dailyVel * 60); next90 = Math.round(dailyVel * 90);
+    conf = dailyVel > 0 ? 'Velocity-based' : 'Low (no sales)';
+  }
+
+  const currentStock = s.available || 0;
+  const netStock = currentStock + (s.inbound || 0) - (s.reserved || 0);
+  const daysOfCover = dailyVel > 0 ? Math.round(Math.max(0, netStock) / dailyVel) : (netStock > 0 ? 999 : 0);
+  const weeksOfSupply = Math.round(daysOfCover / 7 * 10) / 10;
+  const safetyStock = s.safetyStock > 0 ? s.safetyStock : Math.ceil(dailyVel * 7);
+  const reorderPoint = s.reorderPoint > 0 ? s.reorderPoint : Math.ceil((dailyVel * lt) + safetyStock);
+  const target = Math.ceil(dailyVel * (horizDays + lt));
+  const eoq = s.reorderQty > 0 ? s.reorderQty : Math.max(0, target - Math.max(0, netStock));
+
+  let reorderBy = 'OK';
+  if (currentStock === 0 && !(s.inbound) && avgMonthly > 0) reorderBy = 'REORDER NOW';
+  else {
+    const d2r = Math.max(0, daysOfCover - lt);
+    if (d2r <= 0) reorderBy = 'REORDER NOW';
+    else if (d2r <= 7) reorderBy = 'This Week';
+    else { const d = new Date(today); d.setDate(d.getDate() + d2r); reorderBy = d.toLocaleDateString('en-GB'); }
+  }
+
+  let priority = 'LOW';
+  if (currentStock === 0 && !(s.inbound) && avgMonthly > 0) priority = 'URGENT';
+  else if (daysOfCover < lt && avgMonthly > 0) priority = 'HIGH';
+  else if (daysOfCover < lt * 2) priority = 'MEDIUM';
+
+  const stockoutDays = dailyVel > 0 ? Math.min(999, Math.round(Math.max(0, netStock) / dailyVel)) : 999;
+  const stockoutProb = stockoutDays < 7 ? 95 : stockoutDays < 14 ? 75 : stockoutDays < 30 ? 40 : stockoutDays < 60 ? 15 : 5;
+  const revenueAtRisk = dailyVel > 0 && s.price > 0 ? Math.round(Math.max(0, horizDays - stockoutDays) * dailyVel * s.price) : 0;
+  const invValue = Math.round(currentStock * (s.price || 0));
+  const isSlowMover = dailyVel < 1 && currentStock > 30;
+  const isDead = dailyVel === 0 && currentStock > 0;
+  const isOverstock = daysOfCover > 180 && avgMonthly > 0;
+  const isHealthy = !isDead && !isOverstock && daysOfCover >= 30 && daysOfCover <= 120 && avgMonthly > 0;
+  const fillRate = avgMonthly > 0 ? Math.min(100, Math.round((Math.min(currentStock, avgMonthly) / avgMonthly) * 100)) : 0;
+  const invTurnover = invValue > 0 ? Math.round((avgMonthly * 12 * (s.price || 0) * 0.7 / invValue) * 10) / 10 : 0;
+  const inventoryAge = dailyVel > 0 && currentStock > 0 ? Math.round(currentStock / dailyVel) : 0;
+  const excessValue = dailyVel > 0 ? Math.round(Math.max(0, daysOfCover - 90) * dailyVel * (s.price || 0)) : 0;
+
+  return {
+    sku: s.sku, product: s.product, category: s.category, brand: s.brand,
+    warehouse: s.warehouse, channel: s.channel, uom: s.uom, batchLot: s.batchLot,
+    price: s.price, currentStock, inbound: s.inbound || 0, reserved: s.reserved || 0, netStock,
+    avgMonthlyDemand: avgMonthly, dailyVelocity: Math.round(dailyVel * 10) / 10,
+    nextH, next30, next60, next90, trend, trendPct, confidence: conf,
+    daysOfCover, weeksOfSupply, safetyStock, reorderPoint, eoq, reorderBy,
+    priority, leadTimeDays: lt, needsReorder: eoq > 0 && avgMonthly > 0,
+    stockoutDays, stockoutProb, revenueAtRisk, invValue,
+    isSlowMover, isDead, isOverstock, isHealthy, isActive: avgMonthly > 0,
+    invTurnover, inventoryAge, fillRate, excessValue,
+    slowMoverRisk: invValue > 5000 ? 'HIGH' : invValue > 1000 ? 'MEDIUM' : 'LOW',
+    slowAction: invValue > 5000 ? 'Markdown / Bundle / Liquidate' : invValue > 1000 ? 'Hold — avoid reorder' : 'Monitor',
+  };
+}
+
+function pNum(v) { if (!v && v !== 0) return 0; const n = parseFloat(v.toString().replace(/[$£€₹,\s]/g, '').replace(/[^\d.-]/g, '')); return isNaN(n) || n < 0 ? 0 : n; }
