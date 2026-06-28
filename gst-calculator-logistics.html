@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GST Calculator for Freight & Logistics — India 2024-25 | LogicstIQ</title>
+<meta name="description" content="Free GST Calculator for freight, warehousing, courier and logistics services in India. Calculate CGST, SGST, IGST instantly. Covers all logistics GST rates for 2024-25.">
+<meta name="keywords" content="GST calculator logistics, freight GST calculator, IGST CGST SGST calculator, GST on freight India, logistics GST rate, warehousing GST, courier GST">
+<meta name="author" content="Amit Kumar & Sachin Sirwani — LogicstIQ.com">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://logicstiq.com/gst-calculator-logistics">
+<meta property="og:title" content="GST Calculator for Freight & Logistics India | LogicstIQ">
+<meta property="og:description" content="Calculate GST on freight, warehousing and logistics services. CGST + SGST or IGST breakdown. Free, no login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicstiq.com/gst-calculator-logistics">
+<meta property="og:site_name" content="LogicstIQ.com">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F4F7FF;--white:#FFFFFF;--border:#E2E8F0;--border2:#CBD5E1;
+  --b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b400:#60A5FA;
+  --b500:#3B82F6;--b600:#2563EB;--b700:#1D4ED8;--b800:#1E40AF;--b900:#1E3A8A;
+  --cyan:#0891B2;--green:#059669;--glight:#D1FAE5;
+  --amber:#D97706;--alight:#FEF3C7;--red:#DC2626;--rlight:#FEE2E2;
+  --purple:#7C3AED;--slate:#64748B;
+  --text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8;
+  --orange:#EA580C;--orange-light:#FFF7ED;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+.preview-bar{background:linear-gradient(90deg,#2563EB,#0891B2);padding:10px 20px;text-align:center;font-size:12px;font-weight:800;color:#fff;letter-spacing:.04em;position:sticky;top:0;z-index:999}
+.nav{background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:40px;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.nav-logo{text-decoration:none;display:flex;align-items:center;line-height:1}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:13px;font-weight:600;color:var(--text3);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--b600)}
+.nav-cta{background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;border:none;border-radius:9px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-block}
+.calc-hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 45%,#1D4ED8 100%);padding:52px 32px 44px;text-align:center}
+.calc-hero .breadcrumb{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:12px}
+.calc-hero .breadcrumb a{color:rgba(255,255,255,.6);text-decoration:none}
+.calc-hero h1{font-size:clamp(24px,4vw,44px);font-weight:900;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.03em;margin-bottom:10px}
+.calc-hero h1 span{background:linear-gradient(135deg,#93C5FD,#67E8F9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.calc-hero p{font-size:15px;color:rgba(255,255,255,.78);max-width:560px;margin:0 auto}
+.calc-wrap{max-width:900px;margin:0 auto;padding:40px 20px 60px}
+.card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:32px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+.card-title{font-size:18px;font-weight:800;color:var(--text);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:600px){.form-grid{grid-template-columns:1fr}}
+.form-group label{display:block;font-size:12px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.form-group input,
+.form-group select{width:100%;padding:11px 14px;border:1.5px solid var(--border2);border-radius:10px;font-size:15px;font-family:inherit;color:var(--text);background:#fff;transition:border .15s}
+.form-group input:focus,
+.form-group select:focus{outline:none;border-color:var(--b500)}
+.form-hint{font-size:11px;color:var(--text4);margin-top:4px}
+.full-width{grid-column:1/-1}
+.btn-calc{width:100%;background:linear-gradient(135deg,#EA580C,#D97706);color:#fff;border:none;border-radius:12px;padding:15px;font-size:16px;font-weight:800;cursor:pointer;font-family:inherit;margin-top:20px;transition:opacity .15s}
+.btn-calc:hover{opacity:.9}
+
+/* Result */
+.result-box{display:none;background:linear-gradient(135deg,#FFF7ED,#FFEDD5);border:2px solid #FED7AA;border-radius:16px;padding:28px;margin-top:20px}
+.result-box.show{display:block}
+.result-breakdown{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+@media(max-width:500px){.result-breakdown{grid-template-columns:1fr}}
+.breakdown-item{background:#fff;border-radius:12px;padding:16px;border:1px solid #FED7AA}
+.breakdown-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#9A3412;margin-bottom:4px}
+.breakdown-value{font-size:24px;font-weight:900;color:#C2410C;font-family:'Plus Jakarta Sans',sans-serif}
+.breakdown-sub{font-size:11px;color:var(--text3);margin-top:3px}
+.total-row{background:linear-gradient(135deg,#EA580C,#D97706);border-radius:14px;padding:20px;text-align:center;color:#fff}
+.total-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;opacity:.8;margin-bottom:6px}
+.total-value{font-size:44px;font-weight:900;font-family:'Plus Jakarta Sans',sans-serif;line-height:1}
+.total-sub{font-size:13px;opacity:.8;margin-top:6px}
+.gst-type-badge{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:3px 12px;font-size:11px;font-weight:700;margin-top:8px}
+
+/* Rate table */
+.rate-table{width:100%;border-collapse:collapse;font-size:13px}
+.rate-table th{background:#FFF7ED;color:#9A3412;font-weight:700;padding:10px 14px;text-align:left;border-bottom:2px solid #FED7AA}
+.rate-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text3);vertical-align:top}
+.rate-table tr:last-child td{border-bottom:none}
+.rate-badge{display:inline-block;background:#FFF7ED;color:#C2410C;border:1px solid #FED7AA;border-radius:6px;padding:2px 8px;font-weight:700;font-size:12px}
+
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq-q{padding:16px 20px;font-weight:700;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--text)}
+.faq-a{display:none;padding:0 20px 16px;font-size:14px;color:var(--text3);line-height:1.7}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .arr{transform:rotate(180deg)}
+.arr{transition:transform .2s;color:var(--text4)}
+.cta-banner{background:linear-gradient(135deg,#0F172A,#1E3A8A);border-radius:18px;padding:36px;text-align:center;color:#fff;margin-bottom:24px}
+.cta-banner h3{font-size:22px;font-weight:900;font-family:'Plus Jakarta Sans',sans-serif;margin-bottom:8px}
+.cta-banner p{font-size:14px;color:rgba(255,255,255,.75);margin-bottom:20px}
+.cta-banner a{background:linear-gradient(135deg,var(--b400),var(--cyan));color:#fff;text-decoration:none;border-radius:10px;padding:12px 28px;font-size:14px;font-weight:800;display:inline-block}
+footer{background:#0F172A;color:rgba(255,255,255,.6);padding:40px 32px 24px}
+.footer-bottom{text-align:center;font-size:12px;border-top:1px solid rgba(255,255,255,.08);padding-top:20px;margin-top:24px}
+.footer-bottom a{color:rgba(255,255,255,.5);text-decoration:none}
+.footer-bottom a:hover{color:#fff}
+.info-pill{display:inline-block;background:var(--glight);color:var(--green);border-radius:999px;padding:3px 10px;font-size:11px;font-weight:700;margin-left:6px}
+</style>
+</head>
+<body>
+
+<div class="preview-bar">🚀 LogicstIQ — 20 Free Supply Chain Calculators + AI Demand Planner <span>No login. No data stored. Free forever.</span></div>
+
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <svg width="130" height="32" viewBox="0 0 260 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="ng" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#2563EB"/><stop offset="100%" stop-color="#0891B2"/></linearGradient></defs>
+      <path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#ng)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M59 8 L66 14 L59 20" stroke="#0891B2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="32" cy="50" r="3.5" fill="#BFDBFE"/>
+      <circle cx="50" cy="14" r="3.5" fill="#2563EB"/>
+      <text x="82" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5">
+        <tspan fill="#0F172A">Logicst</tspan><tspan fill="#2563EB">IQ</tspan>
+      </text>
+    </svg>
+  </a>
+  <div class="nav-links">
+    <a href="/#calculators">Calculators</a>
+    <a href="/#liq-planner">AI Planner</a>
+    <a href="/#blog">Blog</a>
+    <a href="/#liq-planner" class="nav-cta">Try AI Planner →</a>
+  </div>
+</nav>
+
+<div class="calc-hero">
+  <div class="breadcrumb"><a href="/">Home</a> › <a href="/#calculators">Calculators</a> › GST Calculator — Logistics</div>
+  <h1>🧾 <span>GST Calculator</span> — Freight & Logistics</h1>
+  <p>Calculate GST on freight, warehousing, courier, and logistics services in India. Get CGST + SGST or IGST breakdown instantly.</p>
+</div>
+
+<div class="calc-wrap">
+
+  <!-- Calculator -->
+  <div class="card">
+    <div class="card-title">🧮 Calculate GST on Logistics Services</div>
+    <div class="form-grid">
+      <div class="form-group full-width">
+        <label>Service Type</label>
+        <select id="serviceType" onchange="updateRate()">
+          <option value="5" data-label="Road Freight (GTA) — Standard">Road Freight — GTA (Goods Transport Agency) · 5% GST</option>
+          <option value="12" data-label="Road Freight (GTA) — With ITC">Road Freight — GTA with Input Tax Credit · 12% GST</option>
+          <option value="18" data-label="Courier Services">Courier Services (Blue Dart, Delhivery, DTDC etc.) · 18% GST</option>
+          <option value="18" data-label="Warehousing & Storage">Warehousing & Storage Services · 18% GST</option>
+          <option value="18" data-label="Freight Forwarding">Freight Forwarding / Logistics Management · 18% GST</option>
+          <option value="18" data-label="Cold Chain / Refrigerated">Cold Chain / Refrigerated Transport · 18% GST</option>
+          <option value="5" data-label="Air Freight (Domestic)">Air Freight — Domestic · 5% GST</option>
+          <option value="18" data-label="Air Freight (International)">Air Freight — International · 18% GST</option>
+          <option value="5" data-label="Rail Freight">Rail Freight (Indian Railways) · 5% GST</option>
+          <option value="0" data-label="Exempt Goods Transport">Exempt Goods Transport (agricultural, milk, books etc.) · 0% GST</option>
+          <option value="custom" data-label="Custom Rate">Enter Custom GST Rate</option>
+        </select>
+      </div>
+      <div class="form-group" id="customRateGroup" style="display:none">
+        <label>Custom GST Rate (%)</label>
+        <input type="number" id="customRate" placeholder="e.g. 12" min="0" max="28" step="0.5">
+      </div>
+      <div class="form-group">
+        <label>Invoice / Base Amount (₹)</label>
+        <input type="number" id="baseAmount" placeholder="e.g. 50000" min="0" step="0.01">
+        <div class="form-hint">Amount before GST (exclusive) or total amount (inclusive)</div>
+      </div>
+      <div class="form-group">
+        <label>Amount Type</label>
+        <select id="amountType">
+          <option value="exclusive">GST Exclusive (before tax)</option>
+          <option value="inclusive">GST Inclusive (total including tax)</option>
+        </select>
+      </div>
+      <div class="form-group full-width">
+        <label>Transaction Type</label>
+        <select id="txType">
+          <option value="intra">Intra-State (same state) → CGST + SGST</option>
+          <option value="inter">Inter-State (different states) → IGST</option>
+        </select>
+        <div class="form-hint">Intra-state: both supplier and buyer in same state. Inter-state: different states or Union Territory.</div>
+      </div>
+    </div>
+    <button class="btn-calc" onclick="calcGST()">Calculate GST →</button>
+
+    <div class="result-box" id="resultBox">
+      <div class="result-breakdown" id="breakdownGrid">
+        <!-- filled by JS -->
+      </div>
+      <div class="total-row">
+        <div class="total-label">Total Invoice Amount (with GST)</div>
+        <div class="total-value" id="totalAmount">—</div>
+        <div class="total-sub" id="totalSub">—</div>
+        <div class="gst-type-badge" id="gstTypeBadge">—</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GST Rate Reference Table -->
+  <div class="card">
+    <div class="card-title">📋 GST Rates for Logistics Services (2024–25)</div>
+    <table class="rate-table">
+      <thead><tr><th>Service</th><th>GST Rate</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Road Freight — GTA</strong></td><td><span class="rate-badge">5%</span></td><td>No ITC claim. Most common for bulk road transport.</td></tr>
+        <tr><td><strong>Road Freight — GTA (with ITC)</strong></td><td><span class="rate-badge">12%</span></td><td>GTA opts to pay GST and claims input tax credit.</td></tr>
+        <tr><td><strong>Courier Services</strong></td><td><span class="rate-badge">18%</span></td><td>Applies to Delhivery, Blue Dart, DTDC, FedEx, DHL etc.</td></tr>
+        <tr><td><strong>Warehousing & Storage</strong></td><td><span class="rate-badge">18%</span></td><td>Warehousing of manufactured goods. Agricultural storage is exempt.</td></tr>
+        <tr><td><strong>Freight Forwarding</strong></td><td><span class="rate-badge">18%</span></td><td>International freight forwarding and customs clearance.</td></tr>
+        <tr><td><strong>Air Freight — Domestic</strong></td><td><span class="rate-badge">5%</span></td><td>Domestic air cargo transport.</td></tr>
+        <tr><td><strong>Air Freight — International</strong></td><td><span class="rate-badge">18%</span></td><td>International air cargo. Export freight may be zero-rated.</td></tr>
+        <tr><td><strong>Rail Freight</strong></td><td><span class="rate-badge">5%</span></td><td>Transport by Indian Railways.</td></tr>
+        <tr><td><strong>Cold Chain / Refrigerated</strong></td><td><span class="rate-badge">18%</span></td><td>Refrigerated transport for perishables.</td></tr>
+        <tr><td><strong>Exempt Transport</strong></td><td><span class="rate-badge">0%</span></td><td>Agricultural produce, milk, books, relief materials, defence goods.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- How CGST/SGST/IGST works -->
+  <div class="card">
+    <div class="card-title">📖 CGST vs SGST vs IGST — Explained</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px">
+      <div style="background:#EFF6FF;border:1px solid var(--b100);border-radius:14px;padding:18px">
+        <div style="font-size:20px;margin-bottom:8px">🏛️</div>
+        <div style="font-weight:800;color:var(--b700);margin-bottom:6px">CGST</div>
+        <div style="font-size:13px;color:var(--text3);line-height:1.7">Central GST — collected by the Central Government. Always paired with SGST for intra-state transactions. Each is half the total GST rate.</div>
+      </div>
+      <div style="background:#F0FDF4;border:1px solid #D1FAE5;border-radius:14px;padding:18px">
+        <div style="font-size:20px;margin-bottom:8px">🗺️</div>
+        <div style="font-weight:800;color:#065F46;margin-bottom:6px">SGST / UTGST</div>
+        <div style="font-size:13px;color:var(--text3);line-height:1.7">State GST — collected by the State Government. Applied alongside CGST for intra-state. UTGST applies in Union Territories.</div>
+      </div>
+      <div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:14px;padding:18px">
+        <div style="font-size:20px;margin-bottom:8px">🔀</div>
+        <div style="font-weight:800;color:#9A3412;margin-bottom:6px">IGST</div>
+        <div style="font-size:13px;color:var(--text3);line-height:1.7">Integrated GST — applied on inter-state transactions. Equal to CGST + SGST combined. Collected centrally and then distributed.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-banner">
+    <h3>Calculate Total Landed Cost Including GST</h3>
+    <p>Our Landed Cost Calculator includes all taxes, duties, freight and handling charges in one place.</p>
+    <a href="/landed-cost-calculator">Try Landed Cost Calculator →</a>
+  </div>
+
+  <!-- FAQ -->
+  <div class="card">
+    <div class="card-title">❓ Frequently Asked Questions</div>
+    <div class="faq-item open">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is GST applicable on all freight charges in India? <span class="arr">▾</span></div>
+      <div class="faq-a">No. Goods transport by road through a GTA is taxable at 5% or 12%. However, transport of certain goods (agricultural produce, milk, salt, newspapers, defence items) is exempt from GST. Transport by non-GTA (like a private vehicle owner directly) may also be exempt.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Who pays GST on road freight — the transporter or the buyer? <span class="arr">▾</span></div>
+      <div class="faq-a">Under the Reverse Charge Mechanism (RCM), the recipient (buyer/consignee) who is GST registered pays GST on GTA services. The GTA itself does not collect or deposit GST in this case. This applies when the GTA has not opted to pay GST forward.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is the GST rate for e-commerce logistics (Delhivery, Ecom Express)? <span class="arr">▾</span></div>
+      <div class="faq-a">Courier and express logistics services are classified as courier services and attract 18% GST. This includes Delhivery, Blue Dart, DTDC, Ecom Express, XpressBees, and similar B2C/B2B courier companies.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I claim ITC on freight GST? <span class="arr">▾</span></div>
+      <div class="faq-a">Yes, if the freight is for business purposes and you are GST registered, you can claim Input Tax Credit on freight paid. However, ITC is not available on freight for personal use or if used for exempt supplies. Always consult a CA for specific situations.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What GST applies to Amazon FBA / Flipkart fulfilment fees? <span class="arr">▾</span></div>
+      <div class="faq-a">Amazon and Flipkart charge 18% GST on all marketplace fees including fulfilment fees, referral fees, and storage fees. These are treated as services provided by the marketplace and are fully ITC-eligible for registered sellers.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🔗 Related Calculators</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px">
+      <a href="/landed-cost-calculator" style="text-decoration:none;background:var(--b50);border:1px solid var(--b100);border-radius:12px;padding:14px;display:block;text-align:center">
+        <div style="font-size:22px;margin-bottom:6px">🌍</div>
+        <div style="font-size:13px;font-weight:700;color:var(--b700)">Landed Cost Calculator</div>
+      </a>
+      <a href="/eoq-calculator" style="text-decoration:none;background:var(--b50);border:1px solid var(--b100);border-radius:12px;padding:14px;display:block;text-align:center">
+        <div style="font-size:22px;margin-bottom:6px">📦</div>
+        <div style="font-size:13px;font-weight:700;color:var(--b700)">EOQ Calculator</div>
+      </a>
+      <a href="/safety-stock-calculator" style="text-decoration:none;background:var(--b50);border:1px solid var(--b100);border-radius:12px;padding:14px;display:block;text-align:center">
+        <div style="font-size:22px;margin-bottom:6px">🛡️</div>
+        <div style="font-size:13px;font-weight:700;color:var(--b700)">Safety Stock Calculator</div>
+      </a>
+      <a href="/carbon-footprint-logistics" style="text-decoration:none;background:var(--b50);border:1px solid var(--b100);border-radius:12px;padding:14px;display:block;text-align:center">
+        <div style="font-size:22px;margin-bottom:6px">🌿</div>
+        <div style="font-size:13px;font-weight:700;color:var(--b700)">Carbon Footprint</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <div style="margin-bottom:6px"><strong style="color:#94A3B8">20 Free Supply Chain Calculators · AI Demand Planner · No Login Required · Free Forever</strong></div>
+    <div>© 2025 LogicstIQ.com · <a href="/">Home</a> · <a href="/privacy-policy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a> · Results are for reference only. Consult a CA for tax decisions.</div>
+  </div>
+</footer>
+
+<script>
+function updateRate() {
+  const sel = document.getElementById('serviceType');
+  const val = sel.value;
+  const customGroup = document.getElementById('customRateGroup');
+  customGroup.style.display = val === 'custom' ? 'block' : 'none';
+}
+
+function calcGST() {
+  const sel = document.getElementById('serviceType');
+  let rate = parseFloat(sel.value);
+  if (sel.value === 'custom') {
+    rate = parseFloat(document.getElementById('customRate').value);
+    if (isNaN(rate) || rate < 0 || rate > 100) { alert('Please enter a valid custom GST rate.'); return; }
+  }
+
+  let base = parseFloat(document.getElementById('baseAmount').value);
+  if (!base || base <= 0) { alert('Please enter a valid amount.'); return; }
+
+  const amtType = document.getElementById('amountType').value;
+  const txType = document.getElementById('txType').value;
+  const label = sel.options[sel.selectedIndex].dataset.label || sel.options[sel.selectedIndex].text;
+
+  // If inclusive, reverse-calculate base
+  if (amtType === 'inclusive') {
+    base = base / (1 + rate / 100);
+  }
+
+  const totalGST = base * rate / 100;
+  const total = base + totalGST;
+
+  let breakdownHTML = '';
+
+  if (rate === 0) {
+    breakdownHTML = `
+      <div class="breakdown-item" style="grid-column:1/-1;text-align:center">
+        <div class="breakdown-label">GST Amount</div>
+        <div class="breakdown-value">₹0</div>
+        <div class="breakdown-sub">This service is GST exempt</div>
+      </div>`;
+  } else if (txType === 'intra') {
+    const half = totalGST / 2;
+    breakdownHTML = `
+      <div class="breakdown-item">
+        <div class="breakdown-label">Base Amount</div>
+        <div class="breakdown-value">₹${fmt(base)}</div>
+        <div class="breakdown-sub">Before tax</div>
+      </div>
+      <div class="breakdown-item">
+        <div class="breakdown-label">CGST (${rate/2}%)</div>
+        <div class="breakdown-value">₹${fmt(half)}</div>
+        <div class="breakdown-sub">Central GST</div>
+      </div>
+      <div class="breakdown-item">
+        <div class="breakdown-label">SGST (${rate/2}%)</div>
+        <div class="breakdown-value">₹${fmt(half)}</div>
+        <div class="breakdown-sub">State GST</div>
+      </div>
+      <div class="breakdown-item">
+        <div class="breakdown-label">Total GST (${rate}%)</div>
+        <div class="breakdown-value">₹${fmt(totalGST)}</div>
+        <div class="breakdown-sub">CGST + SGST</div>
+      </div>`;
+  } else {
+    breakdownHTML = `
+      <div class="breakdown-item">
+        <div class="breakdown-label">Base Amount</div>
+        <div class="breakdown-value">₹${fmt(base)}</div>
+        <div class="breakdown-sub">Before tax</div>
+      </div>
+      <div class="breakdown-item">
+        <div class="breakdown-label">IGST (${rate}%)</div>
+        <div class="breakdown-value">₹${fmt(totalGST)}</div>
+        <div class="breakdown-sub">Integrated GST (inter-state)</div>
+      </div>`;
+  }
+
+  document.getElementById('breakdownGrid').innerHTML = breakdownHTML;
+  document.getElementById('totalAmount').textContent = '₹' + fmt(total);
+  document.getElementById('totalSub').textContent = `Base ₹${fmt(base)} + GST ₹${fmt(totalGST)} | Rate: ${rate}% | ${label}`;
+  document.getElementById('gstTypeBadge').textContent = rate === 0 ? 'EXEMPT' : txType === 'intra' ? `CGST ${rate/2}% + SGST ${rate/2}%` : `IGST ${rate}%`;
+
+  document.getElementById('resultBox').classList.add('show');
+  document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function fmt(n) {
+  return Math.round(n).toLocaleString('en-IN');
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Enter') calcGST(); });
+</script>
+</body>
+</html>
