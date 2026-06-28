@@ -1,10 +1,7 @@
 {
   "functions": {
     "api/forecast.js": {
-      "maxDuration": 30,
-      "bodyParser": {
-        "sizeLimit": "25mb"
-      }
+      "maxDuration": 30
     }
   }
 }
