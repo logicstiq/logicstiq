@@ -3,5 +3,8 @@
     "api/forecast.js": {
       "maxDuration": 30
     }
-  }
+  },
+  "rewrites": [
+    { "source": "/:page", "destination": "/:page.html" }
+  ]
 }
