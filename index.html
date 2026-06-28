@@ -59,7 +59,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overf
 .preview-bar span{display:none;opacity:.75;font-weight:500;margin-left:8px}
 
 /* ── NAVIGATION ── */
-.nav{background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:40px;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.nav{background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.04)}
 .nav-logo{text-decoration:none;display:flex;align-items:center;line-height:1}
 .nav-logo span{background:linear-gradient(135deg,#2563EB,#0891B2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav-links{display:flex;gap:24px;align-items:center}
@@ -260,7 +260,7 @@ footer{background:#0F172A;padding:52px 32px 28px}
 .footer-bottom a{color:#94A3B8;text-decoration:none}
 .footer-bottom a:hover{color:#fff}
 .footer-affiliate-note{border-top:1px solid #1E293B;padding:13px 0;text-align:center;font-size:11px;color:#64748B;line-height:1.7;max-width:1100px;margin:0 auto}
-
+@media(max-width:768px){.nav-tagline{display:none!important}}
 @media(max-width:768px){
   .nav-links{display:none}
   .hero{padding:52px 20px 44px}
@@ -642,6 +642,7 @@ footer{background:#0F172A;padding:52px 32px 28px}
         <tspan fill="#0F172A">Logicst</tspan><tspan fill="#2563EB">IQ</tspan>
       </text>
     </svg>
+    <span style="font-size:11px;font-weight:600;color:#64748B;margin-left:12px;letter-spacing:.02em;white-space:nowrap" class="nav-tagline">Where Logistics Meets Intelligence</span>
   </a>
   <div class="nav-links">
     <a href="#calculators">Calculators</a>
