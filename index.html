@@ -1,1582 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LogicstIQ.com – Free Supply Chain Calculators + AI Demand Planner | No Login Required</title>
-  <meta name="description" content="20 free supply chain calculators + AI Demand Planner. EOQ, Safety Stock, Reorder Point, OTIF, Demand Forecasting, Landed Cost, Carbon Footprint & more. No login. Instant results. No login. No signup. Free forever.">
-  <meta name="keywords" content="supply chain calculator, EOQ calculator, safety stock calculator, reorder point calculator, demand planning tool, inventory forecasting, OTIF calculator, fill rate, landed cost, logistics calculator, free inventory tool, AI demand planner, supply chain India">
-  <meta name="author" content="Amit Kumar & Sachin Sirwani — LogicstIQ.com">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="shortcut icon" href="/favicon.svg">
-  <link rel="canonical" href="https://logicstiq.com/">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://logicstiq.com/">
-  <meta property="og:title" content="LogicstIQ.com – 20 Free Supply Chain Calculators + AI Demand Planner">
-  <meta property="og:description" content="Free EOQ, Safety Stock, Reorder Point, OTIF, Demand Forecasting & 15 more calculators. No login. Instant results. No login. Instant results. Free forever.">
-  <meta property="og:image" content="https://logicstiq.com/og-image.png">
-  <meta property="og:locale" content="en_IN">
-  <meta property="og:site_name" content="LogicstIQ.com">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:creator" content="@LogicstIQ">
-  <meta name="twitter:title" content="LogicstIQ.com – Free Supply Chain Calculators + AI Demand Planner">
-  <meta name="twitter:description" content="20 free supply chain calculators + AI Demand Planner. No login. Instant results.">
-  <meta name="twitter:image" content="https://logicstiq.com/og-image.png">
-
-  <!-- Google Site Verification -->
-  <meta name="google-site-verification" content="FHSe095yxAfCfD-6wIiL3z1NJthHHyxDFvenqPU14WQ">
-
-  <!-- ── Structured Data (JSON-LD) — helps Google understand the site ── -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "name": "LogicstIQ.com",
-        "url": "https://logicstiq.com/",
-        "description": "Free supply chain calculators and AI demand planning tools for supply chain professionals, e-commerce sellers, and manufacturers.",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://logicstiq.com/?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
-      },
-      {
-        "@type": "Organization",
-        "name": "LogicstIQ",
-        "url": "https://logicstiq.com/",
-        "logo": "https://logicstiq.com/og-image.png",
-        "sameAs": ["https://twitter.com/LogicstIQ"],
-        "founder": [
-          { "@type": "Person", "name": "Amit Kumar" },
-          { "@type": "Person", "name": "Sachin Sirwani" }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Is LogicstIQ completely free?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. All 20 calculators and the AI Demand Planner are 100% free. No login, no credit card, no limits." }
-          },
-          {
-            "@type": "Question",
-            "name": "What file formats does the AI Demand Planner support?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The AI Demand Planner supports CSV, Excel (.xlsx, .xls), TSV, and TXT files up to 25MB. It auto-detects columns from any ERP or marketplace export." }
-          },
-          {
-            "@type": "Question",
-            "name": "Which ERPs and marketplaces does LogicstIQ support?",
-            "acceptedAnswer": { "@type": "Answer", "text": "LogicstIQ supports exports from SAP, Oracle NetSuite, Microsoft Dynamics, Tally, Busy, Zoho, Unicommerce, Amazon, Flipkart, Shopify, Meesho, Myntra, Blinkit, Zepto, and 20+ more platforms." }
-          }
-        ]
-      }
-    ]
-  }
-  </script>
-
-  <!-- ── Google AdSense ── PASTE YOUR PUBLISHER ID BELOW ── -->
-  <!-- Replace ca-pub-XXXXXXXXXXXXXXXX with your real AdSense publisher ID -->
-  <!-- Get it at: https://adsense.google.com -->
-  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
-
-</head>
-
-<body>
-
-<!-- NAV -->
-<nav>
-  <div class="logo-wrap">
-    <div class="logo">
-  <svg width="158" height="38" viewBox="0 0 260 68" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="LogicstIQ">
-    <defs>
-      <linearGradient id="liq_nav_g" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stop-color="#1D4ED8"/>
-        <stop offset="100%" stop-color="#3B82F6"/>
-      </linearGradient>
-    </defs>
-    <path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#liq_nav_g)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <path d="M59 8 L66 14 L59 20" stroke="#3B82F6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <circle cx="32" cy="50" r="3.5" fill="#1D4ED8"/>
-    <circle cx="50" cy="14" r="3.5" fill="#3B82F6"/>
-    <text x="82" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5">
-      <tspan fill="#0F172A">Logicst</tspan><tspan fill="#2563EB">IQ</tspan>
-    </text>
-  </svg>
-</div>
-  </div>
-  <div class="nav-right">
-    <button class="nav-tag active">Calculators</button>
-    <a class="nav-tag" href="/about.html" style="text-decoration:none;display:inline-block">About</a>
-</div>
-</nav>
-
-<!-- AD: TOP LEADERBOARD -->
-<div class="ad-wrap">
-  <div class="ad-unit ad-leaderboard">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
-  </div>
-</div>
-
-<!-- HERO -->
-<style>
-/* ── Hero upgrades ── */
-.liq-hero-new{text-align:center;padding:56px 24px 48px;position:relative;background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 45%,#1D4ED8 100%);border-radius:20px;}
-.liq-social-proof-bar{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;margin-bottom:20px;}
-.liq-sp-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);border-radius:999px;padding:5px 14px;font-size:11px;font-weight:700;color:#2563EB;letter-spacing:.04em;}
-.liq-sp-dot{width:6px;height:6px;border-radius:50%;background:#10B981;animation:liq-hero-pulse 2s infinite;}
-@keyframes liq-hero-pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.liq-hero-new h1{font-size:clamp(28px,5vw,52px);font-weight:900;line-height:1.12;letter-spacing:-.025em;margin-bottom:16px;}
-.liq-hero-new h1 .hl{background:linear-gradient(135deg,#2563EB,#06B6D4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.liq-hero-sub-new{font-size:clamp(14px,2vw,18px);color:#475569;max-width:640px;margin:0 auto 28px;line-height:1.65;}
-.liq-pain-strip{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:32px;}
-.liq-pain-pill{background:#F0F4FF;border:1px solid #CBD5E1;border-radius:999px;padding:6px 16px;font-size:12px;font-weight:600;color:#475569;}
-.liq-pain-pill span{color:#F87171;}
-/* Stat boxes — improved */
-.liq-stats-new{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:36px;}
-.liq-stat-new{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:14px;padding:16px 24px;text-align:center;min-width:110px;}
-.liq-stat-num{font-size:26px;font-weight:900;letter-spacing:-.02em;line-height:1;}
-.liq-stat-lbl{font-size:10px;color:#64748B;font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-top:4px;}
-/* Logos strip */
-.liq-logos-strip{margin:0 0 28px;}
-.liq-logos-lbl{font-size:10px;color:#94A3B8;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;}
-.liq-logos-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
-.liq-logo-pill{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:8px;padding:5px 12px;font-size:11px;font-weight:700;color:#64748B;}
-/* Trust bar */
-.liq-trust-bar{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;font-size:12px;color:#64748B;font-weight:600;}
-.liq-trust-item{display:flex;align-items:center;gap:6px;}
-.liq-trust-item span{color:#10B981;}
-
-/* ── AdSense slots ── */
-.liq-ad-slot{margin:24px auto;max-width:728px;text-align:center;border-radius:10px;overflow:hidden;}
-.liq-ad-label{font-size:9px;color:#374151;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
-
-/* ── Testimonial section ── */
-.liq-testimonials{padding:40px 24px;background:#0F0F1A;border-top:1px solid #F0F4FF;}
-.liq-testi-title{text-align:center;font-size:22px;font-weight:800;margin-bottom:28px;letter-spacing:-.01em;}
-.liq-testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;max-width:1100px;margin:0 auto;}
-.liq-testi-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;padding:22px;}
-.liq-testi-stars{color:#F59E0B;font-size:14px;margin-bottom:10px;}
-.liq-testi-text{font-size:13px;color:#D1D5DB;line-height:1.65;margin-bottom:14px;font-style:italic;}
-.liq-testi-author{font-size:12px;font-weight:700;color:#475569;}
-.liq-testi-role{font-size:11px;color:#94A3B8;margin-top:2px;}
-
-/* ── Pro Waitlist Banner ── */
-/* Pro banner removed */
-
-/* removed */
-/* removed */
-/* removed */
-/* removed */
-/* removed */
-/* pro-input-form — removed, will add when Pro launches */
-/* removed */
-.liq-pro-input::placeholder{color:rgba(255,255,255,.5);}
-/* removed */
-.liq-pro-btn:hover{background:#EFF6FF;transform:translateY(-1px);}
-/* removed */
-
-/* ── FAQ Section ── */
-.liq-faq{padding:48px 24px;max-width:800px;margin:0 auto;}
-.liq-faq-title{font-size:24px;font-weight:800;text-align:center;margin-bottom:28px;letter-spacing:-.01em;}
-.liq-faq-item{border:1px solid #E2E8F0;border-radius:12px;margin-bottom:10px;overflow:hidden;}
-.liq-faq-q{padding:16px 20px;font-size:14px;font-weight:700;color:#0F172A;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;}
-.liq-faq-q:hover{background:#FFFFFF;}
-.liq-faq-arrow{font-size:12px;color:#64748B;transition:transform .2s;}
-.liq-faq-a{padding:0 20px;font-size:13px;color:#475569;line-height:1.7;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s;}
-.liq-faq-item.open .liq-faq-a{max-height:300px;padding:0 20px 16px;}
-.liq-faq-item.open .liq-faq-arrow{transform:rotate(180deg);}
-
-/* ── Improved Footer ── */
-.liq-footer-new{background:#F8FAFF;border-top:1px solid #F0F4FF;padding:48px 24px 28px;}
-.liq-footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;max-width:1100px;margin:0 auto 36px;}
-.liq-footer-col-title{font-size:12px;font-weight:800;color:#0F172A;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;}
-.liq-footer-links{display:flex;flex-direction:column;gap:8px;}
-.liq-footer-links a{font-size:13px;color:#64748B;text-decoration:none;transition:color .15s;}
-.liq-footer-links a:hover{color:#2563EB;}
-.liq-footer-social{display:flex;gap:10px;margin-top:16px;}
-.liq-social-btn{width:36px;height:36px;border-radius:8px;background:#FFFFFF;border:1px solid #E2E8F0;display:flex;align-items:center;justify-content:center;font-size:16px;text-decoration:none;transition:all .15s;}
-.liq-social-btn:hover{border-color:#2563EB;background:#F0F4FF;}
-.liq-footer-bottom{border-top:1px solid #F0F4FF;padding-top:20px;text-align:center;font-size:11px;color:#374151;max-width:1100px;margin:0 auto;}
-.liq-disclaimer-bar{background:#FEF9C3;border:1px solid #FDE68A;border-radius:10px;padding:10px 16px;margin-top:10px;font-size:11px;color:#92400E;line-height:1.6;font-weight:500;display:flex;align-items:flex-start;gap:7px;}
-
-/* Cross-reference aliases for audit compatibility */
-.liq-nav { display:flex; } /* alias for nav component */
-.liq-calc-cat { font-size:10px;font-weight:800;color:#2563EB;text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;display:flex;align-items:center;gap:10px; }
-.liq-calc-cat::after { content:'';flex:1;height:1px;background:#E2E8F0; }
-.liq-calc-card { background:#fff;border:1.5px solid #E2E8F0;border-radius:14px;padding:18px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04); }
-.liq-calc-card:hover { border-color:#BFDBFE;transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,58,138,.09); }
-</style>
-
-<!-- ── NEW HERO HTML ── -->
-<div class="liq-hero-new">
-
-  <!-- Live user badge -->
-  <div class="liq-social-proof-bar">
-    <span class="liq-sp-badge"><span class="liq-sp-dot"></span> Free · No Login · Instant Results · 🇮🇳 Made in India</span>
-    <span class="liq-sp-badge">🇮🇳 Made in India · Used Globally</span>
-  </div>
-
-  <h1>The <span class="hl">IQ</span> of Your<br>Supply Chain</h1>
-
-  <p class="liq-hero-sub-new">
-    20 free calculators + AI Demand Planner. From EOQ to Carbon Footprint —
-    every metric your supply chain needs, calculated in seconds.
-    No login. No credit card. Free forever.
-  </p>
-
-  <!-- Pain points -->
-  <div class="liq-pain-strip">
-    <span class="liq-pain-pill"><span>Losing revenue</span> to stockouts?</span>
-    <span class="liq-pain-pill"><span>Capital tied up</span> in dead stock?</span>
-    <span class="liq-pain-pill"><span>Guessing</span> reorder quantities?</span>
-    <span class="liq-pain-pill"><span>Manual</span> demand forecasting?</span>
-  </div>
-
-  <!-- Stats -->
-  <div class="liq-stats-new">
-    <div class="liq-stat-new">
-      <div class="liq-stat-num" style="color:#2563EB">20</div>
-      <div class="liq-stat-lbl">Calculators</div>
-    </div>
-    <div class="liq-stat-new">
-      <div class="liq-stat-num" style="color:#10B981">AI</div>
-      <div class="liq-stat-lbl">Demand Planner</div>
-    </div>
-    <div class="liq-stat-new">
-      <div class="liq-stat-num" style="color:#67E8F9">0</div>
-      <div class="liq-stat-lbl">Login Required</div>
-    </div>
-    <div class="liq-stat-new">
-      <div class="liq-stat-num" style="color:#FCD34D">∞</div>
-      <div class="liq-stat-lbl">Free Forever</div>
-    </div>
-    <div class="liq-stat-new">
-      <div class="liq-stat-num" style="color:#F87171">30+</div>
-      <div class="liq-stat-lbl">Channels Supported</div>
-    </div>
-  </div>
-
-  <!-- Platform logos -->
-  <div class="liq-logos-strip">
-    <div class="liq-logos-lbl">Works with exports from</div>
-    <div class="liq-logos-row">
-      <span class="liq-logo-pill">Amazon</span>
-      <span class="liq-logo-pill">Flipkart</span>
-      <span class="liq-logo-pill">Shopify</span>
-      <span class="liq-logo-pill">Meesho</span>
-      <span class="liq-logo-pill">Tally</span>
-      <span class="liq-logo-pill">SAP</span>
-      <span class="liq-logo-pill">NetSuite</span>
-      <span class="liq-logo-pill">Blinkit</span>
-      <span class="liq-logo-pill">Zepto</span>
-      <span class="liq-logo-pill">Zoho</span>
-      <span class="liq-logo-pill">Myntra</span>
-      <span class="liq-logo-pill">Dynamics 365</span>
-      <span class="liq-logo-pill">Unicommerce</span>
-      <span class="liq-logo-pill">+ 20 more</span>
-    </div>
-  </div>
-
-  <!-- Trust bar -->
-  <div class="liq-trust-bar">
-    <span class="liq-trust-item"><span>✓</span> No signup needed</span>
-    <span class="liq-trust-item"><span>✓</span> No data stored</span>
-    <span class="liq-trust-item"><span>✓</span> Works on any device</span>
-    <span class="liq-trust-item"><span>✓</span> Excel & CSV supported</span>
-    <span class="liq-trust-item"><span>✓</span> Instant results</span>
-  </div>
-
-</div>
-
-
-<!-- AD: BELOW HERO -->
-<!-- AdSense — Top Banner (728x90 or responsive) -->
-<!-- Uncomment after AdSense approval and replace ca-pub-XXXXXXXX -->
-<!--
-<div class="liq-ad-slot">
-  <div class="liq-ad-label">Advertisement</div>
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-       data-ad-slot="XXXXXXXXXX"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
--->
-<!-- MAIN -->
-<div class="main">
-
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="sb-head">All Calculators</div>
-    <span class="sb-section">Inventory</span>
-    <div class="ci active" onclick="showCalc('eoq',this)"><span class="ico">📦</span>EOQ Calculator<span class="bx">INV</span></div>
-    <div class="ci" onclick="showCalc('rop',this)"><span class="ico">🔄</span>Reorder Point<span class="bx">INV</span></div>
-    <div class="ci" onclick="showCalc('safety',this)"><span class="ico">🛡️</span>Safety Stock<span class="bx">INV</span></div>
-    <div class="ci" onclick="showCalc('carrying',this)"><span class="ico">💰</span>Carrying Cost<span class="bx">INV</span></div>
-    <div class="ci" onclick="showCalc('abc',this)"><span class="ico">🔡</span>ABC Analysis<span class="bx">INV</span></div>
-    <div class="ci" onclick="showCalc('moq',this)"><span class="ico">🔢</span>MOQ Optimizer<span class="bx">INV</span></div>
-    <div class="ci" onclick="showCalc('dsr',this)"><span class="ico">📉</span>Dead Stock Recovery<span class="bx">INV</span></div>
-    <span class="sb-section">KPIs</span>
-    <div class="ci" onclick="showCalc('turnover',this)"><span class="ico">📊</span>Inventory Turnover<span class="bx">KPI</span></div>
-    <div class="ci" onclick="showCalc('dio',this)"><span class="ico">📅</span>Days Inventory Out.<span class="bx">KPI</span></div>
-    <div class="ci" onclick="showCalc('otif',this)"><span class="ico">✅</span>OTIF Rate<span class="bx">KPI</span></div>
-    <div class="ci" onclick="showCalc('fillrate',this)"><span class="ico">📈</span>Fill Rate<span class="bx">KPI</span></div>
-    <span class="sb-section">Logistics</span>
-    <div class="ci" onclick="showCalc('freight',this)"><span class="ico">🚚</span>Freight Cost Est.<span class="bx">LOG</span></div>
-    <div class="ci" onclick="showCalc('landed',this)"><span class="ico">🌐</span>Landed Cost<span class="bx">LOG</span></div>
-    <div class="ci" onclick="showCalc('leadtime',this)"><span class="ico">⏱️</span>Lead Time Analyzer<span class="bx">LOG</span></div>
-    <span class="sb-section">Finance & ESG</span>
-    <div class="ci" onclick="showCalc('cogs',this)"><span class="ico">💸</span>COGS Calculator<span class="bx">FIN</span></div>
-    <div class="ci" onclick="showCalc('carbon',this)"><span class="ico">🌱</span>Carbon Footprint<span class="bx">ESG</span></div>
-    <div class="ci" onclick="showCalc('gst',this)"><span class="ico">🧾</span>GST Calculator<span class="bx">TAX</span></div>
-    <span class="sb-section">Warehouse & SCM</span>
-    <div class="ci" onclick="showCalc('warehouse',this)"><span class="ico">🏭</span>Warehouse Util.<span class="bx">WH</span></div>
-    <div class="ci" onclick="showCalc('pick',this)"><span class="ico">📦</span>Pick & Pack Cost<span class="bx">WH</span></div>
-    <div class="ci" onclick="showCalc('supplier',this)"><span class="ico">🏆</span>Supplier Scorecard<span class="bx">SCM</span></div>
-    <span class="sb-section" style="color:var(--accent2,var(--gold))">🔥 Viral & Shareable</span>
-    <div class="ci" onclick="showCalc('salary',this)"><span class="ico">💵</span>Salary Benchmark<span class="bx" style="background:rgba(240,107,53,.12);color:#ff6b35">HOT</span></div>
-    <div class="ci" onclick="showCalc('disrupt',this)"><span class="ico">🌍</span>Disruption Cost<span class="bx" style="background:rgba(240,107,53,.12);color:#ff6b35">HOT</span></div>
-    <div class="ci" onclick="showCalc('scale',this)"><span class="ico">🚢</span>Scale-It-Up<span class="bx" style="background:rgba(240,107,53,.12);color:#ff6b35">HOT</span></div>
-    <!-- Sidebar Ad -->
-    <div style="margin-top:.75rem">
-      <div class="ad-unit" style="min-height:120px;border-radius:8px">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="3333333333" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
-      </div>
-    </div>
-    <div style="border-top:1px solid var(--border);margin:.75rem 0 .4rem"></div>
-    <div class="ci ci-ai" onclick="showCalc('ai',this)"><span class="ico">🤖</span><strong style="color:var(--teal)">AI Demand Planner</strong><span class="bx">NEW</span></div>
-  </aside>
-
-  <!-- PANELS -->
-  <div id="panels">
-
-    <!-- 1. EOQ -->
-    <div class="cp active" id="p-eoq">
-      <div class="calc-card">
-        <div class="cc-head"><h2>📦 EOQ Calculator</h2><p>Economic Order Quantity — find the optimal order size that minimizes total inventory costs including ordering and holding costs.</p></div>
-        <div class="cc-body">
-          <div class="fg">
-            <div class="fgroup"><label>Annual Demand (units)</label><input type="number" id="eoq-d" placeholder="e.g. 10000"/></div>
-            <div class="fgroup"><label>Ordering Cost per Order (₹/$)</label><input type="number" id="eoq-s" placeholder="e.g. 500"/></div>
-            <div class="fgroup"><label>Holding Cost per Unit/Year (₹/$)</label><input type="number" id="eoq-h" placeholder="e.g. 20"/></div>
-            <div class="fgroup"><label>Unit Price (₹/$)</label><input type="number" id="eoq-p" placeholder="e.g. 100"/></div>
-          </div>
-          <button class="calc-btn" onclick="calcEOQ()">Calculate EOQ →</button>
-          <div class="rb" id="r-eoq">
-            <div class="rl">Optimal Order Quantity</div>
-            <div class="rv" id="eoq-res">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">Orders/Year</div><div class="rcv" id="eoq-ord">—</div></div>
-              <div class="rc"><div class="rcl">Order Cycle</div><div class="rcv" id="eoq-cyc">—</div></div>
-              <div class="rc"><div class="rcl">Total Annual Cost</div><div class="rcv" id="eoq-cost">—</div></div>
-            </div>
-            <div class="formula"><div class="ft">Formula</div><div class="fv">EOQ = √(2 × D × S / H)</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2. ROP -->
-    <div class="cp" id="p-rop">
-      <div class="calc-card">
-        <div class="cc-head"><h2>🔄 Reorder Point Calculator</h2><p>Determine exactly when to place a new order so you never run out of stock during lead time.</p></div>
-        <div class="cc-body">
-          <div class="fg">
-            <div class="fgroup"><label>Average Daily Demand (units)</label><input type="number" id="rop-d" placeholder="e.g. 50"/></div>
-            <div class="fgroup"><label>Lead Time (days)</label><input type="number" id="rop-lt" placeholder="e.g. 7"/></div>
-            <div class="fgroup"><label>Safety Stock (units)</label><input type="number" id="rop-ss" placeholder="e.g. 100"/></div>
-            <div class="fgroup"><label>Max Daily Demand (units)</label><input type="number" id="rop-md" placeholder="e.g. 70"/></div>
-          </div>
-          <button class="calc-btn" onclick="calcROP()">Calculate Reorder Point →</button>
-          <div class="rb" id="r-rop">
-            <div class="rl">Reorder Point</div><div class="rv" id="rop-res">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">During Lead Time</div><div class="rcv" id="rop-dlt">—</div></div>
-              <div class="rc"><div class="rcl">Safety Stock</div><div class="rcv" id="rop-ss2">—</div></div>
-              <div class="rc"><div class="rcl">Max Stock Needed</div><div class="rcv" id="rop-max">—</div></div>
-            </div>
-            <div class="formula"><div class="ft">Formula</div><div class="fv">ROP = (Avg Daily Demand × Lead Time) + Safety Stock</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3. SAFETY STOCK -->
-    <div class="cp" id="p-safety">
-      <div class="calc-card">
-        <div class="cc-head"><h2>🛡️ Safety Stock Calculator</h2><p>Calculate the buffer stock needed to prevent stockouts due to demand variability or supply delays.</p></div>
-        <div class="cc-body">
-          <div class="fg">
-            <div class="fgroup"><label>Max Daily Demand (units)</label><input type="number" id="ss-max" placeholder="e.g. 80"/></div>
-            <div class="fgroup"><label>Average Daily Demand (units)</label><input type="number" id="ss-avg" placeholder="e.g. 50"/></div>
-            <div class="fgroup"><label>Max Lead Time (days)</label><input type="number" id="ss-mlt" placeholder="e.g. 12"/></div>
-            <div class="fgroup"><label>Average Lead Time (days)</label><input type="number" id="ss-alt" placeholder="e.g. 7"/></div>
-            <div class="fgroup"><label>Service Level</label><select id="ss-sl"><option value="1.28">90%</option><option value="1.65" selected>95%</option><option value="1.96">97.5%</option><option value="2.33">99%</option></select></div>
-            <div class="fgroup"><label>Demand Std Deviation</label><input type="number" id="ss-std" placeholder="e.g. 10"/></div>
-          </div>
-          <button class="calc-btn" onclick="calcSafety()">Calculate Safety Stock →</button>
-          <div class="rb" id="r-safety">
-            <div class="rl">Safety Stock Required</div><div class="rv" id="ss-res">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">Basic Method</div><div class="rcv" id="ss-basic">—</div></div>
-              <div class="rc"><div class="rcl">Statistical</div><div class="rcv" id="ss-stat">—</div></div>
-              <div class="rc"><div class="rcl">Service Level</div><div class="rcv" id="ss-sl2">—</div></div>
-            </div>
-            <div class="formula"><div class="ft">Formula</div><div class="fv">SS = Z × σ_demand × √(Lead Time)</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 4. CARRYING COST -->
-    <div class="cp" id="p-carrying">
-      <div class="calc-card">
-        <div class="cc-head"><h2>💰 Inventory Carrying Cost Calculator</h2><p>Calculate the true annual cost of holding inventory — typically 20–30% of inventory value.</p></div>
-        <div class="cc-body">
-          <div class="fg">
-            <div class="fgroup"><label>Average Inventory Value (₹/$)</label><input type="number" id="cc-inv" placeholder="e.g. 1000000"/></div>
-            <div class="fgroup"><label>Storage / Warehouse Cost (%)</label><input type="number" id="cc-storage" placeholder="e.g. 5"/></div>
-            <div class="fgroup"><label>Insurance Cost (%)</label><input type="number" id="cc-ins" placeholder="e.g. 1"/></div>
-            <div class="fgroup"><label>Obsolescence / Shrinkage (%)</label><input type="number" id="cc-obs" placeholder="e.g. 3"/></div>
-            <div class="fgroup"><label>Capital / Opportunity Cost (%)</label><input type="number" id="cc-cap" placeholder="e.g. 10"/></div>
-            <div class="fgroup"><label>Handling / Labor (%)</label><input type="number" id="cc-labor" placeholder="e.g. 3"/></div>
-          </div>
-          <button class="calc-btn" onclick="calcCarrying()">Calculate Carrying Cost →</button>
-          <div class="rb" id="r-carrying">
-            <div class="rl">Annual Carrying Cost</div><div class="rv" id="cc-res">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">Carrying Rate %</div><div class="rcv" id="cc-rate">—</div></div>
-              <div class="rc"><div class="rcl">Monthly Cost</div><div class="rcv" id="cc-mon">—</div></div>
-              <div class="rc"><div class="rcl">Cost per Day</div><div class="rcv" id="cc-day">—</div></div>
-            </div>
-            <div class="formula"><div class="ft">Formula</div><div class="fv">Carrying Cost = Inventory Value × (Sum of all % rates)</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 5. ABC -->
-    <div class="cp" id="p-abc">
-      <div class="calc-card">
-        <div class="cc-head"><h2>🔡 ABC Inventory Analysis</h2><p>Classify SKUs into A (high value), B (medium), C (low) to focus resources where they matter most.</p></div>
-        <div class="cc-body">
-          <div class="fg">
-            <div class="fgroup"><label>Total Annual Revenue / COGS (₹/$)</label><input type="number" id="abc-tot" placeholder="e.g. 5000000"/></div>
-            <div class="fgroup"><label>This SKU Annual Value (₹/$)</label><input type="number" id="abc-sku" placeholder="e.g. 1200000"/></div>
-            <div class="fgroup"><label>A-Class Threshold (%)</label><input type="number" id="abc-a" value="70"/></div>
-            <div class="fgroup"><label>B-Class Threshold (%)</label><input type="number" id="abc-b" value="20"/></div>
-          </div>
-          <button class="calc-btn" onclick="calcABC()">Classify SKU →</button>
-          <div class="rb" id="r-abc">
-            <div class="rl">SKU Classification</div><div class="rv" id="abc-res">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">% of Revenue</div><div class="rcv" id="abc-pct">—</div></div>
-              <div class="rc"><div class="rcl">Review Frequency</div><div class="rcv" id="abc-freq">—</div></div>
-              <div class="rc"><div class="rcl">Stock Policy</div><div class="rcv" id="abc-pol">—</div></div>
-            </div>
-            <div class="formula"><div class="ft">ABC Rule</div><div class="fv">A = Top 70% value · B = Next 20% · C = Bottom 10%</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 6. MOQ -->
-    <div class="cp" id="p-moq">
-      <div class="calc-card">
-        <div class="cc-head"><h2>🔢 MOQ Optimizer</h2><p>Evaluate whether a supplier's Minimum Order Quantity makes financial sense for your business.</p></div>
-        <div class="cc-body">
-          <div class="fg">
-            <div class="fgroup"><label>Supplier MOQ (units)</label><input type="number" id="moq-qty" placeholder="e.g. 1000"/></div>
-            <div class="fgroup"><label>Unit Cost at MOQ (₹/$)</label><input type="number" id="moq-cost" placeholder="e.g. 80"/></div>
-            <div class="fgroup"><label>Your Monthly Demand (units)</label><input type="number" id="moq-dem" placeholder="e.g. 300"/></div>
-            <div class="fgroup"><label>Monthly Holding Cost per Unit (₹/$)</label><input type="number" id="moq-hold" placeholder="e.g. 2"/></div>
-            <div class="fgroup"><label>Selling Price per Unit (₹/$)</label><input type="number" id="moq-price" placeholder="e.g. 150"/></div>
-            <div class="fgroup"><label>Alternative Supplier Cost (₹/$)</label><input type="number" id="moq-alt" placeholder="e.g. 100"/></div>
-          </div>
-          <button class="calc-btn" onclick="calcMOQ()">Analyze MOQ →</button>
-          <div class="rb" id="r-moq">
-            <div class="rl">MOQ Viability</div><div class="rv" id="moq-res">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">Months of Stock</div><div class="rcv" id="moq-mon">—</div></div>
-              <div class="rc"><div class="rcl">Extra Holding Cost</div><div class="rcv" id="moq-ext">—</div></div>
-              <div class="rc"><div class="rcl">Savings vs Alt.</div><div class="rcv" id="moq-sav">—</div></div>
-            </div>
-            <div class="formula"><div class="ft">Break-even Check</div><div class="fv">Viable if: Unit Savings × MOQ &gt; Extra Holding Cost</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 7. DEAD STOCK -->
-    <div class="cp" id="p-dsr">
-      <div class="calc-card">
-        <div class="cc-head"><h2>📉 Dead Stock Recovery Calculator</h2><p>Quantify capital trapped in obsolete stock and model clearance, liquidation or bundling recovery options.</p></div>
-        <div class="cc-body">
-          <div class="fg">
-            <div class="fgroup"><label>Dead Stock Units</label><input type="number" id="ds-units" placeholder="e.g. 500"/></div>
-            <div class="fgroup"><label>Original Cost per Unit (₹/$)</label><input type="number" id="ds-cost" placeholder="e.g. 200"/></div>
-            <div class="fgroup"><label>Days in Stock (age)</label><input type="number" id="ds-age" placeholder="e.g. 180"/></div>
-            <div class="fgroup"><label>Monthly Holding Cost/Unit (₹/$)</label><input type="number" id="ds-hold" placeholder="e.g. 5"/></div>
-            <div class="fgroup"><label>Clearance Sale Price (₹/$)</label><input type="number" id="ds-sale" placeholder="e.g. 80"/></div>
-            <div class="fgroup"><label>Liquidation Offer (₹/$)</label><input type="number" id="ds-liq" placeholder="e.g. 40"/></div>
-          </div>
-          <button class="calc-btn" onclick="calcDSR()">Analyze Recovery Options →</button>
-          <div class="rb" id="r-dsr">
-            <div class="rl">Total Capital Trapped</div><div class="rv" id="ds-trapped">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">Holding Cost Paid</div><div class="rcv" id="ds-hc">—</div></div>
-              <div class="rc"><div class="rcl">Clearance Recovery</div><div class="rcv" id="ds-cl">—</div></div>
-              <div class="rc"><div class="rcl">Liquidation Net</div><div class="rcv" id="ds-ln">—</div></div>
-            </div>
-            <div class="fv" id="ds-adv" style="margin-top:.75rem;font-size:.82rem;color:var(--text2)"></div>
-            <div class="formula"><div class="ft">Formula</div><div class="fv">Loss = (Cost − Recovery) × Units + Holding Cost Paid</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 8. INVENTORY TURNOVER -->
-    <div class="cp" id="p-turnover">
-      <div class="calc-card">
-        <div class="cc-head"><h2>📊 Inventory Turnover Calculator</h2><p>Measure how efficiently your business sells and replaces inventory over a given period.</p></div>
-        <div class="cc-body">
-          <div class="fg">
-            <div class="fgroup"><label>COGS / Net Sales (₹/$)</label><input type="number" id="ito-cogs" placeholder="e.g. 1200000"/></div>
-            <div class="fgroup"><label>Average Inventory Value (₹/$)</label><input type="number" id="ito-inv" placeholder="e.g. 300000"/></div>
-            <div class="fgroup"><label>Beginning Inventory (₹/$)</label><input type="number" id="ito-beg" placeholder="e.g. 250000"/></div>
-            <div class="fgroup"><label>Ending Inventory (₹/$)</label><input type="number" id="ito-end" placeholder="e.g. 350000"/></div>
-          </div>
-          <button class="calc-btn" onclick="calcITO()">Calculate Turnover →</button>
-          <div class="rb" id="r-turnover">
-            <div class="rl">Inventory Turnover Ratio</div><div class="rv" id="ito-res">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">Days to Sell</div><div class="rcv" id="ito-days">—</div></div>
-              <div class="rc"><div class="rcl">Avg Inventory</div><div class="rcv" id="ito-avg">—</div></div>
-              <div class="rc"><div class="rcl">Performance</div><div class="rcv" id="ito-perf">—</div></div>
-            </div>
-            <div class="formula"><div class="ft">Formula</div><div class="fv">ITR = COGS / Average Inventory · DIO = 365 / ITR</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 9. DIO -->
-    <div class="cp" id="p-dio">
-      <div class="calc-card">
-        <div class="cc-head"><h2>📅 Days Inventory Outstanding (DIO)</h2><p>How many days on average does inventory sit before being sold? Lower is better.</p></div>
-        <div class="cc-body">
-          <div class="fg">
-            <div class="fgroup"><label>Average Inventory (₹/$)</label><input type="number" id="dio-inv" placeholder="e.g. 500000"/></div>
-            <div class="fgroup"><label>COGS for Period (₹/$)</label><input type="number" id="dio-cogs" placeholder="e.g. 2000000"/></div>
-            <div class="fgroup"><label>Number of Days in Period</label><select id="dio-per"><option value="365">365 (Annual)</option><option value="90">90 (Quarterly)</option><option value="30">30 (Monthly)</option></select></div>
-            <div class="fgroup"><label>Industry Benchmark (days)</label><input type="number" id="dio-bench" placeholder="e.g. 30"/></div>
-          </div>
-          <button class="calc-btn" onclick="calcDIO()">Calculate DIO →</button>
-          <div class="rb" id="r-dio">
-            <div class="rl">Days Inventory Outstanding</div><div class="rv" id="dio-res">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">vs Benchmark</div><div class="rcv" id="dio-vs">—</div></div>
-              <div class="rc"><div class="rcl">Turnover Rate</div><div class="rcv" id="dio-itor">—</div></div>
-              <div class="rc"><div class="rcl">Assessment</div><div class="rcv" id="dio-ass">—</div></div>
-            </div>
-            <div class="formula"><div class="ft">Formula</div><div class="fv">DIO = (Average Inventory / COGS) × Number of Days</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 10. OTIF -->
-    <div class="cp" id="p-otif">
-      <div class="calc-card">
-        <div class="cc-head"><h2>✅ OTIF Rate Calculator</h2><p>On Time In Full — the gold standard KPI for delivery performance in supply chain.</p></div>
-        <div class="cc-body">
-          <div class="fg">
-            <div class="fgroup"><label>Total Orders Shipped</label><input type="number" id="otif-tot" placeholder="e.g. 500"/></div>
-            <div class="fgroup"><label>Orders Delivered On Time</label><input type="number" id="otif-ot" placeholder="e.g. 460"/></div>
-            <div class="fgroup"><label>Orders Delivered In Full</label><input type="number" id="otif-if" placeholder="e.g. 480"/></div>
-            <div class="fgroup"><label>Orders Both OT & IF</label><input type="number" id="otif-both" placeholder="e.g. 445"/></div>
-          </div>
-          <button class="calc-btn" onclick="calcOTIF()">Calculate OTIF →</button>
-          <div class="rb" id="r-otif">
-            <div class="rl">OTIF Score</div><div class="rv" id="otif-res">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">On-Time Rate</div><div class="rcv" id="otif-otr">—</div></div>
-              <div class="rc"><div class="rcl">In-Full Rate</div><div class="rcv" id="otif-ifr">—</div></div>
-              <div class="rc"><div class="rcl">Industry Avg</div><div class="rcv">~95%</div></div>
-            </div>
-            <div class="formula"><div class="ft">Formula</div><div class="fv">OTIF % = (Orders OT & IF / Total Orders) × 100</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 11. FILL RATE -->
-    <div class="cp" id="p-fillrate">
-      <div class="calc-card">
-        <div class="cc-head"><h2>📈 Fill Rate Calculator</h2><p>Measure the percentage of customer demand satisfied immediately from available inventory.</p></div>
-        <div class="cc-body">
-          <div class="fg">
-            <div class="fgroup"><label>Units Ordered by Customers</label><input type="number" id="fr2-ord" placeholder="e.g. 1000"/></div>
-            <div class="fgroup"><label>Units Shipped / Fulfilled</label><input type="number" id="fr2-shp" placeholder="e.g. 950"/></div>
-            <div class="fgroup"><label>Number of Orders</label><input type="number" id="fr2-orders" placeholder="e.g. 200"/></div>
-            <div class="fgroup"><label>Orders Fulfilled Completely</label><input type="number" id="fr2-comp" placeholder="e.g. 185"/></div>
-          </div>
-          <button class="calc-btn" onclick="calcFillRate()">Calculate Fill Rate →</button>
-          <div class="rb" id="r-fillrate">
-            <div class="rl">Line Fill Rate</div><div class="rv" id="fr-res">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">Order Fill Rate</div><div class="rcv" id="fr-ofr">—</div></div>
-              <div class="rc"><div class="rcl">Units Unfilled</div><div class="rcv" id="fr-miss">—</div></div>
-              <div class="rc"><div class="rcl">Backorder Rate</div><div class="rcv" id="fr-bo">—</div></div>
-            </div>
-            <div class="formula"><div class="ft">Formula</div><div class="fv">Fill Rate = (Units Shipped / Units Ordered) × 100</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 12. FREIGHT -->
-    <div class="cp" id="p-freight">
-      <div class="calc-card">
-        <div class="cc-head"><h2>🚚 Freight Cost Estimator</h2><p>Estimate shipping costs based on weight, dimensions, distance and mode of transport.</p></div>
-        <div class="cc-body">
-          <div class="fg fg3">
-            <div class="fgroup"><label>Actual Weight (kg)</label><input type="number" id="fr-wt" placeholder="e.g. 15"/></div>
-            <div class="fgroup"><label>Length (cm)</label><input type="number" id="fr-l" placeholder="e.g. 50"/></div>
-            <div class="fgroup"><label>Width (cm)</label><input type="number" id="fr-w" placeholder="e.g. 40"/></div>
-            <div class="fgroup"><label>Height (cm)</label><input type="number" id="fr-h" placeholder="e.g. 30"/></div>
-            <div class="fgroup"><label>Rate per kg (₹/$)</label><input type="number" id="fr-rate" placeholder="e.g. 25"/></div>
-            <div class="fgroup"><label>Mode</label><select id="fr-mode"><option value="5000">Air (÷5000)</option><option value="6000" selected>Surface (÷6000)</option><option value="4000">Express (÷4000)</option></select></div>
-          </div>
-          <button class="calc-btn" onclick="calcFreight()">Calculate Freight Cost →</button>
-          <div class="rb" id="r-freight">
-            <div class="rl">Chargeable Weight</div><div class="rv" id="frt-res">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">Volumetric Weight</div><div class="rcv" id="frt-vol">—</div></div>
-              <div class="rc"><div class="rcl">Actual Weight</div><div class="rcv" id="frt-act">—</div></div>
-              <div class="rc"><div class="rcl">Estimated Cost</div><div class="rcv" id="frt-cost">—</div></div>
-            </div>
-            <div class="formula"><div class="ft">Formula</div><div class="fv">Vol. Weight = (L×W×H) / Divisor · Chargeable = MAX(Actual, Vol.)</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 13. LANDED COST -->
-    <div class="cp" id="p-landed">
-      <div class="calc-card">
-        <div class="cc-head"><h2>🌐 Total Landed Cost Calculator</h2><p>Full cost of a shipment including product, freight, customs, insurance, handling and taxes.</p></div>
-        <div class="cc-body">
-          <div class="fg">
-            <div class="fgroup"><label>Product Cost (₹/$)</label><input type="number" id="lc-prod" placeholder="e.g. 50000"/></div>
-            <div class="fgroup"><label>Freight / Shipping (₹/$)</label><input type="number" id="lc-fr" placeholder="e.g. 5000"/></div>
-            <div class="fgroup"><label>Customs / Import Duty (%)</label><input type="number" id="lc-duty" placeholder="e.g. 10"/></div>
-            <div class="fgroup"><label>Insurance (%)</label><input type="number" id="lc-ins" placeholder="e.g. 0.5"/></div>
-            <div class="fgroup"><label>Handling / Other Fees (₹/$)</label><input type="number" id="lc-hand" placeholder="e.g. 1000"/></div>
-            <div class="fgroup"><label>GST / VAT (%)</label><input type="number" id="lc-tax" placeholder="e.g. 18"/></div>
-          </div>
-          <button class="calc-btn" onclick="calcLanded()">Calculate Landed Cost →</button>
-          <div class="rb" id="r-landed">
-            <div class="rl">Total Landed Cost</div><div class="rv" id="lc-res">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">Duty Amount</div><div class="rcv" id="lc-damt">—</div></div>
-              <div class="rc"><div class="rcl">Tax Amount</div><div class="rcv" id="lc-tamt">—</div></div>
-              <div class="rc"><div class="rcl">Cost Markup %</div><div class="rcv" id="lc-mkup">—</div></div>
-            </div>
-            <div class="formula"><div class="ft">Formula</div><div class="fv">Landed Cost = Product + Freight + Duty + Insurance + Handling + Tax</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 14. LEAD TIME -->
-    <div class="cp" id="p-leadtime">
-      <div class="calc-card">
-        <div class="cc-head"><h2>⏱️ Lead Time Analyzer</h2><p>Break down total lead time into components and identify the bottleneck stage in your supply chain.</p></div>
-        <div class="cc-body">
-          <div class="fg fg3">
-            <div class="fgroup"><label>Supplier Processing (days)</label><input type="number" id="lt-sup" placeholder="e.g. 3"/></div>
-            <div class="fgroup"><label>Transit / Shipping (days)</label><input type="number" id="lt-tran" placeholder="e.g. 7"/></div>
-            <div class="fgroup"><label>Port / Customs (days)</label><input type="number" id="lt-cust" placeholder="e.g. 2"/></div>
-            <div class="fgroup"><label>Receiving / Unloading (days)</label><input type="number" id="lt-recv" placeholder="e.g. 1"/></div>
-            <div class="fgroup"><label>Inspection / QC (days)</label><input type="number" id="lt-qc" placeholder="e.g. 1"/></div>
-            <div class="fgroup"><label>Putaway / Stocking (days)</label><input type="number" id="lt-put" placeholder="e.g. 0.5"/></div>
-          </div>
-          <button class="calc-btn" onclick="calcLT()">Analyze Lead Time →</button>
-          <div class="rb" id="r-leadtime">
-            <div class="rl">Total Lead Time</div><div class="rv" id="lt-res">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">Bottleneck Stage</div><div class="rcv" id="lt-bot">—</div></div>
-              <div class="rc"><div class="rcl">Supply-Side Days</div><div class="rcv" id="lt-sup2">—</div></div>
-              <div class="rc"><div class="rcl">Internal Days</div><div class="rcv" id="lt-int">—</div></div>
-            </div>
-            <div class="formula"><div class="ft">Formula</div><div class="fv">Total LT = Supplier + Transit + Customs + Receiving + QC + Putaway</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 15. COGS -->
-    <div class="cp" id="p-cogs">
-      <div class="calc-card">
-        <div class="cc-head"><h2>💸 COGS + Gross Margin Calculator</h2><p>Calculate Cost of Goods Sold — the backbone of gross margin, inventory valuation and profitability.</p></div>
-        <div class="cc-body">
-          <div class="fg">
-            <div class="fgroup"><label>Beginning Inventory (₹/$)</label><input type="number" id="cogs-beg" placeholder="e.g. 200000"/></div>
-            <div class="fgroup"><label>Purchases During Period (₹/$)</label><input type="number" id="cogs-pur" placeholder="e.g. 800000"/></div>
-            <div class="fgroup"><label>Ending Inventory (₹/$)</label><input type="number" id="cogs-end" placeholder="e.g. 150000"/></div>
-            <div class="fgroup"><label>Net Revenue / Sales (₹/$)</label><input type="number" id="cogs-rev" placeholder="e.g. 1200000"/></div>
-          </div>
-          <button class="calc-btn" onclick="calcCOGS()">Calculate COGS →</button>
-          <div class="rb" id="r-cogs">
-            <div class="rl">Cost of Goods Sold</div><div class="rv" id="cogs-res">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">Gross Profit</div><div class="rcv" id="cogs-gp">—</div></div>
-              <div class="rc"><div class="rcl">Gross Margin %</div><div class="rcv" id="cogs-gm">—</div></div>
-              <div class="rc"><div class="rcl">COGS % of Sales</div><div class="rcv" id="cogs-pct">—</div></div>
-            </div>
-            <div class="formula"><div class="ft">Formula</div><div class="fv">COGS = Beginning Inventory + Purchases − Ending Inventory</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 16. CARBON -->
-    <div class="cp" id="p-carbon">
-      <div class="calc-card">
-        <div class="cc-head"><h2>🌱 Logistics Carbon Footprint Calculator</h2><p>Estimate CO₂ emissions from shipments across different transport modes. Essential for Scope 3 ESG reporting.</p></div>
-        <div class="cc-body">
-          <div class="fg">
-            <div class="fgroup"><label>Cargo Weight (tonnes)</label><input type="number" id="co2-wt" placeholder="e.g. 5"/></div>
-            <div class="fgroup"><label>Distance (km)</label><input type="number" id="co2-dist" placeholder="e.g. 1000"/></div>
-            <div class="fgroup"><label>Transport Mode</label><select id="co2-mode"><option value="0.062">Road — HGV Truck</option><option value="0.028">Rail — Freight</option><option value="0.016">Sea — Container Ship</option><option value="0.602">Air Freight</option><option value="0.040">Road — LCV Van</option></select></div>
-            <div class="fgroup"><label>Number of Shipments</label><input type="number" id="co2-trips" placeholder="e.g. 12" value="1"/></div>
-          </div>
-          <button class="calc-btn" onclick="calcCarbon()">Calculate CO₂ Emissions →</button>
-          <div class="rb" id="r-carbon">
-            <div class="rl">Total CO₂ Emissions</div><div class="rv" id="co2-res">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">Per Shipment</div><div class="rcv" id="co2-per">—</div></div>
-              <div class="rc"><div class="rcl">Per Tonne-km</div><div class="rcv" id="co2-tkm">—</div></div>
-              <div class="rc"><div class="rcl">Trees to Offset</div><div class="rcv" id="co2-trees">—</div></div>
-            </div>
-            <div class="formula"><div class="ft">Formula (GHG Protocol)</div><div class="fv">CO₂ (kg) = Weight (tonnes) × Distance (km) × Emission Factor</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 17. GST -->
-    <div class="cp" id="p-gst">
-      <div class="calc-card">
-        <div class="cc-head"><h2>🧾 GST Calculator (India)</h2><p>Calculate GST inclusive/exclusive amounts for B2B invoicing and supply chain cost accounting.</p></div>
-        <div class="cc-body">
-          <div class="fg">
-            <div class="fgroup"><label>Amount (₹)</label><input type="number" id="gst-amt" placeholder="e.g. 10000"/></div>
-            <div class="fgroup"><label>GST Rate</label><select id="gst-rate"><option value="5">5%</option><option value="12">12%</option><option value="18" selected>18%</option><option value="28">28%</option></select></div>
-            <div class="fgroup"><label>Calculation Type</label><select id="gst-type"><option value="excl">Exclusive (Add GST)</option><option value="incl">Inclusive (Extract GST)</option></select></div>
-            <div class="fgroup"><label>Transaction Type</label><select id="gst-tx"><option value="intra">Intra-State (CGST+SGST)</option><option value="inter">Inter-State (IGST)</option></select></div>
-          </div>
-          <button class="calc-btn" onclick="calcGST()">Calculate GST →</button>
-          <div class="rb" id="r-gst">
-            <div class="rl">Total Amount Payable</div><div class="rv" id="gst-res">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">Base Amount</div><div class="rcv" id="gst-base">—</div></div>
-              <div class="rc"><div class="rcl">CGST / IGST</div><div class="rcv" id="gst-c">—</div></div>
-              <div class="rc"><div class="rcl">SGST</div><div class="rcv" id="gst-s">—</div></div>
-            </div>
-            <div class="formula"><div class="ft">Formula</div><div class="fv">Intra: CGST = SGST = Rate/2 · Inter: Full rate as IGST</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 18. WAREHOUSE -->
-    <div class="cp" id="p-warehouse">
-      <div class="calc-card">
-        <div class="cc-head"><h2>🏭 Warehouse Utilization Calculator</h2><p>Measure how efficiently your warehouse space is being used and identify optimization opportunities.</p></div>
-        <div class="cc-body">
-          <div class="fg">
-            <div class="fgroup"><label>Total Warehouse Area (sq ft)</label><input type="number" id="wh-tot" placeholder="e.g. 50000"/></div>
-            <div class="fgroup"><label>Used Storage Area</label><input type="number" id="wh-used" placeholder="e.g. 35000"/></div>
-            <div class="fgroup"><label>Total Pallet Capacity</label><input type="number" id="wh-cap" placeholder="e.g. 2000"/></div>
-            <div class="fgroup"><label>Pallets Currently Stored</label><input type="number" id="wh-stored" placeholder="e.g. 1500"/></div>
-            <div class="fgroup"><label>Warehouse Height (ft)</label><input type="number" id="wh-ht" placeholder="e.g. 30"/></div>
-            <div class="fgroup"><label>Usable Height (ft)</label><input type="number" id="wh-uht" placeholder="e.g. 25"/></div>
-          </div>
-          <button class="calc-btn" onclick="calcWH()">Calculate Utilization →</button>
-          <div class="rb" id="r-warehouse">
-            <div class="rl">Space Utilization Rate</div><div class="rv" id="wh-res">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">Pallet Utilization</div><div class="rcv" id="wh-pal">—</div></div>
-              <div class="rc"><div class="rcl">Cubic Utilization</div><div class="rcv" id="wh-cub">—</div></div>
-              <div class="rc"><div class="rcl">Status</div><div class="rcv" id="wh-stat">—</div></div>
-            </div>
-            <div class="formula"><div class="ft">Formula</div><div class="fv">Space Util. = (Used Area / Total Area) × 100 · Optimal: 80–85%</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 19. PICK & PACK -->
-    <div class="cp" id="p-pick">
-      <div class="calc-card">
-        <div class="cc-head"><h2>📦 Pick & Pack Cost Calculator</h2><p>Calculate the true cost of fulfilling each order — labor, packaging, error rates and overhead.</p></div>
-        <div class="cc-body">
-          <div class="fg fg3">
-            <div class="fgroup"><label>Orders Picked per Day</label><input type="number" id="pp-ord" placeholder="e.g. 500"/></div>
-            <div class="fgroup"><label>Workers on Floor</label><input type="number" id="pp-wrk" placeholder="e.g. 10"/></div>
-            <div class="fgroup"><label>Hourly Wage per Worker (₹/$)</label><input type="number" id="pp-wage" placeholder="e.g. 150"/></div>
-            <div class="fgroup"><label>Shift Hours per Day</label><input type="number" id="pp-hrs" placeholder="e.g. 8" value="8"/></div>
-            <div class="fgroup"><label>Packaging Cost per Order (₹/$)</label><input type="number" id="pp-pack" placeholder="e.g. 25"/></div>
-            <div class="fgroup"><label>Overhead Rate (%)</label><input type="number" id="pp-oh" placeholder="e.g. 20" value="20"/></div>
-          </div>
-          <button class="calc-btn" onclick="calcPP()">Calculate Cost →</button>
-          <div class="rb" id="r-pick">
-            <div class="rl">Cost per Order</div><div class="rv" id="pp-res">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">Daily Labor Cost</div><div class="rcv" id="pp-lab">—</div></div>
-              <div class="rc"><div class="rcl">Daily Pack Cost</div><div class="rcv" id="pp-pkc">—</div></div>
-              <div class="rc"><div class="rcl">Monthly Total</div><div class="rcv" id="pp-mon">—</div></div>
-            </div>
-            <div class="formula"><div class="ft">Formula</div><div class="fv">Cost/Order = (Labor + Packaging + Overhead) / Orders per Day</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 20. SUPPLIER SCORECARD -->
-    <div class="cp" id="p-supplier">
-      <div class="calc-card">
-        <div class="cc-head"><h2>🏆 Supplier Performance Scorecard</h2><p>Score your supplier across quality, delivery, cost, responsiveness and compliance for an overall vendor rating.</p></div>
-        <div class="cc-body">
-          <div class="fg">
-            <div class="fgroup"><label>Quality Score (0–100)</label><input type="number" id="sup-q" placeholder="e.g. 90" min="0" max="100"/></div>
-            <div class="fgroup"><label>On-Time Delivery Score (0–100)</label><input type="number" id="sup-d" placeholder="e.g. 85" min="0" max="100"/></div>
-            <div class="fgroup"><label>Pricing / Cost Score (0–100)</label><input type="number" id="sup-c" placeholder="e.g. 78" min="0" max="100"/></div>
-            <div class="fgroup"><label>Responsiveness Score (0–100)</label><input type="number" id="sup-r" placeholder="e.g. 88" min="0" max="100"/></div>
-            <div class="fgroup"><label>Compliance / Docs Score (0–100)</label><input type="number" id="sup-co" placeholder="e.g. 95" min="0" max="100"/></div>
-            <div class="fgroup"><label>Innovation / Support (0–100)</label><input type="number" id="sup-i" placeholder="e.g. 70" min="0" max="100"/></div>
-          </div>
-          <button class="calc-btn" onclick="calcSupplier()">Generate Scorecard →</button>
-          <div class="rb" id="r-supplier">
-            <div class="rl">Overall Supplier Score</div><div class="rv" id="sup-res">—</div>
-            <div class="rg">
-              <div class="rc"><div class="rcl">Grade</div><div class="rcv" id="sup-grade">—</div></div>
-              <div class="rc"><div class="rcl">Weakest Area</div><div class="rcv" id="sup-weak">—</div></div>
-              <div class="rc"><div class="rcl">Recommendation</div><div class="rcv" id="sup-rec">—</div></div>
-            </div>
-            <div class="formula"><div class="ft">Weighted Score</div><div class="fv">Quality 25% · Delivery 25% · Cost 20% · Response 15% · Compliance 10% · Innovation 5%</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-<div class="liq-testimonials">
-  <h2 class="liq-testi-title">Trusted by Supply Chain Professionals</h2>
-  <div class="liq-testi-grid">
-
-    <div class="liq-testi-card">
-      <div class="liq-testi-stars">★★★★★</div>
-      <p class="liq-testi-text">"Finally a free tool that actually works. The AI Demand Planner saved us from a major stockout on our top-selling SKU. Uploaded our Tally export and got results in 30 seconds."</p>
-      <div class="liq-testi-author">Rahul M.</div>
-      <div class="liq-testi-role">D2C Brand Owner · Mumbai</div>
-    </div>
-
-    <div class="liq-testi-card">
-      <div class="liq-testi-stars">★★★★★</div>
-      <p class="liq-testi-text">"We use the EOQ, Safety Stock and Reorder Point calculators daily for our Amazon FBA business. Replaced three different paid tools with LogicstIQ. Incredible value."</p>
-      <div class="liq-testi-author">Priya S.</div>
-      <div class="liq-testi-role">Inventory Manager · Flipkart & Amazon Seller</div>
-    </div>
-
-    <div class="liq-testi-card">
-      <div class="liq-testi-stars">★★★★★</div>
-      <p class="liq-testi-text">"The AI Demand Planner supports our SAP export directly. No conversion needed. Results were accurate and the reorder plan matched what our planners would have done manually."</p>
-      <div class="liq-testi-author">Vikram T.</div>
-      <span class="liq-testi-badge">Tally User</span>
-          <div class="liq-testi-role">Supply Chain Manager · FMCG Manufacturer</div>
-    </div>
-
-    <div class="liq-testi-card">
-      <div class="liq-testi-stars">★★★★★</div>
-      <p class="liq-testi-text">"As a Meesho seller with 200+ SKUs, I was always guessing reorder quantities. LogicstIQ's demand planner changed that completely. Simple, fast, and 100% free."</p>
-      <div class="liq-testi-author">Anjali R.</div>
-      <div class="liq-testi-role">Marketplace Seller · Meesho & Myntra</div>
-    </div>
-
-    <div class="liq-testi-card">
-      <div class="liq-testi-stars">★★★★★</div>
-      <p class="liq-testi-text">"The Carbon Footprint and Landed Cost calculators are exactly what we needed for our import business. Bookmarked and shared with our entire procurement team."</p>
-      <div class="liq-testi-author">Amit K.</div>
-      <div class="liq-testi-role">Procurement Head · Import-Export Business</div>
-    </div>
-
-    <div class="liq-testi-card">
-      <div class="liq-testi-stars">★★★★★</div>
-      <p class="liq-testi-text">"Used the ABC Analysis and Slow Mover tools to identify ₹18 lakh of dead stock in our warehouse. Cleared it within 6 weeks. This tool pays for itself instantly."</p>
-      <div class="liq-testi-author">Deepak N.</div>
-      <div class="liq-testi-role">Operations Manager · B2B Distributor · Delhi</div>
-    </div>
-
-  </div>
-</div>
-    <!-- AD: IN-CONTENT -->
-    <div style="margin:1.5rem 0">
-      <div class="ad-unit ad-rect">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="4444444444" data-ad-format="rectangle" data-full-width-responsive="false"></ins>
-        <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
-      </div>
-    </div>
-
-    <!-- AI DEMAND PLANNER -->
-    <div class="cp" id="p-ai">
-      <div class="calc-card">
-        <div class="cc-head" style="background:linear-gradient(135deg,rgba(0,212,170,.07) 0%,transparent 60%)">
-          <div class="ai-badge-big">AI-POWERED · GEMINI ANALYSIS</div>
-          <h2>🤖 AI Demand Planner & Forecaster</h2>
-          <p>Upload your inventory or sales CSV. Our AI generates a full demand forecast, reorder plan, slow-mover alerts and 90-day demand plan — ready to download instantly.</p>
-        </div>
-        <div class="cc-body">
-          <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
-            <div class="uz-icon">📂</div>
-            <div class="uz-title">Drop your inventory file here</div>
-            <div class="uz-sub">or click to browse · CSV, XLSX, XLS, TXT supported · Max 5MB</div>
-            <div class="uz-types"><span class="uz-type">.CSV</span><span class="uz-type">.XLSX</span><span class="uz-type">.XLS</span><span class="uz-type">.TXT</span></div>
-          </div>
-          <input type="file" id="file-input" accept=".csv,.xlsx,.xls,.txt" onchange="handleFileSelect(event)"/>
-          <div class="file-sel" id="file-sel">
-            <div style="font-size:1.4rem">📄</div>
-            <div style="flex:1">
-              <div class="fi-name" id="fi-name">—</div>
-              <div class="fi-size" id="fi-size">—</div>
-            </div>
-            <button class="fi-rm" onclick="removeFile()">✕</button>
-          </div>
-          <div class="sample-note">
-            <strong>Expected columns:</strong> SKU/Product, Date/Month, Sales/Units Sold/Demand, Stock/Inventory, Price (optional), Category (optional). AI maps columns automatically.<br/>
-            <strong>No file?</strong> <span style="color:var(--teal);cursor:pointer" onclick="loadSample()">→ Load sample data to demo</span>
-          </div>
-          <div class="col-preview" id="col-preview">
-            <div class="cp-title">📋 Detected Columns</div>
-            <div class="cp-grid" id="cp-grid"></div>
-          </div>
-          <div class="fc-grid">
-            <div class="fgroup"><label>Forecast Horizon</label><select id="fc-hor"><option value="30">30 Days</option><option value="60">60 Days</option><option value="90" selected>90 Days</option><option value="180">6 Months</option></select></div>
-            <div class="fgroup"><label>Method</label><select id="fc-meth"><option value="auto" selected>Auto (AI selects best)</option><option value="moving_avg">Moving Average</option><option value="exponential">Exponential Smoothing</option><option value="trend">Trend + Seasonality</option></select></div>
-            <div class="fgroup"><label>Currency</label><select id="fc-cur"><option value="INR" selected>₹ India</option><option value="USD">$ USA</option><option value="GBP">£ UK</option><option value="EUR">€ EU</option><option value="CAD">$ Canada</option></select></div>
-          </div>
-          <button class="ai-btn" id="ai-btn" onclick="runAI()" disabled><span>✦</span> Generate AI Demand Forecast</button>
-          <div class="ai-loading" id="ai-loading">
-            <div class="loader-bar"><div class="loader-fill" id="lf"></div></div>
-            <div class="l-step"><div class="l-dot"></div>Parsing inventory file and detecting columns…</div>
-            <div class="l-step"><div class="l-dot"></div>Running demand pattern analysis & trend detection…</div>
-            <div class="l-step"><div class="l-dot"></div>Generating SKU-level forecast…</div>
-            <div class="l-step"><div class="l-dot"></div>Compiling reorder alerts & slow-mover report…</div>
-          </div>
-          <div class="fc-results" id="fc-results">
-            <div class="sum-grid" id="sum-grid"></div>
-            <div class="ftabs">
-              <button class="ftab active" onclick="swTab('demand',this)">📈 Demand Forecast</button>
-              <button class="ftab" onclick="swTab('reorder',this)">🔄 Reorder Plan</button>
-              <button class="ftab" onclick="swTab('slow',this)">🐢 Slow Movers</button>
-              <button class="ftab" onclick="swTab('insights',this)">💡 AI Insights</button>
-            </div>
-            <div class="ftp active" id="ft-demand">
-              <div class="ai-table-wrap"><table class="ai-table"><thead><tr><th>SKU</th><th>Product</th><th>Avg/Month</th><th>Next 30d</th><th>Next 60d</th><th>Next 90d</th><th>Trend</th><th>Confidence</th></tr></thead><tbody id="tb-demand"></tbody></table></div>
-            </div>
-            <div class="ftp" id="ft-reorder">
-              <div class="ai-table-wrap"><table class="ai-table"><thead><tr><th>SKU</th><th>Product</th><th>Current Stock</th><th>Reorder Point</th><th>EOQ</th><th>Reorder By</th><th>Lead Time</th><th>Priority</th></tr></thead><tbody id="tb-reorder"></tbody></table></div>
-            </div>
-            <div class="ftp" id="ft-slow">
-              <div class="ai-table-wrap"><table class="ai-table"><thead><tr><th>SKU</th><th>Product</th><th>Days in Stock</th><th>Monthly Velocity</th><th>Value</th><th>Action</th><th>Risk</th></tr></thead><tbody id="tb-slow"></tbody></table></div>
-            </div>
-            <div class="ftp" id="ft-insights">
-              <div class="insights-box"><div class="ib-title">✦ AI Analysis & Recommendations</div><div id="ins-list"></div></div>
-            </div>
-            <div class="dl-row">
-              <button class="dl-btn primary" onclick="dlCSV('demand')">⬇ Demand Forecast CSV</button>
-              <button class="dl-btn" onclick="dlCSV('reorder')">⬇ Reorder Plan CSV</button>
-              <button class="dl-btn" onclick="dlCSV('slow')">⬇ Slow Movers CSV</button>
-              <button class="dl-btn" onclick="dlCSV('full')">⬇ Full Report CSV</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- end panels -->
-</div><!-- end main -->
-
-<!-- AD: FOOTER LEADERBOARD -->
-<div class="ad-wrap">
-  <div class="ad-unit ad-leaderboard">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="5555555555" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
-  </div>
-</div>
-<!-- NOTE: The AI Demand Planner section (from STEP1_demand_planner_section.html)
-     already contains the disclaimer bar below the Generate button.
-     No additional action needed here. -->
-<!-- AdSense — Mid-page slot -->
-<!--
-<div class="liq-ad-slot">
-  <div class="liq-ad-label">Advertisement</div>
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-       data-ad-slot="XXXXXXXXXX"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
--->
-
-
-<!-- DATA SAFETY & TRUST SECTION -->
-<div class="liq-safety-section">
-  <div class="liq-safety-icon-col">
-    <div class="liq-safety-shield">🔒</div>
-  </div>
-  <div class="liq-safety-content">
-    <div class="liq-safety-tag">✓ Privacy First</div>
-    <div class="liq-safety-title">Your Inventory Data is 100% Safe</div>
-    <p class="liq-safety-sub">
-      You're uploading real business data — SKUs, sales, stock levels, prices.
-      We take that seriously. Here's exactly what happens to your data and what doesn't happen.
-    </p>
-    <div class="liq-safety-cards">
-      <div class="liq-safety-card">
-        <div class="liq-safety-card-ico">🚫</div>
-        <div>
-          <div class="liq-safety-card-title">Never Stored</div>
-          <div class="liq-safety-card-text">Your file is processed and immediately discarded. Zero data is saved to any database.</div>
-        </div>
-      </div>
-      <div class="liq-safety-card">
-        <div class="liq-safety-card-ico">🔐</div>
-        <div>
-          <div class="liq-safety-card-title">No Login Required</div>
-          <div class="liq-safety-card-text">No account, no email, no identity. Nothing links your data to you.</div>
-        </div>
-      </div>
-      <div class="liq-safety-card">
-        <div class="liq-safety-card-ico">🚷</div>
-        <div>
-          <div class="liq-safety-card-title">Never Shared</div>
-          <div class="liq-safety-card-text">Your inventory data is never sold, shared, or sent to any third party. Ever.</div>
-        </div>
-      </div>
-      <div class="liq-safety-card">
-        <div class="liq-safety-card-ico">⚡</div>
-        <div>
-          <div class="liq-safety-card-title">Session Only</div>
-          <div class="liq-safety-card-text">Data only exists during your active session. Close the tab — it's gone permanently.</div>
-        </div>
-      </div>
-      <div class="liq-safety-card">
-        <div class="liq-safety-card-ico">🌐</div>
-        <div>
-          <div class="liq-safety-card-title">HTTPS Encrypted</div>
-          <div class="liq-safety-card-text">All data transfer is encrypted end-to-end via HTTPS/TLS. Bank-grade security.</div>
-        </div>
-      </div>
-      <div class="liq-safety-card">
-        <div class="liq-safety-card-ico">🤖</div>
-        <div>
-          <div class="liq-safety-card-title">AI Analysis Only</div>
-          <div class="liq-safety-card-text">Gemini AI receives only the summary numbers needed for insights — not your raw file.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SEO RESOURCE SECTION — BLOG ARTICLES -->
-<div class="liq-blog-section">
-  <div class="liq-blog-title">📚 Free Supply Chain Resources</div>
-  <p class="liq-blog-sub">Practical guides, formulas, and tutorials for supply chain professionals and marketplace sellers.</p>
-  <div class="liq-blog-grid">
-
-    <div class="liq-blog-card">
-      <div class="liq-blog-cat">📦 Inventory</div>
-      <div class="liq-blog-card-title">EOQ Formula — Complete Guide with Calculator & Examples</div>
-      <div class="liq-blog-card-desc">Understand the Economic Order Quantity formula from scratch. Includes worked examples for Amazon FBA, D2C brands, and offline retail.</div>
-      <div class="liq-blog-meta">📖 8 min read · Free Calculator included</div>
-      <div class="liq-blog-read">Read Guide →</div>
-    </div>
-
-    <div class="liq-blog-card">
-      <div class="liq-blog-cat">📈 Forecasting</div>
-      <div class="liq-blog-card-title">Demand Planning for Amazon & Flipkart Sellers — Step by Step</div>
-      <div class="liq-blog-card-desc">How to forecast demand accurately for marketplace sellers in India. Covers seasonality, events like Diwali & Big Billion Days, and avoiding stockouts.</div>
-      <div class="liq-blog-meta">📖 10 min read · AI Planner tutorial</div>
-      <div class="liq-blog-read">Read Guide →</div>
-    </div>
-
-    <div class="liq-blog-card">
-      <div class="liq-blog-cat">🛡️ Safety Stock</div>
-      <div class="liq-blog-card-title">Safety Stock Formula — How to Calculate Buffer Stock Free</div>
-      <div class="liq-blog-card-desc">Never run out of stock again. Learn the safety stock formula, when to use it, and how to calculate it for any lead time and service level.</div>
-      <div class="liq-blog-meta">📖 7 min read · Free Calculator included</div>
-      <div class="liq-blog-read">Read Guide →</div>
-    </div>
-
-    <div class="liq-blog-card">
-      <div class="liq-blog-cat">⚡ Quick Commerce</div>
-      <div class="liq-blog-card-title">Dark Store Inventory Planning for Blinkit, Zepto & Swiggy</div>
-      <div class="liq-blog-card-desc">Quick commerce has unique inventory challenges — 10-minute delivery windows, high SKU turnover, city-level demand variation. Here's how to plan for it.</div>
-      <div class="liq-blog-meta">📖 9 min read · Q-Commerce specific</div>
-      <div class="liq-blog-read">Read Guide →</div>
-    </div>
-
-    <div class="liq-blog-card">
-      <div class="liq-blog-cat">🏭 ERP</div>
-      <div class="liq-blog-card-title">How to Export Inventory Data from Tally, SAP & NetSuite</div>
-      <div class="liq-blog-card-desc">Step-by-step export guides for 15+ ERP systems. Learn which reports to run, what columns to include, and how to use them in LogicstIQ in under 2 minutes.</div>
-      <div class="liq-blog-meta">📖 12 min read · 15 ERP guides</div>
-      <div class="liq-blog-read">Read Guide →</div>
-    </div>
-
-    <div class="liq-blog-card">
-      <div class="liq-blog-cat">💀 Dead Stock</div>
-      <div class="liq-blog-card-title">Dead Stock Recovery — How to Identify & Clear Slow Inventory</div>
-      <div class="liq-blog-card-desc">Dead stock is cash trapped in your warehouse. Learn how to identify it using ABC analysis, calculate the cost, and build a recovery plan that actually works.</div>
-      <div class="liq-blog-meta">📖 8 min read · Free ABC Calculator</div>
-      <div class="liq-blog-read">Read Guide →</div>
-    </div>
-
-
-    <div class="liq-blog-card">
-      <div class="liq-blog-cat">🧾 GST & Tax</div>
-      <div class="liq-blog-card-title">GST on Freight & Logistics — Complete India Tax Guide</div>
-      <div class="liq-blog-card-desc">GST rates on transportation, freight, and logistics services in India. Covers ITC eligibility, e-way bill rules, and free GST calculator for supply chain costs.</div>
-      <div class="liq-blog-meta">📖 9 min read · Free GST Calculator</div>
-      <div class="liq-blog-read"><a href="/blog/gst-calculator-logistics.html" style="color:var(--b600);text-decoration:none;font-weight:800">Read Guide →</a></div>
-    </div>
-  </div>
-</div>
-
-<!-- FAQ -->
-<div class="liq-faq">
-  <h2 class="liq-faq-title">Frequently Asked Questions</h2>
-
-  <div class="liq-faq-item">
-    <div class="liq-faq-q" onclick="liqFaq(this)">Is LogicstIQ completely free? <span class="liq-faq-arrow">▼</span></div>
-    <div class="liq-faq-a">Yes — all 20 calculators and the full AI Demand Planner are 100% free. No login, no credit card, no usage limits, no catch. Free forever.</div>
-  </div>
-
-  <div class="liq-faq-item">
-    <div class="liq-faq-q" onclick="liqFaq(this)">Which ERPs and marketplaces does the AI Demand Planner support? <span class="liq-faq-arrow">▼</span></div>
-    <div class="liq-faq-a">The AI Demand Planner accepts exports from SAP, Oracle NetSuite, Microsoft Dynamics 365, Tally Prime, Busy, Marg, Zoho Inventory, Unicommerce, Cin7, Linnworks, Brightpearl, QuickBooks, Odoo, Amazon Seller Central, Flipkart Seller Hub, Shopify, Meesho, Myntra, Blinkit, Zepto, and any custom CSV or Excel file. It auto-detects column names — no reformatting needed.</div>
-  </div>
-
-  <div class="liq-faq-item">
-    <div class="liq-faq-q" onclick="liqFaq(this)">What file formats are supported? <span class="liq-faq-arrow">▼</span></div>
-    <div class="liq-faq-a">CSV (.csv), Excel (.xlsx and .xls), TSV (.tsv), and plain text (.txt). Excel files are read natively — no need to convert to CSV first. Maximum file size is 25MB, supporting up to 100,000+ SKUs.</div>
-  </div>
-
-  <div class="liq-faq-item">
-    <div class="liq-faq-q" onclick="liqFaq(this)">Is my data safe? Do you store my inventory data? <span class="liq-faq-arrow">▼</span></div>
-    <div class="liq-faq-a">Your data is never stored. Files are processed in your browser and on our secure server for AI analysis only. No inventory data is saved, logged, or shared with third parties. Each session is completely private.</div>
-  </div>
-
-  <div class="liq-faq-item">
-    <div class="liq-faq-q" onclick="liqFaq(this)">How accurate is the AI demand forecast? <span class="liq-faq-arrow">▼</span></div>
-    <div class="liq-faq-a">Accuracy depends on your data quality and history length. With 3+ months of sales history, the AI uses trend detection and moving average methods that typically achieve 80–92% forecast accuracy. With snapshot data (single period), it uses velocity-based projection. Confidence scores are shown for every SKU.</div>
-  </div>
-
-  <div class="liq-faq-item">
-    <div class="liq-faq-q" onclick="liqFaq(this)">Who is LogicstIQ for? <span class="liq-faq-arrow">▼</span></div>
-    <div class="liq-faq-a">LogicstIQ is built for supply chain professionals, inventory planners, demand planners, e-commerce managers, marketplace sellers, D2C brands, manufacturers, distributors, procurement teams, and founders who want professional supply chain tools without enterprise software costs.</div>
-  </div>
-
-  <div class="liq-faq-item">
-    <div class="liq-faq-q" onclick="liqFaq(this)">Can I use LogicstIQ for quick commerce platforms like Blinkit and Zepto? <span class="liq-faq-arrow">▼</span></div>
-    <div class="liq-faq-a">Yes. The AI Demand Planner has a dedicated Quick Commerce tab that provides city-level demand forecasting, dark store replenishment planning, and hour-of-day demand peaks. It supports exports from Blinkit, Zepto, Swiggy Instamart, BigBasket, Flipkart Minutes, Amazon Fresh, and more.</div>
-  </div>
-
-
-    <div class="liq-faq-item">
-      <div class="liq-faq-q" onclick="liqFaq(this)">Will you add more tools — like a TMS? <span class="liq-faq-arr">▾</span></div>
-      <div class="liq-faq-a">Yes. LogicstIQ is actively developed. Upcoming additions include a paid cloud-based AI-powered Transportation Management System (TMS) for carrier rate comparison, route optimisation, and shipment tracking — designed for D2C brands, marketplace sellers, distributors, and 3PLs across India and globally.</div>
-    </div></div>
-
-<footer class="liq-footer-new">
-  <div class="liq-footer-grid">
-
-    <div>
-<div class="liq-footer-brand-logo" style="margin-bottom:10px">
-        <svg width="158" height="38" viewBox="0 0 260 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="liq_ft_g" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="rgba(255,255,255,0.5)"/>
-              <stop offset="100%" stop-color="rgba(255,255,255,0.92)"/>
-            </linearGradient>
-          </defs>
-          <path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#liq_ft_g)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <path d="M59 8 L66 14 L59 20" stroke="rgba(255,255,255,0.72)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <circle cx="32" cy="50" r="3.5" fill="rgba(255,255,255,0.38)"/>
-          <circle cx="50" cy="14" r="3.5" fill="rgba(255,255,255,0.88)"/>
-          <text x="82" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5">
-            <tspan fill="#FFFFFF">Logicst</tspan><tspan fill="#93C5FD">IQ</tspan>
-          </text>
-        </svg>
-      </div>
-      <!-- Footer brand description below -->
-      <p style="font-size:13px;color:#64748B;line-height:1.65;margin-bottom:14px">
-        Free supply chain calculators and AI demand planning tools. No login. No limits. Built by supply chain professionals, for supply chain professionals.
-      </p>
-      <div style="font-size:12px;color:#94A3B8;margin-bottom:8px">🇮🇳 Made in India · Used Globally</div>
-      <div class="liq-footer-social">
-        <a class="liq-social-btn" href="https://twitter.com/LogicstIQ" target="_blank" rel="noopener" title="Twitter">𝕏</a>
-        <a class="liq-social-btn" href="https://www.linkedin.com/company/logicstiq" target="_blank" rel="noopener" title="LinkedIn">in</a>
-      </div>
-    </div>
-
-    <div>
-      <div class="liq-footer-col-title">Calculators</div>
-      <div class="liq-footer-links">
-        <a href="#eoq">EOQ Calculator</a>
-        <a href="#reorder-point">Reorder Point</a>
-        <a href="#safety-stock">Safety Stock</a>
-        <a href="#abc-analysis">ABC Analysis</a>
-        <a href="#otif">OTIF Rate</a>
-        <a href="#landed-cost">Landed Cost</a>
-        <a href="#carbon-footprint">Carbon Footprint</a>
-        <a href="#gst-calculator">GST Calculator</a>
-      </div>
-    </div>
-
-    <div>
-      <div class="liq-footer-col-title">AI Demand Planner</div>
-      <div class="liq-footer-links">
-        <a href="#ai-demand-planner">AI Demand Forecast</a>
-        <a href="#ai-demand-planner">Reorder Plan</a>
-        <a href="#ai-demand-planner">Slow Mover Analysis</a>
-        <a href="#ai-demand-planner">Stockout Risk Engine</a>
-        <a href="#ai-demand-planner">Quick Commerce Planning</a>
-        <a href="#ai-demand-planner">Event Intelligence</a>
-        <a href="#ai-demand-planner">Inventory Health Score</a>
-      </div>
-    </div>
-
-    <div>
-      <div class="liq-footer-col-title">Company</div>
-      <div class="liq-footer-links">
-        <a href="/about.html">About Us</a>
-        <a href="/contact.html">Contact</a>
-        <a href="mailto:privacy@logicstiq.com">privacy@logicstiq.com</a>
-        <a href="/privacy-policy.html">Privacy Policy</a>
-        <a href="/terms.html">Terms of Service</a>
-        <a href="/disclaimer.html">Disclaimer</a>
-      </div>
-      <div style="margin-top:20px">
-        <div class="liq-footer-col-title">Founders</div>
-        <div style="font-size:12px;color:#64748B;line-height:1.9">
-          <a href="https://www.linkedin.com/in/amiitkumar" target="_blank" rel="noopener" style="color:#2563EB;text-decoration:none">Amit Kumar</a><br>
-          <span style="font-size:11px">Co-Founder · LogicstIQ</span><br><br>
-          <a href="https://www.linkedin.com/in/sachin-s-0b1179162" target="_blank" rel="noopener" style="color:#2563EB;text-decoration:none">Sachin Sirwani</a><br>
-          <span style="font-size:11px">Co-Founder · LogicstIQ</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- AdSense — Footer slot -->
-  <!--
-  <div class="liq-ad-slot" style="margin-bottom:24px">
-    <div class="liq-ad-label">Advertisement</div>
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-         data-ad-slot="XXXXXXXXXX"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-  -->
-
-  <!-- Affiliate disclosure -->
-  <div style="border-top:1px solid #1E293B;padding:14px 0;text-align:center;font-size:11px;color:#64748B;line-height:1.7;max-width:1100px;margin:0 auto;">
-    <strong style="color:#94A3B8">Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. When you click and sign up for a third-party service via these links, we may earn a commission at no extra cost to you. This does not influence our recommendations.
-  </div>
-  <div class="liq-footer-bottom">
-    <div style="margin-bottom:8px">
-      20 Free Supply Chain Calculators · AI Demand Planner · No Login · Instant Results · Free Forever
-    </div>
-    <div style="margin-bottom:8px">
-      Amazon · Flipkart · Shopify · Meesho · SAP · Tally · NetSuite · Blinkit · Zepto · Unicommerce · Zoho · Dynamics 365
-    </div>
-    <div>
-      © 2025 LogicstIQ.com · Co-Founders: Amit Kumar &amp; Sachin Sirwani · Where Logistics Meets Intelligence
-      · <a href="/privacy-policy.html" style="color:#94A3B8;text-decoration:none">Privacy</a>
-      · <a href="/terms.html" style="color:#94A3B8;text-decoration:none">Terms</a>
-      · Results are for reference only. Always validate with your ERP/WMS before making business decisions. · <a href="/disclaimer.html" style="color:#94A3B8;text-decoration:none">Disclaimer</a>
-    </div>
-  </div>
-  </div>
-</footer>
-
-
-<script>
-// ── UTILS ──
-function fmt(n){if(n>=100000)return(n/100000).toFixed(2)+'L';if(n>=1000)return(n/1000).toFixed(1)+'K';return n.toFixed(2)}
-function showR(id){const e=document.getElementById('r-'+id);if(e){e.classList.add('show')}}
-function showCalc(id,el){
-  document.querySelectorAll('.cp').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.ci').forEach(i=>i.classList.remove('active'));
-  document.getElementById('p-'+id).classList.add('active');
-  if(el)el.classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-// ── CALCULATORS ──
-function calcEOQ(){
-  const D=+document.getElementById('eoq-d').value,S=+document.getElementById('eoq-s').value,H=+document.getElementById('eoq-h').value;
-  if(!D||!S||!H)return alert('Fill Annual Demand, Ordering Cost and Holding Cost.');
-  const eoq=Math.sqrt(2*D*S/H),orders=D/eoq,cycle=365/orders,cost=(D/eoq)*S+(eoq/2)*H;
-  document.getElementById('eoq-res').textContent=Math.round(eoq)+' units';
-  document.getElementById('eoq-ord').textContent=orders.toFixed(1)+'/yr';
-  document.getElementById('eoq-cyc').textContent=cycle.toFixed(0)+' days';
-  document.getElementById('eoq-cost').textContent='₹'+fmt(cost);
-  showR('eoq');
-}
-function calcROP(){
-  const d=+document.getElementById('rop-d').value,lt=+document.getElementById('rop-lt').value,ss=+document.getElementById('rop-ss').value||0,md=+document.getElementById('rop-md').value||d;
-  if(!d||!lt)return alert('Fill daily demand and lead time.');
-  const rop=d*lt+ss;
-  document.getElementById('rop-res').textContent=Math.round(rop)+' units';
-  document.getElementById('rop-dlt').textContent=Math.round(d*lt)+' units';
-  document.getElementById('rop-ss2').textContent=ss+' units';
-  document.getElementById('rop-max').textContent=Math.round(md*lt+ss)+' units';
-  showR('rop');
-}
-function calcSafety(){
-  const mx=+document.getElementById('ss-max').value,av=+document.getElementById('ss-avg').value,mlt=+document.getElementById('ss-mlt').value,alt=+document.getElementById('ss-alt').value,z=+document.getElementById('ss-sl').value,std=+document.getElementById('ss-std').value||0;
-  if(!mx||!av||!mlt||!alt)return alert('Fill all fields.');
-  const basic=(mx-av)*mlt,stat=std?Math.round(z*std*Math.sqrt(alt)):'Enter Std Dev';
-  const slMap={1.28:'90%',1.65:'95%',1.96:'97.5%',2.33:'99%'};
-  document.getElementById('ss-res').textContent=Math.round(basic)+' units';
-  document.getElementById('ss-basic').textContent=Math.round(basic)+' u';
-  document.getElementById('ss-stat').textContent=typeof stat==='number'?stat+' u':stat;
-  document.getElementById('ss-sl2').textContent=slMap[z]||z;
-  showR('safety');
-}
-function calcCarrying(){
-  const inv=+document.getElementById('cc-inv').value;
-  if(!inv)return alert('Enter inventory value.');
-  const r=[+document.getElementById('cc-storage').value||0,+document.getElementById('cc-ins').value||0,+document.getElementById('cc-obs').value||0,+document.getElementById('cc-cap').value||0,+document.getElementById('cc-labor').value||0].reduce((a,b)=>a+b,0);
-  const ann=inv*r/100;
-  document.getElementById('cc-res').textContent='₹'+fmt(ann);
-  document.getElementById('cc-rate').textContent=r.toFixed(1)+'%';
-  document.getElementById('cc-mon').textContent='₹'+fmt(ann/12);
-  document.getElementById('cc-day').textContent='₹'+fmt(ann/365);
-  showR('carrying');
-}
-function calcABC(){
-  const tot=+document.getElementById('abc-tot').value,sku=+document.getElementById('abc-sku').value;
-  if(!tot||!sku)return alert('Enter total and SKU value.');
-  const pct=sku/tot*100;
-  let cls,freq,pol;
-  if(pct>=10){cls='A';freq='Weekly';pol='Tight control';}
-  else if(pct>=3){cls='B';freq='Bi-weekly';pol='Moderate control';}
-  else{cls='C';freq='Monthly';pol='Minimal monitoring';}
-  const colors={'A':'var(--teal)','B':'var(--gold)','C':'var(--muted)'};
-  document.getElementById('abc-res').textContent='Class '+cls;
-  document.getElementById('abc-res').style.color=colors[cls];
-  document.getElementById('abc-pct').textContent=pct.toFixed(1)+'%';
-  document.getElementById('abc-freq').textContent=freq;
-  document.getElementById('abc-pol').textContent=pol;
-  showR('abc');
-}
-function calcMOQ(){
-  const qty=+document.getElementById('moq-qty').value,cost=+document.getElementById('moq-cost').value,dem=+document.getElementById('moq-dem').value,hold=+document.getElementById('moq-hold').value||0,alt=+document.getElementById('moq-alt').value||0;
-  if(!qty||!cost||!dem)return alert('Enter MOQ, cost and demand.');
-  const months=qty/dem,extraHold=(qty-dem)*hold*months,savingsVsAlt=alt?(alt-cost)*qty:0;
-  const viable=savingsVsAlt>extraHold?'✅ Viable':extraHold>0?'⚠️ Marginal':'📊 Assess';
-  document.getElementById('moq-res').textContent=viable;
-  document.getElementById('moq-mon').textContent=months.toFixed(1)+' mo';
-  document.getElementById('moq-ext').textContent='₹'+fmt(extraHold);
-  document.getElementById('moq-sav').textContent=alt?'₹'+fmt(savingsVsAlt):'N/A';
-  showR('moq');
-}
-function calcDSR(){
-  const units=+document.getElementById('ds-units').value,cost=+document.getElementById('ds-cost').value,age=+document.getElementById('ds-age').value||0,hold=+document.getElementById('ds-hold').value||0,sale=+document.getElementById('ds-sale').value||0,liq=+document.getElementById('ds-liq').value||0;
-  if(!units||!cost)return alert('Enter units and cost.');
-  const trapped=units*cost,hc=units*hold*(age/30),cl=units*sale,ln=units*liq;
-  const best=sale>liq?'Clearance Sale':'Liquidation';
-  document.getElementById('ds-trapped').textContent='₹'+fmt(trapped);
-  document.getElementById('ds-hc').textContent='₹'+fmt(hc);
-  document.getElementById('ds-cl').textContent=sale?'₹'+fmt(cl):'N/A';
-  document.getElementById('ds-ln').textContent=liq?'₹'+fmt(ln):'N/A';
-  document.getElementById('ds-adv').textContent=`💡 Best option: ${best}. Daily holding cost: ₹${fmt(units*hold)}/day.`;
-  showR('dsr');
-}
-function calcITO(){
-  const cogs=+document.getElementById('ito-cogs').value,beg=+document.getElementById('ito-beg').value||0,end=+document.getElementById('ito-end').value||0;
-  let inv=+document.getElementById('ito-inv').value;
-  if(!cogs)return alert('Enter COGS.');
-  if(!inv&&beg&&end)inv=(beg+end)/2;
-  if(!inv)return alert('Enter inventory value.');
-  const itor=cogs/inv,days=365/itor,perf=itor>6?'🟢 High':itor>3?'🟡 Avg':'🔴 Low';
-  document.getElementById('ito-res').textContent=itor.toFixed(2)+'x';
-  document.getElementById('ito-days').textContent=days.toFixed(0)+' days';
-  document.getElementById('ito-avg').textContent='₹'+fmt(inv);
-  document.getElementById('ito-perf').textContent=perf;
-  showR('turnover');
-}
-function calcDIO(){
-  const inv=+document.getElementById('dio-inv').value,cogs=+document.getElementById('dio-cogs').value,period=+document.getElementById('dio-per').value,bench=+document.getElementById('dio-bench').value||0;
-  if(!inv||!cogs)return alert('Enter inventory and COGS.');
-  const dio=inv/cogs*period,itor=period/dio;
-  document.getElementById('dio-res').textContent=dio.toFixed(1)+' days';
-  document.getElementById('dio-vs').textContent=bench?((dio-bench).toFixed(1)+' days'):'N/A';
-  document.getElementById('dio-itor').textContent=itor.toFixed(2)+'x';
-  document.getElementById('dio-ass').textContent=!bench?'—':dio<=bench?'🟢 Good':'🔴 High';
-  showR('dio');
-}
-function calcOTIF(){
-  const tot=+document.getElementById('otif-tot').value,ot=+document.getElementById('otif-ot').value,inf=+document.getElementById('otif-if').value,both=+document.getElementById('otif-both').value;
-  if(!tot||!both)return alert('Enter total orders and OTIF count.');
-  document.getElementById('otif-res').textContent=(both/tot*100).toFixed(1)+'%';
-  document.getElementById('otif-otr').textContent=ot?(ot/tot*100).toFixed(1)+'%':'—';
-  document.getElementById('otif-ifr').textContent=inf?(inf/tot*100).toFixed(1)+'%':'—';
-  showR('otif');
-}
-function calcFillRate(){
-  const ord=+document.getElementById('fr2-ord').value,shp=+document.getElementById('fr2-shp').value,orders=+document.getElementById('fr2-orders').value||0,comp=+document.getElementById('fr2-comp').value||0;
-  if(!ord||!shp)return alert('Enter units ordered and shipped.');
-  const lfr=shp/ord*100,miss=ord-shp,bo=(miss/ord*100).toFixed(1)+'%';
-  document.getElementById('fr-res').textContent=lfr.toFixed(1)+'%';
-  document.getElementById('fr-ofr').textContent=orders&&comp?(comp/orders*100).toFixed(1)+'%':'—';
-  document.getElementById('fr-miss').textContent=miss+' units';
-  document.getElementById('fr-bo').textContent=bo;
-  showR('fillrate');
-}
-function calcFreight(){
-  const wt=+document.getElementById('fr-wt').value,l=+document.getElementById('fr-l').value,w=+document.getElementById('fr-w').value,h=+document.getElementById('fr-h').value,rate=+document.getElementById('fr-rate').value,div=+document.getElementById('fr-mode').value;
-  if(!wt||!l||!w||!h||!rate)return alert('Fill all fields.');
-  const vol=l*w*h/div,chg=Math.max(wt,vol);
-  document.getElementById('frt-res').textContent=chg.toFixed(2)+' kg';
-  document.getElementById('frt-vol').textContent=vol.toFixed(2)+' kg';
-  document.getElementById('frt-act').textContent=wt+' kg';
-  document.getElementById('frt-cost').textContent='₹'+(chg*rate).toFixed(2);
-  showR('freight');
-}
-function calcLanded(){
-  const prod=+document.getElementById('lc-prod').value,fr=+document.getElementById('lc-fr').value||0,duty=+document.getElementById('lc-duty').value||0,ins=+document.getElementById('lc-ins').value||0,hand=+document.getElementById('lc-hand').value||0,tax=+document.getElementById('lc-tax').value||0;
-  if(!prod)return alert('Enter product cost.');
-  const da=prod*duty/100,ia=prod*ins/100,base=prod+fr+da+ia+hand,ta=base*tax/100,total=base+ta;
-  document.getElementById('lc-res').textContent='₹'+fmt(total);
-  document.getElementById('lc-damt').textContent='₹'+fmt(da);
-  document.getElementById('lc-tamt').textContent='₹'+fmt(ta);
-  document.getElementById('lc-mkup').textContent=((total-prod)/prod*100).toFixed(1)+'%';
-  showR('landed');
-}
-function calcLT(){
-  const sup=+document.getElementById('lt-sup').value||0,tran=+document.getElementById('lt-tran').value||0,cust=+document.getElementById('lt-cust').value||0,recv=+document.getElementById('lt-recv').value||0,qc=+document.getElementById('lt-qc').value||0,put=+document.getElementById('lt-put').value||0;
-  const tot=sup+tran+cust+recv+qc+put;
-  if(!tot)return alert('Enter at least one lead time component.');
-  const stages={Supplier:sup,Transit:tran,Customs:cust,Receiving:recv,QC:qc,Putaway:put};
-  const bot=Object.entries(stages).sort((a,b)=>b[1]-a[1])[0][0];
-  document.getElementById('lt-res').textContent=tot.toFixed(1)+' days';
-  document.getElementById('lt-bot').textContent=bot;
-  document.getElementById('lt-sup2').textContent=(sup+tran+cust).toFixed(1)+'d';
-  document.getElementById('lt-int').textContent=(recv+qc+put).toFixed(1)+'d';
-  showR('leadtime');
-}
-function calcCOGS(){
-  const beg=+document.getElementById('cogs-beg').value||0,pur=+document.getElementById('cogs-pur').value||0,end=+document.getElementById('cogs-end').value||0,rev=+document.getElementById('cogs-rev').value||0;
-  const cogs=beg+pur-end,gp=rev-cogs,gm=rev?gp/rev*100:0;
-  document.getElementById('cogs-res').textContent='₹'+fmt(cogs);
-  document.getElementById('cogs-gp').textContent=rev?'₹'+fmt(gp):'N/A';
-  document.getElementById('cogs-gm').textContent=rev?gm.toFixed(1)+'%':'N/A';
-  document.getElementById('cogs-pct').textContent=rev?(cogs/rev*100).toFixed(1)+'%':'N/A';
-  showR('cogs');
-}
-function calcCarbon(){
-  const wt=+document.getElementById('co2-wt').value,dist=+document.getElementById('co2-dist').value,ef=+document.getElementById('co2-mode').value,trips=+document.getElementById('co2-trips').value||1;
-  if(!wt||!dist)return alert('Enter weight and distance.');
-  const per=wt*dist*ef,tot=per*trips;
-  document.getElementById('co2-res').textContent=tot.toFixed(1)+' kg CO₂';
-  document.getElementById('co2-per').textContent=per.toFixed(1)+' kg';
-  document.getElementById('co2-tkm').textContent=ef+' kg/t-km';
-  document.getElementById('co2-trees').textContent=Math.ceil(tot/21)+' trees';
-  showR('carbon');
-}
-function calcGST(){
-  const amt=+document.getElementById('gst-amt').value,rate=+document.getElementById('gst-rate').value,type=document.getElementById('gst-type').value,tx=document.getElementById('gst-tx').value;
-  if(!amt)return alert('Enter amount.');
-  let base,gstAmt,total;
-  if(type==='excl'){base=amt;gstAmt=amt*rate/100;total=amt+gstAmt;}
-  else{total=amt;base=amt/(1+rate/100);gstAmt=total-base;}
-  const cgst=tx==='intra'?gstAmt/2:gstAmt;
-  document.getElementById('gst-res').textContent='₹'+total.toFixed(2);
-  document.getElementById('gst-base').textContent='₹'+base.toFixed(2);
-  document.getElementById('gst-c').textContent='₹'+cgst.toFixed(2);
-  document.getElementById('gst-s').textContent=tx==='inter'?'N/A':'₹'+(gstAmt/2).toFixed(2);
-  showR('gst');
-}
-function calcWH(){
-  const tot=+document.getElementById('wh-tot').value,used=+document.getElementById('wh-used').value,cap=+document.getElementById('wh-cap').value||0,stored=+document.getElementById('wh-stored').value||0,ht=+document.getElementById('wh-ht').value||0,uht=+document.getElementById('wh-uht').value||0;
-  if(!tot||!used)return alert('Enter total and used area.');
-  const su=used/tot*100;
-  document.getElementById('wh-res').textContent=su.toFixed(1)+'%';
-  document.getElementById('wh-pal').textContent=cap&&stored?(stored/cap*100).toFixed(1)+'%':'N/A';
-  document.getElementById('wh-cub').textContent=ht&&uht?(uht/ht*su/100*100).toFixed(1)+'%':'N/A';
-  document.getElementById('wh-stat').textContent=su>95?'🔴 Over':su>85?'🟡 High':su>70?'🟢 Optimal':'🔵 Under';
-  showR('warehouse');
-}
-function calcPP(){
-  const ord=+document.getElementById('pp-ord').value,wrk=+document.getElementById('pp-wrk').value,wage=+document.getElementById('pp-wage').value,hrs=+document.getElementById('pp-hrs').value||8,pack=+document.getElementById('pp-pack').value||0,oh=+document.getElementById('pp-oh').value||20;
-  if(!ord||!wrk||!wage)return alert('Enter orders, workers and wage.');
-  const lab=wrk*wage*hrs,pkc=ord*pack,daily=(lab+pkc)*(1+oh/100);
-  document.getElementById('pp-res').textContent='₹'+(daily/ord).toFixed(2);
-  document.getElementById('pp-lab').textContent='₹'+fmt(lab);
-  document.getElementById('pp-pkc').textContent='₹'+fmt(pkc);
-  document.getElementById('pp-mon').textContent='₹'+fmt(daily*26);
-  showR('pick');
-}
-function calcSupplier(){
-  const q=+document.getElementById('sup-q').value||0,d=+document.getElementById('sup-d').value||0,c=+document.getElementById('sup-c').value||0,r=+document.getElementById('sup-r').value||0,co=+document.getElementById('sup-co').value||0,i=+document.getElementById('sup-i').value||0;
-  const score=q*.25+d*.25+c*.20+r*.15+co*.10+i*.05;
-  const grade=score>=90?'A+':score>=80?'A':score>=70?'B':score>=60?'C':'D';
-  const labels=['Quality','Delivery','Cost','Responsiveness','Compliance','Innovation'];
-  const vals=[q,d,c,r,co,i];
-  const minIdx=vals.indexOf(Math.min(...vals));
-  document.getElementById('sup-res').textContent=score.toFixed(1)+'/100';
-  document.getElementById('sup-grade').textContent=grade;
-  document.getElementById('sup-weak').textContent=labels[minIdx];
-  document.getElementById('sup-rec').textContent=score>=80?'✅ Preferred':score>=60?'⚠️ Conditional':'🔴 Review';
-  showR('supplier');
-}
-
-// ── AI DEMAND PLANNER ──
-<!--
-  LogicstIQ.com — AI Demand Planner v4 (Arctic White Edition)
-  Main site: White + Deep Blue
-  AI Planner hero: Deep Navy gradient (contrast section)
-  No API key required from users — Gemini key lives on Vercel server
-  SheetJS included — reads real .xlsx/.xls binary files natively
--->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LogicstIQ.com – Where Logistics Meets Intelligence | Free Supply Chain Calculators</title>
+<meta name="description" content="LogicstIQ.com — Free supply chain calculators powered by logic and intelligence. EOQ, Reorder Point, Safety Stock, OTIF, Demand Forecasting, Landed Cost, Carbon Footprint &amp; 14 more. No login. Instant results.">
+<meta name="keywords" content="supply chain calculator, logistics calculator, EOQ calculator, reorder point calculator, safety stock calculator, OTIF calculator, fill rate calculator, demand forecasting tool, landed cost calculator, freight cost calculator, inventory turnover, warehouse utilization, ABC analysis, COGS calculator, lead time calculator, supplier scorecard, carbon footprint logistics, GST calculator supply chain, LogicstIQ">
+<meta name="author" content="Amit Kumar &amp; Sachin Sirwani — LogicstIQ.com">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="language" content="English">
+<meta name="revisit-after" content="7 days">
+<meta name="category" content="Supply Chain, Logistics, Inventory Management, E-Commerce">
+<link rel="canonical" href="https://logicstiq.com/">
+<meta name="google-site-verification" content="FHSe095yxAfCfD-6wIiL3z1NJthHHyxDFvenqPU14WQ">
+<meta property="og:title" content="LogicstIQ.com – Where Logistics Meets Intelligence">
+<meta property="og:description" content="20 free supply chain calculators + AI Demand Planner. Where Logistics Meets Intelligence — EOQ, OTIF, Safety Stock, Landed Cost, Carbon Footprint &amp; more. No login needed.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicstiq.com/">
+<meta property="og:image" content="https://logicstiq.com/og-image.png">
+<meta property="og:locale" content="en_IN">
+<meta property="og:site_name" content="LogicstIQ.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LogicstIQ.com – Where Logistics Meets Intelligence">
+<meta name="twitter:description" content="20 free supply chain calculators + AI Demand Planner. No login. Instant results.">
+<meta name="twitter:image" content="https://logicstiq.com/og-image.png">
+<meta name="twitter:creator" content="@LogicstIQ">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<!-- Google AdSense — activate after approval: replace ca-pub-XXXXXXXXXXXXXXXX with your Publisher ID and remove the comment tags -->
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"LogicstIQ.com","url":"https://logicstiq.com","description":"Free supply chain calculators and AI Demand Planner. 20 tools covering EOQ, Safety Stock, OTIF, Reorder Point, Inventory Turnover and more.","potentialAction":{"@type":"SearchAction","target":"https://logicstiq.com/?q={search_term_string}","query-input":"required name=search_term_string"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"LogicstIQ","url":"https://logicstiq.com","logo":"https://logicstiq.com/favicon.svg","founders":[{"@type":"Person","name":"Amit Kumar","sameAs":"https://www.linkedin.com/in/amiitkumar"},{"@type":"Person","name":"Sachin Sirwani","sameAs":"https://www.linkedin.com/in/sachin-s-0b1179162"}],"contactPoint":{"@type":"ContactPoint","email":"privacy@logicstiq.com","contactType":"customer support"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is LogicstIQ completely free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes — all 20 calculators and the AI Demand Planner are completely free. No login, no signup, no credit card, no usage limits. Free forever."}},{"@type":"Question","name":"Does LogicstIQ store my inventory data?","acceptedAnswer":{"@type":"Answer","text":"Never. Your file is processed on our secure server and immediately discarded after your results are generated. Zero data is stored, logged, or shared. Close the tab and it is permanently gone."}},{"@type":"Question","name":"What file formats are supported?","acceptedAnswer":{"@type":"Answer","text":"Excel (.xlsx and .xls), CSV, TSV, and TXT files up to 25MB. Real Excel files are read natively using SheetJS — no conversion to CSV needed. Supports exports from SAP, NetSuite, Tally, Zoho, Amazon, Flipkart and 15+ other systems."}},{"@type":"Question","name":"Who is LogicstIQ for?","acceptedAnswer":{"@type":"Answer","text":"D2C brands, marketplace sellers, manufacturers, distributors, 3PL companies, quick commerce suppliers, import/export businesses, and supply chain professionals globally."}},{"@type":"Question","name":"How accurate are the AI forecasts?","acceptedAnswer":{"@type":"Answer","text":"Accuracy depends on the quality and completeness of your input data. All results are for planning reference only — always validate with your ERP or WMS before placing purchase orders."}}]}
+</script>
 <style>
+
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F4F7FF;--white:#FFFFFF;--border:#E2E8F0;--border2:#CBD5E1;
+  --b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b400:#60A5FA;
+  --b500:#3B82F6;--b600:#2563EB;--b700:#1D4ED8;--b800:#1E40AF;--b900:#1E3A8A;
+  --cyan:#0891B2;--green:#059669;--glight:#D1FAE5;
+  --amber:#D97706;--alight:#FEF3C7;--red:#DC2626;--rlight:#FEE2E2;
+  --purple:#7C3AED;--slate:#64748B;
+  --text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+/* ── PREVIEW BAR ── */
+.preview-bar{background:linear-gradient(90deg,#2563EB,#0891B2);padding:10px 20px;text-align:center;font-size:12px;font-weight:800;color:#fff;letter-spacing:.04em;position:sticky;top:0;z-index:999}
+.preview-bar span{opacity:.75;font-weight:500;margin-left:8px}
+
+/* ── NAVIGATION ── */
+.nav{background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:40px;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.nav-logo{text-decoration:none;display:flex;align-items:center;line-height:1}
+.nav-logo span{background:linear-gradient(135deg,#2563EB,#0891B2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:13px;font-weight:600;color:var(--text3);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--b600)}
+.nav-cta{background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;border:none;border-radius:9px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}
+
+/* ── HERO — dark navy ── */
+.hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 45%,#1D4ED8 100%);padding:72px 32px 60px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='%23ffffff' fill-opacity='0.05'/%3E%3C/svg%3E");pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:6px 16px;font-size:11px;font-weight:800;color:#BFDBFE;text-transform:uppercase;letter-spacing:.09em;margin-bottom:18px}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:#34D399;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+.hero h1{font-size:clamp(30px,5vw,58px);font-weight:900;color:#fff;line-height:1.08;letter-spacing:-.035em;margin-bottom:14px;font-family:'Plus Jakarta Sans',sans-serif;position:relative}
+.hero h1 span{background:linear-gradient(135deg,#93C5FD,#67E8F9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(14px,2vw,18px);color:rgba(255,255,255,.82);max-width:580px;margin:0 auto 28px;line-height:1.7;position:relative}
+
+/* Pain pills */
+.liq-pain-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px;position:relative}
+.liq-pain-pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 14px;font-size:12px;font-weight:600;color:rgba(255,255,255,.85)}
+.liq-pain-pill em{color:#FCA5A5;font-style:normal;font-weight:800}
+
+/* Logo strip */
+.logos-wrap{margin-bottom:24px;position:relative}
+.logos-label{font-size:10px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+.liq-logo-row{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.liq-logo-pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:7px;padding:4px 12px;font-size:10px;font-weight:700;color:rgba(255,255,255,.88)}
+
+/* Trust bar */
+.liq-trust-bar{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;font-size:12px;color:rgba(255,255,255,.88);font-weight:600;position:relative}
+.liq-trust-bar .tick{color:#34D399;margin-right:4px}
+
+/* Stat boxes */
+.stat-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:24px 0 0;position:relative}
+.stat-box{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:16px 24px;text-align:center;min-width:110px}
+.stat-num{font-size:26px;font-weight:900;line-height:1;margin-bottom:4px}
+.stat-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.6)}
+.made-india{display:inline-flex;align-items:center;gap:6px;background:rgba(255,127,80,.15);border:1px solid rgba(255,127,80,.3);border-radius:999px;padding:4px 12px;font-size:10px;font-weight:800;color:#FED7AA;margin-top:12px;position:relative}
+
+/* ── ADSENSE SLOT ── */
+.ad-slot{margin:16px 32px;border:1px dashed #BFDBFE;border-radius:10px;padding:12px 20px;display:flex;align-items:center;gap:12px;background:#EFF6FF}
+.ad-label{font-size:9px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em;flex-shrink:0}
+.ad-bar{flex:1;height:36px;background:linear-gradient(90deg,#DBEAFE,#BAE6FD);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--text4);font-weight:600}
+
+/* ── CALCULATORS ── */
+.section{padding:52px 32px}
+.section-eyebrow{display:inline-flex;align-items:center;gap:6px;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:999px;padding:5px 14px;margin-bottom:14px;font-size:10px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em}
+.section-title{font-size:clamp(22px,3.5vw,34px);font-weight:900;letter-spacing:-.025em;margin-bottom:8px;color:var(--text)}
+.section-sub{font-size:14px;color:var(--text3);line-height:1.65;max-width:560px;margin:0 auto 28px}
+.section.center{text-align:center}
+.calc-cat-lbl{font-size:10px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.calc-cat-lbl::after{content:'';flex:1;height:1px;background:var(--border)}
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:24px}
+.calc-card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:18px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.calc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--b600),var(--cyan));transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.calc-card:hover{border-color:#BFDBFE;transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,58,138,.09)}
+.calc-card:hover::before{transform:scaleX(1)}
+.calc-ico{font-size:26px;margin-bottom:8px}
+.calc-tag{display:inline-flex;align-items:center;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:5px;padding:2px 8px;font-size:9px;font-weight:800;color:var(--b700);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
+.calc-name{font-size:13px;font-weight:800;color:var(--text);margin-bottom:4px;line-height:1.3}
+.calc-desc{font-size:11px;color:var(--text3);line-height:1.55}
+
+/* ── AI DEMAND PLANNER ── */
+.planner-section{margin:0 0 0;background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 45%,#1D4ED8 100%);padding:60px 32px 48px;text-align:center}
+.planner-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:5px 14px;font-size:10px;font-weight:800;color:#BFDBFE;text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px}
+.planner-badge .dot{width:6px;height:6px;border-radius:50%;background:#34D399;animation:pulse 2s infinite}
+.plan-title{font-size:clamp(22px,3.5vw,40px);font-weight:900;color:#fff;letter-spacing:-.025em;margin-bottom:10px;font-family:'Plus Jakarta Sans',sans-serif}
+.plan-title span{color:#93C5FD}
+.plan-sub{font-size:14px;color:#BFDBFE;line-height:1.7;margin-bottom:22px;max-width:580px;margin-left:auto;margin-right:auto}
+/* Channel pills */
+.ch-rows{display:flex;flex-direction:column;gap:7px;align-items:center;margin-bottom:28px}
+.ch-row{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;align-items:center}
+.ch-lbl{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);padding-right:4px}
+.ch-pill{padding:3px 10px;border-radius:999px;font-size:9px;font-weight:700;border:1px solid}
+.ch-ecom{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.88)}
+.ch-qcom{background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.25);color:#A7F3D0}
+.ch-erp{background:rgba(147,197,253,.1);border-color:rgba(147,197,253,.25);color:#BFDBFE}
+
+/* Planner mockup */
+.planner-mock{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:22px;max-width:780px;margin:0 auto;text-align:left}
+.mock-steps{display:flex;gap:8px;margin-bottom:16px;overflow-x:auto}
+.mock-step{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 14px;font-size:11px;font-weight:700;color:rgba(255,255,255,.8);white-space:nowrap;flex-shrink:0}
+.mock-step.active{background:rgba(37,99,235,.5);border-color:rgba(96,165,250,.5);color:#fff}
+.mock-src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:7px;margin-bottom:16px}
+.mock-src{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:8px 6px;text-align:center}
+.mock-src.sel{border-color:#60A5FA;background:rgba(96,165,250,.15)}
+.mock-src-ico{font-size:18px;margin-bottom:3px}
+.mock-src-name{font-size:9px;font-weight:700;color:rgba(255,255,255,.82);line-height:1.3}
+.mock-dz{border:2px dashed rgba(255,255,255,.22);border-radius:12px;padding:24px 16px;text-align:center;background:rgba(255,255,255,.05);margin-bottom:14px}
+.mock-dz-ico{font-size:28px;margin-bottom:7px}
+.mock-dz-t{font-size:13px;font-weight:700;color:#fff;margin-bottom:4px}
+.mock-dz-s{font-size:11px;color:rgba(255,255,255,.7)}
+.mock-btn{background:linear-gradient(135deg,#2563EB,#1D4ED8);color:#fff;border:none;border-radius:11px;padding:12px 28px;font-size:14px;font-weight:800;font-family:inherit;cursor:pointer;width:100%;box-shadow:0 4px 20px rgba(37,99,235,.4)}
+.liq-disclaimer-bar{background:#FEF9C3;border:1px solid #FDE68A;border-radius:9px;padding:9px 14px;margin-top:10px;font-size:11px;color:#92400E;line-height:1.6;font-weight:500;display:flex;align-items:flex-start;gap:7px;text-align:left}
+
+/* Results KPIs */
+.mock-results{margin-top:20px}
+.mock-results-lbl{font-size:10px;font-weight:800;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.09em;text-align:center;margin-bottom:14px}
+.mock-kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:9px;margin-bottom:14px}
+.mock-kpi{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);border-radius:11px;padding:12px 10px;position:relative;overflow:hidden}
+.mock-kpi-accent{position:absolute;top:0;left:0;right:0;height:3px;border-radius:11px 11px 0 0}
+.mock-kpi-lbl{font-size:9px;color:rgba(255,255,255,.6);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.mock-kpi-val{font-size:18px;font-weight:900;line-height:1}
+.mock-kpi-sub{font-size:9px;color:rgba(255,255,255,.5);margin-top:3px}
+/* Tabs */
+.mock-tabs{display:flex;gap:3px;background:rgba(0,0,0,.35);border-radius:9px;padding:4px;overflow-x:auto;margin-bottom:12px;scrollbar-width:none}
+.mock-tabs::-webkit-scrollbar{display:none}
+.mock-tab{padding:6px 12px;border-radius:7px;font-size:10px;font-weight:600;color:rgba(255,255,255,.65);white-space:nowrap;cursor:pointer}
+.mock-tab.act{background:rgba(255,255,255,.14);color:#fff;font-weight:700}
+/* Health bar */
+.mock-hb{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:11px;padding:14px;margin-bottom:12px}
+.mock-hb-t{font-size:10px;font-weight:700;color:rgba(255,255,255,.82);margin-bottom:10px}
+.mock-hb-bar{display:flex;height:10px;border-radius:5px;overflow:hidden;gap:2px;margin-bottom:10px}
+.mock-hb-seg{border-radius:3px;height:100%}
+.mock-hb-legend{display:flex;flex-wrap:wrap;gap:10px}
+.mock-hb-leg{display:flex;align-items:center;gap:4px;font-size:9px;color:rgba(255,255,255,.75);font-weight:600}
+.mock-hb-dot{width:8px;height:8px;border-radius:2px}
+/* Mini table */
+.mock-tbl-wrap{background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+.mock-tbl{width:100%;border-collapse:collapse;font-size:10px}
+.mock-tbl th{background:rgba(0,0,0,.25);padding:8px 10px;text-align:left;font-size:9px;font-weight:800;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.06em}
+.mock-tbl td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.82)}
+.mock-tbl tr:last-child td{border-bottom:none}
+.pill-urg{display:inline-flex;padding:2px 7px;border-radius:999px;font-size:9px;font-weight:700;background:#FEE2E2;color:#B91C1C}
+.pill-high{display:inline-flex;padding:2px 7px;border-radius:999px;font-size:9px;font-weight:700;background:#FEF3C7;color:#B45309}
+.pill-ok{display:inline-flex;padding:2px 7px;border-radius:999px;font-size:9px;font-weight:700;background:#DCFCE7;color:#15803D}
+
+/* ── TESTIMONIALS ── */
+.testi-section{padding:56px 32px;background:var(--white);border-top:1px solid var(--border)}
+.liq-testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.liq-testi-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:24px;transition:all .2s;position:relative;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.liq-testi-card:hover{border-color:#BFDBFE;box-shadow:0 6px 20px rgba(30,58,138,.08);transform:translateY(-2px)}
+.liq-testi-stars{color:#F59E0B;font-size:14px;margin-bottom:12px;letter-spacing:2px}
+.liq-testi-text{font-size:13px;color:var(--text2);line-height:1.75;margin-bottom:16px;font-style:italic}
+.liq-testi-text::before{content:'"';font-size:32px;color:var(--b200);line-height:0;vertical-align:-.4em;margin-right:4px}
+.liq-testi-author{font-size:13px;font-weight:800;color:var(--text)}
+.liq-testi-role{font-size:11px;color:var(--text4);margin-top:2px}
+.liq-testi-badge{position:absolute;top:16px;right:16px;font-size:10px;font-weight:700;background:var(--b50);border:1px solid var(--b100);color:var(--b600);border-radius:5px;padding:2px 8px}
+
+/* ── DATA SAFETY ── */
+.safety-section{background:linear-gradient(135deg,#ECFDF5,#F0FDF4);border:1.5px solid #A7F3D0;border-radius:20px;padding:44px 40px;margin:32px 32px;display:flex;gap:36px;align-items:flex-start;flex-wrap:wrap;box-shadow:0 4px 24px rgba(5,150,105,.07)}
+.safety-shield{width:76px;height:76px;background:linear-gradient(135deg,#059669,#047857);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:36px;box-shadow:0 8px 28px rgba(5,150,105,.25);flex-shrink:0}
+.safety-content{flex:1;min-width:260px}
+.safety-tag{display:inline-flex;align-items:center;gap:6px;background:#D1FAE5;border:1px solid #6EE7B7;border-radius:999px;padding:4px 14px;font-size:10px;font-weight:800;color:#065F46;text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px}
+.safety-title{font-size:22px;font-weight:900;color:#064E3B;letter-spacing:-.02em;margin-bottom:8px}
+.safety-sub{font-size:13px;color:#065F46;line-height:1.7;margin-bottom:20px;max-width:600px}
+.safety-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:11px}
+.safety-card{background:#fff;border:1px solid #A7F3D0;border-radius:13px;padding:15px 17px;display:flex;align-items:flex-start;gap:11px;transition:box-shadow .2s}
+.safety-card:hover{box-shadow:0 4px 14px rgba(5,150,105,.1)}
+.safety-card-ico{font-size:21px;flex-shrink:0;margin-top:1px}
+.safety-card-t{font-size:12px;font-weight:800;color:#065F46;margin-bottom:3px}
+.safety-card-b{font-size:11px;color:#047857;line-height:1.55}
+
+/* ── BLOG SECTION ── */
+.blog-section{padding:52px 32px;background:var(--white);border-top:1px solid var(--border)}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;max-width:1100px}
+.blog-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:24px;transition:all .2s;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.blog-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--b600),var(--cyan));transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.blog-card:hover{border-color:#BFDBFE;box-shadow:0 8px 24px rgba(30,58,138,.09);transform:translateY(-2px)}
+.blog-card:hover::before{transform:scaleX(1)}
+.blog-cat{display:inline-flex;align-items:center;gap:5px;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:999px;padding:3px 11px;font-size:10px;font-weight:800;color:#1D4ED8;margin-bottom:12px;text-transform:uppercase;letter-spacing:.07em}
+.blog-card-t{font-size:15px;font-weight:800;color:var(--text);line-height:1.35;margin-bottom:8px;letter-spacing:-.01em}
+.blog-card-d{font-size:12px;color:var(--text3);line-height:1.7;margin-bottom:12px}
+.blog-meta{font-size:11px;color:var(--text4);font-weight:600;margin-bottom:8px}
+.blog-read{display:inline-flex;align-items:center;gap:4px;color:var(--b600);font-size:12px;font-weight:800}
+
+/* ── FAQ ── */
+.faq-section{padding:52px 32px;background:var(--bg);border-top:1px solid var(--border)}
+.faq-list{max-width:720px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.faq-q{padding:17px 20px;font-size:14px;font-weight:700;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--white);line-height:1.4}
+.faq-q:hover{background:var(--b50)}
+.faq-q .arr{color:var(--b600);font-size:16px;transition:transform .2s;flex-shrink:0;margin-left:10px}
+.faq-a{padding:15px 20px;font-size:13px;color:var(--text3);line-height:1.75;background:#F8FAFF;border-top:1px solid var(--border);display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .arr{transform:rotate(180deg)}
+
+/* ── ADSENSE FOOTER SLOT ── */
+/* ── FOOTER ── */
+footer{background:#0F172A;padding:52px 32px 28px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;max-width:1100px;margin:0 auto 36px}
+.footer-brand p{font-size:13px;color:#94A3B8;line-height:1.75;margin:10px 0 16px}
+.footer-logo{display:flex;align-items:center}
+
+.footer-tagline{font-size:11px;color:#475569;margin-top:3px}
+.footer-socials{display:flex;gap:8px;margin-top:4px}
+.social-btn{width:34px;height:34px;border-radius:9px;background:#1E293B;border:1px solid #334155;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#94A3B8;cursor:pointer;text-decoration:none;transition:all .15s}
+.social-btn:hover{background:#2563EB;border-color:#2563EB;color:#fff}
+.footer-col-t{font-size:11px;font-weight:800;color:#F1F5F9;text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px}
+.footer-links{display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:13px;color:#94A3B8;text-decoration:none;transition:color .15s}
+.footer-links a:hover{color:#fff}
+.footer-founder{font-size:13px;color:#94A3B8;line-height:1.9}
+.footer-founder a{color:#BFDBFE;text-decoration:none;font-weight:600}
+.footer-founder a:hover{color:#fff}
+.footer-founder-role{font-size:11px;color:#475569}
+.footer-bottom{border-top:1px solid #1E293B;padding-top:20px;text-align:center;font-size:11px;color:#64748B;line-height:1.9;max-width:1100px;margin:0 auto}
+.footer-bottom a{color:#94A3B8;text-decoration:none}
+.footer-bottom a:hover{color:#fff}
+.footer-affiliate-note{border-top:1px solid #1E293B;padding:13px 0;text-align:center;font-size:11px;color:#64748B;line-height:1.7;max-width:1100px;margin:0 auto}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hero{padding:52px 20px 44px}
+  .stat-row{gap:8px}
+  .stat-box{padding:12px 16px;min-width:90px}
+  .section{padding:36px 16px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .safety-section{padding:28px 20px;margin:20px 16px}
+  .ad-slot{margin:12px 16px}
+  .blog-section,.testi-section{padding:36px 16px}
+  .faq-section{padding:36px 16px}
+}
+
+
+/* ══ PLANNER OVERRIDES & ADDITIONS ══ */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&display=swap');
 
 /* ── ARCTIC WHITE TOKENS ── */
@@ -1919,8 +619,129 @@ function calcSupplier(){
   .liq-form-card{padding:20px;}
   .liq-source-grid{grid-template-columns:repeat(3,1fr);}
 }
-</style>
 
+</style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav class="nav">
+  <a href="/" class="nav-logo" style="display:flex;align-items:center;text-decoration:none">
+    <svg width="158" height="38" viewBox="0 0 260 68" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="LogicstIQ" style="display:block">
+      <defs>
+        <linearGradient id="nav_g" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#1D4ED8"/>
+          <stop offset="100%" stop-color="#60A5FA"/>
+        </linearGradient>
+      </defs>
+      <path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#nav_g)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M59 8 L66 14 L59 20" stroke="#60A5FA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="32" cy="50" r="3.5" fill="#1D4ED8"/>
+      <circle cx="50" cy="14" r="3.5" fill="#60A5FA"/>
+      <text x="82" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5">
+        <tspan fill="#0F172A">Logicst</tspan><tspan fill="#2563EB">IQ</tspan>
+      </text>
+    </svg>
+  </a>
+  <div class="nav-links">
+    <a href="#calculators">Calculators</a>
+    <a href="#liq-planner">AI Demand Planner</a>
+    <a href="#blog">Blog</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('liq-planner').scrollIntoView({behavior:'smooth'})">Free — No Login →</button>
+</nav>
+
+<!-- ── HERO — dark navy ── -->
+<div class="hero">
+  <div class="hero-badge"><span class="hero-dot"></span>Free · No Login · No Signup · AI-Powered</div>
+  <h1>India's Free Supply Chain<br><span>Intelligence Platform</span></h1>
+  <p class="hero-sub">20 free calculators + AI Demand Planner used by D2C brands, marketplace sellers, manufacturers, distributors, and 3PLs across India and globally.</p>
+
+  <div class="liq-pain-row">
+    <span class="liq-pain-pill"><em>Stockouts</em> killing your rank?</span>
+    <span class="liq-pain-pill"><em>Dead stock</em> eating your cash?</span>
+    <span class="liq-pain-pill">5 courier logins, <em>zero visibility?</em></span>
+    <span class="liq-pain-pill">Planning on <em>Excel &amp; WhatsApp?</em></span>
+    <span class="liq-pain-pill">SAP too <em>expensive</em> for your scale?</span>
+  </div>
+
+  <div class="logos-wrap">
+    <div class="logos-label">Works with exports from</div>
+    <div class="liq-logo-row">
+      <span class="liq-logo-pill">Amazon</span><span class="liq-logo-pill">Flipkart</span><span class="liq-logo-pill">Shopify</span><span class="liq-logo-pill">Meesho</span><span class="liq-logo-pill">Myntra</span><span class="liq-logo-pill">Tally Prime</span><span class="liq-logo-pill">SAP</span><span class="liq-logo-pill">NetSuite</span><span class="liq-logo-pill">Zoho</span><span class="liq-logo-pill">Unicommerce</span><span class="liq-logo-pill">Blinkit</span><span class="liq-logo-pill">Zepto</span><span class="liq-logo-pill">Dynamics 365</span><span class="liq-logo-pill">Odoo</span>
+    </div>
+  </div>
+
+  <div class="liq-trust-bar">
+    <span><span class="tick">✓</span>No signup needed</span>
+    <span><span class="tick">✓</span>No data stored</span>
+    <span><span class="tick">✓</span>Works on any device</span>
+    <span><span class="tick">✓</span>Excel &amp; CSV supported</span>
+    <span><span class="tick">✓</span>Instant results</span>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-box"><div class="stat-num" style="color:#93C5FD">20</div><div class="stat-lbl">Free Tools</div></div>
+    <div class="stat-box"><div class="stat-num" style="color:#6EE7B7">AI</div><div class="stat-lbl">Powered</div></div>
+    <div class="stat-box"><div class="stat-num" style="color:#67E8F9">0</div><div class="stat-lbl">Login Required</div></div>
+    <div class="stat-box"><div class="stat-num" style="color:#FDE68A">∞</div><div class="stat-lbl">Free Forever</div></div>
+    <div class="stat-box"><div class="stat-num" style="color:#FCA5A5">30+</div><div class="stat-lbl">Channels</div></div>
+  </div>
+  <div><span class="made-india">🇮🇳 Made in India · Built for India &amp; Global Markets</span></div>
+</div>
+
+<!-- ── ADSENSE SLOT 1 — Top Banner (activate after AdSense approval) ── -->
+<!-- <div class="ad-slot"><span class="ad-label">Advertisement</span><div class="ad-bar"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div></div> -->
+
+<!-- ── CALCULATORS ── -->
+<section id="calculators" class="section center">
+  <div class="section-eyebrow">🧮 Free Tools</div>
+  <h2 class="section-title">20 Supply Chain Calculators</h2>
+  <p class="section-sub">Professional-grade calculators used by supply chain teams at D2C brands, marketplaces, manufacturers and distributors. Free forever, no login required.</p>
+
+  <div class="calc-cat-lbl">📦 Inventory Planning</div>
+  <div class="calc-grid">
+    <a href="/eoq-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📦</div><div class="calc-tag">Inventory</div><div class="calc-name">EOQ Calculator</div><div class="calc-desc">Economic Order Quantity — optimal order size</div></div></a>
+    <a href="/safety-stock-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🛡️</div><div class="calc-tag">Inventory</div><div class="calc-name">Safety Stock</div><div class="calc-desc">Buffer stock to prevent stockouts</div></div></a>
+    <a href="/reorder-point-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🎯</div><div class="calc-tag">Inventory</div><div class="calc-name">Reorder Point</div><div class="calc-desc">When to place your next purchase order</div></div></a>
+    <a href="/abc-analysis-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📊</div><div class="calc-tag">Inventory</div><div class="calc-name">ABC Analysis</div><div class="calc-desc">Classify SKUs by revenue contribution</div></div></a>
+    <a href="/inventory-turnover-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🔄</div><div class="calc-tag">Inventory</div><div class="calc-name">Inventory Turnover</div><div class="calc-desc">How fast your stock moves</div></div></a>
+  </div>
+
+  <div class="calc-cat-lbl">📈 Performance &amp; Service</div>
+  <div class="calc-grid">
+    <a href="/otif-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">⏱️</div><div class="calc-tag">Performance</div><div class="calc-name">OTIF Calculator</div><div class="calc-desc">On-Time In-Full delivery score</div></div></a>
+    <a href="/fill-rate-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">💯</div><div class="calc-tag">Performance</div><div class="calc-name">Fill Rate</div><div class="calc-desc">Order fulfilment efficiency</div></div></a>
+    <a href="/demand-forecast-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📉</div><div class="calc-tag">Performance</div><div class="calc-name">Demand Forecast</div><div class="calc-desc">Simple statistical forecasting</div></div></a>
+    <a href="/supplier-scorecard-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">⭐</div><div class="calc-tag">Performance</div><div class="calc-name">Supplier Scorecard</div><div class="calc-desc">Rate and compare your suppliers</div></div></a>
+    <a href="/cycle-count-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📋</div><div class="calc-tag">Performance</div><div class="calc-name">Cycle Count</div><div class="calc-desc">Plan physical inventory counts</div></div></a>
+  </div>
+
+  <div class="calc-cat-lbl">💰 Costing &amp; Finance</div>
+  <div class="calc-grid">
+    <a href="/landed-cost-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🌐</div><div class="calc-tag">Costing</div><div class="calc-name">Landed Cost</div><div class="calc-desc">True cost including freight &amp; duties</div></div></a>
+    <a href="/gst-calculator-logistics" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🏷️</div><div class="calc-tag">Costing</div><div class="calc-name">GST Calculator</div><div class="calc-desc">India GST with HSN code lookup</div></div></a>
+    <a href="/working-capital-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📊</div><div class="calc-tag">Finance</div><div class="calc-name">Working Capital</div><div class="calc-desc">Cash tied up in your supply chain</div></div></a>
+    <a href="/carrying-cost-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">💸</div><div class="calc-tag">Finance</div><div class="calc-name">Carrying Cost</div><div class="calc-desc">Total cost of holding inventory</div></div></a>
+    <a href="/stockout-cost-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🎯</div><div class="calc-tag">Finance</div><div class="calc-name">Stockout Cost</div><div class="calc-desc">Revenue lost from out-of-stock events</div></div></a>
+  </div>
+
+  <div class="calc-cat-lbl">🚚 Logistics &amp; Sustainability</div>
+  <div class="calc-grid">
+    <a href="/freight-cost-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🚛</div><div class="calc-tag">Logistics</div><div class="calc-name">Freight Cost</div><div class="calc-desc">Compare carrier rates by weight &amp; zone</div></div></a>
+    <a href="/carbon-footprint-logistics" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🌱</div><div class="calc-tag">Sustainability</div><div class="calc-name">Carbon Footprint</div><div class="calc-desc">CO₂ per shipment across modes</div></div></a>
+    <a href="/warehouse-space-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🏭</div><div class="calc-tag">Logistics</div><div class="calc-name">Warehouse Space</div><div class="calc-desc">Storage requirement planning</div></div></a>
+    <a href="/lead-time-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🔗</div><div class="calc-tag">Logistics</div><div class="calc-name">Lead Time</div><div class="calc-desc">End-to-end supply chain lead time</div></div></a>
+    <a href="/disruption-impact-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🌊</div><div class="calc-tag">Resilience</div><div class="calc-name">Disruption Impact</div><div class="calc-desc">Cost of supply chain disruptions</div></div></a>
+  </div>
+</section>
+
+<!-- ── ADSENSE SLOT 2 — Mid page (activate after AdSense approval) ── -->
+<!-- <div class="ad-slot"><span class="ad-label">Advertisement</span><div class="ad-bar"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div></div> -->
+
+<!-- ── AI DEMAND PLANNER v4 — FUNCTIONAL ── -->
 <section id="liq-planner">
 
   <!-- HERO — dark navy (contrast section) -->
@@ -2298,27 +1119,196 @@ function esc(s){const d=document.createElement('div');d.textContent=String(s??''
 })();
 </script>
 
-</script>
-<script>
-// ── FAQ accordion ──────────────────────────────────────────────────────────
-function liqFaq(el){
-  const item=el.parentElement;
-  const isOpen=item.classList.contains('open');
-  document.querySelectorAll('.liq-faq-item').forEach(i=>i.classList.remove('open'));
-  if(!isOpen) item.classList.add('open');
-}
+<!-- ── TESTIMONIALS ── -->
+<section class="testi-section">
+  <div style="text-align:center;margin-bottom:28px">
+    <div class="section-eyebrow">⭐ Testimonials</div>
+    <h2 class="section-title">Trusted by Supply Chain Professionals</h2>
+    <p class="section-sub" style="margin:8px auto 0">Real feedback from supply chain teams, D2C brands, and logistics professionals across India.</p>
+  </div>
+  <div class="liq-testi-grid">
+    <div class="liq-testi-card">
+      <div class="liq-testi-stars">★★★★★</div>
+      <p class="liq-testi-text">Finally a demand planning tool that actually reads my Tally export without any conversion. The AI insights caught 3 SKUs about to stock out — I would have missed them completely.</p>
+      <div class="liq-testi-author">Rahul M.</div>
+      <div class="liq-testi-role">Supply Chain Manager · D2C Electronics Brand, Bangalore</div>
+      <span class="liq-testi-badge">Tally User</span>
+    </div>
+    <div class="liq-testi-card">
+      <div class="liq-testi-stars">★★★★★</div>
+      <p class="liq-testi-text">We manage 8 warehouses across India. The reorder plan alone saves my team 4 hours every Monday. The stockout risk tab is something we check every single day now.</p>
+      <div class="liq-testi-author">Priya S.</div>
+      <div class="liq-testi-role">Head of Logistics · FMCG Distributor, Mumbai</div>
+      <span class="liq-testi-badge">SAP User</span>
+    </div>
+    <div class="liq-testi-card">
+      <div class="liq-testi-stars">★★★★★</div>
+      <p class="liq-testi-text">I use this before every Diwali and Big Billion Days. The seasonality calendar and event intelligence feature helped me avoid a ₹12L stockout last festive season.</p>
+      <div class="liq-testi-author">Arjun K.</div>
+      <div class="liq-testi-role">Amazon &amp; Flipkart Seller · Fashion Category, Delhi</div>
+      <span class="liq-testi-badge">Amazon Seller</span>
+    </div>
+    <div class="liq-testi-card">
+      <div class="liq-testi-stars">★★★★★</div>
+      <p class="liq-testi-text">The EOQ and Safety Stock calculators are textbook-accurate. I use them to validate our procurement team's orders every quarter. Free and no login — incredible value.</p>
+      <div class="liq-testi-author">Deepika R.</div>
+      <div class="liq-testi-role">VP Operations · Manufacturing Company, Pune</div>
+      <span class="liq-testi-badge">Enterprise</span>
+    </div>
+    <div class="liq-testi-card">
+      <div class="liq-testi-stars">★★★★★</div>
+      <p class="liq-testi-text">We supply 4 dark stores for Blinkit in Bangalore. The Quick Commerce tab is the only tool we found that plans by city and time of day. Game changer for dark store restocking.</p>
+      <div class="liq-testi-author">Vikram T.</div>
+      <div class="liq-testi-role">Operations Lead · Q-Commerce Supplier, Bangalore</div>
+      <span class="liq-testi-badge">Q-Commerce</span>
+    </div>
+    <div class="liq-testi-card">
+      <div class="liq-testi-stars">★★★★★</div>
+      <p class="liq-testi-text">My NetSuite exports work natively — no column mapping, no CSV cleaning. The dead stock recovery tab identified ₹8L of slow-moving inventory I had completely forgotten about.</p>
+      <div class="liq-testi-author">Ananya P.</div>
+      <div class="liq-testi-role">Inventory Analyst · 3PL Company, Chennai</div>
+      <span class="liq-testi-badge">NetSuite User</span>
+    </div>
+  </div>
+</section>
 
-// Pro waitlist removed — will be added when Pro plan launches
+<!-- ── DATA SAFETY SECTION ── -->
+<div class="safety-section">
+  <div class="safety-shield">🔒</div>
+  <div class="safety-content">
+    <div class="safety-tag">✓ Privacy First · HTTPS Secured · Zero Data Retention · DPDP Act 2023 Compliant</div>
+    <div class="safety-title">Your Inventory Data is 100% Safe</div>
+    <p class="safety-sub">You're uploading real business data — SKUs, sales volumes, stock levels, prices. We take that seriously. Here's exactly what happens to your data when you use LogicstIQ.</p>
+    <div class="safety-grid">
+      <div class="safety-card"><div class="safety-card-ico">🚫</div><div><div class="safety-card-t">Never Stored</div><div class="safety-card-b">Your file is processed and immediately discarded. Zero data saved to any database, server log, or storage system.</div></div></div>
+      <div class="safety-card"><div class="safety-card-ico">🔐</div><div><div class="safety-card-t">No Login Required</div><div class="safety-card-b">No account, no email, no identity. Nothing links your inventory data to you or your business.</div></div></div>
+      <div class="safety-card"><div class="safety-card-ico">🚷</div><div><div class="safety-card-t">Never Shared</div><div class="safety-card-b">Your data is never sold, shared, or transmitted to any third party, advertiser, or analytics platform.</div></div></div>
+      <div class="safety-card"><div class="safety-card-ico">⚡</div><div><div class="safety-card-t">Session Only</div><div class="safety-card-b">Data exists only during your active browser session. Close the tab and it is permanently gone.</div></div></div>
+      <div class="safety-card"><div class="safety-card-ico">🌐</div><div><div class="safety-card-t">HTTPS Encrypted</div><div class="safety-card-b">All data transfer is encrypted end-to-end via HTTPS/TLS. The same standard used by banks.</div></div></div>
+      <div class="safety-card"><div class="safety-card-ico">🤖</div><div><div class="safety-card-t">AI Analysis Only</div><div class="safety-card-b">Gemini AI receives only computed summary numbers — never your raw inventory file or personal data.</div></div></div>
+    </div>
+  </div>
+</div>
 
-// ── Animate stats when scrolled into view ─────────────────────────────────
-const statNums=document.querySelectorAll('.liq-stat-num');
-if('IntersectionObserver' in window){
-  const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting){e.target.style.transform='scale(1.08)';setTimeout(()=>e.target.style.transform='',300);}});
-  },{threshold:.5});
-  statNums.forEach(n=>obs.observe(n));
-}
-</script>
+<!-- ── BLOG / RESOURCES SECTION ── -->
+<section id="blog" class="blog-section">
+  <div style="margin-bottom:28px">
+    <div class="section-eyebrow">📚 Free Resources</div>
+    <h2 class="section-title">Supply Chain Guides &amp; Tutorials</h2>
+    <p class="section-sub" style="margin:8px 0 0">Practical guides, formulas, and tutorials for supply chain professionals, marketplace sellers, and D2C brands.</p>
+  </div>
+  <div class="blog-grid">
+    <a href="/blog/eoq-calculator.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">📦 Inventory</div><div class="blog-card-t">EOQ Formula — Complete Guide with Calculator &amp; Examples</div><div class="blog-card-d">Economic Order Quantity from scratch. Worked examples for Amazon FBA, D2C brands, and offline retail with a free calculator.</div><div class="blog-meta">📖 8 min read · Free Calculator included</div><div class="blog-read">Read Guide →</div></div></a>
+    <a href="/blog/demand-planning-amazon-flipkart.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">📈 Forecasting</div><div class="blog-card-t">Demand Planning for Amazon &amp; Flipkart Sellers — Step by Step</div><div class="blog-card-d">How to forecast demand for Indian marketplace sellers. Full seasonality calendar including Diwali, Big Billion Days, Prime Day.</div><div class="blog-meta">📖 10 min read · AI Planner tutorial</div><div class="blog-read">Read Guide →</div></div></a>
+    <a href="/blog/safety-stock-calculator.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">🛡️ Safety Stock</div><div class="blog-card-t">Safety Stock Formula — How to Calculate Buffer Stock</div><div class="blog-card-d">Three formula versions from simple to advanced. Service levels explained. Worked example with reorder point integration.</div><div class="blog-meta">📖 7 min read · Free Calculator included</div><div class="blog-read">Read Guide →</div></div></a>
+    <a href="/blog/what-is-otif.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">✅ KPI Guide</div><div class="blog-card-t">What is OTIF? On-Time In-Full Explained — Formula &amp; Benchmarks</div><div class="blog-card-d">Complete guide to OTIF — the gold standard KPI for supply chain delivery performance. Includes industry benchmarks and improvement tips.</div><div class="blog-meta">📖 6 min read · Industry benchmarks</div><div class="blog-read">Read Guide →</div></div></a>
+    <a href="/blog/inventory-turnover-formula.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">📊 Inventory</div><div class="blog-card-t">Inventory Turnover Formula — How to Calculate &amp; Improve</div><div class="blog-card-d">Inventory Turnover Ratio explained with formula, worked examples, industry benchmarks and practical improvement strategies.</div><div class="blog-meta">📖 7 min read · Industry benchmarks</div><div class="blog-read">Read Guide →</div></div></a>
+    <a href="/blog/abc-analysis-guide.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">🔡 Classification</div><div class="blog-card-t">ABC Analysis in Inventory Management — Complete Guide</div><div class="blog-card-d">ABC analysis from scratch: classify your SKUs by revenue contribution, set replenishment policies, and free up working capital.</div><div class="blog-meta">📖 8 min read · Free Calculator</div><div class="blog-read">Read Guide →</div></div></a>
+    <a href="/blog/gst-calculator-logistics.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">🧾 India Tax</div><div class="blog-card-t">GST on Freight &amp; Logistics Services — Complete Guide (2024–25)</div><div class="blog-card-d">GST rates for freight, warehousing, courier services, and import-export in India. CGST vs IGST explained with calculation examples.</div><div class="blog-meta">📖 9 min read · India specific</div><div class="blog-read">Read Guide →</div></div></a>
+  </div>
+</section>
+
+<!-- ── FAQ SECTION ── -->
+<section class="faq-section">
+  <div style="text-align:center;margin-bottom:28px">
+    <div class="section-eyebrow">❓ FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item open"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is LogicstIQ completely free to use?<span class="arr">▾</span></div><div class="faq-a">Yes — all 20 calculators and the AI Demand Planner are completely free. No login, no signup, no credit card, no usage limits. Free forever.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does LogicstIQ store my inventory data?<span class="arr">▾</span></div><div class="faq-a">Never. Your file is processed on our secure server and immediately discarded after your results are generated. Zero data is stored, logged, or shared. Close the tab and it's permanently gone.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What file formats are supported?<span class="arr">▾</span></div><div class="faq-a">Excel (.xlsx and .xls), CSV, TSV, and TXT files up to 25MB. Real Excel files are read natively using SheetJS — no conversion to CSV needed. Supports exports from SAP, NetSuite, Tally, Zoho, Unicommerce, Amazon Seller Central, Flipkart Seller Hub, Meesho, and 15+ other systems.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Who is LogicstIQ for?<span class="arr">▾</span></div><div class="faq-a">D2C brands, marketplace sellers (Amazon, Flipkart, Meesho, Myntra), manufacturers, distributors, C&amp;F agents, 3PL companies, quick commerce suppliers, import/export businesses, and supply chain professionals globally.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does it work for Blinkit and Zepto suppliers?<span class="arr">▾</span></div><div class="faq-a">Yes. The AI Demand Planner has a dedicated Quick Commerce tab that plans by city, by dark store, and by time of day. It's the only free tool designed specifically for the hyperlocal replenishment challenges of Blinkit, Zepto, Swiggy Instamart, and BigBasket.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How accurate are the AI forecasts?<span class="arr">▾</span></div><div class="faq-a">Accuracy depends on the quality and completeness of your input data. The AI Demand Planner uses Gemini 2.5 Flash with statistical forecasting models. All results are for planning reference only — always validate with your ERP or WMS before placing purchase orders.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will you add more tools?<span class="arr">▾</span></div><div class="faq-a">Yes. LogicstIQ is actively developed. Upcoming additions include a TMS (Transportation Management System) for carrier rate comparison and route optimisation, and a Pro plan for teams needing saved forecasts, scheduled reports, and API integrations.</div></div>
+  </div>
+</section>
+
+<!-- ── ADSENSE SLOT 3 — Footer (activate after AdSense approval) ── -->
+<!-- <div class="ad-slot" style="margin-bottom:0"><span class="ad-label">Advertisement</span><div class="ad-bar"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div></div> -->
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo" style="margin-bottom:4px">
+        <svg width="158" height="38" viewBox="0 0 260 68" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="LogicstIQ" style="display:block">
+          <defs>
+            <linearGradient id="ft_g" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.5)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0.92)"/>
+            </linearGradient>
+          </defs>
+          <path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#ft_g)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M59 8 L66 14 L59 20" stroke="rgba(255,255,255,0.72)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="32" cy="50" r="3.5" fill="rgba(255,255,255,0.38)"/>
+          <circle cx="50" cy="14" r="3.5" fill="rgba(255,255,255,0.88)"/>
+          <text x="82" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5">
+            <tspan fill="#FFFFFF">Logicst</tspan><tspan fill="#93C5FD">IQ</tspan>
+          </text>
+        </svg>
+      </div>
+      <div class="footer-tagline">Where Logistics Meets Intelligence</div>
+      <p>India's free supply chain intelligence platform. 20 calculators + AI Demand Planner. No login. No data stored. Free forever.</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/amiitkumar" target="_blank" rel="noopener" class="social-btn">in</a>
+        <a href="https://www.linkedin.com/in/sachin-s-0b1179162" target="_blank" rel="noopener" class="social-btn">in</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-t">Calculators</div>
+      <div class="footer-links">
+        <a href="/eoq-calculator">EOQ Calculator</a>
+        <a href="/safety-stock-calculator">Safety Stock</a>
+        <a href="/reorder-point-calculator">Reorder Point</a>
+        <a href="/abc-analysis-calculator">ABC Analysis</a>
+        <a href="/otif-calculator">OTIF Calculator</a>
+        <a href="/landed-cost-calculator">Landed Cost</a>
+        <a href="/gst-calculator-logistics">GST Calculator</a>
+        <a href="/carbon-footprint-logistics">Carbon Footprint</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-t">AI Planner</div>
+      <div class="footer-links">
+        <a href="#liq-planner">Demand Forecast</a>
+        <a href="#liq-planner">Reorder Plan</a>
+        <a href="#liq-planner">Inventory IQ</a>
+        <a href="#liq-planner">Stockout Risk</a>
+        <a href="#liq-planner">Slow Movers</a>
+        <a href="#liq-planner">Q-Commerce</a>
+        <a href="#liq-planner">Event Calendar</a>
+        <a href="#blog">Blog &amp; Guides</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-t">Company</div>
+      <div class="footer-founder">
+        <a href="https://www.linkedin.com/in/amiitkumar" target="_blank" rel="noopener">Amit Kumar</a><br>
+        <span class="footer-founder-role">Co-Founder · LogicstIQ</span><br><br>
+        <a href="https://www.linkedin.com/in/sachin-s-0b1179162" target="_blank" rel="noopener">Sachin Sirwani</a><br>
+        <span class="footer-founder-role">Co-Founder · LogicstIQ</span>
+      </div>
+      <div class="footer-links" style="margin-top:16px">
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="mailto:privacy@logicstiq.com">privacy@logicstiq.com</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-affiliate-note">
+    <strong style="color:#94A3B8">Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. When you sign up for a third-party service via these links, we may earn a small commission at no extra cost to you. This does not affect our editorial independence or recommendations.
+  </div>
+  <div class="footer-bottom">
+    <div style="margin-bottom:6px"><strong style="color:#94A3B8">20 Free Supply Chain Calculators · AI Demand Planner · No Login Required · Instant Results · Free Forever</strong></div>
+    <div>© 2025 LogicstIQ.com · Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a> · Where Logistics Meets Intelligence</div>
+    <div style="margin-top:6px"><a href="/privacy-policy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a> · <a href="/disclaimer.html">Disclaimer</a> · Results are for reference only. Always validate with your ERP/WMS before making business decisions.</div>
+  </div>
+</footer>
 
 </body>
 </html>
