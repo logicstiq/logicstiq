@@ -1,29 +1,327 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Contact - LogicstIQ.com</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact LogicstIQ — Get in Touch | Supply Chain Intelligence Platform</title>
+<meta name="description" content="Contact the LogicstIQ team. Questions about our supply chain calculators, AI Demand Planner, partnerships, or feedback — we read every message.">
+<link rel="canonical" href="https://www.logicstiq.com/contact"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Contact LogicstIQ","url":"https://www.logicstiq.com/contact","mainEntity":{"@type":"Organization","name":"LogicstIQ","email":"privacy@logicstiq.com","url":"https://www.logicstiq.com"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&display=swap" rel="stylesheet"/>
 <style>
-body{font-family:'Segoe UI',sans-serif;background:#06090f;color:#8faabf;max-width:800px;margin:0 auto;padding:2rem;line-height:1.7}
-h1{color:#f0c040;margin-bottom:0.5rem}
-a{color:#00d4aa}
-.back{display:inline-block;margin-bottom:2rem;color:#f0c040;text-decoration:none}
-.card{background:#0c1220;border:1px solid #1a2d4a;border-radius:12px;padding:1.5rem}
-.card p{margin-bottom:1rem}
-.card p:last-child{margin-bottom:0}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#F4F7FF;--white:#FFFFFF;--border:#E2E8F0;--b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b600:#2563EB;--b700:#1D4ED8;--b900:#1E3A8A;--green:#059669;--glight:#D1FAE5;--text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8}
+body{font-family:"Inter",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+/* NAV */
+.nav{background:#fff;border-bottom:1px solid var(--border);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.nav-logo{text-decoration:none;display:flex;align-items:center}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-link{font-size:13px;font-weight:600;color:var(--text3);text-decoration:none;padding:7px 14px;border-radius:8px;transition:all .15s}
+.nav-link:hover,.nav-link.active{color:var(--b600);background:var(--b50)}
+.nav-cta{background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;border:none;border-radius:9px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+/* HERO */
+.hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 50%,#1D4ED8 100%);padding:64px 32px 56px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 70%,rgba(96,165,250,0.1) 0%,transparent 60%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:6px 16px;font-size:11px;font-weight:800;color:#BFDBFE;text-transform:uppercase;letter-spacing:.09em;margin-bottom:18px}
+.hero h1{font-size:clamp(28px,5vw,48px);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-.03em;margin-bottom:14px;font-family:"Plus Jakarta Sans",sans-serif;position:relative}
+.hero h1 span{color:#93C5FD}
+.hero-sub{font-size:16px;color:rgba(255,255,255,.8);max-width:520px;margin:0 auto;line-height:1.75;position:relative}
+/* WRAP */
+.wrap{max-width:900px;margin:0 auto;padding:52px 24px 80px}
+/* CONTACT GRID */
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:24px;margin-bottom:32px}
+/* LEFT — CHANNELS */
+.channels-col{display:flex;flex-direction:column;gap:14px}
+.channel-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:22px;transition:all .2s;box-shadow:0 2px 8px rgba(30,58,138,.04)}
+.channel-card:hover{border-color:var(--b200);box-shadow:0 6px 20px rgba(30,58,138,.09);transform:translateY(-1px)}
+.channel-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.channel-ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.channel-ico.blue{background:var(--b50)}
+.channel-ico.green{background:#F0FDF4}
+.channel-ico.purple{background:#FAF5FF}
+.channel-ico.orange{background:#FFF7ED}
+.channel-name{font-size:15px;font-weight:800;color:var(--text)}
+.channel-desc{font-size:13px;color:var(--text3);line-height:1.65;margin-bottom:12px}
+.channel-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--b600);text-decoration:none;transition:color .15s}
+.channel-link:hover{color:var(--b700)}
+/* RESPONSE TIMES */
+.response-card{background:linear-gradient(135deg,#F0FDF4,#DCFCE7);border:1.5px solid #A7F3D0;border-radius:14px;padding:18px}
+.response-title{font-size:13px;font-weight:800;color:#065F46;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.response-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #BBF7D0;font-size:13px}
+.response-row:last-child{border-bottom:none}
+.response-type{color:#047857;font-weight:600}
+.response-time{color:#065F46;font-weight:800;font-size:12px}
+/* RIGHT — FORM */
+.form-card{background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:32px;box-shadow:0 4px 20px rgba(30,58,138,.06);position:relative;overflow:hidden}
+.form-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--b600),#0891B2)}
+.form-eyebrow{font-size:10px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.form-card h2{font-size:22px;font-weight:900;color:var(--text);margin-bottom:6px;font-family:"Plus Jakarta Sans",sans-serif}
+.form-card .form-sub{font-size:13px;color:var(--text3);margin-bottom:22px;line-height:1.6}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:12px;font-weight:700;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;color:var(--text);background:#fff;outline:none;transition:border-color .15s;resize:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--b600);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.form-group select option{background:#fff;color:var(--text)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.submit-btn{width:100%;background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:800;font-family:inherit;cursor:pointer;box-shadow:0 4px 16px rgba(37,99,235,.35);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:6px}
+.submit-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,99,235,.45)}
+.form-note{font-size:11px;color:var(--text4);text-align:center;margin-top:10px;line-height:1.6}
+/* SUCCESS */
+.success-box{background:#F0FDF4;border:2px solid #86EFAC;border-radius:14px;padding:24px;text-align:center;display:none}
+.success-box.show{display:block}
+.success-ico{font-size:40px;margin-bottom:10px}
+.success-title{font-size:18px;font-weight:800;color:#15803D;margin-bottom:6px}
+.success-sub{font-size:13px;color:#166534}
+/* FAQ */
+.faq-section{margin-bottom:32px}
+.faq-eyebrow{font-size:10px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.faq-eyebrow::after{content:"";flex:1;height:1px;background:var(--border)}
+.faq-item{background:var(--white);border:1.5px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq-q{padding:16px 20px;font-size:14px;font-weight:700;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .15s}
+.faq-q:hover{background:var(--b50)}
+.faq-q .arr{color:var(--b600);font-size:16px;transition:transform .2s;flex-shrink:0}
+.faq-a{padding:14px 20px;font-size:13px;color:var(--text3);line-height:1.75;background:#F8FAFF;border-top:1px solid var(--border);display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q .arr{transform:rotate(180deg)}
+/* CTA BOTTOM */
+.cta-section{background:linear-gradient(135deg,#0F172A,#1E3A8A);border-radius:20px;padding:36px;text-align:center}
+.cta-section h2{font-size:22px;font-weight:900;color:#fff;margin-bottom:8px;font-family:"Plus Jakarta Sans",sans-serif}
+.cta-section p{font-size:14px;color:#BFDBFE;margin-bottom:20px;line-height:1.7}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;text-decoration:none;padding:13px 24px;border-radius:12px;font-size:14px;font-weight:800;box-shadow:0 4px 16px rgba(37,99,235,.4);margin:0 5px 8px}
+.cta-btn.outline{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);box-shadow:none}
+/* FOOTER */
+footer{background:#0F172A;padding:40px 32px;text-align:center;color:#64748B;font-size:13px;margin-top:0}
+footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
+footer a:hover{color:#fff}
+.footer-inner{max-width:900px;margin:0 auto}
+.footer-tagline{font-size:13px;color:#94A3B8;margin:10px 0 18px}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:16px}
+.footer-links a{font-size:12px;color:#64748B;text-decoration:none}
+.footer-links a:hover{color:#BFDBFE}
+.footer-copy{font-size:12px;color:#334155;line-height:1.7}
+@media(max-width:768px){
+  .contact-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .nav-links .nav-link{display:none}
+  .wrap{padding:36px 16px 60px}
+  .hero{padding:48px 20px 40px}
+}
 </style>
 </head>
 <body>
-<a href="/" class="back">&larr; Back to LogicstIQ.com</a>
-<h1>Contact LogicstIQ.com</h1>
-<div class="card">
-<p>Email: <a href="mailto:logicstiq@gmail.com">logicstiq@gmail.com</a></p>
-<p>Suggest a calculator: Have a supply chain metric we have not covered yet? Let us know and we will consider adding it.</p>
-<p>Report a bug: Found an error in any calculator or in the AI Demand Planner? Please email us with a description of what happened.</p>
-<p>Partnerships and Advertising: logicstiq@gmail.com</p>
-<p>Location: India</p>
-<p>Response time: Within 24 to 48 hours</p>
+
+<nav class="nav">
+  <a href="https://www.logicstiq.com" class="nav-logo">
+    <svg width="140" height="34" viewBox="0 0 260 68" fill="none"><defs><linearGradient id="ng" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1D4ED8"/><stop offset="100%" stop-color="#3B82F6"/></linearGradient></defs><path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#ng)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M59 8 L66 14 L59 20" stroke="#3B82F6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="32" cy="50" r="3.5" fill="#1D4ED8"/><circle cx="50" cy="14" r="3.5" fill="#3B82F6"/><text x="82" y="35" font-family="Plus Jakarta Sans,sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5"><tspan fill="#0F172A">Logicst</tspan><tspan fill="#2563EB">IQ</tspan></text></svg>
+  </a>
+  <div class="nav-links">
+    <a href="https://www.logicstiq.com" class="nav-link">&#8592; Home</a>
+    <a href="https://www.logicstiq.com/about" class="nav-link">About</a>
+    <a href="https://www.logicstiq.com/contact" class="nav-link active">Contact</a>
+    <a href="https://www.logicstiq.com/#ai-demand-planner" class="nav-cta">&#10022; AI Planner</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">&#128172; Get in Touch</div>
+  <h1>We Read <span>Every Message</span></h1>
+  <p class="hero-sub">Questions, feedback, partnership ideas, or just want to say hello — reach out. We are a small team and we personally read and reply to everything.</p>
 </div>
+
+<div class="wrap">
+
+  <div class="contact-grid">
+
+    <!-- LEFT: CHANNELS -->
+    <div class="channels-col">
+
+      <div class="channel-card">
+        <div class="channel-header">
+          <div class="channel-ico blue">&#128140;</div>
+          <div class="channel-name">General &amp; Privacy</div>
+        </div>
+        <p class="channel-desc">For general questions, feedback about the calculators, data privacy queries, or anything else about LogicstIQ.</p>
+        <a href="mailto:privacy@logicstiq.com" class="channel-link">&#8594; privacy@logicstiq.com</a>
+      </div>
+
+      <div class="channel-card">
+        <div class="channel-header">
+          <div class="channel-ico green">&#128101;</div>
+          <div class="channel-name">Amit Kumar</div>
+        </div>
+        <p class="channel-desc">Co-Founder. Supply chain, inventory planning, e-commerce, D2C, marketplace operations. Reach out for supply chain questions or collaboration.</p>
+        <a href="https://www.linkedin.com/in/amiitkumar" target="_blank" rel="noopener" class="channel-link">&#8594; LinkedIn: amiitkumar</a>
+      </div>
+
+      <div class="channel-card">
+        <div class="channel-header">
+          <div class="channel-ico purple">&#128101;</div>
+          <div class="channel-name">Sachin Sirwani</div>
+        </div>
+        <p class="channel-desc">Co-Founder. Logistics, freight, 3PL, Middle East supply chains. Reach out for logistics cost, carrier strategy, or supply chain operations.</p>
+        <a href="https://www.linkedin.com/in/sachin-s-0b1179162" target="_blank" rel="noopener" class="channel-link">&#8594; LinkedIn: sachin-s-0b1179162</a>
+      </div>
+
+      <div class="channel-card">
+        <div class="channel-header">
+          <div class="channel-ico orange">&#127919;</div>
+          <div class="channel-name">Partnerships &amp; Media</div>
+        </div>
+        <p class="channel-desc">Affiliate partnerships, media mentions, supply chain newsletter features, or integration opportunities.</p>
+        <a href="mailto:privacy@logicstiq.com?subject=Partnership%20Inquiry" class="channel-link">&#8594; Email with subject "Partnership"</a>
+      </div>
+
+      <div class="response-card">
+        <div class="response-title">&#9201; Typical Response Times</div>
+        <div class="response-row"><span class="response-type">General email</span><span class="response-time">24–48 hours</span></div>
+        <div class="response-row"><span class="response-type">LinkedIn message</span><span class="response-time">48–72 hours</span></div>
+        <div class="response-row"><span class="response-type">Partnership inquiry</span><span class="response-time">3–5 business days</span></div>
+        <div class="response-row"><span class="response-type">Privacy / data request</span><span class="response-time">Within 72 hours</span></div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: FORM -->
+    <div>
+      <div class="form-card">
+        <div class="form-eyebrow">&#9997; Send a Message</div>
+        <h2>Drop Us a Line</h2>
+        <p class="form-sub">Fill in the form and we will get back to you within 24–48 hours. All fields marked with * are required.</p>
+        <div id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name *</label>
+              <input type="text" id="f-name" placeholder="e.g. Priya Sharma" required/>
+            </div>
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" id="f-email" placeholder="you@company.com" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Company / Organisation</label>
+            <input type="text" id="f-company" placeholder="e.g. Sharma Logistics Pvt Ltd"/>
+          </div>
+          <div class="form-group">
+            <label>Topic *</label>
+            <select id="f-topic">
+              <option value="">Select a topic...</option>
+              <option>Question about a calculator</option>
+              <option>AI Demand Planner feedback</option>
+              <option>Feature request</option>
+              <option>Bug report</option>
+              <option>Partnership or collaboration</option>
+              <option>Media or press inquiry</option>
+              <option>Privacy or data request</option>
+              <option>General feedback</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message *</label>
+            <textarea id="f-message" rows="5" placeholder="Tell us what is on your mind. The more detail the better — we love specific supply chain questions."></textarea>
+          </div>
+          <button class="submit-btn" onclick="submitForm()">&#128172; Send Message</button>
+          <p class="form-note">&#128274; We never share your details with third parties. See our <a href="/privacy-policy" style="color:var(--b600)">Privacy Policy</a>.</p>
+        </div>
+        <div class="success-box" id="success-box">
+          <div class="success-ico">&#9989;</div>
+          <div class="success-title">Message Sent!</div>
+          <p class="success-sub">Thank you for reaching out. We will get back to you within 24–48 hours at the email you provided.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <div class="faq-eyebrow">&#10067; Frequently Asked Questions</div>
+
+    <div class="faq-item open">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is LogicstIQ really free? What is the catch?<span class="arr">&#9662;</span></div>
+      <div class="faq-a">There is no catch. All 20 calculators and the AI Demand Planner are completely free. No freemium tier, no expiring trial, no credit card required. We may earn affiliate commissions when users sign up for third-party tools we recommend — that is how we sustain the platform. All calculators remain free regardless.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I request a new calculator or feature?<span class="arr">&#9662;</span></div>
+      <div class="faq-a">Absolutely. Use the form above with topic "Feature request" and describe what you need. We built LogicstIQ based on real supply chain problems and we prioritise features that come up repeatedly from users. If enough people ask for something, it gets built.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does LogicstIQ store my uploaded inventory data?<span class="arr">&#9662;</span></div>
+      <div class="faq-a">No. Files uploaded to the AI Demand Planner are sent to the Gemini API for analysis and immediately discarded. Nothing is stored in any database, no file is retained after processing, and nothing is shared with any third party. Close the tab and the data is gone permanently.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can we partner with LogicstIQ or integrate your tools?<span class="arr">&#9662;</span></div>
+      <div class="faq-a">Yes. We are open to affiliate partnerships, newsletter features, and integration discussions. Email privacy@logicstiq.com with the subject "Partnership" and describe what you have in mind. We respond to all partnership enquiries within 3–5 business days.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">I found a bug or a calculation error. What should I do?<span class="arr">&#9662;</span></div>
+      <div class="faq-a">Please report it using the form above with topic "Bug report". Include which calculator, what inputs you used, what result you got, and what you expected. We take accuracy seriously — all calculator results are validated against published supply chain formulas and we fix reported issues promptly.</div>
+    </div>
+  </div>
+
+  <!-- BOTTOM CTA -->
+  <div class="cta-section">
+    <h2>Ready to Use LogicstIQ?</h2>
+    <p>20 free supply chain calculators and an AI Demand Planner — available right now. No login, no waiting.</p>
+    <a href="https://www.logicstiq.com" class="cta-btn">&#128230; Open Calculators</a>
+    <a href="https://www.logicstiq.com/about" class="cta-btn outline">&#128100; About Us</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div style="display:flex;justify-content:center;margin-bottom:12px">
+      <svg width="160" height="38" viewBox="0 0 260 68" fill="none"><defs><linearGradient id="fg" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="rgba(255,255,255,0.5)"/><stop offset="100%" stop-color="rgba(255,255,255,0.9)"/></linearGradient></defs><path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#fg)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M59 8 L66 14 L59 20" stroke="rgba(255,255,255,0.7)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="32" cy="50" r="3.5" fill="rgba(255,255,255,0.35)"/><circle cx="50" cy="14" r="3.5" fill="rgba(255,255,255,0.85)"/><text x="82" y="35" font-family="Plus Jakarta Sans,sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5"><tspan fill="#FFFFFF">Logicst</tspan><tspan fill="#93C5FD">IQ</tspan></text></svg>
+    </div>
+    <p class="footer-tagline">Where Logistics Meets Intelligence</p>
+    <div class="footer-links">
+      <a href="https://www.logicstiq.com">Home</a>
+      <a href="https://www.logicstiq.com/about">About</a>
+      <a href="https://www.logicstiq.com/contact">Contact</a>
+      <a href="https://www.logicstiq.com/privacy-policy">Privacy Policy</a>
+      <a href="https://www.logicstiq.com/terms">Terms of Service</a>
+      <a href="https://www.logicstiq.com/disclaimer">Disclaimer</a>
+    </div>
+    <p class="footer-copy">Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a><br>
+    &copy; 2025 LogicstIQ.com &middot; 20 Free Supply Chain Calculators + AI Demand Planner &middot; No Login &middot; Free Forever</p>
+  </div>
+</footer>
+
+<script>
+function submitForm() {
+  const name = document.getElementById("f-name").value.trim();
+  const email = document.getElementById("f-email").value.trim();
+  const topic = document.getElementById("f-topic").value;
+  const msg = document.getElementById("f-message").value.trim();
+  if (!name || !email || !topic || !msg) {
+    alert("Please fill in all required fields (Name, Email, Topic, Message).");
+    return;
+  }
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+  // Build mailto link as fallback (no backend needed)
+  const subject = encodeURIComponent("LogicstIQ Contact: " + topic);
+  const body = encodeURIComponent(
+    "Name: " + name + "\n" +
+    "Email: " + email + "\n" +
+    "Company: " + (document.getElementById("f-company").value || "Not provided") + "\n" +
+    "Topic: " + topic + "\n\n" +
+    "Message:\n" + msg
+  );
+  window.location.href = "mailto:privacy@logicstiq.com?subject=" + subject + "&body=" + body;
+  document.getElementById("contact-form").style.display = "none";
+  document.getElementById("success-box").classList.add("show");
+}
+</script>
 </body>
 </html>
