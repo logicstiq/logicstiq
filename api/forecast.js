@@ -1,6 +1,13 @@
 // /api/forecast.js — LogicstIQ AI Demand Planner v4
 // Supports: All E-Commerce, Quick Commerce + All Major ERPs globally
 // Gemini key stays server-side — users never see it
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '25mb',
+    },
+  },
+};
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
