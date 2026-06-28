@@ -31,4 +31,6 @@
   <url><loc>https://www.logicstiq.com/privacy-policy</loc><priority>0.3</priority></url>
   <url><loc>https://www.logicstiq.com/terms</loc><priority>0.3</priority></url>
   <url><loc>https://www.logicstiq.com/disclaimer</loc><priority>0.3</priority></url>
+  <url><loc>https://www.logicstiq.com/about</loc><priority>0.6</priority></url>
+<url><loc>https://www.logicstiq.com/contact</loc><priority>0.5</priority></url>
 </urlset>
