@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Shipping Cost Per Unit Calculator India — Free Fulfilment Cost Tool | LogicstIQ — Free Supply Chain Calculator</title>
+  <meta name="description" content="Free Shipping Cost Per Unit Calculator India. Calculate true per-unit fulfilment cost including courier charge, packaging, handling, and returns. Works for Amazon, Flipkart, D2C.">
+  <meta name="keywords" content="shipping cost per unit calculator India, fulfilment cost per unit, per unit shipping cost, D2C fulfilment cost India, Amazon FBA cost per unit, Flipkart fulfilment cost calculator">
+  <link rel="canonical" href="https://www.logicstiq.com/shipping-cost-per-unit-calculator">
+  <meta property="og:title" content="Shipping Cost Per Unit Calculator India — Free Fulfilment Cost Tool | LogicstIQ — Free Supply Chain Calculator">
+  <meta property="og:description" content="Free Shipping Cost Per Unit Calculator India. Calculate true per-unit fulfilment cost including courier charge, packaging, handling, and returns. Works for Amazon, Flipkart, D2C.">
+  <meta property="og:url" content="https://www.logicstiq.com/shipping-cost-per-unit-calculator">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LogicstIQ.com">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:#0a0a0f;color:#e8e8f0;min-height:100vh;font-size:16px;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;background:#0a0a0f;border-bottom:1px solid #1a1a2e;position:sticky;top:0;z-index:100}
+    .nav-logo{font-weight:800;font-size:1.1rem;color:#fff}
+    .nav-back{color:#7c6af7;font-size:0.875rem;font-weight:600}
+    .nav-back:hover{color:#a78bfa}
+    .badge-bar{text-align:center;padding:12px;background:#0d0d1a;border-bottom:1px solid #1a1a2e;font-size:0.8rem;color:#7c6af7;font-weight:700;letter-spacing:0.5px}
+    .hero{max-width:760px;margin:0 auto;padding:48px 24px 32px;text-align:center}
+    .hero h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;color:#fff;line-height:1.2;margin-bottom:14px}
+    .hero h1 span{display:block;font-size:clamp(1rem,2vw,1.15rem);font-weight:500;color:#9999bb;margin-top:8px}
+    .hero-sub{color:#9999bb;font-size:0.9rem;margin-top:16px;max-width:620px;margin-left:auto;margin-right:auto}
+    .trust-row{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:16px}
+    .trust-item{font-size:0.8rem;color:#7c6af7;font-weight:600}
+    .trust-item::before{content:"✓ "}
+    .calc-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
+    .calc-card{background:#111120;border:1px solid #1e1e3a;border-radius:16px;overflow:hidden}
+    .calc-header{background:#13132a;padding:18px 24px;border-bottom:1px solid #1e1e3a;display:flex;align-items:center;gap:10px}
+    .calc-header-icon{font-size:1.2rem}
+    .calc-header-title{font-size:0.95rem;font-weight:700;color:#fff}
+    .calc-body{padding:24px}
+    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media(max-width:560px){.field-grid{grid-template-columns:1fr}}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field label{font-size:0.8rem;font-weight:700;color:#9999bb;letter-spacing:0.3px}
+    .field span{font-size:0.72rem;color:#555577}
+    .field input,.field select{background:#0d0d1a;border:1px solid #2a2a4a;border-radius:8px;padding:10px 14px;color:#fff;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color .2s}
+    .field input:focus,.field select:focus{border-color:#7c6af7}
+    .field input::placeholder{color:#333355}
+    .calc-btn{width:100%;margin-top:20px;background:linear-gradient(135deg,#7c6af7,#5b4dd1);color:#fff;border:none;border-radius:10px;padding:14px;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:opacity .2s}
+    .calc-btn:hover{opacity:0.9}
+    .results{display:none;margin-top:20px;background:#0d0d1a;border:1px solid #1e1e3a;border-radius:12px;padding:20px}
+    .results.show{display:block}
+    .results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}
+    .result-item{background:#111120;border:1px solid #1e1e3a;border-radius:10px;padding:16px;text-align:center}
+    .result-label{font-size:0.72rem;color:#9999bb;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+    .result-value{font-size:1.35rem;font-weight:800;color:#7c6af7}
+    .result-value.green{color:#22c55e}
+    .result-value.red{color:#ef4444}
+    .result-value.amber{color:#f59e0b}
+    .result-sub{font-size:0.7rem;color:#555577;margin-top:4px}
+    .disclaimer{margin-top:16px;font-size:0.75rem;color:#444466;padding:10px;background:#0a0a0f;border-radius:8px;border-left:3px solid #1e1e3a}
+    .content-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
+    .formula-box{background:#111120;border:1px solid #1e1e3a;border-radius:12px;padding:20px 24px;margin-bottom:32px}
+    .formula-tag{font-size:0.7rem;font-weight:700;color:#7c6af7;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+    .formula-expr{font-family:'Courier New',monospace;font-size:0.9rem;color:#c4b5fd;line-height:1.9}
+    .section-title{font-size:0.75rem;font-weight:700;color:#7c6af7;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+    .prose{color:#9999bb;font-size:0.9rem;line-height:1.75;margin-bottom:24px}
+    .prose strong{color:#e8e8f0}
+    .example-box{background:#111120;border:1px solid #1e1e3a;border-radius:12px;padding:20px 24px;margin-bottom:32px}
+    .example-tag{font-size:0.7rem;font-weight:700;color:#22c55e;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+    .ex-p{font-size:0.85rem;color:#9999bb;margin-bottom:14px}
+    .ex-table{width:100%;border-collapse:collapse}
+    .ex-table td{padding:8px 0;font-size:0.875rem;color:#9999bb;border-bottom:1px solid #1a1a2e}
+    .ex-table td:last-child{text-align:right;color:#e8e8f0;font-weight:600}
+    .ex-table tr.total td{border-bottom:none;color:#7c6af7;font-weight:800;font-size:1rem}
+    .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:32px}
+    .why-card{background:#111120;border:1px solid #1e1e3a;border-radius:10px;padding:18px}
+    .why-card h4{font-size:0.85rem;font-weight:700;color:#e8e8f0;margin-bottom:8px}
+    .why-card p{font-size:0.8rem;color:#9999bb;line-height:1.6}
+    .ai-cta{background:linear-gradient(135deg,#111120,#0f0f20);border:1px solid #2a2a4a;border-radius:16px;padding:28px 24px;text-align:center;margin-bottom:32px}
+    .ai-cta h3{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:8px}
+    .ai-cta p{font-size:0.875rem;color:#9999bb;margin-bottom:20px}
+    .ai-cta a{display:inline-block;background:linear-gradient(135deg,#7c6af7,#5b4dd1);color:#fff;padding:12px 28px;border-radius:10px;font-weight:700;font-size:0.9rem}
+    .ai-cta-tags{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+    .ai-cta-tag{font-size:0.72rem;color:#555577}
+    .faq-item{border-bottom:1px solid #1a1a2e;padding:16px 0}
+    .faq-item:last-child{border-bottom:none}
+    .faq-q{font-size:0.9rem;font-weight:700;color:#e8e8f0;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .faq-q::after{content:"▾";color:#7c6af7;font-size:0.8rem}
+    .faq-a{font-size:0.85rem;color:#9999bb;line-height:1.7;margin-top:10px;display:none}
+    .faq-item.open .faq-a{display:block}
+    .faq-item.open .faq-q::after{content:"▴"}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:10px;margin-top:16px}
+    .related-card{background:#111120;border:1px solid #1e1e3a;border-radius:10px;padding:16px;text-decoration:none;transition:border-color .2s;display:flex;flex-direction:column;gap:4px}
+    .related-card:hover{border-color:#7c6af7}
+    .related-search{font-size:0.65rem;color:#444466}
+    .related-name{font-size:0.85rem;font-weight:700;color:#e8e8f0}
+    footer{background:#080810;border-top:1px solid #1a1a2e;padding:28px 32px;text-align:center;margin-top:20px}
+    .footer-copy{font-size:0.78rem;color:#333355;line-height:1.8}
+    .footer-copy a{color:#444466}
+    .footer-copy a:hover{color:#9999bb}
+    @media(max-width:600px){.nav{padding:14px 20px}.hero{padding:32px 20px 24px}.calc-body{padding:16px}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-logo">LogicstIQ</span>
+  <a href="https://www.logicstiq.com" class="nav-back">← All Calculators</a>
+</nav>
+<div class="badge-bar">🆓 Free · No Login · Instant Results</div>
+
+<section class="hero">
+  <h1>Shipping Cost Per Unit Calculator <span>True Per-Unit Fulfilment Cost — Free Tool</span></h1>
+  <p class="hero-sub">Calculate the true cost of shipping each unit — courier charge, packaging, handling, returns provision, and platform fees — so you know your real margin per order.</p>
+  <div class="trust-row">
+    <span class="trust-item">No signup needed</span>
+    <span class="trust-item">No data stored</span>
+    <span class="trust-item">Works on mobile</span>
+    <span class="trust-item">Free forever</span>
+  </div>
+</section>
+
+<section class="calc-section">
+  <div class="calc-card">
+    <div class="calc-header">
+      <span class="calc-header-icon">📬</span>
+      <span class="calc-header-title">Shipping Cost Per Unit Calculator — Free Online Tool</span>
+    </div>
+    <div class="calc-body">
+      <div class="field-grid">
+        <div class="field"><label>Courier Charge per Shipment (₹)</label><span>Chargeable weight × rate/kg</span><input type="number" id="courier" placeholder="e.g. 85" min="0"></div>        <div class="field"><label>Units per Shipment</label><span>Average units in one order</span><input type="number" id="units" placeholder="e.g. 1" min="1"></div>        <div class="field"><label>Packaging Cost per Order (₹)</label><span>Box, tape, bubble wrap, labels</span><input type="number" id="packaging" placeholder="e.g. 18" min="0"></div>        <div class="field"><label>Handling / Labour per Order (₹)</label><span>Pick, pack, dispatch time cost</span><input type="number" id="handling" placeholder="e.g. 12" min="0"></div>        <div class="field"><label>Return Rate % </label><span>% of orders returned</span><input type="number" id="returnRate" placeholder="e.g. 8" min="0" max="100"></div>        <div class="field"><label>Return Handling Cost (₹)</label><span>Cost to process one return</span><input type="number" id="returnCost" placeholder="e.g. 120" min="0"></div>
+      </div>
+      <button class="calc-btn" onclick="runCalc()">Calculate Shipping Cost Per Unit →</button>
+      <div class="results" id="results">
+        <div class="results-grid">
+          <div class="result-item"><div class="result-label">Courier Per Unit</div><div class="result-value" id="r-cpu">—</div><div class="result-sub">Freight ÷ units per order</div></div>          <div class="result-item"><div class="result-label">Pack & Handle Per Unit</div><div class="result-value" id="r-phu">—</div><div class="result-sub">Packaging + labour</div></div>          <div class="result-item"><div class="result-label">Returns Provision</div><div class="result-value amber" id="r-rpu">—</div><div class="result-sub">Per unit return cost</div></div>          <div class="result-item"><div class="result-label">Total Fulfilment Cost</div><div class="result-value red" id="r-total">—</div><div class="result-sub">Per unit shipped</div></div>
+        </div>
+        <div class="disclaimer">⚠️ <strong>Reference only:</strong> Results are for planning purposes. Validate with your actual carrier invoices and return data.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section">
+
+  <div class="formula-box">
+    <div class="formula-tag">📐 Shipping Cost Per Unit Formula</div>
+    <div class="formula-expr">Courier Per Unit = Shipment Freight ÷ Units Per Order<br>Pack & Handle = (Packaging + Labour) ÷ Units Per Order<br>Returns Provision = Return Rate% × Return Cost ÷ 100<br>Total Per Unit = Courier + Pack & Handle + Returns Provision</div>
+  </div>
+
+  <div class="section-title">What is Shipping Cost Per Unit?</div>
+  <p class="prose"><strong>Shipping cost per unit</strong> is the true all-in cost of getting one unit from your warehouse to your customer's door — and accounting for the fraction that comes back as a return. Most businesses only count the courier charge and miss packaging, handling labour, and returns, understating fulfilment cost by 30–50%.</p>
+  <p class="prose">For D2C brands and marketplace sellers in India, fulfilment cost is typically the <strong>second or third largest cost</strong> after COGS and marketing. Knowing it per unit lets you compare channels (own website vs. Amazon vs. Flipkart), evaluate 3PL vs. in-house fulfilment, and set minimum selling prices correctly.</p>
+
+  <div class="example-box">
+    <div class="example-tag">📊 Worked Example</div>
+    <p class="ex-p">A fashion D2C brand shipping single units via Delhivery with 15% return rate:</p>
+    <table class="ex-table">
+      <tr><td>Courier charge per shipment</td><td>₹72 (500g, Zone B)</td></tr>      <tr><td>Units per shipment</td><td>1 unit</td></tr>      <tr><td>Packaging (poly bag + label + tape)</td><td>₹14</td></tr>      <tr><td>Pick & pack labour</td><td>₹10</td></tr>      <tr><td>Returns provision (15% × ₹180 return cost)</td><td>₹27</td></tr>      <tr class="total"><td>Total fulfilment cost per unit</td><td>₹123</td></tr>
+    </table>
+  </div>
+
+  <div class="section-title">Why This Calculator Matters</div>
+  <div class="why-grid">
+    <div class="why-card"><h4>True Margin Visibility</h4><p>A product selling at ₹599 with ₹240 COGS looks like 60% gross margin. Add ₹123 fulfilment + ₹90 marketing CAC and you're left with ₹146 (24%) — a very different picture.</p></div>    <div class="why-card"><h4>3PL vs. In-House Decision</h4><p>Calculate your in-house fulfilment cost per unit here, then compare with 3PL quotes. If 3PL is within 15–20% of your in-house cost, outsourcing is often better — freeing management bandwidth and capex.</p></div>    <div class="why-card"><h4>Channel Comparison</h4><p>Your own website may have lower platform fees than Amazon, but if your fulfilment cost is higher (no FBA economies of scale), the net margin per unit might actually be lower. Always compare on total fulfilment cost.</p></div>    <div class="why-card"><h4>Return Rate Impact</h4><p>Fashion returns in India run 20–35%. A 20% return rate at ₹150 return cost adds ₹30 per unit shipped to your fulfilment cost — equivalent to a 4–5% margin hit on a ₹700 product.</p></div>
+  </div>
+
+  <div class="ai-cta">
+    <h3>🤖 Go Further with AI Demand Planning</h3>
+    <p>Upload your full inventory export and get demand forecasts, reorder plans, and stockout risk analysis across all your SKUs — free.</p>
+    <a href="https://www.logicstiq.com/#ai-demand-planner">Try Free AI Demand Planner →</a>
+    <div class="ai-cta-tags">
+      <span class="ai-cta-tag">Works with Tally · SAP · NetSuite · Amazon · Flipkart</span>
+      <span class="ai-cta-tag">No login · No data stored · Free forever</span>
+    </div>
+  </div>
+
+  <div class="section-title">Frequently Asked Questions</div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the average shipping cost per unit for D2C brands in India?</div><div class="faq-a">For B2C courier (single units, 500g–1kg, within zone): ₹50–90 via Delhivery/Shiprocket. Add packaging (₹10–20), handling (₹8–15), and returns provision (₹15–40 depending on return rate and category). Total per-unit fulfilment cost typically ranges ₹80–150 for fashion and ₹60–100 for FMCG.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Should I include Amazon FBA fees in this calculator?</div><div class="faq-a">For Amazon FBA, replace 'Courier Charge' with your FBA fulfilment fee per unit (check your Amazon Seller Central fee preview — typically ₹30–80 for standard size). Keep packaging and handling as 0 since Amazon handles that. Add the FBA return processing fee in return cost.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I reduce per-unit shipping cost?</div><div class="faq-a">Five levers: (1) Negotiate volume-based rates with 2–3 carriers, (2) Use a multi-carrier aggregator like Shiprocket that auto-selects cheapest carrier, (3) Right-size packaging to reduce volumetric weight charges, (4) Reduce return rate through better product descriptions, size guides, and quality control, (5) Consolidate multi-SKU orders into one shipment where possible.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does return rate affect per-unit cost?</div><div class="faq-a">Every percentage point of return rate adds (Return Handling Cost ÷ 100) to your per-unit fulfilment cost. At ₹150 return handling cost, each 1% of return rate adds ₹1.50 per unit. Reducing return rate from 20% to 15% saves ₹7.50 per unit — equivalent to ₹75,000 per month at 10,000 units/month scale.</div></div>
+
+  <div style="margin-top:32px">
+    <div class="section-title">Related Free Calculators</div>
+    <div class="related-grid">
+      <a href="https://www.logicstiq.com/freight-cost-calculator" class="related-card"><span class="related-search">1,300/mo searches</span><span class="related-name">🚛 Freight Cost Calculator</span></a>      <a href="https://www.logicstiq.com/volumetric-weight-calculator" class="related-card"><span class="related-search">1,600/mo searches</span><span class="related-name">📦 Volumetric Weight Calculator</span></a>      <a href="https://www.logicstiq.com/pick-pack-cost-calculator" class="related-card"><span class="related-search">480/mo searches</span><span class="related-name">📋 Pick & Pack Cost Calculator</span></a>      <a href="https://www.logicstiq.com/break-even-calculator" class="related-card"><span class="related-search">3,600/mo searches</span><span class="related-name">⚖️ Break-Even Calculator</span></a>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <p class="footer-copy">
+    <strong>20 Free Supply Chain Calculators · AI Demand Planner · No Login Required · Free Forever</strong><br><br>
+    © 2025 <a href="https://www.logicstiq.com">LogicstIQ.com</a> ·
+    <a href="https://www.logicstiq.com/privacy-policy.html">Privacy Policy</a> ·
+    <a href="https://www.logicstiq.com/terms.html">Terms</a> ·
+    Results are for reference only.<br>
+    <strong>Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. We may earn a commission at no extra cost to you. All calculators are free forever.<br>
+    Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a>
+  </p>
+</footer>
+<script>function toggleFaq(el){el.closest('.faq-item').classList.toggle('open');}</script>
+<script>function runCalc(){
+  const courier=parseFloat(document.getElementById('courier').value)||0;
+  const units=parseFloat(document.getElementById('units').value)||1;
+  const pkg=parseFloat(document.getElementById('packaging').value)||0;
+  const hdl=parseFloat(document.getElementById('handling').value)||0;
+  const rr=parseFloat(document.getElementById('returnRate').value)||0;
+  const rc=parseFloat(document.getElementById('returnCost').value)||0;
+  if(!courier){alert('Please enter Courier Charge per Shipment.');return;}
+  const cpu=courier/units;
+  const phu=(pkg+hdl)/units;
+  const rpu=rr>0&&rc>0?(rr/100)*rc:0;
+  const total=cpu+phu+rpu;
+  const fmt=v=>'₹'+v.toFixed(2);
+  document.getElementById('r-cpu').textContent=fmt(cpu);
+  document.getElementById('r-phu').textContent=fmt(phu);
+  document.getElementById('r-rpu').textContent=rpu>0?fmt(rpu):'Enter return data';
+  document.getElementById('r-total').textContent=fmt(total);
+  document.getElementById('results').classList.add('show');
+}</script>
+</body>
+</html>

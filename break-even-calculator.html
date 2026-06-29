@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Break-Even Calculator India — Free Break-Even Point Tool | LogicstIQ — Free Supply Chain Calculator</title>
+  <meta name="description" content="Free Break-Even Calculator for Indian businesses. Calculate break-even point in units and revenue, margin of safety, and profit at any sales volume. No login required.">
+  <meta name="keywords" content="break even calculator India, break even point calculator, BEP calculator, break even analysis India, break even units calculator, contribution margin calculator India">
+  <link rel="canonical" href="https://www.logicstiq.com/break-even-calculator">
+  <meta property="og:title" content="Break-Even Calculator India — Free | LogicstIQ">
+  <meta property="og:description" content="Calculate break-even point in units and revenue instantly. Free, no login. Essential for pricing and product decisions.">
+  <meta property="og:url" content="https://www.logicstiq.com/break-even-calculator">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LogicstIQ.com">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:#0a0a0f;color:#e8e8f0;min-height:100vh;font-size:16px;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;background:#0a0a0f;border-bottom:1px solid #1a1a2e;position:sticky;top:0;z-index:100}
+    .nav-logo{font-weight:800;font-size:1.1rem;color:#fff}
+    .nav-back{color:#7c6af7;font-size:0.875rem;font-weight:600}
+    .nav-back:hover{color:#a78bfa}
+    .badge-bar{text-align:center;padding:12px;background:#0d0d1a;border-bottom:1px solid #1a1a2e;font-size:0.8rem;color:#7c6af7;font-weight:700;letter-spacing:0.5px}
+    .hero{max-width:760px;margin:0 auto;padding:48px 24px 32px;text-align:center}
+    .hero h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;color:#fff;line-height:1.2;margin-bottom:14px}
+    .hero h1 span{display:block;font-size:clamp(1rem,2vw,1.2rem);font-weight:500;color:#9999bb;margin-top:8px}
+    .trust-row{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:16px}
+    .trust-item{font-size:0.8rem;color:#7c6af7;font-weight:600}
+    .trust-item::before{content:"✓ "}
+    .calc-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
+    .calc-card{background:#111120;border:1px solid #1e1e3a;border-radius:16px;overflow:hidden}
+    .calc-header{background:#13132a;padding:18px 24px;border-bottom:1px solid #1e1e3a;display:flex;align-items:center;gap:10px}
+    .calc-header-icon{font-size:1.2rem}
+    .calc-header-title{font-size:0.95rem;font-weight:700;color:#fff}
+    .calc-body{padding:24px}
+    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media(max-width:560px){.field-grid{grid-template-columns:1fr}}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field label{font-size:0.8rem;font-weight:700;color:#9999bb;letter-spacing:0.3px}
+    .field span{font-size:0.72rem;color:#555577}
+    .field input{background:#0d0d1a;border:1px solid #2a2a4a;border-radius:8px;padding:10px 14px;color:#fff;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color .2s}
+    .field input:focus{border-color:#7c6af7}
+    .field input::placeholder{color:#333355}
+    .calc-btn{width:100%;margin-top:20px;background:linear-gradient(135deg,#7c6af7,#5b4dd1);color:#fff;border:none;border-radius:10px;padding:14px;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:opacity .2s}
+    .calc-btn:hover{opacity:0.9}
+    .results{display:none;margin-top:20px;background:#0d0d1a;border:1px solid #1e1e3a;border-radius:12px;padding:20px}
+    .results.show{display:block}
+    .results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+    .result-item{background:#111120;border:1px solid #1e1e3a;border-radius:10px;padding:16px;text-align:center}
+    .result-label{font-size:0.72rem;color:#9999bb;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+    .result-value{font-size:1.4rem;font-weight:800;color:#7c6af7}
+    .result-sub{font-size:0.72rem;color:#555577;margin-top:4px}
+    .disclaimer{margin-top:16px;font-size:0.75rem;color:#444466;padding:10px;background:#0a0a0f;border-radius:8px;border-left:3px solid #1e1e3a}
+    .content-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
+    .formula-box{background:#111120;border:1px solid #1e1e3a;border-radius:12px;padding:20px 24px;margin-bottom:32px}
+    .formula-tag{font-size:0.7rem;font-weight:700;color:#7c6af7;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+    .formula-expr{font-family:'Courier New',monospace;font-size:0.95rem;color:#c4b5fd;line-height:1.8}
+    .section-title{font-size:0.75rem;font-weight:700;color:#7c6af7;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+    .prose{color:#9999bb;font-size:0.9rem;line-height:1.75;margin-bottom:24px}
+    .prose strong{color:#e8e8f0}
+    .example-box{background:#111120;border:1px solid #1e1e3a;border-radius:12px;padding:20px 24px;margin-bottom:32px}
+    .example-tag{font-size:0.7rem;font-weight:700;color:#22c55e;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+    .example-table{width:100%;border-collapse:collapse}
+    .example-table td{padding:8px 0;font-size:0.875rem;color:#9999bb;border-bottom:1px solid #1a1a2e}
+    .example-table td:last-child{text-align:right;color:#e8e8f0;font-weight:600}
+    .example-table tr:last-child td{border-bottom:none;color:#7c6af7;font-weight:800;font-size:1rem}
+    .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:32px}
+    .why-card{background:#111120;border:1px solid #1e1e3a;border-radius:10px;padding:18px}
+    .why-card h4{font-size:0.85rem;font-weight:700;color:#e8e8f0;margin-bottom:8px}
+    .why-card p{font-size:0.8rem;color:#9999bb;line-height:1.6}
+    .ai-cta{background:linear-gradient(135deg,#111120,#0f0f20);border:1px solid #2a2a4a;border-radius:16px;padding:28px 24px;text-align:center;margin-bottom:32px}
+    .ai-cta h3{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:8px}
+    .ai-cta p{font-size:0.875rem;color:#9999bb;margin-bottom:20px}
+    .ai-cta a{display:inline-block;background:linear-gradient(135deg,#7c6af7,#5b4dd1);color:#fff;padding:12px 28px;border-radius:10px;font-weight:700;font-size:0.9rem}
+    .ai-cta-tags{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+    .ai-cta-tag{font-size:0.72rem;color:#555577}
+    .faq-item{border-bottom:1px solid #1a1a2e;padding:16px 0}
+    .faq-item:last-child{border-bottom:none}
+    .faq-q{font-size:0.9rem;font-weight:700;color:#e8e8f0;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .faq-q::after{content:"▾";color:#7c6af7;font-size:0.8rem}
+    .faq-a{font-size:0.85rem;color:#9999bb;line-height:1.7;margin-top:10px;display:none}
+    .faq-item.open .faq-a{display:block}
+    .faq-item.open .faq-q::after{content:"▴"}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:16px}
+    .related-card{background:#111120;border:1px solid #1e1e3a;border-radius:10px;padding:16px;text-decoration:none;transition:border-color .2s;display:flex;flex-direction:column;gap:4px}
+    .related-card:hover{border-color:#7c6af7}
+    .related-search{font-size:0.65rem;color:#444466}
+    .related-name{font-size:0.85rem;font-weight:700;color:#e8e8f0}
+    footer{background:#080810;border-top:1px solid #1a1a2e;padding:28px 32px;text-align:center;margin-top:20px}
+    .footer-copy{font-size:0.78rem;color:#333355;line-height:1.8}
+    .footer-copy a{color:#444466}
+    .footer-copy a:hover{color:#9999bb}
+    @media(max-width:600px){.nav{padding:14px 20px}.hero{padding:32px 20px 24px}.calc-body{padding:16px}}
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-logo">LogicstIQ</span>
+  <a href="https://www.logicstiq.com" class="nav-back">← All Calculators</a>
+</nav>
+<div class="badge-bar">🆓 Free · No Login · Instant Results</div>
+
+<section class="hero">
+  <h1>Break-Even Calculator <span>Break-Even Point in Units & Revenue — Free Tool</span></h1>
+  <p style="color:#9999bb;font-size:0.9rem;margin-top:16px">Calculate exactly how many units you need to sell — or how much revenue you need to generate — before your business starts making profit.</p>
+  <div class="trust-row">
+    <span class="trust-item">No signup needed</span>
+    <span class="trust-item">No data stored</span>
+    <span class="trust-item">Works on mobile</span>
+    <span class="trust-item">Free forever</span>
+  </div>
+</section>
+
+<section class="calc-section">
+  <div class="calc-card">
+    <div class="calc-header">
+      <span class="calc-header-icon">⚖️</span>
+      <span class="calc-header-title">Break-Even Calculator — Free Online Tool</span>
+    </div>
+    <div class="calc-body">
+      <div class="field-grid">
+        <div class="field">
+          <label>Fixed Costs per Month (₹)</label>
+          <span>Rent, salaries, software, EMIs</span>
+          <input type="number" id="fixedCosts" placeholder="e.g. 150000" min="0">
+        </div>
+        <div class="field">
+          <label>Selling Price per Unit (₹)</label>
+          <span>Your average selling price</span>
+          <input type="number" id="sellPrice" placeholder="e.g. 500" min="0">
+        </div>
+        <div class="field">
+          <label>Variable Cost per Unit (₹)</label>
+          <span>COGS + packaging + shipping per unit</span>
+          <input type="number" id="varCost" placeholder="e.g. 300" min="0">
+        </div>
+        <div class="field">
+          <label>Current Monthly Units (optional)</label>
+          <span>To calculate margin of safety</span>
+          <input type="number" id="currentUnits" placeholder="e.g. 800" min="0">
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcBEP()">Calculate Break-Even Point →</button>
+      <div class="results" id="results">
+        <div class="results-grid">
+          <div class="result-item">
+            <div class="result-label">Break-Even Units</div>
+            <div class="result-value" id="r-beu">—</div>
+            <div class="result-sub">Units/month to break even</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Break-Even Revenue</div>
+            <div class="result-value" id="r-ber">—</div>
+            <div class="result-sub">₹ revenue to break even</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Contribution Margin</div>
+            <div class="result-value" id="r-cm">—</div>
+            <div class="result-sub">Per unit profit contribution</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Margin of Safety</div>
+            <div class="result-value" id="r-mos">—</div>
+            <div class="result-sub">Buffer above break-even</div>
+          </div>
+        </div>
+        <div class="disclaimer">⚠️ <strong>Reference only:</strong> Results are for planning purposes. Validate with your ERP or business data before making decisions.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section">
+
+  <div class="formula-box">
+    <div class="formula-tag">📐 Break-Even Formula</div>
+    <div class="formula-expr">
+      Contribution Margin = Selling Price − Variable Cost per Unit<br>
+      Break-Even Units = Fixed Costs ÷ Contribution Margin<br>
+      Break-Even Revenue = Break-Even Units × Selling Price<br>
+      Margin of Safety = Current Sales − Break-Even Sales
+    </div>
+  </div>
+
+  <div class="section-title">What is the Break-Even Calculator?</div>
+  <p class="prose">
+    The <strong>break-even point</strong> is the level of sales at which total revenue exactly equals total costs — you are making neither profit nor loss. Below break-even, you lose money. Above it, every unit sold generates profit equal to your contribution margin per unit.
+  </p>
+  <p class="prose">
+    For Indian SMEs, D2C brands, and marketplace sellers, break-even analysis is the most fundamental financial check before launching a product, setting a price, or committing to a warehouse lease. It answers: <strong>"How much do I need to sell just to cover my costs?"</strong>
+  </p>
+
+  <div class="example-box">
+    <div class="example-tag">📊 Worked Example</div>
+    <p style="font-size:0.85rem;color:#9999bb;margin-bottom:14px">A D2C skincare brand selling on Nykaa and their own website:</p>
+    <table class="example-table">
+      <tr><td>Fixed costs per month (rent, salaries, ads)</td><td>₹1,50,000</td></tr>
+      <tr><td>Selling price per unit</td><td>₹599</td></tr>
+      <tr><td>Variable cost per unit (COGS + packaging + shipping)</td><td>₹280</td></tr>
+      <tr><td>Contribution margin per unit</td><td>₹319</td></tr>
+      <tr><td><strong>Break-Even Units</strong></td><td>₹1,50,000 ÷ ₹319 = <strong>470 units/month</strong></td></tr>
+      <tr><td><strong>Break-Even Revenue</strong></td><td><strong>₹2,81,530/month</strong></td></tr>
+    </table>
+  </div>
+
+  <div class="section-title">Why Break-Even Analysis Matters</div>
+  <div class="why-grid">
+    <div class="why-card">
+      <h4>Pricing Decisions</h4>
+      <p>Understand how a price increase or discount changes your break-even point. A 10% discount on ₹599 raises your break-even from 470 units to 560 units — a 19% jump in required volume.</p>
+    </div>
+    <div class="why-card">
+      <h4>New Product Launch</h4>
+      <p>Before launching any new SKU, calculate break-even. If the required volume is higher than your realistic demand forecast, the product economics don't work at that price point.</p>
+    </div>
+    <div class="why-card">
+      <h4>Fixed Cost Decisions</h4>
+      <p>Adding a new warehouse, hiring a team member, or subscribing to a software tool changes your fixed costs and raises your break-even. Quantify this before committing.</p>
+    </div>
+    <div class="why-card">
+      <h4>Investor Conversations</h4>
+      <p>VCs and angel investors always ask about break-even. A clear, data-backed break-even analysis demonstrates financial literacy and business model viability.</p>
+    </div>
+  </div>
+
+  <div class="ai-cta">
+    <h3>🤖 Go Further with AI Demand Planning</h3>
+    <p>Upload your full inventory export and get demand forecasts, reorder plans, and stockout risk analysis across all your SKUs — free.</p>
+    <a href="https://www.logicstiq.com/#ai-demand-planner">Try Free AI Demand Planner →</a>
+    <div class="ai-cta-tags">
+      <span class="ai-cta-tag">Works with Tally · SAP · NetSuite · Amazon · Flipkart</span>
+      <span class="ai-cta-tag">No login · No data stored · Free forever</span>
+    </div>
+  </div>
+
+  <div class="section-title">Frequently Asked Questions</div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">What counts as a fixed cost vs. variable cost?</div>
+    <div class="faq-a">Fixed costs stay constant regardless of how many units you sell: warehouse rent, staff salaries, software subscriptions, loan EMIs, annual licences. Variable costs change with every unit sold: product cost (COGS), packaging, outbound shipping, marketplace commission (Amazon/Flipkart %). Some costs are semi-variable — electricity, for example — use your best estimate of the portion that is truly fixed.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Should I include Amazon/Flipkart commission in variable cost?</div>
+    <div class="faq-a">Yes. Marketplace commissions (typically 5–15% of selling price depending on category) are per-unit costs — the more you sell, the more commission you pay. Include them in your variable cost per unit alongside COGS and packaging. This gives you a true contribution margin that reflects the real economics of your marketplace channel.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">What is Margin of Safety?</div>
+    <div class="faq-a">Margin of Safety is how far your current sales are above the break-even point — expressed in units or revenue. If your break-even is 470 units/month and you are selling 800 units, your margin of safety is 330 units (41%). A higher margin of safety means more cushion if sales drop. A margin of safety below 20% signals a vulnerable business model.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">How does break-even change if I give a discount?</div>
+    <div class="faq-a">Discounts reduce your selling price while variable costs stay the same — so contribution margin per unit falls and break-even rises. For example, a 10% discount on a ₹500 product with ₹300 variable cost reduces contribution margin from ₹200 to ₹150, raising break-even by 33%. Always run the break-even calculation before approving discount campaigns.</div>
+  </div>
+
+  <div style="margin-top:32px">
+    <div class="section-title">Related Free Calculators</div>
+    <div class="related-grid">
+      <a href="https://www.logicstiq.com/cogs-calculator" class="related-card">
+        <span class="related-search">2,900/mo searches</span>
+        <span class="related-name">💸 COGS Calculator</span>
+      </a>
+      <a href="https://www.logicstiq.com/working-capital-calculator" class="related-card">
+        <span class="related-search">1,300/mo searches</span>
+        <span class="related-name">📊 Working Capital</span>
+      </a>
+      <a href="https://www.logicstiq.com/carrying-cost-calculator" class="related-card">
+        <span class="related-search">590/mo searches</span>
+        <span class="related-name">💰 Carrying Cost</span>
+      </a>
+      <a href="https://www.logicstiq.com/stockout-cost-calculator" class="related-card">
+        <span class="related-search">480/mo searches</span>
+        <span class="related-name">📉 Stockout Cost</span>
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <p class="footer-copy">
+    <strong>20 Free Supply Chain Calculators · AI Demand Planner · No Login Required · Free Forever</strong><br><br>
+    © 2025 <a href="https://www.logicstiq.com">LogicstIQ.com</a> ·
+    <a href="https://www.logicstiq.com/privacy-policy.html">Privacy Policy</a> ·
+    <a href="https://www.logicstiq.com/terms.html">Terms</a> ·
+    Results are for reference only.<br>
+    <strong>Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. We may earn a commission at no extra cost to you. All calculators are free forever.<br>
+    Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a>
+  </p>
+</footer>
+
+<script>
+  function calcBEP() {
+    const fc = parseFloat(document.getElementById('fixedCosts').value) || 0;
+    const sp = parseFloat(document.getElementById('sellPrice').value) || 0;
+    const vc = parseFloat(document.getElementById('varCost').value) || 0;
+    const cu = parseFloat(document.getElementById('currentUnits').value) || 0;
+    if (!fc || !sp || !vc) { alert('Please enter Fixed Costs, Selling Price, and Variable Cost.'); return; }
+    if (sp <= vc) { alert('Selling Price must be greater than Variable Cost to calculate break-even.'); return; }
+    const cm = sp - vc;
+    const beu = fc / cm;
+    const ber = beu * sp;
+    const cmPct = (cm / sp * 100).toFixed(1);
+    const mos = cu > 0 ? ((cu - beu) / cu * 100).toFixed(1) + '%' : '—';
+    const fmt = v => '₹' + Math.round(v).toLocaleString('en-IN');
+    document.getElementById('r-beu').textContent = Math.ceil(beu).toLocaleString('en-IN') + ' units';
+    document.getElementById('r-ber').textContent = fmt(ber);
+    document.getElementById('r-cm').textContent = fmt(cm) + ' (' + cmPct + '%)';
+    document.getElementById('r-mos').textContent = mos;
+    document.getElementById('results').classList.add('show');
+  }
+  function toggleFaq(el) { el.closest('.faq-item').classList.toggle('open'); }
+</script>
+
+</body>
+</html>

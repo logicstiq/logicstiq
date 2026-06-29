@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pick & Pack Cost Calculator — Free Warehouse Fulfilment Tool | LogicstIQ — Free Supply Chain Calculator</title>
+  <meta name="description" content="Free Pick & Pack Cost Calculator. Calculate true cost per order including labour, packaging, overhead, and error rate. Compare in-house vs. 3PL fulfilment costs. No login.">
+  <meta name="keywords" content="pick and pack cost calculator, pick pack cost per order, fulfilment cost calculator India, warehouse cost per order, 3PL vs in-house fulfilment cost, order fulfilment cost India">
+  <link rel="canonical" href="https://www.logicstiq.com/pick-pack-cost-calculator">
+  <meta property="og:title" content="Pick & Pack Cost Calculator — Free Warehouse Fulfilment Tool | LogicstIQ — Free Supply Chain Calculator">
+  <meta property="og:description" content="Free Pick & Pack Cost Calculator. Calculate true cost per order including labour, packaging, overhead, and error rate. Compare in-house vs. 3PL fulfilment costs. No login.">
+  <meta property="og:url" content="https://www.logicstiq.com/pick-pack-cost-calculator">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LogicstIQ.com">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:#0a0a0f;color:#e8e8f0;min-height:100vh;font-size:16px;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;background:#0a0a0f;border-bottom:1px solid #1a1a2e;position:sticky;top:0;z-index:100}
+    .nav-logo{font-weight:800;font-size:1.1rem;color:#fff}
+    .nav-back{color:#7c6af7;font-size:0.875rem;font-weight:600}
+    .nav-back:hover{color:#a78bfa}
+    .badge-bar{text-align:center;padding:12px;background:#0d0d1a;border-bottom:1px solid #1a1a2e;font-size:0.8rem;color:#7c6af7;font-weight:700;letter-spacing:0.5px}
+    .hero{max-width:760px;margin:0 auto;padding:48px 24px 32px;text-align:center}
+    .hero h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;color:#fff;line-height:1.2;margin-bottom:14px}
+    .hero h1 span{display:block;font-size:clamp(1rem,2vw,1.15rem);font-weight:500;color:#9999bb;margin-top:8px}
+    .hero-sub{color:#9999bb;font-size:0.9rem;margin-top:16px;max-width:620px;margin-left:auto;margin-right:auto}
+    .trust-row{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:16px}
+    .trust-item{font-size:0.8rem;color:#7c6af7;font-weight:600}
+    .trust-item::before{content:"✓ "}
+    .calc-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
+    .calc-card{background:#111120;border:1px solid #1e1e3a;border-radius:16px;overflow:hidden}
+    .calc-header{background:#13132a;padding:18px 24px;border-bottom:1px solid #1e1e3a;display:flex;align-items:center;gap:10px}
+    .calc-header-icon{font-size:1.2rem}
+    .calc-header-title{font-size:0.95rem;font-weight:700;color:#fff}
+    .calc-body{padding:24px}
+    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media(max-width:560px){.field-grid{grid-template-columns:1fr}}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field label{font-size:0.8rem;font-weight:700;color:#9999bb;letter-spacing:0.3px}
+    .field span{font-size:0.72rem;color:#555577}
+    .field input,.field select{background:#0d0d1a;border:1px solid #2a2a4a;border-radius:8px;padding:10px 14px;color:#fff;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color .2s}
+    .field input:focus,.field select:focus{border-color:#7c6af7}
+    .field input::placeholder{color:#333355}
+    .calc-btn{width:100%;margin-top:20px;background:linear-gradient(135deg,#7c6af7,#5b4dd1);color:#fff;border:none;border-radius:10px;padding:14px;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:opacity .2s}
+    .calc-btn:hover{opacity:0.9}
+    .results{display:none;margin-top:20px;background:#0d0d1a;border:1px solid #1e1e3a;border-radius:12px;padding:20px}
+    .results.show{display:block}
+    .results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}
+    .result-item{background:#111120;border:1px solid #1e1e3a;border-radius:10px;padding:16px;text-align:center}
+    .result-label{font-size:0.72rem;color:#9999bb;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+    .result-value{font-size:1.35rem;font-weight:800;color:#7c6af7}
+    .result-value.green{color:#22c55e}
+    .result-value.red{color:#ef4444}
+    .result-value.amber{color:#f59e0b}
+    .result-sub{font-size:0.7rem;color:#555577;margin-top:4px}
+    .disclaimer{margin-top:16px;font-size:0.75rem;color:#444466;padding:10px;background:#0a0a0f;border-radius:8px;border-left:3px solid #1e1e3a}
+    .content-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
+    .formula-box{background:#111120;border:1px solid #1e1e3a;border-radius:12px;padding:20px 24px;margin-bottom:32px}
+    .formula-tag{font-size:0.7rem;font-weight:700;color:#7c6af7;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+    .formula-expr{font-family:'Courier New',monospace;font-size:0.9rem;color:#c4b5fd;line-height:1.9}
+    .section-title{font-size:0.75rem;font-weight:700;color:#7c6af7;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+    .prose{color:#9999bb;font-size:0.9rem;line-height:1.75;margin-bottom:24px}
+    .prose strong{color:#e8e8f0}
+    .example-box{background:#111120;border:1px solid #1e1e3a;border-radius:12px;padding:20px 24px;margin-bottom:32px}
+    .example-tag{font-size:0.7rem;font-weight:700;color:#22c55e;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+    .ex-p{font-size:0.85rem;color:#9999bb;margin-bottom:14px}
+    .ex-table{width:100%;border-collapse:collapse}
+    .ex-table td{padding:8px 0;font-size:0.875rem;color:#9999bb;border-bottom:1px solid #1a1a2e}
+    .ex-table td:last-child{text-align:right;color:#e8e8f0;font-weight:600}
+    .ex-table tr.total td{border-bottom:none;color:#7c6af7;font-weight:800;font-size:1rem}
+    .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:32px}
+    .why-card{background:#111120;border:1px solid #1e1e3a;border-radius:10px;padding:18px}
+    .why-card h4{font-size:0.85rem;font-weight:700;color:#e8e8f0;margin-bottom:8px}
+    .why-card p{font-size:0.8rem;color:#9999bb;line-height:1.6}
+    .ai-cta{background:linear-gradient(135deg,#111120,#0f0f20);border:1px solid #2a2a4a;border-radius:16px;padding:28px 24px;text-align:center;margin-bottom:32px}
+    .ai-cta h3{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:8px}
+    .ai-cta p{font-size:0.875rem;color:#9999bb;margin-bottom:20px}
+    .ai-cta a{display:inline-block;background:linear-gradient(135deg,#7c6af7,#5b4dd1);color:#fff;padding:12px 28px;border-radius:10px;font-weight:700;font-size:0.9rem}
+    .ai-cta-tags{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+    .ai-cta-tag{font-size:0.72rem;color:#555577}
+    .faq-item{border-bottom:1px solid #1a1a2e;padding:16px 0}
+    .faq-item:last-child{border-bottom:none}
+    .faq-q{font-size:0.9rem;font-weight:700;color:#e8e8f0;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .faq-q::after{content:"▾";color:#7c6af7;font-size:0.8rem}
+    .faq-a{font-size:0.85rem;color:#9999bb;line-height:1.7;margin-top:10px;display:none}
+    .faq-item.open .faq-a{display:block}
+    .faq-item.open .faq-q::after{content:"▴"}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:10px;margin-top:16px}
+    .related-card{background:#111120;border:1px solid #1e1e3a;border-radius:10px;padding:16px;text-decoration:none;transition:border-color .2s;display:flex;flex-direction:column;gap:4px}
+    .related-card:hover{border-color:#7c6af7}
+    .related-search{font-size:0.65rem;color:#444466}
+    .related-name{font-size:0.85rem;font-weight:700;color:#e8e8f0}
+    footer{background:#080810;border-top:1px solid #1a1a2e;padding:28px 32px;text-align:center;margin-top:20px}
+    .footer-copy{font-size:0.78rem;color:#333355;line-height:1.8}
+    .footer-copy a{color:#444466}
+    .footer-copy a:hover{color:#9999bb}
+    @media(max-width:600px){.nav{padding:14px 20px}.hero{padding:32px 20px 24px}.calc-body{padding:16px}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-logo">LogicstIQ</span>
+  <a href="https://www.logicstiq.com" class="nav-back">← All Calculators</a>
+</nav>
+<div class="badge-bar">🆓 Free · No Login · Instant Results</div>
+
+<section class="hero">
+  <h1>Pick & Pack Cost Calculator <span>True Cost Per Order — In-House vs. 3PL — Free Tool</span></h1>
+  <p class="hero-sub">Calculate the true cost of fulfilling each order — labour, packaging, overhead, and error rate — so you can price correctly and decide whether to use a 3PL.</p>
+  <div class="trust-row">
+    <span class="trust-item">No signup needed</span>
+    <span class="trust-item">No data stored</span>
+    <span class="trust-item">Works on mobile</span>
+    <span class="trust-item">Free forever</span>
+  </div>
+</section>
+
+<section class="calc-section">
+  <div class="calc-card">
+    <div class="calc-header">
+      <span class="calc-header-icon">📋</span>
+      <span class="calc-header-title">Pick & Pack Cost Calculator — Free Online Tool</span>
+    </div>
+    <div class="calc-body">
+      <div class="field-grid">
+        <div class="field"><label>Orders Per Day</label><span>Average daily orders fulfilled</span><input type="number" id="orders" placeholder="e.g. 200" min="1"></div>        <div class="field"><label>Pickers / Packers</label><span>Total staff in fulfilment</span><input type="number" id="staff" placeholder="e.g. 4" min="1"></div>        <div class="field"><label>Hourly Wage per Staff (₹)</label><span>Including PF, ESI, bonuses</span><input type="number" id="wage" placeholder="e.g. 80" min="0"></div>        <div class="field"><label>Shift Hours per Day</label><span>Working hours per shift</span><input type="number" id="hours" placeholder="e.g. 9" min="1" max="24"></div>        <div class="field"><label>Packaging Cost per Order (₹)</label><span>Box, tape, dunnage, labels</span><input type="number" id="packaging" placeholder="e.g. 22" min="0"></div>        <div class="field"><label>Overhead Rate %</label><span>Rent, equipment, WMS, utilities</span><input type="number" id="overhead" placeholder="e.g. 30" min="0" max="100"></div>
+      </div>
+      <button class="calc-btn" onclick="runCalc()">Calculate Pick & Pack Cost →</button>
+      <div class="results" id="results">
+        <div class="results-grid">
+          <div class="result-item"><div class="result-label">Labour Per Order</div><div class="result-value" id="r-lpo">—</div><div class="result-sub">Staff cost per order</div></div>          <div class="result-item"><div class="result-label">Packaging Per Order</div><div class="result-value" id="r-ppo">—</div><div class="result-sub">Materials per order</div></div>          <div class="result-item"><div class="result-label">Overhead Per Order</div><div class="result-value amber" id="r-opo">—</div><div class="result-sub">Allocated overhead</div></div>          <div class="result-item"><div class="result-label">Total Cost Per Order</div><div class="result-value red" id="r-total">—</div><div class="result-sub">Full fulfilment cost</div></div>
+        </div>
+        <div class="disclaimer">⚠️ <strong>Reference only:</strong> Results are for planning purposes. Validate with your actual payroll and cost data.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section">
+
+  <div class="formula-box">
+    <div class="formula-tag">📐 Pick & Pack Cost Formula</div>
+    <div class="formula-expr">Daily Labour Cost = Staff × Hours × Hourly Wage<br>Labour Per Order = Daily Labour Cost ÷ Orders Per Day<br>Overhead Per Order = (Labour + Packaging) × Overhead Rate%<br>Total Per Order = Labour + Packaging + Overhead</div>
+  </div>
+
+  <div class="section-title">What is Pick & Pack Cost?</div>
+  <p class="prose"><strong>Pick & Pack cost</strong> is the total internal cost of processing one customer order — picking the product from a shelf, packing it into a shipping box, labelling it, and handing it over to the carrier. It includes labour, packaging materials, and an allocation of warehouse overhead.</p>
+  <p class="prose">Most Indian businesses dramatically underestimate their pick & pack cost by only counting packaging materials and ignoring the true cost of labour (including PF, ESI) and overhead (warehouse rent, WMS subscription, equipment depreciation). This calculator captures all three components for an accurate cost-per-order that you can compare directly with 3PL quotes.</p>
+
+  <div class="example-box">
+    <div class="example-tag">📊 Worked Example</div>
+    <p class="ex-p">A D2C homeware brand processing 200 orders/day with 4 staff:</p>
+    <table class="ex-table">
+      <tr><td>Orders per day</td><td>200</td></tr>      <tr><td>Staff (4 pickers/packers × ₹80/hr × 9 hrs)</td><td>₹2,880/day</td></tr>      <tr><td>Labour per order</td><td>₹2,880 ÷ 200 = ₹14.40</td></tr>      <tr><td>Packaging per order (box + tape + label)</td><td>₹22</td></tr>      <tr><td>Overhead (30% of labour + packaging)</td><td>₹10.92</td></tr>      <tr class="total"><td>Total pick & pack cost per order</td><td>₹47.32</td></tr>
+    </table>
+  </div>
+
+  <div class="section-title">Why This Calculator Matters</div>
+  <div class="why-grid">
+    <div class="why-card"><h4>3PL vs. In-House Decision</h4><p>Calculate your true in-house cost here, then compare with 3PL fulfilment quotes. If a 3PL quotes ₹55/order and your in-house cost is ₹47, the ₹8 difference may be worth paying for flexibility and reduced management complexity.</p></div>    <div class="why-card"><h4>True Margin Per Order</h4><p>Add pick & pack cost to courier cost and packaging to get total fulfilment cost per order. Subtract from gross profit to see true per-order contribution margin. Many businesses are shocked to find orders below a certain value are unprofitable.</p></div>    <div class="why-card"><h4>Scale Planning</h4><p>As volume grows, labour productivity improves (more orders per staff hour). This calculator helps you model the cost per order at 2x, 5x, 10x your current volume to understand when you achieve fulfilment economies of scale.</p></div>    <div class="why-card"><h4>Minimum Order Value</h4><p>Use total fulfilment cost to set minimum order value for free shipping. If your total fulfilment cost is ₹80 per order, a product selling for ₹299 with 40% gross margin (₹120 gross profit) leaves only ₹40 after fulfilment — before marketing.</p></div>
+  </div>
+
+  <div class="ai-cta">
+    <h3>🤖 Go Further with AI Demand Planning</h3>
+    <p>Upload your full inventory export and get demand forecasts, reorder plans, and stockout risk analysis across all your SKUs — free.</p>
+    <a href="https://www.logicstiq.com/#ai-demand-planner">Try Free AI Demand Planner →</a>
+    <div class="ai-cta-tags">
+      <span class="ai-cta-tag">Works with Tally · SAP · NetSuite · Amazon · Flipkart</span>
+      <span class="ai-cta-tag">No login · No data stored · Free forever</span>
+    </div>
+  </div>
+
+  <div class="section-title">Frequently Asked Questions</div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What overhead costs should I include?</div><div class="faq-a">Warehouse rent (allocated to fulfilment area), equipment depreciation (conveyor belts, trolleys, scanners), WMS or OMS software subscription, electricity and utilities in the fulfilment area, quality control costs, and supervisor salary. A common approach: total monthly overhead ÷ monthly orders = overhead per order.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is a benchmark pick & pack cost in India?</div><div class="faq-a">Manual warehouse without automation: ₹25–60 per order. Semi-automated with conveyors: ₹18–35 per order. 3PL fulfilment centres: ₹40–80 per order (includes their margin). High-SKU complexity or large heavy items can reach ₹80–150 per order. The benchmark varies significantly with order volume — higher volume lowers per-order cost.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Should I include error cost in pick & pack calculation?</div><div class="faq-a">Yes for advanced analysis. If your pick accuracy is 98% (2% error rate) and each picking error costs ₹200 to resolve (return, reship, customer service), add ₹4 per order (2% × ₹200) as an error provision. Poor pick accuracy is a hidden cost that inflates effective fulfilment cost significantly.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">At what volume does outsourcing to a 3PL make sense?</div><div class="faq-a">Generally below 100 orders/day, in-house fulfilment is difficult to run cost-efficiently — fixed costs (warehouse, staff) are too high relative to volume. Above 500 orders/day, in-house fulfilment often becomes more cost-effective than 3PL. Between 100–500 orders/day is the decision zone where this calculator helps make the comparison objectively.</div></div>
+
+  <div style="margin-top:32px">
+    <div class="section-title">Related Free Calculators</div>
+    <div class="related-grid">
+      <a href="https://www.logicstiq.com/shipping-cost-per-unit-calculator" class="related-card"><span class="related-search">960/mo searches</span><span class="related-name">📬 Shipping Cost Per Unit</span></a>      <a href="https://www.logicstiq.com/warehouse-space-calculator" class="related-card"><span class="related-search">720/mo searches</span><span class="related-name">🏭 Warehouse Space Calculator</span></a>      <a href="https://www.logicstiq.com/freight-cost-calculator" class="related-card"><span class="related-search">1,300/mo searches</span><span class="related-name">🚛 Freight Cost Calculator</span></a>      <a href="https://www.logicstiq.com/break-even-calculator" class="related-card"><span class="related-search">3,600/mo searches</span><span class="related-name">⚖️ Break-Even Calculator</span></a>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <p class="footer-copy">
+    <strong>20 Free Supply Chain Calculators · AI Demand Planner · No Login Required · Free Forever</strong><br><br>
+    © 2025 <a href="https://www.logicstiq.com">LogicstIQ.com</a> ·
+    <a href="https://www.logicstiq.com/privacy-policy.html">Privacy Policy</a> ·
+    <a href="https://www.logicstiq.com/terms.html">Terms</a> ·
+    Results are for reference only.<br>
+    <strong>Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. We may earn a commission at no extra cost to you. All calculators are free forever.<br>
+    Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a>
+  </p>
+</footer>
+<script>function toggleFaq(el){el.closest('.faq-item').classList.toggle('open');}</script>
+<script>function runCalc(){
+  const orders=parseFloat(document.getElementById('orders').value)||0;
+  const staff=parseFloat(document.getElementById('staff').value)||0;
+  const wage=parseFloat(document.getElementById('wage').value)||0;
+  const hours=parseFloat(document.getElementById('hours').value)||0;
+  const pkg=parseFloat(document.getElementById('packaging').value)||0;
+  const ovh=parseFloat(document.getElementById('overhead').value)||0;
+  if(!orders||!staff||!wage||!hours){alert('Please enter Orders Per Day, Staff, Wage, and Shift Hours.');return;}
+  const daily_labour=staff*hours*wage;
+  const lpo=daily_labour/orders;
+  const ppo=pkg;
+  const opo=(lpo+ppo)*(ovh/100);
+  const total=lpo+ppo+opo;
+  const fmt=v=>'₹'+v.toFixed(2);
+  document.getElementById('r-lpo').textContent=fmt(lpo);
+  document.getElementById('r-ppo').textContent=fmt(ppo);
+  document.getElementById('r-opo').textContent=fmt(opo);
+  document.getElementById('r-total').textContent=fmt(total);
+  document.getElementById('results').classList.add('show');
+}</script>
+</body>
+</html>
