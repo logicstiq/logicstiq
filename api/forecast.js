@@ -131,10 +131,14 @@ function parseCSVSmart(text, erpSource) {
   }
   if (!allRows.length) return [];
   const dataKeywords = ['sku', 'asin', 'product', 'item', 'stock', 'qty', 'quantity', 'units', 'sales', 'available', 'inbound', 'price', 'cost', 'category', 'brand', 'description', 'material', 'part', 'code', 'name', 'article', 'variant', 'closing', 'opening', 'velocity', 'demand', 'warehouse', 'location', 'bin', 'batch', 'serial'];
-  let headerIdx = 0;
+  let headerIdx = 0, bestScore = -1;
   for (let i = 0; i < Math.min(allRows.length, 15); i++) {
-    const rowText = allRows[i].join(' ').toLowerCase();
-    if (dataKeywords.filter(k => rowText.includes(k)).length >= 2) { headerIdx = i; break; }
+    const cells = allRows[i].map(c => (c || '').toString().toLowerCase().trim());
+    const filled = cells.filter(c => c).length;
+    const matches = dataKeywords.filter(k => cells.some(c => c.includes(k))).length;
+    if (filled < 3 || matches < 2) continue;
+    const score = matches * 10 + filled;
+    if (score > bestScore) { bestScore = score; headerIdx = i; }
   }
   return allRows.slice(headerIdx).filter(r => r.some(c => c && c.trim()));
 }
