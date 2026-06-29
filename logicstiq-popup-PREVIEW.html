@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LogicstIQ — Popup Preview</title>
+<style>
+  body{ margin:0; font-family:system-ui,Segoe UI,Arial,sans-serif; color:#eef3fb;
+    background:radial-gradient(1200px 600px at 15% -10%, #0a2a28 0%, transparent 60%),
+               radial-gradient(1000px 700px at 110% 120%, #211238 0%, transparent 55%),
+               linear-gradient(180deg,#0a0f1e,#10172e); min-height:100vh; }
+  .hero{ max-width:900px; margin:0 auto; padding:90px 24px; text-align:center; }
+  .hero h1{ font-size:46px; margin:0 0 10px; }
+  .hero h1 b{ color:#18e2ca; }
+  .hero p{ color:#96a2bc; font-size:20px; }
+  .note{ max-width:680px; margin:24px auto 0; padding:14px 18px; border-radius:12px;
+    background:rgba(24,226,202,.08); border:1px solid rgba(24,226,202,.3); color:#c7d2e6; font-size:15px; }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Logicst<b>IQ</b></h1>
+    <p>This is a mock page to preview the demo-video popup.</p>
+    <div class="note">The popup auto-opens shortly after load (muted). Use the
+      <b>Watch demo</b> button (bottom-right) to reopen it, and the teal
+      <b>Tap for sound</b> button to unmute. Close with &times;, Esc, or by clicking outside.</div>
+  </div>
+
+  <!-- ===== popup (preview build, points at local files) ===== -->
+  <div id="liq-vm" class="liq-vm" aria-hidden="true">
+    <div class="liq-vm__backdrop" data-liq-close></div>
+    <div class="liq-vm__dialog" role="dialog" aria-modal="true" aria-label="LogicstIQ product demo video">
+      <button class="liq-vm__close" type="button" aria-label="Close video" data-liq-close>&times;</button>
+      <div class="liq-vm__frame">
+        <video id="liq-video" class="liq-vm__video" playsinline muted preload="metadata" controls
+               poster="logicstiq-poster.png">
+          <source src="LogicstIQ.mp4" type="video/mp4" />
+          Your browser does not support HTML5 video.
+        </video>
+        <button id="liq-unmute" class="liq-vm__unmute" type="button" aria-label="Unmute video">
+          <span class="liq-vm__spk">&#128266;</span> Tap for sound
+        </button>
+      </div>
+      <div class="liq-vm__bar">
+        <span class="liq-vm__tag">30+ free supply chain tools &middot; AI Demand Planner</span>
+        <a class="liq-vm__cta" href="#" data-liq-close>Explore free tools &rarr;</a>
+      </div>
+    </div>
+  </div>
+  <button id="liq-open" class="liq-vm-launch" type="button" aria-haspopup="dialog" aria-controls="liq-vm">
+    <span class="liq-vm-launch__play">&#9658;</span> Watch demo
+  </button>
+
+  <style>
+    :root{ --liq-teal:#18e2ca; --liq-card:#121a30; }
+    .liq-vm{ position:fixed; inset:0; z-index:99999; display:none; align-items:center; justify-content:center; padding:20px; }
+    .liq-vm.is-open{ display:flex; }
+    .liq-vm__backdrop{ position:absolute; inset:0; background:rgba(6,9,18,.78);
+      backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); opacity:0; transition:opacity .25s ease; }
+    .liq-vm.is-open .liq-vm__backdrop{ opacity:1; }
+    .liq-vm__dialog{ position:relative; width:min(960px,100%); background:var(--liq-card);
+      border:1px solid rgba(24,226,202,.25); border-radius:18px; box-shadow:0 30px 80px rgba(0,0,0,.6);
+      overflow:hidden; transform:scale(.94) translateY(10px); opacity:0;
+      transition:transform .28s cubic-bezier(.2,.8,.2,1), opacity .28s ease; }
+    .liq-vm.is-open .liq-vm__dialog{ transform:scale(1) translateY(0); opacity:1; }
+    .liq-vm__close{ position:absolute; top:10px; right:12px; z-index:3; width:40px; height:40px; border:none;
+      border-radius:50%; background:rgba(0,0,0,.45); color:#fff; font-size:26px; line-height:1; cursor:pointer; transition:background .2s; }
+    .liq-vm__close:hover{ background:rgba(0,0,0,.75); }
+    .liq-vm__frame{ position:relative; background:#000; }
+    .liq-vm__video{ display:block; width:100%; height:auto; aspect-ratio:16/9; }
+    .liq-vm__unmute{ position:absolute; left:50%; bottom:64px; transform:translateX(-50%); background:var(--liq-teal);
+      color:#06212b; font-weight:700; font-size:15px; border:none; border-radius:999px; padding:10px 18px; cursor:pointer;
+      box-shadow:0 6px 20px rgba(24,226,202,.45); display:inline-flex; align-items:center; gap:8px; animation:liqpulse 1.8s ease-in-out infinite; }
+    .liq-vm__unmute:hover{ filter:brightness(1.08); }
+    .liq-vm__spk{ font-size:17px; }
+    @keyframes liqpulse{ 0%,100%{ transform:translateX(-50%) scale(1);} 50%{ transform:translateX(-50%) scale(1.06);} }
+    .liq-vm__bar{ display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px 18px; flex-wrap:wrap; }
+    .liq-vm__tag{ color:#c7d2e6; font:600 15px/1.3 system-ui,Arial,sans-serif; }
+    .liq-vm__cta{ background:var(--liq-teal); color:#06212b; text-decoration:none; font:700 15px/1 system-ui,Arial,sans-serif;
+      padding:11px 18px; border-radius:999px; white-space:nowrap; transition:filter .2s; }
+    .liq-vm__cta:hover{ filter:brightness(1.08); }
+    .liq-vm-launch{ position:fixed; right:20px; bottom:20px; z-index:99998; background:var(--liq-teal); color:#06212b; border:none;
+      cursor:pointer; font:700 15px/1 system-ui,Arial,sans-serif; padding:13px 20px; border-radius:999px;
+      box-shadow:0 8px 24px rgba(24,226,202,.45); display:inline-flex; align-items:center; gap:9px; transition:transform .2s, filter .2s; }
+    .liq-vm-launch:hover{ transform:translateY(-2px); filter:brightness(1.08); }
+    .liq-vm-launch__play{ font-size:13px; }
+    @media (max-width:560px){ .liq-vm__bar{ justify-content:center; text-align:center; } }
+    @media (prefers-reduced-motion:reduce){ .liq-vm__backdrop,.liq-vm__dialog{ transition:none; } .liq-vm__unmute{ animation:none; } }
+  </style>
+  <script>
+  (function(){
+    var modal=document.getElementById("liq-vm"), video=document.getElementById("liq-video"),
+        unmute=document.getElementById("liq-unmute"), openBtn=document.getElementById("liq-open"), lastFocus=null;
+    function open(){ lastFocus=document.activeElement; modal.classList.add("is-open"); modal.setAttribute("aria-hidden","false");
+      document.body.style.overflow="hidden"; video.muted=true; var p=video.play(); if(p&&p.catch)p.catch(function(){});
+      unmute.style.display="inline-flex"; setTimeout(function(){ modal.querySelector(".liq-vm__close").focus(); },50); }
+    function close(){ modal.classList.remove("is-open"); modal.setAttribute("aria-hidden","true"); document.body.style.overflow="";
+      try{ video.pause(); video.currentTime=0; }catch(e){} if(lastFocus&&lastFocus.focus)lastFocus.focus(); }
+    unmute.addEventListener("click",function(){ video.muted=false; video.volume=1; var p=video.play(); if(p&&p.catch)p.catch(function(){}); unmute.style.display="none"; });
+    openBtn.addEventListener("click",open);
+    modal.addEventListener("click",function(e){ if(e.target.hasAttribute("data-liq-close")) close(); });
+    document.addEventListener("keydown",function(e){ if(e.key==="Escape"&&modal.classList.contains("is-open")) close(); });
+    window.addEventListener("load",function(){ setTimeout(open,800); });
+  })();
+  </script>
+</body>
+</html>
