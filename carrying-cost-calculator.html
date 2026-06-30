@@ -1,258 +1,364 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Inventory Carrying Cost Calculator — Cost of Holding Stock | Free | LogicstIQ — Free Supply Chain Calculator</title>
-<meta name="description" content="Calculate the annual cost of holding inventory. Find your carrying cost percentage and total annual holding cost including storage, capital, insurance and obsolescence.">
-<meta name="keywords" content="inventory carrying cost calculator, holding cost calculator, cost of carrying inventory, inventory holding cost formula, carrying cost percentage, warehouse holding cost India">
-<link rel="canonical" href="https://logicstiq.com/carrying-cost-calculator">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@graph":[
-    {
-      "@type":"SoftwareApplication",
-      "name":"Inventory Carrying Cost Calculator",
-      "url":"https://logicstiq.com/carrying-cost-calculator",
-      "applicationCategory":"BusinessApplication",
-      "operatingSystem":"Web",
-      "offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},
-      "description":"Free inventory carrying cost calculator. Calculate the annual cost of holding inventory including storage, capital, insurance and obsolescence."
-    },
-    {
-      "@type":"HowTo",
-      "name":"How to use the Inventory Carrying Cost Calculator",
-      "step":[
-        {"@type":"HowToStep","name":"Enter your inputs","text":"Enter your average inventory value and the individual cost components as percentages"},
-        {"@type":"HowToStep","name":"Click Calculate","text":"Press the calculate button to get your instant result"},
-        {"@type":"HowToStep","name":"Use the result","text":"Use the carrying cost to optimise order quantities using EOQ and justify safety stock reduction initiatives"}
-      ]
-    },
-    {
-      "@type":"FAQPage",
-      "mainEntity":[
-        {"@type":"Question","name":"What is a typical carrying cost percentage for Indian businesses?","acceptedAnswer":{"@type":"Answer","text":"For Indian businesses, total carrying cost typically ranges from 18% to 30% of inventory value annually. Breakdown: Cost of capital 10-14% (bank OD rates), Warehouse/storage 5-10%, Insurance 0.5-1.5%, Obsolescence/shrinkage 2-5%. FMCG and fashion tend to have higher obsolescence costs. Industrial components tend to have lower shrinkage."}},
-        {"@type":"Question","name":"How does carrying cost affect the EOQ calculation?","acceptedAnswer":{"@type":"Answer","text":"Carrying cost is one of the two key inputs in the EOQ formula: EOQ = √(2DS/H) where H is the annual holding cost per unit. A higher carrying cost percentage results in a lower EOQ (smaller, more frequent orders) because the cost of holding a large order outweighs the ordering savings. Accurate carrying cost is essential for meaningful EOQ calculation."}},
-        {"@type":"Question","name":"Should I include depreciation in carrying cost?","acceptedAnswer":{"@type":"Answer","text":"Yes, for physical goods that lose value over time — electronics, fashion, food, chemicals — include depreciation or obsolescence as a percentage of inventory value. For stable goods like industrial components or construction materials, obsolescence may be low (1-2%). For fast-changing categories like mobile phones, it can be 10-15% or more."}}
-      ]
-    }
-  ]
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Break-Even Calculator India — Free Break-Even Point Tool | LogicstIQ — Free Supply Chain Calculator</title>
+  <meta name="description" content="Free Break-Even Calculator for Indian businesses. Calculate break-even point in units and revenue, margin of safety, and profit at any sales volume. No login required.">
+  <meta name="keywords" content="break even calculator India, break even point calculator, BEP calculator, break even analysis India, break even units calculator, contribution margin calculator India">
+  <link rel="canonical" href="https://www.logicstiq.com/break-even-calculator">
+  <meta property="og:title" content="Break-Even Calculator India — Free | LogicstIQ">
+  <meta property="og:description" content="Calculate break-even point in units and revenue instantly. Free, no login. Essential for pricing and product decisions.">
+  <meta property="og:url" content="https://www.logicstiq.com/break-even-calculator">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LogicstIQ.com">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:#F4F7FF;color:#0F172A;min-height:100vh;font-size:16px;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;background:#FFFFFF;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100}
+    .nav-logo{font-weight:800;font-size:1.1rem;color:#0F172A}
+    .nav-back{color:#3A55FF;font-size:0.875rem;font-weight:600}
+    .nav-back:hover{color:#2A40D6}
+    .badge-bar{text-align:center;padding:12px;background:#FFFFFF;border-bottom:1px solid #E2E8F0;font-size:0.8rem;color:#3A55FF;font-weight:700;letter-spacing:0.5px}
+    .hero{max-width:760px;margin:0 auto;padding:48px 24px 32px;text-align:center}
+    .hero h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;color:#0F172A;line-height:1.2;margin-bottom:14px}
+    .hero h1 span{display:block;font-size:clamp(1rem,2vw,1.2rem);font-weight:500;color:#475569;margin-top:8px}
+    .trust-row{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:16px}
+    .trust-item{font-size:0.8rem;color:#3A55FF;font-weight:600}
+    .trust-item::before{content:"✓ "}
+    .calc-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
+    .calc-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;overflow:hidden}
+    .calc-header{background:#F8FAFF;padding:18px 24px;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:10px}
+    .calc-header-icon{font-size:1.2rem}
+    .calc-header-title{font-size:0.95rem;font-weight:700;color:#0F172A}
+    .calc-body{padding:24px}
+    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media(max-width:560px){.field-grid{grid-template-columns:1fr}}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field label{font-size:0.8rem;font-weight:700;color:#475569;letter-spacing:0.3px}
+    .field span{font-size:0.72rem;color:#94A3B8}
+    .field input{background:#FFFFFF;border:1px solid #CBD5E1;border-radius:8px;padding:10px 14px;color:#0F172A;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color .2s}
+    .field input:focus{border-color:#3A55FF}
+    .field input::placeholder{color:#94A3B8}
+    .calc-btn{width:100%;margin-top:20px;background:linear-gradient(135deg,#3A55FF,#2A40D6);color:#fff;border:none;border-radius:10px;padding:14px;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:opacity .2s}
+    .calc-btn:hover{opacity:0.9}
+    .results{display:none;margin-top:20px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px}
+    .results.show{display:block}
+    .results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+    .result-item{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:16px;text-align:center}
+    .result-label{font-size:0.72rem;color:#475569;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+    .result-value{font-size:1.4rem;font-weight:800;color:#3A55FF}
+    .result-sub{font-size:0.72rem;color:#94A3B8;margin-top:4px}
+    .disclaimer{margin-top:16px;font-size:0.75rem;color:#94A3B8;padding:10px;background:#F4F7FF;border-radius:8px;border-left:3px solid #E2E8F0}
+    .content-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
+    .formula-box{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px 24px;margin-bottom:32px}
+    .formula-tag{font-size:0.7rem;font-weight:700;color:#3A55FF;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+    .formula-expr{font-family:'Courier New',monospace;font-size:0.95rem;color:#2A40D6;line-height:1.8}
+    .section-title{font-size:0.75rem;font-weight:700;color:#3A55FF;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+    .prose{color:#475569;font-size:0.9rem;line-height:1.75;margin-bottom:24px}
+    .prose strong{color:#0F172A}
+    .example-box{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px 24px;margin-bottom:32px}
+    .example-tag{font-size:0.7rem;font-weight:700;color:#059669;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+    .example-table{width:100%;border-collapse:collapse}
+    .example-table td{padding:8px 0;font-size:0.875rem;color:#475569;border-bottom:1px solid #E2E8F0}
+    .example-table td:last-child{text-align:right;color:#0F172A;font-weight:600}
+    .example-table tr:last-child td{border-bottom:none;color:#3A55FF;font-weight:800;font-size:1rem}
+    .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:32px}
+    .why-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:18px}
+    .why-card h4{font-size:0.85rem;font-weight:700;color:#0F172A;margin-bottom:8px}
+    .why-card p{font-size:0.8rem;color:#475569;line-height:1.6}
+    .ai-cta{background:linear-gradient(135deg,#FFFFFF,#FFFFFF);border:1px solid #CBD5E1;border-radius:16px;padding:28px 24px;text-align:center;margin-bottom:32px}
+    .ai-cta h3{font-size:1.1rem;font-weight:800;color:#0F172A;margin-bottom:8px}
+    .ai-cta p{font-size:0.875rem;color:#475569;margin-bottom:20px}
+    .ai-cta a{display:inline-block;background:linear-gradient(135deg,#3A55FF,#2A40D6);color:#fff;padding:12px 28px;border-radius:10px;font-weight:700;font-size:0.9rem}
+    .ai-cta-tags{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+    .ai-cta-tag{font-size:0.72rem;color:#94A3B8}
+    .faq-item{border-bottom:1px solid #E2E8F0;padding:16px 0}
+    .faq-item:last-child{border-bottom:none}
+    .faq-q{font-size:0.9rem;font-weight:700;color:#0F172A;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .faq-q::after{content:"▾";color:#3A55FF;font-size:0.8rem}
+    .faq-a{font-size:0.85rem;color:#475569;line-height:1.7;margin-top:10px;display:none}
+    .faq-item.open .faq-a{display:block}
+    .faq-item.open .faq-q::after{content:"▴"}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:16px}
+    .related-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:16px;text-decoration:none;transition:border-color .2s;display:flex;flex-direction:column;gap:4px}
+    .related-card:hover{border-color:#3A55FF}
+    .related-search{font-size:0.65rem;color:#94A3B8}
+    .related-name{font-size:0.85rem;font-weight:700;color:#0F172A}
+    footer{background:#0F172A;border-top:1px solid #1E293B;padding:28px 32px;text-align:center;margin-top:20px}
+    .footer-copy{font-size:0.78rem;color:#94A3B8;line-height:1.8}
+    .footer-copy a{color:#94A3B8}
+    .footer-copy a:hover{color:#fff}
+    @media(max-width:600px){.nav{padding:14px 20px}.hero{padding:32px 20px 24px}.calc-body{padding:16px}}
+  </style>
+<style id="liq-theme-css">
+.liq-theme-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--white);color:var(--text);font-size:15px;line-height:1;cursor:pointer;display:inline-grid;place-items:center;transition:.18s;margin-left:4px}
+.liq-theme-btn:hover{border-color:#3A55FF;transform:translateY(-1px)}
+.liq-theme-float{position:fixed;right:18px;bottom:18px;z-index:99999;width:44px;height:44px;border-radius:50%;box-shadow:0 8px 22px rgba(0,0,0,.28)}
+[data-theme="dark"]{
+  --bg:#070708;--white:#10131F;--border:rgba(255,255,255,.10);--border2:rgba(255,255,255,.17);
+  --b50:rgba(58,85,255,.12);--b100:rgba(58,85,255,.20);--b200:rgba(58,85,255,.32);
+  --text:#F1F5FF;--text2:#DBE3F5;--text3:#A7B0CC;--text4:#7E88A8;
+  --glight:rgba(16,185,129,.16);--rlight:rgba(239,68,68,.16);--alight:rgba(245,158,11,.16);--plight:rgba(119,11,255,.18);
 }
-</script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#F4F7FF;--white:#FFFFFF;--border:#E2E8F0;--b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b600:#2563EB;--b700:#1D4ED8;--b900:#1E3A8A;--green:#059669;--amber:#D97706;--text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8;}
-body{font-family:"Inter",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
-.nav{background:#fff;border-bottom:1px solid var(--border);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.04)}
-.nav-logo{text-decoration:none;display:flex;align-items:center}
-.nav-back{font-size:13px;font-weight:600;color:var(--b600);text-decoration:none}
-.hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 50%,#1D4ED8 100%);padding:52px 32px 44px;text-align:center}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:5px 14px;font-size:11px;font-weight:800;color:#BFDBFE;text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px}
-.hero h1{font-size:clamp(24px,4vw,44px);font-weight:900;color:#fff;line-height:1.12;letter-spacing:-.03em;max-width:700px;margin:0 auto 12px;font-family:"Plus Jakarta Sans",sans-serif}
-.hero h1 span{color:#93C5FD}
-.hero-sub{font-size:14px;color:#BFDBFE;max-width:560px;margin:0 auto 20px;line-height:1.7}
-.trust-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;font-size:12px;color:rgba(255,255,255,.85);font-weight:600}
-.trust-row .tick{color:#34D399}
-.wrap{max-width:820px;margin:0 auto;padding:44px 24px 60px}
-.calc-card{background:var(--white);border:2px solid var(--b200);border-radius:20px;padding:32px;margin-bottom:28px;box-shadow:0 4px 20px rgba(30,58,138,.08)}
-.calc-card h2{font-size:20px;font-weight:900;color:var(--b900);margin-bottom:20px;font-family:"Plus Jakarta Sans",sans-serif;letter-spacing:-.02em}
-.input-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:18px}
-.input-group label{display:block;font-size:12px;font-weight:700;color:var(--text3);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em}
-.input-group input,.input-group select{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;color:var(--text);background:#fff;transition:border-color .15s;outline:none}
-.input-group input:focus,.input-group select:focus{border-color:var(--b600);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
-.calc-btn{width:100%;background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:800;font-family:inherit;cursor:pointer;box-shadow:0 4px 16px rgba(37,99,235,.35);transition:all .2s;margin-bottom:14px}
-.calc-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,99,235,.45)}
-.result-box{background:linear-gradient(135deg,var(--b50),#E0F2FE);border:2px solid var(--b200);border-radius:14px;padding:22px;text-align:center;display:none}
-.result-box.show{display:block}
-.result-label{font-size:11px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
-.result-value{font-size:42px;font-weight:900;color:var(--b700);line-height:1;letter-spacing:-.03em}
-.result-unit{font-size:14px;color:var(--text3);margin-top:6px;font-weight:600}
-.result-detail{font-size:13px;color:var(--text2);margin-top:12px;line-height:1.7;background:rgba(255,255,255,.7);border-radius:8px;padding:12px}
-.disclaimer{background:#FEF9C3;border:1px solid #FDE68A;border-radius:10px;padding:10px 14px;font-size:11px;color:#92400E;line-height:1.6;font-weight:600;display:flex;align-items:flex-start;gap:8px}
-h2{font-size:24px;font-weight:900;color:var(--text);letter-spacing:-.02em;margin:36px 0 12px;border-top:2px solid var(--b100);padding-top:8px;font-family:"Plus Jakarta Sans",sans-serif}
-h3{font-size:18px;font-weight:800;color:var(--text2);margin:24px 0 8px}
-p{margin-bottom:14px;color:var(--text2);line-height:1.8;font-size:15px}
-ul,ol{padding-left:22px;margin-bottom:14px}
-li{margin-bottom:7px;color:var(--text2);line-height:1.7}
-strong{color:var(--text);font-weight:700}
-a{color:var(--b600);font-weight:600;text-decoration:none}
-.formula-box{background:linear-gradient(135deg,#EFF6FF,#E0F2FE);border:2px solid var(--b200);border-radius:14px;padding:22px;margin:18px 0;text-align:center}
-.f-label{font-size:10px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
-.f-formula{font-size:clamp(13px,2vw,18px);font-weight:900;color:var(--b700);font-family:"Courier New",monospace;line-height:1.6}
-.example-box{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:24px;margin:18px 0;box-shadow:0 2px 8px rgba(30,58,138,.05)}
-.ex-title{font-size:11px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
-.ex-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px}
-.ex-row:last-child{border-bottom:none;padding-top:12px}
-.ex-lbl{color:var(--text3)}
-.ex-val{font-weight:700;color:var(--text);font-family:"Courier New",monospace}
-.ex-result{font-size:22px;font-weight:900;color:var(--b700)}
-.faq-item{background:var(--white);border:1.5px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}
-.faq-q{padding:16px 20px;font-size:14px;font-weight:700;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
-.faq-q:hover{background:var(--b50)}
-.faq-q span{color:var(--b600);font-size:16px;transition:transform .2s;flex-shrink:0;margin-left:10px}
-.faq-a{padding:14px 20px;font-size:13px;color:var(--text3);line-height:1.75;background:#F8FAFF;border-top:1px solid var(--border);display:none}
-.faq-item.open .faq-a{display:block}
-.faq-item.open .faq-q span{transform:rotate(180deg)}
-.cta-box{background:linear-gradient(135deg,#0F172A,#1E3A8A);border-radius:20px;padding:32px;text-align:center;margin:36px 0}
-.cta-box h3{font-size:20px;font-weight:900;color:#fff;margin-bottom:8px;font-family:"Plus Jakarta Sans",sans-serif}
-.cta-box p{font-size:13px;color:#BFDBFE;margin-bottom:18px;line-height:1.65}
-.cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;text-decoration:none;padding:13px 26px;border-radius:12px;font-size:14px;font-weight:800;box-shadow:0 4px 16px rgba(37,99,235,.4)}
-.cta-feats{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:14px}
-.cta-f{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:3px 10px;font-size:11px;font-weight:600;color:#E0E7FF}
-.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:16px 0}
-.related-card{background:var(--white);border:1.5px solid var(--border);border-radius:11px;padding:14px;text-decoration:none;transition:all .2s;display:block}
-.related-card:hover{border-color:var(--b200);box-shadow:0 4px 12px rgba(30,58,138,.07);transform:translateY(-1px)}
-.rc-name{font-size:13px;font-weight:800;color:var(--text);margin-bottom:3px}
-.rc-vol{font-size:11px;color:var(--b600);font-weight:600}
-.aff-note{background:var(--white);border:1px solid var(--border);border-radius:9px;padding:11px 14px;margin:24px 0;font-size:12px;color:var(--text4);line-height:1.6}
-footer{background:#0F172A;padding:28px 32px;text-align:center;color:#64748B;font-size:13px;margin-top:0}
-footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
-@media(max-width:600px){.wrap{padding:28px 16px 48px}.hero{padding:40px 20px 36px}.input-grid{grid-template-columns:1fr}}
+[data-theme="dark"] body{background:#070708}
+[data-theme="dark"] .nav{background:rgba(9,10,18,.92)!important;border-bottom-color:rgba(255,255,255,.08)}
+[data-theme="dark"] .liq-theme-btn{background:rgba(255,255,255,.06)}
+[data-theme="dark"] .nav-logo text tspan:first-child{fill:#FFFFFF}
+[data-theme="dark"] .nav-logo span{color:#7D92FF!important}
+[data-theme="dark"] .card,[data-theme="dark"] .why-card,[data-theme="dark"] .results,[data-theme="dark"] .result-item,[data-theme="dark"] .related-card,[data-theme="dark"] .calc-card,[data-theme="dark"] .badge-bar,[data-theme="dark"] .result-stat,[data-theme="dark"] .f-var,[data-theme="dark"] .formula-var,[data-theme="dark"] .breakdown-item,[data-theme="dark"] .safety-card,[data-theme="dark"] .modal-card,[data-theme="dark"] .legal-note,[data-theme="dark"] .tab,[data-theme="dark"] .faq-q,[data-theme="dark"] .faq-item{background:#10131F!important;border-color:rgba(255,255,255,.12)!important}
+[data-theme="dark"] .formula-box,[data-theme="dark"] .example-box,[data-theme="dark"] .faq-a{background:#0C0F1A!important;border-color:rgba(255,255,255,.10)!important}
+[data-theme="dark"] table th{background:rgba(255,255,255,.05)!important;color:#CFD8EE!important}
+[data-theme="dark"] table td,[data-theme="dark"] table th{border-color:rgba(255,255,255,.08)!important}
+[data-theme="dark"] .section-eyebrow,[data-theme="dark"] .calc-tag,[data-theme="dark"] .blog-cat,[data-theme="dark"] .calc-cat{background:rgba(58,85,255,.14)!important;border-color:rgba(58,85,255,.32)!important;color:#AEBCFF!important}
 </style>
 </head>
 <body>
+
 <nav class="nav">
   <a href="/" class="nav-logo" aria-label="LogicstIQ — Home" style="display:inline-flex;flex-direction:column;align-items:flex-start;text-decoration:none;line-height:1;gap:3px">
     <svg width="150" height="36" viewBox="0 0 260 68" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block">
-      <defs><linearGradient id="navlogo_g" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1D4ED8"/><stop offset="100%" stop-color="#60A5FA"/></linearGradient></defs>
+      <defs><linearGradient id="navlogo_g" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#2A40D6"/><stop offset="100%" stop-color="#7A92FF"/></linearGradient></defs>
       <path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#navlogo_g)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <path d="M59 8 L66 14 L59 20" stroke="#60A5FA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <circle cx="32" cy="50" r="3.5" fill="#1D4ED8"/>
-      <circle cx="50" cy="14" r="3.5" fill="#60A5FA"/>
-      <text x="82" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5"><tspan fill="#0F172A">Logicst</tspan><tspan fill="#2563EB">IQ</tspan></text>
+      <path d="M59 8 L66 14 L59 20" stroke="#7A92FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="32" cy="50" r="3.5" fill="#2A40D6"/>
+      <circle cx="50" cy="14" r="3.5" fill="#7A92FF"/>
+      <text x="82" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5"><tspan fill="#0F172A">Logicst</tspan><tspan fill="#3A55FF">IQ</tspan></text>
     </svg>
-    <span style="font-size:9px;font-weight:600;color:#2563EB;letter-spacing:.05em;white-space:nowrap">Where Logistics Meets Intelligence</span>
+    <span style="font-size:9px;font-weight:600;color:#3A55FF;letter-spacing:.05em;white-space:nowrap">Where Logistics Meets Intelligence</span>
   </a>
-  <a href="https://logicstiq.com" class="nav-back">← All Calculators</a>
+  <a href="https://www.logicstiq.com" class="nav-back">← All Calculators</a>
 </nav>
+<div class="badge-bar">🆓 Free · No Login · Instant Results</div>
 
-<div class="hero">
-  <div class="hero-badge">🆓 Free · No Login · Instant Results</div>
-  <h1>Inventory Carrying Cost Calculator<br><span>How Much Does It Cost to Hold Your Stock?</span></h1>
-  <p class="hero-sub">Calculate the true annual cost of holding inventory — including storage, tied-up capital, insurance, and obsolescence. Most businesses underestimate this by 50%.</p>
+<section class="hero">
+  <h1>Break-Even Calculator <span>Break-Even Point in Units & Revenue — Free Tool</span></h1>
+  <p style="color:#9999bb;font-size:0.9rem;margin-top:16px">Calculate exactly how many units you need to sell — or how much revenue you need to generate — before your business starts making profit.</p>
   <div class="trust-row">
-    <span><span class="tick">✓</span>No signup needed</span>
-    <span><span class="tick">✓</span>No data stored</span>
-    <span><span class="tick">✓</span>Works on mobile</span>
-    <span><span class="tick">✓</span>Free forever</span>
+    <span class="trust-item">No signup needed</span>
+    <span class="trust-item">No data stored</span>
+    <span class="trust-item">Works on mobile</span>
+    <span class="trust-item">Free forever</span>
   </div>
-</div>
+</section>
 
-<div class="wrap">
-
-  <!-- LIVE CALCULATOR -->
+<section class="calc-section">
   <div class="calc-card">
-    <h2>🔢 Inventory Carrying Cost Calculator — Free Online Tool</h2>
-    <div class="input-grid">
-      <div class="input-group">
-        <label for="avg_inv">Average Inventory Value (₹)</label>
-        <input type="number" id="avg_inv" placeholder="e.g. 2000000" min="0" step="1">
+    <div class="calc-header">
+      <span class="calc-header-icon">⚖️</span>
+      <span class="calc-header-title">Break-Even Calculator — Free Online Tool</span>
+    </div>
+    <div class="calc-body">
+      <div class="field-grid">
+        <div class="field">
+          <label>Fixed Costs per Month (₹)</label>
+          <span>Rent, salaries, software, EMIs</span>
+          <input type="number" id="fixedCosts" placeholder="e.g. 150000" min="0">
+        </div>
+        <div class="field">
+          <label>Selling Price per Unit (₹)</label>
+          <span>Your average selling price</span>
+          <input type="number" id="sellPrice" placeholder="e.g. 500" min="0">
+        </div>
+        <div class="field">
+          <label>Variable Cost per Unit (₹)</label>
+          <span>COGS + packaging + shipping per unit</span>
+          <input type="number" id="varCost" placeholder="e.g. 300" min="0">
+        </div>
+        <div class="field">
+          <label>Current Monthly Units (optional)</label>
+          <span>To calculate margin of safety</span>
+          <input type="number" id="currentUnits" placeholder="e.g. 800" min="0">
+        </div>
       </div>
-      <div class="input-group">
-        <label for="capital_cost">Cost of Capital % (% per year)</label>
-        <input type="number" id="capital_cost" placeholder="e.g. 12" min="0" step="0.5">
-      </div>
-      <div class="input-group">
-        <label for="storage_cost">Storage / Warehouse Cost % (% per year)</label>
-        <input type="number" id="storage_cost" placeholder="e.g. 8" min="0" step="0.5">
-      </div>
-      <div class="input-group">
-        <label for="insurance_cost">Insurance % (% per year)</label>
-        <input type="number" id="insurance_cost" placeholder="e.g. 1" min="0" step="0.1">
-      </div>
-      <div class="input-group">
-        <label for="obsolescence">Obsolescence / Shrinkage % (% per year)</label>
-        <input type="number" id="obsolescence" placeholder="e.g. 3" min="0" step="0.5">
+      <button class="calc-btn" onclick="calcBEP()">Calculate Break-Even Point →</button>
+      <div class="results" id="results">
+        <div class="results-grid">
+          <div class="result-item">
+            <div class="result-label">Break-Even Units</div>
+            <div class="result-value" id="r-beu">—</div>
+            <div class="result-sub">Units/month to break even</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Break-Even Revenue</div>
+            <div class="result-value" id="r-ber">—</div>
+            <div class="result-sub">₹ revenue to break even</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Contribution Margin</div>
+            <div class="result-value" id="r-cm">—</div>
+            <div class="result-sub">Per unit profit contribution</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Margin of Safety</div>
+            <div class="result-value" id="r-mos">—</div>
+            <div class="result-sub">Buffer above break-even</div>
+          </div>
+        </div>
+        <div class="disclaimer">⚠️ <strong>Reference only:</strong> Results are for planning purposes. Validate with your ERP or business data before making decisions.</div>
       </div>
     </div>
-    <button class="calc-btn" onclick="calculate()">Calculate Carrying Cost →</button>
-    <div class="result-box" id="result">
-      <div class="result-label">Annual Carrying Cost</div>
-      <div class="result-value" id="result-value">—</div>
-      <div class="result-unit">₹ per year</div>
-      <div class="result-detail" id="result-detail"></div>
-    </div>
-    <div class="disclaimer" style="margin-top:12px">⚠️ <span><strong>Reference only:</strong> Results are for planning purposes. Validate with your ERP or business data before making decisions.</span></div>
   </div>
+</section>
 
-  <!-- WHAT IS -->
-  <h2 id="what">What is Inventory Carrying Cost Calculator?</h2>
-  <p><strong>Inventory carrying cost</strong> (also called holding cost) is the total annual cost of maintaining inventory in your warehouse. It includes direct costs like storage and insurance, and indirect costs like the opportunity cost of capital tied up in stock.</p>
-  <p>The most commonly underestimated component is cost of capital. If your inventory is funded by a bank loan at 12% interest, or if that cash could earn 12% invested elsewhere, then holding ₹20L of inventory costs ₹2.4L/year in capital cost alone — before adding warehouse rent, insurance, and shrinkage.</p>
+<section class="content-section">
 
-  <!-- FORMULA -->
-  <h2 id="formula">The Carrying Cost Formula</h2>
   <div class="formula-box">
-    <div class="f-label">📐 Formula</div>
-    <div class="f-formula">Carrying Cost = Average Inventory Value × Carrying Cost Rate %</div>
-  </div>
-  <p>The carrying cost rate is the sum of all individual holding cost components expressed as a percentage of inventory value. Typical range: 18-35% annually. Most Indian SMEs underestimate this because they only count warehouse rent and ignore the cost of capital tied up in stock.</p>
-
-  <!-- EXAMPLE -->
-  <h2 id="example">Worked Example</h2>
-  <p>A FMCG distributor holds an average inventory of ₹25 lakh. Their carrying cost components:</p>
-  <div class="example-box">
-    <div class="ex-title">📊 Example Calculation</div>
-    <div class="ex-row"><span class="ex-lbl">Average inventory</span><span class="ex-val">₹25,00,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">Cost of capital (bank OD at 12%)</span><span class="ex-val">12% × ₹25L = ₹3,00,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">Warehouse rent + utilities</span><span class="ex-val">8% × ₹25L = ₹2,00,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">Insurance</span><span class="ex-val">1% × ₹25L = ₹25,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">Obsolescence + shrinkage</span><span class="ex-val">3% × ₹25L = ₹75,000</span></div>
-    <div class="ex-row"><span class="ex-lbl"><strong>Total Carrying Cost</strong></span><span class="ex-result">₹6,00,000/year = 24%</span></div>
-  </div>
-  <p>This distributor spends ₹6 lakh per year just to hold their inventory — ₹50,000 per month. Every ₹1 lakh reduction in average inventory saves ₹24,000 annually. This is why EOQ and safety stock optimisation have direct, measurable financial returns.</p>
-
-  <!-- WHY IT MATTERS -->
-  <h2 id="why">Why Carrying Cost Matters for Your Business</h2>
-  <p>Carrying cost is the "hidden tax" on inventory. Most businesses see the cost of buying inventory but not the cost of holding it — leading to systematic over-ordering.</p>
-  <ul>
-  <li><strong>EOQ optimisation:</strong> Carrying cost is a direct input into the EOQ formula — accurate carrying cost gives accurate EOQ</li>
-  <li><strong>Dead stock decisions:</strong> Compare the carrying cost of holding slow stock vs. the cost of clearing it</li>
-  <li><strong>Working capital management:</strong> Justify inventory reduction initiatives to management using annual carrying cost savings</li>
-  <li><strong>Safety stock calibration:</strong> Balance the cost of carrying safety stock against the cost of a stockout</li>
-  </ul>
-
-  <!-- AI PLANNER CTA -->
-  <div class="cta-box">
-    <h3>🤖 Go Further with AI Demand Planning</h3>
-    <p>Upload your full inventory export and get Carrying Cost calculated automatically across all your SKUs — alongside demand forecasts, reorder plans, and stockout risk analysis.</p>
-    <a href="https://logicstiq.com/#ai-demand-planner" class="cta-btn">Try Free AI Demand Planner →</a>
-    <div class="cta-feats">
-      <span class="cta-f">Works with Tally · SAP · NetSuite · Amazon · Flipkart</span>
-      <span class="cta-f">No login · No data stored · Free forever</span>
+    <div class="formula-tag">📐 Break-Even Formula</div>
+    <div class="formula-expr">
+      Contribution Margin = Selling Price − Variable Cost per Unit<br>
+      Break-Even Units = Fixed Costs ÷ Contribution Margin<br>
+      Break-Even Revenue = Break-Even Units × Selling Price<br>
+      Margin of Safety = Current Sales − Break-Even Sales
     </div>
   </div>
 
-  <!-- FAQ -->
-  <h2 id="faq">Frequently Asked Questions</h2>
-  <div class="faq-item open"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is a typical carrying cost percentage for Indian businesses?<span>▾</span></div><div class="faq-a">For Indian businesses, total carrying cost typically ranges from 18% to 30% of inventory value annually. Breakdown: Cost of capital 10-14% (bank OD rates), Warehouse/storage 5-10%, Insurance 0.5-1.5%, Obsolescence/shrinkage 2-5%. FMCG and fashion tend to have higher obsolescence costs. Industrial components tend to have lower shrinkage.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does carrying cost affect the EOQ calculation?<span>▾</span></div><div class="faq-a">Carrying cost is one of the two key inputs in the EOQ formula: EOQ = √(2DS/H) where H is the annual holding cost per unit. A higher carrying cost percentage results in a lower EOQ (smaller, more frequent orders) because the cost of holding a large order outweighs the ordering savings. Accurate carrying cost is essential for meaningful EOQ calculation.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Should I include depreciation in carrying cost?<span>▾</span></div><div class="faq-a">Yes, for physical goods that lose value over time — electronics, fashion, food, chemicals — include depreciation or obsolescence as a percentage of inventory value. For stable goods like industrial components or construction materials, obsolescence may be low (1-2%). For fast-changing categories like mobile phones, it can be 10-15% or more.</div></div>
+  <div class="section-title">What is the Break-Even Calculator?</div>
+  <p class="prose">
+    The <strong>break-even point</strong> is the level of sales at which total revenue exactly equals total costs — you are making neither profit nor loss. Below break-even, you lose money. Above it, every unit sold generates profit equal to your contribution margin per unit.
+  </p>
+  <p class="prose">
+    For Indian SMEs, D2C brands, and marketplace sellers, break-even analysis is the most fundamental financial check before launching a product, setting a price, or committing to a warehouse lease. It answers: <strong>"How much do I need to sell just to cover my costs?"</strong>
+  </p>
 
-  <!-- RELATED CALCULATORS -->
-  <h2>Related Free Calculators</h2>
-  <div class="related-grid">
-    <a href="https://logicstiq.com/eoq-calculator" class="related-card"><div class="rc-name">EOQ Calculator</div><div class="rc-vol">2,400/mo monthly searches</div></a>
-    <a href="https://logicstiq.com/safety-stock-calculator" class="related-card"><div class="rc-name">Safety Stock Calculator</div><div class="rc-vol">1,900/mo monthly searches</div></a>
-    <a href="https://logicstiq.com/reorder-point-calculator" class="related-card"><div class="rc-name">Reorder Point Calculator</div><div class="rc-vol">1,600/mo monthly searches</div></a>
-    <a href="https://logicstiq.com/otif-calculator" class="related-card"><div class="rc-name">OTIF Calculator</div><div class="rc-vol">2,900/mo monthly searches</div></a>
-    <a href="https://logicstiq.com/inventory-turnover-calculator" class="related-car
+  <div class="example-box">
+    <div class="example-tag">📊 Worked Example</div>
+    <p style="font-size:0.85rem;color:#9999bb;margin-bottom:14px">A D2C skincare brand selling on Nykaa and their own website:</p>
+    <table class="example-table">
+      <tr><td>Fixed costs per month (rent, salaries, ads)</td><td>₹1,50,000</td></tr>
+      <tr><td>Selling price per unit</td><td>₹599</td></tr>
+      <tr><td>Variable cost per unit (COGS + packaging + shipping)</td><td>₹280</td></tr>
+      <tr><td>Contribution margin per unit</td><td>₹319</td></tr>
+      <tr><td><strong>Break-Even Units</strong></td><td>₹1,50,000 ÷ ₹319 = <strong>470 units/month</strong></td></tr>
+      <tr><td><strong>Break-Even Revenue</strong></td><td><strong>₹2,81,530/month</strong></td></tr>
+    </table>
   </div>
 
-  <div class="aff-note"><strong>Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. When you sign up for a third-party service via these links, we may earn a small commission at no extra cost to you. All calculators are and always will be completely free.</div>
+  <div class="section-title">Why Break-Even Analysis Matters</div>
+  <div class="why-grid">
+    <div class="why-card">
+      <h4>Pricing Decisions</h4>
+      <p>Understand how a price increase or discount changes your break-even point. A 10% discount on ₹599 raises your break-even from 470 units to 560 units — a 19% jump in required volume.</p>
+    </div>
+    <div class="why-card">
+      <h4>New Product Launch</h4>
+      <p>Before launching any new SKU, calculate break-even. If the required volume is higher than your realistic demand forecast, the product economics don't work at that price point.</p>
+    </div>
+    <div class="why-card">
+      <h4>Fixed Cost Decisions</h4>
+      <p>Adding a new warehouse, hiring a team member, or subscribing to a software tool changes your fixed costs and raises your break-even. Quantify this before committing.</p>
+    </div>
+    <div class="why-card">
+      <h4>Investor Conversations</h4>
+      <p>VCs and angel investors always ask about break-even. A clear, data-backed break-even analysis demonstrates financial literacy and business model viability.</p>
+    </div>
+  </div>
 
-</div>
+  <div class="ai-cta">
+    <h3>🤖 Go Further with AI Demand Planning</h3>
+    <p>Upload your full inventory export and get demand forecasts, reorder plans, and stockout risk analysis across all your SKUs — free.</p>
+    <a href="https://www.logicstiq.com/#ai-demand-planner">Try Free AI Demand Planner →</a>
+    <div class="ai-cta-tags">
+      <span class="ai-cta-tag">Works with Tally · SAP · NetSuite · Amazon · Flipkart</span>
+      <span class="ai-cta-tag">No login · No data stored · Free forever</span>
+    </div>
+  </div>
+
+  <div class="section-title">Frequently Asked Questions</div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">What counts as a fixed cost vs. variable cost?</div>
+    <div class="faq-a">Fixed costs stay constant regardless of how many units you sell: warehouse rent, staff salaries, software subscriptions, loan EMIs, annual licences. Variable costs change with every unit sold: product cost (COGS), packaging, outbound shipping, marketplace commission (Amazon/Flipkart %). Some costs are semi-variable — electricity, for example — use your best estimate of the portion that is truly fixed.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Should I include Amazon/Flipkart commission in variable cost?</div>
+    <div class="faq-a">Yes. Marketplace commissions (typically 5–15% of selling price depending on category) are per-unit costs — the more you sell, the more commission you pay. Include them in your variable cost per unit alongside COGS and packaging. This gives you a true contribution margin that reflects the real economics of your marketplace channel.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">What is Margin of Safety?</div>
+    <div class="faq-a">Margin of Safety is how far your current sales are above the break-even point — expressed in units or revenue. If your break-even is 470 units/month and you are selling 800 units, your margin of safety is 330 units (41%). A higher margin of safety means more cushion if sales drop. A margin of safety below 20% signals a vulnerable business model.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">How does break-even change if I give a discount?</div>
+    <div class="faq-a">Discounts reduce your selling price while variable costs stay the same — so contribution margin per unit falls and break-even rises. For example, a 10% discount on a ₹500 product with ₹300 variable cost reduces contribution margin from ₹200 to ₹150, raising break-even by 33%. Always run the break-even calculation before approving discount campaigns.</div>
+  </div>
+
+  <div style="margin-top:32px">
+    <div class="section-title">Related Free Calculators</div>
+    <div class="related-grid">
+      <a href="https://www.logicstiq.com/cogs-calculator" class="related-card">
+        <span class="related-search">2,900/mo searches</span>
+        <span class="related-name">💸 COGS Calculator</span>
+      </a>
+      <a href="https://www.logicstiq.com/working-capital-calculator" class="related-card">
+        <span class="related-search">1,300/mo searches</span>
+        <span class="related-name">📊 Working Capital</span>
+      </a>
+      <a href="https://www.logicstiq.com/carrying-cost-calculator" class="related-card">
+        <span class="related-search">590/mo searches</span>
+        <span class="related-name">💰 Carrying Cost</span>
+      </a>
+      <a href="https://www.logicstiq.com/stockout-cost-calculator" class="related-card">
+        <span class="related-search">480/mo searches</span>
+        <span class="related-name">📉 Stockout Cost</span>
+      </a>
+    </div>
+  </div>
+
+</section>
 
 <footer>
-  <p>© 2025 <a href="https://logicstiq.com">LogicstIQ.com</a> · 20 Free Supply Chain Calculators + AI Demand Planner · No Login · Free Forever · Where Logistics Meets Intelligence</p>
-  <p style="margin-top:8px">Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a></p>
+  <p class="footer-copy">
+    <strong>31 Free Supply Chain Calculators · AI Demand Planner · No Login Required · Free Forever</strong><br><br>
+    © 2025 <a href="https://www.logicstiq.com">LogicstIQ.com</a> ·
+    <a href="https://www.logicstiq.com/privacy-policy.html">Privacy Policy</a> ·
+    <a href="https://www.logicstiq.com/terms.html">Terms</a> ·
+    Results are for reference only.<br>
+    <strong>Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. We may earn a commission at no extra cost to you. All calculators are free forever.<br>
+    Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a>
+  </p>
 </footer>
 
 <script>
-function calculate(){const inv=parseFloat(document.getElementById('avg_inv').value)||0;const cap=parseFloat(document.getElementById('capital_cost').value)||0;const stor=parseFloat(document.getElementById('storage_cost').value)||0;const ins=parseFloat(document.getElementById('insurance_cost').value)||0;const obs=parseFloat(document.getElementById('obsolescence').value)||0;if(inv<=0){alert('Enter your average inventory value.');return;}const total_rate=(cap+stor+ins+obs)/100;const total_cost=inv*total_rate;const monthly=total_cost/12;document.getElementById('result-value').textContent='₹'+total_cost.toLocaleString('en-IN',{minimumFractionDigits:0});document.getElementById('result-detail').textContent='Total carrying rate: '+((cap+stor+ins+obs).toFixed(1))+'% per year | Monthly cost: ₹'+monthly.toLocaleString('en-IN',{maximumFractionDigits:0})+' | Per ₹1L inventory: ₹'+(total_rate*100000).toLocaleString('en-IN',{maximumFractionDigits:0})+'/year.';document.getElementById('result').classList.add('show');}
+  function calcBEP() {
+    const fc = parseFloat(document.getElementById('fixedCosts').value) || 0;
+    const sp = parseFloat(document.getElementById('sellPrice').value) || 0;
+    const vc = parseFloat(document.getElementById('varCost').value) || 0;
+    const cu = parseFloat(document.getElementById('currentUnits').value) || 0;
+    if (!fc || !sp || !vc) { alert('Please enter Fixed Costs, Selling Price, and Variable Cost.'); return; }
+    if (sp <= vc) { alert('Selling Price must be greater than Variable Cost to calculate break-even.'); return; }
+    const cm = sp - vc;
+    const beu = fc / cm;
+    const ber = beu * sp;
+    const cmPct = (cm / sp * 100).toFixed(1);
+    const mos = cu > 0 ? ((cu - beu) / cu * 100).toFixed(1) + '%' : '—';
+    const fmt = v => '₹' + Math.round(v).toLocaleString('en-IN');
+    document.getElementById('r-beu').textContent = Math.ceil(beu).toLocaleString('en-IN') + ' units';
+    document.getElementById('r-ber').textContent = fmt(ber);
+    document.getElementById('r-cm').textContent = fmt(cm) + ' (' + cmPct + '%)';
+    document.getElementById('r-mos').textContent = mos;
+    document.getElementById('results').classList.add('show');
+  }
+  function toggleFaq(el) { el.closest('.faq-item').classList.toggle('open'); }
+</script>
+
+<script>
+(function(){var r=document.documentElement;
+function lbl(){var b=document.getElementById('liqTheme');if(b)b.textContent=r.getAttribute('data-theme')==='dark'?'☀️':'🌙';}
+function set(t){r.setAttribute('data-theme',t);lbl();try{localStorage.setItem('liq-theme',t)}catch(e){}}
+try{var sv=localStorage.getItem('liq-theme');if(sv)r.setAttribute('data-theme',sv);}catch(e){}
+var btn=document.createElement('button');btn.id='liqTheme';btn.type='button';btn.className='liq-theme-btn';
+btn.setAttribute('aria-label','Toggle light or dark mode');btn.title='Toggle light / dark';btn.textContent='🌙';
+btn.addEventListener('click',function(){set(r.getAttribute('data-theme')==='dark'?'light':'dark');});
+function place(){var nav=document.querySelector('.nav');
+ if(nav){var cta=nav.querySelector('.nav-cta');if(cta&&cta.parentNode){cta.parentNode.insertBefore(btn,cta);}
+   else{var l=nav.querySelector('.nav-links');(l||nav).appendChild(btn);}}
+ else{btn.classList.add('liq-theme-float');document.body.appendChild(btn);}lbl();}
+if(document.readyState!=='loading')place();else document.addEventListener('DOMContentLoaded',place);})();
 </script>
 </body>
 </html>

@@ -1,48 +1,447 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.logicstiq.com/</loc><priority>1.0</priority></url>
-  <url><loc>https://www.logicstiq.com/eoq-calculator</loc><priority>0.9</priority></url>
-  <url><loc>https://www.logicstiq.com/safety-stock-calculator</loc><priority>0.9</priority></url>
-  <url><loc>https://www.logicstiq.com/otif-calculator</loc><priority>0.9</priority></url>
-  <url><loc>https://www.logicstiq.com/inventory-turnover-calculator</loc><priority>0.9</priority></url>
-  <url><loc>https://www.logicstiq.com/abc-analysis-calculator</loc><priority>0.9</priority></url>
-  <url><loc>https://www.logicstiq.com/reorder-point-calculator</loc><priority>0.9</priority></url>
-  <url><loc>https://www.logicstiq.com/gst-calculator-logistics</loc><priority>0.9</priority></url>
-  <url><loc>https://www.logicstiq.com/fill-rate-calculator</loc><priority>0.8</priority></url>
-  <url><loc>https://www.logicstiq.com/landed-cost-calculator</loc><priority>0.8</priority></url>
-  <url><loc>https://www.logicstiq.com/carbon-footprint-logistics</loc><priority>0.8</priority></url>
-  <url><loc>https://www.logicstiq.com/working-capital-calculator</loc><priority>0.8</priority></url>
-  <url><loc>https://www.logicstiq.com/carrying-cost-calculator</loc><priority>0.7</priority></url>
-  <url><loc>https://www.logicstiq.com/stockout-cost-calculator</loc><priority>0.7</priority></url>
-  <url><loc>https://www.logicstiq.com/freight-cost-calculator</loc><priority>0.8</priority></url>
-  <url><loc>https://www.logicstiq.com/warehouse-space-calculator</loc><priority>0.7</priority></url>
-  <url><loc>https://www.logicstiq.com/lead-time-calculator</loc><priority>0.8</priority></url>
-  <url><loc>https://www.logicstiq.com/disruption-impact-calculator</loc><priority>0.7</priority></url>
-  <url><loc>https://www.logicstiq.com/demand-forecast-calculator</loc><priority>0.8</priority></url>
-  <url><loc>https://www.logicstiq.com/supplier-scorecard-calculator</loc><priority>0.7</priority></url>
-  <url><loc>https://www.logicstiq.com/cycle-count-calculator</loc><priority>0.7</priority></url>
-  <url><loc>https://www.logicstiq.com/blog/eoq-calculator</loc><priority>0.9</priority></url>
-  <url><loc>https://www.logicstiq.com/blog/safety-stock-calculator</loc><priority>0.9</priority></url>
-  <url><loc>https://www.logicstiq.com/blog/what-is-otif</loc><priority>0.8</priority></url>
-  <url><loc>https://www.logicstiq.com/blog/inventory-turnover-formula</loc><priority>0.8</priority></url>
-  <url><loc>https://www.logicstiq.com/blog/abc-analysis-guide</loc><priority>0.8</priority></url>
-  <url><loc>https://www.logicstiq.com/blog/gst-calculator-logistics</loc><priority>0.8</priority></url>
-  <url><loc>https://www.logicstiq.com/blog/demand-planning-amazon-flipkart</loc><priority>0.8</priority></url>
-  <url><loc>https://www.logicstiq.com/privacy-policy</loc><priority>0.3</priority></url>
-  <url><loc>https://www.logicstiq.com/terms</loc><priority>0.3</priority></url>
-  <url><loc>https://www.logicstiq.com/disclaimer</loc><priority>0.3</priority></url>
-  <url><loc>https://www.logicstiq.com/about</loc><priority>0.6</priority></url>
-<url><loc>https://www.logicstiq.com/contact</loc><priority>0.5</priority></url>
-  <url><loc>https://www.logicstiq.com/cogs-calculator</loc><priority>0.9</priority></url>
-<url><loc>https://www.logicstiq.com/gross-margin-calculator</loc><priority>0.9</priority></url>
-<url><loc>https://www.logicstiq.com/break-even-calculator</loc><priority>0.9</priority></url>
-<url><loc>https://www.logicstiq.com/moq-calculator</loc><priority>0.9</priority></url>
-<url><loc>https://www.logicstiq.com/dead-stock-calculator</loc><priority>0.9</priority></url>
-<url><loc>https://www.logicstiq.com/cash-conversion-cycle-calculator</loc><priority>0.9</priority></url>
-<url><loc>https://www.logicstiq.com/days-inventory-outstanding-calculator</loc><priority>0.9</priority></url>
-<url><loc>https://www.logicstiq.com/volumetric-weight-calculator</loc><priority>0.9</priority></url>
-<url><loc>https://www.logicstiq.com/shipping-cost-per-unit-calculator</loc><priority>0.9</priority></url>
-<url><loc>https://www.logicstiq.com/pick-pack-cost-calculator</loc><priority>0.9</priority></url>
-<url><loc>https://www.logicstiq.com/supplier-lead-time-variability-calculator</loc><priority>0.9</priority></url>
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safety Stock Calculator — Buffer Stock Formula | LogicstIQ</title>
+<meta name="description" content="Free Safety Stock Calculator. Three formula methods: Simple, Heizer, and Statistical (Z-score). Includes reorder point calculation. For Amazon, D2C, retail & manufacturing.">
+<meta name="keywords" content="safety stock calculator, buffer stock calculator, safety stock formula, reorder point, inventory safety stock, Z-score safety stock">
+<meta name="author" content="Amit Kumar & Sachin Sirwani — LogicstIQ.com">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.logicstiq.com/safety-stock-calculator">
+<meta property="og:title" content="Free Safety Stock Calculator — Buffer Stock Formula | LogicstIQ">
+<meta property="og:description" content="Calculate safety stock using 3 methods. Includes reorder point. Free, no login required.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.logicstiq.com/safety-stock-calculator">
+<meta property="og:site_name" content="LogicstIQ.com">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&family=Wix+Madefor+Display:wght@600;700;800&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F4F7FF;--white:#FFFFFF;--border:#E2E8F0;--border2:#CBD5E1;
+  --b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b400:#7A92FF;
+  --b500:#5069FF;--b600:#3A55FF;--b700:#2A40D6;--b800:#2436B5;--b900:#1C2C73;
+  --cyan:#770BFF;--green:#059669;--glight:#D1FAE5;
+  --amber:#D97706;--alight:#FEF3C7;--red:#DC2626;--rlight:#FEE2E2;
+  --purple:#7C3AED;--slate:#64748B;
+  --text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8;
+}
+body{font-family:'Wix Madefor Text','Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+.preview-bar{background:linear-gradient(90deg,#3A55FF,#770BFF);padding:10px 20px;text-align:center;font-size:12px;font-weight:800;color:#fff;letter-spacing:.04em;position:sticky;top:0;z-index:999}
+.nav{background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:40px;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.nav-logo{text-decoration:none;display:flex;align-items:center;line-height:1}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:13px;font-weight:600;color:var(--text3);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--b600)}
+.nav-cta{background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;border:none;border-radius:9px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-block}
+.calc-hero{background:linear-gradient(135deg,#0F172A 0%,#1C2C73 45%,#2A40D6 100%);padding:52px 32px 44px;text-align:center}
+.calc-hero .breadcrumb{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:12px}
+.calc-hero .breadcrumb a{color:rgba(255,255,255,.6);text-decoration:none}
+.calc-hero h1{font-size:clamp(24px,4vw,44px);font-weight:900;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.03em;margin-bottom:10px}
+.calc-hero h1 span{background:linear-gradient(135deg,#AEBCFF,#C4B5FD);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.calc-hero p{font-size:15px;color:rgba(255,255,255,.78);max-width:520px;margin:0 auto}
+.calc-wrap{max-width:900px;margin:0 auto;padding:40px 20px 60px}
+.card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:32px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+.card-title{font-size:18px;font-weight:800;color:var(--text);margin-bottom:20px;display:flex;align-items:center;gap:8px}
 
-</urlset>
+/* Method tabs */
+.tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.tab{padding:9px 18px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;border:1.5px solid var(--border2);background:#fff;color:var(--text3);transition:all .15s}
+.tab.active{background:var(--b600);color:#fff;border-color:var(--b600)}
+.method-panel{display:none}
+.method-panel.active{display:block}
+
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:600px){.form-grid{grid-template-columns:1fr}}
+.form-group label{display:block;font-size:12px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.form-group input,
+.form-group select{width:100%;padding:11px 14px;border:1.5px solid var(--border2);border-radius:10px;font-size:15px;font-family:inherit;color:var(--text);background:#fff;transition:border .15s}
+.form-group input:focus,
+.form-group select:focus{outline:none;border-color:var(--b500)}
+.form-hint{font-size:11px;color:var(--text4);margin-top:4px}
+.btn-calc{width:100%;background:linear-gradient(135deg,#059669,#770BFF);color:#fff;border:none;border-radius:12px;padding:15px;font-size:16px;font-weight:800;cursor:pointer;font-family:inherit;margin-top:20px;transition:opacity .15s}
+.btn-calc:hover{opacity:.9}
+
+.result-box{display:none;border-radius:16px;padding:28px;margin-top:20px}
+.result-box.show{display:block}
+.result-green{background:linear-gradient(135deg,#ECFDF5,#D1FAE5);border:2px solid #6EE7B7}
+.result-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:8px}
+.result-value{font-size:52px;font-weight:900;color:#065F46;font-family:'Plus Jakarta Sans',sans-serif;line-height:1}
+.result-unit{font-size:16px;font-weight:600;color:var(--green);margin-top:4px}
+.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+@media(max-width:600px){.result-grid{grid-template-columns:1fr 1fr}}
+.result-stat{background:#fff;border-radius:12px;padding:14px;text-align:center;border:1px solid #D1FAE5}
+.result-stat-val{font-size:20px;font-weight:800;color:#065F46}
+.result-stat-lbl{font-size:11px;color:var(--text3);font-weight:600;margin-top:3px}
+.formula-box{background:var(--b50);border:1px solid var(--b100);border-radius:14px;padding:20px;margin-bottom:20px;text-align:center}
+.formula-box .formula{font-size:16px;font-weight:700;color:var(--b800);letter-spacing:.01em;margin-bottom:8px}
+.formula-box p{font-size:13px;color:var(--text3)}
+.var-table{width:100%;border-collapse:collapse;font-size:14px}
+.var-table th{background:var(--b50);color:var(--b800);font-weight:700;padding:10px 14px;text-align:left;border-bottom:2px solid var(--b100)}
+.var-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text3)}
+.var-table tr:last-child td{border-bottom:none}
+.service-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px}
+.service-table th{background:#F0FDF4;color:#065F46;font-weight:700;padding:8px 12px;text-align:left}
+.service-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text3)}
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq-q{padding:16px 20px;font-weight:700;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--text)}
+.faq-a{display:none;padding:0 20px 16px;font-size:14px;color:var(--text3);line-height:1.7}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .arr{transform:rotate(180deg)}
+.arr{transition:transform .2s;color:var(--text4)}
+.cta-banner{background:linear-gradient(135deg,#0F172A,#1C2C73);border-radius:18px;padding:36px;text-align:center;color:#fff;margin-bottom:24px}
+.cta-banner h3{font-size:22px;font-weight:900;font-family:'Plus Jakarta Sans',sans-serif;margin-bottom:8px}
+.cta-banner p{font-size:14px;color:rgba(255,255,255,.75);margin-bottom:20px}
+.cta-banner a{background:linear-gradient(135deg,var(--b400),var(--cyan));color:#fff;text-decoration:none;border-radius:10px;padding:12px 28px;font-size:14px;font-weight:800;display:inline-block}
+footer{background:#0F172A;color:rgba(255,255,255,.6);padding:40px 32px 24px}
+.footer-bottom{text-align:center;font-size:12px;border-top:1px solid rgba(255,255,255,.08);padding-top:20px;margin-top:24px}
+.footer-bottom a{color:rgba(255,255,255,.5);text-decoration:none}
+.footer-bottom a:hover{color:#fff}
+.info-box{background:var(--alight);border:1px solid #FCD34D;border-radius:12px;padding:16px 20px;font-size:13px;color:#78350F;margin-bottom:16px;line-height:1.6}
+</style>
+<style id="liq-theme-css">
+.liq-theme-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--white);color:var(--text);font-size:15px;line-height:1;cursor:pointer;display:inline-grid;place-items:center;transition:.18s;margin-left:4px}
+.liq-theme-btn:hover{border-color:#3A55FF;transform:translateY(-1px)}
+.liq-theme-float{position:fixed;right:18px;bottom:18px;z-index:99999;width:44px;height:44px;border-radius:50%;box-shadow:0 8px 22px rgba(0,0,0,.28)}
+[data-theme="dark"]{
+  --bg:#070708;--white:#10131F;--border:rgba(255,255,255,.10);--border2:rgba(255,255,255,.17);
+  --b50:rgba(58,85,255,.12);--b100:rgba(58,85,255,.20);--b200:rgba(58,85,255,.32);
+  --text:#F1F5FF;--text2:#DBE3F5;--text3:#A7B0CC;--text4:#7E88A8;
+  --glight:rgba(16,185,129,.16);--rlight:rgba(239,68,68,.16);--alight:rgba(245,158,11,.16);--plight:rgba(119,11,255,.18);
+}
+[data-theme="dark"] body{background:#070708}
+[data-theme="dark"] .nav{background:rgba(9,10,18,.92)!important;border-bottom-color:rgba(255,255,255,.08)}
+[data-theme="dark"] .liq-theme-btn{background:rgba(255,255,255,.06)}
+[data-theme="dark"] .nav-logo text tspan:first-child{fill:#FFFFFF}
+[data-theme="dark"] .nav-logo span{color:#7D92FF!important}
+[data-theme="dark"] .card,[data-theme="dark"] .why-card,[data-theme="dark"] .results,[data-theme="dark"] .result-item,[data-theme="dark"] .related-card,[data-theme="dark"] .calc-card,[data-theme="dark"] .badge-bar,[data-theme="dark"] .result-stat,[data-theme="dark"] .f-var,[data-theme="dark"] .formula-var,[data-theme="dark"] .breakdown-item,[data-theme="dark"] .safety-card,[data-theme="dark"] .modal-card,[data-theme="dark"] .legal-note,[data-theme="dark"] .tab,[data-theme="dark"] .faq-q,[data-theme="dark"] .faq-item{background:#10131F!important;border-color:rgba(255,255,255,.12)!important}
+[data-theme="dark"] .formula-box,[data-theme="dark"] .example-box,[data-theme="dark"] .faq-a{background:#0C0F1A!important;border-color:rgba(255,255,255,.10)!important}
+[data-theme="dark"] table th{background:rgba(255,255,255,.05)!important;color:#CFD8EE!important}
+[data-theme="dark"] table td,[data-theme="dark"] table th{border-color:rgba(255,255,255,.08)!important}
+[data-theme="dark"] .section-eyebrow,[data-theme="dark"] .calc-tag,[data-theme="dark"] .blog-cat,[data-theme="dark"] .calc-cat{background:rgba(58,85,255,.14)!important;border-color:rgba(58,85,255,.32)!important;color:#AEBCFF!important}
+</style>
+</head>
+<body>
+
+<div class="preview-bar">🚀 LogicstIQ — 31 Free Supply Chain Calculators + AI Demand Planner <span>No login. No data stored. Free forever.</span></div>
+
+<nav class="nav">
+  <a href="/" class="nav-logo" aria-label="LogicstIQ — Home" style="display:inline-flex;flex-direction:column;align-items:flex-start;text-decoration:none;line-height:1;gap:3px">
+    <svg width="150" height="36" viewBox="0 0 260 68" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block">
+      <defs><linearGradient id="navlogo_g" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#2A40D6"/><stop offset="100%" stop-color="#7A92FF"/></linearGradient></defs>
+      <path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#navlogo_g)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M59 8 L66 14 L59 20" stroke="#7A92FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="32" cy="50" r="3.5" fill="#2A40D6"/>
+      <circle cx="50" cy="14" r="3.5" fill="#7A92FF"/>
+      <text x="82" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5"><tspan fill="#0F172A">Logicst</tspan><tspan fill="#3A55FF">IQ</tspan></text>
+    </svg>
+    <span style="font-size:9px;font-weight:600;color:#3A55FF;letter-spacing:.05em;white-space:nowrap">Where Logistics Meets Intelligence</span>
+  </a>
+  <div class="nav-links">
+    <a href="/#calculators">Calculators</a>
+    <a href="/#liq-planner">AI Planner</a>
+    <a href="/#blog">Blog</a>
+    <a href="/#liq-planner" class="nav-cta">Try AI Planner →</a>
+  </div>
+</nav>
+
+<div class="calc-hero">
+  <div class="breadcrumb"><a href="/">Home</a> › <a href="/#calculators">Calculators</a> › Safety Stock Calculator</div>
+  <h1>🛡️ <span>Safety Stock</span> Calculator</h1>
+  <p>Calculate buffer stock using 3 methods — Simple, Heizer, and Statistical (Z-score). Includes automatic Reorder Point calculation.</p>
+</div>
+
+<div class="calc-wrap">
+
+  <!-- Method info -->
+  <div class="card">
+    <div class="card-title">📐 Choose Your Formula Method</div>
+    <div class="info-box">⚡ <strong>Which method should I use?</strong> Use <strong>Simple</strong> if demand is mostly stable. Use <strong>Heizer</strong> if lead time varies. Use <strong>Statistical (Z-score)</strong> for the most accurate result when you have demand variability data.</div>
+
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('simple', this)">① Simple Method</div>
+      <div class="tab" onclick="switchTab('heizer', this)">② Heizer Method</div>
+      <div class="tab" onclick="switchTab('zscore', this)">③ Z-Score (Statistical)</div>
+    </div>
+
+    <!-- Simple Method -->
+    <div class="method-panel active" id="panel-simple">
+      <div class="formula-box">
+        <div class="formula">Safety Stock = (Max Daily Demand − Avg Daily Demand) × Max Lead Time</div>
+        <p>Best for: stable demand, consistent suppliers</p>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Max Daily Demand (units/day)</label>
+          <input type="number" id="s-maxDemand" placeholder="e.g. 120">
+          <div class="form-hint">Highest daily sales in recent history</div>
+        </div>
+        <div class="form-group">
+          <label>Avg Daily Demand (units/day)</label>
+          <input type="number" id="s-avgDemand" placeholder="e.g. 80">
+          <div class="form-hint">Typical average daily sales</div>
+        </div>
+        <div class="form-group">
+          <label>Max Lead Time (days)</label>
+          <input type="number" id="s-maxLT" placeholder="e.g. 18">
+          <div class="form-hint">Longest your supplier has ever taken</div>
+        </div>
+        <div class="form-group">
+          <label>Avg Lead Time (days)</label>
+          <input type="number" id="s-avgLT" placeholder="e.g. 12">
+          <div class="form-hint">Normal supplier lead time</div>
+        </div>
+      </div>
+      <button class="btn-calc" onclick="calcSimple()">Calculate Safety Stock →</button>
+      <div class="result-box result-green" id="result-simple">
+        <div class="result-label">Safety Stock (Simple Method)</div>
+        <div class="result-value" id="ss-simple">—</div>
+        <div class="result-unit">units</div>
+        <div class="result-grid">
+          <div class="result-stat"><div class="result-stat-val" id="rop-simple">—</div><div class="result-stat-lbl">Reorder Point</div></div>
+          <div class="result-stat"><div class="result-stat-val" id="days-simple">—</div><div class="result-stat-lbl">Days of Cover</div></div>
+          <div class="result-stat"><div class="result-stat-val" id="method-simple">Simple</div><div class="result-stat-lbl">Method Used</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Heizer Method -->
+    <div class="method-panel" id="panel-heizer">
+      <div class="formula-box">
+        <div class="formula">Safety Stock = Z × σ_LT × d_avg &nbsp;+&nbsp; d_avg × (LT_max − LT_avg)</div>
+        <p>Best for: variable lead times with known demand average</p>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Avg Daily Demand (units/day)</label>
+          <input type="number" id="h-avgDemand" placeholder="e.g. 80">
+        </div>
+        <div class="form-group">
+          <label>Demand Std Dev (units/day)</label>
+          <input type="number" id="h-stdDemand" placeholder="e.g. 15">
+          <div class="form-hint">Standard deviation of daily demand</div>
+        </div>
+        <div class="form-group">
+          <label>Avg Lead Time (days)</label>
+          <input type="number" id="h-avgLT" placeholder="e.g. 12">
+        </div>
+        <div class="form-group">
+          <label>Max Lead Time (days)</label>
+          <input type="number" id="h-maxLT" placeholder="e.g. 18">
+        </div>
+        <div class="form-group">
+          <label>Service Level</label>
+          <select id="h-z">
+            <option value="1.28">90% — Low risk</option>
+            <option value="1.645">95% — Standard</option>
+            <option value="1.96" selected>97.5% — High</option>
+            <option value="2.05">98% — Very High</option>
+            <option value="2.33">99% — Critical</option>
+            <option value="3.09">99.9% — Near-zero stockout</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-calc" onclick="calcHeizer()">Calculate Safety Stock →</button>
+      <div class="result-box result-green" id="result-heizer">
+        <div class="result-label">Safety Stock (Heizer Method)</div>
+        <div class="result-value" id="ss-heizer">—</div>
+        <div class="result-unit">units</div>
+        <div class="result-grid">
+          <div class="result-stat"><div class="result-stat-val" id="rop-heizer">—</div><div class="result-stat-lbl">Reorder Point</div></div>
+          <div class="result-stat"><div class="result-stat-val" id="days-heizer">—</div><div class="result-stat-lbl">Days of Cover</div></div>
+          <div class="result-stat"><div class="result-stat-val">Heizer</div><div class="result-stat-lbl">Method Used</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Z-Score Method -->
+    <div class="method-panel" id="panel-zscore">
+      <div class="formula-box">
+        <div class="formula">Safety Stock = Z × √( LT × σ_d² + d_avg² × σ_LT² )</div>
+        <p>Most accurate — accounts for both demand and lead time variability</p>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Avg Daily Demand (units/day)</label>
+          <input type="number" id="z-avgDemand" placeholder="e.g. 80">
+        </div>
+        <div class="form-group">
+          <label>Demand Std Dev (units/day)</label>
+          <input type="number" id="z-stdDemand" placeholder="e.g. 15">
+        </div>
+        <div class="form-group">
+          <label>Avg Lead Time (days)</label>
+          <input type="number" id="z-avgLT" placeholder="e.g. 12">
+        </div>
+        <div class="form-group">
+          <label>Lead Time Std Dev (days)</label>
+          <input type="number" id="z-stdLT" placeholder="e.g. 3">
+          <div class="form-hint">How much lead time varies day to day</div>
+        </div>
+        <div class="form-group">
+          <label>Service Level</label>
+          <select id="z-z">
+            <option value="1.28">90% — Low risk</option>
+            <option value="1.645">95% — Standard</option>
+            <option value="1.96" selected>97.5% — High</option>
+            <option value="2.05">98% — Very High</option>
+            <option value="2.33">99% — Critical</option>
+            <option value="3.09">99.9% — Near-zero stockout</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-calc" onclick="calcZscore()">Calculate Safety Stock →</button>
+      <div class="result-box result-green" id="result-zscore">
+        <div class="result-label">Safety Stock (Z-Score Method)</div>
+        <div class="result-value" id="ss-zscore">—</div>
+        <div class="result-unit">units</div>
+        <div class="result-grid">
+          <div class="result-stat"><div class="result-stat-val" id="rop-zscore">—</div><div class="result-stat-lbl">Reorder Point</div></div>
+          <div class="result-stat"><div class="result-stat-val" id="days-zscore">—</div><div class="result-stat-lbl">Days of Cover</div></div>
+          <div class="result-stat"><div class="result-stat-val">Z-Score</div><div class="result-stat-lbl">Method Used</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Service Level Reference -->
+  <div class="card">
+    <div class="card-title">📊 Service Level & Z-Score Reference</div>
+    <table class="service-table">
+      <thead><tr><th>Service Level</th><th>Z-Score</th><th>Stockout Risk</th><th>Best For</th></tr></thead>
+      <tbody>
+        <tr><td>90%</td><td>1.28</td><td>10%</td><td>Low-cost, slow-moving items</td></tr>
+        <tr><td>95%</td><td>1.645</td><td>5%</td><td>Standard FMCG & retail</td></tr>
+        <tr><td>97.5%</td><td>1.96</td><td>2.5%</td><td>High-velocity SKUs</td></tr>
+        <tr><td>98%</td><td>2.05</td><td>2%</td><td>Amazon FBA / D2C hero SKUs</td></tr>
+        <tr><td>99%</td><td>2.33</td><td>1%</td><td>Critical / essential items</td></tr>
+        <tr><td>99.9%</td><td>3.09</td><td>0.1%</td><td>Medical / defence supply chains</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cta-banner">
+    <h3>Calculate Safety Stock for All Your SKUs at Once</h3>
+    <p>Upload your inventory file and get safety stock, reorder points, and demand forecasts for every SKU — powered by AI. Free.</p>
+    <a href="/#liq-planner">Try the AI Demand Planner →</a>
+  </div>
+
+  <!-- FAQ -->
+  <div class="card">
+    <div class="card-title">❓ Frequently Asked Questions</div>
+    <div class="faq-item open">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is safety stock? <span class="arr">▾</span></div>
+      <div class="faq-a">Safety stock is buffer inventory held to protect against unexpected demand spikes or supplier delays. It's the difference between running out of stock and keeping customers happy during uncertainty.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How is Reorder Point calculated? <span class="arr">▾</span></div>
+      <div class="faq-a">Reorder Point (ROP) = (Average Daily Demand × Average Lead Time) + Safety Stock. When your stock level hits the ROP, it's time to place a new order so it arrives before you run out.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What service level should I use? <span class="arr">▾</span></div>
+      <div class="faq-a">For most FMCG and e-commerce: 95–97.5%. For your top-selling hero SKUs or seasonal peak periods: 98–99%. For very low-cost or slow-moving items where a stockout is acceptable: 90%.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does higher safety stock mean better service? <span class="arr">▾</span></div>
+      <div class="faq-a">Yes, but at a cost. Higher safety stock reduces stockout risk but ties up working capital and increases holding costs. The goal is to find the right balance — our Z-score method helps optimise this scientifically based on your actual demand variability.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🔗 Related Calculators</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px">
+      <a href="/eoq-calculator" style="text-decoration:none;background:var(--b50);border:1px solid var(--b100);border-radius:12px;padding:14px;display:block;text-align:center">
+        <div style="font-size:22px;margin-bottom:6px">📦</div>
+        <div style="font-size:13px;font-weight:700;color:var(--b700)">EOQ Calculator</div>
+      </a>
+      <a href="/reorder-point-calculator" style="text-decoration:none;background:var(--b50);border:1px solid var(--b100);border-radius:12px;padding:14px;display:block;text-align:center">
+        <div style="font-size:22px;margin-bottom:6px">🔁</div>
+        <div style="font-size:13px;font-weight:700;color:var(--b700)">Reorder Point Calculator</div>
+      </a>
+      <a href="/otif-calculator" style="text-decoration:none;background:var(--b50);border:1px solid var(--b100);border-radius:12px;padding:14px;display:block;text-align:center">
+        <div style="font-size:22px;margin-bottom:6px">✅</div>
+        <div style="font-size:13px;font-weight:700;color:var(--b700)">OTIF Calculator</div>
+      </a>
+      <a href="/inventory-turnover-calculator" style="text-decoration:none;background:var(--b50);border:1px solid var(--b100);border-radius:12px;padding:14px;display:block;text-align:center">
+        <div style="font-size:22px;margin-bottom:6px">📊</div>
+        <div style="font-size:13px;font-weight:700;color:var(--b700)">Inventory Turnover</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <div style="margin-bottom:6px"><strong style="color:#94A3B8">31 Free Supply Chain Calculators · AI Demand Planner · No Login Required · Free Forever</strong></div>
+    <div>© 2025 LogicstIQ.com · <a href="/">Home</a> · <a href="/privacy-policy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a> · Results are for reference only.</div>
+  </div>
+</footer>
+
+<script>
+function switchTab(id, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.method-panel').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('panel-' + id).classList.add('active');
+}
+
+function showResult(id, ss, avgDemand, avgLT) {
+  const rop = Math.round(avgDemand * avgLT + ss);
+  const days = avgDemand > 0 ? Math.round(ss / avgDemand) : '—';
+  document.getElementById('ss-' + id).textContent = ss.toLocaleString('en-IN');
+  document.getElementById('rop-' + id).textContent = rop.toLocaleString('en-IN') + ' units';
+  document.getElementById('days-' + id).textContent = days + (days !== '—' ? ' days' : '');
+  document.getElementById('result-' + id).classList.add('show');
+  document.getElementById('result-' + id).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function calcSimple() {
+  const maxD = parseFloat(document.getElementById('s-maxDemand').value);
+  const avgD = parseFloat(document.getElementById('s-avgDemand').value);
+  const maxLT = parseFloat(document.getElementById('s-maxLT').value);
+  const avgLT = parseFloat(document.getElementById('s-avgLT').value);
+  if (!maxD || !avgD || !maxLT || !avgLT) { alert('Please fill all fields.'); return; }
+  const ss = Math.round((maxD - avgD) * maxLT);
+  showResult('simple', ss, avgD, avgLT);
+}
+
+function calcHeizer() {
+  const avgD = parseFloat(document.getElementById('h-avgDemand').value);
+  const stdD = parseFloat(document.getElementById('h-stdDemand').value);
+  const avgLT = parseFloat(document.getElementById('h-avgLT').value);
+  const maxLT = parseFloat(document.getElementById('h-maxLT').value);
+  const Z = parseFloat(document.getElementById('h-z').value);
+  if (!avgD || !stdD || !avgLT || !maxLT) { alert('Please fill all fields.'); return; }
+  const ss = Math.round(Z * stdD * Math.sqrt(avgLT) + avgD * (maxLT - avgLT));
+  showResult('heizer', ss, avgD, avgLT);
+}
+
+function calcZscore() {
+  const avgD = parseFloat(document.getElementById('z-avgDemand').value);
+  const stdD = parseFloat(document.getElementById('z-stdDemand').value);
+  const avgLT = parseFloat(document.getElementById('z-avgLT').value);
+  const stdLT = parseFloat(document.getElementById('z-stdLT').value);
+  const Z = parseFloat(document.getElementById('z-z').value);
+  if (!avgD || !stdD || !avgLT || stdLT === undefined) { alert('Please fill all fields.'); return; }
+  const variance = avgLT * Math.pow(stdD, 2) + Math.pow(avgD, 2) * Math.pow(stdLT, 2);
+  const ss = Math.round(Z * Math.sqrt(variance));
+  showResult('zscore', ss, avgD, avgLT);
+}
+</script>
+<script>
+(function(){var r=document.documentElement;
+function lbl(){var b=document.getElementById('liqTheme');if(b)b.textContent=r.getAttribute('data-theme')==='dark'?'☀️':'🌙';}
+function set(t){r.setAttribute('data-theme',t);lbl();try{localStorage.setItem('liq-theme',t)}catch(e){}}
+try{var sv=localStorage.getItem('liq-theme');if(sv)r.setAttribute('data-theme',sv);}catch(e){}
+var btn=document.createElement('button');btn.id='liqTheme';btn.type='button';btn.className='liq-theme-btn';
+btn.setAttribute('aria-label','Toggle light or dark mode');btn.title='Toggle light / dark';btn.textContent='🌙';
+btn.addEventListener('click',function(){set(r.getAttribute('data-theme')==='dark'?'light':'dark');});
+function place(){var nav=document.querySelector('.nav');
+ if(nav){var cta=nav.querySelector('.nav-cta');if(cta&&cta.parentNode){cta.parentNode.insertBefore(btn,cta);}
+   else{var l=nav.querySelector('.nav-links');(l||nav).appendChild(btn);}}
+ else{btn.classList.add('liq-theme-float');document.body.appendChild(btn);}lbl();}
+if(document.readyState!=='loading')place();else document.addEventListener('DOMContentLoaded',place);})();
+</script>
+</body>
+</html>

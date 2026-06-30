@@ -1,240 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Supplier Lead Time Variability Calculator — Safety Stock Risk Tool | Free | LogicstIQ — Free Supply Chain Calculator</title>
-  <meta name="description" content="Free Supplier Lead Time Variability Calculator. Calculate standard deviation of supplier lead time, safety stock required, and financial impact of lead time variability. No login.">
-  <meta name="keywords" content="lead time variability calculator, supplier lead time standard deviation, safety stock lead time variability, lead time risk calculator India, supply chain variability calculator">
-  <link rel="canonical" href="https://www.logicstiq.com/supplier-lead-time-variability-calculator">
-  <meta property="og:title" content="Supplier Lead Time Variability Calculator — Safety Stock Risk Tool | Free | LogicstIQ — Free Supply Chain Calculator">
-  <meta property="og:description" content="Free Supplier Lead Time Variability Calculator. Calculate standard deviation of supplier lead time, safety stock required, and financial impact of lead time variability. No login.">
-  <meta property="og:url" content="https://www.logicstiq.com/supplier-lead-time-variability-calculator">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="LogicstIQ.com">
-  <meta name="robots" content="index, follow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Plus Jakarta Sans',sans-serif;background:#F4F7FF;color:#0F172A;min-height:100vh;font-size:16px;line-height:1.6}
-    a{color:inherit;text-decoration:none}
-    .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;background:#FFFFFF;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100}
-    .nav-logo{font-weight:800;font-size:1.1rem;color:#0F172A}
-    .nav-back{color:#2563EB;font-size:0.875rem;font-weight:600}
-    .nav-back:hover{color:#1D4ED8}
-    .badge-bar{text-align:center;padding:12px;background:#FFFFFF;border-bottom:1px solid #E2E8F0;font-size:0.8rem;color:#2563EB;font-weight:700;letter-spacing:0.5px}
-    .hero{max-width:760px;margin:0 auto;padding:48px 24px 32px;text-align:center}
-    .hero h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;color:#0F172A;line-height:1.2;margin-bottom:14px}
-    .hero h1 span{display:block;font-size:clamp(1rem,2vw,1.15rem);font-weight:500;color:#475569;margin-top:8px}
-    .hero-sub{color:#475569;font-size:0.9rem;margin-top:16px;max-width:620px;margin-left:auto;margin-right:auto}
-    .trust-row{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:16px}
-    .trust-item{font-size:0.8rem;color:#2563EB;font-weight:600}
-    .trust-item::before{content:"✓ "}
-    .calc-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
-    .calc-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;overflow:hidden}
-    .calc-header{background:#F8FAFF;padding:18px 24px;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:10px}
-    .calc-header-icon{font-size:1.2rem}
-    .calc-header-title{font-size:0.95rem;font-weight:700;color:#0F172A}
-    .calc-body{padding:24px}
-    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    @media(max-width:560px){.field-grid{grid-template-columns:1fr}}
-    .field{display:flex;flex-direction:column;gap:6px}
-    .field label{font-size:0.8rem;font-weight:700;color:#475569;letter-spacing:0.3px}
-    .field span{font-size:0.72rem;color:#94A3B8}
-    .field input,.field select{background:#FFFFFF;border:1px solid #CBD5E1;border-radius:8px;padding:10px 14px;color:#0F172A;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color .2s}
-    .field input:focus,.field select:focus{border-color:#2563EB}
-    .field input::placeholder{color:#94A3B8}
-    .calc-btn{width:100%;margin-top:20px;background:linear-gradient(135deg,#2563EB,#1D4ED8);color:#fff;border:none;border-radius:10px;padding:14px;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:opacity .2s}
-    .calc-btn:hover{opacity:0.9}
-    .results{display:none;margin-top:20px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px}
-    .results.show{display:block}
-    .results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}
-    .result-item{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:16px;text-align:center}
-    .result-label{font-size:0.72rem;color:#475569;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
-    .result-value{font-size:1.35rem;font-weight:800;color:#2563EB}
-    .result-value.green{color:#059669}
-    .result-value.red{color:#DC2626}
-    .result-value.amber{color:#D97706}
-    .result-sub{font-size:0.7rem;color:#94A3B8;margin-top:4px}
-    .disclaimer{margin-top:16px;font-size:0.75rem;color:#94A3B8;padding:10px;background:#F4F7FF;border-radius:8px;border-left:3px solid #E2E8F0}
-    .content-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
-    .formula-box{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px 24px;margin-bottom:32px}
-    .formula-tag{font-size:0.7rem;font-weight:700;color:#2563EB;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
-    .formula-expr{font-family:'Courier New',monospace;font-size:0.9rem;color:#1D4ED8;line-height:1.9}
-    .section-title{font-size:0.75rem;font-weight:700;color:#2563EB;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
-    .prose{color:#475569;font-size:0.9rem;line-height:1.75;margin-bottom:24px}
-    .prose strong{color:#0F172A}
-    .example-box{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px 24px;margin-bottom:32px}
-    .example-tag{font-size:0.7rem;font-weight:700;color:#059669;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
-    .ex-p{font-size:0.85rem;color:#475569;margin-bottom:14px}
-    .ex-table{width:100%;border-collapse:collapse}
-    .ex-table td{padding:8px 0;font-size:0.875rem;color:#475569;border-bottom:1px solid #E2E8F0}
-    .ex-table td:last-child{text-align:right;color:#0F172A;font-weight:600}
-    .ex-table tr.total td{border-bottom:none;color:#2563EB;font-weight:800;font-size:1rem}
-    .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:32px}
-    .why-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:18px}
-    .why-card h4{font-size:0.85rem;font-weight:700;color:#0F172A;margin-bottom:8px}
-    .why-card p{font-size:0.8rem;color:#475569;line-height:1.6}
-    .ai-cta{background:linear-gradient(135deg,#FFFFFF,#FFFFFF);border:1px solid #CBD5E1;border-radius:16px;padding:28px 24px;text-align:center;margin-bottom:32px}
-    .ai-cta h3{font-size:1.1rem;font-weight:800;color:#0F172A;margin-bottom:8px}
-    .ai-cta p{font-size:0.875rem;color:#475569;margin-bottom:20px}
-    .ai-cta a{display:inline-block;background:linear-gradient(135deg,#2563EB,#1D4ED8);color:#fff;padding:12px 28px;border-radius:10px;font-weight:700;font-size:0.9rem}
-    .ai-cta-tags{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
-    .ai-cta-tag{font-size:0.72rem;color:#94A3B8}
-    .faq-item{border-bottom:1px solid #E2E8F0;padding:16px 0}
-    .faq-item:last-child{border-bottom:none}
-    .faq-q{font-size:0.9rem;font-weight:700;color:#0F172A;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
-    .faq-q::after{content:"▾";color:#2563EB;font-size:0.8rem}
-    .faq-a{font-size:0.85rem;color:#475569;line-height:1.7;margin-top:10px;display:none}
-    .faq-item.open .faq-a{display:block}
-    .faq-item.open .faq-q::after{content:"▴"}
-    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:10px;margin-top:16px}
-    .related-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:16px;text-decoration:none;transition:border-color .2s;display:flex;flex-direction:column;gap:4px}
-    .related-card:hover{border-color:#2563EB}
-    .related-search{font-size:0.65rem;color:#94A3B8}
-    .related-name{font-size:0.85rem;font-weight:700;color:#0F172A}
-    footer{background:#0F172A;border-top:1px solid #1E293B;padding:28px 32px;text-align:center;margin-top:20px}
-    .footer-copy{font-size:0.78rem;color:#94A3B8;line-height:1.8}
-    .footer-copy a{color:#94A3B8}
-    .footer-copy a:hover{color:#fff}
-    @media(max-width:600px){.nav{padding:14px 20px}.hero{padding:32px 20px 24px}.calc-body{padding:16px}}
-</style>
-</head>
-<body>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.logicstiq.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://www.logicstiq.com/eoq-calculator</loc><priority>0.9</priority></url>
+  <url><loc>https://www.logicstiq.com/safety-stock-calculator</loc><priority>0.9</priority></url>
+  <url><loc>https://www.logicstiq.com/otif-calculator</loc><priority>0.9</priority></url>
+  <url><loc>https://www.logicstiq.com/inventory-turnover-calculator</loc><priority>0.9</priority></url>
+  <url><loc>https://www.logicstiq.com/abc-analysis-calculator</loc><priority>0.9</priority></url>
+  <url><loc>https://www.logicstiq.com/reorder-point-calculator</loc><priority>0.9</priority></url>
+  <url><loc>https://www.logicstiq.com/gst-calculator-logistics</loc><priority>0.9</priority></url>
+  <url><loc>https://www.logicstiq.com/fill-rate-calculator</loc><priority>0.8</priority></url>
+  <url><loc>https://www.logicstiq.com/landed-cost-calculator</loc><priority>0.8</priority></url>
+  <url><loc>https://www.logicstiq.com/carbon-footprint-logistics</loc><priority>0.8</priority></url>
+  <url><loc>https://www.logicstiq.com/working-capital-calculator</loc><priority>0.8</priority></url>
+  <url><loc>https://www.logicstiq.com/carrying-cost-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://www.logicstiq.com/stockout-cost-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://www.logicstiq.com/freight-cost-calculator</loc><priority>0.8</priority></url>
+  <url><loc>https://www.logicstiq.com/warehouse-space-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://www.logicstiq.com/lead-time-calculator</loc><priority>0.8</priority></url>
+  <url><loc>https://www.logicstiq.com/disruption-impact-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://www.logicstiq.com/demand-forecast-calculator</loc><priority>0.8</priority></url>
+  <url><loc>https://www.logicstiq.com/supplier-scorecard-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://www.logicstiq.com/cycle-count-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://www.logicstiq.com/blog/eoq-calculator</loc><priority>0.9</priority></url>
+  <url><loc>https://www.logicstiq.com/blog/safety-stock-calculator</loc><priority>0.9</priority></url>
+  <url><loc>https://www.logicstiq.com/blog/what-is-otif</loc><priority>0.8</priority></url>
+  <url><loc>https://www.logicstiq.com/blog/inventory-turnover-formula</loc><priority>0.8</priority></url>
+  <url><loc>https://www.logicstiq.com/blog/abc-analysis-guide</loc><priority>0.8</priority></url>
+  <url><loc>https://www.logicstiq.com/blog/gst-calculator-logistics</loc><priority>0.8</priority></url>
+  <url><loc>https://www.logicstiq.com/blog/demand-planning-amazon-flipkart</loc><priority>0.8</priority></url>
+  <url><loc>https://www.logicstiq.com/privacy-policy</loc><priority>0.3</priority></url>
+  <url><loc>https://www.logicstiq.com/terms</loc><priority>0.3</priority></url>
+  <url><loc>https://www.logicstiq.com/disclaimer</loc><priority>0.3</priority></url>
+  <url><loc>https://www.logicstiq.com/about</loc><priority>0.6</priority></url>
+<url><loc>https://www.logicstiq.com/contact</loc><priority>0.5</priority></url>
+  <url><loc>https://www.logicstiq.com/cogs-calculator</loc><priority>0.9</priority></url>
+<url><loc>https://www.logicstiq.com/gross-margin-calculator</loc><priority>0.9</priority></url>
+<url><loc>https://www.logicstiq.com/break-even-calculator</loc><priority>0.9</priority></url>
+<url><loc>https://www.logicstiq.com/moq-calculator</loc><priority>0.9</priority></url>
+<url><loc>https://www.logicstiq.com/dead-stock-calculator</loc><priority>0.9</priority></url>
+<url><loc>https://www.logicstiq.com/cash-conversion-cycle-calculator</loc><priority>0.9</priority></url>
+<url><loc>https://www.logicstiq.com/days-inventory-outstanding-calculator</loc><priority>0.9</priority></url>
+<url><loc>https://www.logicstiq.com/volumetric-weight-calculator</loc><priority>0.9</priority></url>
+<url><loc>https://www.logicstiq.com/shipping-cost-per-unit-calculator</loc><priority>0.9</priority></url>
+<url><loc>https://www.logicstiq.com/pick-pack-cost-calculator</loc><priority>0.9</priority></url>
+<url><loc>https://www.logicstiq.com/supplier-lead-time-variability-calculator</loc><priority>0.9</priority></url>
 
-<nav class="nav">
-  <a href="/" class="nav-logo" aria-label="LogicstIQ — Home" style="display:inline-flex;flex-direction:column;align-items:flex-start;text-decoration:none;line-height:1;gap:3px">
-    <svg width="150" height="36" viewBox="0 0 260 68" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block">
-      <defs><linearGradient id="navlogo_g" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1D4ED8"/><stop offset="100%" stop-color="#60A5FA"/></linearGradient></defs>
-      <path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#navlogo_g)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <path d="M59 8 L66 14 L59 20" stroke="#60A5FA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <circle cx="32" cy="50" r="3.5" fill="#1D4ED8"/>
-      <circle cx="50" cy="14" r="3.5" fill="#60A5FA"/>
-      <text x="82" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5"><tspan fill="#0F172A">Logicst</tspan><tspan fill="#2563EB">IQ</tspan></text>
-    </svg>
-    <span style="font-size:9px;font-weight:600;color:#2563EB;letter-spacing:.05em;white-space:nowrap">Where Logistics Meets Intelligence</span>
-  </a>
-  <a href="https://www.logicstiq.com" class="nav-back">← All Calculators</a>
-</nav>
-<div class="badge-bar">🆓 Free · No Login · Instant Results</div>
-
-<section class="hero">
-  <h1>Supplier Lead Time Variability Calculator <span>Lead Time Standard Deviation & Safety Stock Impact — Free Tool</span></h1>
-  <p class="hero-sub">Calculate how much your supplier lead time varies, how much extra safety stock that variability forces you to hold, and the financial cost of supplier unreliability.</p>
-  <div class="trust-row">
-    <span class="trust-item">No signup needed</span>
-    <span class="trust-item">No data stored</span>
-    <span class="trust-item">Works on mobile</span>
-    <span class="trust-item">Free forever</span>
-  </div>
-</section>
-
-<section class="calc-section">
-  <div class="calc-card">
-    <div class="calc-header">
-      <span class="calc-header-icon">📡</span>
-      <span class="calc-header-title">Lead Time Variability Calculator — Free Online Tool</span>
-    </div>
-    <div class="calc-body">
-      <div class="field-grid">
-        <div class="field"><label>Lead Time — Observation 1 (days)</label><span>Actual lead time, shipment 1</span><input type="number" id="lt1" placeholder="e.g. 18" min="0"></div>        <div class="field"><label>Lead Time — Observation 2 (days)</label><span>Actual lead time, shipment 2</span><input type="number" id="lt2" placeholder="e.g. 22" min="0"></div>        <div class="field"><label>Lead Time — Observation 3 (days)</label><span>Actual lead time, shipment 3</span><input type="number" id="lt3" placeholder="e.g. 25" min="0"></div>        <div class="field"><label>Lead Time — Observation 4 (days)</label><span>Actual lead time, shipment 4</span><input type="number" id="lt4" placeholder="e.g. 19" min="0"></div>        <div class="field"><label>Lead Time — Observation 5 (days)</label><span>Actual lead time, shipment 5</span><input type="number" id="lt5" placeholder="e.g. 28" min="0"></div>        <div class="field"><label>Average Daily Demand (units)</label><span>Units sold per day</span><input type="number" id="demand" placeholder="e.g. 50" min="0"></div>
-      </div>
-      <button class="calc-btn" onclick="runCalc()">Calculate Lead Time Variability →</button>
-      <div class="results" id="results">
-        <div class="results-grid">
-          <div class="result-item"><div class="result-label">Avg Lead Time</div><div class="result-value" id="r-avg">—</div><div class="result-sub">Mean across observations</div></div>          <div class="result-item"><div class="result-label">Std Deviation</div><div class="result-value amber" id="r-std">—</div><div class="result-sub">Variability in days</div></div>          <div class="result-item"><div class="result-label">Extra Safety Stock (95%)</div><div class="result-value red" id="r-ss">—</div><div class="result-sub">Units forced by variability</div></div>          <div class="result-item"><div class="result-label">Reliability Score</div><div class="result-value" id="r-score">—</div><div class="result-sub">Supplier consistency grade</div></div>
-        </div>
-        <div class="disclaimer">⚠️ <strong>Reference only:</strong> Requires minimum 3–5 lead time observations for meaningful results. More data = more accurate.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="content-section">
-
-  <div class="formula-box">
-    <div class="formula-tag">📐 Lead Time Variability Formula</div>
-    <div class="formula-expr">Avg Lead Time = Sum of Observations ÷ Count<br>Std Dev (σ) = √( Σ(LT − Avg)² ÷ (n−1) )<br>Safety Stock (95% SL) = 1.645 × σ_LT × Avg Daily Demand<br>Coefficient of Variation = σ ÷ Avg Lead Time × 100%</div>
-  </div>
-
-  <div class="section-title">What is Lead Time Variability?</div>
-  <p class="prose"><strong>Lead time variability</strong> is the inconsistency in how long your supplier takes to deliver. If a supplier's average lead time is 21 days but sometimes delivers in 14 days and sometimes takes 35 days, that variability forces you to hold <em>significantly more safety stock</em> than a supplier who reliably delivers in exactly 21 days every time.</p>
-  <p class="prose">This is one of the most underappreciated costs of supplier unreliability. The <strong>financial cost of variability</strong> shows up not in stockouts (which you prevent with extra safety stock) but in the <strong>carrying cost of that extra buffer stock</strong> — which you are holding purely because your supplier is unpredictable. Reducing supplier lead time variability is often more valuable than reducing average lead time.</p>
-
-  <div class="example-box">
-    <div class="example-tag">📊 Worked Example</div>
-    <p class="ex-p">5 shipments from a Chinese supplier via sea freight to Mumbai:</p>
-    <table class="ex-table">
-      <tr><td>Observation 1</td><td>18 days</td></tr>      <tr><td>Observation 2</td><td>22 days</td></tr>      <tr><td>Observation 3</td><td>25 days</td></tr>      <tr><td>Observation 4</td><td>19 days</td></tr>      <tr><td>Observation 5</td><td>28 days</td></tr>      <tr><td>Average lead time</td><td>22.4 days</td></tr>      <tr><td>Standard deviation</td><td>4.1 days</td></tr>      <tr><td>Extra safety stock at 95% SL (50 units/day demand)</td><td>1.645 × 4.1 × 50 = 337 units</td></tr>      <tr class="total"><td>Monthly holding cost of extra SS (₹200/unit/month)</td><td>₹67,400/month due to variability</td></tr>
-    </table>
-  </div>
-
-  <div class="section-title">Why This Calculator Matters</div>
-  <div class="why-grid">
-    <div class="why-card"><h4>Quantify Supplier Risk</h4><p>Convert vague supplier unreliability into a precise financial number. ₹67,400/month in extra holding cost because of one supplier's variability is a powerful number for a supplier negotiation.</p></div>    <div class="why-card"><h4>Compare Suppliers Objectively</h4><p>Two suppliers with the same average lead time can have very different variability — and therefore very different safety stock costs. Always compare on standard deviation, not just average.</p></div>    <div class="why-card"><h4>Negotiate SLAs</h4><p>Use this data to set contractual lead time SLAs with suppliers. A supplier who commits to ±3 days variability and achieves it is worth more than a supplier with a lower average but ±10 days variability.</p></div>    <div class="why-card"><h4>Safety Stock Right-Sizing</h4><p>The Z-score safety stock formula requires lead time standard deviation as an input. Most businesses guess this number. This calculator computes it from your real shipment data.</p></div>
-  </div>
-
-  <div class="ai-cta">
-    <h3>🤖 Go Further with AI Demand Planning</h3>
-    <p>Upload your full inventory export and get demand forecasts, reorder plans, and stockout risk analysis across all your SKUs — free.</p>
-    <a href="https://www.logicstiq.com/#ai-demand-planner">Try Free AI Demand Planner →</a>
-    <div class="ai-cta-tags">
-      <span class="ai-cta-tag">Works with Tally · SAP · NetSuite · Amazon · Flipkart</span>
-      <span class="ai-cta-tag">No login · No data stored · Free forever</span>
-    </div>
-  </div>
-
-  <div class="section-title">Frequently Asked Questions</div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How many lead time observations do I need?</div><div class="faq-a">Minimum 5 for a rough estimate, 10–15 for reasonable accuracy, 20+ for statistical confidence. Use the last 6–12 months of purchase order data from your ERP or supplier confirmation emails. Include outliers (port delays, supplier shutdowns) — they are part of the real variability your safety stock must cover.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is a good Coefficient of Variation (CV) for lead time?</div><div class="faq-a">CV = Standard Deviation ÷ Average Lead Time × 100%. CV below 10%: excellent supplier reliability. 10–20%: acceptable. 20–30%: high variability — negotiate SLA improvements. Above 30%: critically unreliable — dual-source this supplier immediately.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I reduce lead time variability?</div><div class="faq-a">Five approaches: (1) Share rolling 3-month forecasts with supplier so they can pre-position materials, (2) Negotiate production slot booking 4–6 weeks ahead, (3) Switch from sea to air for time-critical replenishments, (4) Qualify a second supplier as a backup for same SKUs, (5) Build buffer stock at the supplier's end under a VMI (Vendor Managed Inventory) arrangement.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is lead time variability more important than average lead time?</div><div class="faq-a">Often yes. Reducing average lead time from 21 to 18 days saves 3 days × demand in safety stock. But reducing variability from σ=5 to σ=2 days reduces safety stock by (5−2) × demand × Z-score — often a larger saving. And reliability improvements compound because you can reduce safety stock without increasing stockout risk.</div></div>
-
-  <div style="margin-top:32px">
-    <div class="section-title">Related Free Calculators</div>
-    <div class="related-grid">
-      <a href="https://www.logicstiq.com/lead-time-calculator" class="related-card"><span class="related-search">720/mo searches</span><span class="related-name">⏱️ Lead Time Calculator</span></a>      <a href="https://www.logicstiq.com/safety-stock-calculator" class="related-card"><span class="related-search">1,900/mo searches</span><span class="related-name">🛡️ Safety Stock Calculator</span></a>      <a href="https://www.logicstiq.com/supplier-scorecard-calculator" class="related-card"><span class="related-search">480/mo searches</span><span class="related-name">⭐ Supplier Scorecard</span></a>      <a href="https://www.logicstiq.com/reorder-point-calculator" class="related-card"><span class="related-search">1,600/mo searches</span><span class="related-name">🎯 Reorder Point Calculator</span></a>
-    </div>
-  </div>
-
-</section>
-
-<footer>
-  <p class="footer-copy">
-    <strong>20 Free Supply Chain Calculators · AI Demand Planner · No Login Required · Free Forever</strong><br><br>
-    © 2025 <a href="https://www.logicstiq.com">LogicstIQ.com</a> ·
-    <a href="https://www.logicstiq.com/privacy-policy.html">Privacy Policy</a> ·
-    <a href="https://www.logicstiq.com/terms.html">Terms</a> ·
-    Results are for reference only.<br>
-    <strong>Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. We may earn a commission at no extra cost to you. All calculators are free forever.<br>
-    Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a>
-  </p>
-</footer>
-<script>function toggleFaq(el){el.closest('.faq-item').classList.toggle('open');}</script>
-<script>function runCalc(){
-  const vals=[];
-  for(let i=1;i<=5;i++){
-    const v=parseFloat(document.getElementById('lt'+i).value);
-    if(!isNaN(v)&&v>0) vals.push(v);
-  }
-  const demand=parseFloat(document.getElementById('demand').value)||0;
-  if(vals.length<3){alert('Please enter at least 3 lead time observations.');return;}
-  const avg=vals.reduce((a,b)=>a+b,0)/vals.length;
-  const variance=vals.reduce((s,v)=>s+Math.pow(v-avg,2),0)/(vals.length-1);
-  const std=Math.sqrt(variance);
-  const cv=(std/avg*100).toFixed(1);
-  const ss=demand>0?Math.ceil(1.645*std*demand):null;
-  let score='—';
-  const cvN=parseFloat(cv);
-  if(cvN<10) score='🟢 Excellent';
-  else if(cvN<20) score='🟡 Acceptable';
-  else if(cvN<30) score='🟠 High Risk';
-  else score='🔴 Critical';
-  document.getElementById('r-avg').textContent=avg.toFixed(1)+' days';
-  document.getElementById('r-std').textContent=std.toFixed(1)+' days (CV '+cv+'%)';
-  document.getElementById('r-std').className='result-value '+(cvN<10?'green':(cvN<20?'amber':'red'));
-  document.getElementById('r-ss').textContent=ss!==null?ss+' units':'Enter demand';
-  document.getElementById('r-score').textContent=score;
-  document.getElementById('results').classList.add('show');
-}</script>
-</body>
-</html>
+</urlset>

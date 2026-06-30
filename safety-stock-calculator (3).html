@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Inventory Carrying Cost Calculator — Cost of Holding Stock | Free | LogicstIQ — Free Supply Chain Calculator</title>
-<meta name="description" content="Calculate the annual cost of holding inventory. Find your carrying cost percentage and total annual holding cost including storage, capital, insurance and obsolescence.">
-<meta name="keywords" content="inventory carrying cost calculator, holding cost calculator, cost of carrying inventory, inventory holding cost formula, carrying cost percentage, warehouse holding cost India">
-<link rel="canonical" href="https://logicstiq.com/carrying-cost-calculator">
+<title>Reorder Point Calculator — Free Online ROP Tool | LogicstIQ — Free Supply Chain Calculator</title>
+<meta name="description" content="Calculate your reorder point (ROP) instantly. Enter average demand, lead time, and safety stock to find when to place your next purchase order. Free, no login.">
+<meta name="keywords" content="reorder point calculator, ROP calculator, reorder point formula, when to reorder inventory, reorder point supply chain, reorder level calculator India">
+<link rel="canonical" href="https://logicstiq.com/reorder-point-calculator">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <script type="application/ld+json">
 {
@@ -14,28 +14,28 @@
   "@graph":[
     {
       "@type":"SoftwareApplication",
-      "name":"Inventory Carrying Cost Calculator",
-      "url":"https://logicstiq.com/carrying-cost-calculator",
+      "name":"Reorder Point Calculator",
+      "url":"https://logicstiq.com/reorder-point-calculator",
       "applicationCategory":"BusinessApplication",
       "operatingSystem":"Web",
       "offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},
-      "description":"Free inventory carrying cost calculator. Calculate the annual cost of holding inventory including storage, capital, insurance and obsolescence."
+      "description":"Free online reorder point calculator for supply chain teams. Calculate the inventory level at which to place a new purchase order."
     },
     {
       "@type":"HowTo",
-      "name":"How to use the Inventory Carrying Cost Calculator",
+      "name":"How to use the Reorder Point Calculator",
       "step":[
-        {"@type":"HowToStep","name":"Enter your inputs","text":"Enter your average inventory value and the individual cost components as percentages"},
+        {"@type":"HowToStep","name":"Enter your inputs","text":"Enter your average daily demand, supplier lead time in days, and your safety stock level"},
         {"@type":"HowToStep","name":"Click Calculate","text":"Press the calculate button to get your instant result"},
-        {"@type":"HowToStep","name":"Use the result","text":"Use the carrying cost to optimise order quantities using EOQ and justify safety stock reduction initiatives"}
+        {"@type":"HowToStep","name":"Use the result","text":"When your inventory drops to this level, place a new purchase order immediately"}
       ]
     },
     {
       "@type":"FAQPage",
       "mainEntity":[
-        {"@type":"Question","name":"What is a typical carrying cost percentage for Indian businesses?","acceptedAnswer":{"@type":"Answer","text":"For Indian businesses, total carrying cost typically ranges from 18% to 30% of inventory value annually. Breakdown: Cost of capital 10-14% (bank OD rates), Warehouse/storage 5-10%, Insurance 0.5-1.5%, Obsolescence/shrinkage 2-5%. FMCG and fashion tend to have higher obsolescence costs. Industrial components tend to have lower shrinkage."}},
-        {"@type":"Question","name":"How does carrying cost affect the EOQ calculation?","acceptedAnswer":{"@type":"Answer","text":"Carrying cost is one of the two key inputs in the EOQ formula: EOQ = √(2DS/H) where H is the annual holding cost per unit. A higher carrying cost percentage results in a lower EOQ (smaller, more frequent orders) because the cost of holding a large order outweighs the ordering savings. Accurate carrying cost is essential for meaningful EOQ calculation."}},
-        {"@type":"Question","name":"Should I include depreciation in carrying cost?","acceptedAnswer":{"@type":"Answer","text":"Yes, for physical goods that lose value over time — electronics, fashion, food, chemicals — include depreciation or obsolescence as a percentage of inventory value. For stable goods like industrial components or construction materials, obsolescence may be low (1-2%). For fast-changing categories like mobile phones, it can be 10-15% or more."}}
+        {"@type":"Question","name":"What is the difference between reorder point and reorder level?","acceptedAnswer":{"@type":"Answer","text":"Reorder point and reorder level mean the same thing — both refer to the inventory quantity at which a new purchase order should be placed. Some systems use "reorder level" (common in Indian ERPs like Tally and Busy) while others use "reorder point" (common in SAP and NetSuite)."}},
+        {"@type":"Question","name":"How often should I recalculate my reorder point?","acceptedAnswer":{"@type":"Answer","text":"Recalculate your reorder point whenever demand changes significantly (seasonal spikes, promotions, new distribution channels), when your supplier lead time changes, or when you update your safety stock policy. For fast-moving products, monthly review is recommended. For stable products, quarterly is sufficient."}},
+        {"@type":"Question","name":"Can I use this calculator for Amazon FBA inventory?","acceptedAnswer":{"@type":"Answer","text":"Yes. For Amazon FBA, your lead time should include manufacturing time plus shipping to the FBA warehouse plus Amazon processing time (typically 2-5 days). Your daily demand should be your average daily units sold from Seller Central reports. This gives you the inventory level at which to ship your next FBA replenishment."}}
       ]
     }
   ]
@@ -152,8 +152,8 @@ footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
 
 <div class="hero">
   <div class="hero-badge">🆓 Free · No Login · Instant Results</div>
-  <h1>Inventory Carrying Cost Calculator<br><span>How Much Does It Cost to Hold Your Stock?</span></h1>
-  <p class="hero-sub">Calculate the true annual cost of holding inventory — including storage, tied-up capital, insurance, and obsolescence. Most businesses underestimate this by 50%.</p>
+  <h1>Reorder Point Calculator<br><span>Know Exactly When to Order — Free Tool</span></h1>
+  <p class="hero-sub">Calculate the precise inventory level at which you must place a new purchase order. Never run out of stock again.</p>
   <div class="trust-row">
     <span><span class="tick">✓</span>No signup needed</span>
     <span><span class="tick">✓</span>No data stored</span>
@@ -166,80 +166,72 @@ footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
 
   <!-- LIVE CALCULATOR -->
   <div class="calc-card">
-    <h2>🔢 Inventory Carrying Cost Calculator — Free Online Tool</h2>
+    <h2>🔢 Reorder Point Calculator — Free Online Tool</h2>
     <div class="input-grid">
       <div class="input-group">
-        <label for="avg_inv">Average Inventory Value (₹)</label>
-        <input type="number" id="avg_inv" placeholder="e.g. 2000000" min="0" step="1">
+        <label for="avg_demand">Average Daily Demand (units/day)</label>
+        <input type="number" id="avg_demand" placeholder="e.g. 50" min="0" step="0.1">
       </div>
       <div class="input-group">
-        <label for="capital_cost">Cost of Capital % (% per year)</label>
-        <input type="number" id="capital_cost" placeholder="e.g. 12" min="0" step="0.5">
+        <label for="lead_time">Lead Time (days)</label>
+        <input type="number" id="lead_time" placeholder="e.g. 7" min="0" step="1">
       </div>
       <div class="input-group">
-        <label for="storage_cost">Storage / Warehouse Cost % (% per year)</label>
-        <input type="number" id="storage_cost" placeholder="e.g. 8" min="0" step="0.5">
-      </div>
-      <div class="input-group">
-        <label for="insurance_cost">Insurance % (% per year)</label>
-        <input type="number" id="insurance_cost" placeholder="e.g. 1" min="0" step="0.1">
-      </div>
-      <div class="input-group">
-        <label for="obsolescence">Obsolescence / Shrinkage % (% per year)</label>
-        <input type="number" id="obsolescence" placeholder="e.g. 3" min="0" step="0.5">
+        <label for="safety_stock">Safety Stock (units)</label>
+        <input type="number" id="safety_stock" placeholder="e.g. 100" min="0" step="1">
       </div>
     </div>
-    <button class="calc-btn" onclick="calculate()">Calculate Carrying Cost →</button>
+    <button class="calc-btn" onclick="calculate()">Calculate ROP →</button>
     <div class="result-box" id="result">
-      <div class="result-label">Annual Carrying Cost</div>
+      <div class="result-label">Your Reorder Point</div>
       <div class="result-value" id="result-value">—</div>
-      <div class="result-unit">₹ per year</div>
+      <div class="result-unit">units</div>
       <div class="result-detail" id="result-detail"></div>
     </div>
     <div class="disclaimer" style="margin-top:12px">⚠️ <span><strong>Reference only:</strong> Results are for planning purposes. Validate with your ERP or business data before making decisions.</span></div>
   </div>
 
   <!-- WHAT IS -->
-  <h2 id="what">What is Inventory Carrying Cost Calculator?</h2>
-  <p><strong>Inventory carrying cost</strong> (also called holding cost) is the total annual cost of maintaining inventory in your warehouse. It includes direct costs like storage and insurance, and indirect costs like the opportunity cost of capital tied up in stock.</p>
-  <p>The most commonly underestimated component is cost of capital. If your inventory is funded by a bank loan at 12% interest, or if that cash could earn 12% invested elsewhere, then holding ₹20L of inventory costs ₹2.4L/year in capital cost alone — before adding warehouse rent, insurance, and shrinkage.</p>
+  <h2 id="what">What is Reorder Point Calculator?</h2>
+  <p>The <strong>Reorder Point (ROP)</strong> is the inventory level at which you must place a new purchase order to avoid a stockout. It accounts for the time it takes your supplier to deliver (lead time) and your daily demand during that period, plus a safety buffer for variability.</p>
+  <p>Without a clearly defined reorder point, supply chain teams either order too early (excess inventory, high carrying costs) or too late (stockouts, lost sales, customer penalties). The reorder point eliminates guesswork by giving you a precise trigger level backed by your actual demand and lead time data.</p>
 
   <!-- FORMULA -->
-  <h2 id="formula">The Carrying Cost Formula</h2>
+  <h2 id="formula">The ROP Formula</h2>
   <div class="formula-box">
     <div class="f-label">📐 Formula</div>
-    <div class="f-formula">Carrying Cost = Average Inventory Value × Carrying Cost Rate %</div>
+    <div class="f-formula">ROP = (Average Daily Demand × Lead Time) + Safety Stock</div>
   </div>
-  <p>The carrying cost rate is the sum of all individual holding cost components expressed as a percentage of inventory value. Typical range: 18-35% annually. Most Indian SMEs underestimate this because they only count warehouse rent and ignore the cost of capital tied up in stock.</p>
+  <p>The reorder point formula multiplies your average daily demand by your supplier lead time, then adds your safety stock buffer. The result is the inventory level at which you must place a new order — giving you enough stock to last through the replenishment period without running out.</p>
 
   <!-- EXAMPLE -->
   <h2 id="example">Worked Example</h2>
-  <p>A FMCG distributor holds an average inventory of ₹25 lakh. Their carrying cost components:</p>
+  <p>A D2C brand in Delhi sells 80 units of their bestselling product per day. Their supplier in Surat takes 5 days to deliver. They maintain 200 units of safety stock.</p>
   <div class="example-box">
     <div class="ex-title">📊 Example Calculation</div>
-    <div class="ex-row"><span class="ex-lbl">Average inventory</span><span class="ex-val">₹25,00,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">Cost of capital (bank OD at 12%)</span><span class="ex-val">12% × ₹25L = ₹3,00,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">Warehouse rent + utilities</span><span class="ex-val">8% × ₹25L = ₹2,00,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">Insurance</span><span class="ex-val">1% × ₹25L = ₹25,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">Obsolescence + shrinkage</span><span class="ex-val">3% × ₹25L = ₹75,000</span></div>
-    <div class="ex-row"><span class="ex-lbl"><strong>Total Carrying Cost</strong></span><span class="ex-result">₹6,00,000/year = 24%</span></div>
+    <div class="ex-row"><span class="ex-lbl">Average daily demand</span><span class="ex-val">80 units/day</span></div>
+    <div class="ex-row"><span class="ex-lbl">Supplier lead time</span><span class="ex-val">5 days</span></div>
+    <div class="ex-row"><span class="ex-lbl">Safety stock</span><span class="ex-val">200 units</span></div>
+    <div class="ex-row"><span class="ex-lbl">Demand during lead time</span><span class="ex-val">80 × 5 = 400 units</span></div>
+    <div class="ex-row"><span class="ex-lbl"><strong>Reorder Point</strong></span><span class="ex-result">400 + 200 = 600 units</span></div>
   </div>
-  <p>This distributor spends ₹6 lakh per year just to hold their inventory — ₹50,000 per month. Every ₹1 lakh reduction in average inventory saves ₹24,000 annually. This is why EOQ and safety stock optimisation have direct, measurable financial returns.</p>
+  <p>This means: when inventory drops to 600 units, place the next purchase order immediately. By the time it arrives 5 days later, you will have consumed approximately 400 units and still have 200 units of safety stock remaining.</p>
 
   <!-- WHY IT MATTERS -->
-  <h2 id="why">Why Carrying Cost Matters for Your Business</h2>
-  <p>Carrying cost is the "hidden tax" on inventory. Most businesses see the cost of buying inventory but not the cost of holding it — leading to systematic over-ordering.</p>
+  <h2 id="why">Why ROP Matters for Your Business</h2>
+  <p>The reorder point is one of the most operationally critical numbers in any supply chain. Without it, ordering decisions are made on gut feel — leading to either excess stock or stockouts, both of which cost money.</p>
   <ul>
-  <li><strong>EOQ optimisation:</strong> Carrying cost is a direct input into the EOQ formula — accurate carrying cost gives accurate EOQ</li>
-  <li><strong>Dead stock decisions:</strong> Compare the carrying cost of holding slow stock vs. the cost of clearing it</li>
-  <li><strong>Working capital management:</strong> Justify inventory reduction initiatives to management using annual carrying cost savings</li>
-  <li><strong>Safety stock calibration:</strong> Balance the cost of carrying safety stock against the cost of a stockout</li>
+  <li><strong>Prevents stockouts:</strong> You always know when to act before running out</li>
+  <li><strong>Reduces excess inventory:</strong> You order when needed, not based on guesswork</li>
+  <li><strong>Automates the trigger:</strong> Set ROP as an alert in your ERP or WMS</li>
+  <li><strong>Works with any product:</strong> FMCG, electronics, fashion, industrial components</li>
+  <li><strong>Links to EOQ:</strong> Use ROP to trigger an EOQ-sized order for optimal replenishment</li>
   </ul>
 
   <!-- AI PLANNER CTA -->
   <div class="cta-box">
     <h3>🤖 Go Further with AI Demand Planning</h3>
-    <p>Upload your full inventory export and get Carrying Cost calculated automatically across all your SKUs — alongside demand forecasts, reorder plans, and stockout risk analysis.</p>
+    <p>Upload your full inventory export and get ROP calculated automatically across all your SKUs — alongside demand forecasts, reorder plans, and stockout risk analysis.</p>
     <a href="https://logicstiq.com/#ai-demand-planner" class="cta-btn">Try Free AI Demand Planner →</a>
     <div class="cta-feats">
       <span class="cta-f">Works with Tally · SAP · NetSuite · Amazon · Flipkart</span>
@@ -249,18 +241,18 @@ footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
 
   <!-- FAQ -->
   <h2 id="faq">Frequently Asked Questions</h2>
-  <div class="faq-item open"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is a typical carrying cost percentage for Indian businesses?<span>▾</span></div><div class="faq-a">For Indian businesses, total carrying cost typically ranges from 18% to 30% of inventory value annually. Breakdown: Cost of capital 10-14% (bank OD rates), Warehouse/storage 5-10%, Insurance 0.5-1.5%, Obsolescence/shrinkage 2-5%. FMCG and fashion tend to have higher obsolescence costs. Industrial components tend to have lower shrinkage.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does carrying cost affect the EOQ calculation?<span>▾</span></div><div class="faq-a">Carrying cost is one of the two key inputs in the EOQ formula: EOQ = √(2DS/H) where H is the annual holding cost per unit. A higher carrying cost percentage results in a lower EOQ (smaller, more frequent orders) because the cost of holding a large order outweighs the ordering savings. Accurate carrying cost is essential for meaningful EOQ calculation.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Should I include depreciation in carrying cost?<span>▾</span></div><div class="faq-a">Yes, for physical goods that lose value over time — electronics, fashion, food, chemicals — include depreciation or obsolescence as a percentage of inventory value. For stable goods like industrial components or construction materials, obsolescence may be low (1-2%). For fast-changing categories like mobile phones, it can be 10-15% or more.</div></div>
+  <div class="faq-item open"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is the difference between reorder point and reorder level?<span>▾</span></div><div class="faq-a">Reorder point and reorder level mean the same thing — both refer to the inventory quantity at which a new purchase order should be placed. Some systems use "reorder level" (common in Indian ERPs like Tally and Busy) while others use "reorder point" (common in SAP and NetSuite).</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How often should I recalculate my reorder point?<span>▾</span></div><div class="faq-a">Recalculate your reorder point whenever demand changes significantly (seasonal spikes, promotions, new distribution channels), when your supplier lead time changes, or when you update your safety stock policy. For fast-moving products, monthly review is recommended. For stable products, quarterly is sufficient.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I use this calculator for Amazon FBA inventory?<span>▾</span></div><div class="faq-a">Yes. For Amazon FBA, your lead time should include manufacturing time plus shipping to the FBA warehouse plus Amazon processing time (typically 2-5 days). Your daily demand should be your average daily units sold from Seller Central reports. This gives you the inventory level at which to ship your next FBA replenishment.</div></div>
 
   <!-- RELATED CALCULATORS -->
   <h2>Related Free Calculators</h2>
   <div class="related-grid">
     <a href="https://logicstiq.com/eoq-calculator" class="related-card"><div class="rc-name">EOQ Calculator</div><div class="rc-vol">2,400/mo monthly searches</div></a>
     <a href="https://logicstiq.com/safety-stock-calculator" class="related-card"><div class="rc-name">Safety Stock Calculator</div><div class="rc-vol">1,900/mo monthly searches</div></a>
-    <a href="https://logicstiq.com/reorder-point-calculator" class="related-card"><div class="rc-name">Reorder Point Calculator</div><div class="rc-vol">1,600/mo monthly searches</div></a>
     <a href="https://logicstiq.com/otif-calculator" class="related-card"><div class="rc-name">OTIF Calculator</div><div class="rc-vol">2,900/mo monthly searches</div></a>
-    <a href="https://logicstiq.com/inventory-turnover-calculator" class="related-car
+    <a href="https://logicstiq.com/inventory-turnover-calculator" class="related-card"><div class="rc-name">Inventory Turnover</div><div class="rc-vol">3,600/mo monthly searches</div></a>
+    <a href="https://logicstiq.com/abc-analysis-calculator" class="related-card"><div
   </div>
 
   <div class="aff-note"><strong>Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. When you sign up for a third-party service via these links, we may earn a small commission at no extra cost to you. All calculators are and always will be completely free.</div>
@@ -273,7 +265,19 @@ footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
 </footer>
 
 <script>
-function calculate(){const inv=parseFloat(document.getElementById('avg_inv').value)||0;const cap=parseFloat(document.getElementById('capital_cost').value)||0;const stor=parseFloat(document.getElementById('storage_cost').value)||0;const ins=parseFloat(document.getElementById('insurance_cost').value)||0;const obs=parseFloat(document.getElementById('obsolescence').value)||0;if(inv<=0){alert('Enter your average inventory value.');return;}const total_rate=(cap+stor+ins+obs)/100;const total_cost=inv*total_rate;const monthly=total_cost/12;document.getElementById('result-value').textContent='₹'+total_cost.toLocaleString('en-IN',{minimumFractionDigits:0});document.getElementById('result-detail').textContent='Total carrying rate: '+((cap+stor+ins+obs).toFixed(1))+'% per year | Monthly cost: ₹'+monthly.toLocaleString('en-IN',{maximumFractionDigits:0})+' | Per ₹1L inventory: ₹'+(total_rate*100000).toLocaleString('en-IN',{maximumFractionDigits:0})+'/year.';document.getElementById('result').classList.add('show');}
+function calculate() {
+  const d = parseFloat(document.getElementById('avg_demand').value);
+  const l = parseFloat(document.getElementById('lead_time').value);
+  const s = parseFloat(document.getElementById('safety_stock').value);
+  if (isNaN(d)||isNaN(l)||isNaN(s)||d<=0||l<=0||s<0) {
+    alert('Please enter valid values for all fields.'); return;
+  }
+  const rop = Math.round(d * l + s);
+  document.getElementById('result-value').textContent = rop.toLocaleString('en-IN');
+  document.getElementById('result-detail').textContent =
+    'Calculation: (' + d + ' units/day × ' + l + ' days) + ' + s + ' safety stock = ' + rop + ' units. Place a new order when your inventory reaches this level.';
+  const r = document.getElementById('result'); r.classList.add('show');
+}
 </script>
 <script>
 (function(){var r=document.documentElement;

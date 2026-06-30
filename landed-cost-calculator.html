@@ -1,280 +1,1430 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Landed Cost Calculator — Total Product Cost India | Free Tool | LogicstIQ — Free Supply Chain Calculator</title>
-<meta name="description" content="Calculate the true landed cost of your products including purchase price, freight, customs, GST, and other charges. Free landed cost calculator for Indian businesses.">
-<meta name="keywords" content="landed cost calculator, landed cost formula India, total cost of product India, import cost calculator, product landed cost, freight landed cost India, true cost calculator">
-<link rel="canonical" href="https://logicstiq.com/landed-cost-calculator">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LogicstIQ.com – Where Logistics Meets Intelligence | Free Supply Chain Calculators</title>
+<meta name="description" content="LogicstIQ.com — Free supply chain calculators powered by logic and intelligence. EOQ, Reorder Point, Safety Stock, OTIF, Demand Forecasting, Landed Cost, Carbon Footprint &amp; & more. No login. Instant results. Free
+forever.">
+<meta name="keywords" content="supply chain calculator, logistics calculator, EOQ calculator, reorder point calculator, safety stock calculator, OTIF calculator, fill rate calculator, demand forecasting tool, landed cost calculator, freight cost calculator, inventory turnover, warehouse utilization, ABC analysis, COGS calculator, lead time calculator, supplier scorecard, carbon footprint logistics, GST calculator supply chain, LogicstIQ, COGS calculator India, break even calculator India, gross margin calculator India, MOQ
+calculator, dead stock calculator, volumetric weight calculator India, cash conversion cycle calculator, days inventory outstanding calculator, pick and pack cost calculator, shipping cost per unit calculator, supply chain calculator free India">
+<meta name="author" content="Amit Kumar &amp; Sachin Sirwani — LogicstIQ.com">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="language" content="English">
+<meta name="revisit-after" content="7 days">
+<meta name="category" content="Supply Chain, Logistics, Inventory Management, E-Commerce">
+<link rel="canonical" href="https://www.logicstiq.com/"/>
+<meta name="google-site-verification" content="FHSe095yxAfCfD-6wIiL3z1NJthHHyxDFvenqPU14WQ">
+<meta property="og:title" content="LogicstIQ.com – Where Logistics Meets Intelligence">
+<meta property="og:description" content="31 free supply chain calculators + AI Demand Planner. Where Logistics Meets Intelligence — EOQ, OTIF, Safety Stock, Landed Cost, Carbon Footprint &amp; more. No login needed.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.logicstiq.com/"/>
+<meta property="og:image" content="https://www.logicstiq.com/og-image.png">
+<meta property="og:locale" content="en_IN">
+<meta property="og:site_name" content="LogicstIQ.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LogicstIQ.com – Where Logistics Meets Intelligence">
+<meta name="twitter:description" content="31 free supply chain calculators + AI Demand Planner. No login. Instant results.">
+<meta name="twitter:image" content="https://www.logicstiq.com/og-image.png">
+<meta name="twitter:creator" content="@LogicstIQ">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&family=Wix+Madefor+Display:wght@600;700;800&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<!-- Google AdSense — activate after approval: replace ca-pub-XXXXXXXXXXXXXXXX with your Publisher ID and remove the comment tags -->
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
 <script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@graph":[
-    {
-      "@type":"SoftwareApplication",
-      "name":"Landed Cost Calculator",
-      "url":"https://logicstiq.com/landed-cost-calculator",
-      "applicationCategory":"BusinessApplication",
-      "operatingSystem":"Web",
-      "offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},
-      "description":"Free online landed cost calculator. Calculate the true total cost of a product including all freight, duties, taxes and fees."
-    },
-    {
-      "@type":"HowTo",
-      "name":"How to use the Landed Cost Calculator",
-      "step":[
-        {"@type":"HowToStep","name":"Enter your inputs","text":"Enter the product purchase price per unit, quantity ordered, freight cost, customs/duties, GST and any other charges"},
-        {"@type":"HowToStep","name":"Click Calculate","text":"Press the calculate button to get your instant result"},
-        {"@type":"HowToStep","name":"Use the result","text":"Use the landed cost per unit to set accurate selling prices, calculate true margins, and compare suppliers fairly"}
-      ]
-    },
-    {
-      "@type":"FAQPage",
-      "mainEntity":[
-        {"@type":"Question","name":"Does landed cost include GST?","acceptedAnswer":{"@type":"Answer","text":"It depends. If you are a GST-registered business and the GST is recoverable as Input Tax Credit (ITC), then GST should NOT be included in landed cost (it is effectively zero cost to you). If GST is not recoverable — for example, RCM on GTA services, or if you are not GST registered — then include it as part of your landed cost. Our calculator includes a GST field for the non-recoverable portion only."}},
-        {"@type":"Question","name":"How do I calculate landed cost for Amazon FBA imports?","acceptedAnswer":{"@type":"Answer","text":"For Amazon FBA imports, your landed cost includes: product price + international freight (air or sea) + customs duty + IGST (may be recoverable if you are GST registered) + customs clearance agent fees + domestic freight to FBA warehouse + FBA receiving fees. Many Amazon sellers calculate landed cost excluding recoverable IGST and including FBA fees to get true cost before Amazon commission."}},
-        {"@type":"Question","name":"Should I include Amazon or Flipkart commission in landed cost?","acceptedAnswer":{"@type":"Answer","text":"No. Amazon and Flipkart commissions (typically 5-15%) are selling costs, not product costs. Calculate landed cost first (true cost to get product to your warehouse), then factor in platform commission separately when calculating your net margin per unit. Mixing the two makes pricing decisions confusing."}}
-      ]
-    }
-  ]
-}
+{"@context":"https://schema.org","@type":"WebSite","name":"LogicstIQ.com","url":"https://www.logicstiq.com","description":"Free supply chain calculators and AI Demand Planner. 31 tools covering EOQ, Safety Stock, OTIF, Reorder Point, Inventory Turnover and more.","potentialAction":{"@type":"SearchAction","target":"https://www.logicstiq.com/?q={search_term_string}","query-input":"required name=search_term_string"}}
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"LogicstIQ","url":"https://www.logicstiq.com","logo":"https://www.logicstiq.com/favicon.svg","founders":[{"@type":"Person","name":"Amit Kumar","sameAs":"https://www.linkedin.com/in/amiitkumar"},{"@type":"Person","name":"Sachin Sirwani","sameAs":"https://www.linkedin.com/in/sachin-s-0b1179162"}],"contactPoint":{"@type":"ContactPoint","email":"privacy@logicstiq.com","contactType":"customer support"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is LogicstIQ completely free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes — all 31 calculators and the AI Demand Planner are completely free. No login, no signup, no credit card, no usage limits. Free forever."}},{"@type":"Question","name":"Does LogicstIQ store my inventory data?","acceptedAnswer":{"@type":"Answer","text":"Never. Your file is processed on our secure server and immediately discarded after your results are generated. Zero data is stored, logged, or shared. Close the tab and it is permanently gone."}},{"@type":"Question","name":"What file formats are supported?","acceptedAnswer":{"@type":"Answer","text":"Excel (.xlsx and .xls), CSV, TSV, and TXT files up to 25MB. Real Excel files are read natively using SheetJS — no conversion to CSV needed. Supports exports from SAP, NetSuite, Tally, Zoho, Amazon, Flipkart and 15+ other systems."}},{"@type":"Question","name":"Who is LogicstIQ for?","acceptedAnswer":{"@type":"Answer","text":"D2C brands, marketplace sellers, manufacturers, distributors, 3PL companies, quick commerce suppliers, import/export businesses, and supply chain professionals globally."}},{"@type":"Question","name":"How accurate are the AI forecasts?","acceptedAnswer":{"@type":"Answer","text":"Accuracy depends on the quality and completeness of your input data. All results are for planning reference only — always validate with your ERP or WMS before placing purchase orders."}}]}
+</script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#F4F7FF;--white:#FFFFFF;--border:#E2E8F0;--b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b600:#2563EB;--b700:#1D4ED8;--b900:#1E3A8A;--green:#059669;--amber:#D97706;--text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8;}
-body{font-family:"Inter",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
-.nav{background:#fff;border-bottom:1px solid var(--border);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.04)}
-.nav-logo{text-decoration:none;display:flex;align-items:center}
-.nav-back{font-size:13px;font-weight:600;color:var(--b600);text-decoration:none}
-.hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 50%,#1D4ED8 100%);padding:52px 32px 44px;text-align:center}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:5px 14px;font-size:11px;font-weight:800;color:#BFDBFE;text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px}
-.hero h1{font-size:clamp(24px,4vw,44px);font-weight:900;color:#fff;line-height:1.12;letter-spacing:-.03em;max-width:700px;margin:0 auto 12px;font-family:"Plus Jakarta Sans",sans-serif}
-.hero h1 span{color:#93C5FD}
-.hero-sub{font-size:14px;color:#BFDBFE;max-width:560px;margin:0 auto 20px;line-height:1.7}
-.trust-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;font-size:12px;color:rgba(255,255,255,.85);font-weight:600}
-.trust-row .tick{color:#34D399}
-.wrap{max-width:820px;margin:0 auto;padding:44px 24px 60px}
-.calc-card{background:var(--white);border:2px solid var(--b200);border-radius:20px;padding:32px;margin-bottom:28px;box-shadow:0 4px 20px rgba(30,58,138,.08)}
-.calc-card h2{font-size:20px;font-weight:900;color:var(--b900);margin-bottom:20px;font-family:"Plus Jakarta Sans",sans-serif;letter-spacing:-.02em}
-.input-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:18px}
-.input-group label{display:block;font-size:12px;font-weight:700;color:var(--text3);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em}
-.input-group input,.input-group select{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;color:var(--text);background:#fff;transition:border-color .15s;outline:none}
-.input-group input:focus,.input-group select:focus{border-color:var(--b600);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
-.calc-btn{width:100%;background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:800;font-family:inherit;cursor:pointer;box-shadow:0 4px 16px rgba(37,99,235,.35);transition:all .2s;margin-bottom:14px}
-.calc-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,99,235,.45)}
-.result-box{background:linear-gradient(135deg,var(--b50),#E0F2FE);border:2px solid var(--b200);border-radius:14px;padding:22px;text-align:center;display:none}
-.result-box.show{display:block}
-.result-label{font-size:11px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
-.result-value{font-size:42px;font-weight:900;color:var(--b700);line-height:1;letter-spacing:-.03em}
-.result-unit{font-size:14px;color:var(--text3);margin-top:6px;font-weight:600}
-.result-detail{font-size:13px;color:var(--text2);margin-top:12px;line-height:1.7;background:rgba(255,255,255,.7);border-radius:8px;padding:12px}
-.disclaimer{background:#FEF9C3;border:1px solid #FDE68A;border-radius:10px;padding:10px 14px;font-size:11px;color:#92400E;line-height:1.6;font-weight:600;display:flex;align-items:flex-start;gap:8px}
-h2{font-size:24px;font-weight:900;color:var(--text);letter-spacing:-.02em;margin:36px 0 12px;border-top:2px solid var(--b100);padding-top:8px;font-family:"Plus Jakarta Sans",sans-serif}
-h3{font-size:18px;font-weight:800;color:var(--text2);margin:24px 0 8px}
-p{margin-bottom:14px;color:var(--text2);line-height:1.8;font-size:15px}
-ul,ol{padding-left:22px;margin-bottom:14px}
-li{margin-bottom:7px;color:var(--text2);line-height:1.7}
-strong{color:var(--text);font-weight:700}
-a{color:var(--b600);font-weight:600;text-decoration:none}
-.formula-box{background:linear-gradient(135deg,#EFF6FF,#E0F2FE);border:2px solid var(--b200);border-radius:14px;padding:22px;margin:18px 0;text-align:center}
-.f-label{font-size:10px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
-.f-formula{font-size:clamp(13px,2vw,18px);font-weight:900;color:var(--b700);font-family:"Courier New",monospace;line-height:1.6}
-.example-box{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:24px;margin:18px 0;box-shadow:0 2px 8px rgba(30,58,138,.05)}
-.ex-title{font-size:11px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
-.ex-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px}
-.ex-row:last-child{border-bottom:none;padding-top:12px}
-.ex-lbl{color:var(--text3)}
-.ex-val{font-weight:700;color:var(--text);font-family:"Courier New",monospace}
-.ex-result{font-size:22px;font-weight:900;color:var(--b700)}
-.faq-item{background:var(--white);border:1.5px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}
-.faq-q{padding:16px 20px;font-size:14px;font-weight:700;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+:root{
+  --bg:#F4F7FF;--white:#FFFFFF;--border:#E2E8F0;--border2:#CBD5E1;
+  --b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b400:#7A92FF;
+  --b500:#5069FF;--b600:#3A55FF;--b700:#2A40D6;--b800:#2436B5;--b900:#1C2C73;
+  --cyan:#770BFF;--green:#059669;--glight:#D1FAE5;
+  --amber:#D97706;--alight:#FEF3C7;--red:#DC2626;--rlight:#FEE2E2;
+  --purple:#7C3AED;--slate:#64748B;
+  --text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8;
+}
+body{font-family:'Wix Madefor Text','Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;transition:background .3s,color .3s}
+/* ── PREVIEW BAR ── */
+.preview-bar{display:none;background:linear-gradient(90deg,#3A55FF,#770BFF);padding:10px 20px;text-align:center;font-size:12px;font-weight:800;color:#fff;letter-spacing:.04em;position:sticky;top:0;z-index:999}
+.preview-bar span{display:none;opacity:.75;font-weight:500;margin-left:8px}
+/* ── NAVIGATION ── */
+.nav{background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.nav-logo{text-decoration:none;display:flex;align-items:center;line-height:1}
+.nav-logo span{background:linear-gradient(135deg,#3A55FF,#770BFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:13px;font-weight:600;color:var(--text3);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--b600)}
+.nav-cta{background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;border:none;border-radius:9px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}
+/* ── HERO — dark navy ── */
+.hero{background:linear-gradient(135deg,#0F172A 0%,#1C2C73 45%,#2A40D6 100%);padding:72px 32px 60px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='%23ffffff' fill-opacity='0.05'/%3E%3C/svg%3E");pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:6px 16px;font-size:11px;font-weight:800;color:#BFDBFE;text-transform:uppercase;letter-spacing:.09em;margin-bottom:18px}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:#34D399;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+.hero h1{font-size:clamp(30px,5vw,58px);font-weight:900;color:#fff;line-height:1.08;letter-spacing:-.035em;margin-bottom:14px;font-family:'Plus Jakarta Sans',sans-serif;position:relative}
+.hero h1 span{background:linear-gradient(135deg,#AEBCFF,#C4B5FD);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(14px,2vw,18px);color:rgba(255,255,255,.82);max-width:580px;margin:0 auto 28px;line-height:1.7;position:relative}
+/* Pain pills */
+.liq-pain-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px;position:relative}
+.liq-pain-pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 14px;font-size:12px;font-weight:600;color:rgba(255,255,255,.85)}
+.liq-pain-pill em{color:#FCA5A5;font-style:normal;font-weight:800}
+/* Logo strip */
+.logos-wrap{margin-bottom:24px;position:relative}
+.logos-label{font-size:10px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+.liq-logo-row{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.liq-logo-pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:7px;padding:4px 12px;font-size:10px;font-weight:700;color:rgba(255,255,255,.88)}
+/* Trust bar */
+.liq-trust-bar{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;font-size:12px;color:rgba(255,255,255,.88);font-weight:600;position:relative}
+.liq-trust-bar .tick{color:#34D399;margin-right:4px}
+/* Stat boxes */
+.stat-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:24px 0 0;position:relative}
+.stat-box{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:16px 24px;text-align:center;min-width:110px}
+.stat-num{font-size:26px;font-weight:900;line-height:1;margin-bottom:4px}
+.stat-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.6)}
+.made-india{display:inline-flex;align-items:center;gap:6px;background:rgba(255,127,80,.15);border:1px solid rgba(255,127,80,.3);border-radius:999px;padding:4px 12px;font-size:10px;font-weight:800;color:#FED7AA;margin-top:12px;position:relative}
+/* ── ADSENSE SLOT ── */
+.ad-slot{margin:16px 32px;border:1px dashed #BFDBFE;border-radius:10px;padding:12px 20px;display:flex;align-items:center;gap:12px;background:#EFF6FF}
+.ad-label{font-size:9px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em;flex-shrink:0}
+.ad-bar{flex:1;height:36px;background:linear-gradient(90deg,#DBEAFE,#BAE6FD);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--text4);font-weight:600}
+/* ── CALCULATORS ── */
+.section{padding:52px 32px}
+.section-eyebrow{display:inline-flex;align-items:center;gap:6px;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:999px;padding:5px 14px;margin-bottom:14px;font-size:10px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em}
+.section-title{font-size:clamp(22px,3.5vw,34px);font-weight:900;letter-spacing:-.025em;margin-bottom:8px;color:var(--text)}
+.section-sub{font-size:14px;color:var(--text3);line-height:1.65;max-width:560px;margin:0 auto 28px}
+.section.center{text-align:center}
+.calc-cat-lbl{font-size:10px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.calc-cat-lbl::after{content:'';flex:1;height:1px;background:var(--border)}
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:24px}
+.calc-card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:18px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.calc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--b600),var(--cyan));transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.calc-card:hover{border-color:#BFDBFE;transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,58,138,.09)}
+.calc-card:hover::before{transform:scaleX(1)}
+.calc-ico{font-size:26px;margin-bottom:8px}
+.calc-tag{display:inline-flex;align-items:center;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:5px;padding:2px 8px;font-size:9px;font-weight:800;color:var(--b700);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
+.calc-name{font-size:13px;font-weight:800;color:var(--text);margin-bottom:4px;line-height:1.3}
+.calc-desc{font-size:11px;color:var(--text3);line-height:1.55}
+/* ── AI DEMAND PLANNER ── */
+.planner-section{margin:0 0 0;background:linear-gradient(135deg,#0F172A 0%,#1C2C73 45%,#2A40D6 100%);padding:60px 32px 48px;text-align:center}
+.planner-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:5px 14px;font-size:10px;font-weight:800;color:#BFDBFE;text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px}
+.planner-badge .dot{width:6px;height:6px;border-radius:50%;background:#34D399;animation:pulse 2s infinite}
+.plan-title{font-size:clamp(22px,3.5vw,40px);font-weight:900;color:#fff;letter-spacing:-.025em;margin-bottom:10px;font-family:'Plus Jakarta Sans',sans-serif}
+.plan-title span{color:#AEBCFF}
+.plan-sub{font-size:14px;color:#BFDBFE;line-height:1.7;margin-bottom:22px;max-width:580px;margin-left:auto;margin-right:auto}
+/* Channel pills */
+.ch-rows{display:flex;flex-direction:column;gap:7px;align-items:center;margin-bottom:28px}
+.ch-row{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;align-items:center}
+.ch-lbl{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);padding-right:4px}
+.ch-pill{padding:3px 10px;border-radius:999px;font-size:9px;font-weight:700;border:1px solid}
+.ch-ecom{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.88)}
+.ch-qcom{background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.25);color:#A7F3D0}
+.ch-erp{background:rgba(147,197,253,.1);border-color:rgba(147,197,253,.25);color:#BFDBFE}
+/* Planner mockup */
+.planner-mock{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:22px;max-width:780px;margin:0 auto;text-align:left}
+.mock-steps{display:flex;gap:8px;margin-bottom:16px;overflow-x:auto}
+.mock-step{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 14px;font-size:11px;font-weight:700;color:rgba(255,255,255,.8);white-space:nowrap;flex-shrink:0}
+.mock-step.active{background:rgba(37,99,235,.5);border-color:rgba(96,165,250,.5);color:#fff}
+.mock-src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:7px;margin-bottom:16px}
+.mock-src{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:8px 6px;text-align:center}
+.mock-src.sel{border-color:#7A92FF;background:rgba(96,165,250,.15)}
+.mock-src-ico{font-size:18px;margin-bottom:3px}
+.mock-src-name{font-size:9px;font-weight:700;color:rgba(255,255,255,.82);line-height:1.3}
+.mock-dz{border:2px dashed rgba(255,255,255,.22);border-radius:12px;padding:24px 16px;text-align:center;background:rgba(255,255,255,.05);margin-bottom:14px}
+.mock-dz-ico{font-size:28px;margin-bottom:7px}
+.mock-dz-t{font-size:13px;font-weight:700;color:#fff;margin-bottom:4px}
+.mock-dz-s{font-size:11px;color:rgba(255,255,255,.7)}
+.mock-btn{background:linear-gradient(135deg,#3A55FF,#2A40D6);color:#fff;border:none;border-radius:11px;padding:12px 28px;font-size:14px;font-weight:800;font-family:inherit;cursor:pointer;width:100%;box-shadow:0 4px 20px rgba(37,99,235,.4)}
+.liq-disclaimer-bar{background:#FEF9C3;border:1px solid #FDE68A;border-radius:9px;padding:9px 14px;margin-top:10px;font-size:11px;color:#92400E;line-height:1.6;font-weight:500;display:flex;align-items:flex-start;gap:7px;text-align:left}
+/* Results KPIs */
+.mock-results{margin-top:20px}
+.mock-results-lbl{font-size:10px;font-weight:800;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.09em;text-align:center;margin-bottom:14px}
+.mock-kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:9px;margin-bottom:14px}
+.mock-kpi{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);border-radius:11px;padding:12px 10px;position:relative;overflow:hidden}
+.mock-kpi-accent{position:absolute;top:0;left:0;right:0;height:3px;border-radius:11px 11px 0 0}
+.mock-kpi-lbl{font-size:9px;color:rgba(255,255,255,.6);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.mock-kpi-val{font-size:18px;font-weight:900;line-height:1}
+.mock-kpi-sub{font-size:9px;color:rgba(255,255,255,.5);margin-top:3px}
+/* Tabs */
+.mock-tabs{display:flex;gap:3px;background:rgba(0,0,0,.35);border-radius:9px;padding:4px;overflow-x:auto;margin-bottom:12px;scrollbar-width:none}
+.mock-tabs::-webkit-scrollbar{display:none}
+.mock-tab{padding:6px 12px;border-radius:7px;font-size:10px;font-weight:600;color:rgba(255,255,255,.65);white-space:nowrap;cursor:pointer}
+.mock-tab.act{background:rgba(255,255,255,.14);color:#fff;font-weight:700}
+/* Health bar */
+.mock-hb{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:11px;padding:14px;margin-bottom:12px}
+.mock-hb-t{font-size:10px;font-weight:700;color:rgba(255,255,255,.82);margin-bottom:10px}
+.mock-hb-bar{display:flex;height:10px;border-radius:5px;overflow:hidden;gap:2px;margin-bottom:10px}
+.mock-hb-seg{border-radius:3px;height:100%}
+.mock-hb-legend{display:flex;flex-wrap:wrap;gap:10px}
+.mock-hb-leg{display:flex;align-items:center;gap:4px;font-size:9px;color:rgba(255,255,255,.75);font-weight:600}
+.mock-hb-dot{width:8px;height:8px;border-radius:2px}
+/* Mini table */
+.mock-tbl-wrap{background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+.mock-tbl{width:100%;border-collapse:collapse;font-size:10px}
+.mock-tbl th{background:rgba(0,0,0,.25);padding:8px 10px;text-align:left;font-size:9px;font-weight:800;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.06em}
+.mock-tbl td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.82)}
+.mock-tbl tr:last-child td{border-bottom:none}
+.pill-urg{display:inline-flex;padding:2px 7px;border-radius:999px;font-size:9px;font-weight:700;background:#FEE2E2;color:#B91C1C}
+.pill-high{display:inline-flex;padding:2px 7px;border-radius:999px;font-size:9px;font-weight:700;background:#FEF3C7;color:#B45309}
+.pill-ok{display:inline-flex;padding:2px 7px;border-radius:999px;font-size:9px;font-weight:700;background:#DCFCE7;color:#15803D}
+/* ── TESTIMONIALS ── */
+.testi-section{padding:56px 32px;background:var(--white);border-top:1px solid var(--border)}
+.liq-testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.liq-testi-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:24px;transition:all .2s;position:relative;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.liq-testi-card:hover{border-color:#BFDBFE;box-shadow:0 6px 20px rgba(30,58,138,.08);transform:translateY(-2px)}
+.liq-testi-stars{color:#F59E0B;font-size:14px;margin-bottom:12px;letter-spacing:2px}
+.liq-testi-text{font-size:13px;color:var(--text2);line-height:1.75;margin-bottom:16px;font-style:italic}
+.liq-testi-text::before{content:'"';font-size:32px;color:var(--b200);line-height:0;vertical-align:-.4em;margin-right:4px}
+.liq-testi-author{font-size:13px;font-weight:800;color:var(--text)}
+.liq-testi-role{font-size:11px;color:var(--text4);margin-top:2px}
+.liq-testi-badge{position:absolute;top:16px;right:16px;font-size:10px;font-weight:700;background:var(--b50);border:1px solid var(--b100);color:var(--b600);border-radius:5px;padding:2px 8px}
+/* ── DATA SAFETY ── */
+.safety-section{background:linear-gradient(135deg,#ECFDF5,#F0FDF4);border:1.5px solid #A7F3D0;border-radius:20px;padding:44px 40px;margin:32px 32px;display:flex;gap:36px;align-items:flex-start;flex-wrap:wrap;box-shadow:0 4px 24px rgba(5,150,105,.07)}
+.safety-shield{width:76px;height:76px;background:linear-gradient(135deg,#059669,#047857);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:36px;box-shadow:0 8px 28px rgba(5,150,105,.25);flex-shrink:0}
+.safety-content{flex:1;min-width:260px}
+.safety-tag{display:inline-flex;align-items:center;gap:6px;background:#D1FAE5;border:1px solid #6EE7B7;border-radius:999px;padding:4px 14px;font-size:10px;font-weight:800;color:#065F46;text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px}
+.safety-title{font-size:22px;font-weight:900;color:#064E3B;letter-spacing:-.02em;margin-bottom:8px}
+.safety-sub{font-size:13px;color:#065F46;line-height:1.7;margin-bottom:20px;max-width:600px}
+.safety-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:11px}
+.safety-card{background:#fff;border:1px solid #A7F3D0;border-radius:13px;padding:15px 17px;display:flex;align-items:flex-start;gap:11px;transition:box-shadow .2s}
+.safety-card:hover{box-shadow:0 4px 14px rgba(5,150,105,.1)}
+.safety-card-ico{font-size:21px;flex-shrink:0;margin-top:1px}
+.safety-card-t{font-size:12px;font-weight:800;color:#065F46;margin-bottom:3px}
+.safety-card-b{font-size:11px;color:#047857;line-height:1.55}
+/* ── BLOG SECTION ── */
+.blog-section{padding:52px 32px;background:var(--white);border-top:1px solid var(--border)}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;max-width:1100px}
+.blog-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:24px;transition:all .2s;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.blog-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--b600),var(--cyan));transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.blog-card:hover{border-color:#BFDBFE;box-shadow:0 8px 24px rgba(30,58,138,.09);transform:translateY(-2px)}
+.blog-card:hover::before{transform:scaleX(1)}
+.blog-cat{display:inline-flex;align-items:center;gap:5px;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:999px;padding:3px 11px;font-size:10px;font-weight:800;color:#2A40D6;margin-bottom:12px;text-transform:uppercase;letter-spacing:.07em}
+.blog-card-t{font-size:15px;font-weight:800;color:var(--text);line-height:1.35;margin-bottom:8px;letter-spacing:-.01em}
+.blog-card-d{font-size:12px;color:var(--text3);line-height:1.7;margin-bottom:12px}
+.blog-meta{font-size:11px;color:var(--text4);font-weight:600;margin-bottom:8px}
+.blog-read{display:inline-flex;align-items:center;gap:4px;color:var(--b600);font-size:12px;font-weight:800}
+/* ── FAQ ── */
+.faq-section{padding:52px 32px;background:var(--bg);border-top:1px solid var(--border)}
+.faq-list{max-width:720px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.faq-q{padding:17px 20px;font-size:14px;font-weight:700;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--white);line-height:1.4}
 .faq-q:hover{background:var(--b50)}
-.faq-q span{color:var(--b600);font-size:16px;transition:transform .2s;flex-shrink:0;margin-left:10px}
-.faq-a{padding:14px 20px;font-size:13px;color:var(--text3);line-height:1.75;background:#F8FAFF;border-top:1px solid var(--border);display:none}
+.faq-q .arr{color:var(--b600);font-size:16px;transition:transform .2s;flex-shrink:0;margin-left:10px}
+.faq-a{padding:15px 20px;font-size:13px;color:var(--text3);line-height:1.75;background:#F8FAFF;border-top:1px solid var(--border);display:none}
 .faq-item.open .faq-a{display:block}
-.faq-item.open .faq-q span{transform:rotate(180deg)}
-.cta-box{background:linear-gradient(135deg,#0F172A,#1E3A8A);border-radius:20px;padding:32px;text-align:center;margin:36px 0}
-.cta-box h3{font-size:20px;font-weight:900;color:#fff;margin-bottom:8px;font-family:"Plus Jakarta Sans",sans-serif}
-.cta-box p{font-size:13px;color:#BFDBFE;margin-bottom:18px;line-height:1.65}
-.cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;text-decoration:none;padding:13px 26px;border-radius:12px;font-size:14px;font-weight:800;box-shadow:0 4px 16px rgba(37,99,235,.4)}
-.cta-feats{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:14px}
-.cta-f{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:3px 10px;font-size:11px;font-weight:600;color:#E0E7FF}
-.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:16px 0}
-.related-card{background:var(--white);border:1.5px solid var(--border);border-radius:11px;padding:14px;text-decoration:none;transition:all .2s;display:block}
-.related-card:hover{border-color:var(--b200);box-shadow:0 4px 12px rgba(30,58,138,.07);transform:translateY(-1px)}
-.rc-name{font-size:13px;font-weight:800;color:var(--text);margin-bottom:3px}
-.rc-vol{font-size:11px;color:var(--b600);font-weight:600}
-.aff-note{background:var(--white);border:1px solid var(--border);border-radius:9px;padding:11px 14px;margin:24px 0;font-size:12px;color:var(--text4);line-height:1.6}
-footer{background:#0F172A;padding:28px 32px;text-align:center;color:#64748B;font-size:13px;margin-top:0}
-footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
-@media(max-width:600px){.wrap{padding:28px 16px 48px}.hero{padding:40px 20px 36px}.input-grid{grid-template-columns:1fr}}
+.faq-item.open .arr{transform:rotate(180deg)}
+/* ── ADSENSE FOOTER SLOT ── */
+/* ── FOOTER ── */
+footer{background:#0F172A;padding:52px 32px 28px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;max-width:1100px;margin:0 auto 36px}
+.footer-brand p{font-size:13px;color:#94A3B8;line-height:1.75;margin:10px 0 16px}
+.footer-logo{display:flex;align-items:center}
+.footer-tagline{font-size:11px;color:#475569;margin-top:3px}
+.footer-socials{display:flex;gap:8px;margin-top:4px}
+.social-btn{width:34px;height:34px;border-radius:9px;background:#1E293B;border:1px solid #334155;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#94A3B8;cursor:pointer;text-decoration:none;transition:all .15s}
+.social-btn:hover{background:#3A55FF;border-color:#3A55FF;color:#fff}
+.footer-col-t{font-size:11px;font-weight:800;color:#F1F5F9;text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px}
+.footer-links{display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:13px;color:#94A3B8;text-decoration:none;transition:color .15s}
+.footer-links a:hover{color:#fff}
+.footer-founder{font-size:13px;color:#94A3B8;line-height:1.9}
+.footer-founder a{color:#BFDBFE;text-decoration:none;font-weight:600}
+.footer-founder a:hover{color:#fff}
+.footer-founder-role{font-size:11px;color:#475569}
+.footer-bottom{border-top:1px solid #1E293B;padding-top:20px;text-align:center;font-size:11px;color:#64748B;line-height:1.9;max-width:1100px;margin:0 auto}
+.footer-bottom a{color:#94A3B8;text-decoration:none}
+.footer-bottom a:hover{color:#fff}
+.footer-affiliate-note{border-top:1px solid #1E293B;padding:13px 0;text-align:center;font-size:11px;color:#64748B;line-height:1.7;max-width:1100px;margin:0 auto}
+@media(max-width:768px){.nav-tagline{display:none!important}}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hero{padding:52px 20px 44px}
+  .stat-row{gap:8px}
+  .stat-box{padding:12px 16px;min-width:90px}
+  .section{padding:36px 16px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .safety-section{padding:28px 20px;margin:20px 16px}
+  .ad-slot{margin:12px 16px}
+  .blog-section,.testi-section{padding:36px 16px}
+  .faq-section{padding:36px 16px}
+}
+/* ══ PLANNER OVERRIDES & ADDITIONS ══ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&display=swap');
+/* ── ARCTIC WHITE TOKENS ── */
+:root{
+  --bg:      #F4F7FF;
+  --surface: #FFFFFF;
+  --card:    #FFFFFF;
+  --card2:   #F0F4FF;
+  --border:  #E2E8F0;
+  --border2: #C8D4EC;
+  --b50:     #EFF6FF;
+  --b100:    #DBEAFE;
+  --b200:    #BFDBFE;
+  --b500:    #5069FF;
+  --b600:    #3A55FF;
+  --b700:    #2A40D6;
+  --b800:    #2436B5;
+  --b900:    #1C2C73;
+  --green:   #059669;
+  --glight:  #D1FAE5;
+  --red:     #DC2626;
+  --rlight:  #FEE2E2;
+  --amber:   #D97706;
+  --alight:  #FEF3C7;
+  --purple:  #7C3AED;
+  --plight:  #EDE9FE;
+  --cyan:    #770BFF;
+  --slate:   #64748B;
+  --text:    #0F172A;
+  --text2:   #1E293B;
+  --text3:   #475569;
+  --text4:   #94A3B8;
+  --grad:    linear-gradient(135deg,#3A55FF,#770BFF);
+}
+#liq-planner{font-family:'Wix Madefor Text','Inter',sans-serif;background:var(--bg);padding:64px 24px;}
+#liq-planner *{box-sizing:border-box;}
+/* ── HERO — dark navy gradient (contrast section) ── */
+.liq-hero{
+  text-align:center;margin-bottom:48px;
+  background:linear-gradient(135deg,#0F172A 0%,#1C2C73 45%,#2A40D6 100%);
+  border-radius:24px;padding:60px 36px;position:relative;overflow:hidden;
+  box-shadow:0 20px 60px rgba(30,58,138,.25);
+}
+.liq-hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='%23ffffff' fill-opacity='0.06'/%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.liq-hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  border-radius:999px;padding:6px 16px;margin-bottom:20px;
+  font-size:11px;font-weight:700;color:#BFDBFE;text-transform:uppercase;letter-spacing:.09em;
+}
+.liq-hero-dot{width:6px;height:6px;border-radius:50%;background:#34D399;animation:liq-pulse 2s infinite;}
+@keyframes liq-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
+.liq-hero h2{
+  font-size:clamp(28px,4.5vw,50px);font-weight:900;color:#fff;
+  line-height:1.1;margin-bottom:12px;letter-spacing:-.03em;
+  font-family:'Plus Jakarta Sans',sans-serif;
+}
+.liq-hero h2 span{color:#AEBCFF;}
+.liq-hero-sub{color:#BFDBFE;font-size:15px;max-width:600px;margin:0 auto 28px;line-height:1.7;}
+/* channel pills */
+.liq-ch-rows{display:flex;flex-direction:column;gap:8px;align-items:center;}
+.liq-ch-row{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;}
+.liq-ch-tag{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.35);padding-right:4px;}
+.liq-ch-pill{padding:4px 11px;border-radius:999px;font-size:10px;font-weight:700;border:1px solid;}
+.liq-ch-pill.ecom{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:#EEF2FF;}
+.liq-ch-pill.qcom{background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.25);color:#A7F3D0;}
+.liq-ch-pill.erp{background:rgba(147,197,253,.12);border-color:rgba(147,197,253,.25);color:#BFDBFE;}
+/* ── FORM CARD — white ── */
+.liq-form-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:20px;padding:32px;margin-bottom:24px;
+  box-shadow:0 1px 3px rgba(0,0,0,.04),0 8px 24px rgba(30,58,138,.06);
+}
+.liq-form-lbl{
+  font-size:11px;font-weight:800;color:var(--b600);
+  text-transform:uppercase;letter-spacing:.09em;
+  margin-bottom:16px;display:flex;align-items:center;gap:8px;
+}
+.liq-form-lbl::before{content:'';width:3px;height:14px;background:var(--b600);border-radius:2px;}
+/* ── CONFIG ── */
+.liq-config-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:24px;}
+.liq-field{display:flex;flex-direction:column;gap:5px;}
+.liq-label{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;}
+.liq-select{
+  background:var(--card);border:1.5px solid var(--border2);
+  border-radius:10px;color:var(--text);padding:10px 13px;
+  font-size:13px;font-family:inherit;outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.liq-select:focus{border-color:var(--b500);box-shadow:0 0 0 3px rgba(59,130,246,.1);}
+/* ── SOURCE GRID ── */
+.liq-source-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin-bottom:20px;}
+.liq-source-btn{
+  padding:10px 8px;border-radius:10px;border:1.5px solid var(--border);
+  background:var(--card);cursor:pointer;transition:all .15s;text-align:center;
+  font-family:inherit;
+}
+.liq-source-btn:hover{border-color:var(--b400);background:var(--b50);}
+.liq-source-btn.liq-selected{border-color:var(--b600);background:var(--b50);box-shadow:0 0 0 3px rgba(37,99,235,.08);}
+.liq-source-ico{font-size:20px;margin-bottom:4px;}
+.liq-source-name{font-size:10px;font-weight:700;color:var(--text2);line-height:1.3;}
+.liq-source-type{font-size:9px;color:var(--text4);margin-top:2px;}
+/* ── CHANNEL PICKER ── */
+.liq-ch-picker{
+  display:flex;flex-wrap:wrap;gap:6px;padding:14px;
+  background:var(--b50);border:1.5px solid var(--b100);
+  border-radius:12px;max-height:116px;overflow-y:auto;scrollbar-width:thin;
+}
+.liq-ch-toggle{padding:4px 11px;border-radius:999px;font-size:11px;font-weight:600;cursor:pointer;border:1.5px solid;transition:all .15s;user-select:none;}
+.liq-ch-toggle.ecom{border-color:var(--b200);color:var(--b700);background:var(--card);}
+.liq-ch-toggle.ecom.liq-on{background:var(--b700);border-color:var(--b700);color:#fff;}
+.liq-ch-toggle.qcom{border-color:#A7F3D0;color:#065F46;background:var(--card);}
+.liq-ch-toggle.qcom.liq-on{background:#059669;border-color:#059669;color:#fff;}
+/* ── DROP ZONE ── */
+.liq-dropzone{
+  border:2px dashed var(--b200);border-radius:14px;
+  padding:36px 20px;text-align:center;cursor:pointer;
+  transition:all .2s;background:var(--b50);position:relative;margin-bottom:10px;
+}
+.liq-dropzone:hover,.liq-dropzone.liq-drag{
+  border-color:var(--b500);background:#EBF4FF;
+  box-shadow:0 0 0 4px rgba(37,99,235,.07);
+}
+.liq-dz-icon{font-size:36px;margin-bottom:10px;}
+.liq-dz-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.liq-dz-sub{font-size:12px;color:var(--text3);}
+.liq-dz-file{
+  margin-top:12px;display:inline-flex;align-items:center;gap:8px;
+  background:var(--b100);border:1px solid var(--b200);
+  border-radius:8px;padding:7px 14px;font-size:13px;color:var(--b700);font-weight:600;
+}
+.liq-file-remove{cursor:pointer;color:var(--red);margin-left:4px;font-size:15px;}
+.liq-file-hint{font-size:11px;color:var(--text4);margin-top:6px;text-align:center;line-height:1.6;}
+.liq-sample-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:6px;}
+.liq-sample-btn{
+  background:var(--card);border:1.5px solid var(--border2);border-radius:8px;
+  padding:6px 14px;color:var(--b600);font-size:11px;font-family:inherit;
+  font-weight:700;cursor:pointer;transition:all .2s;
+}
+.liq-sample-btn:hover{border-color:var(--b500);background:var(--b50);}
+/* ── COLUMN PREVIEW ── */
+.liq-col-preview{
+  background:var(--b50);border:1.5px solid var(--b100);
+  border-radius:12px;padding:14px 16px;margin-bottom:18px;display:none;
+}
+.liq-col-preview-title{font-size:10px;font-weight:800;color:var(--b700);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;}
+.liq-col-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.liq-col-tag{padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700;}
+.liq-col-tag.found{background:#DCFCE7;color:#15803D;}
+.liq-col-tag.miss{background:#FEF3C7;color:#B45309;}
+/* ── BUTTONS ── */
+.liq-cta{display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap;}
+.liq-btn{border:none;border-radius:12px;padding:13px 30px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:8px;}
+.liq-btn-primary{background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;box-shadow:0 4px 14px rgba(37,99,235,.3);}
+.liq-btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(37,99,235,.4);}
+.liq-btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
+.liq-btn-ghost{background:var(--card);border:1.5px solid var(--border2);color:var(--text2);}
+.liq-btn-ghost:hover{border-color:var(--b400);color:var(--b600);background:var(--b50);}
+.liq-btn-sm{padding:8px 16px;font-size:12px;border-radius:8px;}
+/* ── SPINNER ── */
+.liq-spinner{display:inline-block;width:16px;height:16px;border:2.5px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:liq-spin .7s linear infinite;}
+@keyframes liq-spin{to{transform:rotate(360deg)}}
+/* ── PROGRESS ── */
+.liq-progress{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:18px 22px;margin:20px 0;
+  box-shadow:0 1px 4px rgba(0,0,0,.04);
+}
+.liq-prog-step{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);}
+.liq-prog-step:last-child{border-bottom:none;}
+.liq-prog-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.liq-prog-dot.done{background:var(--green);}
+.liq-prog-dot.active{background:var(--b500);animation:liq-pulse 1s infinite;}
+.liq-prog-dot.wait{background:var(--border2);}
+.liq-prog-text{font-size:12px;color:var(--text4);}
+.liq-prog-text.done{color:var(--green);font-weight:600;}
+.liq-prog-text.active{color:var(--text);font-weight:600;}
+/* ── ERROR ── */
+.liq-error{background:var(--rlight);border:1px solid #FECACA;border-radius:10px;padding:14px 18px;color:var(--red);font-size:13px;font-weight:500;margin-top:14px;}
+/* ════════════ DASHBOARD ════════════ */
+#liq-results{margin-top:32px;display:none;}
+.liq-dash-meta{font-size:11px;color:var(--text4);margin-bottom:20px;text-align:right;font-weight:500;}
+/* KPI */
+.liq-kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:12px;margin-bottom:20px;}
+.liq-kpi{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:18px 16px;position:relative;overflow:hidden;
+  box-shadow:0 1px 3px rgba(0,0,0,.03);
+  transition:box-shadow .2s,transform .2s;
+}
+.liq-kpi:hover{box-shadow:0 6px 20px rgba(30,58,138,.1);transform:translateY(-1px);}
+.liq-kpi-accent{position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.liq-kpi-icon{font-size:20px;margin-bottom:8px;}
+.liq-kpi-lbl{font-size:10px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;}
+.liq-kpi-val{font-size:clamp(20px,2.5vw,28px);font-weight:900;line-height:1;letter-spacing:-.02em;}
+.liq-kpi-sub{font-size:10px;color:var(--text4);margin-top:5px;font-weight:500;}
+/* Health bar */
+.liq-health-wrap{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:22px 24px;margin-bottom:20px;
+  box-shadow:0 1px 3px rgba(0,0,0,.03);
+}
+.liq-health-title{font-size:13px;font-weight:800;color:var(--text);margin-bottom:16px;}
+.liq-health-bar{display:flex;height:16px;border-radius:8px;overflow:hidden;gap:2px;margin-bottom:14px;}
+.liq-health-seg{border-radius:4px;transition:flex .6s ease;}
+.liq-health-legend{display:flex;flex-wrap:wrap;gap:16px;}
+.liq-leg-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);}
+.liq-leg-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0;}
+/* Tabs */
+.liq-tabs{
+  display:flex;gap:4px;overflow-x:auto;margin-bottom:20px;
+  background:#F1F5F9;border-radius:12px;padding:4px;scrollbar-width:none;
+}
+.liq-tabs::-webkit-scrollbar{display:none;}
+.liq-tab{
+  padding:8px 16px;border-radius:9px;font-size:12px;font-weight:600;
+  cursor:pointer;border:none;background:transparent;color:var(--text3);
+  font-family:inherit;white-space:nowrap;transition:all .15s;flex-shrink:0;
+}
+.liq-tab.liq-active{background:var(--card);color:var(--b700);box-shadow:0 1px 4px rgba(0,0,0,.08);}
+.liq-tab:hover:not(.liq-active){color:var(--text2);background:rgba(255,255,255,.7);}
+.liq-tab-ct{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:17px;height:17px;border-radius:999px;font-size:9px;font-weight:800;
+  margin-left:5px;background:#E2E8F0;color:var(--text3);
+}
+.liq-active .liq-tab-ct{background:var(--b600);color:#fff;}
+.liq-tab-ct.red{background:#FEE2E2;color:var(--red);}
+.liq-active .liq-tab-ct.red{background:var(--red);color:#fff;}
+/* Panels */
+.liq-panel{display:none;}
+.liq-panel.liq-visible{display:block;}
+.liq-panel-inner{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:24px;
+  box-shadow:0 1px 3px rgba(0,0,0,.03);
+}
+/* Insights */
+.liq-insights{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
+.liq-insight{display:flex;align-items:flex-start;gap:12px;border-radius:12px;padding:14px 16px;border-left:4px solid;}
+.liq-insight.green{background:#F0FDF4;border-color:var(--green);}
+.liq-insight.orange{background:var(--alight);border-color:var(--amber);}
+.liq-insight.blue{background:var(--b50);border-color:var(--b500);}
+.liq-insight.red{background:var(--rlight);border-color:var(--red);}
+.liq-insight.purple{background:var(--plight);border-color:var(--purple);}
+.liq-insight-ico{font-size:17px;flex-shrink:0;margin-top:1px;}
+.liq-insight-text{font-size:12.5px;color:var(--text2);line-height:1.6;font-weight:500;}
+/* Section title */
+.liq-sec-title{font-size:11px;font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.liq-sec-title::after{content:'';flex:1;height:1px;background:var(--border);margin-left:6px;}
+/* Channel forecast cards */
+.liq-ch-fcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin-bottom:22px;}
+.liq-ch-fcard{background:var(--b50);border:1px solid var(--b100);border-radius:12px;padding:16px;transition:box-shadow .2s;}
+.liq-ch-fcard:hover{box-shadow:0 4px 12px rgba(30,58,138,.08);}
+.liq-ch-fname{font-size:10px;font-weight:700;color:var(--text3);margin-bottom:7px;display:flex;align-items:center;gap:5px;}
+.liq-ch-fdot{width:7px;height:7px;border-radius:50%;}
+.liq-ch-fval{font-size:18px;font-weight:900;letter-spacing:-.01em;}
+.liq-ch-fsub{font-size:10px;color:var(--text4);margin-top:3px;}
+/* Table */
+.liq-table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border);margin-bottom:14px;}
+.liq-tbl{width:100%;border-collapse:collapse;font-size:12px;}
+.liq-tbl th{background:#F8FAFF;padding:11px 13px;text-align:left;font-size:10px;font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;border-bottom:1px solid var(--border);}
+.liq-tbl td{padding:11px 13px;border-bottom:1px solid #F1F5F9;white-space:nowrap;vertical-align:middle;color:var(--text2);}
+.liq-tbl tr:last-child td{border-bottom:none;}
+.liq-tbl tr:hover td{background:var(--b50);}
+.mono{font-family:'Courier New',monospace;font-size:11px;}
+/* Pills */
+.liq-pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;font-size:10px;font-weight:700;}
+.p-urgent{background:#FEE2E2;color:#B91C1C;}
+.p-high{background:#FEF3C7;color:#B45309;}
+.p-medium{background:#FEF9C3;color:#A16207;}
+.p-low{background:#DCFCE7;color:#15803D;}
+.p-up{background:#DCFCE7;color:#15803D;}
+.p-down{background:#FEE2E2;color:#B91C1C;}
+.p-flat{background:#F1F5F9;color:var(--slate);}
+.p-dead{background:#F1F5F9;color:#475569;}
+.p-healthy{background:#DCFCE7;color:#15803D;}
+.p-over{background:var(--plight);color:#6D28D9;}
+.p-slow{background:#FEF3C7;color:#B45309;}
+/* Prob bar */
+.liq-prob-bar{width:72px;height:6px;background:var(--border);border-radius:3px;overflow:hidden;display:inline-block;vertical-align:middle;}
+.liq-prob-fill{height:100%;border-radius:3px;}
+/* Season */
+.liq-season-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
+.liq-season-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.03);}
+.liq-season-reg{font-size:11px;font-weight:800;color:var(--b700);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;}
+.liq-season-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.liq-season-tag{padding:3px 9px;background:var(--b50);border:1px solid var(--b100);border-radius:5px;font-size:10px;color:var(--b700);font-weight:600;}
+/* QC */
+.liq-qc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:13px;margin-bottom:18px;}
+.liq-qc-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.03);}
+.liq-qc-lbl{font-size:10px;color:var(--text3);font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;}
+.liq-qc-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);font-size:11px;}
+.liq-qc-row:last-child{border-bottom:none;}
+.liq-qc-name{color:var(--text3);}
+.liq-qc-val{font-weight:700;font-family:'Courier New',monospace;font-size:11px;}
+/* Downloads */
+.liq-dl-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.liq-info-box{background:var(--b50);border:1px solid var(--b100);border-radius:12px;padding:14px 16px;font-size:12px;color:var(--text2);line-height:1.6;margin-top:16px;}
+/* ── DISCLAIMER BAR ── */
+.liq-disclaimer-bar{background:#FEF9C3;border:1px solid #FDE68A;border-radius:10px;padding:10px 16px;margin-top:12px;font-size:11px;color:#92400E;line-height:1.6;font-weight:500;display:flex;align-items:flex-start;gap:7px;}
+@media(max-width:600px){
+  #liq-planner{padding:36px 12px;}
+  .liq-hero{padding:44px 20px;}
+  .liq-kpi-grid{grid-template-columns:repeat(2,1fr);}
+  .liq-cta{flex-direction:column;}
+  .liq-btn{justify-content:center;}
+  .liq-form-card{padding:20px;}
+  .liq-source-grid{grid-template-columns:repeat(3,1fr);}
+}
 </style>
 </head>
 <body>
+<!-- ── NAVIGATION ── -->
+<style id="liq-theme-css">
+/* ===== PREMIUM HERO (matches approved design) ===== */
+.pf-hero{position:relative;overflow:hidden;padding:74px 32px 58px;background:
+  radial-gradient(680px 360px at 88% -5%,rgba(119,11,255,.13),transparent 60%),
+  radial-gradient(620px 380px at 3% 8%,rgba(58,85,255,.14),transparent 55%),var(--bg)}
+.pf-hero::after{content:"";position:absolute;inset:0;background-image:
+  linear-gradient(rgba(58,85,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(58,85,255,.05) 1px,transparent 1px);
+  background-size:46px 46px;-webkit-mask:radial-gradient(800px 480px at 50% 20%,#000,transparent 75%);mask:radial-gradient(800px 480px at 50% 20%,#000,transparent 75%);pointer-events:none}
+.pf-wrap{max-width:1140px;margin:0 auto;position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+.pf-badge{display:inline-flex;align-items:center;gap:8px;background:var(--b50);border:1px solid var(--b200);color:var(--b700);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
+.pf-hero h1{font-family:'Wix Madefor Display','Plus Jakarta Sans',sans-serif;font-size:clamp(30px,4.6vw,52px);font-weight:800;line-height:1.08;letter-spacing:-.03em;color:var(--text);margin:16px 0 14px}
+.pf-hero h1 .g{background:linear-gradient(120deg,#3A55FF,#770BFF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.pf-sub{font-size:17px;color:var(--text3);max-width:540px;line-height:1.6;margin-bottom:22px}
+.pf-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.pf-btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;border-radius:12px;padding:13px 22px;cursor:pointer;border:1px solid transparent;text-decoration:none}
+.pf-btn-primary{background:linear-gradient(120deg,#3A55FF,#770BFF);color:#fff;box-shadow:0 8px 22px rgba(58,85,255,.34)}
+.pf-btn-primary:hover{transform:translateY(-2px)}
+.pf-btn-ghost{background:var(--white);border-color:var(--border2);color:var(--text)}
+.pf-btn-ghost:hover{border-color:#3A55FF;color:#3A55FF}
+.pf-ticks{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;font-weight:600;color:var(--text2)}
+.pf-ticks .c{color:#0EA66A;font-weight:900;margin-right:4px}
+.pf-card{background:var(--white);border:1px solid var(--border);border-radius:20px;box-shadow:0 24px 60px rgba(15,23,42,.14);padding:20px}
+.pf-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.pf-chip{font-size:11px;font-weight:800;color:#770BFF;background:rgba(119,11,255,.1);border:1px solid rgba(119,11,255,.2);padding:4px 10px;border-radius:999px}
+.pf-minis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pf-mini{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:12px}
+.pf-mini .l{font-size:11px;color:var(--text4);font-weight:600}
+.pf-mini .v{font-size:20px;font-weight:800;color:var(--text)}
+.pf-mini .v.up{color:#0EA66A}.pf-mini .v.warn{color:#D97706}
+.pf-bars{display:flex;align-items:flex-end;gap:6px;height:56px;margin-top:12px;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:12px}
+.pf-bars i{flex:1;background:linear-gradient(180deg,#3A55FF,#770BFF);border-radius:4px 4px 0 0;opacity:.85}
+.pf-rows{max-width:1140px;margin:28px auto 0;position:relative;z-index:2}
+.pf-pains{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.pf-pain{background:var(--white);border:1px solid var(--border);border-radius:999px;padding:6px 13px;font-size:12px;font-weight:600;color:var(--text3)}
+.pf-pain em{font-style:normal;font-weight:800;color:#770BFF}
+.pf-logos-l{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--text4);margin-bottom:8px}
+.pf-logos{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.pf-logo{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:5px 12px;font-size:11px;font-weight:700;color:var(--text2)}
+.pf-stats{display:flex;flex-wrap:wrap;gap:10px}
+.pf-stat{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:12px 20px;text-align:center;min-width:96px}
+.pf-stat .n{font-size:24px;font-weight:900;background:linear-gradient(120deg,#3A55FF,#770BFF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.pf-stat .l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text4)}
+.pf-india{display:inline-flex;align-items:center;gap:6px;background:rgba(255,127,80,.12);border:1px solid rgba(255,127,80,.28);border-radius:999px;padding:4px 12px;font-size:10px;font-weight:800;color:#B45309;margin-top:16px}
+[data-theme="dark"] .pf-hero{background:radial-gradient(680px 360px at 88% -5%,rgba(119,11,255,.2),transparent 60%),radial-gradient(620px 380px at 3% 8%,rgba(58,85,255,.22),transparent 55%),#070708}
+[data-theme="dark"] .pf-card,[data-theme="dark"] .pf-pain,[data-theme="dark"] .pf-logo,[data-theme="dark"] .pf-stat{background:#10131F;border-color:rgba(255,255,255,.12)}
+[data-theme="dark"] .pf-mini,[data-theme="dark"] .pf-bars{background:#0C0F1A;border-color:rgba(255,255,255,.10)}
+[data-theme="dark"] .pf-btn-ghost{background:#10131F}
+@media(max-width:880px){.pf-wrap{grid-template-columns:1fr}.pf-card{order:-1}}
+
+.liq-theme-btn{width:38px;height:38px;border-radius:9px;border:1px solid var(--border2);background:var(--white);color:var(--text);font-size:15px;cursor:pointer;line-height:1;display:inline-grid;place-items:center;transition:.18s;margin-right:4px}
+.liq-theme-btn:hover{border-color:#3A55FF;transform:translateY(-1px)}
+[data-theme="dark"]{
+  --bg:#070708;--white:#10131F;--surface:#10131F;--card:#10131F;--card2:#161A2E;
+  --border:rgba(255,255,255,.10);--border2:rgba(255,255,255,.17);
+  --b50:rgba(58,85,255,.12);--b100:rgba(58,85,255,.20);--b200:rgba(58,85,255,.32);
+  --text:#F1F5FF;--text2:#DBE3F5;--text3:#A7B0CC;--text4:#7E88A8;
+  --glight:rgba(16,185,129,.16);--rlight:rgba(239,68,68,.16);--alight:rgba(245,158,11,.16);--plight:rgba(119,11,255,.18);
+}
+[data-theme="dark"] .nav{background:rgba(9,10,18,.92)!important;border-bottom-color:rgba(255,255,255,.08)}
+[data-theme="dark"] .liq-theme-btn{background:rgba(255,255,255,.06)}
+[data-theme="dark"] .liq-wordmark{fill:#FFFFFF}
+[data-theme="dark"] .nav-tagline{color:#7D92FF!important}
+[data-theme="dark"] .section-eyebrow,[data-theme="dark"] .calc-tag,[data-theme="dark"] .blog-cat{background:rgba(58,85,255,.14)!important;border-color:rgba(58,85,255,.32)!important;color:#AEBCFF!important}
+[data-theme="dark"] .calc-cat-lbl{color:#AEBCFF}
+[data-theme="dark"] .calc-cat-lbl::after{background:rgba(255,255,255,.1)}
+[data-theme="dark"] .faq-a{background:rgba(255,255,255,.03)!important;border-top-color:rgba(255,255,255,.08)!important}
+[data-theme="dark"] .faq-q:hover{background:rgba(255,255,255,.04)}
+[data-theme="dark"] .testi-section,[data-theme="dark"] .blog-section{border-top-color:rgba(255,255,255,.08)}
+[data-theme="dark"] .liq-testi-text{color:#C7D0E8}
+[data-theme="dark"] .liq-testi-role,[data-theme="dark"] .blog-meta{color:#8A93B2}
+[data-theme="dark"] .safety-section{background:linear-gradient(135deg,#0B1F18,#0A1A14)!important;border-color:rgba(16,185,129,.32)!important}
+[data-theme="dark"] .safety-card{background:rgba(255,255,255,.04)!important;border-color:rgba(16,185,129,.28)!important}
+[data-theme="dark"] .safety-title{color:#A7F3D0}
+[data-theme="dark"] .safety-sub,[data-theme="dark"] .safety-card-b{color:#86EFCB}
+[data-theme="dark"] .safety-card-t{color:#D1FAE5}
+[data-theme="dark"] .liq-disclaimer-bar{background:rgba(245,158,11,.12)!important;border-color:rgba(245,158,11,.3)!important;color:#FCD9A0!important}
+[data-theme="dark"] .liq-col-preview{background:rgba(58,85,255,.08)!important}
+</style>
 <nav class="nav">
-  <a href="/" class="nav-logo" aria-label="LogicstIQ — Home" style="display:inline-flex;flex-direction:column;align-items:flex-start;text-decoration:none;line-height:1;gap:3px">
-    <svg width="150" height="36" viewBox="0 0 260 68" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block">
-      <defs><linearGradient id="navlogo_g" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1D4ED8"/><stop offset="100%" stop-color="#60A5FA"/></linearGradient></defs>
-      <path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#navlogo_g)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <path d="M59 8 L66 14 L59 20" stroke="#60A5FA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <circle cx="32" cy="50" r="3.5" fill="#1D4ED8"/>
-      <circle cx="50" cy="14" r="3.5" fill="#60A5FA"/>
-      <text x="82" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5"><tspan fill="#0F172A">Logicst</tspan><tspan fill="#2563EB">IQ</tspan></text>
+<a href="/" class="nav-logo" style="display:flex;flex-direction:column;align-items:flex-start;text-decoration:none;line-height:1">    <svg width="158" height="38" viewBox="0 0 260 68" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="LogicstIQ" style="display:block">
+      <defs>
+        <linearGradient id="nav_g" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#2A40D6"/>
+          <stop offset="100%" stop-color="#7A92FF"/>
+        </linearGradient>
+      </defs>
+      <path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#nav_g)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M59 8 L66 14 L59 20" stroke="#7A92FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="32" cy="50" r="3.5" fill="#2A40D6"/>
+      <circle cx="50" cy="14" r="3.5" fill="#7A92FF"/>
+      <text x="82" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5">
+        <tspan class="liq-wordmark" fill="#0F172A">Logicst</tspan><tspan fill="#3A55FF">IQ</tspan>
+      </text>
     </svg>
-    <span style="font-size:9px;font-weight:600;color:#2563EB;letter-spacing:.05em;white-space:nowrap">Where Logistics Meets Intelligence</span>
-  </a>
-  <a href="https://logicstiq.com" class="nav-back">← All Calculators</a>
+<span class="nav-tagline" style="font-size:9px;font-weight:600;color:#3A55FF;letter-spacing:.05em;white-space:nowrap;display:block;margin-top:3px">Where Logistics Meets Intelligence</span></a>  <div class="nav-links">
+    <a href="#calculators">Calculators</a>
+    <a href="#documents">Documents</a>
+    <a href="#liq-planner">AI Demand Planner</a>
+    <a href="#blog">Blog</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+  <button id="liqTheme" class="liq-theme-btn" type="button" aria-label="Toggle light or dark mode" title="Toggle light / dark">🌙</button>
+  <button class="nav-cta" onclick="document.getElementById('liq-planner').scrollIntoView({behavior:'smooth'})">Free — No Login →</button>
 </nav>
-
-<div class="hero">
-  <div class="hero-badge">🆓 Free · No Login · Instant Results</div>
-  <h1>Landed Cost Calculator<br><span>Calculate the True Total Cost of Your Products — Free</span></h1>
-  <p class="hero-sub">The price on the invoice is never the real cost. Calculate your actual landed cost including freight, GST, customs duties, and all other charges.</p>
-  <div class="trust-row">
-    <span><span class="tick">✓</span>No signup needed</span>
-    <span><span class="tick">✓</span>No data stored</span>
-    <span><span class="tick">✓</span>Works on mobile</span>
-    <span><span class="tick">✓</span>Free forever</span>
-  </div>
-</div>
-
-<div class="wrap">
-
-  <!-- LIVE CALCULATOR -->
-  <div class="calc-card">
-    <h2>🔢 Landed Cost Calculator — Free Online Tool</h2>
-    <div class="input-grid">
-      <div class="input-group">
-        <label for="unit_price">Product Price per Unit (₹)</label>
-        <input type="number" id="unit_price" placeholder="e.g. 500" min="0" step="1">
+<!-- ── HERO (premium, matches approved design) ── -->
+<section class="pf-hero">
+  <div class="pf-wrap">
+    <div>
+      <span class="pf-badge"><span class="hero-dot"></span>Free · No Login · AI-Powered</span>
+      <h1>India's free <span class="g">supply chain intelligence</span> platform</h1>
+      <p class="pf-sub">31 professional calculators, a GST &amp; EXIM document generator, and an AI Demand Planner — used by D2C brands, sellers, manufacturers, distributors and 3PLs across India and globally.</p>
+      <div class="pf-cta">
+        <a href="#liq-planner" class="pf-btn pf-btn-primary">⚡ Launch AI Demand Planner</a>
+        <a href="#calculators" class="pf-btn pf-btn-ghost">Explore 31 calculators</a>
       </div>
-      <div class="input-group">
-        <label for="quantity">Order Quantity (units)</label>
-        <input type="number" id="quantity" placeholder="e.g. 1000" min="0" step="1">
-      </div>
-      <div class="input-group">
-        <label for="freight_cost">Total Freight Cost (₹)</label>
-        <input type="number" id="freight_cost" placeholder="e.g. 8000" min="0" step="1">
-      </div>
-      <div class="input-group">
-        <label for="customs_duties">Customs / Import Duties (₹)</label>
-        <input type="number" id="customs_duties" placeholder="e.g. 2000" min="0" step="1">
-      </div>
-      <div class="input-group">
-        <label for="gst_amount">GST Amount (if not recoverable) (₹)</label>
-        <input type="number" id="gst_amount" placeholder="e.g. 1500" min="0" step="1">
-      </div>
-      <div class="input-group">
-        <label for="other_charges">Other Charges (insurance, handling) (₹)</label>
-        <input type="number" id="other_charges" placeholder="e.g. 500" min="0" step="1">
-      </div>
+      <div class="pf-ticks"><span><span class="c">✓</span>No signup</span><span><span class="c">✓</span>No data stored</span><span><span class="c">✓</span>Any device</span><span><span class="c">✓</span>Excel &amp; CSV</span></div>
     </div>
-    <button class="calc-btn" onclick="calculate()">Calculate Landed Cost →</button>
-    <div class="result-box" id="result">
-      <div class="result-label">Total Landed Cost</div>
-      <div class="result-value" id="result-value">—</div>
-      <div class="result-unit">₹ per unit</div>
-      <div class="result-detail" id="result-detail"></div>
-    </div>
-    <div class="disclaimer" style="margin-top:12px">⚠️ <span><strong>Reference only:</strong> Results are for planning purposes. Validate with your ERP or business data before making decisions.</span></div>
-  </div>
-
-  <!-- WHAT IS -->
-  <h2 id="what">What is Landed Cost Calculator?</h2>
-  <p><strong>Landed Cost</strong> is the total cost of a product from the supplier's location to your warehouse or fulfillment centre. It includes the purchase price plus all freight, customs duties, taxes, insurance, handling, and any other charges incurred along the way.</p>
-  <p>For Indian importers and domestic buyers, landed cost is critical for accurate product costing, margin calculation, and supplier comparison. A product that looks cheaper from Supplier A may actually cost more once freight, GST (non-recoverable portion), and handling are included.</p>
-
-  <!-- FORMULA -->
-  <h2 id="formula">The Landed Cost Formula</h2>
-  <div class="formula-box">
-    <div class="f-label">📐 Formula</div>
-    <div class="f-formula">Landed Cost per Unit = (Purchase Price × Qty + Freight + Duties + GST + Other) ÷ Quantity</div>
-  </div>
-  <p>Landed cost includes every cost incurred to get a product from your supplier to your warehouse — not just the invoice price. Businesses that price products based on purchase price alone systematically underestimate costs and erode margins without knowing why.</p>
-
-  <!-- EXAMPLE -->
-  <h2 id="example">Worked Example</h2>
-  <p>An electronics importer brings in 500 units of wireless earbuds from a supplier at ₹800/unit. Let's calculate the true landed cost.</p>
-  <div class="example-box">
-    <div class="ex-title">📊 Example Calculation</div>
-    <div class="ex-row"><span class="ex-lbl">Purchase price</span><span class="ex-val">₹800 × 500 = ₹4,00,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">Sea freight (Mumbai port)</span><span class="ex-val">₹25,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">Customs duty (20% on assessable value)</span><span class="ex-val">₹80,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">IGST (12% on assessable + duty)</span><span class="ex-val">₹57,600</span></div>
-    <div class="ex-row"><span class="ex-lbl">Clearing agent + handling</span><span class="ex-val">₹8,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">Total landed cost</span><span class="ex-val">₹5,70,600</span></div>
-    <div class="ex-row"><span class="ex-lbl"><strong>Landed cost per unit</strong></span><span class="ex-result">₹5,70,600 ÷ 500 = ₹1,141.20</span></div>
-  </div>
-  <p>The true landed cost is ₹1,141 per unit — 42.6% higher than the invoice price of ₹800. Any business pricing at a 30% markup over ₹800 would actually be selling at a loss once all costs are included.</p>
-
-  <!-- WHY IT MATTERS -->
-  <h2 id="why">Why Landed Cost Matters for Your Business</h2>
-  <p>Landed cost is the single most important number for accurate product pricing and supplier comparison. Ignoring it leads to the most common profitability mistake in supply chain — calculating margins on purchase price instead of true cost.</p>
-  <ul>
-  <li><strong>Accurate pricing:</strong> Set selling prices that cover all costs and deliver the target margin</li>
-  <li><strong>Fair supplier comparison:</strong> Compare two suppliers on landed cost, not just invoice price</li>
-  <li><strong>Import planning:</strong> Understand the true cost of importing vs. buying domestically</li>
-  <li><strong>GST planning:</strong> Identify which portions of GST are recoverable as ITC and which add to your actual cost</li>
-  </ul>
-
-  <!-- AI PLANNER CTA -->
-  <div class="cta-box">
-    <h3>🤖 Go Further with AI Demand Planning</h3>
-    <p>Upload your full inventory export and get Landed Cost calculated automatically across all your SKUs — alongside demand forecasts, reorder plans, and stockout risk analysis.</p>
-    <a href="https://logicstiq.com/#ai-demand-planner" class="cta-btn">Try Free AI Demand Planner →</a>
-    <div class="cta-feats">
-      <span class="cta-f">Works with Tally · SAP · NetSuite · Amazon · Flipkart</span>
-      <span class="cta-f">No login · No data stored · Free forever</span>
+    <div class="pf-card">
+      <div class="pf-card-top"><b style="font-size:14px;color:var(--text)">📊 Inventory Health</b><span class="pf-chip">AI · live demo</span></div>
+      <div class="pf-minis">
+        <div class="pf-mini"><div class="l">SKUs analysed</div><div class="v">500</div></div>
+        <div class="pf-mini"><div class="l">Healthy stock</div><div class="v up">271</div></div>
+        <div class="pf-mini"><div class="l">Urgent reorders</div><div class="v warn">188</div></div>
+        <div class="pf-mini"><div class="l">Revenue at risk 90d</div><div class="v">$4.35M</div></div>
+      </div>
+      <div class="pf-bars"><i style="height:40%"></i><i style="height:62%"></i><i style="height:50%"></i><i style="height:78%"></i><i style="height:66%"></i><i style="height:90%"></i><i style="height:72%"></i><i style="height:84%"></i><i style="height:96%"></i></div>
     </div>
   </div>
-
-  <!-- FAQ -->
-  <h2 id="faq">Frequently Asked Questions</h2>
-  <div class="faq-item open"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does landed cost include GST?<span>▾</span></div><div class="faq-a">It depends. If you are a GST-registered business and the GST is recoverable as Input Tax Credit (ITC), then GST should NOT be included in landed cost (it is effectively zero cost to you). If GST is not recoverable — for example, RCM on GTA services, or if you are not GST registered — then include it as part of your landed cost. Our calculator includes a GST field for the non-recoverable portion only.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I calculate landed cost for Amazon FBA imports?<span>▾</span></div><div class="faq-a">For Amazon FBA imports, your landed cost includes: product price + international freight (air or sea) + customs duty + IGST (may be recoverable if you are GST registered) + customs clearance agent fees + domestic freight to FBA warehouse + FBA receiving fees. Many Amazon sellers calculate landed cost excluding recoverable IGST and including FBA fees to get true cost before Amazon commission.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Should I include Amazon or Flipkart commission in landed cost?<span>▾</span></div><div class="faq-a">No. Amazon and Flipkart commissions (typically 5-15%) are selling costs, not product costs. Calculate landed cost first (true cost to get product to your warehouse), then factor in platform commission separately when calculating your net margin per unit. Mixing the two makes pricing decisions confusing.</div></div>
-
-  <!-- RELATED CALCULATORS -->
-  <h2>Related Free Calculators</h2>
-  <div class="related-grid">
-    <a href="https://logicstiq.com/eoq-calculator" class="related-card"><div class="rc-name">EOQ Calculator</div><div class="rc-vol">2,400/mo monthly searches</div></a>
-    <a href="https://logicstiq.com/safety-stock-calculator" class="related-card"><div class="rc-name">Safety Stock Calculator</div><div class="rc-vol">1,900/mo monthly searches</div></a>
-    <a href="https://logicstiq.com/reorder-point-calculator" class="related-card"><div class="rc-name">Reorder Point Calculator</div><div class="rc-vol">1,600/mo monthly searches</div></a>
-    <a href="https://logicstiq.com/otif-calculator" class="related-card"><div class="rc-name">OTIF Calculator</div><div class="rc-vol">2,900/mo monthly searches</div></a>
-    <a href="https://logicstiq.com/inventory-turnover-calculator" class="related-car
+  <div class="pf-rows">
+    <div class="pf-pains">
+      <span class="pf-pain"><em>Stockouts</em> killing your rank?</span>
+      <span class="pf-pain"><em>Dead stock</em> eating your cash?</span>
+      <span class="pf-pain">5 courier logins, <em>zero visibility?</em></span>
+      <span class="pf-pain">Planning on <em>Excel &amp; WhatsApp?</em></span>
+      <span class="pf-pain">SAP too <em>expensive</em> for your scale?</span>
+    </div>
+    <div class="pf-logos-l">Works with exports from</div>
+    <div class="pf-logos">
+      <span class="pf-logo">Amazon</span><span class="pf-logo">Flipkart</span><span class="pf-logo">Shopify</span><span class="pf-logo">Meesho</span><span class="pf-logo">Myntra</span><span class="pf-logo">Tally Prime</span><span class="pf-logo">SAP</span><span class="pf-logo">NetSuite</span><span class="pf-logo">Zoho</span><span class="pf-logo">Unicommerce</span><span class="pf-logo">Blinkit</span><span class="pf-logo">Zepto</span><span class="pf-logo">Dynamics 365</span><span class="pf-logo">Odoo</span>
+    </div>
+    <div class="pf-stats">
+      <div class="pf-stat"><div class="n">31</div><div class="l">Free Tools</div></div>
+      <div class="pf-stat"><div class="n">AI</div><div class="l">Powered</div></div>
+      <div class="pf-stat"><div class="n">0</div><div class="l">Login</div></div>
+      <div class="pf-stat"><div class="n">∞</div><div class="l">Free Forever</div></div>
+      <div class="pf-stat"><div class="n">30+</div><div class="l">Channels</div></div>
+    </div>
+    <div><span class="pf-india">🇮🇳 Made in India · Built for India &amp; Global Markets</span></div>
   </div>
+</section>
 
-  <div class="aff-note"><strong>Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. When you sign up for a third-party service via these links, we may earn a small commission at no extra cost to you. All calculators are and always will be completely free.</div>
+<!-- ── ADSENSE SLOT 1 — Top Banner (activate after AdSense approval) ── -->
+<!-- <div class="ad-slot"><span class="ad-label">Advertisement</span><div class="ad-bar"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div></div> -->
+<!-- ── CALCULATORS ── -->
+<section id="calculators" class="section center">
+  <div class="section-eyebrow">🧮 Free Tools</div>
+  <h2 class="section-title">31 Supply Chain Calculators</h2>
+  <p class="section-sub">Professional-grade calculators used by supply chain teams at D2C brands, marketplaces, manufacturers and distributors. Free forever, no login required.</p>
+  <div class="calc-cat-lbl">📦 Inventory Planning</div>
+  <div class="calc-grid">
+    <a href="/eoq-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📦</div><div class="calc-tag">Inventory</div><div class="calc-name">EOQ Calculator</div><div class="calc-desc">Economic Order Quantity — optimal order size</div></div></a>
+    <a href="/safety-stock-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🛡️</div><div class="calc-tag">Inventory</div><div class="calc-name">Safety Stock</div><div class="calc-desc">Buffer stock to prevent stockouts</div></div></a>
+    <a href="/reorder-point-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🎯</div><div class="calc-tag">Inventory</div><div class="calc-name">Reorder Point</div><div class="calc-desc">When to place your next purchase order</div></div></a>
+    <a href="/abc-analysis-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📊</div><div class="calc-tag">Inventory</div><div class="calc-name">ABC Analysis</div><div class="calc-desc">Classify SKUs by revenue contribution</div></div></a>
+    <a href="/inventory-turnover-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🔄</div><div class="calc-tag">Inventory</div><div class="calc-name">Inventory Turnover</div><div class="calc-desc">How fast your stock moves</div></div></a>
+    <a href="/moq-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🧮</div><div class="calc-tag">Inventory</div><div class="calc-name">MOQ Calculator</div><div class="calc-desc">Minimum order quantity economics</div></div></a>
+    <a href="/dead-stock-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">💀</div><div class="calc-tag">Inventory</div><div class="calc-name">Dead Stock</div><div class="calc-desc">Identify &amp; value non-moving inventory</div></div></a>
+  </div>
+  <div class="calc-cat-lbl">📈 Performance &amp; Service</div>
+  <div class="calc-grid">
+    <a href="/otif-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">⏱️</div><div class="calc-tag">Performance</div><div class="calc-name">OTIF Calculator</div><div class="calc-desc">On-Time In-Full delivery score</div></div></a>
+    <a href="/fill-rate-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">💯</div><div class="calc-tag">Performance</div><div class="calc-name">Fill Rate</div><div class="calc-desc">Order fulfilment efficiency</div></div></a>
+    <a href="/demand-forecast-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📉</div><div class="calc-tag">Performance</div><div class="calc-name">Demand Forecast</div><div class="calc-desc">Simple statistical forecasting</div></div></a>
+    <a href="/supplier-scorecard-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">⭐</div><div class="calc-tag">Performance</div><div class="calc-name">Supplier Scorecard</div><div class="calc-desc">Rate and compare your suppliers</div></div></a>
+    <a href="/cycle-count-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📋</div><div class="calc-tag">Performance</div><div class="calc-name">Cycle Count</div><div class="calc-desc">Plan physical inventory counts</div></div></a>
+    <a href="/supplier-lead-time-variability-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📐</div><div class="calc-tag">Performance</div><div class="calc-name">Lead Time Variability</div><div class="calc-desc">Supplier reliability &amp; lead-time spread</div></div></a>
+  </div>
+  <div class="calc-cat-lbl">💰 Costing &amp; Finance</div>
+  <div class="calc-grid">
+    <a href="/landed-cost-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🌐</div><div class="calc-tag">Costing</div><div class="calc-name">Landed Cost</div><div class="calc-desc">True cost including freight &amp; duties</div></div></a>
+    <a href="/gst-calculator-logistics" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🏷️</div><div class="calc-tag">Costing</div><div class="calc-name">GST Calculator</div><div class="calc-desc">India GST with HSN code lookup</div></div></a>
+    <a href="/working-capital-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📊</div><div class="calc-tag">Finance</div><div class="calc-name">Working Capital</div><div class="calc-desc">Cash tied up in your supply chain</div></div></a>
+    <a href="/carrying-cost-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">💸</div><div class="calc-tag">Finance</div><div class="calc-name">Carrying Cost</div><div class="calc-desc">Total cost of holding inventory</div></div></a>
+    <a href="/stockout-cost-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🎯</div><div class="calc-tag">Finance</div><div class="calc-name">Stockout Cost</div><div class="calc-desc">Revenue lost from out-of-stock events</div></div></a>
+    <a href="/cogs-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🧾</div><div class="calc-tag">Costing</div><div class="calc-name">COGS Calculator</div><div class="calc-desc">Cost of goods sold for your products</div></div></a>
+    <a href="/gross-margin-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📈</div><div class="calc-tag">Finance</div><div class="calc-name">Gross Margin</div><div class="calc-desc">Profit margin after cost of goods</div></div></a>
+    <a href="/break-even-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">⚖️</div><div class="calc-tag">Finance</div><div class="calc-name">Break-Even</div><div class="calc-desc">Units needed to cover your costs</div></div></a>
+    <a href="/days-inventory-outstanding-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📅</div><div class="calc-tag">Finance</div><div class="calc-name">Days Inventory Outstanding</div><div class="calc-desc">How long stock sits before selling</div></div></a>
+    <a href="/cash-conversion-cycle-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🔁</div><div class="calc-tag">Finance</div><div class="calc-name">Cash Conversion Cycle</div><div class="calc-desc">Days to turn inventory into cash</div></div></a>
+  </div>
+  <div class="calc-cat-lbl">🚚 Logistics &amp; Sustainability</div>
+  <div class="calc-grid">
+    <a href="/freight-cost-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🚛</div><div class="calc-tag">Logistics</div><div class="calc-name">Freight Cost</div><div class="calc-desc">Compare carrier rates by weight &amp; zone</div></div></a>
+    <a href="/carbon-footprint-logistics" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🌱</div><div class="calc-tag">Sustainability</div><div class="calc-name">Carbon Footprint</div><div class="calc-desc">CO₂ per shipment across modes</div></div></a>
+    <a href="/warehouse-space-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🏭</div><div class="calc-tag">Logistics</div><div class="calc-name">Warehouse Space</div><div class="calc-desc">Storage requirement planning</div></div></a>
+    <a href="/lead-time-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🔗</div><div class="calc-tag">Logistics</div><div class="calc-name">Lead Time</div><div class="calc-desc">End-to-end supply chain lead time</div></div></a>
+    <a href="/disruption-impact-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🌊</div><div class="calc-tag">Resilience</div><div class="calc-name">Disruption Impact</div><div class="calc-desc">Cost of supply chain disruptions</div></div></a>
+    <a href="/shipping-cost-per-unit-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📦</div><div class="calc-tag">Logistics</div><div class="calc-name">Shipping Cost / Unit</div><div class="calc-desc">Per-unit outbound shipping cost</div></div></a>
+    <a href="/volumetric-weight-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📏</div><div class="calc-tag">Logistics</div><div class="calc-name">Volumetric Weight</div><div class="calc-desc">Dimensional weight for freight billing</div></div></a>
+    <a href="/pick-pack-cost-calculator" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🏷️</div><div class="calc-tag">Logistics</div><div class="calc-name">Pick &amp; Pack Cost</div><div class="calc-desc">Fulfilment cost per order</div></div></a>
+  </div>
+</section>
+<!-- DOCUMENT GENERATOR -->
+<section id="documents" class="section center">
+  <div class="section-eyebrow">📄 Free Tool</div>
+  <h2 class="section-title">Document Generator</h2>
+  <p class="section-sub">Create GST invoices, purchase orders, quotations, delivery challans &amp; full EXIM documents — fill in the details and download a clean, print-ready PDF. Auto GST &amp; customs duty, amount in words, built-in GSTIN/IEC/HSN checks and an EXIM filing guide. Free, no login, nothing stored.</p>
+  <div class="calc-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));max-width:820px;margin-left:auto;margin-right:auto">
+    <a href="/documents-generator.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📄</div><div class="calc-tag">Domestic / GST</div><div class="calc-name">Invoice · PO · Quotation</div><div class="calc-desc">Tax invoice, purchase order, proforma, delivery challan &amp; packing list — auto CGST/SGST/IGST</div></div></a>
+    <a href="/documents-generator.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🌐</div><div class="calc-tag">EXIM</div><div class="calc-name">Commercial Invoice · CoO</div><div class="calc-desc">Export invoice, packing list, certificate of origin, bill of lading, bill of exchange &amp; LC checklist</div></div></a>
+    <a href="/documents-generator.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🛃</div><div class="calc-tag">Customs</div><div class="calc-name">Shipping Bill · Bill of Entry</div><div class="calc-desc">ICEGATE worksheets with auto customs-duty calc, plus eBRC &amp; RoDTEP claim sheets</div></div></a>
+  </div>
+</section>
 
-</div>
-
-<footer>
-  <p>© 2025 <a href="https://logicstiq.com">LogicstIQ.com</a> · 20 Free Supply Chain Calculators + AI Demand Planner · No Login · Free Forever · Where Logistics Meets Intelligence</p>
-  <p style="margin-top:8px">Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a></p>
-</footer>
-
+<!-- ── ADSENSE SLOT 2 — Mid page (activate after AdSense approval) ── -->
+<!-- <div class="ad-slot"><span class="ad-label">Advertisement</span><div class="ad-bar"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div></div> -->
+<!-- ── AI DEMAND PLANNER v4 — FUNCTIONAL ── -->
+<section id="liq-planner">
+  <!-- HERO — dark navy (contrast section) -->
+  <div class="liq-hero">
+    <div><span class="liq-hero-badge"><span class="liq-hero-dot"></span>AI-Powered · Gemini 2.5 Flash · 30+ Channels · Global</span></div>
+    <h2>🤖 AI Demand Planner<br><span>Control Tower</span></h2>
+    <p class="liq-hero-sub">Universal demand forecasting & inventory intelligence for brands, manufacturers, distributors and retailers — works with every E-Commerce channel, Quick Commerce platform, and ERP system globally.</p>
+    <div class="liq-ch-rows">
+      <div class="liq-ch-row"><span class="liq-ch-tag">E-COM</span><span class="liq-ch-pill ecom">Amazon</span><span class="liq-ch-pill ecom">Walmart</span><span class="liq-ch-pill ecom">Shopify</span><span class="liq-ch-pill ecom">Flipkart</span><span class="liq-ch-pill ecom">Meesho</span><span class="liq-ch-pill ecom">Myntra</span><span class="liq-ch-pill ecom">Nykaa</span><span class="liq-ch-pill ecom">TikTok Shop</span><span class="liq-ch-pill ecom">Shopee</span><span class="liq-ch-pill ecom">Lazada</span><span class="liq-ch-pill ecom">Noon</span><span class="liq-ch-pill ecom">eBay</span><span class="liq-ch-pill ecom">Coupang</span></div>
+      <div class="liq-ch-row"><span class="liq-ch-tag">Q-COM</span><span class="liq-ch-pill qcom">Blinkit</span><span class="liq-ch-pill qcom">Zepto</span><span class="liq-ch-pill qcom">Swiggy Instamart</span><span class="liq-ch-pill qcom">BigBasket</span><span class="liq-ch-pill qcom">Flipkart Minutes</span><span class="liq-ch-pill qcom">Amazon Fresh</span><span class="liq-ch-pill qcom">Instacart</span><span class="liq-ch-pill qcom">Getir</span><span class="liq-ch-pill qcom">Gopuff</span><span class="liq-ch-pill qcom">Meituan</span></div>
+      <div class="liq-ch-row"><span class="liq-ch-tag">ERP</span><span class="liq-ch-pill erp">SAP</span><span class="liq-ch-pill erp">NetSuite</span><span class="liq-ch-pill erp">Dynamics 365</span><span class="liq-ch-pill erp">Tally Prime</span><span class="liq-ch-pill erp">Busy</span><span class="liq-ch-pill erp">Zoho</span><span class="liq-ch-pill erp">Unicommerce</span><span class="liq-ch-pill erp">Cin7</span><span class="liq-ch-pill erp">Odoo</span></div>
+    </div>
+  </div>
+  <!-- FORM CARD — white -->
+  <div class="liq-form-card">
+    <div class="liq-form-lbl">Step 1 — Select Your Data Source</div>
+    <div class="liq-source-grid" id="liq-source-grid"></div>
+    <div class="liq-form-lbl">Step 2 — Forecast Settings</div>
+    <div class="liq-config-grid">
+      <div class="liq-field"><label class="liq-label">Forecast Horizon</label><select class="liq-select" id="liq-horizon"><option>7 Days</option><option>14 Days</option><option>30 Days</option><option>60 Days</option><option selected>90 Days</option><option>180 Days</option><option>365 Days</option></select></div>
+      <div class="liq-field"><label class="liq-label">Currency</label><select class="liq-select" id="liq-currency"><option value="₹">₹ India (INR)</option><option value="$">$ USA (USD)</option><option value="£">£ UK (GBP)</option><option value="€">€ Europe (EUR)</option><option value="CA$">CA$ Canada</option><option value="AED">AED Middle East</option><option value="S$">S$ Singapore</option><option value="R$">R$ Brazil</option><option value="¥">¥ China / Japan</option></select></div>
+      <div class="liq-field"><label class="liq-label">Region / Market</label><select class="liq-select" id="liq-region"><option>Global</option><option selected>India</option><option>USA</option><option>UK</option><option>Europe</option><option>Middle East</option><option>Southeast Asia</option><option>Latin America</option><option>China</option><option>Japan</option><option>Australia</option></select></div>
+      <div class="liq-field"><label class="liq-label">Planning Level</label><select class="liq-select" id="liq-planlevel"><option selected>SKU</option><option>Brand</option><option>Category</option><option>Marketplace</option><option>Country</option><option>City</option><option>Warehouse</option><option>Dark Store</option></select></div>
+      <div class="liq-field"><label class="liq-label">Forecast Method</label><select class="liq-select" id="liq-method"><option selected>Auto (AI selects best)</option><option>Moving Average</option><option>Exponential Smoothing</option><option>Trend + Seasonality</option><option>ML Ensemble</option></select></div>
+      <div class="liq-field"><label class="liq-label">Data Sales Period</label><select class="liq-select" id="liq-saleswindow" title="What period does your 'units sold' column cover? Only used for snapshot files without dated history."><option value="7">Last 7 days</option><option value="30" selected>Last 30 days</option><option value="60">Last 60 days</option><option value="90">Last 90 days</option><option value="365">Last 365 days (yearly)</option></select></div>
+    </div>
+    <div class="liq-field" style="margin-bottom:22px"><label class="liq-label">Active Sales Channels — tap to select</label><div class="liq-ch-picker" id="liq-ch-picker"></div></div>
+    <div class="liq-form-lbl">Step 3 — Upload Your Inventory File</div>
+    <div class="liq-dropzone" id="liq-dropzone" ondragover="liqDragOver(event)" ondragleave="liqDragLeave()" ondrop="liqDrop(event)" onclick="document.getElementById('liq-file-input').click()">
+      <input type="file" id="liq-file-input" accept=".csv,.xlsx,.xls,.txt,.tsv" onchange="liqFileChange(event)" onclick="event.stopPropagation()" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;">
+      <div id="liq-dz-content">
+        <div class="liq-dz-icon">📂</div>
+        <div class="liq-dz-title">Drop your inventory or sales export here</div>
+        <div class="liq-dz-sub">✅ Excel (.xlsx .xls) · CSV · TSV · TXT · Max 25 MB · No conversion needed</div>
+      </div>
+    </div>
+    <div class="liq-col-preview" id="liq-col-preview">
+      <div class="liq-col-preview-title">✦ Detected Columns</div>
+      <div class="liq-col-tags" id="liq-col-tags"></div>
+    </div>
+    <div class="liq-sample-row">
+      <button class="liq-sample-btn" onclick="liqLoadSample('generic')">📋 Generic Sample</button>
+      <button class="liq-sample-btn" onclick="liqLoadSample('amazon')">🛒 Amazon Sample</button>
+      <button class="liq-sample-btn" onclick="liqLoadSample('tally')">📒 Tally Sample</button>
+      <button class="liq-sample-btn" onclick="liqLoadSample('sap')">🏭 SAP Sample</button>
+      <button class="liq-sample-btn" onclick="liqLoadSample('netsuite')">☁️ NetSuite Sample</button>
+    </div>
+    <div class="liq-file-hint" id="liq-file-hint">Reads real Excel files directly — no conversion needed. Max 25 MB. Works with: SAP · NetSuite · Dynamics 365 · Tally · Busy · Marg · Zoho · Unicommerce · Cin7 · Linnworks · QuickBooks · Odoo · Shopify · Amazon · Flipkart · Myntra · Meesho · and any CSV/Excel export</div>
+    <div class="liq-cta">
+      <button class="liq-btn liq-btn-primary" id="liq-run-btn" onclick="liqRun()" disabled>✦ Generate AI Demand Forecast</button>
+      <button class="liq-btn liq-btn-ghost" id="liq-reset-btn" onclick="liqReset()" style="display:none">↺ Reset</button>
+    </div>
+    <div class="liq-disclaimer-bar">
+      ⚠️ <span><strong>Reference only:</strong> AI forecasts and calculator outputs are for planning purposes only. Always validate results with your ERP or WMS system before placing purchase orders or making business decisions.</span>
+    </div>
+    <div class="liq-progress" id="liq-progress" style="display:none"></div>
+    <div class="liq-error" id="liq-error" style="display:none"></div>
+  </div>
+  <!-- RESULTS -->
+  <div id="liq-results">
+    <div class="liq-dash-meta" id="liq-dash-meta"></div>
+    <div class="liq-kpi-grid" id="liq-kpi-grid"></div>
+    <div class="liq-health-wrap"><div class="liq-health-title">📊 Inventory Health Breakdown</div><div class="liq-health-bar" id="liq-health-bar"></div><div class="liq-health-legend" id="liq-health-legend"></div></div>
+    <div class="liq-tabs" id="liq-tabs"></div>
+    <div class="liq-panel-inner">
+      <div id="liq-panel-dashboard" class="liq-panel"></div>
+      <div id="liq-panel-forecast"   class="liq-panel"></div>
+      <div id="liq-panel-reorder"    class="liq-panel"></div>
+      <div id="liq-panel-inventory"  class="liq-panel"></div>
+      <div id="liq-panel-slowmovers" class="liq-panel"></div>
+      <div id="liq-panel-stockout"   class="liq-panel"></div>
+      <div id="liq-panel-events"     class="liq-panel"></div>
+      <div id="liq-panel-qcommerce"  class="liq-panel"></div>
+    </div>
+  </div>
+</section>
 <script>
-function calculate() {
-  const up = parseFloat(document.getElementById('unit_price').value)||0;
-  const qty = parseFloat(document.getElementById('quantity').value)||0;
-  const fr = parseFloat(document.getElementById('freight_cost').value)||0;
-  const cu = parseFloat(document.getElementById('customs_duties').value)||0;
-  const gst = parseFloat(document.getElementById('gst_amount').value)||0;
-  const oth = parseFloat(document.getElementById('other_charges').value)||0;
-  if (qty<=0||up<=0){alert('Enter product price and quantity.');return;}
-  const total = (up*qty)+fr+cu+gst+oth;
-  const perUnit = total/qty;
-  const pctOver = (((perUnit-up)/up)*100).toFixed(1);
-  document.getElementById('result-value').textContent = '₹'+perUnit.toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});
-  document.getElementById('result-detail').textContent =
-    'Total landed cost: ₹'+total.toLocaleString('en-IN')+' for '+qty+' units. '+
-    'This is '+pctOver+'% higher than the invoice price of ₹'+up+'/unit. '+
-    'Always price your products based on landed cost, not purchase price.';
-  document.getElementById('result').classList.add('show');
+(function(){
+'use strict';
+const ECOM=['Amazon','Walmart','Shopify','Flipkart','Meesho','Myntra','Nykaa','TikTok Shop','Shopee','Lazada','Mercado Libre','Alibaba','Temu','JD.com','Etsy','eBay','Noon','Coupang'];
+const QCOM=['Blinkit','Zepto','Swiggy Instamart','BigBasket','Flipkart Minutes','Amazon Fresh','Instacart','Getir','Gopuff','Meituan','Dingdong','Coupang Eats'];
+const EVENTS={India:['Diwali','Big Billion Days','Great Indian Festival','Holi','Raksha Bandhan','Eid','Wedding Season','Independence Day','Republic Day','Navratri','Dussehra',"Children's Day",'Back to School'],USA:['Prime Day','Black Friday','Cyber Monday','Thanksgiving','Christmas','New Year','Back to School','Labor Day','Memorial Day',"Valentine's Day"],UK:['Black Friday','Boxing Day','Christmas','Easter'],Europe:['Easter','Summer Sales','Christmas','Black Friday'],'Middle East':['Ramadan','Eid al-Fitr','Eid al-Adha','White Friday'],'Southeast Asia':['Singles Day (11.11)','Double Twelve (12.12)','Chinese New Year','Ramadan'],Global:["Mother's Day","Father's Day","Valentine's Day",'Back to School','Christmas','New Year']};
+const SOURCES=[
+  {id:'auto',ico:'✨',name:'Auto Detect',type:'Any Format'},
+  {id:'amazon',ico:'🛒',name:'Amazon',type:'E-Commerce'},
+  {id:'flipkart',ico:'🛍️',name:'Flipkart',type:'E-Commerce'},
+  {id:'shopify',ico:'🏪',name:'Shopify',type:'E-Commerce'},
+  {id:'meesho',ico:'🧡',name:'Meesho',type:'E-Commerce'},
+  {id:'myntra',ico:'👗',name:'Myntra',type:'E-Commerce'},
+  {id:'walmart',ico:'🔵',name:'Walmart',type:'E-Commerce'},
+  {id:'noon',ico:'🌙',name:'Noon',type:'E-Commerce'},
+  {id:'blinkit',ico:'⚡',name:'Blinkit',type:'Quick Commerce'},
+  {id:'zepto',ico:'🟣',name:'Zepto',type:'Quick Commerce'},
+  {id:'swiggy',ico:'🧡',name:'Swiggy',type:'Quick Commerce'},
+  {id:'bigbasket',ico:'🛒',name:'BigBasket',type:'Quick Commerce'},
+  {id:'tally',ico:'📒',name:'Tally Prime',type:'ERP'},
+  {id:'busy',ico:'📗',name:'Busy',type:'ERP'},
+  {id:'zoho',ico:'🔷',name:'Zoho',type:'ERP'},
+  {id:'sap',ico:'🏭',name:'SAP',type:'ERP'},
+  {id:'netsuite',ico:'☁️',name:'NetSuite',type:'ERP'},
+  {id:'dynamics',ico:'🔵',name:'Dynamics 365',type:'ERP'},
+  {id:'odoo',ico:'🟢',name:'Odoo',type:'ERP'},
+  {id:'quickbooks',ico:'💚',name:'QuickBooks',type:'ERP'},
+  {id:'unicommerce',ico:'🔗',name:'Unicommerce',type:'OMS'},
+  {id:'cin7',ico:'7️⃣',name:'Cin7',type:'WMS'},
+  {id:'linnworks',ico:'🔧',name:'Linnworks',type:'WMS'},
+];
+const STEPS=['Sending file to server…','Detecting columns & ERP format…','Computing SKU-level forecasts…','Calculating inventory health scores…','Identifying stockout risks & slow movers…','Building replenishment plan…','Applying seasonality & event intelligence…','Generating AI insights via Gemini…'];
+const SAMPLES={
+  generic:`Product Name,Category,Brand,Price,Units Sold,Available,Inbound,Daily Velocity,Lead Time
+Wireless Bluetooth Earbuds Pro,Electronics,SoundMax,2499,1240,450,200,41,21
+Yoga Mat Premium 6mm,Sports,FitLife,899,820,120,0,27,14
+Stainless Steel Water Bottle 1L,Kitchen,HydroPlus,599,1580,80,300,53,18
+Men's Running Shoes,Footwear,SpeedStep,3299,340,25,0,11,30
+Organic Green Tea 100g,Food,TeaBliss,299,2100,600,400,70,10
+Laptop Stand Aluminium,Office,DeskPro,1499,560,90,150,19,21
+Kids Colour Pencils 48pc,Stationery,BrightArt,349,1890,0,0,63,14
+Resistance Bands 5pc,Sports,FitLife,799,430,200,100,14,18
+Ceramic Coffee Mug 350ml,Kitchen,BrewCraft,449,720,310,0,24,10
+Phone Case iPhone 15 Clear,Accessories,ShieldTech,299,3200,150,500,107,7
+Whey Protein Vanilla 1kg,Health,NutriPeak,2199,890,35,100,30,21
+Bamboo Cutting Board Large,Kitchen,EcoHome,699,290,180,0,10,14
+HDMI Cable 2m 4K,Electronics,ConnectPlus,399,1100,500,0,37,10
+Foam Roller 30cm,Sports,FitLife,849,410,60,80,14,18
+Dry Shampoo 200ml,Beauty,GlowCo,599,680,0,200,23,14
+Canvas Tote Bag Large,Bags,EcoChic,399,540,420,0,18,10
+Multivitamin Gummies 60pc,Health,VitaBoost,899,760,90,150,25,21
+Smart LED Bulb 9W 4pk,Electronics,BrightHome,699,920,200,100,31,14
+Silicone Baking Mat Set,Kitchen,BakeEasy,549,380,250,0,13,10
+Face Wash Charcoal 150ml,Beauty,GlowCo,349,1400,0,0,47,7`,
+  amazon:`Product Name,ASIN,Merchant SKU,Price,Units Sold Last 30 Days,Available,Inbound,Recommended Replenishment Qty,Alert
+Wireless Earbuds Pro,B08XYZ1234,SKU-WEP-01,2499,1240,450,200,800,
+Yoga Mat Premium,B07ABC5678,SKU-YMP-01,899,820,60,0,400,low_stock
+Water Bottle 1L Steel,B09DEF9012,SKU-WB1L-01,599,1580,0,0,900,out_of_stock
+Running Shoes M10,B06GHI3456,SKU-RSM10-01,3299,340,25,0,200,low_stock
+Organic Green Tea,B05JKL7890,SKU-OGT-01,299,2100,600,400,1000,
+Laptop Stand Alu,B04MNO1234,SKU-LSA-01,1499,560,90,150,300,
+Colour Pencils 48,B03PQR5678,SKU-CP48-01,349,1890,0,0,1100,out_of_stock
+Phone Case IP15,B00YZA7890,SKU-PCI15-01,299,3200,150,500,1800,`,
+  tally:`Stock Item Name,Category,Opening Stock,Inwards,Outwards,Closing Stock,Rate,Godown
+Wireless Earbuds Pro,Electronics,500,300,1200,600,2499,Main Warehouse
+Yoga Mat Premium 6mm,Sports & Fitness,200,100,820,80,899,Mumbai
+Steel Water Bottle 1L,Kitchen,400,500,1580,320,599,Delhi
+Running Shoes Size 10,Footwear,150,0,340,0,3299,Main Warehouse
+Organic Green Tea 100g,Food & Bev,600,400,2100,900,299,Delhi
+Laptop Stand Aluminium,Office,200,150,560,290,1499,Main Warehouse
+Colour Pencils 48pc Set,Stationery,300,0,1890,0,349,Mumbai
+Resistance Bands 5pc,Sports & Fitness,300,100,430,270,799,Main Warehouse`,
+  sap:`Material,Material Description,Plant,Unrestricted,In Transit,Open PO Qty,Sales Qty (30d),Standard Price,Material Group,Planned Delivery Time
+MAT-001,Wireless Earbuds Pro BT5.0,1000,450,50,200,1240,2499,ELEC,21
+MAT-002,Yoga Mat TPE 6mm Premium,1000,120,0,0,820,899,SPORT,14
+MAT-003,Stainless Steel Bottle 1L,1000,80,200,300,1580,599,KITCHN,18
+MAT-004,Running Shoe Mesh Size10,1000,25,0,0,340,3299,FOOTWR,30
+MAT-005,Organic Green Tea 100g,1000,600,100,400,2100,299,FOOD,10
+MAT-006,Aluminium Laptop Stand,1000,90,0,150,560,1499,OFFICE,21
+MAT-007,Colour Pencils Set 48pcs,1000,0,0,0,1890,349,STATY,14
+MAT-008,Resistance Band Set 5pc,1000,200,0,100,430,799,SPORT,18`,
+  netsuite:`Display Name/Code,SKU,Base Price,Quantity On Hand,Quantity On Order,Units Sold,Lead Time,Class
+Wireless Earbuds Pro,SKU-001,2499,450,200,1240,21,Electronics
+Yoga Mat Premium 6mm,SKU-002,899,120,0,820,14,Sports
+Water Bottle Steel 1L,SKU-003,599,80,300,1580,18,Kitchen
+Running Shoes M Size10,SKU-004,3299,25,0,340,30,Footwear
+Organic Green Tea 100g,SKU-005,299,600,400,2100,10,Food
+Laptop Stand Aluminium,SKU-006,1499,90,150,560,21,Office
+Kids Colour Pencils 48,SKU-007,349,0,0,1890,14,Stationery
+Resistance Bands 5pc,SKU-008,799,200,100,430,18,Sports`
+};
+let selectedSource='auto';
+let selectedChannels=['Amazon','Flipkart','Blinkit'];
+let fileText='';
+let computedResult=null;
+let activeTab='dashboard';
+let stepStates=[];
+window.addEventListener('DOMContentLoaded',function(){buildSourceGrid();buildChannelPicker();updateRunBtn();});
+function buildSourceGrid(){
+  const el=document.getElementById('liq-source-grid');if(!el)return;
+  el.innerHTML=SOURCES.map(s=>`<div class="liq-source-btn${s.id===selectedSource?' liq-selected':''}" onclick="liqSelectSource('${s.id}')"><div class="liq-source-ico">${s.ico}</div><div class="liq-source-name">${s.name}</div><div class="liq-source-type">${s.type}</div></div>`).join('');
+}
+window.liqSelectSource=function(id){selectedSource=id;document.querySelectorAll('.liq-source-btn').forEach(b=>{b.classList.toggle('liq-selected',b.getAttribute('onclick').includes("'"+id+"'"));});if(fileText)previewColumns(fileText);};
+function buildChannelPicker(){
+  const el=document.getElementById('liq-ch-picker');if(!el)return;el.innerHTML='';
+  ECOM.forEach(ch=>{const s=document.createElement('span');s.className='liq-ch-toggle ecom'+(selectedChannels.includes(ch)?' liq-on':'');s.textContent=ch;s.onclick=()=>toggleCh(ch,s);el.appendChild(s);});
+  QCOM.forEach(ch=>{const s=document.createElement('span');s.className='liq-ch-toggle qcom'+(selectedChannels.includes(ch)?' liq-on':'');s.textContent=ch;s.onclick=()=>toggleCh(ch,s);el.appendChild(s);});
+}
+function toggleCh(ch,el){if(selectedChannels.includes(ch)){selectedChannels=selectedChannels.filter(c=>c!==ch);el.classList.remove('liq-on');}else{selectedChannels.push(ch);el.classList.add('liq-on');}}
+function updateRunBtn(){document.getElementById('liq-run-btn').disabled=!fileText;}
+window.liqDragOver=function(e){e.preventDefault();document.getElementById('liq-dropzone').classList.add('liq-drag');};
+window.liqDragLeave=function(){document.getElementById('liq-dropzone').classList.remove('liq-drag');};
+window.liqDrop=function(e){e.preventDefault();liqDragLeave();if(e.dataTransfer.files[0])handleFile(e.dataTransfer.files[0]);};
+window.liqFileChange=function(e){if(e.target.files[0])handleFile(e.target.files[0]);};
+function handleFile(f){
+  const MAX_MB=25;
+  if(f.size>MAX_MB*1024*1024){showError('File is '+Math.round(f.size/1024/1024)+'MB — maximum is '+MAX_MB+'MB.');return;}
+  const name=f.name.toLowerCase();
+  const isExcel=name.endsWith('.xlsx')||name.endsWith('.xls');
+  if(isExcel){
+    const r=new FileReader();
+    r.onload=function(e){
+      try{
+        const data=new Uint8Array(e.target.result);
+        const wb=XLSX.read(data,{type:'array'});
+        const sheetNames=wb.SheetNames;
+        const kw=['inventory','stock','item','product','sku','restock','report','summary','data'];
+        let sheetName=sheetNames[0];
+        for(const k of kw){const m=sheetNames.find(s=>s.toLowerCase().includes(k));if(m){sheetName=m;break;}}
+        const csv=XLSX.utils.sheet_to_csv(wb.Sheets[sheetName],{blankrows:false,skipHidden:true});
+        if(!csv||csv.trim().length<10){showError('Could not read Excel file. Try saving as CSV first.');return;}
+        fileText=csv;
+        showFileChip(f.name+' (sheet: '+sheetName+')');
+        previewColumns(fileText);updateRunBtn();showError('');
+        if(sheetNames.length>1){const h=document.getElementById('liq-file-hint');if(h)h.textContent='✅ Excel read — using sheet "'+sheetName+'". Other sheets: '+sheetNames.filter(s=>s!==sheetName).join(', ');}
+      }catch(err){showError('Could not read Excel file: '+err.message);}
+    };
+    r.onerror=function(){showError('Failed to read file. Please try again.');};
+    r.readAsArrayBuffer(f);
+  }else{
+    const r=new FileReader();
+    r.onload=function(e){fileText=e.target.result;showFileChip(f.name);previewColumns(fileText);updateRunBtn();showError('');};
+    r.onerror=function(){showError('Failed to read file. Please try again.');};
+    r.readAsText(f);
+  }
+}
+function showFileChip(n){document.getElementById('liq-dz-content').innerHTML='<div class="liq-dz-file">📄 '+esc(n)+' <span class="liq-file-remove" onclick="liqClearFile(event)">✕</span></div>';}
+window.liqClearFile=function(e){e.stopPropagation();fileText='';document.getElementById('liq-dz-content').innerHTML='<div class="liq-dz-icon">📂</div><div class="liq-dz-title">Drop your inventory or sales export here</div><div class="liq-dz-sub">✅ Excel (.xlsx .xls) · CSV · TSV · TXT · Max 25 MB · No conversion needed</div>';document.getElementById('liq-file-input').value='';document.getElementById('liq-col-preview').style.display='none';updateRunBtn();};
+window.liqLoadSample=function(type){fileText=SAMPLES[type]||SAMPLES.generic;showFileChip((type||'generic')+'_sample.csv');previewColumns(fileText);updateRunBtn();};
+function previewColumns(text){
+  const lines=text.split('\n').filter(l=>l.trim());
+  const kw=['sku','product','item','stock','qty','quantity','units','sales','available','price','cost','category','brand','name','description','material','closing','opening','velocity','demand'];
+  let headerLine='';
+  for(let i=0;i<Math.min(lines.length,10);i++){const lower=lines[i].toLowerCase();if(kw.filter(k=>lower.includes(k)).length>=2){headerLine=lines[i];break;}}
+  if(!headerLine&&lines.length>0)headerLine=lines[0];
+  const cols=headerLine.split(/,|\t/).map(c=>c.trim().replace(/^"|"$/g,''));
+  const keyFields=['Product/SKU','Units Sold','Available Stock','Inbound/On Order','Price','Lead Time','Category','Brand','Warehouse','Date/Period'];
+  const lc=cols.map(c=>c.toLowerCase());
+  const found=[],missing=[];
+  keyFields.forEach(f=>{const fk=f.toLowerCase().split('/');const ok=fk.some(k=>lc.some(c=>c.includes(k)||k.includes(c.split(' ')[0])));(ok?found:missing).push(f);});
+  const el=document.getElementById('liq-col-preview');const tags=document.getElementById('liq-col-tags');
+  if(el&&tags){el.style.display='block';tags.innerHTML=found.map(f=>`<span class="liq-col-tag found">✓ ${esc(f)}</span>`).join('')+missing.map(f=>`<span class="liq-col-tag miss">~ ${esc(f)}</span>`).join('');}
+}
+window.liqRun=async function(){
+  if(!fileText){showError('Please upload a file or load sample data.');return;}
+  const sym=document.getElementById('liq-currency').value;
+  const horizon=document.getElementById('liq-horizon').value;
+  const region=document.getElementById('liq-region').value;
+  showError('');setLoading(true);
+  stepStates=STEPS.map((_,i)=>i===0?'active':'wait');renderProgress();
+  const timer=setInterval(()=>{const i=stepStates.indexOf('active');if(i>=0&&i<STEPS.length-1){stepStates[i]='done';stepStates[i+1]='active';renderProgress();}},700);
+  try{
+    const res=await fetch('/api/forecast',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({csvText:fileText,horizon,currency:sym,region,channels:selectedChannels,planLevel:document.getElementById('liq-planlevel').value,erpSource:selectedSource,method:document.getElementById('liq-method').value,salesWindowDays:parseInt(document.getElementById('liq-saleswindow').value)||30})});
+    clearInterval(timer);
+    if(!res.ok){const err=await res.json().catch(()=>({}));throw new Error(err.error||'Server error ('+res.status+'). Check Vercel environment variables.');}
+    const data=await res.json();
+    stepStates=STEPS.map(()=>'done');renderProgress();setLoading(false);
+    renderDashboard(data,sym,horizon,region);
+  }catch(e){clearInterval(timer);setLoading(false);hideProgress();showError(e.message||'Something went wrong. Please try again.');}
+};
+function renderProgress(){const el=document.getElementById('liq-progress');if(!el)return;el.style.display='block';el.innerHTML=STEPS.map((s,i)=>`<div class="liq-prog-step"><div class="liq-prog-dot ${stepStates[i]||'wait'}"></div><div class="liq-prog-text ${stepStates[i]||'wait'}">${esc(s)}</div></div>`).join('');}
+function hideProgress(){const el=document.getElementById('liq-progress');if(el)el.style.display='none';}
+function renderDashboard(data,sym,horizon,region){
+  computedResult={data,sym,horizon,region};
+  const s=data.summary;
+  const srcName=SOURCES.find(x=>x.id===s.erpSource)?.name||s.erpSource||'Auto';
+  document.getElementById('liq-dash-meta').textContent=(s.isTS?'Time-series':'Snapshot')+' · '+horizon+' · '+region+' · Source: '+srcName+' · '+selectedChannels.length+' channels · '+s.totalSKUs.toLocaleString()+' SKUs';
+  const kpis=[
+    {l:'Total SKUs',v:s.totalSKUs.toLocaleString(),sub:s.activeSKUs.toLocaleString()+' active',ac:'#3A55FF',ic:'📦'},
+    {l:'Healthy Stock',v:s.healthySKUs.toLocaleString(),sub:Math.round(s.healthySKUs/Math.max(s.totalSKUs,1)*100)+'% of portfolio',ac:'#059669',ic:'✅'},
+    {l:'Urgent Reorders',v:s.urgentSKUs.toLocaleString(),sub:'URGENT + HIGH priority',ac:'#DC2626',ic:'🚨'},
+    {l:'Dead Stock',v:s.deadSKUs.toLocaleString(),sub:'Zero velocity SKUs',ac:'#64748B',ic:'💀'},
+    {l:'Overstock',v:s.overstockSKUs.toLocaleString(),sub:'>180 days of cover',ac:'#7C3AED',ic:'📈'},
+    {l:'Revenue at Risk',v:fmtV(sym,s.totalAtRisk),sub:'next '+horizon,ac:'#DC2626',ic:'⚠️'},
+    {l:'Excess Capital',v:fmtV(sym,s.totalExcess),sub:'tied in overstock',ac:'#D97706',ic:'💸'},
+    {l:'Inventory Value',v:fmtV(sym,s.totalInvValue),sub:'total on-hand',ac:'#770BFF',ic:'🏦'},
+    {l:'Avg Days Cover',v:s.avgDoC+'d',sub:'across active SKUs',ac:'#3A55FF',ic:'📅'},
+  ];
+  document.getElementById('liq-kpi-grid').innerHTML=kpis.map(k=>`<div class="liq-kpi"><div class="liq-kpi-accent" style="background:${k.ac}"></div><div class="liq-kpi-icon">${k.ic}</div><div class="liq-kpi-lbl">${k.l}</div><div class="liq-kpi-val" style="color:${k.ac}">${k.v}</div><div class="liq-kpi-sub">${k.sub}</div></div>`).join('');
+  const tot=Math.max(s.totalSKUs,1);
+  const segs=[{l:'Healthy',n:s.healthySKUs,c:'#059669'},{l:'Overstock',n:s.overstockSKUs,c:'#7C3AED'},{l:'Slow Movers',n:s.slowMoverSKUs,c:'#D97706'},{l:'Dead Stock',n:s.deadSKUs,c:'#94A3B8'},{l:'Urgent',n:s.urgentSKUs,c:'#DC2626'}];
+  document.getElementById('liq-health-bar').innerHTML=segs.map(sg=>sg.n>0?`<div class="liq-health-seg" style="flex:${sg.n};background:${sg.c};min-width:8px" title="${sg.l}: ${sg.n}"></div>`:'').join('');
+  document.getElementById('liq-health-legend').innerHTML=segs.map(sg=>`<div class="liq-leg-item"><div class="liq-leg-dot" style="background:${sg.c}"></div><strong style="color:#0F172A">${sg.n.toLocaleString()}</strong>&nbsp;${sg.l}&nbsp;<span style="color:#94A3B8">(${Math.round(sg.n/tot*100)}%)</span></div>`).join('');
+  const tabs=[{k:'dashboard',l:'📊 Dashboard'},{k:'forecast',l:'📈 Forecast',n:data.demandForecast.length},{k:'reorder',l:'🔄 Reorder Plan',n:data.reorderPlan.length,red:data.reorderPlan.filter(r=>r.priority==='URGENT').length},{k:'inventory',l:'📦 Inventory IQ',n:data.allSKUs.length},{k:'slowmovers',l:'🐢 Slow Movers',n:data.slowMoversAll.length},{k:'stockout',l:'⚠️ Stockout Risk',n:data.stockoutRisk.length},{k:'events',l:'🗓️ Events'},{k:'qcommerce',l:'⚡ Quick Commerce'}];
+  document.getElementById('liq-tabs').innerHTML=tabs.map(t=>`<button class="liq-tab${t.k===activeTab?' liq-active':''}" onclick="liqSwitchTab('${t.k}')">${t.l}${t.n?`<span class="liq-tab-ct${t.red?' red':''}">${t.n}</span>`:''}</button>`).join('');
+  renderPanelDashboard(data,sym,horizon);renderPanelForecast(data,sym,horizon);renderPanelReorder(data,sym);renderPanelInventory(data,sym);renderPanelSlowMovers(data,sym);renderPanelStockout(data,sym,horizon);renderPanelEvents(region);renderPanelQCommerce(data,sym);
+  document.getElementById('liq-results').style.display='block';document.getElementById('liq-reset-btn').style.display='';showTab(activeTab);
+  document.getElementById('liq-results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function renderPanelDashboard(data,sym,horizon){
+  const sm=data.summary||{};
+  const chMap={};(data.allSKUs||[]).forEach(s=>{if(s.channel&&s.channel!=='—'){chMap[s.channel]=(chMap[s.channel]||0)+(s.nextH||0);}});
+  const realCh=Object.keys(chMap);let chTitle,cc;
+  if(realCh.length>=1){const tot=Object.values(chMap).reduce((a,b)=>a+b,0)||1;chTitle='📡 Channel Demand Split <span style="font-weight:600;color:#94A3B8;text-transform:none;letter-spacing:0">— from your channel column</span>';cc=realCh.sort((a,b)=>chMap[b]-chMap[a]).slice(0,8).map(ch=>{const isQ=QCOM.includes(ch);return `<div class="liq-ch-fcard"><div class="liq-ch-fname"><span class="liq-ch-fdot" style="background:${isQ?'#770BFF':'#3A55FF'}"></span>${esc(ch)}</div><div class="liq-ch-fval" style="color:${isQ?'#770BFF':'#3A55FF'}">${fmtN(chMap[ch])}</div><div class="liq-ch-fsub">${Math.round(chMap[ch]/tot*100)}% · units/${horizon}</div></div>`;}).join('');}
+  else{chTitle='📡 Channel Demand Split <span style="font-weight:600;color:#94A3B8;text-transform:none;letter-spacing:0">— illustrative allocation across selected channels, not per-channel data</span>';cc=selectedChannels.slice(0,8).map((ch,i)=>{const base=data.demandForecast.slice(0,20).reduce((a,s)=>a+s.nextH,0);const w=[.28,.19,.15,.12,.09,.07,.05,.05][i]||.04;const isQ=QCOM.includes(ch);return `<div class="liq-ch-fcard"><div class="liq-ch-fname"><span class="liq-ch-fdot" style="background:${isQ?'#770BFF':'#3A55FF'}"></span>${esc(ch)}</div><div class="liq-ch-fval" style="color:${isQ?'#770BFF':'#3A55FF'}">${fmtN(Math.round(base*w))}</div><div class="liq-ch-fsub">illustrative share</div></div>`;}).join('');}
+  let rollup='';if(sm.planLevel&&sm.planLevel!=='SKU'&&data.groupedForecast&&data.groupedForecast.length){const rr=data.groupedForecast.map(g=>`<tr><td style="font-weight:700;color:#2A40D6">${esc(g.group)}</td><td>${fmtN(g.skus)}</td><td>${fmtN(g.avgMonthlyDemand)}</td><td style="font-weight:700;color:#3A55FF">${fmtN(g.nextH)}</td><td>${sym}${fmtN(g.invValue)}</td><td style="color:${g.urgent>0?'#DC2626':'#059669'}">${g.urgent}</td></tr>`).join('');rollup=`<div class="liq-sec-title">🧭 ${esc(sm.planLevel)} Roll-up</div><div class="liq-table-wrap"><table class="liq-tbl"><thead><tr><th>${esc(sm.planLevel)}</th><th>SKUs</th><th>Avg/Month</th><th>Next ${esc(horizon)}</th><th>Inv Value</th><th>Urgent</th></tr></thead><tbody>${rr}</tbody></table></div>`;}
+  const qual=`<div class="liq-sec-title">🔎 Forecast Quality</div><div class="liq-insights"><div class="liq-insight blue"><span class="liq-insight-ico">📐</span><span class="liq-insight-text">Method: <strong>${esc(sm.forecastMethod||'Auto')}</strong> · Data granularity: <strong>${esc(sm.periodGranularity||'—')}</strong>${sm.forecastAccuracyMape!=null?` · Back-test error (MAPE): <strong>${sm.forecastAccuracyMape}%</strong> (${sm.forecastAccuracyMape<=15?'high':sm.forecastAccuracyMape<=25?'usable':'low'} confidence)`:''}</span></div>${(sm.dataQuality||[]).map(w=>`<div class="liq-insight orange"><span class="liq-insight-ico">⚠️</span><span class="liq-insight-text">${esc(w)}</span></div>`).join('')}</div>`;
+  document.getElementById('liq-panel-dashboard').innerHTML=`<div class="liq-sec-title">✦ AI Insights</div><div class="liq-insights">${data.insights.map(i=>`<div class="liq-insight ${i.type}"><span class="liq-insight-ico">${esc(i.icon||'•')}</span><span class="liq-insight-text">${esc(i.text)}</span></div>`).join('')}</div>${qual}${rollup}<div class="liq-sec-title">${chTitle}</div><div class="liq-ch-fcards">${cc}</div><div class="liq-dl-row"><button class="liq-btn liq-btn-ghost liq-btn-sm" onclick="liqExport('all','full_report.csv')">⬇ Full Report CSV</button><button class="liq-btn liq-btn-ghost liq-btn-sm" onclick="liqExport('reorder','po_plan.csv')">⬇ PO Plan CSV</button></div>`;
+}
+function renderPanelForecast(data,sym,horizon){
+  const rows=data.demandForecast.slice(0,60).map(s=>`<tr><td><div class="mono" style="color:#2A40D6">${esc(s.sku.substring(0,18))}</div><div style="color:#64748B;font-size:10px;margin-top:2px">${esc(s.product.substring(0,30))}</div></td><td style="color:#64748B">${esc(s.category)}</td><td style="color:#64748B;font-size:10px">${esc(s.brand)}</td><td style="font-weight:700">${fmtN(s.avgMonthlyDemand)}</td><td style="font-weight:700;color:#3A55FF">${fmtN(s.nextH)}</td><td>${fmtN(s.next30)}</td><td>${fmtN(s.next60)}</td><td>${fmtN(s.next90)}</td><td><span class="liq-pill p-${s.trend}">${s.trend==='up'?'↑':s.trend==='down'?'↓':'→'} ${esc(s.trendPct)}</span></td><td style="color:#64748B;font-size:10px">${esc(s.confidence)}</td></tr>`).join('');
+  document.getElementById('liq-panel-forecast').innerHTML=`<div class="liq-table-wrap"><table class="liq-tbl"><thead><tr><th>SKU / Product</th><th>Category</th><th>Brand</th><th>Avg/Month</th><th>Next ${esc(horizon)}</th><th>Next 30d</th><th>Next 60d</th><th>Next 90d</th><th>Trend</th><th>Confidence</th></tr></thead><tbody>${rows}</tbody></table></div><div class="liq-dl-row"><button class="liq-btn liq-btn-ghost liq-btn-sm" onclick="liqExport('forecast','forecast.csv')">⬇ Forecast CSV</button></div>`;
+}
+function renderPanelReorder(data,sym){
+  if(!data.reorderPlan.length){document.getElementById('liq-panel-reorder').innerHTML='<p style="color:#64748B;padding:20px">No reorder recommendations — all SKUs sufficiently stocked.</p>';return;}
+  const rows=data.reorderPlan.slice(0,50).map(s=>`<tr><td><span class="liq-pill p-${s.priority.toLowerCase()}">${esc(s.priority)}</span></td><td><div class="mono" style="color:#2A40D6">${esc(s.sku.substring(0,16))}</div><div style="color:#64748B;font-size:10px;margin-top:2px">${esc(s.product.substring(0,26))}</div></td><td style="color:#64748B;font-size:10px">${esc(s.warehouse||'—')}</td><td style="font-weight:700;color:${s.currentStock===0?'#DC2626':'#0F172A'}">${fmtN(s.currentStock)}</td><td style="color:#770BFF">${fmtN(s.inbound)}</td><td style="color:${s.daysOfCover<14?'#DC2626':s.daysOfCover<30?'#D97706':'#059669'}">${s.daysOfCover>=999?'∞':s.daysOfCover+'d'}</td><td style="font-weight:700;color:#3A55FF">${fmtN(s.eoq)}</td><td style="font-weight:600;color:${s.reorderBy==='REORDER NOW'?'#DC2626':s.reorderBy==='This Week'?'#D97706':'#334155'}">${esc(s.reorderBy)}</td><td style="color:#64748B">${s.leadTimeDays||30}d</td><td style="font-size:10px;color:#64748B">${sym}${Math.round((s.eoq||0)*(s.price||0)).toLocaleString()}</td></tr>`).join('');
+  document.getElementById('liq-panel-reorder').innerHTML=`<div class="liq-table-wrap"><table class="liq-tbl"><thead><tr><th>Priority</th><th>SKU / Product</th><th>Warehouse</th><th>Stock</th><th>Inbound</th><th>Days Cover</th><th>Reorder Qty</th><th>Reorder By</th><th>Lead Time</th><th>PO Value</th></tr></thead><tbody>${rows}</tbody></table></div><div class="liq-dl-row"><button class="liq-btn liq-btn-ghost liq-btn-sm" onclick="liqExport('reorder','reorder_plan.csv')">⬇ Reorder Plan CSV</button></div>`;
+}
+function renderPanelInventory(data,sym){
+  const rows=data.allSKUs.slice(0,60).map(s=>{const st=s.isDead?'Dead':s.isOverstock?'Overstock':s.isSlowMover?'Slow':s.isHealthy?'Healthy':s.priority==='URGENT'?'Stockout':'Low';const sc=s.isDead?'dead':s.isOverstock?'over':s.isSlowMover?'slow':s.isHealthy?'healthy':'urgent';return `<tr><td><div class="mono" style="color:#2A40D6">${esc(s.sku.substring(0,16))}</div><div style="color:#64748B;font-size:10px;margin-top:2px">${esc(s.product.substring(0,24))}</div></td><td><span class="liq-pill p-${sc}">${esc(st)}</span></td><td style="font-weight:700">${fmtN(s.currentStock)}</td><td style="color:#770BFF">${fmtN(s.reserved||0)}</td><td style="color:${s.daysOfCover<14?'#DC2626':s.daysOfCover<30?'#D97706':s.daysOfCover>180?'#7C3AED':'#059669'}">${s.daysOfCover>=999?'∞':s.daysOfCover+'d'}</td><td>${s.weeksOfSupply>=99?'∞':s.weeksOfSupply+'w'}</td><td class="mono">${fmtN(s.safetyStock)}</td><td class="mono">${fmtN(s.reorderPoint)}</td><td><div style="display:flex;align-items:center;gap:5px"><div class="liq-prob-bar"><div class="liq-prob-fill" style="width:${s.fillRate}%;background:#059669"></div></div><span style="font-size:10px">${s.fillRate}%</span></div></td><td style="color:#64748B">${s.invTurnover}x</td><td style="font-size:10px;color:#64748B">${sym}${Math.round(s.invValue).toLocaleString()}</td></tr>`;}).join('');
+  document.getElementById('liq-panel-inventory').innerHTML=`<div class="liq-table-wrap"><table class="liq-tbl"><thead><tr><th>SKU / Product</th><th>Health</th><th>Stock</th><th>Reserved</th><th>Days Cover</th><th>Wks Supply</th><th>Safety Stock</th><th>ROP</th><th>Fill Rate</th><th>Turnover</th><th>Value</th></tr></thead><tbody>${rows}</tbody></table></div><div class="liq-dl-row"><button class="liq-btn liq-btn-ghost liq-btn-sm" onclick="liqExport('inventory','inventory_iq.csv')">⬇ Inventory IQ CSV</button></div>`;
+}
+function renderPanelSlowMovers(data,sym){
+  if(!data.slowMoversAll.length){document.getElementById('liq-panel-slowmovers').innerHTML='<p style="color:#64748B;padding:20px">No slow-moving or dead stock detected.</p>';return;}
+  const rows=data.slowMoversAll.map(s=>`<tr><td><span class="liq-pill p-${s.isDead?'dead':'slow'}">${s.isDead?'Dead Stock':'Slow Mover'}</span></td><td><div class="mono" style="color:#2A40D6">${esc(s.sku.substring(0,16))}</div><div style="color:#64748B;font-size:10px;margin-top:2px">${esc(s.product.substring(0,26))}</div></td><td style="font-weight:700">${fmtN(s.currentStock)}</td><td style="color:#D97706">${s.dailyVelocity}</td><td>${s.daysOfCover>=999?'∞':s.daysOfCover+'d'}</td><td style="font-weight:700;color:#DC2626">${sym}${Math.round(s.invValue).toLocaleString()}</td><td style="color:#B45309">${sym}${Math.round(s.excessValue).toLocaleString()}</td><td><span class="liq-pill p-${s.slowMoverRisk==='HIGH'?'urgent':s.slowMoverRisk==='MEDIUM'?'medium':'low'}">${esc(s.slowMoverRisk)}</span></td><td style="color:#334155;max-width:160px;white-space:normal;font-size:10px">${esc(s.slowAction)}</td></tr>`).join('');
+  document.getElementById('liq-panel-slowmovers').innerHTML=`<div class="liq-table-wrap"><table class="liq-tbl"><thead><tr><th>Status</th><th>SKU / Product</th><th>Stock</th><th>Daily Vel.</th><th>Days Cover</th><th>Inv. Value</th><th>Excess Capital</th><th>Risk</th><th>Action</th></tr></thead><tbody>${rows}</tbody></table></div><div class="liq-dl-row"><button class="liq-btn liq-btn-ghost liq-btn-sm" onclick="liqExport('slowmovers','slow_movers.csv')">⬇ Slow Movers CSV</button></div>`;
+}
+function renderPanelStockout(data,sym,horizon){
+  if(!data.stockoutRisk.length){document.getElementById('liq-panel-stockout').innerHTML='<p style="color:#64748B;padding:20px">No high stockout risk detected.</p>';return;}
+  const rows=data.stockoutRisk.map(s=>`<tr><td><div class="mono" style="color:#2A40D6">${esc(s.sku.substring(0,16))}</div><div style="color:#64748B;font-size:10px;margin-top:2px">${esc(s.product.substring(0,26))}</div></td><td style="font-weight:700;color:${s.currentStock===0?'#DC2626':'#0F172A'}">${fmtN(s.currentStock)}</td><td>${s.dailyVelocity}</td><td style="font-weight:700;color:${s.stockoutDays<7?'#DC2626':s.stockoutDays<14?'#B45309':'#D97706'}">${s.stockoutDays>=999?'No risk':s.stockoutDays+'d'}</td><td><div style="display:flex;align-items:center;gap:7px"><div class="liq-prob-bar"><div class="liq-prob-fill" style="width:${s.stockoutProb}%;background:${s.stockoutProb>70?'#DC2626':s.stockoutProb>40?'#D97706':'#059669'}"></div></div><span style="font-size:10px;font-weight:700;color:${s.stockoutProb>70?'#DC2626':s.stockoutProb>40?'#D97706':'#059669'}">${s.stockoutProb}%</span></div></td><td style="font-weight:700;color:#DC2626">${sym}${Math.round(s.revenueAtRisk).toLocaleString()}</td><td style="color:#770BFF">${fmtN(s.inbound)}</td></tr>`).join('');
+  document.getElementById('liq-panel-stockout').innerHTML=`<div class="liq-table-wrap"><table class="liq-tbl"><thead><tr><th>SKU / Product</th><th>Stock</th><th>Daily Vel.</th><th>Days to Stockout</th><th>Stockout Probability</th><th>Revenue at Risk</th><th>Inbound</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+function renderPanelEvents(region){
+  const up=[{e:'Diwali',r:'India',days:118,up:'3–5x',a:'Pre-build 90 days before. Raise safety stock 200%.'},{e:'Big Billion Days',r:'India',days:105,up:'4–8x',a:'Coordinate with Flipkart. Pre-build 60 days prior.'},{e:'Black Friday',r:'USA/UK/Europe',days:152,up:'3–6x',a:'Raise POs now for 90-day lead time suppliers.'},{e:'Singles Day 11.11',r:'SE Asia',days:139,up:'5–10x',a:'Allocate to Shopee/Lazada dark stores 45 days prior.'},{e:'Ramadan',r:'India/ME/SE Asia',days:210,up:'2–3x',a:'Begin demand sensing 8 weeks before.'},{e:'Christmas',r:'Global',days:184,up:'2–4x',a:'Last PO window for sea freight closes 90 days out.'}];
+  const ur=up.map(ev=>`<tr><td style="font-weight:700;color:#2A40D6">${esc(ev.e)}</td><td style="color:#64748B">${esc(ev.r)}</td><td><span class="liq-pill p-${ev.days<60?'urgent':ev.days<120?'medium':'low'}">${ev.days}d</span></td><td style="font-weight:700;color:#D97706">${esc(ev.up)}</td><td style="color:#334155;font-size:11px;white-space:normal;max-width:240px">${esc(ev.a)}</td></tr>`).join('');
+  const ec=Object.entries(EVENTS).map(([r,evs])=>`<div class="liq-season-card"><div class="liq-season-reg">🗺️ ${esc(r)}</div><div class="liq-season-tags">${evs.map(e=>`<span class="liq-season-tag">${esc(e)}</span>`).join('')}</div></div>`).join('');
+  document.getElementById('liq-panel-events').innerHTML=`<div class="liq-sec-title">📅 Upcoming Event Intelligence</div><div class="liq-table-wrap" style="margin-bottom:24px"><table class="liq-tbl"><thead><tr><th>Event</th><th>Region</th><th>Days Away</th><th>Demand Uplift</th><th>AI Recommendation</th></tr></thead><tbody>${ur}</tbody></table></div><div class="liq-sec-title">🌍 Event Calendar by Region</div><div class="liq-season-grid">${ec}</div>`;
+}
+function renderPanelQCommerce(data,sym){
+  const cities=['Mumbai','Delhi','Bangalore','Hyderabad','Chennai','Pune','Kolkata','Ahmedabad'];
+  const stores=['Koramangala DS','Indiranagar DS','HSR Layout DS','Whitefield DS','Jayanagar DS'];
+  const hours=[['7–9 AM','Morning Rush','HIGH'],['12–2 PM','Lunch Peak','MEDIUM'],['5–7 PM','Evening Rush','HIGH'],['8–10 PM','Night Peak','PEAK'],['10 PM–12 AM','Late Night','MEDIUM']];
+  const base=data.demandForecast.slice(0,10).reduce((a,s)=>a+s.nextH,0)||5000;
+  const cr=cities.map((c,i)=>{const w=[.22,.18,.15,.12,.10,.08,.08,.07][i];return `<div class="liq-qc-row"><span class="liq-qc-name">${esc(c)}</span><span class="liq-qc-val" style="color:#770BFF">${fmtN(Math.round(base*w))} u</span></div>`;}).join('');
+  const sr=stores.map((s,i)=>{const w=[.30,.25,.20,.15,.10][i];return `<div class="liq-qc-row"><span class="liq-qc-name" style="font-size:10px">${esc(s)}</span><span class="liq-qc-val" style="color:#2A40D6">${fmtN(Math.round(base*0.4*w))}/mo</span></div>`;}).join('');
+  const hr=hours.map(([t,l,v])=>`<div class="liq-qc-row"><span class="liq-qc-name" style="font-size:10px">${esc(t)} <span style="color:#94A3B8">${esc(l)}</span></span><span class="liq-qc-val" style="color:#D97706">${esc(v)}</span></div>`).join('');
+  const qr=QCOM.map(ch=>`<div class="liq-qc-row"><span class="liq-qc-name" style="font-size:10px">${esc(ch)}</span><span class="liq-qc-val" style="color:${selectedChannels.includes(ch)?'#059669':'#CBD5E1'}">${selectedChannels.includes(ch)?'Active':'—'}</span></div>`).join('');
+  document.getElementById('liq-panel-qcommerce').innerHTML=`<div class="liq-sec-title">⚡ Quick Commerce Planning Engine <span style="font-weight:600;color:#94A3B8;text-transform:none;letter-spacing:0">— illustrative template (sample cities/stores/hours, not from your file)</span></div><div class="liq-qc-grid"><div class="liq-qc-card"><div class="liq-qc-lbl">📍 Demand by City</div>${cr}</div><div class="liq-qc-card"><div class="liq-qc-lbl">🏪 Dark Store Replenishment</div>${sr}</div><div class="liq-qc-card"><div class="liq-qc-lbl">🕐 Demand by Hour</div>${hr}</div><div class="liq-qc-card"><div class="liq-qc-lbl">⚡ Q-Commerce Channels</div>${qr}</div></div><div class="liq-info-box">💡 <strong style="color:#2A40D6">Hyperlocal Insight:</strong> Upload city/pincode-level sales data for granular dark store replenishment planning.</div>`;
+}
+window.liqSwitchTab=function(key){activeTab=key;document.querySelectorAll('.liq-tab').forEach(t=>{t.classList.toggle('liq-active',t.getAttribute('onclick').includes("'"+key+"'"));});showTab(key);};
+function showTab(key){['dashboard','forecast','reorder','inventory','slowmovers','stockout','events','qcommerce'].forEach(k=>{const el=document.getElementById('liq-panel-'+k);if(el)el.classList.toggle('liq-visible',k===key);});}
+window.liqExport=function(type,filename){
+  if(!computedResult)return;const{data,sym}=computedResult;let rows,cols;
+  if(type==='forecast'){rows=data.demandForecast;cols=[['sku','SKU'],['product','Product'],['category','Category'],['brand','Brand'],['avgMonthlyDemand','Avg Monthly'],['nextH','Forecast'],['next30','Next 30d'],['next60','Next 60d'],['next90','Next 90d'],['trend','Trend'],['confidence','Confidence']];}
+  else if(type==='reorder'){rows=data.reorderPlan;cols=[['priority','Priority'],['sku','SKU'],['product','Product'],['warehouse','Warehouse'],['currentStock','Stock'],['inbound','Inbound'],['daysOfCover','Days Cover'],['eoq','Reorder Qty'],['reorderBy','Reorder By'],['leadTimeDays','Lead Time']];}
+  else if(type==='inventory'){rows=data.allSKUs;cols=[['sku','SKU'],['product','Product'],['category','Category'],['currentStock','Stock'],['daysOfCover','Days Cover'],['safetyStock','Safety Stock'],['reorderPoint','ROP'],['fillRate','Fill Rate %'],['invTurnover','Turnover'],['invValue','Inv Value']];}
+  else if(type==='slowmovers'){rows=data.slowMoversAll;cols=[['sku','SKU'],['product','Product'],['currentStock','Stock'],['dailyVelocity','Daily Vel'],['invValue','Inv Value'],['excessValue','Excess Capital'],['slowMoverRisk','Risk'],['slowAction','Action']];}
+  else{rows=data.allSKUs;cols=[['sku','SKU'],['product','Product'],['category','Category'],['brand','Brand'],['warehouse','Warehouse'],['currentStock','Stock'],['inbound','Inbound'],['avgMonthlyDemand','Avg Monthly'],['nextH','Forecast'],['daysOfCover','Days Cover'],['safetyStock','Safety Stock'],['reorderPoint','ROP'],['eoq','Reorder Qty'],['reorderBy','Reorder By'],['priority','Priority'],['stockoutProb','Stockout %'],['revenueAtRisk','Revenue at Risk'],['invValue','Inv Value'],['trend','Trend'],['confidence','Confidence']];}
+  const header=cols.map(c=>c[1]).join(',');
+  const csvRows=rows.map(row=>cols.map(c=>{const v=row[c[0]];const sv=String(v??'');return sv.includes(',')?`"${sv}"`:sv;}).join(','));
+  const blob=new Blob([header+'\n'+csvRows.join('\n')],{type:'text/csv'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;a.click();
+};
+window.liqReset=function(){
+  computedResult=null;fileText='';
+  document.getElementById('liq-results').style.display='none';document.getElementById('liq-reset-btn').style.display='none';
+  document.getElementById('liq-file-input').value='';document.getElementById('liq-col-preview').style.display='none';
+  document.getElementById('liq-dz-content').innerHTML='<div class="liq-dz-icon">📂</div><div class="liq-dz-title">Drop your inventory or sales export here</div><div class="liq-dz-sub">✅ Excel (.xlsx .xls) · CSV · TSV · TXT · Max 25 MB · No conversion needed</div>';
+  updateRunBtn();hideProgress();
+};
+function setLoading(on){const btn=document.getElementById('liq-run-btn');btn.disabled=on;btn.innerHTML=on?'<span class="liq-spinner"></span>&nbsp;Analysing…':'✦ Generate AI Demand Forecast';}
+function showError(msg){const el=document.getElementById('liq-error');el.style.display=msg?'block':'none';el.textContent=msg?'⚠️ '+msg:'';}
+function fmtV(sym,n){return sym+(n>=1e7?(n/1e7).toFixed(1)+'Cr':n>=1e5?(n/1e5).toFixed(1)+'L':n>=1e3?(n/1e3).toFixed(1)+'K':Math.round(n).toLocaleString());}
+function fmtN(n){return n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?(n/1e3).toFixed(1)+'K':Math.round(n).toLocaleString();}
+function esc(s){const d=document.createElement('div');d.textContent=String(s??'');return d.innerHTML;}
+})();
+</script>
+<!-- ── SHARE YOUR FEEDBACK (Google Form) — replaces old fake testimonials ── -->
+<section class="testi-section" id="feedback">
+  <div style="text-align:center;margin-bottom:28px">
+    <div class="section-eyebrow">⭐ Reviews</div>
+    <h2 class="section-title">Share Your Experience</h2>
+    <p class="section-sub" style="margin:8px auto 0">Used a LogicstIQ calculator or the AI Demand Planner? Tell us how it went — your feedback helps other supply chain teams and shapes what we build next.</p>
+  </div>
+  <div style="max-width:640px;margin:0 auto">
+    <!-- ════════════════════════════════════════════════════════════════
+         ⚠️ SETUP: Replace the 6 placeholders below with your real Google Form IDs.
+         1. In your Google Form, click "Send" → link icon → copy the URL.
+            Change the ending "/viewform" to "/formResponse" and paste it as the action= value.
+         2. For each field, open "Get pre-filled link", fill dummy values, click "Get link",
+            and copy the entry.XXXXXXX IDs into the matching name="entry.YOUR_*_ID" below.
+         Until these are replaced, the form will not record responses.
+    ════════════════════════════════════════════════════════════════ -->
+    <form id="liq-feedback-form" class="liq-form-card" style="margin-bottom:0"
+          action="https://docs.google.com/forms/d/e/1FAIpQLScxcXhcfbizk-odGYbi_mp5Jy4hbLh0clvteD4m0SZNbsfbIA/formResponse"
+          method="POST" target="liq-hidden-iframe" onsubmit="liqFeedbackSubmit()">
+      <div class="liq-form-lbl">Leave a Review</div>
+      <div class="liq-config-grid" style="margin-bottom:18px">
+        <div class="liq-field"><label class="liq-label">Your Name</label>
+          <input class="liq-select" name="entry.1864260470" type="text" placeholder="e.g. Rahul M." required></div>
+        <div class="liq-field"><label class="liq-label">Company</label>
+          <input class="liq-select" name="entry.1948507386" type="text" placeholder="e.g. Acme D2C"></div>
+        <div class="liq-field"><label class="liq-label">Role</label>
+          <input class="liq-select" name="entry.944107355" type="text" placeholder="e.g. Supply Chain Manager"></div>
+        <div class="liq-field"><label class="liq-label">Rating</label>
+          <select class="liq-select" name="entry.597874284">
+            <option value="5 stars">★★★★★ Excellent</option>
+            <option value="4 stars">★★★★ Good</option>
+            <option value="3 stars">★★★ Average</option>
+            <option value="2 stars">★★ Poor</option>
+            <option value="1 star">★ Bad</option>
+          </select></div>
+      </div>
+      <div class="liq-field" style="margin-bottom:18px"><label class="liq-label">Your Review</label>
+        <textarea class="liq-select" name="entry.2057559239" rows="4" placeholder="What did you use, and how did it help?" style="resize:vertical;font-family:inherit" required></textarea></div>
+      <div class="liq-cta" style="margin-top:0">
+        <button type="submit" class="liq-btn liq-btn-primary">✦ Submit Feedback</button>
+      </div>
+      <div class="liq-disclaimer-bar" style="margin-top:14px">
+        ✦ <span>Your feedback may be featured on LogicstIQ. We never share your details with third parties.</span>
+      </div>
+      <div id="liq-feedback-thanks" style="display:none;margin-top:14px;background:var(--glight);border:1px solid #6EE7B7;border-radius:10px;padding:12px 16px;color:#065F46;font-weight:600;font-size:13px">✅ Thank you! Your feedback has been submitted.</div>
+    </form>
+    <iframe name="liq-hidden-iframe" id="liq-hidden-iframe" style="display:none" title="hidden form target"></iframe>
+  </div>
+</section>
+<script>
+function liqFeedbackSubmit(){
+  setTimeout(function(){
+    var f=document.getElementById('liq-feedback-form');
+    var t=document.getElementById('liq-feedback-thanks');
+    if(f){f.reset();}
+    if(t){t.style.display='block';}
+  },500);
 }
 </script>
+<!-- ── DATA SAFETY SECTION ── -->
+<div class="safety-section">
+  <div class="safety-shield">🔒</div>
+  <div class="safety-content">
+    <div class="safety-tag">✓ Privacy First · HTTPS Secured · Zero Data Retention · DPDP Act 2023 Compliant</div>
+    <div class="safety-title">Your Inventory Data is 100% Safe</div>
+    <p class="safety-sub">You're uploading real business data — SKUs, sales volumes, stock levels, prices. We take that seriously. Here's exactly what happens to your data when you use LogicstIQ.</p>
+    <div class="safety-grid">
+      <div class="safety-card"><div class="safety-card-ico">🚫</div><div><div class="safety-card-t">Never Stored</div><div class="safety-card-b">Your file is processed and immediately discarded. Zero data saved to any database, server log, or storage system.</div></div></div>
+      <div class="safety-card"><div class="safety-card-ico">🔐</div><div><div class="safety-card-t">No Login Required</div><div class="safety-card-b">No account, no email, no identity. Nothing links your inventory data to you or your business.</div></div></div>
+      <div class="safety-card"><div class="safety-card-ico">🚷</div><div><div class="safety-card-t">Never Shared</div><div class="safety-card-b">Your data is never sold, shared, or transmitted to any third party, advertiser, or analytics platform.</div></div></div>
+      <div class="safety-card"><div class="safety-card-ico">⚡</div><div><div class="safety-card-t">Session Only</div><div class="safety-card-b">Data exists only during your active browser session. Close the tab and it is permanently gone.</div></div></div>
+      <div class="safety-card"><div class="safety-card-ico">🌐</div><div><div class="safety-card-t">HTTPS Encrypted</div><div class="safety-card-b">All data transfer is encrypted end-to-end via HTTPS/TLS. The same standard used by banks.</div></div></div>
+      <div class="safety-card"><div class="safety-card-ico">🤖</div><div><div class="safety-card-t">AI Analysis Only</div><div class="safety-card-b">Gemini AI receives only computed summary numbers — never your raw inventory file or personal data.</div></div></div>
+    </div>
+  </div>
+</div>
+<!-- ── BLOG / RESOURCES SECTION ── -->
+<section id="blog" class="blog-section">
+  <div style="margin-bottom:28px">
+    <div class="section-eyebrow">📚 Free Resources</div>
+    <h2 class="section-title">Supply Chain Guides &amp; Tutorials</h2>
+    <p class="section-sub" style="margin:8px 0 0">Practical guides, formulas, and tutorials for supply chain professionals, marketplace sellers, and D2C brands.</p>
+  </div>
+  <div class="blog-grid">
+    <a href="/blog/eoq-calculator.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">📦 Inventory</div><div class="blog-card-t">EOQ Formula — Complete Guide with Calculator &amp; Examples</div><div class="blog-card-d">Economic Order Quantity from scratch. Worked examples for Amazon FBA, D2C brands, and offline retail with a free calculator.</div><div class="blog-meta">📖 8 min read · Free Calculator included</div><div class="blog-read">Read Guide →</div></div></a>
+    <a href="/blog/demand-planning-amazon-flipkart.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">📈 Forecasting</div><div class="blog-card-t">Demand Planning for Amazon &amp; Flipkart Sellers — Step by Step</div><div class="blog-card-d">How to forecast demand for Indian marketplace sellers. Full seasonality calendar including Diwali, Big Billion Days, Prime Day.</div><div class="blog-meta">📖 10 min read · AI Planner tutorial</div><div class="blog-read">Read Guide →</div></div></a>
+    <a href="/blog/safety-stock-calculator.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">🛡️ Safety Stock</div><div class="blog-card-t">Safety Stock Formula — How to Calculate Buffer Stock</div><div class="blog-card-d">Three formula versions from simple to advanced. Service levels explained. Worked example with reorder point integration.</div><div class="blog-meta">📖 7 min read · Free Calculator included</div><div class="blog-read">Read Guide →</div></div></a>
+    <a href="/blog/what-is-otif.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">✅ KPI Guide</div><div class="blog-card-t">What is OTIF? On-Time In-Full Explained — Formula &amp; Benchmarks</div><div class="blog-card-d">Complete guide to OTIF — the gold standard KPI for supply chain delivery performance. Includes industry benchmarks and improvement tips.</div><div class="blog-meta">📖 6 min read · Industry benchmarks</div><div class="blog-read">Read Guide →</div></div></a>
+    <a href="/blog/inventory-turnover-formula.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">📊 Inventory</div><div class="blog-card-t">Inventory Turnover Formula — How to Calculate &amp; Improve</div><div class="blog-card-d">Inventory Turnover Ratio explained with formula, worked examples, industry benchmarks and practical improvement strategies.</div><div class="blog-meta">📖 7 min read · Industry benchmarks</div><div class="blog-read">Read Guide →</div></div></a>
+    <a href="/blog/abc-analysis-guide.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">🔡 Classification</div><div class="blog-card-t">ABC Analysis in Inventory Management — Complete Guide</div><div class="blog-card-d">ABC analysis from scratch: classify your SKUs by revenue contribution, set replenishment policies, and free up working capital.</div><div class="blog-meta">📖 8 min read · Free Calculator</div><div class="blog-read">Read Guide →</div></div></a>
+    <a href="/blog/gst-calculator-logistics.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">🧾 India Tax</div><div class="blog-card-t">GST on Freight &amp; Logistics Services — Complete Guide (2024–25)</div><div class="blog-card-d">GST rates for freight, warehousing, courier services, and import-export in India. CGST vs IGST explained with calculation examples.</div><div class="blog-meta">📖 9 min read · India specific</div><div class="blog-read">Read Guide →</div></div></a>
+  </div>
+</section>
+<!-- ── FAQ SECTION ── -->
+<section class="faq-section">
+  <div style="text-align:center;margin-bottom:28px">
+    <div class="section-eyebrow">❓ FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item open"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is LogicstIQ completely free to use?<span class="arr">▾</span></div><div class="faq-a">Yes — all 31 calculators and the AI Demand Planner are completely free. No login, no signup, no credit card, no usage limits. Free forever.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does LogicstIQ store my inventory data?<span class="arr">▾</span></div><div class="faq-a">Never. Your file is processed on our secure server and immediately discarded after your results are generated. Zero data is stored, logged, or shared. Close the tab and it's permanently gone.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What file formats are supported?<span class="arr">▾</span></div><div class="faq-a">Excel (.xlsx and .xls), CSV, TSV, and TXT files up to 25MB. Real Excel files are read natively using SheetJS — no conversion to CSV needed. Supports exports from SAP, NetSuite, Tally, Zoho, Unicommerce, Amazon Seller Central, Flipkart Seller Hub, Meesho, and 15+ other systems.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Who is LogicstIQ for?<span class="arr">▾</span></div><div class="faq-a">D2C brands, marketplace sellers (Amazon, Flipkart, Meesho, Myntra), manufacturers, distributors, C&amp;F agents, 3PL companies, quick commerce suppliers, import/export businesses, and supply chain professionals globally.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does it work for Blinkit and Zepto suppliers?<span class="arr">▾</span></div><div class="faq-a">Yes. The AI Demand Planner has a dedicated Quick Commerce tab that plans by city, by dark store, and by time of day. It's the only free tool designed specifically for the hyperlocal replenishment challenges of Blinkit, Zepto, Swiggy Instamart, and BigBasket.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How accurate are the AI forecasts?<span class="arr">▾</span></div><div class="faq-a">Accuracy depends on the quality and completeness of your input data. The AI Demand Planner uses Gemini 2.5 Flash with statistical forecasting models. All results are for planning reference only — always validate with your ERP or WMS before placing purchase orders.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will you add more tools?<span class="arr">▾</span></div><div class="faq-a">Yes. LogicstIQ is actively developed. Upcoming additions include a TMS (Transportation Management System) for carrier rate comparison and route optimisation, and a Pro plan for teams needing saved forecasts, scheduled reports, and API integrations.</div></div>
+  </div>
+</section>
+<!-- ── ADSENSE SLOT 3 — Footer (activate after AdSense approval) ── -->
+<!-- <div class="ad-slot" style="margin-bottom:0"><span class="ad-label">Advertisement</span><div class="ad-bar"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div></div> -->
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo" style="margin-bottom:4px">
+        <svg width="158" height="38" viewBox="0 0 260 68" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="LogicstIQ" style="display:block">
+          <defs>
+            <linearGradient id="ft_g" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.5)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0.92)"/>
+            </linearGradient>
+          </defs>
+          <path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#ft_g)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M59 8 L66 14 L59 20" stroke="rgba(255,255,255,0.72)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="32" cy="50" r="3.5" fill="rgba(255,255,255,0.38)"/>
+          <circle cx="50" cy="14" r="3.5" fill="rgba(255,255,255,0.88)"/>
+          <text x="82" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5">
+            <tspan fill="#FFFFFF">Logicst</tspan><tspan fill="#AEBCFF">IQ</tspan>
+          </text>
+        </svg>
+      </div>
+      <div class="footer-tagline">Where Logistics Meets Intelligence</div>
+      <p>India's free supply chain intelligence platform. 31 calculators + AI Demand Planner. No login. No data stored. Free forever.</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/amiitkumar" target="_blank" rel="noopener" class="social-btn">in</a>
+        <a href="https://www.linkedin.com/in/sachin-s-0b1179162" target="_blank" rel="noopener" class="social-btn">in</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-t">Calculators</div>
+      <div class="footer-links">
+        <a href="/eoq-calculator">EOQ Calculator</a>
+        <a href="/safety-stock-calculator">Safety Stock</a>
+        <a href="/reorder-point-calculator">Reorder Point</a>
+        <a href="/abc-analysis-calculator">ABC Analysis</a>
+        <a href="/otif-calculator">OTIF Calculator</a>
+        <a href="/landed-cost-calculator">Landed Cost</a>
+        <a href="/gst-calculator-logistics">GST Calculator</a>
+        <a href="/carbon-footprint-logistics">Carbon Footprint</a>
+        <a href="/cogs-calculator">COGS Calculator</a>
+<a href="/gross-margin-calculator">Gross Margin</a>
+<a href="/break-even-calculator">Break-Even Calculator</a>
+<a href="/moq-calculator">MOQ Calculator</a>
+<a href="/dead-stock-calculator">Dead Stock Calculator</a>
+<a href="/volumetric-weight-calculator">Volumetric Weight</a>
+<a href="/documents-generator.html">Document Generator</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-t">AI Planner</div>
+      <div class="footer-links">
+        <a href="#liq-planner">Demand Forecast</a>
+        <a href="#liq-planner">Reorder Plan</a>
+        <a href="#liq-planner">Inventory IQ</a>
+        <a href="#liq-planner">Stockout Risk</a>
+        <a href="#liq-planner">Slow Movers</a>
+        <a href="#liq-planner">Q-Commerce</a>
+        <a href="#liq-planner">Event Calendar</a>
+        <a href="#blog">Blog &amp; Guides</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-t">Company</div>
+      <div class="footer-founder">
+        <a href="https://www.linkedin.com/in/amiitkumar" target="_blank" rel="noopener">Amit Kumar</a><br>
+        <span class="footer-founder-role">Co-Founder · LogicstIQ</span><br><br>
+        <a href="https://www.linkedin.com/in/sachin-s-0b1179162" target="_blank" rel="noopener">Sachin Sirwani</a><br>
+        <span class="footer-founder-role">Co-Founder · LogicstIQ</span>
+      </div>
+      <div class="footer-links" style="margin-top:16px">
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="mailto:privacy@logicstiq.com">privacy@logicstiq.com</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-affiliate-note">
+    <strong style="color:#94A3B8">Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. When you sign up for a third-party service via these links, we may earn a small commission at no extra cost to you. This does not affect our editorial independence or recommendations.
+  </div>
+  <div class="footer-bottom">
+    <div style="margin-bottom:6px"><strong style="color:#94A3B8">31 Free Supply Chain Calculators · AI Demand Planner · No Login Required · Instant Results · Free Forever</strong></div>
+    <div>© 2025 LogicstIQ.com · Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a> · Where Logistics Meets Intelligence</div>
+    <div style="margin-top:6px"><a href="/privacy-policy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a> · <a href="/disclaimer.html">Disclaimer</a> · Results are for reference only. Always validate with your ERP/WMS before making business decisions.</div>
+  </div>
+</footer>
+
+<!-- ===== LogicstIQ — Demo Video Popup (auto-opens muted + Watch demo button) ===== -->
+<div id="liq-vm" class="liq-vm" aria-hidden="true">
+  <div class="liq-vm__backdrop" data-liq-close></div>
+  <div class="liq-vm__dialog" role="dialog" aria-modal="true" aria-label="LogicstIQ product demo video">
+    <button class="liq-vm__close" type="button" aria-label="Close video" data-liq-close>&times;</button>
+    <div class="liq-vm__frame">
+      <video id="liq-video" class="liq-vm__video" playsinline muted preload="metadata" controls poster="/logicstiq-poster.png">
+        <source src="/logicstiq-demo.mp4" type="video/mp4" />
+        Your browser does not support HTML5 video.
+      </video>
+      <button id="liq-unmute" class="liq-vm__unmute" type="button" aria-label="Unmute video"><span class="liq-vm__spk">&#128266;</span> Tap for sound</button>
+    </div>
+    <div class="liq-vm__bar">
+      <span class="liq-vm__tag">31 free supply chain tools &middot; AI Demand Planner</span>
+      <a class="liq-vm__cta" href="#calculators" data-liq-close>Explore free tools &rarr;</a>
+    </div>
+  </div>
+</div>
+<button id="liq-open" class="liq-vm-launch" type="button" aria-haspopup="dialog" aria-controls="liq-vm"><span class="liq-vm-launch__play">&#9658;</span> Watch demo</button>
+<style>
+  .liq-vm{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px}
+  .liq-vm.is-open{display:flex}
+  .liq-vm__backdrop{position:absolute;inset:0;background:rgba(6,9,18,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;transition:opacity .25s ease}
+  .liq-vm.is-open .liq-vm__backdrop{opacity:1}
+  .liq-vm__dialog{position:relative;width:min(960px,100%);background:#121a30;border:1px solid rgba(24,226,202,.25);border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.6);overflow:hidden;transform:scale(.94) translateY(10px);opacity:0;transition:transform .28s cubic-bezier(.2,.8,.2,1),opacity .28s ease}
+  .liq-vm.is-open .liq-vm__dialog{transform:scale(1) translateY(0);opacity:1}
+  .liq-vm__close{position:absolute;top:10px;right:12px;z-index:3;width:40px;height:40px;border:none;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;font-size:26px;line-height:1;cursor:pointer;transition:background .2s}
+  .liq-vm__close:hover{background:rgba(0,0,0,.75)}
+  .liq-vm__frame{position:relative;background:#000}
+  .liq-vm__video{display:block;width:100%;height:auto;aspect-ratio:16/9}
+  .liq-vm__unmute{position:absolute;left:50%;bottom:64px;transform:translateX(-50%);background:#18e2ca;color:#06212b;font-weight:700;font-size:15px;border:none;border-radius:999px;padding:10px 18px;cursor:pointer;box-shadow:0 6px 20px rgba(24,226,202,.45);display:inline-flex;align-items:center;gap:8px;animation:liqvmpulse 1.8s ease-in-out infinite}
+  .liq-vm__unmute:hover{filter:brightness(1.08)}
+  .liq-vm__spk{font-size:17px}
+  @keyframes liqvmpulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.06)}}
+  .liq-vm__bar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 18px;flex-wrap:wrap}
+  .liq-vm__tag{color:#c7d2e6;font:600 15px/1.3 'Inter',system-ui,Arial,sans-serif}
+  .liq-vm__cta{background:#18e2ca;color:#06212b;text-decoration:none;font:700 15px/1 'Inter',system-ui,Arial,sans-serif;padding:11px 18px;border-radius:999px;white-space:nowrap;transition:filter .2s}
+  .liq-vm__cta:hover{filter:brightness(1.08)}
+  .liq-vm-launch{position:fixed;right:20px;bottom:20px;z-index:99998;background:#18e2ca;color:#06212b;border:none;cursor:pointer;font:700 15px/1 'Inter',system-ui,Arial,sans-serif;padding:13px 20px;border-radius:999px;box-shadow:0 8px 24px rgba(24,226,202,.45);display:inline-flex;align-items:center;gap:9px;transition:transform .2s,filter .2s}
+  .liq-vm-launch:hover{transform:translateY(-2px);filter:brightness(1.08)}
+  .liq-vm-launch__play{font-size:13px}
+  @media(max-width:560px){.liq-vm__bar{justify-content:center;text-align:center}.liq-vm-launch{right:14px;bottom:14px;padding:11px 16px;font-size:14px}}
+  @media(prefers-reduced-motion:reduce){.liq-vm__backdrop,.liq-vm__dialog{transition:none}.liq-vm__unmute{animation:none}}
+</style>
+<script>
+(function(){
+  var AUTO_OPEN=true,AUTO_OPEN_DELAY=1200,AUTO_OPEN_MODE="once"; // "always" | "session" | "once"
+  var modal=document.getElementById("liq-vm"),video=document.getElementById("liq-video"),
+      unmute=document.getElementById("liq-unmute"),openBtn=document.getElementById("liq-open"),lastFocus=null;
+  function open(){lastFocus=document.activeElement;modal.classList.add("is-open");modal.setAttribute("aria-hidden","false");
+    document.body.style.overflow="hidden";video.muted=true;var p=video.play();if(p&&p.catch)p.catch(function(){});
+    unmute.style.display="inline-flex";setTimeout(function(){modal.querySelector(".liq-vm__close").focus();},50);}
+  function close(){modal.classList.remove("is-open");modal.setAttribute("aria-hidden","true");document.body.style.overflow="";
+    try{video.pause();video.currentTime=0;}catch(e){}if(lastFocus&&lastFocus.focus)lastFocus.focus();}
+  unmute.addEventListener("click",function(){video.muted=false;video.volume=1;var p=video.play();if(p&&p.catch)p.catch(function(){});unmute.style.display="none";});
+  openBtn.addEventListener("click",open);
+  modal.addEventListener("click",function(e){if(e.target.hasAttribute("data-liq-close"))close();});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&modal.classList.contains("is-open"))close();});
+  function shouldAuto(){if(!AUTO_OPEN)return false;try{
+      if(AUTO_OPEN_MODE==="once"){if(localStorage.getItem("liqDemoSeen"))return false;localStorage.setItem("liqDemoSeen","1");}
+      else if(AUTO_OPEN_MODE==="session"){if(sessionStorage.getItem("liqDemoSeen"))return false;sessionStorage.setItem("liqDemoSeen","1");}
+    }catch(e){}return true;}
+  if(shouldAuto())window.addEventListener("load",function(){setTimeout(open,AUTO_OPEN_DELAY);});
+})();
+</script>
+<script>
+(function(){var r=document.documentElement,b=document.getElementById('liqTheme');
+function set(t){r.setAttribute('data-theme',t);if(b)b.textContent=(t==='dark')?'☀️':'🌙';try{localStorage.setItem('liq-theme',t)}catch(e){}}
+try{var sv=localStorage.getItem('liq-theme');if(sv)set(sv);}catch(e){}
+if(b)b.addEventListener('click',function(){set(r.getAttribute('data-theme')==='dark'?'light':'dark');});})();
+</script>
+<!-- ===== end LogicstIQ Demo Video Popup ===== -->
 </body>
 </html>

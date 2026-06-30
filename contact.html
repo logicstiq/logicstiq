@@ -1,113 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Contact LogicstIQ — Get in Touch | Supply Chain Intelligence Platform</title>
-<meta name="description" content="Contact the LogicstIQ team. Questions about our supply chain calculators, AI Demand Planner, partnerships, or feedback — we read every message.">
-<link rel="canonical" href="https://www.logicstiq.com/contact"/>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Contact LogicstIQ","url":"https://www.logicstiq.com/contact","mainEntity":{"@type":"Organization","name":"LogicstIQ","email":"privacy@logicstiq.com","url":"https://www.logicstiq.com"}}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&display=swap" rel="stylesheet"/>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#F4F7FF;--white:#FFFFFF;--border:#E2E8F0;--b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b600:#2563EB;--b700:#1D4ED8;--b900:#1E3A8A;--green:#059669;--glight:#D1FAE5;--text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8}
-body{font-family:"Inter",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
-/* NAV */
-.nav{background:#fff;border-bottom:1px solid var(--border);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.04)}
-.nav-logo{text-decoration:none;display:flex;align-items:center}
-.nav-links{display:flex;align-items:center;gap:6px}
-.nav-link{font-size:13px;font-weight:600;color:var(--text3);text-decoration:none;padding:7px 14px;border-radius:8px;transition:all .15s}
-.nav-link:hover,.nav-link.active{color:var(--b600);background:var(--b50)}
-.nav-cta{background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;border:none;border-radius:9px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
-/* HERO */
-.hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 50%,#1D4ED8 100%);padding:64px 32px 56px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 70%,rgba(96,165,250,0.1) 0%,transparent 60%);pointer-events:none}
-.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:6px 16px;font-size:11px;font-weight:800;color:#BFDBFE;text-transform:uppercase;letter-spacing:.09em;margin-bottom:18px}
-.hero h1{font-size:clamp(28px,5vw,48px);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-.03em;margin-bottom:14px;font-family:"Plus Jakarta Sans",sans-serif;position:relative}
-.hero h1 span{color:#93C5FD}
-.hero-sub{font-size:16px;color:rgba(255,255,255,.8);max-width:520px;margin:0 auto;line-height:1.75;position:relative}
-/* WRAP */
-.wrap{max-width:900px;margin:0 auto;padding:52px 24px 80px}
-/* CONTACT GRID */
-.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:24px;margin-bottom:32px}
-/* LEFT — CHANNELS */
-.channels-col{display:flex;flex-direction:column;gap:14px}
-.channel-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:22px;transition:all .2s;box-shadow:0 2px 8px rgba(30,58,138,.04)}
-.channel-card:hover{border-color:var(--b200);box-shadow:0 6px 20px rgba(30,58,138,.09);transform:translateY(-1px)}
-.channel-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.channel-ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.channel-ico.blue{background:var(--b50)}
-.channel-ico.green{background:#F0FDF4}
-.channel-ico.purple{background:#FAF5FF}
-.channel-ico.orange{background:#FFF7ED}
-.channel-name{font-size:15px;font-weight:800;color:var(--text)}
-.channel-desc{font-size:13px;color:var(--text3);line-height:1.65;margin-bottom:12px}
-.channel-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--b600);text-decoration:none;transition:color .15s}
-.channel-link:hover{color:var(--b700)}
-/* RESPONSE TIMES */
-.response-card{background:linear-gradient(135deg,#F0FDF4,#DCFCE7);border:1.5px solid #A7F3D0;border-radius:14px;padding:18px}
-.response-title{font-size:13px;font-weight:800;color:#065F46;margin-bottom:12px;display:flex;align-items:center;gap:6px}
-.response-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #BBF7D0;font-size:13px}
-.response-row:last-child{border-bottom:none}
-.response-type{color:#047857;font-weight:600}
-.response-time{color:#065F46;font-weight:800;font-size:12px}
-/* RIGHT — FORM */
-.form-card{background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:32px;box-shadow:0 4px 20px rgba(30,58,138,.06);position:relative;overflow:hidden}
-.form-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--b600),#0891B2)}
-.form-eyebrow{font-size:10px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
-.form-card h2{font-size:22px;font-weight:900;color:var(--text);margin-bottom:6px;font-family:"Plus Jakarta Sans",sans-serif}
-.form-card .form-sub{font-size:13px;color:var(--text3);margin-bottom:22px;line-height:1.6}
-.form-group{margin-bottom:16px}
-.form-group label{display:block;font-size:12px;font-weight:700;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;color:var(--text);background:#fff;outline:none;transition:border-color .15s;resize:none}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--b600);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
-.form-group select option{background:#fff;color:var(--text)}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.submit-btn{width:100%;background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:800;font-family:inherit;cursor:pointer;box-shadow:0 4px 16px rgba(37,99,235,.35);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:6px}
-.submit-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,99,235,.45)}
-.form-note{font-size:11px;color:var(--text4);text-align:center;margin-top:10px;line-height:1.6}
-/* SUCCESS */
-.success-box{background:#F0FDF4;border:2px solid #86EFAC;border-radius:14px;padding:24px;text-align:center;display:none}
-.success-box.show{display:block}
-.success-ico{font-size:40px;margin-bottom:10px}
-.success-title{font-size:18px;font-weight:800;color:#15803D;margin-bottom:6px}
-.success-sub{font-size:13px;color:#166534}
-/* FAQ */
-.faq-section{margin-bottom:32px}
-.faq-eyebrow{font-size:10px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em;margin-bottom:20px;display:flex;align-items:center;gap:10px}
-.faq-eyebrow::after{content:"";flex:1;height:1px;background:var(--border)}
-.faq-item{background:var(--white);border:1.5px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}
-.faq-q{padding:16px 20px;font-size:14px;font-weight:700;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .15s}
-.faq-q:hover{background:var(--b50)}
-.faq-q .arr{color:var(--b600);font-size:16px;transition:transform .2s;flex-shrink:0}
-.faq-a{padding:14px 20px;font-size:13px;color:var(--text3);line-height:1.75;background:#F8FAFF;border-top:1px solid var(--border);display:none}
-.faq-item.open .faq-a{display:block}
-.faq-item.open .faq-q .arr{transform:rotate(180deg)}
-/* CTA BOTTOM */
-.cta-section{background:linear-gradient(135deg,#0F172A,#1E3A8A);border-radius:20px;padding:36px;text-align:center}
-.cta-section h2{font-size:22px;font-weight:900;color:#fff;margin-bottom:8px;font-family:"Plus Jakarta Sans",sans-serif}
-.cta-section p{font-size:14px;color:#BFDBFE;margin-bottom:20px;line-height:1.7}
-.cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;text-decoration:none;padding:13px 24px;border-radius:12px;font-size:14px;font-weight:800;box-shadow:0 4px 16px rgba(37,99,235,.4);margin:0 5px 8px}
-.cta-btn.outline{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);box-shadow:none}
-/* FOOTER */
-footer{background:#0F172A;padding:40px 32px;text-align:center;color:#64748B;font-size:13px;margin-top:0}
-footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
-footer a:hover{color:#fff}
-.footer-inner{max-width:900px;margin:0 auto}
-.footer-tagline{font-size:13px;color:#94A3B8;margin:10px 0 18px}
-.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:16px}
-.footer-links a{font-size:12px;color:#64748B;text-decoration:none}
-.footer-links a:hover{color:#BFDBFE}
-.footer-copy{font-size:12px;color:#334155;line-height:1.7}
-@media(max-width:768px){
-  .contact-grid{grid-template-columns:1fr}
-  .form-row{grid-template-columns:1fr}
-  .nav-links .nav-link{display:none}
-  .wrap{padding:36px 16px 60px}
-  .hero{padding:48px 20px 40px}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cash Conversion Cycle Calculator — Free CCC Tool India | LogicstIQ — Free Supply Chain Calculator</title>
+  <meta name="description" content="Free Cash Conversion Cycle (CCC) Calculator India. Calculate DIO + DSO − DPO to find how many days cash is tied up in your supply chain. Reduce CCC to free working capital.">
+  <meta name="keywords" content="cash conversion cycle calculator India, CCC calculator, DIO DSO DPO calculator, cash cycle calculator, working capital cycle, cash flow supply chain India">
+  <link rel="canonical" href="https://www.logicstiq.com/cash-conversion-cycle-calculator">
+  <meta property="og:title" content="Cash Conversion Cycle Calculator — Free CCC Tool India | LogicstIQ — Free Supply Chain Calculator">
+  <meta property="og:description" content="Free Cash Conversion Cycle (CCC) Calculator India. Calculate DIO + DSO − DPO to find how many days cash is tied up in your supply chain. Reduce CCC to free working capital.">
+  <meta property="og:url" content="https://www.logicstiq.com/cash-conversion-cycle-calculator">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LogicstIQ.com">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:#F4F7FF;color:#0F172A;min-height:100vh;font-size:16px;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;background:#FFFFFF;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100}
+    .nav-logo{font-weight:800;font-size:1.1rem;color:#0F172A}
+    .nav-back{color:#3A55FF;font-size:0.875rem;font-weight:600}
+    .nav-back:hover{color:#2A40D6}
+    .badge-bar{text-align:center;padding:12px;background:#FFFFFF;border-bottom:1px solid #E2E8F0;font-size:0.8rem;color:#3A55FF;font-weight:700;letter-spacing:0.5px}
+    .hero{max-width:760px;margin:0 auto;padding:48px 24px 32px;text-align:center}
+    .hero h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;color:#0F172A;line-height:1.2;margin-bottom:14px}
+    .hero h1 span{display:block;font-size:clamp(1rem,2vw,1.2rem);font-weight:500;color:#475569;margin-top:8px}
+    .hero-sub{color:#475569;font-size:0.9rem;margin-top:16px}
+    .trust-row{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:16px}
+    .trust-item{font-size:0.8rem;color:#3A55FF;font-weight:600}
+    .trust-item::before{content:"✓ "}
+    .calc-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
+    .calc-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;overflow:hidden}
+    .calc-header{background:#F8FAFF;padding:18px 24px;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:10px}
+    .calc-header-icon{font-size:1.2rem}
+    .calc-header-title{font-size:0.95rem;font-weight:700;color:#0F172A}
+    .calc-body{padding:24px}
+    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media(max-width:560px){.field-grid{grid-template-columns:1fr}}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field label{font-size:0.8rem;font-weight:700;color:#475569;letter-spacing:0.3px}
+    .field span{font-size:0.72rem;color:#94A3B8}
+    .field input,.field select{background:#FFFFFF;border:1px solid #CBD5E1;border-radius:8px;padding:10px 14px;color:#0F172A;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color .2s}
+    .field input:focus,.field select:focus{border-color:#3A55FF}
+    .field input::placeholder{color:#94A3B8}
+    .calc-btn{width:100%;margin-top:20px;background:linear-gradient(135deg,#3A55FF,#2A40D6);color:#fff;border:none;border-radius:10px;padding:14px;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:opacity .2s}
+    .calc-btn:hover{opacity:0.9}
+    .results{display:none;margin-top:20px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px}
+    .results.show{display:block}
+    .results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}
+    .result-item{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:16px;text-align:center}
+    .result-label{font-size:0.72rem;color:#475569;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+    .result-value{font-size:1.35rem;font-weight:800;color:#3A55FF}
+    .result-value.green{color:#059669}
+    .result-value.red{color:#DC2626}
+    .result-value.amber{color:#D97706}
+    .result-sub{font-size:0.7rem;color:#94A3B8;margin-top:4px}
+    .disclaimer{margin-top:16px;font-size:0.75rem;color:#94A3B8;padding:10px;background:#F4F7FF;border-radius:8px;border-left:3px solid #E2E8F0}
+    .content-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
+    .formula-box{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px 24px;margin-bottom:32px}
+    .formula-tag{font-size:0.7rem;font-weight:700;color:#3A55FF;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+    .formula-expr{font-family:'Courier New',monospace;font-size:0.9rem;color:#2A40D6;line-height:1.9}
+    .section-title{font-size:0.75rem;font-weight:700;color:#3A55FF;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+    .prose{color:#475569;font-size:0.9rem;line-height:1.75;margin-bottom:24px}
+    .prose strong{color:#0F172A}
+    .example-box{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px 24px;margin-bottom:32px}
+    .example-tag{font-size:0.7rem;font-weight:700;color:#059669;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+    .ex-p{font-size:0.85rem;color:#475569;margin-bottom:14px}
+    .ex-table{width:100%;border-collapse:collapse}
+    .ex-table td{padding:8px 0;font-size:0.875rem;color:#475569;border-bottom:1px solid #E2E8F0}
+    .ex-table td:last-child{text-align:right;color:#0F172A;font-weight:600}
+    .ex-table tr.total td{border-bottom:none;color:#3A55FF;font-weight:800;font-size:1rem}
+    .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:32px}
+    .why-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:18px}
+    .why-card h4{font-size:0.85rem;font-weight:700;color:#0F172A;margin-bottom:8px}
+    .why-card p{font-size:0.8rem;color:#475569;line-height:1.6}
+    .ai-cta{background:linear-gradient(135deg,#FFFFFF,#FFFFFF);border:1px solid #CBD5E1;border-radius:16px;padding:28px 24px;text-align:center;margin-bottom:32px}
+    .ai-cta h3{font-size:1.1rem;font-weight:800;color:#0F172A;margin-bottom:8px}
+    .ai-cta p{font-size:0.875rem;color:#475569;margin-bottom:20px}
+    .ai-cta a{display:inline-block;background:linear-gradient(135deg,#3A55FF,#2A40D6);color:#fff;padding:12px 28px;border-radius:10px;font-weight:700;font-size:0.9rem}
+    .ai-cta-tags{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+    .ai-cta-tag{font-size:0.72rem;color:#94A3B8}
+    .faq-item{border-bottom:1px solid #E2E8F0;padding:16px 0}
+    .faq-item:last-child{border-bottom:none}
+    .faq-q{font-size:0.9rem;font-weight:700;color:#0F172A;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .faq-q::after{content:"▾";color:#3A55FF;font-size:0.8rem}
+    .faq-a{font-size:0.85rem;color:#475569;line-height:1.7;margin-top:10px;display:none}
+    .faq-item.open .faq-a{display:block}
+    .faq-item.open .faq-q::after{content:"▴"}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:10px;margin-top:16px}
+    .related-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:16px;text-decoration:none;transition:border-color .2s;display:flex;flex-direction:column;gap:4px}
+    .related-card:hover{border-color:#3A55FF}
+    .related-search{font-size:0.65rem;color:#94A3B8}
+    .related-name{font-size:0.85rem;font-weight:700;color:#0F172A}
+    footer{background:#0F172A;border-top:1px solid #1E293B;padding:28px 32px;text-align:center;margin-top:20px}
+    .footer-copy{font-size:0.78rem;color:#94A3B8;line-height:1.8}
+    .footer-copy a{color:#94A3B8}
+    .footer-copy a:hover{color:#fff}
+    @media(max-width:600px){.nav{padding:14px 20px}.hero{padding:32px 20px 24px}.calc-body{padding:16px}}
+</style>
+<style id="liq-theme-css">
+.liq-theme-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--white);color:var(--text);font-size:15px;line-height:1;cursor:pointer;display:inline-grid;place-items:center;transition:.18s;margin-left:4px}
+.liq-theme-btn:hover{border-color:#3A55FF;transform:translateY(-1px)}
+.liq-theme-float{position:fixed;right:18px;bottom:18px;z-index:99999;width:44px;height:44px;border-radius:50%;box-shadow:0 8px 22px rgba(0,0,0,.28)}
+[data-theme="dark"]{
+  --bg:#070708;--white:#10131F;--border:rgba(255,255,255,.10);--border2:rgba(255,255,255,.17);
+  --b50:rgba(58,85,255,.12);--b100:rgba(58,85,255,.20);--b200:rgba(58,85,255,.32);
+  --text:#F1F5FF;--text2:#DBE3F5;--text3:#A7B0CC;--text4:#7E88A8;
+  --glight:rgba(16,185,129,.16);--rlight:rgba(239,68,68,.16);--alight:rgba(245,158,11,.16);--plight:rgba(119,11,255,.18);
 }
+[data-theme="dark"] body{background:#070708}
+[data-theme="dark"] .nav{background:rgba(9,10,18,.92)!important;border-bottom-color:rgba(255,255,255,.08)}
+[data-theme="dark"] .liq-theme-btn{background:rgba(255,255,255,.06)}
+[data-theme="dark"] .nav-logo text tspan:first-child{fill:#FFFFFF}
+[data-theme="dark"] .nav-logo span{color:#7D92FF!important}
+[data-theme="dark"] .card,[data-theme="dark"] .why-card,[data-theme="dark"] .results,[data-theme="dark"] .result-item,[data-theme="dark"] .related-card,[data-theme="dark"] .calc-card,[data-theme="dark"] .badge-bar,[data-theme="dark"] .result-stat,[data-theme="dark"] .f-var,[data-theme="dark"] .formula-var,[data-theme="dark"] .breakdown-item,[data-theme="dark"] .safety-card,[data-theme="dark"] .modal-card,[data-theme="dark"] .legal-note,[data-theme="dark"] .tab,[data-theme="dark"] .faq-q,[data-theme="dark"] .faq-item{background:#10131F!important;border-color:rgba(255,255,255,.12)!important}
+[data-theme="dark"] .formula-box,[data-theme="dark"] .example-box,[data-theme="dark"] .faq-a{background:#0C0F1A!important;border-color:rgba(255,255,255,.10)!important}
+[data-theme="dark"] table th{background:rgba(255,255,255,.05)!important;color:#CFD8EE!important}
+[data-theme="dark"] table td,[data-theme="dark"] table th{border-color:rgba(255,255,255,.08)!important}
+[data-theme="dark"] .section-eyebrow,[data-theme="dark"] .calc-tag,[data-theme="dark"] .blog-cat,[data-theme="dark"] .calc-cat{background:rgba(58,85,255,.14)!important;border-color:rgba(58,85,255,.32)!important;color:#AEBCFF!important}
 </style>
 </head>
 <body>
@@ -115,221 +128,152 @@ footer a:hover{color:#fff}
 <nav class="nav">
   <a href="/" class="nav-logo" aria-label="LogicstIQ — Home" style="display:inline-flex;flex-direction:column;align-items:flex-start;text-decoration:none;line-height:1;gap:3px">
     <svg width="150" height="36" viewBox="0 0 260 68" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block">
-      <defs><linearGradient id="navlogo_g" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1D4ED8"/><stop offset="100%" stop-color="#60A5FA"/></linearGradient></defs>
+      <defs><linearGradient id="navlogo_g" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#2A40D6"/><stop offset="100%" stop-color="#7A92FF"/></linearGradient></defs>
       <path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#navlogo_g)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <path d="M59 8 L66 14 L59 20" stroke="#60A5FA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <circle cx="32" cy="50" r="3.5" fill="#1D4ED8"/>
-      <circle cx="50" cy="14" r="3.5" fill="#60A5FA"/>
-      <text x="82" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5"><tspan fill="#0F172A">Logicst</tspan><tspan fill="#2563EB">IQ</tspan></text>
+      <path d="M59 8 L66 14 L59 20" stroke="#7A92FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="32" cy="50" r="3.5" fill="#2A40D6"/>
+      <circle cx="50" cy="14" r="3.5" fill="#7A92FF"/>
+      <text x="82" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5"><tspan fill="#0F172A">Logicst</tspan><tspan fill="#3A55FF">IQ</tspan></text>
     </svg>
-    <span style="font-size:9px;font-weight:600;color:#2563EB;letter-spacing:.05em;white-space:nowrap">Where Logistics Meets Intelligence</span>
+    <span style="font-size:9px;font-weight:600;color:#3A55FF;letter-spacing:.05em;white-space:nowrap">Where Logistics Meets Intelligence</span>
   </a>
-  <div class="nav-links">
-    <a href="https://www.logicstiq.com" class="nav-link">&#8592; Home</a>
-    <a href="https://www.logicstiq.com/about" class="nav-link">About</a>
-    <a href="https://www.logicstiq.com/contact" class="nav-link active">Contact</a>
-    <a href="https://www.logicstiq.com/#ai-demand-planner" class="nav-cta">&#10022; AI Planner</a>
-  </div>
+  <a href="https://www.logicstiq.com" class="nav-back">← All Calculators</a>
 </nav>
+<div class="badge-bar">🆓 Free · No Login · Instant Results</div>
 
-<div class="hero">
-  <div class="hero-badge">&#128172; Get in Touch</div>
-  <h1>We Read <span>Every Message</span></h1>
-  <p class="hero-sub">Questions, feedback, partnership ideas, or just want to say hello — reach out. We are a small team and we personally read and reply to everything.</p>
-</div>
+<section class="hero">
+  <h1>Cash Conversion Cycle Calculator <span>DIO + DSO − DPO — Free Working Capital Tool</span></h1>
+  <p class="hero-sub">Calculate how many days cash is locked in your supply chain — from paying your supplier to collecting from your customer. Reduce your CCC to free up working capital without borrowing.</p>
+  <div class="trust-row">
+    <span class="trust-item">No signup needed</span>
+    <span class="trust-item">No data stored</span>
+    <span class="trust-item">Works on mobile</span>
+    <span class="trust-item">Free forever</span>
+  </div>
+</section>
 
-<div class="wrap">
-
-  <div class="contact-grid">
-
-    <!-- LEFT: CHANNELS -->
-    <div class="channels-col">
-
-      <div class="channel-card">
-        <div class="channel-header">
-          <div class="channel-ico blue">&#128140;</div>
-          <div class="channel-name">General &amp; Privacy</div>
-        </div>
-        <p class="channel-desc">For general questions, feedback about the calculators, data privacy queries, or anything else about LogicstIQ.</p>
-        <a href="mailto:privacy@logicstiq.com" class="channel-link">&#8594; privacy@logicstiq.com</a>
-      </div>
-
-      <div class="channel-card">
-        <div class="channel-header">
-          <div class="channel-ico green">&#128101;</div>
-          <div class="channel-name">Amit Kumar</div>
-        </div>
-        <p class="channel-desc">Co-Founder. Supply chain, inventory planning, e-commerce, D2C, marketplace operations. Reach out for supply chain questions or collaboration.</p>
-        <a href="https://www.linkedin.com/in/amiitkumar" target="_blank" rel="noopener" class="channel-link">&#8594; LinkedIn: amiitkumar</a>
-      </div>
-
-      <div class="channel-card">
-        <div class="channel-header">
-          <div class="channel-ico purple">&#128101;</div>
-          <div class="channel-name">Sachin Sirwani</div>
-        </div>
-        <p class="channel-desc">Co-Founder. Logistics, freight, 3PL, Middle East supply chains. Reach out for logistics cost, carrier strategy, or supply chain operations.</p>
-        <a href="https://www.linkedin.com/in/sachin-s-0b1179162" target="_blank" rel="noopener" class="channel-link">&#8594; LinkedIn: sachin-s-0b1179162</a>
-      </div>
-
-      <div class="channel-card">
-        <div class="channel-header">
-          <div class="channel-ico orange">&#127919;</div>
-          <div class="channel-name">Partnerships &amp; Media</div>
-        </div>
-        <p class="channel-desc">Affiliate partnerships, media mentions, supply chain newsletter features, or integration opportunities.</p>
-        <a href="mailto:privacy@logicstiq.com?subject=Partnership%20Inquiry" class="channel-link">&#8594; Email with subject "Partnership"</a>
-      </div>
-
-      <div class="response-card">
-        <div class="response-title">&#9201; Typical Response Times</div>
-        <div class="response-row"><span class="response-type">General email</span><span class="response-time">24–48 hours</span></div>
-        <div class="response-row"><span class="response-type">LinkedIn message</span><span class="response-time">48–72 hours</span></div>
-        <div class="response-row"><span class="response-type">Partnership inquiry</span><span class="response-time">3–5 business days</span></div>
-        <div class="response-row"><span class="response-type">Privacy / data request</span><span class="response-time">Within 72 hours</span></div>
-      </div>
-
+<section class="calc-section">
+  <div class="calc-card">
+    <div class="calc-header">
+      <span class="calc-header-icon">🔁</span>
+      <span class="calc-header-title">Cash Conversion Cycle Calculator — Free Online Tool</span>
     </div>
-
-    <!-- RIGHT: FORM -->
-    <div>
-      <div class="form-card">
-        <div class="form-eyebrow">&#9997; Send a Message</div>
-        <h2>Drop Us a Line</h2>
-        <p class="form-sub">Fill in the form and we will get back to you within 24–48 hours. All fields marked with * are required.</p>
-        <div id="contact-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label>Your Name *</label>
-              <input type="text" id="f-name" placeholder="e.g. Priya Sharma" required/>
-            </div>
-            <div class="form-group">
-              <label>Email Address *</label>
-              <input type="email" id="f-email" placeholder="you@company.com" required/>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Company / Organisation</label>
-            <input type="text" id="f-company" placeholder="e.g. Sharma Logistics Pvt Ltd"/>
-          </div>
-          <div class="form-group">
-            <label>Topic *</label>
-            <select id="f-topic">
-              <option value="">Select a topic...</option>
-              <option>Question about a calculator</option>
-              <option>AI Demand Planner feedback</option>
-              <option>Feature request</option>
-              <option>Bug report</option>
-              <option>Partnership or collaboration</option>
-              <option>Media or press inquiry</option>
-              <option>Privacy or data request</option>
-              <option>General feedback</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Message *</label>
-            <textarea id="f-message" rows="5" placeholder="Tell us what is on your mind. The more detail the better — we love specific supply chain questions."></textarea>
-          </div>
-          <button class="submit-btn" onclick="submitForm()">&#128172; Send Message</button>
-          <p class="form-note">&#128274; We never share your details with third parties. See our <a href="/privacy-policy" style="color:var(--b600)">Privacy Policy</a>.</p>
+    <div class="calc-body">
+      <div class="field-grid">
+        <div class="field"><label>Average Inventory (₹)</label><span>Opening + Closing stock ÷ 2</span><input type="number" id="inventory" placeholder="e.g. 1500000" min="0"></div>
+        <div class="field"><label>COGS / Annual (₹)</label><span>Annual Cost of Goods Sold</span><input type="number" id="cogs" placeholder="e.g. 8000000" min="0"></div>
+        <div class="field"><label>Accounts Receivable (₹)</label><span>Outstanding customer payments</span><input type="number" id="ar" placeholder="e.g. 600000" min="0"></div>
+        <div class="field"><label>Annual Revenue (₹)</label><span>Total sales for the period</span><input type="number" id="revenue" placeholder="e.g. 12000000" min="0"></div>
+        <div class="field"><label>Accounts Payable (₹)</label><span>What you owe suppliers</span><input type="number" id="ap" placeholder="e.g. 400000" min="0"></div>
+        <div class="field"><label>Annual Purchases (₹)</label><span>Total inventory purchases</span><input type="number" id="purchases" placeholder="e.g. 7500000" min="0"></div>
+      </div>
+      <button class="calc-btn" onclick="runCalc()">Calculate Cash Conversion Cycle →</button>
+      <div class="results" id="results">
+        <div class="results-grid">
+          <div class="result-item"><div class="result-label">DIO (Days Inventory)</div><div class="result-value amber" id="r-dio">—</div><div class="result-sub">Days stock sits before sold</div></div>
+          <div class="result-item"><div class="result-label">DSO (Days Receivable)</div><div class="result-value amber" id="r-dso">—</div><div class="result-sub">Days to collect from customers</div></div>
+          <div class="result-item"><div class="result-label">DPO (Days Payable)</div><div class="result-value green" id="r-dpo">—</div><div class="result-sub">Days to pay suppliers</div></div>
+          <div class="result-item"><div class="result-label">Cash Conversion Cycle</div><div class="result-value" id="r-ccc">—</div><div class="result-sub">DIO + DSO − DPO</div></div>
         </div>
-        <div class="success-box" id="success-box">
-          <div class="success-ico">&#9989;</div>
-          <div class="success-title">Message Sent!</div>
-          <p class="success-sub">Thank you for reaching out. We will get back to you within 24–48 hours at the email you provided.</p>
-        </div>
+        <div class="disclaimer">⚠️ <strong>Reference only:</strong> Results are for planning purposes. Validate with your actual financial statements before making decisions.</div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- FAQ -->
-  <div class="faq-section">
-    <div class="faq-eyebrow">&#10067; Frequently Asked Questions</div>
+<section class="content-section">
 
-    <div class="faq-item open">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is LogicstIQ really free? What is the catch?<span class="arr">&#9662;</span></div>
-      <div class="faq-a">There is no catch. All 20 calculators and the AI Demand Planner are completely free. No freemium tier, no expiring trial, no credit card required. We may earn affiliate commissions when users sign up for third-party tools we recommend — that is how we sustain the platform. All calculators remain free regardless.</div>
-    </div>
+  <div class="formula-box">
+    <div class="formula-tag">📐 Cash Conversion Cycle Formula</div>
+    <div class="formula-expr">DIO = ( Average Inventory ÷ COGS ) × 365<br>DSO = ( Accounts Receivable ÷ Revenue ) × 365<br>DPO = ( Accounts Payable ÷ Purchases ) × 365<br>CCC = DIO + DSO − DPO</div>
+  </div>
 
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I request a new calculator or feature?<span class="arr">&#9662;</span></div>
-      <div class="faq-a">Absolutely. Use the form above with topic "Feature request" and describe what you need. We built LogicstIQ based on real supply chain problems and we prioritise features that come up repeatedly from users. If enough people ask for something, it gets built.</div>
-    </div>
+  <div class="section-title">What is the Cash Conversion Cycle?</div>
+  <p class="prose">The <strong>Cash Conversion Cycle (CCC)</strong> measures how many days it takes your business to convert inventory investment into cash collected from customers. A lower CCC means faster cash recovery and less working capital required to run your business.</p>
+  <p class="prose">CCC = DIO + DSO − DPO. You want <strong>DIO low</strong> (sell stock fast), <strong>DSO low</strong> (collect from customers fast), and <strong>DPO high</strong> (pay suppliers late). A <strong>negative CCC</strong> — achieved by Amazon, Zara, and quick commerce platforms — means you collect from customers before you pay suppliers. For most Indian SMEs, a CCC below 45 days is excellent.</p>
 
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does LogicstIQ store my uploaded inventory data?<span class="arr">&#9662;</span></div>
-      <div class="faq-a">No. Files uploaded to the AI Demand Planner are sent to the Gemini API for analysis and immediately discarded. Nothing is stored in any database, no file is retained after processing, and nothing is shared with any third party. Close the tab and the data is gone permanently.</div>
-    </div>
+  <div class="example-box">
+    <div class="example-tag">📊 Worked Example</div>
+    <p class="ex-p">A B2B electronics distributor in Delhi calculates their CCC:</p>
+    <table class="ex-table">
+      <tr class=""><td>Average inventory</td><td>₹15,00,000</td></tr>      <tr class=""><td>Annual COGS</td><td>₹80,00,000</td></tr>      <tr class=""><td>DIO (Days Inventory Outstanding)</td><td>15L ÷ 80L × 365 = 68 days</td></tr>      <tr class=""><td>Accounts receivable</td><td>₹6,00,000</td></tr>      <tr class=""><td>Annual revenue</td><td>₹1.2 Cr</td></tr>      <tr class=""><td>DSO (Days Sales Outstanding)</td><td>6L ÷ 120L × 365 = 18 days</td></tr>      <tr class=""><td>Accounts payable</td><td>₹4,00,000 | DPO = 4L ÷ 75L × 365 = 19 days</td></tr>      <tr class="total"><td>Cash Conversion Cycle</td><td>68 + 18 − 19 = 67 days</td></tr>
+    </table>
+  </div>
 
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can we partner with LogicstIQ or integrate your tools?<span class="arr">&#9662;</span></div>
-      <div class="faq-a">Yes. We are open to affiliate partnerships, newsletter features, and integration discussions. Email privacy@logicstiq.com with the subject "Partnership" and describe what you have in mind. We respond to all partnership enquiries within 3–5 business days.</div>
-    </div>
+  <div class="section-title">Why This Calculator Matters</div>
+  <div class="why-grid">
+    <div class="why-card"><h4>Reduce Working Capital Need</h4><p>Every 10-day reduction in CCC on ₹1 Cr of revenue frees approximately ₹27L of working capital. Less working capital needed = lower bank OD requirement = less interest cost.</p></div>    <div class="why-card"><h4>Improve Cash Flow</h4><p>A high CCC means cash is locked for longer before it cycles back. For growing businesses, this creates cash flow stress even when the P&L looks profitable — the classic 'profitable but cash-poor' trap.</p></div>    <div class="why-card"><h4>Benchmark Your Business</h4><p>FMCG distributors in India typically run CCC of 30–50 days. Fashion brands: 60–90 days. B2B industrial: 90–120 days. If your CCC is higher than your industry, there's a working capital optimisation opportunity.</p></div>    <div class="why-card"><h4>Investor & Banker Metric</h4><p>Bankers assess CCC to size working capital credit limits. VCs track it as a measure of operational efficiency. A falling CCC demonstrates improving business quality and reduced financing need.</p></div>
+  </div>
 
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">I found a bug or a calculation error. What should I do?<span class="arr">&#9662;</span></div>
-      <div class="faq-a">Please report it using the form above with topic "Bug report". Include which calculator, what inputs you used, what result you got, and what you expected. We take accuracy seriously — all calculator results are validated against published supply chain formulas and we fix reported issues promptly.</div>
+  <div class="ai-cta">
+    <h3>🤖 Go Further with AI Demand Planning</h3>
+    <p>Upload your full inventory export and get demand forecasts, reorder plans, and stockout risk analysis across all your SKUs — free.</p>
+    <a href="https://www.logicstiq.com/#ai-demand-planner">Try Free AI Demand Planner →</a>
+    <div class="ai-cta-tags">
+      <span class="ai-cta-tag">Works with Tally · SAP · NetSuite · Amazon · Flipkart</span>
+      <span class="ai-cta-tag">No login · No data stored · Free forever</span>
     </div>
   </div>
 
-  <!-- BOTTOM CTA -->
-  <div class="cta-section">
-    <h2>Ready to Use LogicstIQ?</h2>
-    <p>20 free supply chain calculators and an AI Demand Planner — available right now. No login, no waiting.</p>
-    <a href="https://www.logicstiq.com" class="cta-btn">&#128230; Open Calculators</a>
-    <a href="https://www.logicstiq.com/about" class="cta-btn outline">&#128100; About Us</a>
+  <div class="section-title">Frequently Asked Questions</div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is a good CCC for Indian businesses?</div><div class="faq-a">It varies significantly by sector. Grocery and FMCG: 15–35 days (or even negative for modern retail). Fashion: 45–80 days. B2B distributors: 45–90 days. Manufacturing: 60–120 days. Quick commerce suppliers: 7–20 days. The benchmark is not absolute — what matters is whether your CCC is improving quarter on quarter.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How can I reduce my DIO (Days Inventory)?</div><div class="faq-a">Improve demand forecasting to reduce overstock. Run ABC analysis and reduce safety stock on C-class items. Use EOQ to right-size order quantities. Identify and liquidate dead stock. Negotiate more frequent, smaller deliveries with suppliers — this reduces average inventory without risking stockouts.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How can I reduce my DSO (Days Receivable)?</div><div class="faq-a">Offer early payment discounts (1–2% for payment within 7 days). Implement stricter credit terms for new customers. Move to advance payment or PDC (post-dated cheque) for higher-risk customers. Use invoice discounting or factoring for large outstanding receivables. Follow up on overdue payments within 3 days of due date.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is a negative CCC always good?</div><div class="faq-a">Usually yes — it means suppliers are financing your business. Amazon and Reliance operate with negative CCC, which is a significant competitive advantage. However, a negative CCC achieved by stretching suppliers excessively can damage supplier relationships and supply chain reliability. The best negative CCC comes from fast inventory turnover and fast customer collection — not just delaying supplier payments.</div></div>
+
+  <div style="margin-top:32px">
+    <div class="section-title">Related Free Calculators</div>
+    <div class="related-grid">
+      <a href="https://www.logicstiq.com/working-capital-calculator" class="related-card"><span class="related-search">1,300/mo searches</span><span class="related-name">📊 Working Capital Calculator</span></a>      <a href="https://www.logicstiq.com/inventory-turnover-calculator" class="related-card"><span class="related-search">3,600/mo searches</span><span class="related-name">🔄 Inventory Turnover</span></a>      <a href="https://www.logicstiq.com/cogs-calculator" class="related-card"><span class="related-search">2,900/mo searches</span><span class="related-name">💸 COGS Calculator</span></a>      <a href="https://www.logicstiq.com/carrying-cost-calculator" class="related-card"><span class="related-search">590/mo searches</span><span class="related-name">💰 Carrying Cost Calculator</span></a>
+    </div>
   </div>
 
-</div>
+</section>
 
 <footer>
-  <div class="footer-inner">
-    <div style="display:flex;justify-content:center;margin-bottom:12px">
-      <svg width="160" height="38" viewBox="0 0 260 68" fill="none"><defs><linearGradient id="fg" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="rgba(255,255,255,0.5)"/><stop offset="100%" stop-color="rgba(255,255,255,0.9)"/></linearGradient></defs><path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#fg)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M59 8 L66 14 L59 20" stroke="rgba(255,255,255,0.7)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="32" cy="50" r="3.5" fill="rgba(255,255,255,0.35)"/><circle cx="50" cy="14" r="3.5" fill="rgba(255,255,255,0.85)"/><text x="82" y="35" font-family="Plus Jakarta Sans,sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5"><tspan fill="#FFFFFF">Logicst</tspan><tspan fill="#93C5FD">IQ</tspan></text></svg>
-    </div>
-    <p class="footer-tagline">Where Logistics Meets Intelligence</p>
-    <div class="footer-links">
-      <a href="https://www.logicstiq.com">Home</a>
-      <a href="https://www.logicstiq.com/about">About</a>
-      <a href="https://www.logicstiq.com/contact">Contact</a>
-      <a href="https://www.logicstiq.com/privacy-policy">Privacy Policy</a>
-      <a href="https://www.logicstiq.com/terms">Terms of Service</a>
-      <a href="https://www.logicstiq.com/disclaimer">Disclaimer</a>
-    </div>
-    <p class="footer-copy">Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a><br>
-    &copy; 2025 LogicstIQ.com &middot; 20 Free Supply Chain Calculators + AI Demand Planner &middot; No Login &middot; Free Forever</p>
-  </div>
+  <p class="footer-copy">
+    <strong>31 Free Supply Chain Calculators · AI Demand Planner · No Login Required · Free Forever</strong><br><br>
+    © 2025 <a href="https://www.logicstiq.com">LogicstIQ.com</a> ·
+    <a href="https://www.logicstiq.com/privacy-policy.html">Privacy Policy</a> ·
+    <a href="https://www.logicstiq.com/terms.html">Terms</a> ·
+    Results are for reference only.<br>
+    <strong>Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. We may earn a commission at no extra cost to you. All calculators are free forever.<br>
+    Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a>
+  </p>
 </footer>
 
+<script>function toggleFaq(el){el.closest('.faq-item').classList.toggle('open');}</script>
+<script>function runCalc(){
+  const inv=parseFloat(document.getElementById('inventory').value)||0;
+  const cogs=parseFloat(document.getElementById('cogs').value)||0;
+  const ar=parseFloat(document.getElementById('ar').value)||0;
+  const rev=parseFloat(document.getElementById('revenue').value)||0;
+  const ap=parseFloat(document.getElementById('ap').value)||0;
+  const pur=parseFloat(document.getElementById('purchases').value)||0;
+  if(!inv||!cogs||!ar||!rev||!ap||!pur){alert('Please enter all six fields to calculate the full Cash Conversion Cycle.');return;}
+  const dio=(inv/cogs)*365;
+  const dso=(ar/rev)*365;
+  const dpo=(ap/pur)*365;
+  const ccc=dio+dso-dpo;
+  document.getElementById('r-dio').textContent=Math.round(dio)+' days';
+  document.getElementById('r-dso').textContent=Math.round(dso)+' days';
+  document.getElementById('r-dpo').textContent=Math.round(dpo)+' days';
+  const cccEl=document.getElementById('r-ccc');
+  cccEl.textContent=(ccc>=0?'+':'')+Math.round(ccc)+' days';
+  cccEl.className='result-value '+(ccc<=30?'green':(ccc<=70?'amber':'red'));
+  document.getElementById('results').classList.add('show');
+}</script>
+
 <script>
-function submitForm() {
-  const name = document.getElementById("f-name").value.trim();
-  const email = document.getElementById("f-email").value.trim();
-  const topic = document.getElementById("f-topic").value;
-  const msg = document.getElementById("f-message").value.trim();
-  if (!name || !email || !topic || !msg) {
-    alert("Please fill in all required fields (Name, Email, Topic, Message).");
-    return;
-  }
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    alert("Please enter a valid email address.");
-    return;
-  }
-  // Build mailto link as fallback (no backend needed)
-  const subject = encodeURIComponent("LogicstIQ Contact: " + topic);
-  const body = encodeURIComponent(
-    "Name: " + name + "\n" +
-    "Email: " + email + "\n" +
-    "Company: " + (document.getElementById("f-company").value || "Not provided") + "\n" +
-    "Topic: " + topic + "\n\n" +
-    "Message:\n" + msg
-  );
-  window.location.href = "mailto:privacy@logicstiq.com?subject=" + subject + "&body=" + body;
-  document.getElementById("contact-form").style.display = "none";
-  document.getElementById("success-box").classList.add("show");
-}
+(function(){var r=document.documentElement;
+function lbl(){var b=document.getElementById('liqTheme');if(b)b.textContent=r.getAttribute('data-theme')==='dark'?'☀️':'🌙';}
+function set(t){r.setAttribute('data-theme',t);lbl();try{localStorage.setItem('liq-theme',t)}catch(e){}}
+try{var sv=localStorage.getItem('liq-theme');if(sv)r.setAttribute('data-theme',sv);}catch(e){}
+var btn=document.createElement('button');btn.id='liqTheme';btn.type='button';btn.className='liq-theme-btn';
+btn.setAttribute('aria-label','Toggle light or dark mode');btn.title='Toggle light / dark';btn.textContent='🌙';
+btn.addEventListener('click',function(){set(r.getAttribute('data-theme')==='dark'?'light':'dark');});
+function place(){var nav=document.querySelector('.nav');
+ if(nav){var cta=nav.querySelector('.nav-cta');if(cta&&cta.parentNode){cta.parentNode.insertBefore(btn,cta);}
+   else{var l=nav.querySelector('.nav-links');(l||nav).appendChild(btn);}}
+ else{btn.classList.add('liq-theme-float');document.body.appendChild(btn);}lbl();}
+if(document.readyState!=='loading')place();else document.addEventListener('DOMContentLoaded',place);})();
 </script>
 </body>
 </html>
