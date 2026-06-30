@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LogicstIQ.com – Where Logistics Meets Intelligence | Free Supply Chain Calculators</title>
-<meta name="description" content="LogicstIQ.com — Free supply chain calculators powered by logic and intelligence. EOQ, Reorder Point, Safety Stock, OTIF, Demand Forecasting, Landed Cost, Carbon Footprint &amp; & more. No login. Instant results. Free
-forever.">
+<title>Free Supply Chain Calculators & AI Demand Planner | LogicstIQ</title>
+<meta name="description" content="31 free supply chain calculators + AI Demand Planner. EOQ, safety stock, OTIF, landed cost, demand forecasting &amp; more. No login, instant results, free forever.">
 <meta name="keywords" content="supply chain calculator, logistics calculator, EOQ calculator, reorder point calculator, safety stock calculator, OTIF calculator, fill rate calculator, demand forecasting tool, landed cost calculator, freight cost calculator, inventory turnover, warehouse utilization, ABC analysis, COGS calculator, lead time calculator, supplier scorecard, carbon footprint logistics, GST calculator supply chain, LogicstIQ, COGS calculator India, break even calculator India, gross margin calculator India, MOQ
 calculator, dead stock calculator, volumetric weight calculator India, cash conversion cycle calculator, days inventory outstanding calculator, pick and pack cost calculator, shipping cost per unit calculator, supply chain calculator free India">
 <meta name="author" content="Amit Kumar &amp; Sachin Sirwani — LogicstIQ.com">
@@ -30,7 +29,7 @@ calculator, dead stock calculator, volumetric weight calculator India, cash conv
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="shortcut icon" href="/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&family=Wix+Madefor+Display:wght@600;700;800&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- Google AdSense — activate after approval: replace ca-pub-XXXXXXXXXXXXXXXX with your Publisher ID and remove the comment tags -->
 <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
 <script type="application/ld+json">
@@ -824,17 +823,17 @@ footer{background:#0F172A;padding:52px 32px 28px}
     <div class="liq-source-grid" id="liq-source-grid"></div>
     <div class="liq-form-lbl">Step 2 — Forecast Settings</div>
     <div class="liq-config-grid">
-      <div class="liq-field"><label class="liq-label">Forecast Horizon</label><select class="liq-select" id="liq-horizon"><option>7 Days</option><option>14 Days</option><option>30 Days</option><option>60 Days</option><option selected>90 Days</option><option>180 Days</option><option>365 Days</option></select></div>
-      <div class="liq-field"><label class="liq-label">Currency</label><select class="liq-select" id="liq-currency"><option value="₹">₹ India (INR)</option><option value="$">$ USA (USD)</option><option value="£">£ UK (GBP)</option><option value="€">€ Europe (EUR)</option><option value="CA$">CA$ Canada</option><option value="AED">AED Middle East</option><option value="S$">S$ Singapore</option><option value="R$">R$ Brazil</option><option value="¥">¥ China / Japan</option></select></div>
-      <div class="liq-field"><label class="liq-label">Region / Market</label><select class="liq-select" id="liq-region"><option>Global</option><option selected>India</option><option>USA</option><option>UK</option><option>Europe</option><option>Middle East</option><option>Southeast Asia</option><option>Latin America</option><option>China</option><option>Japan</option><option>Australia</option></select></div>
-      <div class="liq-field"><label class="liq-label">Planning Level</label><select class="liq-select" id="liq-planlevel"><option selected>SKU</option><option>Brand</option><option>Category</option><option>Marketplace</option><option>Country</option><option>City</option><option>Warehouse</option><option>Dark Store</option></select></div>
-      <div class="liq-field"><label class="liq-label">Forecast Method</label><select class="liq-select" id="liq-method"><option selected>Auto (AI selects best)</option><option>Moving Average</option><option>Exponential Smoothing</option><option>Trend + Seasonality</option><option>ML Ensemble</option></select></div>
-      <div class="liq-field"><label class="liq-label">Data Sales Period</label><select class="liq-select" id="liq-saleswindow" title="What period does your 'units sold' column cover? Only used for snapshot files without dated history."><option value="7">Last 7 days</option><option value="30" selected>Last 30 days</option><option value="60">Last 60 days</option><option value="90">Last 90 days</option><option value="365">Last 365 days (yearly)</option></select></div>
+      <div class="liq-field"><label class="liq-label">Forecast Horizon</label><select class="liq-select" id="liq-horizon" aria-label="Forecast Horizon"><option>7 Days</option><option>14 Days</option><option>30 Days</option><option>60 Days</option><option selected>90 Days</option><option>180 Days</option><option>365 Days</option></select></div>
+      <div class="liq-field"><label class="liq-label">Currency</label><select class="liq-select" id="liq-currency" aria-label="Currency"><option value="₹">₹ India (INR)</option><option value="$">$ USA (USD)</option><option value="£">£ UK (GBP)</option><option value="€">€ Europe (EUR)</option><option value="CA$">CA$ Canada</option><option value="AED">AED Middle East</option><option value="S$">S$ Singapore</option><option value="R$">R$ Brazil</option><option value="¥">¥ China / Japan</option></select></div>
+      <div class="liq-field"><label class="liq-label">Region / Market</label><select class="liq-select" id="liq-region" aria-label="Region / Market"><option>Global</option><option selected>India</option><option>USA</option><option>UK</option><option>Europe</option><option>Middle East</option><option>Southeast Asia</option><option>Latin America</option><option>China</option><option>Japan</option><option>Australia</option></select></div>
+      <div class="liq-field"><label class="liq-label">Planning Level</label><select class="liq-select" id="liq-planlevel" aria-label="Planning Level"><option selected>SKU</option><option>Brand</option><option>Category</option><option>Marketplace</option><option>Country</option><option>City</option><option>Warehouse</option><option>Dark Store</option></select></div>
+      <div class="liq-field"><label class="liq-label">Forecast Method</label><select class="liq-select" id="liq-method" aria-label="Forecast Method"><option selected>Auto (AI selects best)</option><option>Moving Average</option><option>Exponential Smoothing</option><option>Trend + Seasonality</option><option>ML Ensemble</option></select></div>
+      <div class="liq-field"><label class="liq-label">Data Sales Period</label><select class="liq-select" id="liq-saleswindow" aria-label="Data Sales Period" title="What period does your 'units sold' column cover? Only used for snapshot files without dated history."><option value="7">Last 7 days</option><option value="30" selected>Last 30 days</option><option value="60">Last 60 days</option><option value="90">Last 90 days</option><option value="365">Last 365 days (yearly)</option></select></div>
     </div>
     <div class="liq-field" style="margin-bottom:22px"><label class="liq-label">Active Sales Channels — tap to select</label><div class="liq-ch-picker" id="liq-ch-picker"></div></div>
     <div class="liq-form-lbl">Step 3 — Upload Your Inventory File</div>
     <div class="liq-dropzone" id="liq-dropzone" ondragover="liqDragOver(event)" ondragleave="liqDragLeave()" ondrop="liqDrop(event)" onclick="document.getElementById('liq-file-input').click()">
-      <input type="file" id="liq-file-input" accept=".csv,.xlsx,.xls,.txt,.tsv" onchange="liqFileChange(event)" onclick="event.stopPropagation()" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;">
+      <input type="file" id="liq-file-input" aria-label="Upload inventory or sales file" accept=".csv,.xlsx,.xls,.txt,.tsv" onchange="liqFileChange(event)" onclick="event.stopPropagation()" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;">
       <div id="liq-dz-content">
         <div class="liq-dz-icon">📂</div>
         <div class="liq-dz-title">Drop your inventory or sales export here</div>
@@ -1224,13 +1223,13 @@ function esc(s){const d=document.createElement('div');d.textContent=String(s??''
       <div class="liq-form-lbl">Leave a Review</div>
       <div class="liq-config-grid" style="margin-bottom:18px">
         <div class="liq-field"><label class="liq-label">Your Name</label>
-          <input class="liq-select" name="entry.1864260470" type="text" placeholder="e.g. Rahul M." required></div>
+          <input class="liq-select" name="entry.1864260470" type="text" aria-label="Your name" placeholder="e.g. Rahul M." required></div>
         <div class="liq-field"><label class="liq-label">Company</label>
-          <input class="liq-select" name="entry.1948507386" type="text" placeholder="e.g. Acme D2C"></div>
+          <input class="liq-select" name="entry.1948507386" type="text" aria-label="Company" placeholder="e.g. Acme D2C"></div>
         <div class="liq-field"><label class="liq-label">Role</label>
-          <input class="liq-select" name="entry.944107355" type="text" placeholder="e.g. Supply Chain Manager"></div>
+          <input class="liq-select" name="entry.944107355" type="text" aria-label="Role" placeholder="e.g. Supply Chain Manager"></div>
         <div class="liq-field"><label class="liq-label">Rating</label>
-          <select class="liq-select" name="entry.597874284">
+          <select class="liq-select" name="entry.597874284" aria-label="Rating">
             <option value="5 stars">★★★★★ Excellent</option>
             <option value="4 stars">★★★★ Good</option>
             <option value="3 stars">★★★ Average</option>
@@ -1239,7 +1238,7 @@ function esc(s){const d=document.createElement('div');d.textContent=String(s??''
           </select></div>
       </div>
       <div class="liq-field" style="margin-bottom:18px"><label class="liq-label">Your Review</label>
-        <textarea class="liq-select" name="entry.2057559239" rows="4" placeholder="What did you use, and how did it help?" style="resize:vertical;font-family:inherit" required></textarea></div>
+        <textarea class="liq-select" name="entry.2057559239" rows="4" aria-label="Your review" placeholder="What did you use, and how did it help?" style="resize:vertical;font-family:inherit" required></textarea></div>
       <div class="liq-cta" style="margin-top:0">
         <button type="submit" class="liq-btn liq-btn-primary">✦ Submit Feedback</button>
       </div>
