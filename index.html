@@ -1308,7 +1308,7 @@ function liqFeedbackSubmit(){
 </style>
 <script>
 (function(){
-  var AUTO_OPEN=true,AUTO_OPEN_DELAY=1200,AUTO_OPEN_MODE="always"; // "always" | "session" | "once"
+  var AUTO_OPEN=true,AUTO_OPEN_DELAY=1200,AUTO_OPEN_MODE="once"; // "always" | "session" | "once"
   var modal=document.getElementById("liq-vm"),video=document.getElementById("liq-video"),
       unmute=document.getElementById("liq-unmute"),openBtn=document.getElementById("liq-open"),lastFocus=null;
   function open(){lastFocus=document.activeElement;modal.classList.add("is-open");modal.setAttribute("aria-hidden","false");
