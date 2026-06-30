@@ -1030,6 +1030,7 @@ function previewColumns(text){
   const el=document.getElementById('liq-col-preview');const tags=document.getElementById('liq-col-tags');
   if(el&&tags){el.style.display='block';tags.innerHTML=found.map(f=>`<span class="liq-col-tag found">✓ ${esc(f)}</span>`).join('')+missing.map(f=>`<span class="liq-col-tag miss">~ ${esc(f)}</span>`).join('');}
 }
+async function liqGzip(t){try{if(!('CompressionStream' in window))return null;const cs=new CompressionStream('gzip');const st=new Blob([t]).stream().pipeThrough(cs);const ab=await new Response(st).arrayBuffer();const b=new Uint8Array(ab);let bin='';const CH=0x8000;for(let i=0;i<b.length;i+=CH){bin+=String.fromCharCode.apply(null,b.subarray(i,i+CH));}return btoa(bin);}catch(e){return null;}}
 window.liqRun=async function(){
   if(!fileText){showError('Please upload a file or load sample data.');return;}
   const sym=document.getElementById('liq-currency').value;
@@ -1039,9 +1040,12 @@ window.liqRun=async function(){
   stepStates=STEPS.map((_,i)=>i===0?'active':'wait');renderProgress();
   const timer=setInterval(()=>{const i=stepStates.indexOf('active');if(i>=0&&i<STEPS.length-1){stepStates[i]='done';stepStates[i+1]='active';renderProgress();}},700);
   try{
-    const res=await fetch('/api/forecast',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({csvText:fileText,horizon,currency:sym,region,channels:selectedChannels,planLevel:document.getElementById('liq-planlevel').value,erpSource:selectedSource,method:document.getElementById('liq-method').value,salesWindowDays:parseInt(document.getElementById('liq-saleswindow').value)||30})});
+    const liqGz=await liqGzip(fileText);
+    const liqPayload={horizon,currency:sym,region,channels:selectedChannels,planLevel:document.getElementById('liq-planlevel').value,erpSource:selectedSource,method:document.getElementById('liq-method').value,salesWindowDays:parseInt(document.getElementById('liq-saleswindow').value)||30};
+    if(liqGz){liqPayload.csvGz=liqGz;}else{liqPayload.csvText=fileText;}
+    const res=await fetch('/api/forecast',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(liqPayload)});
     clearInterval(timer);
-    if(!res.ok){const err=await res.json().catch(()=>({}));throw new Error(err.error||'Server error ('+res.status+'). Check Vercel environment variables.');}
+    if(!res.ok){const err=await res.json().catch(()=>({}));let msg=err.error;if(!msg){msg=(res.status===413)?'Your file is too large to send in one request. Try a smaller export (fewer columns or rows), or keep it under ~15MB.':'Server error ('+res.status+'). Please try again in a moment.';}throw new Error(msg);}
     const data=await res.json();
     stepStates=STEPS.map(()=>'done');renderProgress();setLoading(false);
     renderDashboard(data,sym,horizon,region);
