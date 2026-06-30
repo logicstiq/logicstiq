@@ -1,8 +1,11 @@
-// /api/forecast.js — LogicstIQ AI Demand Planner v7 (complete & accuracy-hardened)
-// Adds on top of v5/v6: separate cost vs price (margins + cost-based valuation),
-// use of file-provided MoM-Trend & Seasonal-Index for snapshot files, and
-// planning-level roll-ups (Brand / Category / Warehouse / Channel).
-// All prior fixes retained: best-header detection, period-granularity scaling,
+// /api/forecast.js — LogicstIQ AI Demand Planner v8 (India edition)
+// v8 adds: a baked-in INDIA festive-sale demand calendar (Big Billion Days,
+// Great Indian Festival, Diwali/Dhanteras, Navratri/Dussehra, Myntra EORS,
+// Raksha Bandhan, Holi, Republic/Independence-Day sales) applied as a
+// category-aware, date-windowed seasonal index over the forecast horizon, and a
+// Quick-Commerce mode (Blinkit/Zepto/Instamart/BigBasket/Flipkart Minutes/Amazon
+// Fresh) with daily velocity, weekend uplift, short lead times and a 98% service
+// level. All v7 logic retained: best-header detection, period-granularity scaling,
 // consistent multi-horizon forecasts, real methods + back-test (MAPE),
 // multi-warehouse summing, statistical safety stock & stockout probability.
 
@@ -16,7 +19,7 @@ export default async function handler(req, res) {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) return res.status(500).json({ error: 'GEMINI_API_KEY not set in Vercel Environment Variables.' });
 
-  let { csvText, csvGz, horizon, currency, region, channels, planLevel, erpSource, method, salesWindowDays } = req.body || {};
+  let { csvText, csvGz, horizon, currency, region, channels, planLevel, erpSource, method, salesWindowDays, festivalMode, commerceType } = req.body || {};
   if (!csvText && csvGz) {
     try { const zlib = await import('node:zlib'); csvText = zlib.gunzipSync(Buffer.from(csvGz, 'base64')).toString('utf8'); }
     catch (e) { return res.status(400).json({ error: 'Could not read the compressed file. Please try a smaller or different export.' }); }
@@ -28,6 +31,9 @@ export default async function handler(req, res) {
   const fcMethod = (method || 'Auto').toString();
   const salesWindow = Math.max(1, parseInt(salesWindowDays) || 30);
   const level = (planLevel || 'SKU').toString();
+  const isIndia = (region == null) || /india/i.test(region.toString());
+  const qcom = /quick|q-?com/i.test((commerceType || '').toString()) || (Array.isArray(channels) && channels.length > 0 && channels.every(c => QCOM_CHANNELS.includes(c)));
+  const applyFestival = (festivalMode !== false && festivalMode !== 'off') && isIndia;
 
   const rows = parseCSVSmart(csvText, erpSource || 'auto');
   if (!rows || rows.length < 2) return res.status(400).json({ error: 'Could not read your file. Make sure it has at least 2 rows of data.' });
@@ -42,7 +48,8 @@ export default async function handler(req, res) {
   if (!skuList.length) return res.status(400).json({ error: 'No valid SKUs found. Ensure your file has a product name or SKU column.' });
 
   const today = new Date();
-  const results = skuList.map(s => computeSKU(s, isTS, today, sym, horizDays, fcMethod, salesWindow, map));
+  const indiaEvents = applyFestival ? upcomingIndiaEvents(today) : [];
+  const results = skuList.map(s => computeSKU(s, isTS, today, sym, horizDays, fcMethod, salesWindow, map, { applyFestival, qcom }));
 
   const dataQuality = [];
   if (!isTS) {
@@ -55,7 +62,8 @@ export default async function handler(req, res) {
   }
   if (map.price === undefined && map.cost === undefined) dataQuality.push('No price/cost column found — revenue-at-risk, margins and inventory value are shown as 0.');
   else if (map.cost === undefined) dataQuality.push('No separate cost column — inventory value is calculated at selling price. Add a unit-cost column for true cost valuation and margins.');
-  if (map.leadTime === undefined) dataQuality.push('No lead-time column found — a default of 30 days is used for reorder timing.');
+  if (map.leadTime === undefined) dataQuality.push(qcom ? 'No lead-time column found — a 2-day quick-commerce replenishment lead time is assumed for reorder timing.' : 'No lead-time column found — a default of 30 days is used for reorder timing.');
+  if (applyFestival) dataQuality.push('India festive-sale calendar applied: forecasts, days-of-cover and reorder dates are uplifted for the Big Billion Days / Great Indian Festival / Diwali window and other category-relevant events that fall inside your horizon.');
   const multiWh = results.filter(r => r.warehouseCount > 1).length;
   if (multiWh) dataQuality.push(`${multiWh} SKU(s) span multiple warehouses — on-hand stock and sales were summed across locations.`);
 
@@ -84,6 +92,9 @@ export default async function handler(req, res) {
     totalMargin: results.reduce((a, r) => a + (r.marginPerUnit > 0 ? r.marginPerUnit * r.avgMonthlyDemand : 0), 0),
     avgDoC: active.length ? Math.round(active.reduce((a, r) => a + Math.min(r.daysOfCover, 365), 0) / active.length) : 0,
     isTS, erpSource: erpSource || 'auto', planLevel: level,
+    region: region || 'India', commerceType: qcom ? 'Quick Commerce' : 'E-Commerce', festivalMode: applyFestival,
+    seasonalPeakEvent: (results.find(r => r.peakEvent) || {}).peakEvent || null,
+    avgSeasonalUplift: active.length ? Math.round((active.reduce((a, r) => a + (r.seasonalUplift || 1), 0) / active.length) * 100) / 100 : 1,
     forecastMethod: fcMethod, periodGranularity: results.find(r => r.periodGranularity)?.periodGranularity || (isTS ? 'unknown' : 'snapshot'),
     forecastAccuracyMape: avgMape, usedFileTrend: map.momTrend !== undefined, usedFileSeasonality: map.seasonalIndex !== undefined,
     hasCost: map.cost !== undefined, dataQuality,
@@ -126,7 +137,7 @@ Return EXACTLY: {"insights":[{"type":"green|orange|red|blue|purple","icon":"emoj
     }
   } catch (e) { /* fallback insights used */ }
 
-  return res.status(200).json({ summary, demandForecast, reorderPlan, slowMoversAll, stockoutRisk, allSKUs: results, groupedForecast, insights });
+  return res.status(200).json({ summary, demandForecast, reorderPlan, slowMoversAll, stockoutRisk, allSKUs: results, groupedForecast, insights, upcomingEvents: indiaEvents });
 }
 
 // ─── SMART CSV PARSER (best-header detection) ─────────────────────────────────
@@ -337,19 +348,27 @@ function backtestMape(demands, method) {
   }
   return cnt ? Math.round((errs / cnt) * 100) : null;
 }
-function demandOverDays(forecaster, D, gap) {
+function demandOverDays(forecaster, D, gap, dayMult) {
   let total = 0, used = 0, k = 1;
   while (used < D && k < 5000) {
     const daysThis = Math.min(gap, D - used);
-    total += forecaster.f(k) * (daysThis / gap);
+    let segMult = 1;
+    if (dayMult) { let sm = 0; for (let dd = 0; dd < daysThis; dd++) sm += dayMult(used + dd); segMult = daysThis ? sm / daysThis : 1; }
+    total += forecaster.f(k) * (daysThis / gap) * segMult;
     used += daysThis; k++;
   }
   return Math.max(0, Math.round(total));
 }
 
 // ─── COMPUTE ENGINE ───────────────────────────────────────────────────────────
-function computeSKU(s, isTS, today, sym, horizDays, method, salesWindow, map) {
-  const lt = s.leadTime > 0 ? s.leadTime : 30;
+function computeSKU(s, isTS, today, sym, horizDays, method, salesWindow, map, opts) {
+  opts = opts || {};
+  const qcom = !!opts.qcom;
+  const applyFestival = !!opts.applyFestival;
+  const defaultLT = qcom ? 2 : 30;
+  const lt = s.leadTime > 0 ? s.leadTime : defaultLT;
+  const catBucket = classifyCategory(s.category);
+  const dayMult = (off) => applyFestival ? indiaDayMultiplier(addDays(today, off), catBucket, qcom) : 1;
   const unitCost = s.cost > 0 ? s.cost : (s.price || 0);   // valuation basis
   const sellPrice = s.price > 0 ? s.price : unitCost;       // revenue basis
   const marginPerUnit = (s.price > 0 && s.cost > 0) ? Math.round((sellPrice - unitCost) * 100) / 100 : 0;
@@ -395,14 +414,26 @@ function computeSKU(s, isTS, today, sym, horizDays, method, salesWindow, map) {
     conf = baseDaily > 0 ? (s.momTrend != null || s.seasonalIndex != null ? 'File trend/season' : 'Velocity-based') : 'Low (no sales)';
   }
 
-  nextH = demandOverDays(forecaster, horizDays, gap);
-  next30 = demandOverDays(forecaster, 30, gap);
-  next60 = demandOverDays(forecaster, 60, gap);
-  next90 = demandOverDays(forecaster, 90, gap);
+  nextH = demandOverDays(forecaster, horizDays, gap, dayMult);
+  next30 = demandOverDays(forecaster, 30, gap, dayMult);
+  next60 = demandOverDays(forecaster, 60, gap, dayMult);
+  next90 = demandOverDays(forecaster, 90, gap, dayMult);
+
+  // ── India seasonal intensity: average uplift over the horizon and the near-term (lead-time) window ──
+  let seasonalUplift = 1, nearMult = 1, peakEvent = null;
+  if (applyFestival) {
+    let hs = 0; for (let d = 0; d < horizDays; d++) hs += dayMult(d); seasonalUplift = horizDays ? hs / horizDays : 1;
+    const nearWin = Math.max(lt, qcom ? 7 : 14);
+    let ns = 0; for (let d = 0; d < nearWin; d++) ns += dayMult(d); nearMult = nearWin ? ns / nearWin : 1;
+    peakEvent = peakEventInWindow(today, horizDays, catBucket, qcom);
+    seasonalUplift = Math.round(seasonalUplift * 100) / 100;
+    nearMult = Math.round(nearMult * 100) / 100;
+  }
+  const effVel = dailyVel * nearMult;   // festive-adjusted near-term daily demand (drives cover, reorder, risk)
 
   const currentStock = s.available || 0;
   const netStock = currentStock + (s.inbound || 0) - (s.reserved || 0);
-  const daysOfCover = dailyVel > 0 ? Math.round(Math.max(0, netStock) / dailyVel) : (netStock > 0 ? 999 : 0);
+  const daysOfCover = effVel > 0 ? Math.round(Math.max(0, netStock) / effVel) : (netStock > 0 ? 999 : 0);
   const weeksOfSupply = Math.round(daysOfCover / 7 * 10) / 10;
 
   let sigmaDaily = 0;
@@ -412,10 +443,10 @@ function computeSKU(s, isTS, today, sym, horizDays, method, salesWindow, map) {
     sigmaDaily = Math.sqrt(variance) / gap;
   } else sigmaDaily = dailyVel * 0.4;
 
-  const z = 1.65;
+  const z = qcom ? 2.05 : 1.65;   // q-commerce holds a higher (98%) service level
   const safetyStock = s.safetyStock > 0 ? s.safetyStock : Math.ceil(z * sigmaDaily * Math.sqrt(lt));
-  const reorderPoint = s.reorderPoint > 0 ? s.reorderPoint : Math.ceil(dailyVel * lt + safetyStock);
-  const target = Math.ceil(dailyVel * (horizDays + lt) + safetyStock);
+  const reorderPoint = s.reorderPoint > 0 ? s.reorderPoint : Math.ceil(effVel * lt + safetyStock);
+  const target = Math.ceil(effVel * (horizDays + lt) + safetyStock);
   const orderQty = s.reorderQty > 0 ? s.reorderQty : Math.max(0, target - Math.max(0, netStock));
 
   let reorderBy = 'OK';
@@ -431,13 +462,13 @@ function computeSKU(s, isTS, today, sym, horizDays, method, salesWindow, map) {
   else if (daysOfCover < lt && dailyVel > 0) priority = 'HIGH';
   else if (daysOfCover < lt * 2 && dailyVel > 0) priority = 'MEDIUM';
 
-  const stockoutDays = dailyVel > 0 ? Math.min(999, Math.round(Math.max(0, netStock) / dailyVel)) : 999;
+  const stockoutDays = effVel > 0 ? Math.min(999, Math.round(Math.max(0, netStock) / effVel)) : 999;
   let stockoutProb;
   if (dailyVel <= 0) stockoutProb = 0;
-  else { const muLT = dailyVel * lt; const sdLT = Math.max(1e-6, sigmaDaily * Math.sqrt(lt));
+  else { const muLT = effVel * lt; const sdLT = Math.max(1e-6, sigmaDaily * Math.sqrt(lt));
     stockoutProb = Math.max(0, Math.min(100, Math.round(100 * (1 - normalCdf((Math.max(0, netStock) - muLT) / sdLT))))); }
 
-  const revenueAtRisk = dailyVel > 0 && sellPrice > 0 ? Math.round(Math.max(0, horizDays - stockoutDays) * dailyVel * sellPrice * (stockoutProb / 100)) : 0;
+  const revenueAtRisk = effVel > 0 && sellPrice > 0 ? Math.round(Math.max(0, horizDays - stockoutDays) * effVel * sellPrice * (stockoutProb / 100)) : 0;
   const invValue = Math.round(currentStock * unitCost);
   const isActive = avgMonthly > 0.05;
   const isSlowMover = dailyVel > 0 && dailyVel < 1 && currentStock > 30;
@@ -454,6 +485,7 @@ function computeSKU(s, isTS, today, sym, horizDays, method, salesWindow, map) {
     warehouse: s.warehouse, warehouseCount: s.warehouseCount || 1, channel: s.channel, uom: s.uom, batchLot: s.batchLot,
     price: sellPrice, unitCost, marginPerUnit, currentStock, inbound: s.inbound || 0, reserved: s.reserved || 0, netStock,
     avgMonthlyDemand: Math.round(avgMonthly), dailyVelocity: Math.round(dailyVel * 100) / 100,
+    festiveDailyVelocity: Math.round(effVel * 100) / 100, seasonalUplift, nearTermUplift: nearMult, peakEvent, categoryBucket: catBucket,
     nextH, next30, next60, next90, trend, trendPct, confidence: conf, mape,
     periodGranularity, forecastMethod: method,
     daysOfCover, weeksOfSupply, safetyStock, reorderPoint, eoq: orderQty, orderQty, reorderBy,
@@ -482,6 +514,113 @@ function buildGroups(results, level) {
     if (r.priority === 'URGENT' || r.priority === 'HIGH') e.urgent++;
   }
   return Object.values(g).map(e => ({ ...e, avgMonthlyDemand: Math.round(e.avgMonthlyDemand), nextH: Math.round(e.nextH), invValue: Math.round(e.invValue), revenueAtRisk: Math.round(e.revenueAtRisk) })).sort((a, b) => b.nextH - a.nextH).slice(0, 60);
+}
+
+
+// ═══ INDIA FESTIVE-SALE DEMAND CALENDAR (baked in — no external API) ═══════════
+// Recurring annual sale/festival windows. month is 1-based for readability.
+// base = baseline demand multiplier for that window; cats = category overrides.
+const QCOM_CHANNELS = ['Blinkit', 'Zepto', 'Swiggy Instamart', 'Instamart', 'BigBasket', 'BBNow', 'Flipkart Minutes', 'Amazon Fresh', 'Zepto Cafe', 'Dunzo', 'JioMart'];
+const INDIA_EVENTS = [
+  { key: 'republic',  name: 'Republic Day Sale',                          s: [1, 18],  e: [1, 26],  base: 1.6, cats: { electronics: 2.1, appliances: 2.2, mobiles: 2.0, fashion: 1.4 } },
+  { key: 'valentine', name: "Valentine's / Spring Sale",                  s: [2, 7],   e: [2, 14],  base: 1.3, cats: { beauty: 1.7, fashion: 1.5, gifting: 1.9 } },
+  { key: 'holi',      name: 'Holi',                                       s: [3, 1],   e: [3, 8],   base: 1.3, cats: { beauty: 1.6, fashion: 1.4, fmcg: 1.5 } },
+  { key: 'summer',    name: 'Summer / Akshaya Tritiya',                   s: [4, 20],  e: [5, 10],  base: 1.3, cats: { appliances: 1.9, jewellery: 1.8, fashion: 1.4 } },
+  { key: 'eors',      name: 'Myntra EORS / Summer Sale',                  s: [5, 28],  e: [6, 14],  base: 1.7, cats: { fashion: 2.3, footwear: 2.1, beauty: 1.8 } },
+  { key: 'freedom',   name: 'Independence Day / Freedom Sale',            s: [8, 6],   e: [8, 16],  base: 1.8, cats: { electronics: 2.3, appliances: 2.2, mobiles: 2.2, fashion: 1.5 } },
+  { key: 'rakhi',     name: 'Raksha Bandhan / Onam',                      s: [8, 22],  e: [8, 30],  base: 1.5, cats: { gifting: 2.2, fashion: 1.7, fmcg: 1.5, jewellery: 1.8 } },
+  { key: 'ganesh',    name: 'Ganesh Chaturthi',                           s: [9, 5],   e: [9, 17],  base: 1.4, cats: { fmcg: 1.6, gifting: 1.7 } },
+  { key: 'bbd',       name: 'Big Billion Days / Great Indian Festival',   s: [9, 20],  e: [10, 8],  base: 3.0, cats: { mobiles: 5.0, electronics: 4.5, appliances: 4.0, fashion: 3.0, footwear: 2.8, beauty: 2.5, home: 2.6 } },
+  { key: 'navratri',  name: 'Navratri / Dussehra',                        s: [10, 9],  e: [10, 22], base: 2.2, cats: { fashion: 2.7, jewellery: 2.5, footwear: 2.2, appliances: 2.0 } },
+  { key: 'diwali',    name: 'Diwali / Dhanteras Festive',                 s: [10, 23], e: [11, 12], base: 3.4, cats: { jewellery: 5.0, appliances: 4.5, electronics: 4.0, mobiles: 4.2, fashion: 3.2, gifting: 4.0, fmcg: 2.6, home: 3.0 } },
+  { key: 'wedding',   name: 'Wedding Season',                             s: [11, 13], e: [12, 20], base: 1.6, cats: { jewellery: 2.6, fashion: 2.1, footwear: 1.8, beauty: 1.7 } },
+  { key: 'yearend',   name: 'Christmas / New Year',                       s: [12, 21], e: [12, 31], base: 1.5, cats: { gifting: 2.0, fmcg: 1.6, beauty: 1.6 } },
+];
+
+function ord(m, d) { return m * 100 + d; }
+function addDays(d, n) { const x = new Date(d); x.setDate(x.getDate() + n); return x; }
+function eventForDate(date) {
+  const o = ord(date.getMonth() + 1, date.getDate());
+  for (const ev of INDIA_EVENTS) {
+    const a = ord(ev.s[0], ev.s[1]), b = ord(ev.e[0], ev.e[1]);
+    const inWin = a <= b ? (o >= a && o <= b) : (o >= a || o <= b);
+    if (inWin) return ev;
+  }
+  return null;
+}
+function classifyCategory(cat) {
+  const c = (cat || '').toString().toLowerCase();
+  if (/mobile|smartphone|\bphone\b|tablet/.test(c)) return 'mobiles';
+  if (/electronic|laptop|computer|\btv\b|television|audio|headphone|earbud|camera|gadget|gaming/.test(c)) return 'electronics';
+  if (/appliance|refrigerator|fridge|washing|microwave|\bac\b|air ?cond|cooler|geyser|chimney/.test(c)) return 'appliances';
+  if (/jewel|jewellery|jewelry|\bgold\b|silver|diamond/.test(c)) return 'jewellery';
+  if (/footwear|shoe|sneaker|sandal|slipper|heel/.test(c)) return 'footwear';
+  if (/fashion|apparel|cloth|garment|\bwear\b|kurta|saree|sari|shirt|dress|ethnic|t-?shirt|jeans|lehenga|denim/.test(c)) return 'fashion';
+  if (/beauty|cosmetic|makeup|skincare|skin care|personal care|fragrance|perfume|grooming|haircare/.test(c)) return 'beauty';
+  if (/grocery|food|bever|fmcg|snack|staple|atta|\brice\b|dairy|household|cleaning|\btea\b|coffee|dry fruit|sweet|masala|oil/.test(c)) return 'fmcg';
+  if (/gift|\btoy\b|stationery|decor|festive|pooja|puja|diya|candle|rangoli|cracker/.test(c)) return 'gifting';
+  if (/home|furniture|kitchen|cookware|bedding|furnish|utensil|appliance/.test(c)) return 'home';
+  return 'default';
+}
+function indiaDayMultiplier(date, cat, qcom) {
+  const ev = eventForDate(date);
+  let mult = 1;
+  if (ev) mult = (ev.cats && ev.cats[cat] != null) ? ev.cats[cat] : ev.base;
+  if (qcom) {
+    // Quick commerce (10-min grocery/essentials): festive spikes are real but far smaller
+    // than marketplace big-ticket spikes — dampen, but keep grocery/gifting/beauty meaningful.
+    const keepHard = (cat === 'fmcg' || cat === 'gifting' || cat === 'beauty');
+    mult = 1 + (mult - 1) * (keepHard ? 0.6 : 0.3);
+    const dow = date.getDay();                  // strong weekly rhythm
+    if (dow === 0 || dow === 6) mult *= 1.22;   // weekend surge
+    else if (dow === 5) mult *= 1.08;           // Friday pull-forward
+  }
+  return mult;
+}
+function peakEventInWindow(today, horizDays, cat, qcom) {
+  let best = null, bestM = 1.0;
+  for (let d = 0; d < horizDays; d++) {
+    const date = addDays(today, d), ev = eventForDate(date);
+    if (!ev) continue;
+    const m = indiaDayMultiplier(date, cat, qcom);
+    if (m > bestM + 0.01) { bestM = m; best = ev.name; }
+  }
+  return best;
+}
+function fmtWin(s, e) { const o = { day: 'numeric', month: 'short' }; return s.toLocaleDateString('en-GB', o) + ' – ' + e.toLocaleDateString('en-GB', o); }
+function eventRecommendation(ev, live, daysAway) {
+  const big = Math.max(ev.base, ...Object.values(ev.cats || {}));
+  if (live) return 'Live now — protect availability: keep buffer stock high, watch fast-movers daily and expedite inbound.';
+  if (daysAway <= 20) return 'Final window — place POs for in-stock SKUs now; lock in safety stock and confirm inbound ETAs.';
+  if (daysAway <= 45) return 'Pre-build now for ' + (big >= 3 ? 'a 3–5x' : 'a 1.5–2x') + ' demand surge. Raise POs for 30-day-lead suppliers this week.';
+  if (daysAway <= 90) return 'Plan POs and negotiate supplier capacity; begin demand sensing for high-velocity SKUs.';
+  return "On the radar — review last year's sell-through and shortlist hero SKUs.";
+}
+function upcomingIndiaEvents(today) {
+  const out = [];
+  for (const ev of INDIA_EVENTS) {
+    let occ = null;
+    for (const yr of [today.getFullYear(), today.getFullYear() + 1]) {
+      const start = new Date(yr, ev.s[0] - 1, ev.s[1]);
+      const end = new Date(yr, ev.e[0] - 1, ev.e[1]);
+      if (today <= end) { occ = { start, end }; break; }
+    }
+    if (!occ) continue;
+    const live = today >= occ.start && today <= occ.end;
+    const daysAway = live ? 0 : Math.max(0, Math.round((occ.start - today) / 86400000));
+    const cats = ev.cats || {};
+    const topCats = Object.entries(cats).sort((a, b) => b[1] - a[1]).slice(0, 3).map(x => x[0]);
+    const peak = Math.max(ev.base, ...Object.values(cats));
+    out.push({
+      event: ev.name,
+      window: fmtWin(occ.start, occ.end),
+      daysAway, live,
+      uplift: '~' + (Math.round(ev.base * 10) / 10) + 'x' + (peak > ev.base ? (' (up to ' + (Math.round(peak * 10) / 10) + 'x ' + (topCats[0] || '') + ')') : ''),
+      topCategories: topCats,
+      recommendation: eventRecommendation(ev, live, daysAway),
+    });
+  }
+  return out.filter(e => e.live || e.daysAway <= 230).sort((a, b) => a.daysAway - b.daysAway);
 }
 
 function normalCdf(x) {
