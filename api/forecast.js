@@ -16,7 +16,11 @@ export default async function handler(req, res) {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) return res.status(500).json({ error: 'GEMINI_API_KEY not set in Vercel Environment Variables.' });
 
-  const { csvText, horizon, currency, region, channels, planLevel, erpSource, method, salesWindowDays } = req.body || {};
+  let { csvText, csvGz, horizon, currency, region, channels, planLevel, erpSource, method, salesWindowDays } = req.body || {};
+  if (!csvText && csvGz) {
+    try { const zlib = await import('node:zlib'); csvText = zlib.gunzipSync(Buffer.from(csvGz, 'base64')).toString('utf8'); }
+    catch (e) { return res.status(400).json({ error: 'Could not read the compressed file. Please try a smaller or different export.' }); }
+  }
   if (!csvText || csvText.trim().length < 10) return res.status(400).json({ error: 'No data received. Please upload a valid file.' });
 
   const sym = currency || '₹';
