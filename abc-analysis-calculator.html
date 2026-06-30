@@ -3,89 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GST on Freight & Logistics India — Tax Guide 2025 | LogicstIQ</title>
-<meta name="description" content="Complete guide to GST on freight and logistics services in India. Covers GST rates, ITC eligibility, e-way bill rules and a free GST calculator for logistics costs.">
-<meta name="keywords" content="GST on freight charges India, GST on transportation services, GST logistics India, freight GST rate, GST on courier charges, e-way bill GST, ITC on freight GST, GST supply chain India 2025, GST calculator logistics">
-<link rel="canonical" href="https://logicstiq.com/blog/gst-calculator-logistics.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"GST on Freight & Logistics Charges India — Complete Tax Guide 2025","author":{"@type":"Person","name":"Sachin Sirwani","url":"https://www.linkedin.com/in/sachin-s-0b1179162"},"publisher":{"@type":"Organization","name":"LogicstIQ","url":"https://logicstiq.com"},"datePublished":"2025-07-01","dateModified":"2025-07-01"}</script>
+<title>ABC Analysis Calculator — Inventory Classification Tool | Free</title>
+<meta name="description" content="Classify your inventory into A, B, C categories instantly. Enter your SKU sales data and get automatic ABC classification with management strategy for each tier.">
+<meta name="keywords" content="ABC analysis calculator, ABC inventory classification, ABC analysis tool free, inventory ABC calculator, Pareto analysis inventory, ABC classification online India">
+<link rel="canonical" href="https://logicstiq.com/abc-analysis-calculator">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"ABC Analysis Calculator","url":"https://logicstiq.com/abc-analysis-calculator","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What percentage of SKUs should be in category A?","acceptedAnswer":{"@type":"Answer","text":"Typically 10-20% of SKUs fall into Class A, generating 70-80% of revenue. This is the Pareto Principle (80/20 rule) applied to inventory. The exact split varies by business — the key is that A items are your highest-value, highest-priority SKUs regardless of the exact percentage."}},{"@type":"Question","name":"How often should I redo ABC analysis?","acceptedAnswer":{"@type":"Answer","text":"Run ABC analysis quarterly for most businesses. Run it monthly if you have rapidly changing product mix (fashion, electronics) or significant seasonal demand. A SKU classified as A today may drop to B or C if a newer product gains traction, or vice versa."}},{"@type":"Question","name":"Should I base ABC analysis on revenue or units sold?","acceptedAnswer":{"@type":"Answer","text":"Use revenue (or margin) value, not units sold. A SKU selling 1,000 units at ₹10 (₹10,000 revenue) is less important than one selling 50 units at ₹500 (₹25,000 revenue). Revenue-based ABC ensures your management attention is allocated to items that matter most to your financial performance."}}]}]}</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&family=Wix+Madefor+Display:wght@600;700;800&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#F4F7FF;--white:#FFFFFF;--border:#E2E8F0;--b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b600:#3A55FF;--b700:#2A40D6;--b900:#1C2C73;--green:#059669;--amber:#D97706;--alight:#FEF3C7;--red:#DC2626;--rlight:#FEE2E2;--orange:#EA580C;--text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8;}
-body{font-family:'Wix Madefor Text','Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:16px}
+:root{--bg:#F4F7FF;--white:#fff;--border:#E2E8F0;--b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b600:#3A55FF;--b700:#2A40D6;--b900:#1C2C73;--green:#059669;--amber:#D97706;--purple:#7C3AED;--text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8}
+body{font-family:"Inter",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
 .nav{background:#fff;border-bottom:1px solid var(--border);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.nav-logo{font-size:18px;font-weight:900;text-decoration:none;display:flex;align-items:center}
+.nav-logo{text-decoration:none;display:flex;align-items:center}
 .nav-back{font-size:13px;font-weight:600;color:var(--b600);text-decoration:none}
-.hero{background:linear-gradient(135deg,#7C2D12 0%,#C2410C 50%,#EA580C 100%);padding:56px 32px 48px;text-align:center}
-.cat-pill{display:inline-flex;align-items:center;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:5px 14px;font-size:11px;font-weight:800;color:#FED7AA;text-transform:uppercase;letter-spacing:.09em;margin-bottom:16px}
-.hero h1{font-size:clamp(22px,3.5vw,40px);font-weight:900;color:#fff;line-height:1.15;letter-spacing:-.03em;max-width:780px;margin:0 auto 14px;font-family:'Plus Jakarta Sans',sans-serif}
-.hero h1 span{color:#FED7AA}
-.meta{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;font-size:13px;color:rgba(255,255,255,.75);font-weight:500}
-.meta strong{color:rgba(255,255,255,.95)}
-.wrap{max-width:800px;margin:0 auto;padding:48px 24px 64px}
-.toc{background:var(--b50);border:1.5px solid var(--b100);border-radius:14px;padding:22px 26px;margin-bottom:36px}
-.toc-t{font-size:12px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.09em;margin-bottom:12px}
-.toc ol{padding-left:18px}.toc li{margin-bottom:6px}
-.toc a{font-size:13px;color:var(--b600);font-weight:600;text-decoration:none}
-h2{font-size:26px;font-weight:900;color:var(--text);letter-spacing:-.02em;margin:40px 0 12px;padding-top:8px;border-top:2px solid #FDBA74;font-family:'Plus Jakarta Sans',sans-serif}
-h3{font-size:19px;font-weight:800;color:var(--text2);letter-spacing:-.01em;margin:28px 0 10px}
-p{margin-bottom:16px;color:var(--text2);line-height:1.8}
-ul,ol{padding-left:22px;margin-bottom:16px}
-li{margin-bottom:8px;color:var(--text2);line-height:1.7}
+.hero{background:linear-gradient(135deg,#1E1B4B 0%,#4C1D95 50%,#7C3AED 100%);padding:52px 32px 44px;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:5px 14px;font-size:11px;font-weight:800;color:#DDD6FE;text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px}
+.hero h1{font-size:clamp(24px,4vw,42px);font-weight:900;color:#fff;line-height:1.12;letter-spacing:-.03em;max-width:700px;margin:0 auto 12px;font-family:"Plus Jakarta Sans",sans-serif}
+.hero h1 span{color:#C4B5FD}
+.hero-sub{font-size:14px;color:#DDD6FE;max-width:560px;margin:0 auto 20px;line-height:1.7}
+.trust-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;font-size:12px;color:rgba(255,255,255,.85);font-weight:600}
+.tick{color:#A78BFA}
+.wrap{max-width:820px;margin:0 auto;padding:44px 24px 60px}
+.calc-card{background:var(--white);border:2px solid #DDD6FE;border-radius:20px;padding:32px;margin-bottom:28px;box-shadow:0 4px 20px rgba(124,58,237,.08)}
+.calc-card h2{font-size:20px;font-weight:900;color:#1E1B4B;margin-bottom:20px;font-family:"Plus Jakarta Sans",sans-serif}
+textarea{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:"Courier New",monospace;color:var(--text);background:#fff;outline:none;resize:vertical;min-height:160px;transition:border-color .15s}
+textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(124,58,237,.1)}
+.input-note{font-size:11px;color:var(--text4);margin:6px 0 14px;line-height:1.5}
+.calc-btn{width:100%;background:linear-gradient(135deg,#7C3AED,#6D28D9);color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:800;font-family:inherit;cursor:pointer;box-shadow:0 4px 16px rgba(124,58,237,.35);margin-bottom:14px}
+.result-box{display:none;margin-top:14px}
+.result-box.show{display:block}
+.abc-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.abc-card{border-radius:14px;padding:16px;text-align:center}
+.abc-card.a{background:#FEF3C7;border:2px solid #F59E0B}
+.abc-card.b{background:#DBEAFE;border:2px solid #7A92FF}
+.abc-card.c{background:#DCFCE7;border:2px solid #6EE7B7}
+.abc-letter{font-size:32px;font-weight:900;margin-bottom:4px}
+.abc-card.a .abc-letter{color:#B45309}
+.abc-card.b .abc-letter{color:var(--b700)}
+.abc-card.c .abc-letter{color:#047857}
+.abc-stats{font-size:11px;font-weight:700;line-height:1.7}
+.abc-card.a .abc-stats{color:#92400E}
+.abc-card.b .abc-stats{color:var(--b700)}
+.abc-card.c .abc-stats{color:#065F46}
+.sku-table-wrap{background:var(--white);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.sku-table{width:100%;border-collapse:collapse;font-size:12px}
+.sku-table th{background:#1E1B4B;color:#fff;padding:9px 12px;text-align:left;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.sku-table td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text2)}
+.sku-table tr:last-child td{border-bottom:none}
+.sku-table tr:nth-child(even) td{background:#FAF5FF}
+.badge-a{display:inline-flex;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:800;background:#FEF3C7;color:#B45309}
+.badge-b{display:inline-flex;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:800;background:#DBEAFE;color:#2A40D6}
+.badge-c{display:inline-flex;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:800;background:#DCFCE7;color:#15803D}
+.disclaimer{background:#FEF9C3;border:1px solid #FDE68A;border-radius:10px;padding:10px 14px;font-size:11px;color:#92400E;line-height:1.6;font-weight:600;display:flex;align-items:flex-start;gap:8px;margin-top:12px}
+h2{font-size:24px;font-weight:900;color:var(--text);letter-spacing:-.02em;margin:36px 0 12px;border-top:2px solid #EDE9FE;padding-top:8px;font-family:"Plus Jakarta Sans",sans-serif}
+p{margin-bottom:14px;color:var(--text2);line-height:1.8;font-size:15px}
+ul{padding-left:22px;margin-bottom:14px}
+li{margin-bottom:7px;color:var(--text2);line-height:1.7}
 strong{color:var(--text);font-weight:700}
 a{color:var(--b600);font-weight:600;text-decoration:none}
-.callout{border-radius:14px;padding:18px 22px;margin:20px 0;display:flex;align-items:flex-start;gap:14px}
-.callout.orange{background:#FFF7ED;border-left:4px solid var(--orange)}
-.callout.blue{background:var(--b50);border-left:4px solid var(--b600)}
-.callout.green{background:#F0FDF4;border-left:4px solid var(--green)}
-.callout.red{background:var(--rlight);border-left:4px solid var(--red)}
-.callout.amber{background:var(--alight);border-left:4px solid var(--amber)}
-.c-ico{font-size:20px;flex-shrink:0;margin-top:1px}
-.c-txt{font-size:14px;color:var(--text2);line-height:1.7;font-weight:500}
-.c-txt strong{color:var(--text)}
-.gst-table{width:100%;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid var(--border);margin:20px 0}
-.gst-table th{background:#7C2D12;color:#fff;padding:11px 14px;text-align:left;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
-.gst-table td{padding:11px 14px;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);vertical-align:top}
-.gst-table tr:last-child td{border-bottom:none}
-.gst-table tr:nth-child(even) td{background:#FFF7ED}
-.rate-badge{display:inline-flex;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:800}
-.rate-0{background:#DCFCE7;color:#15803D}
-.rate-5{background:#DBEAFE;color:#2A40D6}
-.rate-12{background:#FEF3C7;color:#B45309}
-.rate-18{background:#FEE2E2;color:#B91C1C}
-.rate-ex{background:#F3F4F6;color:#374151}
-.example{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:26px;margin:20px 0;box-shadow:0 2px 8px rgba(234,88,12,.07)}
-.ex-t{font-size:12px;font-weight:800;color:var(--orange);text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px}
-.ex-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)}
-.ex-row:last-child{border-bottom:none;padding-top:12px}
-.ex-lbl{font-size:14px;color:var(--text3)}
-.ex-val{font-size:14px;font-weight:700;color:var(--text);font-family:'Courier New',monospace}
-.ex-total{font-size:22px;font-weight:900;color:var(--orange)}
-.itc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
-.itc-card{border-radius:13px;padding:16px}
-.itc-card.yes{background:#F0FDF4;border:1.5px solid #A7F3D0}
-.itc-card.no{background:var(--rlight);border:1.5px solid #FECACA}
-.itc-title{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
-.itc-card.yes .itc-title{color:var(--green)}
-.itc-card.no .itc-title{color:var(--red)}
-.itc-list{font-size:12px;color:var(--text2);line-height:1.8;padding-left:14px}
-.itc-list li{margin-bottom:4px}
-.cta-box{background:linear-gradient(135deg,#7C2D12,#C2410C);border-radius:20px;padding:36px;text-align:center;margin:40px 0}
-.cta-box h3{font-size:22px;font-weight:900;color:#fff;margin-bottom:8px;letter-spacing:-.02em;font-family:'Plus Jakarta Sans',sans-serif}
-.cta-box p{font-size:14px;color:#FED7AA;margin-bottom:20px;line-height:1.65}
-.cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#EA580C,#C2410C);color:#fff;text-decoration:none;padding:13px 28px;border-radius:12px;font-size:14px;font-weight:800;box-shadow:0 4px 16px rgba(234,88,12,.4)}
-.cta-feats{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px}
-.cta-f{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:4px 12px;font-size:12px;font-weight:600;color:#FED7AA}
-.legal-note{background:#FFF7ED;border:1.5px solid #FDBA74;border-radius:12px;padding:16px 18px;margin:24px 0;font-size:12px;color:#7C2D12;line-height:1.7}
-.aff-note{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:12px 16px;margin:28px 0;font-size:12px;color:var(--text4);line-height:1.6}
-.author-box{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px;display:flex;align-items:center;gap:20px;margin:36px 0}
-.av{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#EA580C,#C2410C);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff;flex-shrink:0}
-.an{font-size:15px;font-weight:800;color:var(--text)}
-.ar{font-size:12px;color:var(--text3);margin-top:2px}
-.ab{font-size:13px;color:var(--text3);margin-top:6px;line-height:1.6}
-footer{background:#0F172A;padding:32px;text-align:center;color:#64748B;font-size:13px}
-footer a{color:#FED7AA;text-decoration:none;font-weight:600}
-@media(max-width:600px){.wrap{padding:32px 16px 48px}.hero{padding:40px 20px 36px}.itc-grid{grid-template-columns:1fr}}
+.faq-item{background:var(--white);border:1.5px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq-q{padding:16px 20px;font-size:14px;font-weight:700;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q:hover{background:#FAF5FF}
+.faq-q span{color:var(--purple);font-size:16px;transition:transform .2s}
+.faq-a{padding:14px 20px;font-size:13px;color:var(--text3);line-height:1.75;background:#FAF5FF;border-top:1px solid var(--border);display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q span{transform:rotate(180deg)}
+.cta-box{background:linear-gradient(135deg,#1E1B4B,#4C1D95);border-radius:20px;padding:32px;text-align:center;margin:36px 0}
+.cta-box h3{font-size:20px;font-weight:900;color:#fff;margin-bottom:8px;font-family:"Plus Jakarta Sans",sans-serif}
+.cta-box p{font-size:13px;color:#DDD6FE;margin-bottom:18px;line-height:1.65}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#7C3AED,#6D28D9);color:#fff;text-decoration:none;padding:13px 26px;border-radius:12px;font-size:14px;font-weight:800;box-shadow:0 4px 16px rgba(124,58,237,.4)}
+.cta-feats{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:14px}
+.cta-f{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:3px 10px;font-size:11px;font-weight:600;color:#EDE9FE}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin:16px 0}
+.related-card{background:var(--white);border:1.5px solid var(--border);border-radius:11px;padding:14px;text-decoration:none;transition:all .2s;display:block}
+.related-card:hover{border-color:#DDD6FE;transform:translateY(-1px)}
+.rc-name{font-size:13px;font-weight:800;color:var(--text);margin-bottom:3px}
+.rc-vol{font-size:11px;color:var(--purple);font-weight:600}
+.aff-note{background:var(--white);border:1px solid var(--border);border-radius:9px;padding:11px 14px;margin:24px 0;font-size:12px;color:var(--text4);line-height:1.6}
+footer{background:#0F172A;padding:28px 32px;text-align:center;color:#64748B;font-size:13px}
+footer a{color:#DDD6FE;text-decoration:none;font-weight:600}
+@media(max-width:600px){.wrap{padding:28px 16px 48px}.hero{padding:40px 20px 36px}.abc-summary{grid-template-columns:1fr}}
 </style>
 <style id="liq-theme-css">
 .liq-theme-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--white);color:var(--text);font-size:15px;line-height:1;cursor:pointer;display:inline-grid;place-items:center;transition:.18s;margin-left:4px}
@@ -122,250 +120,94 @@ footer a{color:#FED7AA;text-decoration:none;font-weight:600}
     </svg>
     <span style="font-size:9px;font-weight:600;color:#3A55FF;letter-spacing:.05em;white-space:nowrap">Where Logistics Meets Intelligence</span>
   </a>
-  <a href="https://logicstiq.com" class="nav-back">← Back to Tools</a>
+  <a href="https://logicstiq.com" class="nav-back">← All Calculators</a>
 </nav>
-
 <div class="hero">
-  <div class="cat-pill">🧾 GST & India Tax</div>
-  <h1>GST on Freight &amp; <span>Logistics Charges</span><br>India — Complete Tax Guide 2025</h1>
-  <div class="meta">
-    <span>By <strong>Sachin Sirwani</strong></span>·
-    <span>📖 <strong>10 min read</strong></span>·
-    <span>🆓 <strong>Free GST Calculator included</strong></span>·
-    <span>Updated <strong>July 2025</strong></span>
-  </div>
+  <div class="hero-badge">🆓 Free · No Login · Instant Results</div>
+  <h1>ABC Analysis<br><span>Calculator</span></h1>
+  <p class="hero-sub">Paste your SKU list with sales values and get instant A, B, C classification. Identify your most valuable inventory with one click.</p>
+  <div class="trust-row"><span><span class="tick">✓</span>Enter up to 50 SKUs</span><span><span class="tick">✓</span>Automatic Pareto analysis</span><span><span class="tick">✓</span>Free forever</span></div>
 </div>
-
 <div class="wrap">
-
-  <div class="legal-note">⚖️ <strong>Disclaimer:</strong> This article is for general information only and does not constitute tax or legal advice. GST rules change frequently. Always verify with a qualified GST consultant or the official GST portal (gst.gov.in) before making tax decisions.</div>
-
-  <nav class="toc">
-    <div class="toc-t">📋 What's in this guide</div>
-    <ol>
-      <li><a href="#rates">GST rates on freight and logistics services</a></li>
-      <li><a href="#gta">Goods Transport Agency (GTA) — special rules</a></li>
-      <li><a href="#courier">Courier and express delivery services</a></li>
-      <li><a href="#itc">Input Tax Credit (ITC) on freight — who can claim it?</a></li>
-      <li><a href="#eway">E-Way Bill — when is it required?</a></li>
-      <li><a href="#example">Worked example — calculating freight GST</a></li>
-      <li><a href="#calculator">Free GST Calculator for Logistics</a></li>
-    </ol>
-  </nav>
-
-  <h2 id="rates">GST rates on freight and logistics services</h2>
-  <p>India's GST system applies different rates to different types of transportation services. Understanding which rate applies to your specific freight transaction is essential for accurate costing, correct ITC claims, and compliance.</p>
-
-  <table class="gst-table">
-    <thead><tr><th>Service Type</th><th>GST Rate</th><th>SAC Code</th><th>Notes</th></tr></thead>
-    <tbody>
-      <tr>
-        <td><strong>Road transport by GTA (Goods Transport Agency)</strong></td>
-        <td><span class="rate-5">5%</span></td>
-        <td>9965</td>
-        <td>GTA pays under Reverse Charge Mechanism (RCM). No ITC allowed at 5% rate.</td>
-      </tr>
-      <tr>
-        <td><strong>Road transport by GTA (Optional forward charge)</strong></td>
-        <td><span class="rate-12">12%</span></td>
-        <td>9965</td>
-        <td>GTA opts for 12% forward charge — ITC allowed for service receiver.</td>
-      </tr>
-      <tr>
-        <td><strong>Courier services (by air, road)</strong></td>
-        <td><span class="rate-18">18%</span></td>
-        <td>9968</td>
-        <td>Applies to Shiprocket, Delhivery, Blue Dart, DTDC, XpressBees etc.</td>
-      </tr>
-      <tr>
-        <td><strong>Air freight — domestic</strong></td>
-        <td><span class="rate-18">18%</span></td>
-        <td>9965</td>
-        <td>Including air cargo services.</td>
-      </tr>
-      <tr>
-        <td><strong>Air freight — international (export)</strong></td>
-        <td><span class="rate-0">0% (Zero-rated)</span></td>
-        <td>9965</td>
-        <td>Export services are zero-rated. ITC refund available.</td>
-      </tr>
-      <tr>
-        <td><strong>Rail freight</strong></td>
-        <td><span class="rate-5">5%</span></td>
-        <td>9965</td>
-        <td>Indian Railways freight transport.</td>
-      </tr>
-      <tr>
-        <td><strong>Sea freight — coastal shipping</strong></td>
-        <td><span class="rate-5">5%</span></td>
-        <td>9965</td>
-        <td>Domestic sea transport of goods.</td>
-      </tr>
-      <tr>
-        <td><strong>Warehousing services</strong></td>
-        <td><span class="rate-18">18%</span></td>
-        <td>9967</td>
-        <td>Storage and warehousing of non-agricultural goods.</td>
-      </tr>
-      <tr>
-        <td><strong>Warehousing — agricultural produce</strong></td>
-        <td><span class="rate-0">Exempt</span></td>
-        <td>9967</td>
-        <td>Specific exemption for agricultural produce storage.</td>
-      </tr>
-      <tr>
-        <td><strong>Freight forwarding services</strong></td>
-        <td><span class="rate-18">18%</span></td>
-        <td>9965</td>
-        <td>Freight forwarder / customs broker charges.</td>
-      </tr>
-      <tr>
-        <td><strong>Packing and packaging services</strong></td>
-        <td><span class="rate-18">18%</span></td>
-        <td>9988</td>
-        <td>Contract packing services.</td>
-      </tr>
-      <tr>
-        <td><strong>Loading/unloading labour</strong></td>
-        <td><span class="rate-18">18%</span></td>
-        <td>9985</td>
-        <td>If supplied through a contractor. Direct labour may be exempt.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2 id="gta">Goods Transport Agency (GTA) — special rules</h2>
-  <p>A <strong>Goods Transport Agency (GTA)</strong> is any person who provides road transport services using a consignment note (bilty). GTAs have a unique position under GST with two rate options and specific Reverse Charge Mechanism (RCM) rules:</p>
-
-  <h3>Option 1 — 5% GST under Reverse Charge Mechanism (Default)</h3>
-  <p>Under RCM, the <em>recipient</em> of the GTA service (the shipper/consignee) is liable to pay GST — not the transporter. The registered business receiving the freight service must self-assess and pay 5% GST directly to the government.</p>
-
-  <div class="callout amber">
-    <div class="c-ico">⚠️</div>
-    <div class="c-txt"><strong>Who pays RCM on GTA services?</strong> Only registered GST entities are liable under RCM. If you are a registered manufacturer, distributor, or e-commerce company receiving road freight services from a GTA, you must pay 5% GST under RCM. However, <strong>ITC cannot be claimed on RCM paid at the 5% rate</strong> — this is a real cost to your business.</div>
-  </div>
-
-  <h3>Option 2 — 12% GST under Forward Charge (GTA's choice)</h3>
-  <p>A GTA can opt to pay GST under forward charge at 12%. In this case the GTA pays the tax, includes it in their invoice, and the service receiver can claim ITC on the 12% paid. This option is generally better for businesses with significant freight costs who want to claim ITC.</p>
-
-  <h2 id="courier">Courier and express delivery services</h2>
-  <p>Courier services — including Shiprocket, Delhivery, Blue Dart, XpressBees, Ecom Express, DTDC, and India Post Express — are classified under SAC code 9968 and attract <strong>18% GST</strong> under forward charge.</p>
-
-  <p>This is the freight cost most D2C brands and marketplace sellers face daily. For an e-commerce business shipping 1,000 orders/day at ₹60/shipment average freight:</p>
-  <ul>
-    <li>Monthly freight cost: ₹18,00,000 (30 days × 1,000 × ₹60)</li>
-    <li>GST at 18%: ₹3,24,000/month</li>
-    <li>Annual GST on freight: ₹38,88,000</li>
-  </ul>
-  <p>Whether you can claim ITC on this GST is one of the most important questions for your profitability.</p>
-
-  <h2 id="itc">Input Tax Credit (ITC) on freight — who can claim it?</h2>
-  <p>ITC allows you to offset GST paid on inputs (including freight) against your output GST liability. However, ITC on freight is not universally available — the rules are specific:</p>
-
-  <div class="itc-grid">
-    <div class="itc-card yes">
-      <div class="itc-title">✅ ITC Allowed</div>
-      <ul class="itc-list">
-        <li>Courier services (18%) used for business purposes where you are a registered GST taxpayer</li>
-        <li>GTA services at 12% (forward charge) — ITC on the 12% paid</li>
-        <li>Air freight for domestic B2B supply of goods</li>
-        <li>Warehouse services used for taxable goods</li>
-        <li>Freight for outward supply of taxable goods</li>
-      </ul>
+  <div class="calc-card">
+    <h2>🎯 ABC Analysis Calculator — Classify Your Inventory</h2>
+    <p style="font-size:13px;color:var(--text3);margin-bottom:12px">Enter one SKU per line in the format: <code style="background:#F3F4F6;padding:2px 6px;border-radius:4px;font-size:12px">SKU Name, Annual Revenue</code></p>
+    <textarea id="sku-input" placeholder="Wireless Earbuds Pro, 2880000
+Yoga Mat Premium, 1944000
+Steel Water Bottle, 1422000
+Phone Case iPhone 15, 960000
+Running Shoes M, 891600
+Laptop Stand Alu, 672000
+Resistance Bands, 344000
+Bamboo Board, 300000
+Colour Pencils, 329700
+Foam Roller, 270000"></textarea>
+    <div class="input-note">💡 Paste SKU names and annual revenue values separated by a comma. One SKU per line. Up to 50 SKUs.</div>
+    <button class="calc-btn" onclick="runABC()">Run ABC Analysis →</button>
+    <div class="result-box" id="result">
+      <div class="abc-summary">
+        <div class="abc-card a"><div class="abc-letter">A</div><div class="abc-stats" id="a-stats">—</div></div>
+        <div class="abc-card b"><div class="abc-letter">B</div><div class="abc-stats" id="b-stats">—</div></div>
+        <div class="abc-card c"><div class="abc-letter">C</div><div class="abc-stats" id="c-stats">—</div></div>
+      </div>
+      <div class="sku-table-wrap"><table class="sku-table"><thead><tr><th>Rank</th><th>SKU / Product</th><th>Annual Revenue</th><th>Cumulative %</th><th>Class</th></tr></thead><tbody id="sku-tbody"></tbody></table></div>
     </div>
-    <div class="itc-card no">
-      <div class="itc-title">❌ ITC Blocked / Not Allowed</div>
-      <ul class="itc-list">
-        <li>GTA services at 5% (RCM) — ITC specifically blocked under Section 17(5)</li>
-        <li>Freight for supply of exempted goods</li>
-        <li>Personal transportation (not related to business)</li>
-        <li>Freight for food and beverages for employees</li>
-        <li>Motor vehicle insurance (separate restriction)</li>
-      </ul>
-    </div>
+    <div class="disclaimer">⚠️ <span><strong>Reference only:</strong> Review classifications manually — strategic importance may differ from pure revenue ranking. New products or key account SKUs may deserve higher classification.</span></div>
   </div>
-
-  <div class="callout red">
-    <div class="c-ico">🚨</div>
-    <div class="c-txt"><strong>The RCM trap:</strong> Many businesses pay 5% RCM on GTA services and assume they can claim the ITC back. They cannot. GST Section 17(5)(g) specifically blocks ITC on motor vehicle services including road freight under RCM at 5%. If your GTA agrees to charge 12% forward charge instead, you can claim full ITC on that amount. Ask your transporters which rate they are registered under.</div>
-  </div>
-
-  <h2 id="eway">E-Way Bill — when is it required?</h2>
-  <p>An <strong>e-way bill</strong> is a mandatory electronic document required for movement of goods valued above ₹50,000 (consignment value including GST) within India. Key rules:</p>
-
-  <ul>
-    <li><strong>Threshold:</strong> ₹50,000+ consignment value — e-way bill mandatory. Below ₹50,000 — not required (with exceptions for some notified goods)</li>
-    <li><strong>Who generates it:</strong> The supplier, transporter, or recipient can generate the e-way bill on the GST portal (ewaybillgst.gov.in)</li>
-    <li><strong>Validity:</strong> 1 day for every 200 km for regular cargo. Multi-modal or over-dimensional cargo have different rules</li>
-    <li><strong>Intra-state:</strong> Most states require e-way bills for intra-state movement too — check your state's threshold (some states have lower thresholds like ₹10,000)</li>
-    <li><strong>Exemptions:</strong> Agricultural produce, milk, eggs, unprocessed food, currency, personal luggage, and some others are exempt from e-way bill requirements</li>
-    <li><strong>Penalty for non-compliance:</strong> ₹10,000 or tax evaded (whichever is higher) plus potential seizure of goods and vehicle</li>
-  </ul>
-
-  <div class="callout green">
-    <div class="c-ico">✅</div>
-    <div class="c-txt"><strong>E-Way Bill for e-commerce:</strong> If you are fulfilling orders through Amazon FBA, Flipkart Fulfilment, or your own courier, the courier company typically generates the e-way bill on your behalf. However, you remain responsible for ensuring it is generated correctly. Always verify e-way bill numbers on high-value consignments.</div>
-  </div>
-
-  <h2 id="example">Worked example — calculating freight GST</h2>
-  <p>A manufacturer in Pune dispatches goods to a distributor in Delhi via a GTA who has opted for 12% forward charge.</p>
-
-  <div class="example">
-    <div class="ex-t">🧾 Invoice Calculation</div>
-    <div class="ex-row"><span class="ex-lbl">Goods value</span><span class="ex-val">₹2,00,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">GST on goods (18% IGST)</span><span class="ex-val">₹36,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">Freight charges (GTA — 12% forward)</span><span class="ex-val">₹8,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">GST on freight (12% IGST)</span><span class="ex-val">₹960</span></div>
-    <div class="ex-row"><span class="ex-lbl">E-Way Bill required?</span><span class="ex-val">YES (₹2,44,960 > ₹50,000)</span></div>
-    <div class="ex-row"><span class="ex-lbl">Distributor can claim ITC on goods GST</span><span class="ex-val">₹36,000 ✅</span></div>
-    <div class="ex-row"><span class="ex-lbl">Distributor can claim ITC on freight GST</span><span class="ex-val">₹960 ✅ (12% forward charge)</span></div>
-    <div class="ex-row">
-      <div><div style="font-size:11px;font-weight:800;color:var(--orange);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">Total Invoice Value</div><div class="ex-total">₹2,44,960</div></div>
-      <div style="text-align:right"><div style="font-size:11px;font-weight:800;color:var(--green);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">Net cost after ITC</div><div style="font-size:18px;font-weight:900;color:var(--green)">₹2,08,000</div></div>
-    </div>
-  </div>
-
-  <h2 id="calculator">Free GST Calculator for Logistics</h2>
-  <p>Calculate GST on your freight, warehouse, and logistics costs instantly. Enter your service value and select the correct GST rate — get your GST amount, ITC eligibility, and total cost. Useful for costing shipments, preparing P&L, and validating supplier invoices.</p>
-
+  <h2>ABC Classification Guide</h2>
+  <p><strong>Class A (top ~70% of revenue):</strong> Your highest-value SKUs. Manage tightly — high safety stock, frequent review, best supplier SLAs, weekly monitoring.</p>
+  <p><strong>Class B (next ~20% of revenue):</strong> Mid-value items. Standard processes — monthly review, moderate safety stock, EOQ-based ordering.</p>
+  <p><strong>Class C (remaining ~10% of revenue):</strong> Low-value items. Simplified management — quarterly review, minimal safety stock, consider rationalising the range.</p>
   <div class="cta-box">
-    <h3>🧾 Calculate Logistics GST Free</h3>
-    <p>Enter your freight or warehouse cost and get the correct GST amount instantly. Covers all logistics service types — courier, GTA, air freight, warehousing.</p>
-    <a href="https://logicstiq.com/#gst-calculator-logistics" class="cta-btn">Open Free GST Calculator →</a>
-    <div class="cta-feats">
-      <span class="cta-f">All freight GST rates</span>
-      <span class="cta-f">ITC eligibility check</span>
-      <span class="cta-f">E-Way Bill threshold check</span>
-      <span class="cta-f">No login · Free forever</span>
-    </div>
+    <h3>🤖 Run ABC Analysis on Your Full Catalogue Automatically</h3>
+    <p>Upload your Tally, SAP, NetSuite, or Amazon export and get ABC classification for your entire catalogue — plus dead stock identification and reorder recommendations per SKU.</p>
+    <a href="https://logicstiq.com/#ai-demand-planner" class="cta-btn">Try Free AI Demand Planner →</a>
+    <div class="cta-feats"><span class="cta-f">Full catalogue ABC classification</span><span class="cta-f">Dead stock identification</span><span class="cta-f">Tally · SAP · NetSuite · Amazon</span><span class="cta-f">No login · Free forever</span></div>
   </div>
-
-  <div class="legal-note">⚖️ <strong>Important:</strong> GST rules on freight and ITC eligibility can change with GST Council decisions. The information in this guide reflects rules as of July 2025. Always consult a qualified CA or GST consultant for your specific transactions, especially for ITC claims and RCM obligations.</div>
-
-  <div class="aff-note"><strong>Affiliate Disclosure:</strong> Some links in this article may be affiliate links. If you click and sign up for a third-party service, LogicstIQ may earn a commission at no extra cost to you.</div>
-
-  <div class="author-box">
-    <div class="av">S</div>
-    <div>
-      <div class="an">Sachin Sirwani</div>
-      <div class="ar">Co-Founder · LogicstIQ · <a href="https://www.linkedin.com/in/sachin-s-0b1179162" target="_blank" rel="noopener">LinkedIn</a></div>
-      <div class="ab">Logistics and supply chain professional with experience in Indian freight operations, GST compliance for logistics-heavy businesses, and supply chain cost optimisation for D2C and B2B companies.</div>
-    </div>
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item open"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What percentage of SKUs should be in category A?<span>▾</span></div><div class="faq-a">Typically 10–20% of SKUs fall into Class A, generating 70–80% of revenue. This reflects the Pareto Principle. The exact percentage varies by business — what matters is identifying your highest-value items, not hitting a specific percentage.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How often should I redo ABC analysis?<span>▾</span></div><div class="faq-a">Run quarterly for most businesses. Monthly if you have rapidly changing product mix (fashion, electronics, seasonal). A SKU may move from B to A as it grows, or from A to C as it declines — keeping classifications current ensures management effort stays aligned with actual revenue contribution.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Should I base ABC analysis on revenue or units sold?<span>▾</span></div><div class="faq-a">Use revenue (or ideally gross margin) not units sold. A SKU selling 1,000 units at ₹10 (₹10K revenue) is less important than one selling 50 units at ₹500 (₹25K revenue). Revenue-based classification ensures attention goes to items that matter most financially.</div></div>
+  <h2>Related Free Calculators</h2>
+  <div class="related-grid">
+    <a href="https://logicstiq.com/inventory-turnover-calculator" class="related-card"><div class="rc-name">Inventory Turnover</div><div class="rc-vol">3,600/mo searches</div></a>
+    <a href="https://logicstiq.com/eoq-calculator" class="related-card"><div class="rc-name">EOQ Calculator</div><div class="rc-vol">2,400/mo searches</div></a>
+    <a href="https://logicstiq.com/safety-stock-calculator" class="related-card"><div class="rc-name">Safety Stock Calculator</div><div class="rc-vol">1,900/mo searches</div></a>
+    <a href="https://logicstiq.com/stockout-cost-calculator" class="related-card"><div class="rc-name">Stockout Cost Calculator</div><div class="rc-vol">480/mo searches</div></a>
+    <a href="https://logicstiq.com/cycle-count-calculator" class="related-card"><div class="rc-name">Cycle Count Calculator</div><div class="rc-vol">390/mo searches</div></a>
+    <a href="https://logicstiq.com/carrying-cost-calculator" class="related-card"><div class="rc-name">Carrying Cost Calculator</div><div class="rc-vol">590/mo searches</div></a>
   </div>
-
-  <h3>Related Guides</h3>
-  <ul>
-    <li><a href="/blog/demand-planning-amazon-flipkart.html">Demand Planning for Amazon & Flipkart Sellers India →</a></li>
-    <li><a href="/blog/eoq-calculator.html">EOQ Calculator — Economic Order Quantity Formula & Free Tool →</a></li>
-    <li><a href="/blog/safety-stock-calculator.html">Safety Stock Formula — How to Calculate Buffer Stock →</a></li>
-    <li><a href="/blog/what-is-otif.html">What is OTIF in Logistics? Complete Guide →</a></li>
-  </ul>
+  <div class="aff-note"><strong>Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. We may earn a commission at no extra cost to you. All calculators are free forever.</div>
 </div>
-
-<footer>
-  <p>© 2025 <a href="https://logicstiq.com">LogicstIQ.com</a> · Free Supply Chain Calculators + AI Demand Planner · No Login · Free Forever · Where Logistics Meets Intelligence</p>
-  <p style="margin-top:8px">Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> & <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a></p>
-</footer>
+<footer><p>© 2025 <a href="https://logicstiq.com">LogicstIQ.com</a> · 31 Free Supply Chain Calculators + AI Demand Planner · No Login · Free Forever</p><p style="margin-top:8px">Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a></p></footer>
+<script>
+function runABC() {
+  const raw = document.getElementById('sku-input').value.trim();
+  if (!raw) { alert('Enter SKU data first.'); return; }
+  const lines = raw.split('\n').filter(l=>l.trim());
+  const skus = [];
+  for (const line of lines) {
+    const parts = line.split(',');
+    if (parts.length < 2) continue;
+    const name = parts.slice(0,-1).join(',').trim();
+    const val = parseFloat(parts[parts.length-1].replace(/[₹,\s]/g,''));
+    if (name && !isNaN(val) && val > 0) skus.push({name, val});
+  }
+  if (skus.length < 2) { alert('Enter at least 2 SKUs with values.'); return; }
+  skus.sort((a,b)=>b.val-a.val);
+  const total = skus.reduce((s,x)=>s+x.val, 0);
+  let cum = 0;
+  const result = skus.map((s,i)=>{ cum+=s.val; const pct=(cum/total)*100; return {...s, rank:i+1, cumPct:pct, cls:pct<=70?'A':pct<=90?'B':'C'}; });
+  const aC=result.filter(r=>r.cls==='A'), bC=result.filter(r=>r.cls==='B'), cC=result.filter(r=>r.cls==='C');
+  const aVal=aC.reduce((s,x)=>s+x.val,0), bVal=bC.reduce((s,x)=>s+x.val,0), cVal=cC.reduce((s,x)=>s+x.val,0);
+  document.getElementById('a-stats').innerHTML = aC.length+' SKUs<br>'+(aVal/total*100).toFixed(1)+'% of revenue<br>High priority · Tight control';
+  document.getElementById('b-stats').innerHTML = bC.length+' SKUs<br>'+(bVal/total*100).toFixed(1)+'% of revenue<br>Standard processes';
+  document.getElementById('c-stats').innerHTML = cC.length+' SKUs<br>'+(cVal/total*100).toFixed(1)+'% of revenue<br>Simplified management';
+  const tbody = document.getElementById('sku-tbody');
+  tbody.innerHTML = result.map(r=>`<tr><td>${r.rank}</td><td><strong>${r.name}</strong></td><td>₹${r.val.toLocaleString('en-IN')}</td><td>${r.cumPct.toFixed(1)}%</td><td><span class="badge-${r.cls.toLowerCase()}">${r.cls}</span></td></tr>`).join('');
+  document.getElementById('result').classList.add('show');
+}
+</script>
 <script>
 (function(){var r=document.documentElement;
 function lbl(){var b=document.getElementById('liqTheme');if(b)b.textContent=r.getAttribute('data-theme')==='dark'?'☀️':'🌙';}

@@ -2,32 +2,121 @@
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Disclaimer | LogicstIQ.com</title>
-<meta name="description" content="LogicstIQ.com Disclaimer — our tools provide reference calculations only. Always validate results with your ERP or WMS before making business decisions.">
-<link rel="canonical" href="https://logicstiq.com/disclaimer.html">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Generator — LogicstIQ.com | GST Invoice, PO, Commercial Invoice, Bill of Lading & EXIM Docs</title>
+<meta name="description" content="Free end-to-end document generator for Indian sellers, manufacturers, suppliers, importers & exporters. GST invoices, purchase orders, quotations, delivery challans, packing lists AND EXIM documents — commercial invoice, certificate of origin, bill of lading, shipping bill & bill of entry worksheets, LC checklist, bill of exchange, eBRC & RoDTEP. Built-in validation with GSTIN/IEC/HSN format checks + EXIM filing guide. Auto GST & customs duty, amount in words, print or download PDF. No login. Nothing stored.">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Wix Madefor Text','Inter',sans-serif;background:#F4F7FF;color:#0F172A;line-height:1.75;font-size:16px}
-.nav{background:#fff;border-bottom:1px solid #E2E8F0;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.nav-logo{font-size:18px;font-weight:900;text-decoration:none;color:#0F172A;letter-spacing:-.02em}
-.nav-logo span{background:linear-gradient(135deg,#3A55FF,#770BFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.nav-back{font-size:13px;font-weight:600;color:#3A55FF;text-decoration:none}
-.hero{background:linear-gradient(135deg,#0F172A,#1C2C73);padding:48px 32px;text-align:center}
-.hero h1{font-size:32px;font-weight:900;color:#fff;letter-spacing:-.02em;margin-bottom:8px}
-.hero-sub{font-size:14px;color:#BFDBFE}
-.wrap{max-width:760px;margin:0 auto;padding:48px 24px 64px}
-h2{font-size:20px;font-weight:800;color:#0F172A;margin:32px 0 12px;padding-top:8px;border-top:2px solid #DBEAFE}
-p{margin-bottom:14px;color:#334155;line-height:1.8}
-ul{padding-left:22px;margin-bottom:14px}
-li{margin-bottom:6px;color:#334155;line-height:1.7}
-strong{color:#0F172A}
-.warning{background:#FEF3C7;border:1.5px solid #FDE68A;border-radius:14px;padding:22px 26px;margin:24px 0}
-.warning h3{font-size:16px;font-weight:800;color:#92400E;margin-bottom:10px}
-.warning p{color:#92400E;margin-bottom:0;font-weight:500}
-footer{background:#0F172A;padding:28px 32px;text-align:center;font-size:12px;color:#64748B}
-footer a{color:#BFDBFE;text-decoration:none}
+:root{--navy:#1B2A4A;--blue:#2E6BE6;--blue-soft:#EAF1FE;--line:#E2E8F2;--ink:#1B2A4A;--muted:#5A6783;--bg:#F5F8FC;--card:#FFF;--amber:#FBE5C8;--amberink:#8a5a00;--green:#1f9d57;--red:#c0392b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+.topbar{background:var(--card);border-bottom:1px solid var(--line);padding:14px 22px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:20}
+.brand{display:flex;flex-direction:column;line-height:1.05;text-decoration:none;color:inherit;cursor:pointer}
+.brand b{font-size:20px;color:var(--navy)}.brand b span{color:var(--blue)}
+.brand small{font-size:10px;color:var(--blue);letter-spacing:.5px;text-transform:uppercase;font-weight:600}
+.guidebtn{margin-left:auto;font-size:12.5px;background:var(--navy);color:#fff;border:none;padding:8px 14px;border-radius:30px;font-weight:700;cursor:pointer}
+.topbar .pill{font-size:12px;background:var(--blue-soft);color:var(--blue);padding:6px 12px;border-radius:30px;font-weight:600}
+@media(max-width:680px){.topbar .pill{display:none}}
+.wrap{display:grid;grid-template-columns:430px 1fr;gap:20px;padding:20px;align-items:start}
+@media(max-width:1000px){.wrap{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.panel h2{margin:0 0 4px;font-size:16px;color:var(--navy)}
+.panel .sub{margin:0 0 14px;font-size:12px;color:var(--muted)}
+label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin:10px 0 4px}
+input,select,textarea{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:9px;font-size:13px;color:var(--ink);background:#fff;font-family:inherit}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+input.bad{border-color:#e6a2a2;background:#fdf3f3}
+textarea{resize:vertical;min-height:54px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grouplbl{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin:8px 0 4px}
+.doctabs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:4px}
+.doctabs button{flex:1 1 auto;min-width:84px;border:1px solid var(--line);background:#fff;color:var(--navy);padding:8px 7px;border-radius:9px;font-size:11.5px;font-weight:600;cursor:pointer;transition:.15s}
+.doctabs button.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.section-title{font-size:12px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.4px;margin:16px 0 6px;padding-top:12px;border-top:1px dashed var(--line)}
+.fieldnote{font-size:10.5px;margin-top:3px;font-weight:600}
+.fieldnote.ok{color:var(--green)}.fieldnote.bad{color:var(--red)}
+.tip{background:var(--blue-soft);border-radius:8px;padding:8px 11px;font-size:11.5px;color:var(--navy);margin:8px 0;line-height:1.5}
+.tip a{color:var(--blue);font-weight:600;cursor:pointer;text-decoration:underline}
+.items table{width:100%;border-collapse:collapse;font-size:12px}
+.items th{text-align:left;color:var(--muted);font-weight:600;padding:3px;font-size:10.5px}
+.items td{padding:2px}
+.items input{padding:6px 6px}
+.items .del{border:none;background:#fde8e8;color:#c0392b;border-radius:7px;width:28px;height:30px;cursor:pointer;font-size:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:none;border-radius:10px;padding:11px 16px;font-size:13.5px;font-weight:700;cursor:pointer}
+.btn-blue{background:var(--blue);color:#fff}.btn-ghost{background:#fff;border:1px solid var(--line);color:var(--navy)}
+.btn-add{background:var(--blue-soft);color:var(--blue);width:100%;margin-top:8px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.actions .btn{flex:1 1 auto}
+.savebar{display:flex;gap:8px;margin-top:10px}.savebar .btn{flex:1;font-size:12px;padding:9px}
+.hint{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5}
+.vbox{margin-top:14px;border-radius:10px;padding:11px 13px;font-size:12px;line-height:1.55;display:none}
+.vbox.show{display:block}
+.vbox.err{background:#fdeaea;border:1px solid #f0c2c2;color:#9b1c1c}
+.vbox.warnonly{background:var(--amber);border:1px solid #e9c48f;color:var(--amberink)}
+.vbox b{display:block;margin:6px 0 2px}
+.vbox ul{margin:2px 0 0;padding-left:18px}
+.preview-shell{position:sticky;top:78px}
+.toolbarmini{display:flex;gap:14px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.gststat{font-size:12px;color:var(--muted)}.gststat b{color:var(--navy)}
+.ready{font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:20px}
+.ready.ok{color:#fff;background:var(--green)}
+.ready.no{color:#fff;background:var(--red)}
+.ready.warn{color:#fff;background:#d98a1f}
+#preview{background:#fff;width:210mm;min-height:297mm;margin:0 auto;padding:15mm 13mm;box-shadow:0 4px 30px rgba(27,42,74,.12);color:#1a1a1a;font-size:12px}
+.wnotice{background:var(--amber);color:var(--amberink);border-radius:8px;padding:8px 12px;font-size:11px;font-weight:600;margin-bottom:12px}
+.doc-head{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid var(--blue);padding-bottom:12px;margin-bottom:14px}
+.doc-head .co{max-width:60%}
+.doc-head .co img{max-height:54px;max-width:200px;margin-bottom:6px;display:block}
+.doc-head .co .nm{font-size:19px;font-weight:800;color:var(--navy)}
+.doc-head .co .ad{font-size:11px;color:#555;white-space:pre-line;line-height:1.45;margin-top:3px}
+.doc-head .ttl{text-align:right}.doc-head .ttl h1{margin:0;font-size:22px;letter-spacing:1px;color:var(--navy)}
+.doc-head .ttl .meta{font-size:11px;color:#444;margin-top:6px;line-height:1.6}
+.parties{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.party{border:1px solid #e3e8f0;border-radius:8px;padding:10px}
+.party .h{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--blue);font-weight:700;margin-bottom:4px}
+.party .nm{font-weight:700;font-size:13px}
+.party .ad{font-size:11px;color:#555;white-space:pre-line;line-height:1.45;margin-top:2px}
+.party .gst{font-size:11px;margin-top:4px}
+.shipbar{display:flex;flex-wrap:wrap;gap:6px 18px;background:#f6f9ff;border:1px solid #e3e8f0;border-radius:8px;padding:9px 12px;margin-bottom:12px;font-size:11px}
+.shipbar span b{color:var(--navy)}
+table.lines{width:100%;border-collapse:collapse;margin-top:6px;font-size:11px}
+table.lines th{background:var(--navy);color:#fff;padding:7px 6px;text-align:left;font-weight:600;font-size:10px}
+table.lines th.r,table.lines td.r{text-align:right}table.lines th.c,table.lines td.c{text-align:center}
+table.lines td{padding:6px;border-bottom:1px solid #eef1f6;vertical-align:top}
+table.lines tbody tr:nth-child(even){background:#fafbfe}
+.totals{display:flex;justify-content:flex-end;margin-top:10px}
+.totals table{font-size:12px;min-width:280px}.totals td{padding:4px 8px}.totals td.r{text-align:right}
+.totals .grand td{border-top:2px solid var(--navy);font-weight:800;font-size:13px;color:var(--navy);padding-top:7px}
+.words{margin-top:8px;font-size:11px;background:var(--blue-soft);padding:8px 10px;border-radius:6px}.words b{color:var(--navy)}
+.docnotes{margin-top:14px;font-size:11px;color:#444;white-space:pre-line;line-height:1.5}
+.declbox{margin-top:12px;border:1px solid #e3e8f0;border-radius:8px;padding:10px;font-size:10.5px;color:#444;line-height:1.5}
+.declbox b{color:var(--navy)}
+.bankbox{margin-top:12px;border:1px dashed #cfd8e6;border-radius:8px;padding:10px;font-size:11px;color:#444}
+.sign{display:flex;justify-content:space-between;margin-top:28px;font-size:11px}
+.sign .b .ln{margin-top:34px;border-top:1px solid #999;padding-top:4px;min-width:160px;text-align:center}
+.disc{margin-top:16px;border-top:1px solid #e3e8f0;padding-top:8px;font-size:9.5px;color:#8a93a6;text-align:center;line-height:1.5}
+.foot-note{font-size:9px;color:#aab;text-align:center;margin-top:4px}
+.instrument{font-size:12.5px;line-height:1.9;margin-top:10px}
+.instrument .fill{border-bottom:1px solid #888;padding:0 6px;font-weight:600}
+.modal{position:fixed;inset:0;background:rgba(27,42,74,.55);display:none;align-items:flex-start;justify-content:center;z-index:50;padding:30px 16px;overflow:auto}
+.modal.open{display:flex}
+.modal-card{background:#fff;max-width:840px;width:100%;border-radius:16px;padding:24px 26px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal-card h2{margin:0;color:var(--navy);font-size:20px}
+.modal-card .lead{font-size:12.5px;color:var(--muted);margin:4px 0 0}
+.modal-card .x{float:right;border:none;background:#f0f3f9;border-radius:9px;width:36px;height:36px;font-size:18px;cursor:pointer;color:var(--navy)}
+.gsec{margin-top:20px}
+.gsec h3{font-size:12px;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin:0 0 8px}
+.gtable{width:100%;border-collapse:collapse;font-size:12px}
+.gtable th{background:var(--navy);color:#fff;text-align:left;padding:7px 9px;font-size:10.5px}
+.gtable td{padding:7px 9px;border-bottom:1px solid #eef1f6;vertical-align:top}
+.gtable tr:nth-child(even){background:#fafbfe}
+.gtable a{color:var(--blue);font-weight:600}
+.gchips{display:flex;flex-wrap:wrap;gap:6px}
+.gchip{background:#e3f4e8;color:#1f7a44;border-radius:20px;padding:4px 11px;font-size:11.5px;font-weight:600}
+.steps{margin:0;padding-left:20px;font-size:12.5px;line-height:1.85}
+.gnote{font-size:11px;color:var(--muted);margin-top:16px;line-height:1.6;border-top:1px solid var(--line);padding-top:12px}
+@media(max-width:1000px){#preview{width:100%;padding:10mm 8mm}.preview-shell{position:static}}
+@media print{body{background:#fff}.topbar,.wrap>.panel,.toolbarmini,.modal{display:none!important}.wrap{display:block;padding:0}.preview-shell{position:static}#preview{width:auto;min-height:auto;box-shadow:none;margin:0;padding:12mm}@page{size:A4;margin:8mm}}
 </style>
 <style id="liq-theme-css">
 .liq-theme-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--white);color:var(--text);font-size:15px;line-height:1;cursor:pointer;display:inline-grid;place-items:center;transition:.18s;margin-left:4px}
@@ -52,67 +141,551 @@ footer a{color:#BFDBFE;text-decoration:none}
 </style>
 </head>
 <body>
-<nav class="nav">
-  <a href="/" class="nav-logo" aria-label="LogicstIQ — Home" style="display:inline-flex;flex-direction:column;align-items:flex-start;text-decoration:none;line-height:1;gap:3px">
-    <svg width="150" height="36" viewBox="0 0 260 68" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block">
-      <defs><linearGradient id="navlogo_g" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#2A40D6"/><stop offset="100%" stop-color="#7A92FF"/></linearGradient></defs>
-      <path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#navlogo_g)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <path d="M59 8 L66 14 L59 20" stroke="#7A92FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <circle cx="32" cy="50" r="3.5" fill="#2A40D6"/>
-      <circle cx="50" cy="14" r="3.5" fill="#7A92FF"/>
-      <text x="82" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5"><tspan fill="#0F172A">Logicst</tspan><tspan fill="#3A55FF">IQ</tspan></text>
-    </svg>
-    <span style="font-size:9px;font-weight:600;color:#3A55FF;letter-spacing:.05em;white-space:nowrap">Where Logistics Meets Intelligence</span>
-  </a>
-  <a href="https://logicstiq.com" class="nav-back">← Back to Home</a>
-</nav>
-<div class="hero">
-  <h1>Disclaimer</h1>
-  <p class="hero-sub">LogicstIQ.com · Last Updated: 1 July 2025</p>
+<div class="topbar">
+  <a class="brand" href="/" title="Back to LogicstIQ home"><b>Logicst<span>IQ</span></b><small>Where Logistics Meets Intelligence</small></a>
+  <button class="guidebtn" id="guideOpen">📋 EXIM Guide — what to file & where</button>
+  <div class="pill">🔒 No login · Nothing stored</div>
 </div>
 <div class="wrap">
+  <div class="panel">
+    <h2>End-to-End Document Generator</h2>
+    <p class="sub">Domestic + EXIM. Pick a document, fill the details, then Print or Download PDF. Built for Indian sellers, manufacturers, suppliers, importers & exporters.</p>
 
-  <div class="warning">
-    <h3>⚠️ Important — Please Read Before Using Our Tools</h3>
-    <p>All calculator outputs, AI demand forecasts, reorder recommendations, and inventory insights provided by LogicstIQ.com are for planning reference and educational purposes only. They are not professional advice and must be validated before making business decisions.</p>
+    <div class="grouplbl">Domestic / GST</div>
+    <div class="doctabs" id="tabsDom"></div>
+    <div class="grouplbl" style="margin-top:10px">EXIM (Export–Import)</div>
+    <div class="doctabs" id="tabsExim"></div>
+
+    <div id="docTip" class="tip" style="display:none"></div>
+
+    <div id="fromTitle" class="section-title">Your Company (From)</div>
+    <div class="savebar">
+      <button class="btn btn-ghost" id="saveProfile">💾 Save my company</button>
+      <button class="btn btn-ghost" id="loadProfile">↺ Load saved</button>
+    </div>
+    <label>Logo (optional)</label><input type="file" id="logo" accept="image/*">
+    <label>Company name</label><input id="coName" placeholder="ABC Industries Pvt Ltd">
+    <label>Address</label><textarea id="coAddr" placeholder="Plot 12, MIDC, Pune, Maharashtra 411001, India"></textarea>
+    <div class="row"><div><label id="coGstinLbl">GSTIN</label><input id="coGstin" placeholder="27ABCDE1234F1Z5"><div class="fieldnote" id="coGstinNote"></div></div><div id="coStateWrap"><label>State</label><select id="coState"></select></div></div>
+    <div class="row"><div><label>Phone</label><input id="coPhone"></div><div><label>Email</label><input id="coEmail"></div></div>
+    <div class="row"><div><label>IEC (for EXIM)</label><input id="coIec" placeholder="ABCDE1234F"><div class="fieldnote" id="coIecNote"></div></div><div><label>AD Code (for EXIM)</label><input id="coAd" placeholder="6390xxxxxxxxxx"></div></div>
+
+    <div id="toTitle" class="section-title">Other Party (To)</div>
+    <label id="ptNameLbl">Name</label><input id="ptName" placeholder="XYZ Retail LLP">
+    <label>Address</label><textarea id="ptAddr" placeholder="Shop 4, MG Road, Bengaluru, Karnataka 560001"></textarea>
+    <div class="row"><div><label id="ptGstinLbl">GSTIN</label><input id="ptGstin"><div class="fieldnote" id="ptGstinNote"></div></div><div id="ptStateWrap"><label>State</label><select id="ptState"></select></div></div>
+
+    <div id="ntWrap" style="display:none">
+      <div class="section-title">Notify Party</div>
+      <label>Name</label><input id="ntName"><label>Address</label><textarea id="ntAddr"></textarea>
+    </div>
+
+    <div class="section-title">Document Details</div>
+    <div id="metaFields"></div>
+
+    <div id="shipWrap" style="display:none">
+      <div class="section-title">Shipment Details</div>
+      <div id="shipFields"></div>
+    </div>
+
+    <div id="itemsWrap">
+      <div class="section-title" id="itemsTitle">Line Items</div>
+      <div class="items"><table><thead id="itHead"></thead><tbody id="itBody"></tbody></table></div>
+      <button class="btn btn-add" id="addRow">+ Add line</button>
+    </div>
+
+    <div id="chWrap" style="display:none">
+      <div class="section-title">Additional Charges (for CIF / total)</div>
+      <div class="row"><div><label>Freight</label><input id="chFreight" type="number" value="0"></div><div><label>Insurance</label><input id="chIns" type="number" value="0"></div></div>
+      <label>Other charges (packing, handling)</label><input id="chOther" type="number" value="0">
+    </div>
+
+    <div class="section-title">Notes / Terms</div>
+    <textarea id="notes" placeholder="Payment terms, delivery terms, special instructions…"></textarea>
+
+    <div id="bankWrap">
+      <div class="section-title">Bank Details</div>
+      <div class="row"><div><label>Bank / Branch</label><input id="bkBank"></div><div><label>Account No.</label><input id="bkAcc"></div></div>
+      <div class="row"><div><label>IFSC / SWIFT</label><input id="bkIfsc"></div><div><label>UPI (optional)</label><input id="bkUpi"></div></div>
+    </div>
+
+    <div class="vbox" id="validationBox"></div>
+
+    <div class="actions">
+      <button class="btn btn-blue" id="printBtn">🖨️ Print / Save as PDF</button>
+      <button class="btn btn-ghost" id="pdfBtn">⬇️ Download PDF</button>
+    </div>
+    <p class="hint">Before download the tool checks required fields and validates GSTIN / IEC / HSN formats; it also flags warnings (e.g. gross weight below net, LC expiry before shipment). New to EXIM? Tap <b>EXIM Guide</b> (top right). Your data never leaves your browser.</p>
   </div>
 
-  <h2>General Disclaimer</h2>
-  <p>LogicstIQ.com provides free supply chain calculators and AI-powered demand planning tools for informational and reference purposes. While we strive to provide accurate and useful outputs, we make no warranties or representations regarding the accuracy, completeness, reliability, or fitness for any specific purpose of any result generated by our tools.</p>
-  <p>All outputs — including EOQ calculations, safety stock levels, reorder points, demand forecasts, stockout risk assessments, inventory health scores, and AI-generated insights — are based on the data you provide and standard supply chain formulas and models. Results will vary based on the quality, completeness, and accuracy of your input data.</p>
-
-  <h2>Not Professional Advice</h2>
-  <p>Nothing on LogicstIQ.com constitutes professional supply chain consulting, financial advice, legal advice, or any other form of professional advisory service. The tools are intended to supplement, not replace, professional judgment and expertise.</p>
-  <p>Before acting on any output from LogicstIQ:</p>
-  <ul>
-    <li>Validate the results against your own ERP, WMS, or inventory management system</li>
-    <li>Cross-check with your historical sales data and business knowledge</li>
-    <li>Consult with qualified supply chain, finance, or procurement professionals where appropriate</li>
-    <li>Consider factors not captured in the tool inputs (supplier relationships, market conditions, regulatory requirements, etc.)</li>
-  </ul>
-
-  <h2>AI-Generated Content</h2>
-  <p>The AI Demand Planner uses Google's Gemini AI to generate written insights. AI-generated content can contain errors, omissions, or outdated information. Always apply critical judgment when reviewing AI-generated insights. LogicstIQ is not responsible for any inaccuracies in AI-generated content.</p>
-
-  <h2>Third-Party Names and Trademarks</h2>
-  <p>References to third-party platforms (Amazon, Flipkart, SAP, Tally, NetSuite, Dynamics 365, Shopify, Meesho, Myntra, Blinkit, Zepto, etc.) on LogicstIQ.com are made for descriptive interoperability purposes only. LogicstIQ is not affiliated with, endorsed by, or in partnership with any of these companies. All third-party names and trademarks are the property of their respective owners.</p>
-
-  <h2>Affiliate Links</h2>
-  <p>LogicstIQ.com may contain affiliate links to third-party products and services. When you click an affiliate link and make a purchase or sign up, LogicstIQ may receive a commission at no additional cost to you. Affiliate links are clearly disclosed near each placement. Our editorial recommendations are not influenced by affiliate relationships.</p>
-
-  <h2>Limitation of Liability</h2>
-  <p>LogicstIQ.com and its founders are not liable for any loss, damage, cost, or expense (including lost profits, lost sales, or consequential damages) arising from your use of or reliance on any output from our tools. Use of LogicstIQ.com is entirely at your own risk.</p>
-
-  <h2>External Links</h2>
-  <p>LogicstIQ.com may contain links to external websites. These links are provided for convenience only. We do not endorse, control, or take responsibility for the content or privacy practices of any external site.</p>
-
-  <h2>Changes to This Disclaimer</h2>
-  <p>We reserve the right to update this Disclaimer at any time. Changes are effective immediately upon posting. Continued use of LogicstIQ.com constitutes acceptance of the updated Disclaimer.</p>
-
+  <div class="preview-shell">
+    <div class="toolbarmini"><span class="gststat" id="gststat"></span><span class="ready" id="ready"></span></div>
+    <div id="preview"></div>
+  </div>
 </div>
-<footer>
-  © 2025 LogicstIQ.com · <a href="/privacy-policy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a> · <a href="/disclaimer.html">Disclaimer</a> · Where Logistics Meets Intelligence
-</footer>
+
+<div class="modal" id="eximGuide">
+  <div class="modal-card">
+    <button class="x" id="guideClose">×</button>
+    <h2>📋 EXIM Guide — what to file & where</h2>
+    <p class="lead">A quick, friendly map of the export–import journey for India. Generate documents in this tool; file the statutory ones on the official portals below.</p>
+
+    <div class="gsec">
+      <h3>Step 1 · One-time registrations (before you trade)</h3>
+      <table class="gtable"><thead><tr><th>What</th><th>Why you need it</th><th>Where to get it</th></tr></thead><tbody>
+        <tr><td><b>IEC</b> — Import Export Code</td><td>10-digit code; mandatory to import or export. Update once a year (Apr–Jun).</td><td><a href="https://www.dgft.gov.in" target="_blank" rel="noopener">dgft.gov.in</a></td></tr>
+        <tr><td><b>GSTIN</b></td><td>Tax identity for invoices, IGST and export refunds.</td><td><a href="https://www.gst.gov.in" target="_blank" rel="noopener">gst.gov.in</a></td></tr>
+        <tr><td><b>AD Code</b></td><td>Your bank's authorised-dealer code; register it for each port of export.</td><td>Your bank → register on <a href="https://www.icegate.gov.in" target="_blank" rel="noopener">icegate.gov.in</a></td></tr>
+        <tr><td><b>ICEGATE login</b></td><td>Customs e-filing portal for Shipping Bill / Bill of Entry.</td><td><a href="https://www.icegate.gov.in" target="_blank" rel="noopener">icegate.gov.in</a></td></tr>
+        <tr><td><b>RCMC</b></td><td>Export Promotion Council membership; needed for scheme benefits.</td><td>Relevant EPC / Commodity Board (via DGFT)</td></tr>
+        <tr><td><b>LUT</b></td><td>Lets you export without paying IGST (zero-rated).</td><td><a href="https://www.gst.gov.in" target="_blank" rel="noopener">gst.gov.in</a> → file LUT</td></tr>
+      </tbody></table>
+    </div>
+
+    <div class="gsec">
+      <h3>Step 2 · Documents you create right here</h3>
+      <div class="gchips">
+        <span class="gchip">Commercial Invoice</span><span class="gchip">Export Packing List</span><span class="gchip">Export Proforma</span>
+        <span class="gchip">Certificate of Origin</span><span class="gchip">Bill of Lading / AWB</span><span class="gchip">Bill of Exchange</span>
+        <span class="gchip">LC Checklist</span><span class="gchip">+ all 6 domestic / GST docs</span>
+      </div>
+    </div>
+
+    <div class="gsec">
+      <h3>Step 3 · Statutory filings — make the worksheet here, file on the portal</h3>
+      <table class="gtable"><thead><tr><th>Document</th><th>Where to file</th></tr></thead><tbody>
+        <tr><td>Shipping Bill (export clearance)</td><td><a href="https://www.icegate.gov.in" target="_blank" rel="noopener">ICEGATE</a> — you or your CHA</td></tr>
+        <tr><td>Bill of Entry (import clearance)</td><td><a href="https://www.icegate.gov.in" target="_blank" rel="noopener">ICEGATE</a></td></tr>
+        <tr><td>e-Way Bill (goods movement &gt; ₹50k, incl. to port)</td><td><a href="https://ewaybillgst.gov.in" target="_blank" rel="noopener">ewaybillgst.gov.in</a></td></tr>
+        <tr><td>eBRC (proof export proceeds realised)</td><td>Self-certify on <a href="https://www.dgft.gov.in" target="_blank" rel="noopener">DGFT</a> after bank IRM</td></tr>
+        <tr><td>RoDTEP / Duty Drawback (incentives)</td><td>Credited via <a href="https://www.icegate.gov.in" target="_blank" rel="noopener">ICEGATE</a> scroll</td></tr>
+        <tr><td>Certificate of Origin (e-CoO)</td><td><a href="https://coo.dgft.gov.in" target="_blank" rel="noopener">coo.dgft.gov.in</a> / Chamber of Commerce</td></tr>
+      </tbody></table>
+    </div>
+
+    <div class="gsec">
+      <h3>Step 4 · Typical export order</h3>
+      <ol class="steps">
+        <li>One-time setup: IEC, GSTIN/LUT, AD Code + ICEGATE.</li>
+        <li>Send <b>Proforma Invoice</b> → receive buyer PO / LC.</li>
+        <li>Prepare <b>Commercial Invoice</b> + <b>Packing List</b>.</li>
+        <li>Book transport → <b>e-Way Bill</b>, insurance, <b>Bill of Lading / AWB</b>.</li>
+        <li>File <b>Shipping Bill</b> on ICEGATE → get Let Export Order.</li>
+        <li>Negotiate documents with your bank → FIRC.</li>
+        <li>Self-certify <b>eBRC</b> on DGFT.</li>
+        <li>Claim <b>RoDTEP / Drawback</b>.</li>
+      </ol>
+    </div>
+
+    <div class="gsec">
+      <h3>Step 5 · Product-specific clearances (if applicable)</h3>
+      <table class="gtable"><thead><tr><th>Goods</th><th>Clearance / authority</th></tr></thead><tbody>
+        <tr><td>Food &amp; food products</td><td>FSSAI</td></tr>
+        <tr><td>Agri &amp; processed food</td><td>APEDA</td></tr>
+        <tr><td>Plants / plant products</td><td>Phytosanitary Certificate — Plant Quarantine</td></tr>
+        <tr><td>Wood packaging / pallets</td><td>Fumigation (ISPM-15)</td></tr>
+        <tr><td>Marine &amp; meat products</td><td>Export Inspection Council / Animal Quarantine</td></tr>
+        <tr><td>Pharmaceuticals</td><td>CDSCO / State Drug Controller</td></tr>
+      </tbody></table>
+    </div>
+
+    <p class="gnote">For reference and guidance only. Portals, schemes and rates change — always confirm current requirements on the official Customs, DGFT, RBI and GST websites before filing. RoDTEP/Drawback rates vary by HS code; eBRC realisation is required to remain eligible for incentives.</p>
+  </div>
+</div>
+
+<script>
+"use strict";
+const STATES=[["27","Maharashtra"],["07","Delhi"],["29","Karnataka"],["33","Tamil Nadu"],["24","Gujarat"],["09","Uttar Pradesh"],["06","Haryana"],["08","Rajasthan"],["19","West Bengal"],["36","Telangana"],["37","Andhra Pradesh"],["32","Kerala"],["23","Madhya Pradesh"],["03","Punjab"],["10","Bihar"],["22","Chhattisgarh"],["21","Odisha"],["20","Jharkhand"],["18","Assam"],["05","Uttarakhand"],["02","Himachal Pradesh"],["30","Goa"],["04","Chandigarh"],["01","Jammu & Kashmir"],["34","Puducherry"],["38","Ladakh"],["97","Other Territory"]];
+const COUNTRIES=["India","United States","United Kingdom","Germany","Netherlands","France","Italy","Spain","UAE","Saudi Arabia","Singapore","China","Japan","South Korea","Australia","Canada","Bangladesh","Nepal","Sri Lanka","Vietnam","Indonesia","Malaysia","Brazil","South Africa","Other"];
+const INCOTERMS=["EXW","FCA","FAS","FOB","CFR","CIF","CPT","CIP","DAP","DPU","DDP"];
+const CURRENCIES={INR:{sym:"₹",code:"INR",word:"Rupees",sub:"Paise",intl:false},USD:{sym:"$",code:"USD",word:"US Dollars",sub:"Cents",intl:true},EUR:{sym:"€",code:"EUR",word:"Euros",sub:"Cents",intl:true},GBP:{sym:"£",code:"GBP",word:"Pounds Sterling",sub:"Pence",intl:true},AED:{sym:"AED ",code:"AED",word:"UAE Dirhams",sub:"Fils",intl:true},SGD:{sym:"S$",code:"SGD",word:"Singapore Dollars",sub:"Cents",intl:true}};
+const RX_GSTIN=/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z][1-9A-Z]Z[0-9A-Z]$/;
+const RX_HSN=/^\d{4}(\d{2}){0,2}$/;
+const RX_IEC=/^[A-Za-z0-9]{10}$/;
+const upc=s=>String(s||"").toUpperCase().replace(/\s/g,"");
+
+const TIPS={
+  ci:"Core export document. Pair it with a Packing List. Use it to file the Shipping Bill on ICEGATE.",
+  epl:"Goes with the Commercial Invoice for customs examination.",
+  epi:"Use this to get the buyer's PO or to open an LC. Not a tax document.",
+  coo:"Issued/attested by a Chamber of Commerce (non-preferential) or via coo.dgft.gov.in (preferential / FTA).",
+  bl:"Issued by your carrier/forwarder. This worksheet captures the details to give them.",
+  sb:"Worksheet only — file the actual Shipping Bill on ICEGATE (you or your CHA).",
+  boe:"Worksheet only — file the actual Bill of Entry on ICEGATE. Verify HS codes & duty rates there.",
+  lc:"Share with your bank/buyer. Make sure documents match the LC exactly (UCP 600).",
+  boex:"Drawn on the buyer/bank for payment, presented with shipping documents.",
+  ebrc:"Worksheet only — self-certify your eBRC on the DGFT portal after the bank's remittance message.",
+  rodtep:"Indicative benefit. Rates vary by HS code; credited via ICEGATE. eBRC realisation required."
+};
+
+const CONFIGS={
+  invoice:{group:"dom",title:"TAX INVOICE",label:"GST Invoice",from:"Seller (From)",to:"Buyer / Bill To",colset:"gst",gst:true,bank:true,placeOfSupply:true,
+    meta:[["docNo","Invoice No.","text","INV-001"],["date","Invoice Date","date",""],["poRef","Buyer's PO Ref","text",""],["dueDate","Due Date","date",""]]},
+  po:{group:"dom",title:"PURCHASE ORDER",label:"Purchase Order",from:"Buyer (Your Company)",to:"Supplier",colset:"gst",gst:true,
+    meta:[["docNo","PO No.","text","PO-001"],["date","PO Date","date",""],["deliveryDate","Required By","date",""],["shipTo","Ship To (optional)","text",""]]},
+  proforma:{group:"dom",title:"PROFORMA INVOICE",label:"Proforma",from:"Seller (From)",to:"Buyer",colset:"gst",gst:true,bank:true,placeOfSupply:true,
+    meta:[["docNo","Proforma No.","text","PI-001"],["date","Date","date",""],["validUntil","Valid Until","date",""]]},
+  quotation:{group:"dom",title:"QUOTATION",label:"Quotation",from:"From",to:"To / Customer",colset:"gst",gst:true,
+    meta:[["docNo","Quote No.","text","QT-001"],["date","Date","date",""],["validUntil","Valid Until","date",""]]},
+  challan:{group:"dom",title:"DELIVERY CHALLAN",label:"Delivery Challan",from:"Consignor (From)",to:"Consignee (Ship To)",colset:"value",
+    meta:[["docNo","Challan No.","text","DC-001"],["date","Date","date",""],["reason","Reason for Transport","select","Supply|Job Work|Supply on Approval|Sales Return|Line Sales|Others"],["vehicle","Vehicle No.","text",""],["transport","Transport Mode","text",""]]},
+  packing:{group:"dom",title:"PACKING LIST",label:"Packing List",from:"Shipper / From",to:"Consignee",colset:"packing",
+    meta:[["docNo","Packing List No.","text","PL-001"],["date","Date","date",""],["invRef","Invoice Ref","text",""],["marks","Marks & Numbers","text",""]]},
+
+  ci:{group:"exim",title:"COMMERCIAL INVOICE",label:"Commercial Invoice",from:"Exporter",to:"Consignee / Buyer",colset:"exim",currency:true,charges:true,bank:true,shipment:true,exportParty:true,
+    meta:[["docNo","Invoice No.","text","EXP-001"],["date","Date","date",""],["buyerOrder","Buyer's Order No.","text",""],["currency","Currency","currency",""],["payTerms","Payment Terms","text",""]],
+    decl:"We declare that this invoice shows the actual price of the goods described, that all particulars are true and correct, and that the goods are of Indian origin unless otherwise stated."},
+  epl:{group:"exim",title:"PACKING LIST",label:"Export Packing List",from:"Exporter",to:"Consignee",colset:"packing",shipment:true,exportParty:true,
+    meta:[["docNo","Packing List No.","text","PL-001"],["date","Date","date",""],["invRef","Commercial Invoice Ref","text",""],["marks","Marks & Numbers","text",""]]},
+  epi:{group:"exim",title:"PROFORMA INVOICE",label:"Export Proforma",from:"Exporter",to:"Buyer",colset:"exim",currency:true,charges:true,bank:true,shipment:true,exportParty:true,
+    meta:[["docNo","Proforma No.","text","PI-001"],["date","Date","date",""],["validUntil","Valid Until","date",""],["currency","Currency","currency",""],["payTerms","Payment Terms","text",""]],
+    decl:"This proforma invoice is issued for the purpose of LC opening / advance payment and is not a tax document. Final values may vary on actual shipment."},
+  coo:{group:"exim",title:"CERTIFICATE OF ORIGIN",label:"Certificate of Origin",from:"Exporter",to:"Consignee",colset:"coo",shipment:true,exportParty:true,
+    meta:[["docNo","Reference No.","text","COO-001"],["date","Date","date",""],["cooType","Type","select","Non-Preferential|Preferential (FTA / GSP)"],["originCriterion","Origin Criterion","text",""],["issuer","Issuing Authority","text","Chamber of Commerce"]],
+    decl:"The undersigned hereby declares that the above details and statements are correct, that all the goods were produced in India, and that they comply with the origin requirements specified for these goods in the importing country."},
+  bl:{group:"exim",title:"BILL OF LADING",label:"Bill of Lading / AWB",from:"Shipper",to:"Consignee",colset:"bl",shipment:true,notify:true,exportParty:true,
+    meta:[["docNo","B/L or AWB No.","text",""],["date","Date","date",""],["blType","Type","select","Negotiable B/L|Non-Negotiable|Sea Waybill|Air Waybill"],["freightTerms","Freight","select","Prepaid|Collect"]],
+    decl:"Received in apparent good order and condition the goods described above for carriage subject to the terms of the applicable carriage rules."},
+  sb:{group:"exim",title:"SHIPPING BILL — WORKSHEET",label:"Shipping Bill (ICEGATE)",from:"Exporter",to:"Consignee / Buyer",colset:"exim",currency:true,shipment:true,exportParty:true,
+    worksheet:"This is a worksheet to help you file on ICEGATE — it is NOT an official Shipping Bill.",
+    meta:[["docNo","SB No. (if generated)","text",""],["date","Date","date",""],["scheme","Export Scheme","select","Free Shipping Bill|Drawback|RoDTEP|Advance Authorisation|EPCG"],["currency","Currency","currency",""]],
+    decl:"I/We declare that the particulars given are true and correct and that I/We hold a valid IEC and AD Code registered on ICEGATE for the port of export."},
+  boe:{group:"exim",title:"BILL OF ENTRY — WORKSHEET",label:"Bill of Entry (ICEGATE)",from:"Importer",to:"Overseas Supplier",colset:"boe",currency:true,shipment:true,exportParty:true,
+    worksheet:"This is a worksheet to compute duty and help you file on ICEGATE — it is NOT an official Bill of Entry.",
+    meta:[["docNo","BE No. (if generated)","text",""],["date","Date","date",""],["beType","Type","select","Home Consumption|Warehousing|Ex-Bond"],["currency","Currency","currency",""]],
+    decl:"Duty shown is computed as BCD on assessable value plus IGST on (assessable value + BCD); add applicable cess/SWS as relevant. Verify HS classification and rates on ICEGATE before payment."},
+  lc:{group:"exim",title:"LETTER OF CREDIT — CHECKLIST",label:"LC Checklist",from:"Applicant (Buyer)",to:"Beneficiary (Seller)",colset:"checklist",currency:true,
+    meta:[["docNo","LC No.","text",""],["date","Date","date",""],["lcType","LC Type","select","Irrevocable|Confirmed|Transferable|Sight|Usance"],["amount","LC Amount","number",""],["currency","Currency","currency",""],["expiry","Expiry Date","date",""],["latestShip","Latest Shipment Date","date",""],["incoterm","Incoterm","incoterm",""]],
+    decl:"Documents must be presented in strict compliance with this LC and UCP 600. Any discrepancy may lead to rejection of payment."},
+  boex:{group:"exim",title:"BILL OF EXCHANGE",label:"Bill of Exchange",from:"Drawer (Exporter)",to:"Drawee",colset:"none",special:"boe-instrument",currency:true,
+    meta:[["docNo","Reference No.","text",""],["date","Date & Place","text",""],["amount","Amount","number",""],["currency","Currency","currency",""],["tenor","Tenor","select","At Sight|30 days|60 days|90 days|120 days"],["lcRef","Drawn under LC / Contract Ref","text",""]]},
+  ebrc:{group:"exim",title:"eBRC — REALISATION WORKSHEET",label:"eBRC Worksheet",from:"Exporter",to:"Buyer",colset:"ebrc",currency:true,
+    worksheet:"Worksheet only. Self-certify your eBRC on the DGFT portal once the bank transmits the Inward Remittance Message.",
+    meta:[["docNo","Worksheet Ref","text",""],["date","Date","date",""],["currency","Currency","currency",""]]},
+  rodtep:{group:"exim",title:"RoDTEP / DRAWBACK — CLAIM WORKSHEET",label:"RoDTEP / Drawback",from:"Exporter",to:"—",colset:"rodtep",
+    worksheet:"Indicative computation. RoDTEP/Drawback rates vary by HS code and are credited via ICEGATE; eBRC realisation is required to remain eligible.",
+    meta:[["docNo","Worksheet Ref","text",""],["date","Date","date",""]]}
+};
+
+let docType="invoice",logoData="",items=[];
+const $=id=>document.getElementById(id);
+const cfg=()=>CONFIGS[docType];
+function fillSel(sel,arr,fmt,def){sel.innerHTML="";arr.forEach(v=>{const o=document.createElement("option");const pair=fmt(v);o.value=pair[0];o.textContent=pair[1];sel.appendChild(o)});if(def!=null)sel.value=def;}
+fillSel($("coState"),STATES,s=>[s[0],s[1]+" ("+s[0]+")"],"27");
+fillSel($("ptState"),STATES,s=>[s[0],s[1]+" ("+s[0]+")"],"29");
+
+function curObj(){const c=cfg();if(c.currency&&$("m_currency"))return CURRENCIES[$("m_currency").value]||CURRENCIES.INR;return CURRENCIES.INR;}
+function fmtMoney(n){const cu=curObj();n=Math.round(n*100)/100;const grp=cu.intl?"en-US":"en-IN";const s=n.toLocaleString(grp,{minimumFractionDigits:2,maximumFractionDigits:2});return cu.intl?cu.code+" "+s:cu.sym+s;}
+
+function inWordsIN(num){num=Math.round(num*100)/100;let r=Math.floor(num);const p=Math.round((num-r)*100);
+  const a=["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"];
+  const b=["","","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"];
+  const two=n=>n<20?a[n]:b[Math.floor(n/10)]+(n%10?" "+a[n%10]:"");
+  const three=n=>(Math.floor(n/100)?a[Math.floor(n/100)]+" Hundred"+(n%100?" ":""):"")+(n%100?two(n%100):"");
+  let w;if(r===0)w="Zero";else{let s="";const cr=Math.floor(r/1e7);r%=1e7;const la=Math.floor(r/1e5);r%=1e5;const th=Math.floor(r/1e3);r%=1e3;if(cr)s+=three(cr)+" Crore ";if(la)s+=three(la)+" Lakh ";if(th)s+=three(th)+" Thousand ";if(r)s+=three(r);w=s.trim();}
+  const cu=curObj();let out=cu.word+" "+w;if(p)out+=" and "+two(p)+" "+cu.sub;return out+" Only";}
+function inWordsINTL(num){num=Math.round(num*100)/100;let r=Math.floor(num);const p=Math.round((num-r)*100);
+  const a=["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"];
+  const b=["","","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"];
+  const two=n=>n<20?a[n]:b[Math.floor(n/10)]+(n%10?" "+a[n%10]:"");
+  const three=n=>(Math.floor(n/100)?a[Math.floor(n/100)]+" Hundred"+(n%100?" ":""):"")+(n%100?two(n%100):"");
+  let w;if(r===0)w="Zero";else{let s="";const bn=Math.floor(r/1e9);r%=1e9;const mn=Math.floor(r/1e6);r%=1e6;const th=Math.floor(r/1e3);r%=1e3;if(bn)s+=three(bn)+" Billion ";if(mn)s+=three(mn)+" Million ";if(th)s+=three(th)+" Thousand ";if(r)s+=three(r);w=s.trim();}
+  const cu=curObj();let out=cu.word+" "+w;if(p)out+=" and "+two(p)+" "+cu.sub;return out+" Only";}
+function amountWords(n){return curObj().intl?inWordsINTL(n):inWordsIN(n);}
+
+function buildTabs(){
+  [["tabsDom","dom"],["tabsExim","exim"]].forEach(pair=>{
+    const t=$(pair[0]);t.innerHTML="";
+    Object.entries(CONFIGS).filter(e=>e[1].group===pair[1]).forEach(e=>{
+      const k=e[0],c=e[1];const b=document.createElement("button");b.textContent=c.label;if(k===docType)b.className="active";
+      b.onclick=()=>{docType=k;switchDoc();};t.appendChild(b);
+    });
+  });
+}
+function switchDoc(){buildTabs();buildMeta();buildShip();applyVisibility();buildItemHead();items=[];addRow();addRow();$("validationBox").className="vbox";$("validationBox").innerHTML="";render();}
+
+function metaCtrl(key,lbl,type,extra){
+  let c;
+  if(type==="select")c=`<select id="m_${key}">`+extra.split("|").map(o=>`<option>${o}</option>`).join("")+`</select>`;
+  else if(type==="state")c=`<select id="m_${key}"></select>`;
+  else if(type==="country")c=`<select id="m_${key}">`+COUNTRIES.map(o=>`<option>${o}</option>`).join("")+`</select>`;
+  else if(type==="incoterm")c=`<select id="m_${key}">`+INCOTERMS.map(o=>`<option ${o==='FOB'?'selected':''}>${o}</option>`).join("")+`</select>`;
+  else if(type==="currency")c=`<select id="m_${key}">`+Object.keys(CURRENCIES).map(o=>`<option value="${o}" ${o==='USD'?'selected':''}>${o}</option>`).join("")+`</select>`;
+  else c=`<input id="m_${key}" type="${type}" ${type==='text'&&extra?`placeholder="${extra}"`:""}>`;
+  return `<div><label>${lbl}</label>${c}</div>`;
+}
+function rowsOf(fields,box){box.innerHTML="";for(let i=0;i<fields.length;i+=2){const r=document.createElement("div");r.className="row";
+  [fields[i],fields[i+1]].forEach(f=>{const d=document.createElement("div");if(f){d.innerHTML=metaCtrl(f[0],f[1],f[2],f[3]);r.appendChild(d.firstElementChild);}else{r.appendChild(d);}});box.appendChild(r);} }
+function buildMeta(){
+  const c=cfg();let fields=c.meta.slice();
+  if(c.placeOfSupply)fields.push(["placeOfSupply","Place of Supply (State)","state",""]);
+  rowsOf(fields,$("metaFields"));
+  if($("m_date")&&$("m_date").type==="date")$("m_date").value=new Date().toISOString().slice(0,10);
+  if(c.placeOfSupply&&$("m_placeOfSupply"))fillSel($("m_placeOfSupply"),STATES,s=>[s[0],s[1]+" ("+s[0]+")"],$("ptState").value);
+  $("metaFields").querySelectorAll("input,select").forEach(el=>el.addEventListener("input",render));
+}
+function buildShip(){
+  const c=cfg();if(!c.shipment)return;
+  const f=[["originCountry","Country of Origin","country",""],["finalDest","Country of Final Destination","country",""],["portLoading","Port of Loading / Airport","text",""],["portDischarge","Port of Discharge / Airport","text",""],["vessel","Vessel / Voyage or Flight","text",""],["incoterm","Incoterm","incoterm",""]];
+  rowsOf(f,$("shipFields"));
+  $("shipFields").querySelectorAll("input,select").forEach(el=>el.addEventListener("input",render));
+}
+function applyVisibility(){
+  const c=cfg();
+  $("fromTitle").textContent=c.from;$("toTitle").textContent=c.to;$("ptNameLbl").textContent=c.to;
+  $("bankWrap").style.display=c.bank?"block":"none";
+  $("ntWrap").style.display=c.notify?"block":"none";
+  $("shipWrap").style.display=c.shipment?"block":"none";
+  $("chWrap").style.display=c.charges?"block":"none";
+  $("itemsWrap").style.display=c.colset==="none"?"none":"block";
+  $("itemsTitle").textContent=c.colset==="checklist"?"Documents Required (one per line)":(c.colset==="rodtep"||c.colset==="ebrc")?"Shipping Bills":"Line Items";
+  $("coGstinLbl").textContent=c.group==="exim"?"GSTIN / IEC":"GSTIN";
+  const tip=TIPS[docType];const tb=$("docTip");if(tip){tb.style.display="block";tb.innerHTML="💡 "+tip+" &nbsp; <a id='tipGuide'>Open EXIM Guide →</a>";const tg=$("tipGuide");if(tg)tg.onclick=()=>$("eximGuide").classList.add("open");}else{tb.style.display="none";}
+}
+
+function defItem(){return {desc:"",hsn:"",qty:1,unit:"Nos",rate:0,gst:18,net:"",gross:"",dims:"",kind:"",meas:"",uval:0,bcd:10,igst:18,sbno:"",fob:0,rate2:1,realised:0};}
+function addRow(d){items.push(d||defItem());renderRows();render();}
+
+function itemInputs(it,i){
+  const c=cfg();const I=(k,t,w)=>`<td><input ${t==='n'?'type=number':''} value="${esc(it[k])}" data-i="${i}" data-k="${k}" ${w?`style="width:${w}px"`:''}></td>`;
+  switch(c.colset){
+    case "gst":return I('desc')+I('hsn','t',54)+I('qty','n',42)+I('unit','t',44)+I('rate','n',62)+I('gst','n',44);
+    case "value":return I('desc')+I('hsn','t',60)+I('qty','n',50)+I('unit','t',54)+I('rate','n',64);
+    case "exim":return I('desc')+I('hsn','t',54)+I('qty','n',42)+I('unit','t',44)+I('rate','n',70);
+    case "packing":return I('desc')+I('hsn','t',50)+I('qty','n',40)+I('net','t',54)+I('gross','t',54)+I('dims','t',60);
+    case "bl":return I('desc')+I('kind','t',70)+I('qty','n',40)+I('gross','t',60)+I('meas','t',60);
+    case "boe":return I('desc')+I('hsn','t',54)+I('qty','n',40)+I('uval','n',62)+I('bcd','n',42)+I('igst','n',42);
+    case "coo":return I('desc')+I('hsn','t',60)+I('qty','n',50)+I('unit','t',54);
+    case "checklist":return I('desc');
+    case "rodtep":return I('sbno','t',90)+I('hsn','t',60)+I('fob','n',70)+I('rate2','n',50);
+    case "ebrc":return I('sbno','t',90)+I('fob','n',80)+I('realised','n',80);
+    default:return I('desc');
+  }
+}
+function itemHeadHTML(){
+  switch(cfg().colset){
+    case "gst":return `<tr><th>Description</th><th>HSN</th><th>Qty</th><th>Unit</th><th>Rate</th><th>GST%</th><th></th></tr>`;
+    case "value":return `<tr><th>Description</th><th>HSN</th><th>Qty</th><th>Unit</th><th>Rate</th><th></th></tr>`;
+    case "exim":return `<tr><th>Description</th><th>HSN</th><th>Qty</th><th>Unit</th><th>Rate</th><th></th></tr>`;
+    case "packing":return `<tr><th>Description</th><th>HSN</th><th>Qty</th><th>Net kg</th><th>Gross kg</th><th>Dims</th><th></th></tr>`;
+    case "bl":return `<tr><th>Description of goods</th><th>Kind of pkgs</th><th>No.</th><th>Gross kg</th><th>CBM</th><th></th></tr>`;
+    case "boe":return `<tr><th>Description</th><th>HSN</th><th>Qty</th><th>Unit value</th><th>BCD%</th><th>IGST%</th><th></th></tr>`;
+    case "coo":return `<tr><th>Description</th><th>HSN</th><th>Qty</th><th>Unit</th><th></th></tr>`;
+    case "checklist":return `<tr><th>Document required</th><th></th></tr>`;
+    case "rodtep":return `<tr><th>Shipping Bill No.</th><th>HS code</th><th>FOB value</th><th>Rate%</th><th></th></tr>`;
+    case "ebrc":return `<tr><th>Shipping Bill No.</th><th>SB value</th><th>Realised</th><th></th></tr>`;
+    default:return `<tr><th>Item</th><th></th></tr>`;
+  }
+}
+function buildItemHead(){$("itHead").innerHTML=itemHeadHTML();}
+function renderRows(){
+  const b=$("itBody");b.innerHTML="";
+  items.forEach((it,i)=>{const tr=document.createElement("tr");tr.innerHTML=itemInputs(it,i)+`<td><button class="del" data-del="${i}">×</button></td>`;b.appendChild(tr);});
+  b.querySelectorAll("input").forEach(el=>el.addEventListener("input",e=>{const i=+e.target.dataset.i,k=e.target.dataset.k;const num=["qty","rate","gst","uval","bcd","igst","fob","rate2","realised"].includes(k);items[i][k]=num?(parseFloat(e.target.value)||0):e.target.value;render();}));
+  b.querySelectorAll("[data-del]").forEach(el=>el.onclick=()=>{items.splice(+el.dataset.del,1);renderRows();render();});
+}
+function esc(s){return String(s==null?"":s).replace(/"/g,"&quot;").replace(/</g,"&lt;")}
+function val(id){const e=$(id);return e?e.value:""}
+function mv(k){return $("m_"+k)?$("m_"+k).value:""}
+function shipv(k){return $("m_"+k)?$("m_"+k).value:""}
+function has(v){return v&&String(v).trim()!==""}
+
+function gstMode(){const c=cfg();if(!c.gst)return null;const o=val("coState");const dst=c.placeOfSupply&&$("m_placeOfSupply")?$("m_placeOfSupply").value:val("ptState");return (o&&dst&&o===dst)?"intra":"inter";}
+
+function fieldNote(inputId,noteId,okMsg,badMsg,isOk){
+  const inp=$(inputId),note=$(noteId);if(!inp||!note)return;
+  if(!has(inp.value)){note.textContent="";note.className="fieldnote";inp.classList.remove("bad");return;}
+  if(isOk){note.textContent="✓ "+okMsg;note.className="fieldnote ok";inp.classList.remove("bad");}
+  else{note.textContent="✗ "+badMsg;note.className="fieldnote bad";inp.classList.add("bad");}
+}
+function refreshFieldNotes(){
+  const c=cfg();
+  if(c.group==="dom"){fieldNote("coGstin","coGstinNote","valid format","15-char GSTIN expected (e.g. 27ABCDE1234F1Z5)",RX_GSTIN.test(upc(val("coGstin"))));}
+  else{const n=$("coGstinNote");if(n){n.textContent="";n.className="fieldnote";}$("coGstin").classList.remove("bad");}
+  if(c.group==="exim"){fieldNote("coIec","coIecNote","valid length","IEC should be 10 characters",RX_IEC.test(String(val("coIec")).trim()));}
+  else{const n=$("coIecNote");if(n){n.textContent="";n.className="fieldnote";}$("coIec").classList.remove("bad");}
+  if(c.group==="dom"){fieldNote("ptGstin","ptGstinNote","valid format","15-char GSTIN expected",RX_GSTIN.test(upc(val("ptGstin"))));}
+  else{const n=$("ptGstinNote");if(n){n.textContent="";n.className="fieldnote";}$("ptGstin").classList.remove("bad");}
+}
+
+function validate(){
+  const c=cfg();const E=[],W=[];
+  if(!has(val("coName")))E.push("Your company name is required.");
+  if(c.colset!=="rodtep"&&!has(val("ptName")))E.push((c.to||"Other party")+" name is required.");
+  // GSTIN format (your company) — domestic docs only (EXIM field may hold IEC)
+  if(c.group==="dom"&&has(val("coGstin"))&&!RX_GSTIN.test(upc(val("coGstin"))))E.push("Your GSTIN format looks invalid — 15 characters expected (e.g. 27ABCDE1234F1Z5).");
+  if(c.group==="dom"&&has(val("ptGstin"))&&!RX_GSTIN.test(upc(val("ptGstin"))))W.push("Buyer GSTIN format looks invalid (15 characters expected).");
+  if(c.group==="exim"){
+    if(!has(val("coIec")))E.push("IEC is required for EXIM documents (enter it in the From section).");
+    else if(!RX_IEC.test(String(val("coIec")).trim()))E.push("IEC should be exactly 10 characters (your PAN-based code, e.g. ABCDE1234F).");
+    if(c.currency&&!has(mv("currency")))W.push("Currency not selected.");
+  }
+  const lineSets=["gst","value","exim","boe","coo","packing","bl"];
+  if(lineSets.includes(c.colset)){
+    if(items.length===0)E.push("Add at least one line item.");
+    items.forEach((it,i)=>{const n=i+1;
+      if(!has(it.desc))E.push("Line "+n+": description is required.");
+      if(c.colset!=="bl"&&(!it.qty||it.qty<=0))W.push("Line "+n+": quantity should be greater than 0.");
+      if(["gst","exim"].includes(c.colset)&&(!it.rate||it.rate<=0))W.push("Line "+n+": rate is 0.");
+      if(c.group==="exim"&&["exim","boe","coo","packing"].includes(c.colset)&&!has(it.hsn))E.push("Line "+n+": HS/HSN code is required for EXIM.");
+      if(c.group==="dom"&&c.colset==="gst"&&!has(it.hsn))W.push("Line "+n+": HSN/SAC missing (recommended for GST).");
+      const hs=String(it.hsn||"").replace(/\s/g,"");if(has(hs)&&!RX_HSN.test(hs))W.push("Line "+n+": HSN/HS code should be 4, 6 or 8 digits.");
+      if(c.colset==="packing"){const net=parseFloat(it.net)||0,gr=parseFloat(it.gross)||0;if(gr&&net&&gr<net)E.push("Line "+n+": gross weight ("+gr+") is less than net weight ("+net+").");}
+      if(c.colset==="boe"&&(!it.uval||it.uval<=0))W.push("Line "+n+": unit value is 0.");
+    });
+  }
+  if(c.colset==="gst"&&!has(val("coGstin")))W.push("Seller GSTIN is missing.");
+  if(c.shipment){if(!has(shipv("incoterm")))W.push("Incoterm not selected.");if(!has(shipv("portLoading")))W.push("Port of loading is empty.");if(!has(shipv("portDischarge")))W.push("Port of discharge is empty.");}
+  if(docType==="sb"&&!has(val("coAd")))W.push("AD Code is empty (needed for ICEGATE filing).");
+  if(docType==="lc"){const amt=parseFloat(mv("amount"))||0;if(amt<=0)E.push("LC amount must be greater than 0.");const ex=mv("expiry"),ls=mv("latestShip");if(ex&&ls&&ex<ls)E.push("LC expiry date must be on or after the latest shipment date.");}
+  if(docType==="boex"){const amt=parseFloat(mv("amount"))||0;if(amt<=0)E.push("Bill of Exchange amount must be greater than 0.");}
+  if(c.colset==="rodtep"||c.colset==="ebrc"){if(items.length===0)E.push("Add at least one shipping-bill row.");items.forEach((it,i)=>{if(!has(it.sbno))W.push("Row "+(i+1)+": Shipping Bill No. is missing.");});}
+  return {E,W};
+}
+function updateReadiness(){const v=validate();const r=$("ready");if(!r)return;if(v.E.length){r.className="ready no";r.textContent="⚠ "+v.E.length+" to fix before download";}else if(v.W.length){r.className="ready warn";r.textContent="⚠ "+v.W.length+" warning"+(v.W.length>1?"s":"");}else{r.className="ready ok";r.textContent="✓ Ready to download";}}
+function renderValidation(E,W){const box=$("validationBox");if(!E.length&&!W.length){box.className="vbox";box.innerHTML="";return;}let h="";if(E.length){h+="<b>Please fix before download:</b><ul>"+E.map(x=>`<li>${esc(x)}</li>`).join("")+"</ul>";}if(W.length){h+="<b>Warnings (you can still proceed):</b><ul>"+W.map(x=>`<li>${esc(x)}</li>`).join("")+"</ul>";}box.innerHTML=h;box.className="vbox show "+(E.length?"err":"warnonly");try{box.scrollIntoView({behavior:"smooth",block:"nearest"});}catch(e){}}
+function gate(){const v=validate();renderValidation(v.E,v.W);if(v.E.length)return false;if(v.W.length){return window.confirm("There "+(v.W.length>1?"are":"is")+" "+v.W.length+" warning"+(v.W.length>1?"s":"")+":\n\n• "+v.W.join("\n• ")+"\n\nProceed and download anyway?");}return true;}
+
+function render(){
+  const c=cfg();const mode=gstMode();
+  const stName=cd=>(STATES.find(x=>x[0]===cd)||["",""])[1];
+  let stat;
+  if(c.colset==="gst")stat=mode==="intra"?`Intra-state → <b>CGST + SGST</b>`:`Inter-state → <b>IGST</b>`;
+  else if(c.group==="exim")stat=`EXIM document${c.currency?` · <b>${($("m_currency")?$("m_currency").value:"USD")}</b>`:""}${c.worksheet?` · worksheet`:""}`;
+  else stat=c.colset==="packing"?`Non-priced document`:`Value document`;
+  $("gststat").innerHTML=stat;
+
+  let metaHtml=c.meta.map(f=>{let v=mv(f[0]);if(!v)return"";if(f[0]==="amount")v=fmtMoney(parseFloat(v)||0);return `<div><b>${f[1]}:</b> ${esc(v)}</div>`}).join("");
+  if(c.placeOfSupply&&$("m_placeOfSupply"))metaHtml+=`<div><b>Place of Supply:</b> ${stName($("m_placeOfSupply").value)}</div>`;
+
+  let shipHtml="";
+  if(c.shipment){
+    const parts=[["Incoterm","incoterm"],["Origin","originCountry"],["Destination","finalDest"],["POL","portLoading"],["POD","portDischarge"],["Vessel/Flight","vessel"]];
+    shipHtml=`<div class="shipbar">`+parts.map(pp=>{const v=shipv(pp[1]);return v?`<span><b>${pp[0]}:</b> ${esc(v)}</span>`:""}).join("")+`</div>`;
+  }
+
+  const fromBlock=`<div class="party"><div class="h">${c.from}</div><div class="nm">${esc(val("coName"))||"Your Company"}</div><div class="ad">${esc(val("coAddr"))}</div>${val("coGstin")?`<div class="gst"><b>${c.group==='exim'?'GSTIN/IEC':'GSTIN'}:</b> ${esc(val("coGstin"))}</div>`:""}${c.group==='exim'&&val("coIec")?`<div class="gst"><b>IEC:</b> ${esc(val("coIec"))}${val("coAd")?` · <b>AD:</b> ${esc(val("coAd"))}`:""}</div>`:""}${c.group!=='exim'?`<div class="gst"><b>State:</b> ${stName(val("coState"))}</div>`:""}${val("coPhone")||val("coEmail")?`<div class="gst">${esc(val("coPhone"))} ${val("coEmail")?"· "+esc(val("coEmail")):""}</div>`:""}</div>`;
+  const toBlock=`<div class="party"><div class="h">${c.to}</div><div class="nm">${esc(val("ptName"))||"Party Name"}</div><div class="ad">${esc(val("ptAddr"))}</div>${val("ptGstin")?`<div class="gst"><b>GSTIN/Tax ID:</b> ${esc(val("ptGstin"))}</div>`:""}${c.group!=='exim'?`<div class="gst"><b>State:</b> ${stName(val("ptState"))}</div>`:""}</div>`;
+  const notifyBlock=c.notify?`<div class="party"><div class="h">Notify Party</div><div class="nm">${esc(val("ntName"))||"—"}</div><div class="ad">${esc(val("ntAddr"))}</div></div>`:"";
+  const partiesHtml=`<div class="parties" ${c.notify?'style="grid-template-columns:1fr 1fr 1fr"':''}>${fromBlock}${toBlock}${notifyBlock}</div>`;
+
+  if(c.special==="boe-instrument"){
+    const amt=parseFloat(mv("amount"))||0;
+    $("preview").innerHTML=docHead(c,metaHtml)+`
+      <div class="instrument">
+        <p style="text-align:right"><b>${fmtMoney(amt)}</b> &nbsp; ${esc(mv("date"))}</p>
+        <p>${esc(mv("tenor"))==="At Sight"?"At sight":"At "+esc(mv("tenor"))+" after sight"} of this <b>FIRST</b> Bill of Exchange (Second of the same tenor and date being unpaid) pay to the order of <span class="fill">${esc(val("coName"))||"________"}</span> the sum of <span class="fill">${amountWords(amt)}</span> for value received.</p>
+        <p>${mv("lcRef")?`Drawn under <span class="fill">${esc(mv("lcRef"))}</span>.`:""}</p>
+        <div style="display:flex;justify-content:space-between;margin-top:30px">
+          <div>To (Drawee):<br><b>${esc(val("ptName"))||"________"}</b><br><span style="font-size:11px;color:#555;white-space:pre-line">${esc(val("ptAddr"))}</span></div>
+          <div style="text-align:center">For <b>${esc(val("coName"))||"Your Company"}</b><div class="ln" style="margin-top:34px">Authorised Signatory</div></div>
+        </div>
+      </div>
+      ${disclaimer(c)}`;
+    refreshFieldNotes();updateReadiness();return;
+  }
+
+  let thead="",rows="",totalsHtml="";
+  let sub=0,gstT=0,cgst=0,sgst=0,igst=0,totQty=0,totNet=0,totGross=0,totMeas=0,assess=0,bcdT=0,igstT=0,fobT=0,benT=0,sbValT=0,realT=0;
+
+  switch(c.colset){
+    case "gst": case "value":{
+      const showGst=c.colset==="gst";
+      thead=`<tr><th>Description</th><th class="c">HSN/SAC</th><th class="c">Qty</th><th class="c">Unit</th><th class="r">Rate</th>${showGst?'<th class="c">GST%</th>':''}<th class="r">Amount</th></tr>`;
+      items.forEach(it=>{const amt=(+it.qty||0)*(+it.rate||0);sub+=amt;totQty+=(+it.qty||0);if(showGst){const g=amt*(+it.gst||0)/100;gstT+=g;if(mode==="intra"){cgst+=g/2;sgst+=g/2}else igst+=g;}
+        rows+=`<tr><td>${esc(it.desc)}</td><td class="c">${esc(it.hsn)}</td><td class="c">${it.qty}</td><td class="c">${esc(it.unit)}</td><td class="r">${fmtMoney(it.rate)}</td>${showGst?`<td class="c">${it.gst}%</td>`:''}<td class="r">${fmtMoney(amt)}</td></tr>`;});
+      const grand=sub+gstT;
+      totalsHtml=`<div class="totals"><table><tr><td>Taxable Value</td><td class="r">${fmtMoney(sub)}</td></tr>`;
+      if(showGst){if(mode==="intra")totalsHtml+=`<tr><td>CGST</td><td class="r">${fmtMoney(cgst)}</td></tr><tr><td>SGST</td><td class="r">${fmtMoney(sgst)}</td></tr>`;else totalsHtml+=`<tr><td>IGST</td><td class="r">${fmtMoney(igst)}</td></tr>`;}
+      totalsHtml+=`<tr class="grand"><td>Grand Total</td><td class="r">${fmtMoney(grand)}</td></tr></table></div><div class="words"><b>Amount in words:</b> ${amountWords(grand)}</div>`;
+      break;}
+    case "exim":{
+      thead=`<tr><th>Description of Goods</th><th class="c">HSN</th><th class="c">Qty</th><th class="c">Unit</th><th class="r">Rate</th><th class="r">Amount</th></tr>`;
+      items.forEach(it=>{const amt=(+it.qty||0)*(+it.rate||0);sub+=amt;totQty+=(+it.qty||0);rows+=`<tr><td>${esc(it.desc)}</td><td class="c">${esc(it.hsn)}</td><td class="c">${it.qty}</td><td class="c">${esc(it.unit)}</td><td class="r">${fmtMoney(it.rate)}</td><td class="r">${fmtMoney(amt)}</td></tr>`;});
+      const fr=parseFloat(val("chFreight"))||0,ins=parseFloat(val("chIns"))||0,oth=parseFloat(val("chOther"))||0;
+      const grand=sub+fr+ins+oth;const inc=shipv("incoterm");
+      totalsHtml=`<div class="totals"><table><tr><td>Goods Value (FOB basis)</td><td class="r">${fmtMoney(sub)}</td></tr>`;
+      if(c.charges){if(fr)totalsHtml+=`<tr><td>Freight</td><td class="r">${fmtMoney(fr)}</td></tr>`;if(ins)totalsHtml+=`<tr><td>Insurance</td><td class="r">${fmtMoney(ins)}</td></tr>`;if(oth)totalsHtml+=`<tr><td>Other charges</td><td class="r">${fmtMoney(oth)}</td></tr>`;}
+      totalsHtml+=`<tr class="grand"><td>Total${inc?` (${inc})`:''}</td><td class="r">${fmtMoney(grand)}</td></tr></table></div><div class="words"><b>Amount in words:</b> ${amountWords(grand)}</div>`;
+      break;}
+    case "boe":{
+      thead=`<tr><th>Description</th><th class="c">HSN</th><th class="c">Qty</th><th class="r">Unit Value</th><th class="r">Assessable</th><th class="r">BCD</th><th class="r">IGST</th><th class="r">Total Duty</th></tr>`;
+      items.forEach(it=>{const as=(+it.qty||0)*(+it.uval||0);const bd=as*(+it.bcd||0)/100;const ig=(as+bd)*(+it.igst||0)/100;const duty=bd+ig;assess+=as;bcdT+=bd;igstT+=ig;
+        rows+=`<tr><td>${esc(it.desc)}</td><td class="c">${esc(it.hsn)}</td><td class="c">${it.qty}</td><td class="r">${fmtMoney(it.uval)}</td><td class="r">${fmtMoney(as)}</td><td class="r">${fmtMoney(bd)}</td><td class="r">${fmtMoney(ig)}</td><td class="r">${fmtMoney(duty)}</td></tr>`;});
+      const dutyT=bcdT+igstT;const payable=assess+dutyT;
+      totalsHtml=`<div class="totals"><table><tr><td>Assessable Value</td><td class="r">${fmtMoney(assess)}</td></tr><tr><td>Basic Customs Duty</td><td class="r">${fmtMoney(bcdT)}</td></tr><tr><td>IGST</td><td class="r">${fmtMoney(igstT)}</td></tr><tr><td>Total Duty</td><td class="r">${fmtMoney(dutyT)}</td></tr><tr class="grand"><td>Value + Duty</td><td class="r">${fmtMoney(payable)}</td></tr></table></div><div class="words"><b>Total duty in words:</b> ${amountWords(dutyT)}</div>`;
+      break;}
+    case "packing":{
+      thead=`<tr><th>Description of Goods</th><th class="c">HSN</th><th class="c">Qty</th><th class="r">Net Wt (kg)</th><th class="r">Gross Wt (kg)</th><th class="c">Dimensions</th></tr>`;
+      items.forEach(it=>{totQty+=(+it.qty||0);totNet+=parseFloat(it.net)||0;totGross+=parseFloat(it.gross)||0;rows+=`<tr><td>${esc(it.desc)}</td><td class="c">${esc(it.hsn)}</td><td class="c">${it.qty}</td><td class="r">${it.net||""}</td><td class="r">${it.gross||""}</td><td class="c">${esc(it.dims)}</td></tr>`;});
+      totalsHtml=`<div class="totals"><table><tr><td>Total Packages / Qty</td><td class="r">${totQty}</td></tr><tr><td>Total Net Weight</td><td class="r">${totNet.toFixed(2)} kg</td></tr><tr class="grand"><td>Total Gross Weight</td><td class="r">${totGross.toFixed(2)} kg</td></tr></table></div>`;
+      break;}
+    case "bl":{
+      thead=`<tr><th>Description of Goods</th><th>Kind of Packages</th><th class="c">No.</th><th class="r">Gross Wt (kg)</th><th class="r">Measurement (CBM)</th></tr>`;
+      items.forEach(it=>{totQty+=(+it.qty||0);totGross+=parseFloat(it.gross)||0;totMeas+=parseFloat(it.meas)||0;rows+=`<tr><td>${esc(it.desc)}</td><td>${esc(it.kind)}</td><td class="c">${it.qty}</td><td class="r">${it.gross||""}</td><td class="r">${it.meas||""}</td></tr>`;});
+      totalsHtml=`<div class="totals"><table><tr><td>Total Packages</td><td class="r">${totQty}</td></tr><tr><td>Total Gross Weight</td><td class="r">${totGross.toFixed(2)} kg</td></tr><tr class="grand"><td>Total Measurement</td><td class="r">${totMeas.toFixed(3)} CBM</td></tr></table></div>`;
+      break;}
+    case "coo":{
+      thead=`<tr><th>Description of Goods</th><th class="c">HSN</th><th class="c">Qty</th><th class="c">Unit</th></tr>`;
+      items.forEach(it=>{totQty+=(+it.qty||0);rows+=`<tr><td>${esc(it.desc)}</td><td class="c">${esc(it.hsn)}</td><td class="c">${it.qty}</td><td class="c">${esc(it.unit)}</td></tr>`;});
+      totalsHtml=`<div class="words"><b>Certificate type:</b> ${esc(mv("cooType")||"")}${mv("originCriterion")?` · <b>Origin criterion:</b> ${esc(mv("originCriterion"))}`:""} · <b>Country of Origin:</b> India</div>`;
+      break;}
+    case "checklist":{
+      thead=`<tr><th style="width:40px">#</th><th>Documents Required Under the Credit</th></tr>`;
+      items.forEach((it,i)=>{rows+=`<tr><td class="c">${i+1}</td><td>${esc(it.desc)}</td></tr>`;});
+      const amt=parseFloat(mv("amount"))||0;
+      totalsHtml=`<div class="words"><b>LC Amount:</b> ${fmtMoney(amt)} (${amountWords(amt)})${mv("incoterm")?` · <b>Incoterm:</b> ${esc(mv("incoterm"))}`:""}</div>`;
+      break;}
+    case "rodtep":{
+      thead=`<tr><th>Shipping Bill No.</th><th class="c">HS Code</th><th class="r">FOB Value</th><th class="c">Rate %</th><th class="r">Benefit</th></tr>`;
+      items.forEach(it=>{const ben=(+it.fob||0)*(+it.rate2||0)/100;fobT+=(+it.fob||0);benT+=ben;rows+=`<tr><td>${esc(it.sbno)}</td><td class="c">${esc(it.hsn)}</td><td class="r">${fmtMoney(it.fob)}</td><td class="c">${it.rate2}%</td><td class="r">${fmtMoney(ben)}</td></tr>`;});
+      totalsHtml=`<div class="totals"><table><tr><td>Total FOB Value</td><td class="r">${fmtMoney(fobT)}</td></tr><tr class="grand"><td>Estimated Benefit</td><td class="r">${fmtMoney(benT)}</td></tr></table></div><div class="words"><b>Benefit in words:</b> ${amountWords(benT)}</div>`;
+      break;}
+    case "ebrc":{
+      thead=`<tr><th>Shipping Bill No.</th><th class="r">SB / Invoice Value</th><th class="r">Realised Value</th><th class="c">Status</th></tr>`;
+      items.forEach(it=>{sbValT+=(+it.fob||0);realT+=(+it.realised||0);const ok=(+it.realised||0)>=(+it.fob||0);rows+=`<tr><td>${esc(it.sbno)}</td><td class="r">${fmtMoney(it.fob)}</td><td class="r">${fmtMoney(it.realised)}</td><td class="c">${ok?"Realised":"Pending / Short"}</td></tr>`;});
+      totalsHtml=`<div class="totals"><table><tr><td>Total Export Value</td><td class="r">${fmtMoney(sbValT)}</td></tr><tr class="grand"><td>Total Realised</td><td class="r">${fmtMoney(realT)}</td></tr></table></div>`;
+      break;}
+  }
+
+  $("preview").innerHTML=docHead(c,metaHtml)+partiesHtml+shipHtml+
+    `<table class="lines"><thead>${thead}</thead><tbody>${rows||`<tr><td colspan="8" style="text-align:center;color:#999;padding:18px">Add line items…</td></tr>`}</tbody></table>`+
+    totalsHtml+
+    (val("notes")?`<div class="docnotes"><b>Notes / Terms:</b>\n${esc(val("notes"))}</div>`:"")+
+    (c.decl?`<div class="declbox"><b>Declaration:</b> ${c.decl}</div>`:"")+
+    (c.bank&&(val("bkBank")||val("bkAcc"))?`<div class="bankbox"><b>Bank Details:</b> ${esc(val("bkBank"))} · A/C: ${esc(val("bkAcc"))} · IFSC/SWIFT: ${esc(val("bkIfsc"))}${val("bkUpi")?` · UPI: ${esc(val("bkUpi"))}`:""}</div>`:"")+
+    `<div class="sign"><div class="b"></div><div class="b"><div>For <b>${esc(val("coName"))||"Your Company"}</b></div><div class="ln">Authorised Signatory</div></div></div>`+
+    disclaimer(c);
+  refreshFieldNotes();updateReadiness();
+}
+
+function docHead(c,metaHtml){
+  return (c.worksheet?`<div class="wnotice">⚠️ ${c.worksheet}</div>`:"")+
+  `<div class="doc-head"><div class="co">${logoData?`<img src="${logoData}">`:""}<div class="nm">${esc(val("coName"))||"Your Company"}</div><div class="ad">${esc(val("coAddr"))}${val("coGstin")?`\nGSTIN/IEC: ${esc(val("coGstin"))}`:""}</div></div><div class="ttl"><h1>${c.title}</h1><div class="meta">${metaHtml}</div></div></div>`;
+}
+function disclaimer(c){
+  const msg=c.group==="exim"?"Template for reference. Validate against current Customs, DGFT, RBI-FEMA and GST regulations before official filing.":(c.colset==="gst"?"Computer-generated document. Verify GST/HSN details before filing returns.":"Template for reference only.");
+  return `<div class="disc">${msg}</div><div class="foot-note">Generated with LogicstIQ.com Document Generator · Where Logistics Meets Intelligence</div>`;
+}
+
+$("guideOpen").onclick=()=>$("eximGuide").classList.add("open");
+$("guideClose").onclick=()=>$("eximGuide").classList.remove("open");
+$("eximGuide").addEventListener("click",e=>{if(e.target.id==="eximGuide")$("eximGuide").classList.remove("open");});
+
+$("logo").addEventListener("change",e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{logoData=ev.target.result;render();};r.readAsDataURL(f);});
+$("saveProfile").onclick=()=>{const p={coName:val("coName"),coAddr:val("coAddr"),coGstin:val("coGstin"),coState:val("coState"),coPhone:val("coPhone"),coEmail:val("coEmail"),coIec:val("coIec"),coAd:val("coAd"),bkBank:val("bkBank"),bkAcc:val("bkAcc"),bkIfsc:val("bkIfsc"),bkUpi:val("bkUpi"),logo:logoData};try{localStorage.setItem("liq_doc_profile",JSON.stringify(p));$("saveProfile").textContent="✓ Saved";setTimeout(()=>$("saveProfile").textContent="💾 Save my company",1500);}catch(e){alert("Could not save: "+e.message);}};
+$("loadProfile").onclick=()=>{try{const p=JSON.parse(localStorage.getItem("liq_doc_profile")||"null");if(!p){alert("No saved company yet.");return;}["coName","coAddr","coGstin","coPhone","coEmail","coIec","coAd","bkBank","bkAcc","bkIfsc","bkUpi"].forEach(k=>{if($(k))$(k).value=p[k]||""});if(p.coState)$("coState").value=p.coState;if(p.logo)logoData=p.logo;render();}catch(e){alert("Could not load.");}};
+window.addEventListener("load",()=>{try{if(localStorage.getItem("liq_doc_profile"))$("loadProfile").click();}catch(e){}});
+
+$("addRow").onclick=()=>addRow();
+$("printBtn").onclick=()=>{if(gate())window.print();};
+$("pdfBtn").onclick=async()=>{if(!gate())return;const el=$("preview"),btn=$("pdfBtn");btn.textContent="Rendering…";btn.disabled=true;try{const canvas=await html2canvas(el,{scale:2,backgroundColor:"#ffffff",useCORS:true});const jsPDF=window.jspdf.jsPDF;const pdf=new jsPDF("p","mm","a4");const pw=210,ph=297,imgH=canvas.height*pw/canvas.width,img=canvas.toDataURL("image/jpeg",0.95);let left=imgH,pos=0;pdf.addImage(img,"JPEG",0,pos,pw,imgH);left-=ph;while(left>0){pos-=ph;pdf.addPage();pdf.addImage(img,"JPEG",0,pos,pw,imgH);left-=ph;}pdf.save((cfg().label.replace(/[^a-z0-9]+/gi,"_"))+"_"+((mv("docNo"))||"document")+".pdf");}catch(e){alert("PDF export failed, please use Print / Save as PDF. ("+e.message+")");}btn.textContent="⬇️ Download PDF";btn.disabled=false;};
+
+["coName","coAddr","coGstin","coState","coPhone","coEmail","coIec","coAd","ptName","ptAddr","ptGstin","ptState","ntName","ntAddr","notes","bkBank","bkAcc","bkIfsc","bkUpi","chFreight","chIns","chOther"].forEach(id=>{const e=$(id);if(e)e.addEventListener("input",render);});
+$("ptState").addEventListener("input",()=>{if($("m_placeOfSupply"))$("m_placeOfSupply").value=$("ptState").value;render();});
+
+buildTabs();buildMeta();buildShip();applyVisibility();buildItemHead();addRow();addRow();render();
+</script>
 <script>
 (function(){var r=document.documentElement;
 function lbl(){var b=document.getElementById('liqTheme');if(b)b.textContent=r.getAttribute('data-theme')==='dark'?'☀️':'🌙';}

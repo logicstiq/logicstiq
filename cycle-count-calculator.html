@@ -1,131 +1,117 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>COGS Calculator — Cost of Goods Sold & Gross Margin | Free | LogicstIQ — Free Supply Chain Calculator</title>
-  <meta name="description" content="Calculate Cost of Goods Sold (COGS) and Gross Margin instantly. Free COGS calculator for Indian businesses — includes gross profit, gross margin %, and net margin analysis.">
-  <meta name="keywords" content="COGS calculator India, cost of goods sold calculator, gross margin calculator, gross profit calculator, COGS formula India, supply chain COGS, inventory COGS calculator">
-  <link rel="canonical" href="https://www.logicstiq.com/cogs-calculator">
-  <meta property="og:title" content="COGS Calculator — Cost of Goods Sold & Gross Margin | Free | LogicstIQ">
-  <meta property="og:description" content="Calculate COGS and gross margin instantly. Free, no login. Essential for pricing, P&L, and inventory decisions.">
-  <meta property="og:url" content="https://www.logicstiq.com/cogs-calculator">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="LogicstIQ.com">
-  <meta name="robots" content="index, follow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Plus Jakarta Sans',sans-serif;background:#F4F7FF;color:#0F172A;min-height:100vh;font-size:16px;line-height:1.6}
-    a{color:inherit;text-decoration:none}
-
-    /* NAV */
-    .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;background:#FFFFFF;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100}
-    .nav-logo{font-weight:800;font-size:1.1rem;color:#0F172A}
-    .nav-back{color:#3A55FF;font-size:0.875rem;font-weight:600;display:flex;align-items:center;gap:6px}
-    .nav-back:hover{color:#2A40D6}
-
-    /* BADGE */
-    .badge-bar{text-align:center;padding:12px;background:#FFFFFF;border-bottom:1px solid #E2E8F0;font-size:0.8rem;color:#3A55FF;font-weight:700;letter-spacing:0.5px}
-
-    /* HERO */
-    .hero{max-width:760px;margin:0 auto;padding:48px 24px 32px;text-align:center}
-    .hero h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;color:#0F172A;line-height:1.2;margin-bottom:14px}
-    .hero h1 span{display:block;font-size:clamp(1rem,2vw,1.2rem);font-weight:500;color:#475569;margin-top:8px}
-    .trust-row{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:16px}
-    .trust-item{font-size:0.8rem;color:#3A55FF;font-weight:600}
-    .trust-item::before{content:"✓ "}
-
-    /* CALCULATOR CARD */
-    .calc-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
-    .calc-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;overflow:hidden}
-    .calc-header{background:#F8FAFF;padding:18px 24px;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:10px}
-    .calc-header-icon{font-size:1.2rem}
-    .calc-header-title{font-size:0.95rem;font-weight:700;color:#0F172A}
-    .calc-body{padding:24px}
-    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    @media(max-width:560px){.field-grid{grid-template-columns:1fr}}
-    .field{display:flex;flex-direction:column;gap:6px}
-    .field label{font-size:0.8rem;font-weight:700;color:#475569;letter-spacing:0.3px}
-    .field span{font-size:0.72rem;color:#94A3B8}
-    .field input{background:#FFFFFF;border:1px solid #CBD5E1;border-radius:8px;padding:10px 14px;color:#0F172A;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color .2s}
-    .field input:focus{border-color:#3A55FF}
-    .field input::placeholder{color:#94A3B8}
-    .calc-btn{width:100%;margin-top:20px;background:linear-gradient(135deg,#3A55FF,#2A40D6);color:#fff;border:none;border-radius:10px;padding:14px;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:opacity .2s}
-    .calc-btn:hover{opacity:0.9}
-
-    /* RESULTS */
-    .results{display:none;margin-top:20px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px}
-    .results.show{display:block}
-    .results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-    .result-item{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:16px;text-align:center}
-    .result-label{font-size:0.72rem;color:#475569;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
-    .result-value{font-size:1.4rem;font-weight:800;color:#3A55FF}
-    .result-value.positive{color:#059669}
-    .result-value.negative{color:#DC2626}
-    .result-sub{font-size:0.72rem;color:#94A3B8;margin-top:4px}
-    .disclaimer{margin-top:16px;font-size:0.75rem;color:#94A3B8;padding:10px;background:#F4F7FF;border-radius:8px;border-left:3px solid #E2E8F0}
-
-    /* FORMULA BOX */
-    .content-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
-    .formula-box{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px 24px;margin-bottom:32px}
-    .formula-tag{font-size:0.7rem;font-weight:700;color:#3A55FF;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
-    .formula-expr{font-family:'Courier New',monospace;font-size:0.95rem;color:#2A40D6;line-height:1.8}
-
-    /* EXPLANATION */
-    .section-title{font-size:0.75rem;font-weight:700;color:#3A55FF;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
-    .prose{color:#475569;font-size:0.9rem;line-height:1.75;margin-bottom:24px}
-    .prose strong{color:#0F172A}
-
-    /* EXAMPLE BOX */
-    .example-box{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px 24px;margin-bottom:32px}
-    .example-tag{font-size:0.7rem;font-weight:700;color:#059669;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
-    .example-table{width:100%;border-collapse:collapse}
-    .example-table td{padding:8px 0;font-size:0.875rem;color:#475569;border-bottom:1px solid #E2E8F0}
-    .example-table td:last-child{text-align:right;color:#0F172A;font-weight:600}
-    .example-table tr:last-child td{border-bottom:none;color:#3A55FF;font-weight:800;font-size:1rem}
-
-    /* WHY SECTION */
-    .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:32px}
-    .why-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:18px}
-    .why-card h4{font-size:0.85rem;font-weight:700;color:#0F172A;margin-bottom:8px}
-    .why-card p{font-size:0.8rem;color:#475569;line-height:1.6}
-
-    /* AI CTA */
-    .ai-cta{background:linear-gradient(135deg,#FFFFFF,#FFFFFF);border:1px solid #CBD5E1;border-radius:16px;padding:28px 24px;text-align:center;margin-bottom:32px}
-    .ai-cta h3{font-size:1.1rem;font-weight:800;color:#0F172A;margin-bottom:8px}
-    .ai-cta p{font-size:0.875rem;color:#475569;margin-bottom:20px}
-    .ai-cta a{display:inline-block;background:linear-gradient(135deg,#3A55FF,#2A40D6);color:#fff;padding:12px 28px;border-radius:10px;font-weight:700;font-size:0.9rem;transition:opacity .2s}
-    .ai-cta a:hover{opacity:0.9}
-    .ai-cta-tags{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
-    .ai-cta-tag{font-size:0.72rem;color:#94A3B8}
-
-    /* FAQ */
-    .faq-item{border-bottom:1px solid #E2E8F0;padding:16px 0}
-    .faq-item:last-child{border-bottom:none}
-    .faq-q{font-size:0.9rem;font-weight:700;color:#0F172A;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
-    .faq-q::after{content:"▾";color:#3A55FF;font-size:0.8rem}
-    .faq-a{font-size:0.85rem;color:#475569;line-height:1.7;margin-top:10px;display:none}
-    .faq-item.open .faq-a{display:block}
-    .faq-item.open .faq-q::after{content:"▴"}
-
-    /* RELATED */
-    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:16px}
-    .related-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:16px;text-decoration:none;transition:border-color .2s;display:flex;flex-direction:column;gap:4px}
-    .related-card:hover{border-color:#3A55FF}
-    .related-search{font-size:0.65rem;color:#94A3B8}
-    .related-name{font-size:0.85rem;font-weight:700;color:#0F172A}
-
-    /* FOOTER */
-    footer{background:#0F172A;border-top:1px solid #1E293B;padding:28px 32px;text-align:center;margin-top:20px}
-    .footer-copy{font-size:0.78rem;color:#94A3B8;line-height:1.8}
-    .footer-copy a{color:#94A3B8}
-    .footer-copy a:hover{color:#fff}
-
-    @media(max-width:600px){.nav{padding:14px 20px}.hero{padding:32px 20px 24px}.calc-body{padding:16px}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cycle Count Calculator — Inventory Count Planning | Free Tool | LogicstIQ — Free Supply Chain Calculator</title>
+<meta name="description" content="Plan your inventory cycle counting schedule. Calculate how many SKUs to count per day to cover your full warehouse on a weekly, monthly, or quarterly cycle.">
+<meta name="keywords" content="cycle count calculator, inventory cycle count planning, cycle count schedule, physical inventory count, cycle count frequency, warehouse cycle count India">
+<link rel="canonical" href="https://logicstiq.com/cycle-count-calculator">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"SoftwareApplication",
+      "name":"Cycle Count Calculator",
+      "url":"https://logicstiq.com/cycle-count-calculator",
+      "applicationCategory":"BusinessApplication",
+      "operatingSystem":"Web",
+      "offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},
+      "description":"Free cycle count calculator. Plan and schedule physical inventory counts by category and counting frequency."
+    },
+    {
+      "@type":"HowTo",
+      "name":"How to use the Cycle Count Calculator",
+      "step":[
+        {"@type":"HowToStep","name":"Enter your inputs","text":"Enter your total SKU count, available counting days per year, and how many times each category should be counted per year"},
+        {"@type":"HowToStep","name":"Click Calculate","text":"Press the calculate button to get your instant result"},
+        {"@type":"HowToStep","name":"Use the result","text":"Use the result to assign daily counting tasks to warehouse staff and build a rolling cycle count schedule"}
+      ]
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"What is the difference between cycle counting and physical inventory?","acceptedAnswer":{"@type":"Answer","text":"A physical inventory count counts every SKU in the warehouse at one time, typically annually, requiring a warehouse shutdown. Cycle counting counts a portion of SKUs every day on a rotating schedule, requiring no shutdown. Cycle counting is preferred for warehouses with more than 100 SKUs because it maintains continuous accuracy rather than point-in-time accuracy."}},
+        {"@type":"Question","name":"How accurate should my inventory be?","acceptedAnswer":{"@type":"Answer","text":"Industry best practice targets 98%+ inventory accuracy (measured as the percentage of SKUs with quantity matching the system record exactly). Below 95% causes significant operational problems: stockouts when system shows available, wrong reorder signals, customer fulfilment errors. Cycle counting is the primary tool for achieving and maintaining 98%+ accuracy."}},
+        {"@type":"Question","name":"How many times should I count A, B, and C items per year?","acceptedAnswer":{"@type":"Answer","text":"Standard practice: A items 12 times/year (monthly), B items 4 times/year (quarterly), C items 1-2 times/year (annually). Some high-accuracy operations count A items weekly (52x). The frequency should reflect how much damage an inventory error on that item would cause — high-value, fast-moving items need the most frequent verification."}}
+      ]
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&family=Wix+Madefor+Display:wght@600;700;800&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#F4F7FF;--white:#FFFFFF;--border:#E2E8F0;--b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b600:#3A55FF;--b700:#2A40D6;--b900:#1C2C73;--green:#059669;--amber:#D97706;--text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8;}
+body{font-family:"Inter",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+.nav{background:#fff;border-bottom:1px solid var(--border);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.nav-logo{text-decoration:none;display:flex;align-items:center}
+.nav-back{font-size:13px;font-weight:600;color:var(--b600);text-decoration:none}
+.hero{background:linear-gradient(135deg,#0F172A 0%,#1C2C73 50%,#2A40D6 100%);padding:52px 32px 44px;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:5px 14px;font-size:11px;font-weight:800;color:#BFDBFE;text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px}
+.hero h1{font-size:clamp(24px,4vw,44px);font-weight:900;color:#fff;line-height:1.12;letter-spacing:-.03em;max-width:700px;margin:0 auto 12px;font-family:"Plus Jakarta Sans",sans-serif}
+.hero h1 span{color:#AEBCFF}
+.hero-sub{font-size:14px;color:#BFDBFE;max-width:560px;margin:0 auto 20px;line-height:1.7}
+.trust-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;font-size:12px;color:rgba(255,255,255,.85);font-weight:600}
+.trust-row .tick{color:#34D399}
+.wrap{max-width:820px;margin:0 auto;padding:44px 24px 60px}
+.calc-card{background:var(--white);border:2px solid var(--b200);border-radius:20px;padding:32px;margin-bottom:28px;box-shadow:0 4px 20px rgba(30,58,138,.08)}
+.calc-card h2{font-size:20px;font-weight:900;color:var(--b900);margin-bottom:20px;font-family:"Plus Jakarta Sans",sans-serif;letter-spacing:-.02em}
+.input-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:18px}
+.input-group label{display:block;font-size:12px;font-weight:700;color:var(--text3);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em}
+.input-group input,.input-group select{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;color:var(--text);background:#fff;transition:border-color .15s;outline:none}
+.input-group input:focus,.input-group select:focus{border-color:var(--b600);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.calc-btn{width:100%;background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:800;font-family:inherit;cursor:pointer;box-shadow:0 4px 16px rgba(37,99,235,.35);transition:all .2s;margin-bottom:14px}
+.calc-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,99,235,.45)}
+.result-box{background:linear-gradient(135deg,var(--b50),#E0F2FE);border:2px solid var(--b200);border-radius:14px;padding:22px;text-align:center;display:none}
+.result-box.show{display:block}
+.result-label{font-size:11px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.result-value{font-size:42px;font-weight:900;color:var(--b700);line-height:1;letter-spacing:-.03em}
+.result-unit{font-size:14px;color:var(--text3);margin-top:6px;font-weight:600}
+.result-detail{font-size:13px;color:var(--text2);margin-top:12px;line-height:1.7;background:rgba(255,255,255,.7);border-radius:8px;padding:12px}
+.disclaimer{background:#FEF9C3;border:1px solid #FDE68A;border-radius:10px;padding:10px 14px;font-size:11px;color:#92400E;line-height:1.6;font-weight:600;display:flex;align-items:flex-start;gap:8px}
+h2{font-size:24px;font-weight:900;color:var(--text);letter-spacing:-.02em;margin:36px 0 12px;border-top:2px solid var(--b100);padding-top:8px;font-family:"Plus Jakarta Sans",sans-serif}
+h3{font-size:18px;font-weight:800;color:var(--text2);margin:24px 0 8px}
+p{margin-bottom:14px;color:var(--text2);line-height:1.8;font-size:15px}
+ul,ol{padding-left:22px;margin-bottom:14px}
+li{margin-bottom:7px;color:var(--text2);line-height:1.7}
+strong{color:var(--text);font-weight:700}
+a{color:var(--b600);font-weight:600;text-decoration:none}
+.formula-box{background:linear-gradient(135deg,#EFF6FF,#E0F2FE);border:2px solid var(--b200);border-radius:14px;padding:22px;margin:18px 0;text-align:center}
+.f-label{font-size:10px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
+.f-formula{font-size:clamp(13px,2vw,18px);font-weight:900;color:var(--b700);font-family:"Courier New",monospace;line-height:1.6}
+.example-box{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:24px;margin:18px 0;box-shadow:0 2px 8px rgba(30,58,138,.05)}
+.ex-title{font-size:11px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
+.ex-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px}
+.ex-row:last-child{border-bottom:none;padding-top:12px}
+.ex-lbl{color:var(--text3)}
+.ex-val{font-weight:700;color:var(--text);font-family:"Courier New",monospace}
+.ex-result{font-size:22px;font-weight:900;color:var(--b700)}
+.faq-item{background:var(--white);border:1.5px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq-q{padding:16px 20px;font-size:14px;font-weight:700;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q:hover{background:var(--b50)}
+.faq-q span{color:var(--b600);font-size:16px;transition:transform .2s;flex-shrink:0;margin-left:10px}
+.faq-a{padding:14px 20px;font-size:13px;color:var(--text3);line-height:1.75;background:#F8FAFF;border-top:1px solid var(--border);display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q span{transform:rotate(180deg)}
+.cta-box{background:linear-gradient(135deg,#0F172A,#1C2C73);border-radius:20px;padding:32px;text-align:center;margin:36px 0}
+.cta-box h3{font-size:20px;font-weight:900;color:#fff;margin-bottom:8px;font-family:"Plus Jakarta Sans",sans-serif}
+.cta-box p{font-size:13px;color:#BFDBFE;margin-bottom:18px;line-height:1.65}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;text-decoration:none;padding:13px 26px;border-radius:12px;font-size:14px;font-weight:800;box-shadow:0 4px 16px rgba(37,99,235,.4)}
+.cta-feats{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:14px}
+.cta-f{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:3px 10px;font-size:11px;font-weight:600;color:#E0E7FF}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:16px 0}
+.related-card{background:var(--white);border:1.5px solid var(--border);border-radius:11px;padding:14px;text-decoration:none;transition:all .2s;display:block}
+.related-card:hover{border-color:var(--b200);box-shadow:0 4px 12px rgba(30,58,138,.07);transform:translateY(-1px)}
+.rc-name{font-size:13px;font-weight:800;color:var(--text);margin-bottom:3px}
+.rc-vol{font-size:11px;color:var(--b600);font-weight:600}
+.aff-note{background:var(--white);border:1px solid var(--border);border-radius:9px;padding:11px 14px;margin:24px 0;font-size:12px;color:var(--text4);line-height:1.6}
+footer{background:#0F172A;padding:28px 32px;text-align:center;color:#64748B;font-size:13px;margin-top:0}
+footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
+@media(max-width:600px){.wrap{padding:28px 16px 48px}.hero{padding:40px 20px 36px}.input-grid{grid-template-columns:1fr}}
+</style>
 <style id="liq-theme-css">
 .liq-theme-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--white);color:var(--text);font-size:15px;line-height:1;cursor:pointer;display:inline-grid;place-items:center;transition:.18s;margin-left:4px}
 .liq-theme-btn:hover{border-color:#3A55FF;transform:translateY(-1px)}
@@ -149,7 +135,6 @@
 </style>
 </head>
 <body>
-
 <nav class="nav">
   <a href="/" class="nav-logo" aria-label="LogicstIQ — Home" style="display:inline-flex;flex-direction:column;align-items:flex-start;text-decoration:none;line-height:1;gap:3px">
     <svg width="150" height="36" viewBox="0 0 260 68" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block">
@@ -162,220 +147,142 @@
     </svg>
     <span style="font-size:9px;font-weight:600;color:#3A55FF;letter-spacing:.05em;white-space:nowrap">Where Logistics Meets Intelligence</span>
   </a>
-  <a href="https://www.logicstiq.com" class="nav-back">← All Calculators</a>
+  <a href="https://logicstiq.com" class="nav-back">← All Calculators</a>
 </nav>
-<div class="badge-bar">🆓 Free · No Login · Instant Results</div>
 
-<section class="hero">
-  <h1>COGS Calculator <span>Cost of Goods Sold & Gross Margin — Free Tool</span></h1>
-  <p style="color:#9999bb;font-size:0.9rem;margin-top:16px">Calculate your Cost of Goods Sold, Gross Profit, and Gross Margin % instantly. The financial foundation of every pricing and inventory decision.</p>
+<div class="hero">
+  <div class="hero-badge">🆓 Free · No Login · Instant Results</div>
+  <h1>Cycle Count Calculator<br><span>Plan Your Inventory Count Schedule — Free Tool</span></h1>
+  <p class="hero-sub">Calculate how many SKUs to count per day to maintain accurate inventory without annual shutdown counts. Plan your cycle count programme by ABC category.</p>
   <div class="trust-row">
-    <span class="trust-item">No signup needed</span>
-    <span class="trust-item">No data stored</span>
-    <span class="trust-item">Works on mobile</span>
-    <span class="trust-item">Free forever</span>
+    <span><span class="tick">✓</span>No signup needed</span>
+    <span><span class="tick">✓</span>No data stored</span>
+    <span><span class="tick">✓</span>Works on mobile</span>
+    <span><span class="tick">✓</span>Free forever</span>
   </div>
-</section>
+</div>
 
-<section class="calc-section">
+<div class="wrap">
+
+  <!-- LIVE CALCULATOR -->
   <div class="calc-card">
-    <div class="calc-header">
-      <span class="calc-header-icon">💸</span>
-      <span class="calc-header-title">COGS Calculator — Free Online Tool</span>
-    </div>
-    <div class="calc-body">
-      <div class="field-grid">
-        <div class="field">
-          <label>Beginning Inventory (₹)</label>
-          <span>Value of stock at period start</span>
-          <input type="number" id="beginInv" placeholder="e.g. 500000" min="0">
-        </div>
-        <div class="field">
-          <label>Purchases During Period (₹)</label>
-          <span>Total inventory bought this period</span>
-          <input type="number" id="purchases" placeholder="e.g. 1200000" min="0">
-        </div>
-        <div class="field">
-          <label>Ending Inventory (₹)</label>
-          <span>Value of stock at period end</span>
-          <input type="number" id="endInv" placeholder="e.g. 400000" min="0">
-        </div>
-        <div class="field">
-          <label>Net Revenue for Period (₹)</label>
-          <span>Total sales minus returns</span>
-          <input type="number" id="revenue" placeholder="e.g. 2000000" min="0">
-        </div>
+    <h2>🔢 Cycle Count Calculator — Free Online Tool</h2>
+    <div class="input-grid">
+      <div class="input-group">
+        <label for="sku_a">Class A SKUs (SKUs)</label>
+        <input type="number" id="sku_a" placeholder="e.g. 50" min="0" step="1">
       </div>
-      <button class="calc-btn" onclick="calcCOGS()">Calculate COGS & Gross Margin →</button>
-      <div class="results" id="results">
-        <div class="results-grid">
-          <div class="result-item">
-            <div class="result-label">COGS</div>
-            <div class="result-value" id="r-cogs">—</div>
-            <div class="result-sub">Direct cost of goods sold</div>
-          </div>
-          <div class="result-item">
-            <div class="result-label">Gross Profit</div>
-            <div class="result-value positive" id="r-gp">—</div>
-            <div class="result-sub">Revenue minus COGS</div>
-          </div>
-          <div class="result-item">
-            <div class="result-label">Gross Margin %</div>
-            <div class="result-value" id="r-gm">—</div>
-            <div class="result-sub">% of revenue retained</div>
-          </div>
-          <div class="result-item">
-            <div class="result-label">COGS Ratio</div>
-            <div class="result-value" id="r-cr">—</div>
-            <div class="result-sub">COGS as % of revenue</div>
-          </div>
-        </div>
-        <div class="disclaimer">⚠️ <strong>Reference only:</strong> Results are for planning purposes. Validate with your ERP or business data before making decisions.</div>
+      <div class="input-group">
+        <label for="count_a">Count A Items per Year (times/year)</label>
+        <input type="number" id="count_a" placeholder="e.g. 12" min="0" step="1">
+      </div>
+      <div class="input-group">
+        <label for="sku_b">Class B SKUs (SKUs)</label>
+        <input type="number" id="sku_b" placeholder="e.g. 150" min="0" step="1">
+      </div>
+      <div class="input-group">
+        <label for="count_b">Count B Items per Year (times/year)</label>
+        <input type="number" id="count_b" placeholder="e.g. 4" min="0" step="1">
+      </div>
+      <div class="input-group">
+        <label for="sku_c">Class C SKUs (SKUs)</label>
+        <input type="number" id="sku_c" placeholder="e.g. 400" min="0" step="1">
+      </div>
+      <div class="input-group">
+        <label for="count_c">Count C Items per Year (times/year)</label>
+        <input type="number" id="count_c" placeholder="e.g. 1" min="0" step="1">
+      </div>
+      <div class="input-group">
+        <label for="working_days">Working Days per Year (days)</label>
+        <input type="number" id="working_days" placeholder="e.g. 250" min="0" step="1">
       </div>
     </div>
+    <button class="calc-btn" onclick="calculate()">Calculate Cycle Count →</button>
+    <div class="result-box" id="result">
+      <div class="result-label">SKUs to Count per Day</div>
+      <div class="result-value" id="result-value">—</div>
+      <div class="result-unit">SKUs per working day</div>
+      <div class="result-detail" id="result-detail"></div>
+    </div>
+    <div class="disclaimer" style="margin-top:12px">⚠️ <span><strong>Reference only:</strong> Results are for planning purposes. Validate with your ERP or business data before making decisions.</span></div>
   </div>
-</section>
 
-<section class="content-section">
+  <!-- WHAT IS -->
+  <h2 id="what">What is Cycle Count Calculator?</h2>
+  <p><strong>Cycle counting</strong> is the practice of counting a small subset of your inventory on a rotating schedule throughout the year, rather than conducting one large annual physical inventory count that requires shutting down operations.</p>
+  <p>Cycle counting is superior to annual counts for three reasons: inventory accuracy is maintained year-round rather than drifting for 11 months, counting disruption is spread out across the year instead of concentrated in one shutdown, and discrepancies are caught quickly when they are smaller and easier to investigate.</p>
 
+  <!-- FORMULA -->
+  <h2 id="formula">The Cycle Count Formula</h2>
   <div class="formula-box">
-    <div class="formula-tag">📐 COGS Formula</div>
-    <div class="formula-expr">
-      COGS = Beginning Inventory + Purchases − Ending Inventory<br>
-      Gross Profit = Revenue − COGS<br>
-      Gross Margin % = (Gross Profit ÷ Revenue) × 100
-    </div>
+    <div class="f-label">📐 Formula</div>
+    <div class="f-formula">Daily Count = [(A SKUs × A Frequency) + (B SKUs × B Frequency) + (C SKUs × C Frequency)] ÷ Working Days</div>
   </div>
+  <p>Different ABC categories require different counting frequencies. A-items (high-value) should be counted most frequently (monthly or quarterly). B-items quarterly. C-items annually. This focuses counting effort where inventory accuracy matters most.</p>
 
-  <div class="section-title">What is the COGS Calculator?</div>
-  <p class="prose">
-    <strong>Cost of Goods Sold (COGS)</strong> is the total direct cost of products sold during a period. It includes what you paid to buy or produce the goods — product cost, inbound freight, customs duties, and direct manufacturing costs. It does NOT include rent, marketing, salaries of office staff, or other operating expenses.
-  </p>
-  <p class="prose">
-    COGS is the most important line on your P&L after revenue. <strong>Gross Margin = Revenue − COGS.</strong> Every pricing, procurement, and product mix decision should be grounded in accurate COGS. Indian D2C brands frequently miscalculate COGS by missing inbound freight, GST on purchases (non-recoverable portion), and customs duties.
-  </p>
-
+  <!-- EXAMPLE -->
+  <h2 id="example">Worked Example</h2>
+  <p>A warehouse has 600 SKUs split across ABC categories. They operate 250 days per year with A items counted monthly.</p>
   <div class="example-box">
-    <div class="example-tag">📊 Worked Example</div>
-    <p style="font-size:0.85rem;color:#9999bb;margin-bottom:14px">A Flipkart seller calculates COGS for Q3 (July–September):</p>
-    <table class="example-table">
-      <tr><td>Beginning inventory (July 1)</td><td>₹5,00,000</td></tr>
-      <tr><td>Purchases during Q3</td><td>₹12,00,000</td></tr>
-      <tr><td>Ending inventory (September 30)</td><td>₹4,00,000</td></tr>
-      <tr><td><strong>COGS</strong></td><td>₹13,00,000</td></tr>
-      <tr><td>Net Revenue (Q3)</td><td>₹20,00,000</td></tr>
-      <tr><td>Gross Profit</td><td>₹7,00,000</td></tr>
-      <tr><td><strong>Gross Margin</strong></td><td><strong>35%</strong></td></tr>
-    </table>
+    <div class="ex-title">📊 Example Calculation</div>
+    <div class="ex-row"><span class="ex-lbl">Class A: 50 SKUs × 12 counts/year</span><span class="ex-val">600 count events</span></div>
+    <div class="ex-row"><span class="ex-lbl">Class B: 150 SKUs × 4 counts/year</span><span class="ex-val">600 count events</span></div>
+    <div class="ex-row"><span class="ex-lbl">Class C: 400 SKUs × 1 count/year</span><span class="ex-val">400 count events</span></div>
+    <div class="ex-row"><span class="ex-lbl">Total count events per year</span><span class="ex-val">1,600</span></div>
+    <div class="ex-row"><span class="ex-lbl">Working days per year</span><span class="ex-val">250</span></div>
+    <div class="ex-row"><span class="ex-lbl"><strong>SKUs to count per day</strong></span><span class="ex-result">1,600 ÷ 250 = 6.4 → 7 SKUs/day</span></div>
   </div>
+  <p>With a target of 7 SKUs per day, this warehouse maintains full cycle count coverage with minimal daily effort. An experienced counter can typically count 20-50 SKUs per hour, so this represents only 15-25 minutes of counting per day.</p>
 
-  <div class="section-title">Why COGS Matters for Your Business</div>
-  <div class="why-grid">
-    <div class="why-card">
-      <h4>Accurate Pricing</h4>
-      <p>If you price at a 30% markup over purchase price but haven't included freight and GST in COGS, you're selling at a lower margin than you think — or even at a loss.</p>
-    </div>
-    <div class="why-card">
-      <h4>GST Filing</h4>
-      <p>COGS feeds directly into your GSTR-3B. Accurate COGS ensures correct ITC claims and avoids scrutiny during GST audits. Non-recoverable GST on purchases increases your true COGS.</p>
-    </div>
-    <div class="why-card">
-      <h4>Investor & Bank Reporting</h4>
-      <p>Banks, VCs, and PE investors assess gross margin as the primary measure of business health. Accurate COGS is non-negotiable for any funding or credit facility.</p>
-    </div>
-    <div class="why-card">
-      <h4>Inventory Valuation</h4>
-      <p>COGS determines ending inventory value on your balance sheet. Wrong COGS = wrong inventory value = misleading financial statements. Especially critical at year-end for tax computation.</p>
-    </div>
-  </div>
+  <!-- WHY IT MATTERS -->
+  <h2 id="why">Why Cycle Count Matters for Your Business</h2>
+  <p>Inventory accuracy above 95% is a prerequisite for reliable demand planning, order fulfilment, and financial reporting. Cycle counting is the most cost-effective way to maintain this accuracy.</p>
+  <ul>
+  <li><strong>No shutdown required:</strong> Operations continue normally while counting proceeds on a rolling schedule</li>
+  <li><strong>Faster discrepancy detection:</strong> Errors found within days, not months — easier to investigate</li>
+  <li><strong>ABC-weighted effort:</strong> High-value A items get the most attention</li>
+  <li><strong>GSTR compliance:</strong> Accurate inventory records support GST filing and audit defence</li>
+  </ul>
 
-  <div class="ai-cta">
+  <!-- AI PLANNER CTA -->
+  <div class="cta-box">
     <h3>🤖 Go Further with AI Demand Planning</h3>
-    <p>Upload your full inventory export and get COGS calculated automatically across all your SKUs — alongside demand forecasts, reorder plans, and stockout risk analysis.</p>
-    <a href="https://www.logicstiq.com/#ai-demand-planner">Try Free AI Demand Planner →</a>
-    <div class="ai-cta-tags">
-      <span class="ai-cta-tag">Works with Tally · SAP · NetSuite · Amazon · Flipkart</span>
-      <span class="ai-cta-tag">No login · No data stored · Free forever</span>
+    <p>Upload your full inventory export and get Cycle Count calculated automatically across all your SKUs — alongside demand forecasts, reorder plans, and stockout risk analysis.</p>
+    <a href="https://logicstiq.com/#ai-demand-planner" class="cta-btn">Try Free AI Demand Planner →</a>
+    <div class="cta-feats">
+      <span class="cta-f">Works with Tally · SAP · NetSuite · Amazon · Flipkart</span>
+      <span class="cta-f">No login · No data stored · Free forever</span>
     </div>
   </div>
 
-  <div class="section-title">Frequently Asked Questions</div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">Should I include GST in COGS?</div>
-    <div class="faq-a">If you are a GST-registered business and can claim Input Tax Credit (ITC), do NOT include the recoverable GST in COGS — it nets to zero. However, GST that you cannot recover (e.g. RCM on GTA freight where you cannot claim ITC, or purchases used for exempt supplies) should be included in COGS as it is a real cost to your business.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">Should inbound freight be included in COGS?</div>
-    <div class="faq-a">Yes. Freight paid to receive inventory from your supplier (freight-in) is a direct product cost and should be included in COGS. This is different from outbound freight (shipping to customers), which is a selling expense. Indian businesses frequently exclude freight-in from COGS, causing them to overstate gross margins.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">What is a good gross margin for Indian e-commerce?</div>
-    <div class="faq-a">It varies significantly by category. FMCG: 25–40%. Beauty & personal care: 40–60%. Fashion & apparel: 45–65%. Electronics: 10–20%. D2C brands: 45–65% (needs to cover high marketing spend). If your gross margin is below 30%, it is very difficult to build a profitable business once you include marketing, logistics, and operating costs.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">What is the difference between COGS and operating expenses?</div>
-    <div class="faq-a">COGS includes only direct costs of producing or buying your products — raw materials, direct labour, inbound freight, customs. Operating expenses (OPEX) are costs of running the business — warehouse rent, marketing, salaries of admin staff, software subscriptions. COGS comes before gross profit; OPEX comes after. Mixing the two gives you an inaccurate gross margin.</div>
+  <!-- FAQ -->
+  <h2 id="faq">Frequently Asked Questions</h2>
+  <div class="faq-item open"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is the difference between cycle counting and physical inventory?<span>▾</span></div><div class="faq-a">A physical inventory count counts every SKU in the warehouse at one time, typically annually, requiring a warehouse shutdown. Cycle counting counts a portion of SKUs every day on a rotating schedule, requiring no shutdown. Cycle counting is preferred for warehouses with more than 100 SKUs because it maintains continuous accuracy rather than point-in-time accuracy.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How accurate should my inventory be?<span>▾</span></div><div class="faq-a">Industry best practice targets 98%+ inventory accuracy (measured as the percentage of SKUs with quantity matching the system record exactly). Below 95% causes significant operational problems: stockouts when system shows available, wrong reorder signals, customer fulfilment errors. Cycle counting is the primary tool for achieving and maintaining 98%+ accuracy.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How many times should I count A, B, and C items per year?<span>▾</span></div><div class="faq-a">Standard practice: A items 12 times/year (monthly), B items 4 times/year (quarterly), C items 1-2 times/year (annually). Some high-accuracy operations count A items weekly (52x). The frequency should reflect how much damage an inventory error on that item would cause — high-value, fast-moving items need the most frequent verification.</div></div>
+
+  <!-- RELATED CALCULATORS -->
+  <h2>Related Free Calculators</h2>
+  <div class="related-grid">
+    <a href="https://logicstiq.com/eoq-calculator" class="related-card"><div class="rc-name">EOQ Calculator</div><div class="rc-vol">2,400/mo monthly searches</div></a>
+    <a href="https://logicstiq.com/safety-stock-calculator" class="related-card"><div class="rc-name">Safety Stock Calculator</div><div class="rc-vol">1,900/mo monthly searches</div></a>
+    <a href="https://logicstiq.com/reorder-point-calculator" class="related-card"><div class="rc-name">Reorder Point Calculator</div><div class="rc-vol">1,600/mo monthly searches</div></a>
+    <a href="https://logicstiq.com/otif-calculator" class="related-card"><div class="rc-name">OTIF Calculator</div><div class="rc-vol">2,900/mo monthly searches</div></a>
+    <a href="https://logicstiq.com/inventory-turnover-calculator" class="related-car
   </div>
 
-  <div style="margin-top:32px">
-    <div class="section-title">Related Free Calculators</div>
-    <div class="related-grid">
-      <a href="https://www.logicstiq.com/carrying-cost-calculator" class="related-card">
-        <span class="related-search">590/mo searches</span>
-        <span class="related-name">💰 Carrying Cost Calculator</span>
-      </a>
-      <a href="https://www.logicstiq.com/inventory-turnover-calculator" class="related-card">
-        <span class="related-search">3,600/mo searches</span>
-        <span class="related-name">🔄 Inventory Turnover</span>
-      </a>
-      <a href="https://www.logicstiq.com/working-capital-calculator" class="related-card">
-        <span class="related-search">1,300/mo searches</span>
-        <span class="related-name">📊 Working Capital</span>
-      </a>
-      <a href="https://www.logicstiq.com/landed-cost-calculator" class="related-card">
-        <span class="related-search">880/mo searches</span>
-        <span class="related-name">🌐 Landed Cost Calculator</span>
-      </a>
-    </div>
-  </div>
+  <div class="aff-note"><strong>Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. When you sign up for a third-party service via these links, we may earn a small commission at no extra cost to you. All calculators are and always will be completely free.</div>
 
-</section>
+</div>
 
 <footer>
-  <p class="footer-copy">
-    <strong>31 Free Supply Chain Calculators · AI Demand Planner · No Login Required · Free Forever</strong><br><br>
-    © 2025 <a href="https://www.logicstiq.com">LogicstIQ.com</a> ·
-    <a href="https://www.logicstiq.com/privacy-policy.html">Privacy Policy</a> ·
-    <a href="https://www.logicstiq.com/terms.html">Terms</a> ·
-    Results are for reference only.<br>
-    <strong>Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. We may earn a commission at no extra cost to you. All calculators are free forever.<br>
-    Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a>
-  </p>
+  <p>© 2025 <a href="https://logicstiq.com">LogicstIQ.com</a> · 31 Free Supply Chain Calculators + AI Demand Planner · No Login · Free Forever · Where Logistics Meets Intelligence</p>
+  <p style="margin-top:8px">Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a></p>
 </footer>
 
 <script>
-  function calcCOGS() {
-    const b = parseFloat(document.getElementById('beginInv').value) || 0;
-    const p = parseFloat(document.getElementById('purchases').value) || 0;
-    const e = parseFloat(document.getElementById('endInv').value) || 0;
-    const r = parseFloat(document.getElementById('revenue').value) || 0;
-    if (b === 0 && p === 0) { alert('Please enter Beginning Inventory and Purchases to calculate COGS.'); return; }
-    const cogs = b + p - e;
-    const gp = r > 0 ? r - cogs : null;
-    const gm = r > 0 ? (gp / r) * 100 : null;
-    const cr = r > 0 ? (cogs / r) * 100 : null;
-    const fmt = v => '₹' + Math.round(v).toLocaleString('en-IN');
-    document.getElementById('r-cogs').textContent = fmt(cogs);
-    document.getElementById('r-gp').textContent = gp !== null ? fmt(gp) : '—';
-    document.getElementById('r-gm').textContent = gm !== null ? gm.toFixed(1) + '%' : 'Enter revenue';
-    document.getElementById('r-cr').textContent = cr !== null ? cr.toFixed(1) + '%' : 'Enter revenue';
-    const gpEl = document.getElementById('r-gp');
-    gpEl.className = 'result-value ' + (gp >= 0 ? 'positive' : 'negative');
-    document.getElementById('results').classList.add('show');
-  }
-  function toggleFaq(el) { el.closest('.faq-item').classList.toggle('open'); }
+function calculate(){const sa=parseFloat(document.getElementById('sku_a').value)||0;const fa=parseFloat(document.getElementById('count_a').value)||0;const sb=parseFloat(document.getElementById('sku_b').value)||0;const fb=parseFloat(document.getElementById('count_b').value)||0;const sc=parseFloat(document.getElementById('sku_c').value)||0;const fc=parseFloat(document.getElementById('count_c').value)||0;const wd=parseFloat(document.getElementById('working_days').value)||250;const total=(sa*fa)+(sb*fb)+(sc*fc);const daily=Math.ceil(total/wd);const total_skus=sa+sb+sc;document.getElementById('result-value').textContent=daily;document.getElementById('result-detail').textContent='Total count events/year: '+total+' (A: '+(sa*fa)+', B: '+(sb*fb)+', C: '+(sc*fc)+') | Total SKUs: '+total_skus+' | At '+daily+' SKUs/day, allow '+(Math.ceil(daily/30))+' counting hours/day (at 30 SKUs/hr pace).';document.getElementById('result').classList.add('show');}
 </script>
-
 <script>
 (function(){var r=document.documentElement;
 function lbl(){var b=document.getElementById('liqTheme');if(b)b.textContent=r.getAttribute('data-theme')==='dark'?'☀️':'🌙';}

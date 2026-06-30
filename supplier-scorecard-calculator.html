@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Stockout Cost Calculator — Revenue Lost from Out-of-Stock | Free | LogicstIQ — Free Supply Chain Calculator</title>
-<meta name="description" content="Calculate the cost of a stockout event — lost revenue, lost margin, expediting costs and customer penalties. Free stockout cost calculator for supply chain teams.">
-<meta name="keywords" content="stockout cost calculator, out of stock cost, cost of stockout formula, lost sales calculator, inventory stockout India, stockout impact calculator">
-<link rel="canonical" href="https://logicstiq.com/stockout-cost-calculator">
+<title>Supplier Scorecard Calculator — Rate & Compare Suppliers Free | LogicstIQ — Free Supply Chain Calculator</title>
+<meta name="description" content="Calculate a weighted performance scorecard for your suppliers across delivery, quality, price, and responsiveness. Free supplier evaluation calculator.">
+<meta name="keywords" content="supplier scorecard calculator, supplier evaluation tool, supplier performance rating, vendor scorecard India, supplier KPI calculator, supplier assessment free">
+<link rel="canonical" href="https://logicstiq.com/supplier-scorecard-calculator">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <script type="application/ld+json">
 {
@@ -14,28 +14,28 @@
   "@graph":[
     {
       "@type":"SoftwareApplication",
-      "name":"Stockout Cost Calculator",
-      "url":"https://logicstiq.com/stockout-cost-calculator",
+      "name":"Supplier Scorecard Calculator",
+      "url":"https://logicstiq.com/supplier-scorecard-calculator",
       "applicationCategory":"BusinessApplication",
       "operatingSystem":"Web",
       "offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},
-      "description":"Free stockout cost calculator. Quantify the revenue and profit lost from out-of-stock events."
+      "description":"Free supplier scorecard calculator. Rate and compare suppliers across delivery, quality, price and service metrics."
     },
     {
       "@type":"HowTo",
-      "name":"How to use the Stockout Cost Calculator",
+      "name":"How to use the Supplier Scorecard Calculator",
       "step":[
-        {"@type":"HowToStep","name":"Enter your inputs","text":"Enter the number of days out of stock, daily sales volume, selling price, and margin percentage"},
+        {"@type":"HowToStep","name":"Enter your inputs","text":"Rate your supplier from 0-100 on each performance dimension and set the weight for each category"},
         {"@type":"HowToStep","name":"Click Calculate","text":"Press the calculate button to get your instant result"},
-        {"@type":"HowToStep","name":"Use the result","text":"Use the stockout cost to justify safety stock investment — compare cost of holding safety stock vs. cost of a stockout"}
+        {"@type":"HowToStep","name":"Use the result","text":"Use the total score to compare suppliers objectively, identify improvement areas, and make data-driven sourcing decisions"}
       ]
     },
     {
       "@type":"FAQPage",
       "mainEntity":[
-        {"@type":"Question","name":"How do I calculate the cost of a stockout on Amazon?","acceptedAnswer":{"@type":"Answer","text":"For Amazon sellers, stockout cost = Direct lost margin + Rank recovery cost. Amazon's A9 algorithm drops your keyword ranking when you stockout, meaning even after restocking, you sell less than before. Industry estimates suggest Amazon rank recovery takes 2-4 weeks of above-baseline sales, effectively extending the financial impact of a 1-week stockout to 3-5 weeks."}},
-        {"@type":"Question","name":"Is expediting always necessary during a stockout?","acceptedAnswer":{"@type":"Answer","text":"Not always. For B2B stockouts, expediting (sourcing from a secondary supplier at premium price) is often necessary to maintain customer relationships. For B2C/marketplace stockouts, you cannot substitute — you either have the product or you don't. Always factor expediting cost for your key accounts where a stockout could trigger formal penalties or order cancellation."}},
-        {"@type":"Question","name":"How much safety stock should I hold to prevent stockouts?","acceptedAnswer":{"@type":"Answer","text":"Safety stock level depends on your service level target and demand variability. The basic formula is: Safety Stock = Z × σ_lead × √Lead Time, where Z is your service level factor (1.65 for 95%, 2.05 for 98%), and σ_lead is standard deviation of lead time demand. Use our Safety Stock Calculator to compute the optimal level for each SKU."}}
+        {"@type":"Question","name":"What criteria should I include in a supplier scorecard?","acceptedAnswer":{"@type":"Answer","text":"Standard criteria: Delivery (on-time delivery rate, lead time consistency), Quality (defect rate, rejection rate, returns), Cost (price competitiveness, cost reduction over time), Service (responsiveness to queries, flexibility on order changes, technical support). Add industry-specific criteria as needed — e.g., sustainability/ESG for export-oriented businesses."}},
+        {"@type":"Question","name":"How often should I run supplier scorecards?","acceptedAnswer":{"@type":"Answer","text":"Quarterly is the standard for most businesses. Monthly for critical or problem suppliers where you are actively managing performance improvement. Annually for low-volume, non-critical suppliers. The key is consistency — run the scorecard on the same criteria at the same frequency to make trend comparisons meaningful."}},
+        {"@type":"Question","name":"What score should I require from suppliers?","acceptedAnswer":{"@type":"Answer","text":"Typical thresholds: 80+ = preferred supplier (long-term relationship, priority for new business), 65-79 = approved supplier (monitor and work on improvement plan), 50-64 = conditional supplier (formal improvement plan required, consider alternatives), below 50 = consider exit. Adjust thresholds based on your industry and the criticality of the supplied material."}}
       ]
     }
   ]
@@ -152,8 +152,8 @@ footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
 
 <div class="hero">
   <div class="hero-badge">🆓 Free · No Login · Instant Results</div>
-  <h1>Stockout Cost Calculator<br><span>Quantify the True Cost of Running Out of Stock</span></h1>
-  <p class="hero-sub">A stockout costs more than just one lost sale. Calculate the true financial impact including lost margin, expediting costs, and customer penalties.</p>
+  <h1>Supplier Scorecard Calculator<br><span>Rate & Compare Your Suppliers Objectively — Free</span></h1>
+  <p class="hero-sub">Create a weighted performance score for any supplier across delivery, quality, price competitiveness, and responsiveness. Make supplier decisions with data, not gut feel.</p>
   <div class="trust-row">
     <span><span class="tick">✓</span>No signup needed</span>
     <span><span class="tick">✓</span>No data stored</span>
@@ -166,84 +166,93 @@ footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
 
   <!-- LIVE CALCULATOR -->
   <div class="calc-card">
-    <h2>🔢 Stockout Cost Calculator — Free Online Tool</h2>
+    <h2>🔢 Supplier Scorecard Calculator — Free Online Tool</h2>
     <div class="input-grid">
       <div class="input-group">
-        <label for="days_out">Days Out of Stock (days)</label>
-        <input type="number" id="days_out" placeholder="e.g. 5" min="0" step="1">
+        <label for="delivery_score">Delivery Performance Score</label>
+        <input type="number" id="delivery_score" placeholder="0-100, e.g. 85" min="0" step="1">
       </div>
       <div class="input-group">
-        <label for="daily_units">Daily Sales (units) (units/day)</label>
-        <input type="number" id="daily_units" placeholder="e.g. 50" min="0" step="1">
+        <label for="delivery_weight">Delivery Weight % (%)</label>
+        <input type="number" id="delivery_weight" placeholder="e.g. 35" min="0" step="1">
       </div>
       <div class="input-group">
-        <label for="selling_price">Selling Price per Unit (₹)</label>
-        <input type="number" id="selling_price" placeholder="e.g. 800" min="0" step="1">
+        <label for="quality_score">Quality Score</label>
+        <input type="number" id="quality_score" placeholder="0-100, e.g. 90" min="0" step="1">
       </div>
       <div class="input-group">
-        <label for="margin_pct">Gross Margin % (%)</label>
-        <input type="number" id="margin_pct" placeholder="e.g. 35" min="0" step="0.5">
+        <label for="quality_weight">Quality Weight % (%)</label>
+        <input type="number" id="quality_weight" placeholder="e.g. 30" min="0" step="1">
       </div>
       <div class="input-group">
-        <label for="expediting_cost">Expediting / Emergency Order Cost (₹)</label>
-        <input type="number" id="expediting_cost" placeholder="e.g. 5000" min="0" step="1">
+        <label for="price_score">Price Competitiveness Score</label>
+        <input type="number" id="price_score" placeholder="0-100, e.g. 75" min="0" step="1">
       </div>
       <div class="input-group">
-        <label for="penalty_cost">Customer Penalty / Chargeback (₹)</label>
-        <input type="number" id="penalty_cost" placeholder="e.g. 0" min="0" step="1">
+        <label for="price_weight">Price Weight % (%)</label>
+        <input type="number" id="price_weight" placeholder="e.g. 20" min="0" step="1">
+      </div>
+      <div class="input-group">
+        <label for="service_score">Responsiveness Score</label>
+        <input type="number" id="service_score" placeholder="0-100, e.g. 80" min="0" step="1">
+      </div>
+      <div class="input-group">
+        <label for="service_weight">Service Weight % (%)</label>
+        <input type="number" id="service_weight" placeholder="e.g. 15" min="0" step="1">
       </div>
     </div>
-    <button class="calc-btn" onclick="calculate()">Calculate Stockout Cost →</button>
+    <button class="calc-btn" onclick="calculate()">Calculate Supplier Score →</button>
     <div class="result-box" id="result">
-      <div class="result-label">Total Stockout Cost</div>
+      <div class="result-label">Supplier Score</div>
       <div class="result-value" id="result-value">—</div>
-      <div class="result-unit">₹ per stockout event</div>
+      <div class="result-unit">out of 100</div>
       <div class="result-detail" id="result-detail"></div>
     </div>
     <div class="disclaimer" style="margin-top:12px">⚠️ <span><strong>Reference only:</strong> Results are for planning purposes. Validate with your ERP or business data before making decisions.</span></div>
   </div>
 
   <!-- WHAT IS -->
-  <h2 id="what">What is Stockout Cost Calculator?</h2>
-  <p>A <strong>stockout</strong> occurs when customer demand exists but no inventory is available to fulfil it. Stockouts cost more than just one lost sale — they affect customer relationships, marketplace rankings, OTIF scores, and sometimes trigger formal financial penalties from large retailers.</p>
-  <p>On Amazon and Flipkart, going out of stock causes your listing rank to drop, sometimes permanently. The marketplace algorithms penalise sellers who stockout by reducing their visibility even after inventory is restored. This invisible, downstream cost is often larger than the direct lost sales during the stockout period.</p>
+  <h2 id="what">What is Supplier Scorecard Calculator?</h2>
+  <p>A <strong>Supplier Scorecard</strong> is a structured tool for evaluating and comparing supplier performance across multiple dimensions using objective, weighted criteria. It removes subjectivity from procurement decisions and gives you a consistent way to track supplier performance over time.</p>
+  <p>Most Indian businesses evaluate suppliers informally — based on relationships, last experience, or price alone. A formal scorecard enables fair comparison between multiple suppliers, identifies specific improvement areas, and provides documentation for supplier development conversations or exit decisions.</p>
 
   <!-- FORMULA -->
-  <h2 id="formula">The Stockout Cost Formula</h2>
+  <h2 id="formula">The Supplier Score Formula</h2>
   <div class="formula-box">
     <div class="f-label">📐 Formula</div>
-    <div class="f-formula">Stockout Cost = (Days OOS × Daily Units × Margin per Unit) + Expediting Cost + Penalties</div>
+    <div class="f-formula">Supplier Score = Σ (Category Score × Category Weight %)</div>
   </div>
-  <p>Stockout cost has three components: (1) Direct lost margin on unfulfilled demand, (2) Expediting costs to source product urgently from alternative suppliers at premium prices, (3) Customer penalties such as OTIF chargebacks from retailers.</p>
+  <p>A weighted scorecard gives different importance levels to different performance dimensions. Delivery and quality typically have higher weights (30-40% each) because failures in these areas have the most operational impact. Price and service are important but secondary.</p>
 
   <!-- EXAMPLE -->
   <h2 id="example">Worked Example</h2>
-  <p>A Blinkit supplier runs out of stock on a fast-moving product for 4 days. Their daily sales are 120 units at ₹200/unit with 40% margin. They also receive a ₹8,000 chargeback from Blinkit.</p>
+  <p>A manufacturer evaluates two packaging suppliers using a weighted scorecard:</p>
   <div class="example-box">
     <div class="ex-title">📊 Example Calculation</div>
-    <div class="ex-row"><span class="ex-lbl">Days out of stock</span><span class="ex-val">4 days</span></div>
-    <div class="ex-row"><span class="ex-lbl">Daily sales lost</span><span class="ex-val">120 units × ₹200 = ₹24,000/day</span></div>
-    <div class="ex-row"><span class="ex-lbl">Revenue lost</span><span class="ex-val">4 × ₹24,000 = ₹96,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">Margin lost (40%)</span><span class="ex-val">₹96,000 × 40% = ₹38,400</span></div>
-    <div class="ex-row"><span class="ex-lbl">Blinkit chargeback</span><span class="ex-val">₹8,000</span></div>
-    <div class="ex-row"><span class="ex-lbl"><strong>Total Stockout Cost</strong></span><span class="ex-result">₹38,400 + ₹8,000 = ₹46,400</span></div>
+    <div class="ex-row"><span class="ex-lbl">Criterion</span><span class="ex-val">Supplier A | Supplier B | Weight</span></div>
+    <div class="ex-row"><span class="ex-lbl">Delivery Performance</span><span class="ex-val">85 | 72 | 35%</span></div>
+    <div class="ex-row"><span class="ex-lbl">Quality</span><span class="ex-val">90 | 88 | 30%</span></div>
+    <div class="ex-row"><span class="ex-lbl">Price Competitiveness</span><span class="ex-val">70 | 82 | 20%</span></div>
+    <div class="ex-row"><span class="ex-lbl">Responsiveness</span><span class="ex-val">80 | 65 | 15%</span></div>
+    <div class="ex-row"><span class="ex-lbl"><strong>Supplier A Score</strong></span><span class="ex-result">(85×0.35)+(90×0.30)+(70×0.20)+(80×0.15) = 82.75</span></div>
+    <div class="ex-row"><span class="ex-lbl"><strong>Supplier B Score</strong></span><span class="ex-result">(72×0.35)+(88×0.30)+(82×0.20)+(65×0.15) = 77.25</span></div>
   </div>
-  <p>₹46,400 for a 4-day stockout. The safety stock needed to prevent this — approximately 480 units (4 days × 120 units) — costs about ₹16,000 to hold for a month at 25% annual carrying cost. The stockout was 3x more expensive than the safety stock would have cost.</p>
+  <p>Despite Supplier B having a better price score, Supplier A scores higher overall because their delivery and quality performance — the highest-weighted criteria — are significantly better. This is the value of a weighted scorecard over single-metric comparison.</p>
 
   <!-- WHY IT MATTERS -->
-  <h2 id="why">Why Stockout Cost Matters for Your Business</h2>
-  <p>The key insight from stockout cost calculation is that safety stock is almost always cheaper than the stockout it prevents. Most businesses hold too little safety stock because they see only the holding cost — not the stockout cost they are avoiding.</p>
+  <h2 id="why">Why Supplier Score Matters for Your Business</h2>
+  <p>Supplier scorecards are essential for professional procurement management and are required for ISO 9001 certification, which many large Indian manufacturers and exporters maintain.</p>
   <ul>
-  <li><strong>Safety stock justification:</strong> Compare safety stock carrying cost vs. stockout probability × stockout cost</li>
-  <li><strong>SKU prioritisation:</strong> Calculate stockout cost per SKU to decide which ones deserve highest safety stock</li>
-  <li><strong>Supplier SLA:</strong> Use stockout cost data to negotiate penalty clauses into supplier contracts</li>
-  <li><strong>Amazon/Flipkart:</strong> Rank drop cost (invisible, long-term) often exceeds direct lost margin</li>
+  <li><strong>Objective comparison:</strong> Compare suppliers on equal terms with consistent criteria</li>
+  <li><strong>Performance tracking:</strong> Run the scorecard quarterly to track supplier improvement over time</li>
+  <li><strong>Supplier development:</strong> Use scores to have structured conversations about specific improvement areas</li>
+  <li><strong>ISO 9001:</strong> Documented supplier evaluation is a mandatory requirement for ISO 9001 certified manufacturers</li>
   </ul>
 
   <!-- AI PLANNER CTA -->
   <div class="cta-box">
     <h3>🤖 Go Further with AI Demand Planning</h3>
-    <p>Upload your full inventory export and get Stockout Cost calculated automatically across all your SKUs — alongside demand forecasts, reorder plans, and stockout risk analysis.</p>
+    <p>Upload your full inventory export and get Supplier Score calculated automatically across all your SKUs — alongside demand forecasts, reorder plans, and stockout risk analysis.</p>
     <a href="https://logicstiq.com/#ai-demand-planner" class="cta-btn">Try Free AI Demand Planner →</a>
     <div class="cta-feats">
       <span class="cta-f">Works with Tally · SAP · NetSuite · Amazon · Flipkart</span>
@@ -253,9 +262,9 @@ footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
 
   <!-- FAQ -->
   <h2 id="faq">Frequently Asked Questions</h2>
-  <div class="faq-item open"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I calculate the cost of a stockout on Amazon?<span>▾</span></div><div class="faq-a">For Amazon sellers, stockout cost = Direct lost margin + Rank recovery cost. Amazon's A9 algorithm drops your keyword ranking when you stockout, meaning even after restocking, you sell less than before. Industry estimates suggest Amazon rank recovery takes 2-4 weeks of above-baseline sales, effectively extending the financial impact of a 1-week stockout to 3-5 weeks.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is expediting always necessary during a stockout?<span>▾</span></div><div class="faq-a">Not always. For B2B stockouts, expediting (sourcing from a secondary supplier at premium price) is often necessary to maintain customer relationships. For B2C/marketplace stockouts, you cannot substitute — you either have the product or you don't. Always factor expediting cost for your key accounts where a stockout could trigger formal penalties or order cancellation.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much safety stock should I hold to prevent stockouts?<span>▾</span></div><div class="faq-a">Safety stock level depends on your service level target and demand variability. The basic formula is: Safety Stock = Z × σ_lead × √Lead Time, where Z is your service level factor (1.65 for 95%, 2.05 for 98%), and σ_lead is standard deviation of lead time demand. Use our Safety Stock Calculator to compute the optimal level for each SKU.</div></div>
+  <div class="faq-item open"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What criteria should I include in a supplier scorecard?<span>▾</span></div><div class="faq-a">Standard criteria: Delivery (on-time delivery rate, lead time consistency), Quality (defect rate, rejection rate, returns), Cost (price competitiveness, cost reduction over time), Service (responsiveness to queries, flexibility on order changes, technical support). Add industry-specific criteria as needed — e.g., sustainability/ESG for export-oriented businesses.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How often should I run supplier scorecards?<span>▾</span></div><div class="faq-a">Quarterly is the standard for most businesses. Monthly for critical or problem suppliers where you are actively managing performance improvement. Annually for low-volume, non-critical suppliers. The key is consistency — run the scorecard on the same criteria at the same frequency to make trend comparisons meaningful.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What score should I require from suppliers?<span>▾</span></div><div class="faq-a">Typical thresholds: 80+ = preferred supplier (long-term relationship, priority for new business), 65-79 = approved supplier (monitor and work on improvement plan), 50-64 = conditional supplier (formal improvement plan required, consider alternatives), below 50 = consider exit. Adjust thresholds based on your industry and the criticality of the supplied material.</div></div>
 
   <!-- RELATED CALCULATORS -->
   <h2>Related Free Calculators</h2>
@@ -277,7 +286,7 @@ footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
 </footer>
 
 <script>
-function calculate(){const d=parseFloat(document.getElementById('days_out').value)||0;const u=parseFloat(document.getElementById('daily_units').value)||0;const p=parseFloat(document.getElementById('selling_price').value)||0;const m=parseFloat(document.getElementById('margin_pct').value)||0;const ex=parseFloat(document.getElementById('expediting_cost').value)||0;const pen=parseFloat(document.getElementById('penalty_cost').value)||0;if(d<=0||u<=0||p<=0){alert('Enter days, units and selling price.');return;}const rev=d*u*p;const margin=rev*(m/100);const total=margin+ex+pen;document.getElementById('result-value').textContent='₹'+total.toLocaleString('en-IN',{maximumFractionDigits:0});document.getElementById('result-detail').textContent='Lost revenue: ₹'+rev.toLocaleString('en-IN')+' | Lost margin: ₹'+margin.toLocaleString('en-IN',{maximumFractionDigits:0})+' | Expediting: ₹'+ex+' | Penalties: ₹'+pen+' | Total impact: ₹'+total.toLocaleString('en-IN',{maximumFractionDigits:0});document.getElementById('result').classList.add('show');}
+function calculate(){const d=parseFloat(document.getElementById('delivery_score').value)||0;const dw=parseFloat(document.getElementById('delivery_weight').value)||0;const q=parseFloat(document.getElementById('quality_score').value)||0;const qw=parseFloat(document.getElementById('quality_weight').value)||0;const p=parseFloat(document.getElementById('price_score').value)||0;const pw=parseFloat(document.getElementById('price_weight').value)||0;const s=parseFloat(document.getElementById('service_score').value)||0;const sw=parseFloat(document.getElementById('service_weight').value)||0;const tw=dw+qw+pw+sw;if(Math.abs(tw-100)>1){alert('Weights must add up to 100%. Currently: '+tw+'%');return;}const score=((d*dw)+(q*qw)+(p*pw)+(s*sw))/100;let grade=score>=80?'🟢 Preferred Supplier':score>=65?'🟡 Approved Supplier':score>=50?'🟠 Conditional — needs improvement plan':'🔴 At risk — consider alternatives';document.getElementById('result-value').textContent=score.toFixed(1);document.getElementById('result-detail').textContent=grade+' | Delivery: '+(d*dw/100).toFixed(1)+' pts | Quality: '+(q*qw/100).toFixed(1)+' pts | Price: '+(p*pw/100).toFixed(1)+' pts | Service: '+(s*sw/100).toFixed(1)+' pts';document.getElementById('result').classList.add('show');}
 </script>
 <script>
 (function(){var r=document.documentElement;

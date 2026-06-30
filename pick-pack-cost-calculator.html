@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>MOQ Calculator India — Minimum Order Quantity Tool | Free | LogicstIQ — Free Supply Chain Calculator</title>
-  <meta name="description" content="Free MOQ Calculator India. Evaluate if a supplier's Minimum Order Quantity makes financial sense. Calculate months of stock, holding cost, and savings vs. alternative. No login.">
-  <meta name="keywords" content="MOQ calculator India, minimum order quantity calculator, MOQ analysis tool, MOQ vs EOQ, supplier MOQ evaluation, MOQ holding cost India">
-  <link rel="canonical" href="https://www.logicstiq.com/moq-calculator">
-  <meta property="og:title" content="MOQ Calculator India — Minimum Order Quantity Tool | Free | LogicstIQ — Free Supply Chain Calculator">
-  <meta property="og:description" content="Free MOQ Calculator India. Evaluate if a supplier's Minimum Order Quantity makes financial sense. Calculate months of stock, holding cost, and savings vs. alternative. No login.">
-  <meta property="og:url" content="https://www.logicstiq.com/moq-calculator">
+  <title>Pick & Pack Cost Calculator — Free Warehouse Fulfilment Tool | LogicstIQ — Free Supply Chain Calculator</title>
+  <meta name="description" content="Free Pick & Pack Cost Calculator. Calculate true cost per order including labour, packaging, overhead, and error rate. Compare in-house vs. 3PL fulfilment costs. No login.">
+  <meta name="keywords" content="pick and pack cost calculator, pick pack cost per order, fulfilment cost calculator India, warehouse cost per order, 3PL vs in-house fulfilment cost, order fulfilment cost India">
+  <link rel="canonical" href="https://www.logicstiq.com/pick-pack-cost-calculator">
+  <meta property="og:title" content="Pick & Pack Cost Calculator — Free Warehouse Fulfilment Tool | LogicstIQ — Free Supply Chain Calculator">
+  <meta property="og:description" content="Free Pick & Pack Cost Calculator. Calculate true cost per order including labour, packaging, overhead, and error rate. Compare in-house vs. 3PL fulfilment costs. No login.">
+  <meta property="og:url" content="https://www.logicstiq.com/pick-pack-cost-calculator">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="LogicstIQ.com">
   <meta name="robots" content="index, follow">
@@ -27,8 +27,8 @@
     .badge-bar{text-align:center;padding:12px;background:#FFFFFF;border-bottom:1px solid #E2E8F0;font-size:0.8rem;color:#3A55FF;font-weight:700;letter-spacing:0.5px}
     .hero{max-width:760px;margin:0 auto;padding:48px 24px 32px;text-align:center}
     .hero h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;color:#0F172A;line-height:1.2;margin-bottom:14px}
-    .hero h1 span{display:block;font-size:clamp(1rem,2vw,1.2rem);font-weight:500;color:#475569;margin-top:8px}
-    .hero-sub{color:#475569;font-size:0.9rem;margin-top:16px}
+    .hero h1 span{display:block;font-size:clamp(1rem,2vw,1.15rem);font-weight:500;color:#475569;margin-top:8px}
+    .hero-sub{color:#475569;font-size:0.9rem;margin-top:16px;max-width:620px;margin-left:auto;margin-right:auto}
     .trust-row{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:16px}
     .trust-item{font-size:0.8rem;color:#3A55FF;font-weight:600}
     .trust-item::before{content:"✓ "}
@@ -142,8 +142,8 @@
 <div class="badge-bar">🆓 Free · No Login · Instant Results</div>
 
 <section class="hero">
-  <h1>MOQ Calculator <span>Minimum Order Quantity Analysis — Free Tool</span></h1>
-  <p class="hero-sub">Evaluate whether a supplier's MOQ makes financial sense — or whether the holding cost wipes out the unit price savings. Calculate in seconds.</p>
+  <h1>Pick & Pack Cost Calculator <span>True Cost Per Order — In-House vs. 3PL — Free Tool</span></h1>
+  <p class="hero-sub">Calculate the true cost of fulfilling each order — labour, packaging, overhead, and error rate — so you can price correctly and decide whether to use a 3PL.</p>
   <div class="trust-row">
     <span class="trust-item">No signup needed</span>
     <span class="trust-item">No data stored</span>
@@ -155,27 +155,19 @@
 <section class="calc-section">
   <div class="calc-card">
     <div class="calc-header">
-      <span class="calc-header-icon">🔢</span>
-      <span class="calc-header-title">MOQ Calculator — Free Online Tool</span>
+      <span class="calc-header-icon">📋</span>
+      <span class="calc-header-title">Pick & Pack Cost Calculator — Free Online Tool</span>
     </div>
     <div class="calc-body">
       <div class="field-grid">
-        <div class="field"><label>Supplier MOQ (units)</label><span>Minimum units per order</span><input type="number" id="moq" placeholder="e.g. 500" min="0"></div>
-        <div class="field"><label>Your Monthly Demand (units)</label><span>Average units sold per month</span><input type="number" id="demand" placeholder="e.g. 80" min="0"></div>
-        <div class="field"><label>Unit Cost at MOQ (₹)</label><span>Price per unit at MOQ quantity</span><input type="number" id="moqCost" placeholder="e.g. 220" min="0"></div>
-        <div class="field"><label>Alternative Unit Cost (₹)</label><span>Price per unit at lower quantity</span><input type="number" id="altCost" placeholder="e.g. 260" min="0"></div>
-        <div class="field"><label>Monthly Holding Cost per Unit (₹)</label><span>Warehouse + insurance + capital</span><input type="number" id="holdCost" placeholder="e.g. 8" min="0"></div>
-        <div class="field"><label>Alternative MOQ (units)</label><span>Min order from cheaper alternative</span><input type="number" id="altMoq" placeholder="e.g. 100" min="0"></div>
+        <div class="field"><label>Orders Per Day</label><span>Average daily orders fulfilled</span><input type="number" id="orders" placeholder="e.g. 200" min="1"></div>        <div class="field"><label>Pickers / Packers</label><span>Total staff in fulfilment</span><input type="number" id="staff" placeholder="e.g. 4" min="1"></div>        <div class="field"><label>Hourly Wage per Staff (₹)</label><span>Including PF, ESI, bonuses</span><input type="number" id="wage" placeholder="e.g. 80" min="0"></div>        <div class="field"><label>Shift Hours per Day</label><span>Working hours per shift</span><input type="number" id="hours" placeholder="e.g. 9" min="1" max="24"></div>        <div class="field"><label>Packaging Cost per Order (₹)</label><span>Box, tape, dunnage, labels</span><input type="number" id="packaging" placeholder="e.g. 22" min="0"></div>        <div class="field"><label>Overhead Rate %</label><span>Rent, equipment, WMS, utilities</span><input type="number" id="overhead" placeholder="e.g. 30" min="0" max="100"></div>
       </div>
-      <button class="calc-btn" onclick="runCalc()">Analyse MOQ →</button>
+      <button class="calc-btn" onclick="runCalc()">Calculate Pick & Pack Cost →</button>
       <div class="results" id="results">
         <div class="results-grid">
-          <div class="result-item"><div class="result-label">Months of Stock</div><div class="result-value amber" id="r-mos">—</div><div class="result-sub">MOQ ÷ monthly demand</div></div>
-          <div class="result-item"><div class="result-label">Unit Price Saving</div><div class="result-value green" id="r-ups">—</div><div class="result-sub">vs. alternative per unit</div></div>
-          <div class="result-item"><div class="result-label">Total Holding Cost</div><div class="result-value red" id="r-thc">—</div><div class="result-sub">Excess holding vs. alt MOQ</div></div>
-          <div class="result-item"><div class="result-label">Net Verdict</div><div class="result-value" id="r-verdict">—</div><div class="result-sub">Financial recommendation</div></div>
+          <div class="result-item"><div class="result-label">Labour Per Order</div><div class="result-value" id="r-lpo">—</div><div class="result-sub">Staff cost per order</div></div>          <div class="result-item"><div class="result-label">Packaging Per Order</div><div class="result-value" id="r-ppo">—</div><div class="result-sub">Materials per order</div></div>          <div class="result-item"><div class="result-label">Overhead Per Order</div><div class="result-value amber" id="r-opo">—</div><div class="result-sub">Allocated overhead</div></div>          <div class="result-item"><div class="result-label">Total Cost Per Order</div><div class="result-value red" id="r-total">—</div><div class="result-sub">Full fulfilment cost</div></div>
         </div>
-        <div class="disclaimer">⚠️ <strong>Reference only:</strong> Results are for planning purposes. Validate with your actual costs and demand data before committing to a supplier order.</div>
+        <div class="disclaimer">⚠️ <strong>Reference only:</strong> Results are for planning purposes. Validate with your actual payroll and cost data.</div>
       </div>
     </div>
   </div>
@@ -184,25 +176,25 @@
 <section class="content-section">
 
   <div class="formula-box">
-    <div class="formula-tag">📐 MOQ Viability Formula</div>
-    <div class="formula-expr">Months of Stock = MOQ ÷ Monthly Demand<br>Unit Saving = Alternative Cost − MOQ Cost<br>Total Saving = Unit Saving × MOQ<br>Extra Holding Cost = (MOQ − Alt MOQ) × Monthly Holding × Months<br>Viable if: Total Saving > Extra Holding Cost</div>
+    <div class="formula-tag">📐 Pick & Pack Cost Formula</div>
+    <div class="formula-expr">Daily Labour Cost = Staff × Hours × Hourly Wage<br>Labour Per Order = Daily Labour Cost ÷ Orders Per Day<br>Overhead Per Order = (Labour + Packaging) × Overhead Rate%<br>Total Per Order = Labour + Packaging + Overhead</div>
   </div>
 
-  <div class="section-title">What is the MOQ Calculator?</div>
-  <p class="prose">A <strong>Minimum Order Quantity (MOQ)</strong> is the smallest number of units a supplier will sell in one order. Suppliers set MOQs to cover their production setup costs and ensure orders are profitable for them. For buyers, MOQs create a trade-off: lower unit cost in exchange for buying more stock than you immediately need.</p>
-  <p class="prose">This calculator quantifies that trade-off precisely — comparing the <strong>unit price savings</strong> from the MOQ against the <strong>extra holding cost</strong> of carrying months of excess stock. If savings exceed holding cost, the MOQ is financially viable. If not, the alternative supplier or a smaller order makes more sense.</p>
+  <div class="section-title">What is Pick & Pack Cost?</div>
+  <p class="prose"><strong>Pick & Pack cost</strong> is the total internal cost of processing one customer order — picking the product from a shelf, packing it into a shipping box, labelling it, and handing it over to the carrier. It includes labour, packaging materials, and an allocation of warehouse overhead.</p>
+  <p class="prose">Most Indian businesses dramatically underestimate their pick & pack cost by only counting packaging materials and ignoring the true cost of labour (including PF, ESI) and overhead (warehouse rent, WMS subscription, equipment depreciation). This calculator captures all three components for an accurate cost-per-order that you can compare directly with 3PL quotes.</p>
 
   <div class="example-box">
     <div class="example-tag">📊 Worked Example</div>
-    <p class="ex-p">A Mumbai FMCG brand evaluating a supplier's MOQ of 500 units:</p>
+    <p class="ex-p">A D2C homeware brand processing 200 orders/day with 4 staff:</p>
     <table class="ex-table">
-      <tr class=""><td>Supplier MOQ</td><td>500 units</td></tr>      <tr class=""><td>Monthly demand</td><td>80 units</td></tr>      <tr class=""><td>Months of stock at MOQ</td><td>500 ÷ 80 = 6.25 months</td></tr>      <tr class=""><td>Unit cost at MOQ</td><td>₹220 vs. ₹260 at 100 units (alternative)</td></tr>      <tr class=""><td>Total saving at MOQ</td><td>₹40 × 500 = ₹20,000</td></tr>      <tr class=""><td>Extra holding cost (400 excess units × ₹8 × 5 months)</td><td>₹16,000</td></tr>      <tr class="total"><td>Net saving by buying at MOQ</td><td>₹4,000 ✅ Viable</td></tr>
+      <tr><td>Orders per day</td><td>200</td></tr>      <tr><td>Staff (4 pickers/packers × ₹80/hr × 9 hrs)</td><td>₹2,880/day</td></tr>      <tr><td>Labour per order</td><td>₹2,880 ÷ 200 = ₹14.40</td></tr>      <tr><td>Packaging per order (box + tape + label)</td><td>₹22</td></tr>      <tr><td>Overhead (30% of labour + packaging)</td><td>₹10.92</td></tr>      <tr class="total"><td>Total pick & pack cost per order</td><td>₹47.32</td></tr>
     </table>
   </div>
 
   <div class="section-title">Why This Calculator Matters</div>
   <div class="why-grid">
-    <div class="why-card"><h4>Avoid the MOQ Trap</h4><p>Buying 6 months of stock to save ₹5 per unit often costs more in holding cost than the saving. This calculator quantifies that trade-off before you commit.</p></div>    <div class="why-card"><h4>Supplier Negotiation</h4><p>Use the analysis to negotiate. Show the supplier that their MOQ creates ₹X in holding cost for you — and ask for a lower MOQ or a better price at a smaller quantity.</p></div>    <div class="why-card"><h4>Cash Flow Planning</h4><p>MOQ orders lock up working capital for months. Knowing the payback period helps decide whether to finance the order via bank OD or negotiate extended payment terms.</p></div>    <div class="why-card"><h4>India Sourcing Context</h4><p>Common in Indian manufacturing — textiles (Surat, Tiruppur), electronics (Shenzhen imports via JNPT), and FMCG packaging. MOQ analysis is essential before every bulk purchase order.</p></div>
+    <div class="why-card"><h4>3PL vs. In-House Decision</h4><p>Calculate your true in-house cost here, then compare with 3PL fulfilment quotes. If a 3PL quotes ₹55/order and your in-house cost is ₹47, the ₹8 difference may be worth paying for flexibility and reduced management complexity.</p></div>    <div class="why-card"><h4>True Margin Per Order</h4><p>Add pick & pack cost to courier cost and packaging to get total fulfilment cost per order. Subtract from gross profit to see true per-order contribution margin. Many businesses are shocked to find orders below a certain value are unprofitable.</p></div>    <div class="why-card"><h4>Scale Planning</h4><p>As volume grows, labour productivity improves (more orders per staff hour). This calculator helps you model the cost per order at 2x, 5x, 10x your current volume to understand when you achieve fulfilment economies of scale.</p></div>    <div class="why-card"><h4>Minimum Order Value</h4><p>Use total fulfilment cost to set minimum order value for free shipping. If your total fulfilment cost is ₹80 per order, a product selling for ₹299 with 40% gross margin (₹120 gross profit) leaves only ₹40 after fulfilment — before marketing.</p></div>
   </div>
 
   <div class="ai-cta">
@@ -216,12 +208,12 @@
   </div>
 
   <div class="section-title">Frequently Asked Questions</div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the difference between MOQ and EOQ?</div><div class="faq-a">MOQ is set by the supplier — the minimum they will sell you. EOQ is calculated by you — the optimal order quantity that minimises your total inventory cost (ordering + holding). A smart buying strategy considers both: start with EOQ to understand your optimal quantity, then negotiate with the supplier to get as close to EOQ as possible within their MOQ constraints.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What should I include in monthly holding cost per unit?</div><div class="faq-a">Monthly holding cost per unit = (warehouse rent allocation + insurance + capital cost) ÷ average units stored. A rough rule of thumb: 2% of unit cost per month for ambient storage in India (24% annually). For cold storage, 3–4% per month. Include the cost of capital — if you are financing inventory via bank OD at 12% annually, that is 1% per month of the unit cost.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What if I cannot meet the MOQ alone?</div><div class="faq-a">Consider collaborative buying — pooling your MOQ requirement with a complementary business (different geography or different customer base). This is common in the Indian FMCG distribution network. Some platforms like IndiaMart and TradeIndia facilitate group buying from manufacturers.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I negotiate a lower MOQ with an Indian supplier?</div><div class="faq-a">Share your volume projection for the next 12 months. Offer longer payment terms or advance payment in exchange for a lower MOQ. Agree to a pilot order at a slightly higher per-unit price — prove the demand, then commit to larger quantities. Most Indian manufacturers are willing to negotiate MOQ for reliable buyers.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What overhead costs should I include?</div><div class="faq-a">Warehouse rent (allocated to fulfilment area), equipment depreciation (conveyor belts, trolleys, scanners), WMS or OMS software subscription, electricity and utilities in the fulfilment area, quality control costs, and supervisor salary. A common approach: total monthly overhead ÷ monthly orders = overhead per order.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is a benchmark pick & pack cost in India?</div><div class="faq-a">Manual warehouse without automation: ₹25–60 per order. Semi-automated with conveyors: ₹18–35 per order. 3PL fulfilment centres: ₹40–80 per order (includes their margin). High-SKU complexity or large heavy items can reach ₹80–150 per order. The benchmark varies significantly with order volume — higher volume lowers per-order cost.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Should I include error cost in pick & pack calculation?</div><div class="faq-a">Yes for advanced analysis. If your pick accuracy is 98% (2% error rate) and each picking error costs ₹200 to resolve (return, reship, customer service), add ₹4 per order (2% × ₹200) as an error provision. Poor pick accuracy is a hidden cost that inflates effective fulfilment cost significantly.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">At what volume does outsourcing to a 3PL make sense?</div><div class="faq-a">Generally below 100 orders/day, in-house fulfilment is difficult to run cost-efficiently — fixed costs (warehouse, staff) are too high relative to volume. Above 500 orders/day, in-house fulfilment often becomes more cost-effective than 3PL. Between 100–500 orders/day is the decision zone where this calculator helps make the comparison objectively.</div></div>
 
   <div style="margin-top:32px">
     <div class="section-title">Related Free Calculators</div>
     <div class="related-grid">
-      <a href="https://www.logicstiq.com/eoq-calculator" class="related-card"><span class="related-search">2,400/mo searches</span><span class="related-name">📦 EOQ Calculator</span></a>      <a href="https://www.logicstiq.com/carrying-cost-calculator" class="related-card"><span class="related-search">590/mo searches</span><span class="related-name">💰 Carrying Cost Calculator</span></a>      <a href="https://www.logicstiq.com/dead-stock-calculator" class="related-card"><span class="related-search">480/mo searches</span><span class="related-name">📉 Dead Stock Calculator</span></a>      <a href="https://www.logicstiq.com/working-capital-calculator" class="related-card"><span class="related-search">1,300/mo searches</span><span class="related-name">📊 Working Capital</span></a>
+      <a href="https://www.logicstiq.com/shipping-cost-per-unit-calculator" class="related-card"><span class="related-search">960/mo searches</span><span class="related-name">📬 Shipping Cost Per Unit</span></a>      <a href="https://www.logicstiq.com/warehouse-space-calculator" class="related-card"><span class="related-search">720/mo searches</span><span class="related-name">🏭 Warehouse Space Calculator</span></a>      <a href="https://www.logicstiq.com/freight-cost-calculator" class="related-card"><span class="related-search">1,300/mo searches</span><span class="related-name">🚛 Freight Cost Calculator</span></a>      <a href="https://www.logicstiq.com/break-even-calculator" class="related-card"><span class="related-search">3,600/mo searches</span><span class="related-name">⚖️ Break-Even Calculator</span></a>
     </div>
   </div>
 
@@ -238,33 +230,27 @@
     Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a>
   </p>
 </footer>
-
 <script>function toggleFaq(el){el.closest('.faq-item').classList.toggle('open');}</script>
 <script>function runCalc(){
-  const moq=parseFloat(document.getElementById('moq').value)||0;
-  const dem=parseFloat(document.getElementById('demand').value)||0;
-  const mc=parseFloat(document.getElementById('moqCost').value)||0;
-  const ac=parseFloat(document.getElementById('altCost').value)||0;
-  const hc=parseFloat(document.getElementById('holdCost').value)||0;
-  const am=parseFloat(document.getElementById('altMoq').value)||0;
-  if(!moq||!dem||!mc){alert('Please enter MOQ, Monthly Demand, and Unit Cost at MOQ.');return;}
-  const months=(moq/dem).toFixed(1);
-  const unitSaving=ac>0?ac-mc:0;
-  const totalSaving=unitSaving*moq;
-  const excessUnits=am>0?Math.max(0,moq-am):moq*0.8;
-  const extraHolding=hc>0?excessUnits*hc*parseFloat(months):0;
-  const net=totalSaving-extraHolding;
-  let verdict='—';
-  if(ac>0&&hc>0){verdict=net>2000?'✅ Viable':(net>0?'⚠️ Marginal':'❌ Not Viable');}
-  const fmt=v=>'₹'+Math.round(v).toLocaleString('en-IN');
-  document.getElementById('r-mos').textContent=months+' months';
-  document.getElementById('r-ups').textContent=unitSaving>0?fmt(unitSaving)+'/unit':'Enter alt cost';
-  document.getElementById('r-thc').textContent=extraHolding>0?fmt(extraHolding):'Enter holding cost';
-  document.getElementById('r-verdict').textContent=verdict;
-  document.getElementById('r-verdict').className='result-value '+(net>2000?'green':(net>0?'amber':'red'));
+  const orders=parseFloat(document.getElementById('orders').value)||0;
+  const staff=parseFloat(document.getElementById('staff').value)||0;
+  const wage=parseFloat(document.getElementById('wage').value)||0;
+  const hours=parseFloat(document.getElementById('hours').value)||0;
+  const pkg=parseFloat(document.getElementById('packaging').value)||0;
+  const ovh=parseFloat(document.getElementById('overhead').value)||0;
+  if(!orders||!staff||!wage||!hours){alert('Please enter Orders Per Day, Staff, Wage, and Shift Hours.');return;}
+  const daily_labour=staff*hours*wage;
+  const lpo=daily_labour/orders;
+  const ppo=pkg;
+  const opo=(lpo+ppo)*(ovh/100);
+  const total=lpo+ppo+opo;
+  const fmt=v=>'₹'+v.toFixed(2);
+  document.getElementById('r-lpo').textContent=fmt(lpo);
+  document.getElementById('r-ppo').textContent=fmt(ppo);
+  document.getElementById('r-opo').textContent=fmt(opo);
+  document.getElementById('r-total').textContent=fmt(total);
   document.getElementById('results').classList.add('show');
 }</script>
-
 <script>
 (function(){var r=document.documentElement;
 function lbl(){var b=document.getElementById('liqTheme');if(b)b.textContent=r.getAttribute('data-theme')==='dark'?'☀️':'🌙';}

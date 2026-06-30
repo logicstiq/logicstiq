@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -8,11 +8,11 @@
 <meta name="keywords" content="inventory turnover ratio, inventory turnover formula, how to calculate inventory turnover, stock turnover ratio, inventory turnover calculator free, inventory turnover India, days inventory outstanding, stock rotation">
 <link rel="canonical" href="https://logicstiq.com/blog/inventory-turnover-formula.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Inventory Turnover Ratio — Formula, Calculation & Free Calculator","author":{"@type":"Person","name":"Sachin Sirwani","url":"https://www.linkedin.com/in/sachin-s-0b1179162"},"publisher":{"@type":"Organization","name":"LogicstIQ","url":"https://logicstiq.com"},"datePublished":"2025-07-01","dateModified":"2025-07-01"}</script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&family=Wix+Madefor+Display:wght@600;700;800&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#F4F7FF;--white:#FFFFFF;--border:#E2E8F0;--b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b600:#2563EB;--b700:#1D4ED8;--b900:#1E3A8A;--green:#059669;--amber:#D97706;--alight:#FEF3C7;--red:#DC2626;--rlight:#FEE2E2;--text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8;}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:16px}
+:root{--bg:#F4F7FF;--white:#FFFFFF;--border:#E2E8F0;--b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b600:#3A55FF;--b700:#2A40D6;--b900:#1C2C73;--green:#059669;--amber:#D97706;--alight:#FEF3C7;--red:#DC2626;--rlight:#FEE2E2;--text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8;}
+body{font-family:'Wix Madefor Text','Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:16px}
 .nav{background:#fff;border-bottom:1px solid var(--border);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .nav-logo{font-size:18px;font-weight:900;text-decoration:none;display:flex;align-items:center}
 .nav-back{font-size:13px;font-weight:600;color:var(--b600);text-decoration:none}
@@ -81,19 +81,40 @@ footer{background:#0F172A;padding:32px;text-align:center;color:#64748B;font-size
 footer a{color:#A7F3D0;text-decoration:none;font-weight:600}
 @media(max-width:600px){.wrap{padding:32px 16px 48px}.hero{padding:40px 20px 36px}}
 </style>
+<style id="liq-theme-css">
+.liq-theme-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--white);color:var(--text);font-size:15px;line-height:1;cursor:pointer;display:inline-grid;place-items:center;transition:.18s;margin-left:4px}
+.liq-theme-btn:hover{border-color:#3A55FF;transform:translateY(-1px)}
+.liq-theme-float{position:fixed;right:18px;bottom:18px;z-index:99999;width:44px;height:44px;border-radius:50%;box-shadow:0 8px 22px rgba(0,0,0,.28)}
+[data-theme="dark"]{
+  --bg:#070708;--white:#10131F;--border:rgba(255,255,255,.10);--border2:rgba(255,255,255,.17);
+  --b50:rgba(58,85,255,.12);--b100:rgba(58,85,255,.20);--b200:rgba(58,85,255,.32);
+  --text:#F1F5FF;--text2:#DBE3F5;--text3:#A7B0CC;--text4:#7E88A8;
+  --glight:rgba(16,185,129,.16);--rlight:rgba(239,68,68,.16);--alight:rgba(245,158,11,.16);--plight:rgba(119,11,255,.18);
+}
+[data-theme="dark"] body{background:#070708}
+[data-theme="dark"] .nav{background:rgba(9,10,18,.92)!important;border-bottom-color:rgba(255,255,255,.08)}
+[data-theme="dark"] .liq-theme-btn{background:rgba(255,255,255,.06)}
+[data-theme="dark"] .nav-logo text tspan:first-child{fill:#FFFFFF}
+[data-theme="dark"] .nav-logo span{color:#7D92FF!important}
+[data-theme="dark"] .card,[data-theme="dark"] .why-card,[data-theme="dark"] .results,[data-theme="dark"] .result-item,[data-theme="dark"] .related-card,[data-theme="dark"] .calc-card,[data-theme="dark"] .badge-bar,[data-theme="dark"] .result-stat,[data-theme="dark"] .f-var,[data-theme="dark"] .formula-var,[data-theme="dark"] .breakdown-item,[data-theme="dark"] .safety-card,[data-theme="dark"] .modal-card,[data-theme="dark"] .legal-note,[data-theme="dark"] .tab,[data-theme="dark"] .faq-q,[data-theme="dark"] .faq-item{background:#10131F!important;border-color:rgba(255,255,255,.12)!important}
+[data-theme="dark"] .formula-box,[data-theme="dark"] .example-box,[data-theme="dark"] .faq-a{background:#0C0F1A!important;border-color:rgba(255,255,255,.10)!important}
+[data-theme="dark"] table th{background:rgba(255,255,255,.05)!important;color:#CFD8EE!important}
+[data-theme="dark"] table td,[data-theme="dark"] table th{border-color:rgba(255,255,255,.08)!important}
+[data-theme="dark"] .section-eyebrow,[data-theme="dark"] .calc-tag,[data-theme="dark"] .blog-cat,[data-theme="dark"] .calc-cat{background:rgba(58,85,255,.14)!important;border-color:rgba(58,85,255,.32)!important;color:#AEBCFF!important}
+</style>
 </head>
 <body>
 <nav class="nav">
   <a href="/" class="nav-logo" aria-label="LogicstIQ — Home" style="display:inline-flex;flex-direction:column;align-items:flex-start;text-decoration:none;line-height:1;gap:3px">
     <svg width="150" height="36" viewBox="0 0 260 68" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block">
-      <defs><linearGradient id="navlogo_g" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1D4ED8"/><stop offset="100%" stop-color="#60A5FA"/></linearGradient></defs>
+      <defs><linearGradient id="navlogo_g" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#2A40D6"/><stop offset="100%" stop-color="#7A92FF"/></linearGradient></defs>
       <path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#navlogo_g)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <path d="M59 8 L66 14 L59 20" stroke="#60A5FA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <circle cx="32" cy="50" r="3.5" fill="#1D4ED8"/>
-      <circle cx="50" cy="14" r="3.5" fill="#60A5FA"/>
-      <text x="82" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5"><tspan fill="#0F172A">Logicst</tspan><tspan fill="#2563EB">IQ</tspan></text>
+      <path d="M59 8 L66 14 L59 20" stroke="#7A92FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="32" cy="50" r="3.5" fill="#2A40D6"/>
+      <circle cx="50" cy="14" r="3.5" fill="#7A92FF"/>
+      <text x="82" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5"><tspan fill="#0F172A">Logicst</tspan><tspan fill="#3A55FF">IQ</tspan></text>
     </svg>
-    <span style="font-size:9px;font-weight:600;color:#2563EB;letter-spacing:.05em;white-space:nowrap">Where Logistics Meets Intelligence</span>
+    <span style="font-size:9px;font-weight:600;color:#3A55FF;letter-spacing:.05em;white-space:nowrap">Where Logistics Meets Intelligence</span>
   </a>
   <a href="https://logicstiq.com" class="nav-back">← Back to Tools</a>
 </nav>
@@ -290,5 +311,19 @@ footer a{color:#A7F3D0;text-decoration:none;font-weight:600}
   <p>© 2025 <a href="https://logicstiq.com">LogicstIQ.com</a> · Free Supply Chain Calculators + AI Demand Planner · No Login · Free Forever · Where Logistics Meets Intelligence</p>
   <p style="margin-top:8px">Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> & <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a></p>
 </footer>
+<script>
+(function(){var r=document.documentElement;
+function lbl(){var b=document.getElementById('liqTheme');if(b)b.textContent=r.getAttribute('data-theme')==='dark'?'☀️':'🌙';}
+function set(t){r.setAttribute('data-theme',t);lbl();try{localStorage.setItem('liq-theme',t)}catch(e){}}
+try{var sv=localStorage.getItem('liq-theme');if(sv)r.setAttribute('data-theme',sv);}catch(e){}
+var btn=document.createElement('button');btn.id='liqTheme';btn.type='button';btn.className='liq-theme-btn';
+btn.setAttribute('aria-label','Toggle light or dark mode');btn.title='Toggle light / dark';btn.textContent='🌙';
+btn.addEventListener('click',function(){set(r.getAttribute('data-theme')==='dark'?'light':'dark');});
+function place(){var nav=document.querySelector('.nav');
+ if(nav){var cta=nav.querySelector('.nav-cta');if(cta&&cta.parentNode){cta.parentNode.insertBefore(btn,cta);}
+   else{var l=nav.querySelector('.nav-links');(l||nav).appendChild(btn);}}
+ else{btn.classList.add('liq-theme-float');document.body.appendChild(btn);}lbl();}
+if(document.readyState!=='loading')place();else document.addEventListener('DOMContentLoaded',place);})();
+</script>
 </body>
 </html>
