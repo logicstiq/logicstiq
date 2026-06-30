@@ -12,7 +12,7 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
 .topbar{background:var(--card);border-bottom:1px solid var(--line);padding:14px 22px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:20}
-.brand{display:flex;flex-direction:column;line-height:1.05}
+.brand{display:flex;flex-direction:column;line-height:1.05;text-decoration:none;color:inherit;cursor:pointer}
 .brand b{font-size:20px;color:var(--navy)}.brand b span{color:var(--blue)}
 .brand small{font-size:10px;color:var(--blue);letter-spacing:.5px;text-transform:uppercase;font-weight:600}
 .guidebtn{margin-left:auto;font-size:12.5px;background:var(--navy);color:#fff;border:none;padding:8px 14px;border-radius:30px;font-weight:700;cursor:pointer}
@@ -121,7 +121,7 @@ table.lines tbody tr:nth-child(even){background:#fafbfe}
 </head>
 <body>
 <div class="topbar">
-  <div class="brand"><b>Logicst<span>IQ</span></b><small>Where Logistics Meets Intelligence</small></div>
+  <a class="brand" href="/" title="Back to LogicstIQ home"><b>Logicst<span>IQ</span></b><small>Where Logistics Meets Intelligence</small></a>
   <button class="guidebtn" id="guideOpen">📋 EXIM Guide — what to file & where</button>
   <div class="pill">🔒 No login · Nothing stored</div>
 </div>
