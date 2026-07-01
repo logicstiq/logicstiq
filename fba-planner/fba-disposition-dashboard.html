@@ -72,6 +72,10 @@
   .banner{background:#16202f;border:1px solid #24344a;border-radius:10px;padding:12px 14px;font-size:12.5px;color:#bcd0ec;margin-bottom:18px;line-height:1.55}
   .banner b{color:#dfeaff}
   .empty{color:var(--muted);text-align:center;padding:40px 10px;font-size:14px}
+/* ---- light mode ---- */
+:root[data-theme="light"]{--bg:#f4f7ff;--panel:#ffffff;--panel2:#eef2fb;--line:#dbe3ef;--text:#0b1430;--muted:#5d6a92;}
+:root[data-theme="light"] .stk,:root[data-theme="light"] .bar{background:#e6ebf5;}
+:root[data-theme="light"] th{background:#eef2fb;}
 </style>
 </head>
 <body>
@@ -324,6 +328,14 @@ document.getElementById("lsearch").oninput=lApply;
 document.getElementById("lcountry").onchange=lApply;
 document.getElementById("lstatus").onchange=lApply;
 document.getElementById("dlLedger").onclick=()=>dl("inventory-by-country_"+stamp()+".csv",ledgerCSV());
+</script>
+<script>
+(function(){
+  function apply(t){document.documentElement.setAttribute("data-theme",(t==="light")?"light":"dark");}
+  var t="dark";try{var s=localStorage.getItem("liq-theme");if(s==="light"||s==="dark")t=s;}catch(e){}
+  apply(t);
+  window.addEventListener("message",function(e){var d=e&&e.data;if(d&&d.liqTheme){apply(d.liqTheme);try{localStorage.setItem("liq-theme",d.liqTheme);}catch(_){}}});
+})();
 </script>
 </body>
 </html>

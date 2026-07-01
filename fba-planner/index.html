@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,19 +11,32 @@
     --bg:#0f1115; --panel:#171a21; --panel2:#1d212b; --line:#2a2f3a;
     --text:#e8eaed; --muted:#9aa3b2; --accent:#4c8bf5; --accent2:#34d399;
   }
+  /* ---- light mode ---- */
+  :root[data-theme="light"]{
+    --bg:#f4f7ff; --panel:#ffffff; --panel2:#eef2fb; --line:#dbe3ef;
+    --text:#0b1430; --muted:#5d6a92;
+  }
   *{box-sizing:border-box}
   html,body{height:100%}
   body{margin:0;background:var(--bg);color:var(--text);
     font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    display:flex;flex-direction:column;min-height:100vh}
+    display:flex;flex-direction:column;min-height:100vh;transition:background .25s,color .25s}
 
   /* ---- header / tab bar ---- */
   header.shell{background:var(--panel);border-bottom:1px solid var(--line);
-    padding:14px 22px 0;position:sticky;top:0;z-index:20}
-  .shell-top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
-  .shell-top h1{font-size:19px;margin:0;font-weight:700}
-  .shell-top .brand{color:var(--accent);font-weight:700}
-  .shell-top .tagline{color:var(--muted);font-size:12.5px}
+    padding:12px 22px 0;position:sticky;top:0;z-index:20;transition:background .25s,border-color .25s}
+  .shell-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+  .liq-logo{display:inline-flex;align-items:center;text-decoration:none;line-height:1;flex-shrink:0}
+  .liq-logo svg{display:block}
+  .liq-word{fill:var(--text);transition:fill .25s}
+  .shell-title{font-size:15px;font-weight:700;color:var(--text)}
+  .shell-title .sep{color:var(--muted);margin:0 8px;font-weight:400}
+  .shell-title .tagline{color:var(--muted);font-size:12px;font-weight:400}
+  .spacer{flex:1}
+  .theme-btn{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);
+    background:var(--panel2);color:var(--text);font-size:16px;cursor:pointer;line-height:1;
+    display:inline-grid;place-items:center;transition:.15s;flex-shrink:0}
+  .theme-btn:hover{border-color:var(--accent)}
   .shell-tabs{display:flex;gap:6px}
   .shell-tabs button{background:transparent;border:0;border-bottom:2px solid transparent;
     color:var(--muted);padding:11px 20px;font-size:14.5px;font-weight:600;cursor:pointer;
@@ -38,18 +51,35 @@
   .frames iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:var(--bg)}
   .frames iframe.hidden{display:none}
 
-  @media(max-width:620px){
+  @media(max-width:640px){
     .shell-tabs button{padding:10px 12px;font-size:13.5px}
-    .shell-tabs button .desc{display:none}
-    .shell-top h1{font-size:17px}
+    .shell-tabs button .desc,.shell-title .tagline{display:none}
+    .liq-logo svg{width:120px;height:auto}
   }
 </style>
 </head>
 <body>
   <header class="shell">
     <div class="shell-top">
-      <h1>📦 <span class="brand">FBA Planner</span></h1>
-      <span class="tagline">Demand planning &amp; inventory status · runs entirely in your browser · nothing stored</span>
+      <a href="/" class="liq-logo" aria-label="LogicstIQ — back to home" title="Back to LogicstIQ home">
+        <svg width="150" height="34" viewBox="0 0 260 68" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="liq_g" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#2A40D6"/><stop offset="100%" stop-color="#7A92FF"/>
+            </linearGradient>
+          </defs>
+          <path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#liq_g)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M59 8 L66 14 L59 20" stroke="#7A92FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="32" cy="50" r="3.5" fill="#2A40D6"/>
+          <circle cx="50" cy="14" r="3.5" fill="#7A92FF"/>
+          <text x="82" y="35" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5">
+            <tspan class="liq-word">Logicst</tspan><tspan fill="#3A55FF">IQ</tspan>
+          </text>
+        </svg>
+      </a>
+      <span class="shell-title">📦 FBA Planner <span class="tagline">· runs in your browser · nothing stored</span></span>
+      <span class="spacer"></span>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle light or dark mode" title="Toggle light / dark">🌙</button>
     </div>
     <nav class="shell-tabs" id="shellTabs">
       <button data-frame="framePlanner" class="on">📈 FBA Planner <span class="desc">Demand planning &amp; forecasting</span></button>
@@ -67,23 +97,41 @@
 <script>
 "use strict";
 (function(){
-  var tabs = document.querySelectorAll("#shellTabs button");
-  var frames = {
-    framePlanner: document.getElementById("framePlanner"),
-    frameDisposition: document.getElementById("frameDisposition")
-  };
-  function show(id){
-    // lazy-load a frame the first time it is opened
-    var f = frames[id];
-    if(f && !f.getAttribute("src") && f.dataset.src){ f.setAttribute("src", f.dataset.src); }
-    Object.keys(frames).forEach(function(k){
-      frames[k].classList.toggle("hidden", k !== id);
-    });
-    tabs.forEach(function(b){ b.classList.toggle("on", b.dataset.frame === id); });
+  /* ---- theme (shared with the main site via localStorage key 'liq-theme') ---- */
+  var root=document.documentElement, btn=document.getElementById("themeBtn");
+  var frames=[document.getElementById("framePlanner"), document.getElementById("frameDisposition")];
+  function currentTheme(){
+    try{var s=localStorage.getItem("liq-theme"); if(s==="light"||s==="dark") return s;}catch(e){}
+    return "dark";
   }
-  tabs.forEach(function(b){
-    b.addEventListener("click", function(){ show(b.dataset.frame); });
+  function pushToFrames(t){
+    frames.forEach(function(f){ try{ if(f.contentWindow) f.contentWindow.postMessage({liqTheme:t},"*"); }catch(e){} });
+  }
+  function setTheme(t){
+    root.setAttribute("data-theme", t);
+    if(btn) btn.textContent = (t==="dark") ? "🌙" : "☀️";
+    try{ localStorage.setItem("liq-theme", t); }catch(e){}
+    pushToFrames(t);
+  }
+  setTheme(currentTheme());
+  if(btn) btn.addEventListener("click", function(){
+    setTheme(root.getAttribute("data-theme")==="dark" ? "light" : "dark");
   });
+  // when a frame finishes loading, make sure it matches the current theme
+  frames.forEach(function(f){ f.addEventListener("load", function(){
+    try{ f.contentWindow.postMessage({liqTheme: root.getAttribute("data-theme")},"*"); }catch(e){}
+  }); });
+
+  /* ---- tab switching ---- */
+  var tabs=document.querySelectorAll("#shellTabs button");
+  var byId={framePlanner:frames[0], frameDisposition:frames[1]};
+  function show(id){
+    var f=byId[id];
+    if(f && !f.getAttribute("src") && f.dataset.src){ f.setAttribute("src", f.dataset.src); }
+    Object.keys(byId).forEach(function(k){ byId[k].classList.toggle("hidden", k!==id); });
+    tabs.forEach(function(b){ b.classList.toggle("on", b.dataset.frame===id); });
+  }
+  tabs.forEach(function(b){ b.addEventListener("click", function(){ show(b.dataset.frame); }); });
 })();
 </script>
 </body>

@@ -68,7 +68,11 @@
   .legend b{color:var(--text);font-weight:600}
   footer{color:var(--grey);font-size:11px;text-align:center;margin:24px 0 8px}
   .err{color:var(--red);font-size:13px;margin-top:8px}
+/* ---- light mode ---- */
+:root[data-theme="light"]{--bg:#f4f7ff;--panel:#ffffff;--panel2:#eef2fb;--line:#dbe3ef;--text:#0b1430;--muted:#5d6a92;}
+:root[data-theme="light"] th{background:#eef2fb;}
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -80,15 +84,15 @@
     <h2>Step 1 · Upload your reports</h2>
     <div class="grid2">
       <label class="drop" id="dropRestock">
-        <input type="file" accept=".csv" id="fileRestock">
+        <input type="file" accept=".csv,.tsv,.txt,.xlsx,.xls" id="fileRestock">
         <div class="tag">📈 Restock Inventory report <span style="color:var(--red)">(required)</span></div>
-        <div class="hint">Seller Central → Inventory → Inventory Planning → Restock Inventory. Contains sales velocity &amp; Amazon's recommendations.</div>
+        <div class="hint">Seller Central → Inventory → Inventory Planning → Restock Inventory. Contains sales velocity &amp; Amazon's recommendations. Accepts Excel (.xlsx / .xls) or CSV / TSV — no conversion needed.</div>
         <div class="fname" id="nameRestock"></div>
       </label>
       <label class="drop" id="dropInv">
-        <input type="file" accept=".csv" id="fileInv">
+        <input type="file" accept=".csv,.tsv,.txt,.xlsx,.xls" id="fileInv">
         <div class="tag">🏷️ FBA Inventory snapshot <span style="color:var(--muted)">(optional)</span></div>
-        <div class="hint">Manage FBA Inventory / Amazon Fulfilled Inventory report. Adds reserved, unsellable &amp; price detail.</div>
+        <div class="hint">Manage FBA Inventory / Amazon Fulfilled Inventory report. Adds reserved, unsellable &amp; price detail. Excel or CSV — no conversion needed.</div>
         <div class="fname" id="nameInv"></div>
       </label>
     </div>
@@ -199,6 +203,9 @@
 /* ---------- robust CSV parser (handles quotes, commas, newlines) ---------- */
 function parseCSV(text){
   text = text.replace(/^﻿/, ""); // strip BOM
+  // auto-detect delimiter (comma vs tab) from the first non-empty line
+  const firstLine=(text.split(/\r?\n/).find(l=>l.trim())||"");
+  const D=((firstLine.split("\t").length-1) > (firstLine.split(",").length-1)) ? "\t" : ",";
   const rows=[]; let row=[], field="", i=0, inQ=false;
   while(i<text.length){
     const c=text[i];
@@ -207,7 +214,7 @@ function parseCSV(text){
       field+=c;i++;continue;
     }
     if(c==='"'){inQ=true;i++;continue;}
-    if(c===','){row.push(field);field="";i++;continue;}
+    if(c===D){row.push(field);field="";i++;continue;}
     if(c==='\r'){i++;continue;}
     if(c==='\n'){row.push(field);rows.push(row);row=[];field="";i++;continue;}
     field+=c;i++;
@@ -247,10 +254,23 @@ const ST={restock:null,inventory:null,result:null};
 function wireDrop(dropId,inputId,nameId,kind){
   const drop=document.getElementById(dropId), input=document.getElementById(inputId), nm=document.getElementById(nameId);
   const handle=file=>{
+    const nm2=file.name.toLowerCase();
+    const isExcel=nm2.endsWith(".xlsx")||nm2.endsWith(".xls");
     const reader=new FileReader();
     reader.onload=e=>{
       let rows;
-      try{ rows=parseCSV(e.target.result); }catch(err){ showErr("Could not parse "+file.name); return; }
+      try{
+        if(isExcel){
+          if(typeof XLSX==="undefined"){ showErr("Excel reader is still loading — try again in a moment, or upload a CSV."); return; }
+          const wb=XLSX.read(new Uint8Array(e.target.result),{type:"array"});
+          const names=wb.SheetNames, kw=["restock","inventory","stock","report","data"];
+          let sn=names[0];
+          for(const k of kw){ const m=names.find(x=>x.toLowerCase().includes(k)); if(m){ sn=m; break; } }
+          rows=parseCSV(XLSX.utils.sheet_to_csv(wb.Sheets[sn],{blankrows:false}));
+        } else {
+          rows=parseCSV(e.target.result);
+        }
+      }catch(err){ showErr("Could not read "+file.name+": "+err.message); return; }
       const type=detect(rows);
       if(kind==="restock" && type!=="restock"){ showErr('"'+file.name+'" doesn\'t look like a Restock Inventory report (missing "Units Sold Last 30 Days").'); return; }
       if(kind==="inventory" && type!=="inventory"){ showErr('"'+file.name+'" doesn\'t look like an FBA Inventory snapshot (missing "afn-fulfillable-quantity").'); return; }
@@ -260,7 +280,7 @@ function wireDrop(dropId,inputId,nameId,kind){
       drop.classList.add("loaded");
       refreshRunState();
     };
-    reader.readAsText(file);
+    if(isExcel) reader.readAsArrayBuffer(file); else reader.readAsText(file);
   };
   input.addEventListener("change",e=>{ if(e.target.files[0]) handle(e.target.files[0]); });
   ["dragenter","dragover"].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add("over");}));
@@ -500,6 +520,14 @@ document.getElementById("dlReorder").onclick=()=>{
   const r=ST.result.rows.filter(x=>x.status==="Out of stock"||x.status==="Reorder now"||x.status==="Low stock"||x.recQty>0);
   download("reorder-list_"+stamp()+".csv",toCSV(r));
 };
+</script>
+<script>
+(function(){
+  function apply(t){document.documentElement.setAttribute("data-theme",(t==="light")?"light":"dark");}
+  var t="dark";try{var s=localStorage.getItem("liq-theme");if(s==="light"||s==="dark")t=s;}catch(e){}
+  apply(t);
+  window.addEventListener("message",function(e){var d=e&&e.data;if(d&&d.liqTheme){apply(d.liqTheme);try{localStorage.setItem("liq-theme",d.liqTheme);}catch(_){}}});
+})();
 </script>
 </body>
 </html>
