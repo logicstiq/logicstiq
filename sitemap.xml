@@ -47,4 +47,28 @@
 
   <url><loc>https://www.logicstiq.com/fba-disposition</loc><priority>0.9</priority></url>
   <url><loc>https://www.logicstiq.com/documents-generator.html</loc><priority>0.8</priority></url>
+  <url>
+    <loc>https://www.logicstiq.com/big-billion-days-inventory-plan</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.logicstiq.com/fba-restock-before-big-billion-days</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.logicstiq.com/quick-commerce-replenishment-blinkit-zepto</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.logicstiq.com/cut-dead-stock-free-working-capital</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
