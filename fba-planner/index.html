@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FBA Planner — Demand Planning &amp; Inventory Status | LogicstIQ</title>
+<meta name="description" content="Amazon FBA Planner: demand planning &amp; forecasting plus fulfillable vs unfulfillable inventory status — two tools, one page. Runs entirely in your browser, nothing stored.">
+<meta name="robots" content="index, follow">
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a21; --panel2:#1d212b; --line:#2a2f3a;
+    --text:#e8eaed; --muted:#9aa3b2; --accent:#4c8bf5; --accent2:#34d399;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex;flex-direction:column;min-height:100vh}
+
+  /* ---- header / tab bar ---- */
+  header.shell{background:var(--panel);border-bottom:1px solid var(--line);
+    padding:14px 22px 0;position:sticky;top:0;z-index:20}
+  .shell-top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+  .shell-top h1{font-size:19px;margin:0;font-weight:700}
+  .shell-top .brand{color:var(--accent);font-weight:700}
+  .shell-top .tagline{color:var(--muted);font-size:12.5px}
+  .shell-tabs{display:flex;gap:6px}
+  .shell-tabs button{background:transparent;border:0;border-bottom:2px solid transparent;
+    color:var(--muted);padding:11px 20px;font-size:14.5px;font-weight:600;cursor:pointer;
+    font-family:inherit;display:flex;align-items:center;gap:8px;transition:.15s}
+  .shell-tabs button:hover{color:var(--text)}
+  .shell-tabs button.on{color:var(--text);border-bottom-color:var(--accent)}
+  .shell-tabs button .desc{color:var(--muted);font-weight:400;font-size:11.5px}
+  .shell-tabs button.on .desc{color:var(--accent2)}
+
+  /* ---- frame area ---- */
+  .frames{flex:1;position:relative;min-height:0}
+  .frames iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:var(--bg)}
+  .frames iframe.hidden{display:none}
+
+  @media(max-width:620px){
+    .shell-tabs button{padding:10px 12px;font-size:13.5px}
+    .shell-tabs button .desc{display:none}
+    .shell-top h1{font-size:17px}
+  }
+</style>
+</head>
+<body>
+  <header class="shell">
+    <div class="shell-top">
+      <h1>📦 <span class="brand">FBA Planner</span></h1>
+      <span class="tagline">Demand planning &amp; inventory status · runs entirely in your browser · nothing stored</span>
+    </div>
+    <nav class="shell-tabs" id="shellTabs">
+      <button data-frame="framePlanner" class="on">📈 FBA Planner <span class="desc">Demand planning &amp; forecasting</span></button>
+      <button data-frame="frameDisposition">📦 Inventory Status <span class="desc">Fulfillable vs unfulfillable</span></button>
+    </nav>
+  </header>
+
+  <div class="frames">
+    <iframe id="framePlanner" title="FBA Demand Planning &amp; Forecasting"
+            src="fba-demand-planner.html" loading="eager"></iframe>
+    <iframe id="frameDisposition" title="FBA Inventory Status — Fulfillable vs Unfulfillable"
+            class="hidden" data-src="fba-disposition-dashboard.html" loading="lazy"></iframe>
+  </div>
+
+<script>
+"use strict";
+(function(){
+  var tabs = document.querySelectorAll("#shellTabs button");
+  var frames = {
+    framePlanner: document.getElementById("framePlanner"),
+    frameDisposition: document.getElementById("frameDisposition")
+  };
+  function show(id){
+    // lazy-load a frame the first time it is opened
+    var f = frames[id];
+    if(f && !f.getAttribute("src") && f.dataset.src){ f.setAttribute("src", f.dataset.src); }
+    Object.keys(frames).forEach(function(k){
+      frames[k].classList.toggle("hidden", k !== id);
+    });
+    tabs.forEach(function(b){ b.classList.toggle("on", b.dataset.frame === id); });
+  }
+  tabs.forEach(function(b){
+    b.addEventListener("click", function(){ show(b.dataset.frame); });
+  });
+})();
+</script>
+</body>
+</html>
