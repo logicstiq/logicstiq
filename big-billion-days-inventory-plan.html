@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Big Billion Days Inventory Plan — Worked Example for Flipkart & Amazon Sellers | LogicstIQ</title>
+<meta name="description" content="A step-by-step worked example: how a Flipkart & Amazon.in seller plans inventory for Big Billion Days and Great Indian Festival — baseline demand, festive uplift, safety stock and reorder timing, using LogicstIQ's free calculators and AI Demand Planner.">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://www.logicstiq.com/case-studies/big-billion-days-inventory-plan.html"/>
+<meta property="og:title" content="Big Billion Days Inventory Plan — Worked Example | LogicstIQ">
+<meta property="og:description" content="Step-by-step festive-sale inventory planning for Indian marketplace sellers — with free calculators and an AI Demand Planner.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.logicstiq.com/case-studies/big-billion-days-inventory-plan.html"/>
+<meta property="og:locale" content="en_IN">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Big Billion Days Inventory Plan — Worked Example for Flipkart & Amazon Sellers","description":"A step-by-step worked example of festive-sale inventory planning for Indian marketplace sellers using LogicstIQ's calculators and AI Demand Planner.","author":{"@type":"Organization","name":"LogicstIQ"},"publisher":{"@type":"Organization","name":"LogicstIQ","logo":{"@type":"ImageObject","url":"https://www.logicstiq.com/favicon.svg"}},"mainEntityOfPage":"https://www.logicstiq.com/case-studies/big-billion-days-inventory-plan.html"}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F4F7FF;--white:#FFFFFF;--border:#E2E8F0;--border2:#C8D4EC;
+  --b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b600:#3A55FF;--b700:#2A40D6;--b900:#1C2C73;
+  --green:#059669;--glight:#D1FAE5;--amber:#D97706;--alight:#FEF3C7;--purple:#770BFF;
+  --text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8;
+}
+body{font-family:'Wix Madefor Text','Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;transition:background .3s,color .3s}
+a{color:var(--b600);text-decoration:none}
+a:hover{text-decoration:underline}
+.nav{background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.nav-links{display:flex;gap:22px;align-items:center}
+.nav-links a{font-size:13px;font-weight:600;color:var(--text3)}
+.nav-links a:hover{color:var(--b600);text-decoration:none}
+.wrap{max-width:820px;margin:0 auto;padding:44px 24px 64px}
+.crumb{font-size:12px;color:var(--text4);font-weight:600;margin-bottom:16px}
+.badge{display:inline-flex;align-items:center;gap:7px;background:var(--b50);border:1px solid var(--b200);color:var(--b700);border-radius:999px;padding:5px 14px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px}
+h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.15;letter-spacing:-.025em;margin-bottom:14px}
+.lede{font-size:17px;color:var(--text3);margin-bottom:18px}
+.note{background:var(--alight);border:1px solid #FDE68A;border-radius:10px;padding:11px 16px;font-size:12.5px;color:#92400E;margin-bottom:32px;line-height:1.6}
+h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:800;letter-spacing:-.02em;margin:36px 0 12px;color:var(--text)}
+h3{font-size:16px;font-weight:800;margin:24px 0 8px;color:var(--text2)}
+p{margin-bottom:14px;color:var(--text2)}
+.step{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px 26px;margin:18px 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.step-lbl{font-size:11px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.09em;margin-bottom:8px}
+.formula{background:var(--b50);border:1px solid var(--b100);border-left:3px solid var(--b600);border-radius:8px;padding:12px 16px;font-family:'Courier New',monospace;font-size:13px;color:var(--b900);margin:12px 0;line-height:1.7;white-space:pre-wrap}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0;background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+th{background:#F8FAFF;padding:10px 13px;text-align:left;font-size:11px;font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border)}
+td{padding:10px 13px;border-bottom:1px solid #F1F5F9;color:var(--text2)}
+tr:last-child td{border-bottom:none}
+.tool-cta{display:inline-flex;align-items:center;gap:8px;background:var(--b600);color:#fff;border-radius:10px;padding:10px 18px;font-size:14px;font-weight:700;margin:6px 8px 6px 0}
+.tool-cta:hover{background:var(--b700);text-decoration:none}
+.tool-cta.ghost{background:var(--white);border:1.5px solid var(--border2);color:var(--b700)}
+.tool-cta.ghost:hover{border-color:var(--b600)}
+.result{background:linear-gradient(135deg,#ECFDF5,#F0FDF4);border:1.5px solid #A7F3D0;border-radius:16px;padding:24px 26px;margin:24px 0}
+.result h3{color:#065F46;margin-top:0}
+.result p{color:#065F46}
+.tools-used{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px 26px;margin:28px 0}
+.tools-used ul{list-style:none;margin:12px 0 0}
+.tools-used li{padding:8px 0;border-bottom:1px solid #F1F5F9;font-size:14px}
+.tools-used li:last-child{border-bottom:none}
+.endcta{text-align:center;background:linear-gradient(135deg,#0F172A,#1C2C73);border-radius:20px;padding:36px 28px;margin:40px 0 0;color:#fff}
+.endcta h2{color:#fff;margin-top:0}
+.endcta p{color:#BFDBFE;max-width:520px;margin:0 auto 20px}
+footer{background:#0F172A;padding:32px;text-align:center;color:#64748B;font-size:12px;line-height:1.9}
+footer a{color:#94A3B8}
+@media(max-width:600px){.wrap{padding:32px 16px 48px}.nav-links{display:none}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/" aria-label="LogicstIQ home" style="display:flex;align-items:center">
+    <svg width="150" height="36" viewBox="0 0 260 68" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="LogicstIQ">
+      <defs><linearGradient id="lg" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#2A40D6"/><stop offset="100%" stop-color="#7A92FF"/></linearGradient></defs>
+      <path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#lg)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M59 8 L66 14 L59 20" stroke="#7A92FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="32" cy="50" r="3.5" fill="#2A40D6"/><circle cx="50" cy="14" r="3.5" fill="#7A92FF"/>
+      <text x="82" y="35" font-family="'Plus Jakarta Sans',sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5"><tspan fill="#0F172A">Logicst</tspan><tspan fill="#3A55FF">IQ</tspan></text>
+    </svg>
+  </a>
+  <div class="nav-links">
+    <a href="/#calculators">Calculators</a>
+    <a href="/#liq-planner">AI Demand Planner</a>
+    <a href="/#blog">Blog</a>
+    <a href="/#calculators">← All tools</a>
+  </div>
+</nav>
+
+<article class="wrap">
+  <div class="crumb"><a href="/">Home</a> › Case Studies › Big Billion Days inventory plan</div>
+  <div class="badge">📦 Worked Example · Marketplace Sellers</div>
+  <h1>How a Flipkart &amp; Amazon seller plans inventory for Big Billion Days</h1>
+  <p class="lede">A step-by-step walkthrough of festive-sale inventory planning for an Indian marketplace seller — from baseline demand to festive uplift, safety stock and reorder timing — using LogicstIQ's free tools.</p>
+  <div class="note">ℹ️ This is an <strong>illustrative worked example</strong> built to show the method and the tools. The seller and numbers are representative, not a real named customer. Always validate against your own data before placing purchase orders.</div>
+
+  <h2>The situation</h2>
+  <p>Meet a mid-size seller of phone accessories (cases, chargers, TWS earbuds) selling on Flipkart and Amazon.in. Last year they under-stocked their hero SKU before Big Billion Days, went out of stock on day 2, lost the sales rank they'd built, and spent weeks recovering. This year they want to plan properly — but they don't have SAP, and Excel-plus-WhatsApp isn't cutting it.</p>
+  <p>Their goal: work out <strong>how many units of each hero SKU to order, and by when</strong>, so they survive the Big Billion Days + Great Indian Festival window without stocking out or drowning in dead stock afterward.</p>
+
+  <h2>The plan, in four steps</h2>
+
+  <div class="step">
+    <div class="step-lbl">Step 1 — Establish baseline demand</div>
+    <p>Start with normal, non-sale velocity. For the hero SKU (a TWS earbud), the last 30 days sold 900 units — an average of <strong>30 units/day</strong>. That's the baseline the festive multiplier will be applied to.</p>
+    <div class="formula">Baseline daily demand = 900 units ÷ 30 days = 30 units/day</div>
+    <p>Rather than doing this SKU-by-SKU in a spreadsheet, upload your Flipkart/Amazon sales export to the AI Demand Planner — it computes per-SKU velocity, trend and 30/60/90-day forecasts automatically.</p>
+    <a class="tool-cta" href="/#liq-planner">⚡ Open the AI Demand Planner</a>
+  </div>
+
+  <div class="step">
+    <div class="step-lbl">Step 2 — Apply the festive uplift</div>
+    <p>Indian festive sales don't nudge demand — they multiply it. For electronics accessories, a 4× uplift over the peak sale days is realistic. Over a 10-day peak window:</p>
+    <div class="formula">Festive daily demand = 30 units/day × 4 = 120 units/day
+Peak-window demand = 120 × 10 days = 1,200 units</div>
+    <p>The Demand Planner's India Festival Intelligence applies category-specific uplift automatically for Big Billion Days, Great Indian Festival, Diwali, Navratri and Myntra EORS that fall inside your horizon — so you don't have to guess the multiplier per category.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-lbl">Step 3 — Add safety stock for the spike</div>
+    <p>Demand and supplier lead times both get more variable around festivals, so a buffer is essential. Using the standard formula at a 95% service level (Z = 1.65), with daily-demand variability of 25 units and a 9-day lead time:</p>
+    <div class="formula">Safety stock = Z × σd × √LT
+= 1.65 × 25 × √9
+= 1.65 × 25 × 3 ≈ 124 units</div>
+    <a class="tool-cta ghost" href="/safety-stock-calculator">🛡️ Safety Stock Calculator</a>
+  </div>
+
+  <div class="step">
+    <div class="step-lbl">Step 4 — Set the reorder point and order date</div>
+    <p>The reorder point tells you the stock level that should trigger your festive PO — accounting for the lead time at <em>festive</em> velocity, plus the safety stock:</p>
+    <div class="formula">Reorder point = (festive daily demand × lead time) + safety stock
+= (120 × 9) + 124
+= 1,080 + 124 = 1,204 units</div>
+    <p>With a 9-day supplier lead time, the PO must be placed <strong>at least 9 days before</strong> the sale — and earlier in practice, since supplier and courier lead times stretch before Diwali. The planner flags the reorder-by date for every SKU so nothing slips.</p>
+    <a class="tool-cta ghost" href="/reorder-point-calculator">🎯 Reorder Point Calculator</a>
+  </div>
+
+  <h2>Putting the numbers together</h2>
+  <table>
+    <thead><tr><th>Metric</th><th>Value</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>Baseline daily demand</td><td>30 units/day</td><td>Step 1</td></tr>
+      <tr><td>Festive daily demand (4×)</td><td>120 units/day</td><td>Step 2</td></tr>
+      <tr><td>10-day peak-window demand</td><td>1,200 units</td><td>Step 2</td></tr>
+      <tr><td>Safety stock (95% service)</td><td>124 units</td><td>Step 3</td></tr>
+      <tr><td>Reorder point (order trigger)</td><td>1,204 units</td><td>Step 4</td></tr>
+      <tr><td>Order lead time</td><td>9+ days before sale</td><td>Step 4</td></tr>
+    </tbody>
+  </table>
+
+  <div class="result">
+    <h3>✅ The outcome</h3>
+    <p>Instead of eyeballing it, the seller now knows: order enough to cover ~1,200 peak-window units plus a 124-unit buffer, and trigger the PO when stock hits 1,204 — at least 9 days out. They enter the sale covered, hold rank through the peak, and avoid the post-festival dead-stock hangover on the SKUs they didn't over-order.</p>
+  </div>
+
+  <div class="tools-used">
+    <h3 style="margin-top:0">Tools used in this example</h3>
+    <ul>
+      <li>⚡ <a href="/#liq-planner">AI Demand Planner</a> — per-SKU velocity, forecasts &amp; festive uplift from your sales file</li>
+      <li>🛡️ <a href="/safety-stock-calculator">Safety Stock Calculator</a> — buffer for demand &amp; lead-time variability</li>
+      <li>🎯 <a href="/reorder-point-calculator">Reorder Point Calculator</a> — the order-trigger level and timing</li>
+      <li>💀 <a href="/dead-stock-calculator">Dead Stock Calculator</a> — check post-festival for anything that didn't move</li>
+    </ul>
+  </div>
+
+  <div class="endcta">
+    <h2>Plan your own festive season</h2>
+    <p>Upload your Flipkart, Amazon or Meesho sales export and get per-SKU forecasts, reorder dates and festive uplift in seconds. Free, no login, nothing stored.</p>
+    <a class="tool-cta" href="/#liq-planner" style="background:#fff;color:#1C2C73">⚡ Launch the AI Demand Planner</a>
+  </div>
+</article>
+
+<footer>
+  <div><strong style="color:#94A3B8">LogicstIQ</strong> · Where Logistics Meets Intelligence</div>
+  <div style="margin-top:6px"><a href="/">Home</a> · <a href="/#calculators">Calculators</a> · <a href="/#liq-planner">AI Demand Planner</a> · <a href="/privacy-policy.html">Privacy</a></div>
+  <div style="margin-top:6px">Illustrative worked example. Results are for reference only — always validate with your own data before making business decisions.</div>
+</footer>
+
+<script src="/copilot-widget.js" data-endpoint="/api/copilot" data-title="LogicstIQ Copilot" data-accent="#1D9E75" defer></script>
+</body>
+</html>
