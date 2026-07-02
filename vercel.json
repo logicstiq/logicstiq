@@ -2,6 +2,12 @@
   "functions": {
     "api/forecast.js": {
       "maxDuration": 30
+    },
+    "api/sr-rates.js": {
+      "maxDuration": 30
+    },
+    "api/sr-track.js": {
+      "maxDuration": 30
     }
   },
   "rewrites": [
