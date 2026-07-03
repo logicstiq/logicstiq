@@ -1064,16 +1064,31 @@ function handleFile(f){
       try{
         const data=new Uint8Array(e.target.result);
         const wb=XLSX.read(data,{type:'array'});
-        const sheetNames=wb.SheetNames;
-        const kw=['inventory','stock','item','product','sku','restock','report','summary','data'];
-        let sheetName=sheetNames[0];
-        for(const k of kw){const m=sheetNames.find(s=>s.toLowerCase().includes(k));if(m){sheetName=m;break;}}
-        const csv=XLSX.utils.sheet_to_csv(wb.Sheets[sheetName],{blankrows:false,skipHidden:true});
-        if(!csv||csv.trim().length<10){showError('Could not read Excel file. Try saving as CSV first.');return;}
-        fileText=csv;
-        showFileChip(f.name+' (sheet: '+sheetName+')');
+        const KW=['sku','asin','product','item','stock','qty','quantity','units','sales','sold','available','price','cost','category','brand','date','order','warehouse','status','return'];
+        // Inspect EVERY sheet: pick the real data table, auto-merge same-schema sheets (month/region splits), warn on the rest.
+        const sheetInfo=nm=>{
+          const csv=XLSX.utils.sheet_to_csv(wb.Sheets[nm],{blankrows:false,skipHidden:true});
+          const lines=csv.split('\n').filter(l=>l.trim());
+          let best=-1,hi=0;
+          for(let i=0;i<Math.min(lines.length,15);i++){const l=lines[i].toLowerCase();const sc=KW.filter(k=>l.includes(k)).length;if(sc>best){best=sc;hi=i;}}
+          const cols=(lines[hi]||'').toLowerCase().split(/,|\t/).map(c=>c.trim()).filter(Boolean).sort();
+          return {name:nm,lines,hi,cols,score:best,rows:lines.length-hi};
+        };
+        const infos=wb.SheetNames.map(sheetInfo).filter(s=>s.score>=2&&s.rows>=1);
+        if(!infos.length){showError('Could not find a data table in this Excel file. Try saving as CSV.');return;}
+        infos.sort((a,b)=>(b.score-a.score)||(b.rows-a.rows));
+        const primary=infos[0];
+        const overlap=(a,b)=>{const s=new Set(a);let n=0;b.forEach(c=>{if(s.has(c))n++;});return n/Math.max(a.length,b.length,1);};
+        const used=[primary],skipped=[];
+        for(const s of infos.slice(1)){ if(overlap(primary.cols,s.cols)>=0.7) used.push(s); else skipped.push(s.name); }
+        let combined=primary.lines.join('\n');
+        for(const s of used.slice(1)){combined+='\n'+s.lines.slice(s.hi+1).join('\n');}
+        if(!combined||combined.trim().length<10){showError('Could not read Excel file. Try saving as CSV first.');return;}
+        fileText=combined;
+        showFileChip(f.name+(used.length>1?(' ('+used.length+' sheets merged)'):(' (sheet: '+primary.name+')')));
         previewColumns(fileText);updateRunBtn();showError('');
-        if(sheetNames.length>1){const h=document.getElementById('liq-file-hint');if(h)h.textContent='✅ Excel read — using sheet "'+sheetName+'". Other sheets: '+sheetNames.filter(s=>s!==sheetName).join(', ');}
+        const h=document.getElementById('liq-file-hint');
+        if(h){let msg='✅ Excel read — '+(used.length>1?('merged '+used.length+' same-format sheets: '+used.map(x=>x.name).join(', ')):('sheet "'+primary.name+'"'));if(skipped.length)msg+=' · ⚠️ skipped different-format sheet(s): '+skipped.join(', ')+' — upload separately if you need them';h.textContent=msg;}
       }catch(err){showError('Could not read Excel file: '+err.message);}
     };
     r.onerror=function(){showError('Failed to read file. Please try again.');};
@@ -1130,8 +1145,32 @@ const LIQ_SYN = {
   };
 function liqParseLine(line,d){const res=[];let cur='',q=false;for(let i=0;i<line.length;i++){const c=line[i];if(q){if(c=='\"'){if(line[i+1]=='\"'){cur+='\"';i++;}else q=false;}else cur+=c;}else{if(c=='\"')q=true;else if(c===d){res.push(cur);cur='';}else cur+=c;}}res.push(cur);return res;}
 function liqKeepIdx(headers){const lh=headers.map(h=>(h||'').toLowerCase().trim().replace(/[_\-]/g,' ').replace(/\s+/g,' '));const keep=new Set(),used=new Set();for(const field in LIQ_SYN){for(const name of LIQ_SYN[field]){let idx=-1;for(let i=0;i<lh.length;i++){const h=lh[i];if(!used.has(i)&&(h===name||h.includes(name)||(name.length>4&&name.includes(h)&&h.length>3))){idx=i;break;}}if(idx!==-1){keep.add(idx);used.add(idx);break;}}}return[...keep].sort((a,b)=>a-b);}
-function liqTrimCSV(text){try{const lines=text.split(/\r?\n/);const kw=['sku','product','item','stock','qty','quantity','units','sales','available','price','cost','category','brand','name','date','month','warehouse','fc','asin'];let hi=0,best=-1;for(let i=0;i<Math.min(lines.length,15);i++){const l=lines[i].toLowerCase();const sc=kw.filter(k=>l.includes(k)).length;if(sc>best){best=sc;hi=i;}}const headerLine=lines[hi]||lines[0]||'';const d=(headerLine.split('\t').length>headerLine.split(',').length)?'\t':',';const headers=liqParseLine(headerLine,d);const idx=liqKeepIdx(headers);if(idx.length<2)return text;const emit=cells=>idx.map(i=>{let v=cells[i]!==undefined?cells[i]:'';if(/[\",\n]/.test(v))v='\"'+v.replace(/\"/g,'\"\"')+'\"';return v;}).join(',');const out=[];for(let i=hi;i<lines.length;i++){if(!lines[i].trim())continue;out.push(emit(liqParseLine(lines[i],d)));}return out.join('\n');}catch(e){return text;}}
+function liqTrimCSV(text){try{const lines=text.split(/\r?\n/);const kw=['sku','product','item','stock','qty','quantity','units','sales','sold','available','price','cost','category','brand','name','date','order','status','return','warehouse','fc','asin'];let hi=0,best=-1;for(let i=0;i<Math.min(lines.length,15);i++){const l=lines[i].toLowerCase();const sc=kw.filter(k=>l.includes(k)).length;if(sc>best){best=sc;hi=i;}}const out=[];for(let i=hi;i<lines.length;i++){if(lines[i].trim())out.push(lines[i]);}return out.join('\n');}catch(e){return text;}}
 async function liqGzip(t){try{if(!('CompressionStream' in window))return null;const cs=new CompressionStream('gzip');const st=new Blob([t]).stream().pipeThrough(cs);const ab=await new Response(st).arrayBuffer();const b=new Uint8Array(ab);let bin='';const CH=0x8000;for(let i=0;i<b.length;i+=CH){bin+=String.fromCharCode.apply(null,b.subarray(i,i+CH));}return btoa(bin);}catch(e){return null;}}
+// Shrink very large files so they fit the serverless request-body limit, WITHOUT losing anything forecastable:
+// keep only signal columns; on snapshot files also drop rows that have zero sales AND zero stock (pure noise).
+// Time-series files (per-date rows) keep every row — a zero-sales day is real signal there.
+function liqShrink(text){try{
+  const lines=text.split(/\r?\n/).filter(l=>l.trim()); if(lines.length<2) return {text,trimmed:false};
+  const d=(lines[0].split('\t').length>lines[0].split(',').length)?'\t':',';
+  const headers=liqParseLine(lines[0],d); const lh=headers.map(h=>(h||'').toLowerCase().trim());
+  const KEEP=['sku','asin','fnsku','product','title','name','description','price','mrp','cost','sold','sales','qty','quantity','units','stock','available','on hand','closing','inbound','transit','reserved','customer order','category','brand','vendor','manufacturer','warehouse','fc','dark store','store','city','date','order','status','return','rto','lead time','alert','recommended','velocity','demand','total units'];
+  const keepIdx=[]; lh.forEach((h,i)=>{ if(KEEP.some(k=>h.includes(k))) keepIdx.push(i); });
+  if(keepIdx.length<2) return {text,trimmed:false};
+  // genuine time-series date column (not "recommended ship date" etc.)
+  const isSeriesDate=h=>h==='date'||h==='month'||h==='week'||h==='period'||/(order|sale|sales|txn|transaction|invoice|posting)\s*(date|dt)|sales (month|period)|reporting period/.test(h);
+  const snapshot=!lh.some(isSeriesDate);
+  const salesI=lh.findIndex(h=>/(units sold|qty sold|quantity sold|sales qty|\bsold\b|\bunits\b|\bqty\b|\bdemand\b|\bsales\b)/.test(h));
+  const stockI=lh.findIndex(h=>/(available|on hand|in stock|current stock|closing|total units|\bstock\b)/.test(h));
+  const num=v=>{const n=parseFloat(String(v||'').replace(/[^\d.\-]/g,''));return isNaN(n)?0:n;};
+  const emit=cells=>keepIdx.map(i=>{let v=cells[i]!==undefined?cells[i]:'';if(/[",\n]/.test(v))v='"'+v.replace(/"/g,'""')+'"';return v;}).join(',');
+  const out=[emit(headers)];
+  for(let i=1;i<lines.length;i++){ if(!lines[i].trim())continue; const c=liqParseLine(lines[i],d);
+    if(snapshot){ const s=salesI>=0?num(c[salesI]):1, st=stockI>=0?num(c[stockI]):1; if(s<=0&&st<=0) continue; }
+    out.push(emit(c)); }
+  const res=out.join('\n');
+  return {text:res, trimmed:res.length<text.length, droppedCols:headers.length-keepIdx.length, keptRows:out.length-1, snapshot};
+}catch(e){return {text,trimmed:false};}}
 window.liqRun=async function(){
   if(!fileText){showError('Please upload a file or load sample data.');return;}
   const sym=document.getElementById('liq-currency').value;
@@ -1141,7 +1180,8 @@ window.liqRun=async function(){
   stepStates=STEPS.map((_,i)=>i===0?'active':'wait');renderProgress();
   const timer=setInterval(()=>{const i=stepStates.indexOf('active');if(i>=0&&i<STEPS.length-1){stepStates[i]='done';stepStates[i+1]='active';renderProgress();}},700);
   try{
-    const liqSend=liqTrimCSV(fileText);
+    let liqSend=liqTrimCSV(fileText);
+    if(liqSend.length>4000000){const sh=liqShrink(liqSend);if(sh.trimmed&&sh.text.length<liqSend.length){liqSend=sh.text;const hint=document.getElementById('liq-file-hint');if(hint)hint.textContent='📦 Large file optimised for upload — kept '+ (sh.keptRows||0).toLocaleString() +' active SKUs'+(sh.snapshot?' (dropped rows with no sales & no stock)':'')+' and the forecasting columns. Nothing forecastable was lost.';}}
     const liqGz=await liqGzip(liqSend);
     const liqPayload={horizon,currency:sym,region,channels:selectedChannels,planLevel:document.getElementById('liq-planlevel').value,erpSource:selectedSource,method:document.getElementById('liq-method').value,salesWindowDays:parseInt(document.getElementById('liq-saleswindow').value)||30,commerceType:document.getElementById('liq-commercetype').value,festivalMode:document.getElementById('liq-festival').value!=='off'};
     if(liqGz){liqPayload.csvGz=liqGz;}else{liqPayload.csvText=liqSend;}
@@ -1244,7 +1284,7 @@ window.liqExport=function(type,filename){
   else{rows=data.allSKUs;cols=[['sku','SKU'],['product','Product'],['category','Category'],['brand','Brand'],['warehouse','Warehouse'],['currentStock','Stock'],['inbound','Inbound'],['avgMonthlyDemand','Avg Monthly'],['nextH','Forecast'],['daysOfCover','Days Cover'],['safetyStock','Safety Stock'],['reorderPoint','ROP'],['eoq','Reorder Qty'],['reorderBy','Reorder By'],['priority','Priority'],['stockoutProb','Stockout %'],['revenueAtRisk','Revenue at Risk'],['invValue','Inv Value'],['trend','Trend'],['confidence','Confidence']];}
   const header=cols.map(c=>c[1]).join(',');
   const csvRows=rows.map(row=>cols.map(c=>{const v=row[c[0]];const sv=String(v??'');return sv.includes(',')?`"${sv}"`:sv;}).join(','));
-  const blob=new Blob([header+'\n'+csvRows.join('\n')],{type:'text/csv'});
+  const blob=new Blob(['\ufeff'+header+'\n'+csvRows.join('\n')],{type:'text/csv;charset=utf-8'});
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;a.click();
 };
 window.liqReset=function(){
