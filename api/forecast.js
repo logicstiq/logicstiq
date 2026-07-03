@@ -79,6 +79,8 @@ export function runForecast(csvText, cfg) {
   const map = mapColumns(headers);
   if (map.sku === undefined && map.product === undefined)
     return { error: 'No SKU or product column found. Add a column such as "SKU" or "Product Name".' };
+  // q-commerce (or store/city planning) forecasts each location separately; e-commerce merges locations into one SKU.
+  cfg.splitWh = (cfg.splitWh != null) ? cfg.splitWh : (cfg.qcom || /dark ?store|city|store/i.test(String(cfg.level || '')));
 
   const dataRows = rows.slice(1)
     .filter(r => r.some(c => c && c.trim()))
@@ -207,8 +209,10 @@ export function buildSkuMap(dataRows, map, cfg) {
 
     const prod = get(row, 'product');
     const rawSku = get(row, 'sku') || prod || ('item_' + (++auto));
-    const key = rawSku.toLowerCase().replace(/\s+/g, ' ').trim().substring(0, 60);  // case/space-insensitive key
-    if (!key) continue;
+    const wh = get(row, 'warehouse') || get(row, 'city') || '—';
+    const baseKey = rawSku.toLowerCase().replace(/\s+/g, ' ').trim().substring(0, 60);  // case/space-insensitive
+    if (!baseKey) continue;
+    const key = (cfg.splitWh && wh !== '—') ? (baseKey + ' § ' + wh.toLowerCase()) : baseKey;
 
     const qtySigned = pSignedNum(get(row, 'unitsSold'));       // may be negative (a reversal)
     const explicitReturns = pNum(get(row, 'returns'));
@@ -227,7 +231,6 @@ export function buildSkuMap(dataRows, map, cfg) {
     const vel = pNum(get(row, 'velocity'));
     const lt = pNum(get(row, 'leadTime'));
     const ltVar = pNum(get(row, 'leadTimeVar'));
-    const wh = get(row, 'warehouse') || get(row, 'city') || '—';
     const period = get(row, 'period');
     const mom = map.momTrend !== undefined ? pSignedNum(get(row, 'momTrend')) : null;
     const seas = map.seasonalIndex !== undefined ? pNum(get(row, 'seasonalIndex')) : null;
