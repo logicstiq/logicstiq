@@ -31,6 +31,10 @@
   .param label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}
   .param input{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:8px;padding:9px 10px;font-size:14px}
   .param .unit{font-size:11px;color:var(--grey);margin-top:3px}
+  .chips{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+  .chips button{background:var(--panel2);border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:3px 11px;font-size:11px;cursor:pointer;font-family:inherit;line-height:1.4}
+  .chips button:hover{border-color:var(--accent);color:var(--text)}
+  .chips button.on{background:var(--accent);border-color:var(--accent);color:#fff}
   .btn{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:11px 18px;font-size:14px;font-weight:600;cursor:pointer}
   .btn:hover{filter:brightness(1.08)}
   .btn:disabled{opacity:.45;cursor:not-allowed}
@@ -61,7 +65,7 @@
   .s-lost{background:#3a1212;color:#ff6b6b} .s-now{background:#3a2a12;color:#ffba5c}
   .s-low{background:#3a3512;color:#ffe082} .s-healthy{background:#10331f;color:#5be59a}
   .s-over{background:#2a2140;color:#c4b1ff} .s-dead{background:#2a2f3a;color:#aab2c0}
-  .s-inactive{background:#22262f;color:#717a88}
+  .s-inactive{background:#22262f;color:#717a88} .s-stockout{background:#3a2412;color:#ffcf8c}
   .hidden{display:none}
   .note{color:var(--muted);font-size:12px;margin-top:8px}
   .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:10px}
@@ -111,12 +115,18 @@
       <div class="param">
         <label>Target cover</label>
         <input type="number" id="pTarget" value="90" min="1" step="1">
+        <div class="chips" id="targetChips">
+          <button type="button" data-v="45">45</button>
+          <button type="button" data-v="90">90</button>
+          <button type="button" data-v="190">190</button>
+          <button type="button" data-v="365">365</button>
+        </div>
         <div class="unit">days of stock to hold</div>
       </div>
       <div class="param">
-        <label>Safety stock</label>
-        <input type="number" id="pSafety" value="14" min="0" step="1">
-        <div class="unit">extra buffer days</div>
+        <label>Service level</label>
+        <input type="number" id="pService" value="95" min="50" max="99.9" step="1">
+        <div class="unit">% — sizes safety stock statistically</div>
       </div>
       <div class="param">
         <label>Overstock threshold</label>
@@ -155,6 +165,7 @@
       <div class="bars" id="bars"></div>
       <div class="legend">
         <span><b style="color:#ff6b6b">Out of stock</b> = selling but at zero (lost sales)</span>
+        <span><b style="color:#ffcf8c">Stockout</b> = out with latent demand (Amazon says restock)</span>
         <span><b style="color:#ffba5c">Reorder now</b> = will run out before stock can arrive</span>
         <span><b style="color:#5be59a">Healthy</b> = covered</span>
         <span><b style="color:#c4b1ff">Overstock</b> = too much on hand</span>
@@ -175,6 +186,7 @@
         <select id="statusFilter">
           <option value="">All statuses</option>
           <option value="Out of stock">Out of stock (lost sales)</option>
+          <option value="Stockout">Stockout (latent demand)</option>
           <option value="Reorder now">Reorder now</option>
           <option value="Low stock">Low stock</option>
           <option value="Healthy">Healthy</option>
@@ -202,7 +214,7 @@
 
 /* ---------- robust CSV parser (handles quotes, commas, newlines) ---------- */
 function parseCSV(text){
-  text = text.replace(/^﻿/, ""); // strip BOM
+  text = text.replace(/^\uFEFF/, ""); // strip BOM
   // auto-detect delimiter (comma vs tab) from the first non-empty line
   const firstLine=(text.split(/\r?\n/).find(l=>l.trim())||"");
   const D=((firstLine.split("\t").length-1) > (firstLine.split(",").length-1)) ? "\t" : ",";
@@ -232,6 +244,11 @@ function parseCSV(text){
   return out;
 }
 const num=v=>{ if(v==null) return 0; const n=parseFloat(String(v).replace(/[, ]/g,"")); return isNaN(n)?0:n; };
+/* service level → z (safety-factor lookup) */
+function zForService(sl){
+  const T=[[0.50,0],[0.80,0.84],[0.85,1.04],[0.90,1.28],[0.95,1.65],[0.97,1.88],[0.98,2.05],[0.99,2.33],[0.995,2.58]];
+  let z=1.65; for(const [p,v] of T) if(sl>=p) z=v; return z;
+}
 
 /* ---------- header detection ---------- */
 function detect(rows){
@@ -298,11 +315,22 @@ function refreshRunState(){
 wireDrop("dropRestock","fileRestock","nameRestock","restock");
 wireDrop("dropInv","fileInv","nameInv","inventory");
 
+/* ---------- target-cover preset chips (45 / 90 / 190 / 365) ---------- */
+(function(){
+  const inp=document.getElementById("pTarget");
+  const chips=[...document.querySelectorAll("#targetChips button")];
+  const sync=()=>chips.forEach(b=>b.classList.toggle("on", num(b.dataset.v)===num(inp.value)));
+  chips.forEach(b=>b.onclick=()=>{ inp.value=b.dataset.v; sync(); });
+  inp.addEventListener("input",sync);
+  sync();
+})();
+
 /* ---------- forecasting engine ---------- */
 function buildForecast(){
   const lead=num(document.getElementById("pLead").value);
   const target=Math.max(1,num(document.getElementById("pTarget").value));
-  const safety=num(document.getElementById("pSafety").value);
+  const service=Math.min(99.9,Math.max(50,num(document.getElementById("pService").value)||95));
+  const z=zForService(service/100);
   const overTh=Math.max(1,num(document.getElementById("pOver").value));
   const curSel=document.getElementById("pCur").value;
   CUR = (curSel==="auto") ? detectCurrency(ST.restock) : curSel;
@@ -334,17 +362,32 @@ function buildForecast(){
     const pipeline=available+inbound;
     const daysCover = velocity>0 ? available/velocity : (available>0?Infinity:0);
     const daysCoverPipe = velocity>0 ? pipeline/velocity : (pipeline>0?Infinity:0);
-    const reorderPoint = velocity*(lead+safety);
-    const orderUpTo = velocity*(lead+safety+target);
-    const recQty = Math.max(0, Math.round(orderUpTo - pipeline));
+
+    // Amazon's own signals (longer-history) — used as a floor + stockout detector
+    const amzRecQty=num(o["Recommended replenishment qty"]);
+    const amzAlert=o["Alert"]||"";
+    const amzOOS=/out.?of.?stock|restock/i.test(amzAlert);
+
+    // --- FIX 3: statistical safety stock (service level × demand variability over lead time) ---
+    // With only a 30-day mean we estimate daily σ as max(√velocity [Poisson], 0.5×velocity [50% CV retail lumpiness]).
+    const sigmaDaily = Math.max(Math.sqrt(velocity), 0.5*velocity);
+    const safetyStock = velocity>0 ? Math.ceil(z*sigmaDaily*Math.sqrt(lead)) : 0;
+    const safetyDays = velocity>0 ? safetyStock/velocity : 0;
+    const reorderPoint = velocity*lead + safetyStock;
+    const orderUpTo = velocity*(lead+target) + safetyStock;
+    let recQty = Math.max(0, Math.round(orderUpTo - pipeline));
+
+    // --- FIX 1: never under-order below Amazon's own recommendation (catches stockout-censored demand) ---
+    recQty = Math.max(recQty, amzRecQty);
 
     // status
     let status;
-    if(velocity===0 && available===0 && inbound===0) status="Inactive";
+    if(velocity===0 && (amzOOS || amzRecQty>0)) status="Stockout";          // FIX 2: OOS w/ latent demand — not dead/inactive
+    else if(velocity===0 && available===0 && inbound===0) status="Inactive";
     else if(velocity===0 && available>0) status="Dead stock";
     else if(available===0 && velocity>0) status="Out of stock";
-    else if(daysCoverPipe <= lead+safety) status="Reorder now";
-    else if(daysCoverPipe <= lead+safety+14) status="Low stock";
+    else if(daysCoverPipe <= lead+safetyDays) status="Reorder now";
+    else if(daysCoverPipe <= lead+safetyDays+14) status="Low stock";
     else if(isFinite(daysCover) && daysCover > overTh) status="Overstock";
     else status="Healthy";
 
@@ -354,16 +397,16 @@ function buildForecast(){
     return {
       sku:k.sku, asin:k.asin, name:o["Product Name"]||(inv?inv["product-name"]:"")||"",
       price, units30, velocity, available, inbound, reserved, unsellable,
-      daysCover, daysCoverPipe, reorderPoint, recQty, recValue, atRiskRev, status,
-      amzAlert:o["Alert"]||"", amzRecQty:num(o["Recommended replenishment qty"]),
+      daysCover, daysCoverPipe, reorderPoint, safetyStock, recQty, recValue, atRiskRev, status,
+      amzAlert, amzRecQty,
       amzShipDate:o["Recommended ship date"]||"", country:o["Country"]||""
     };
   });
 
-  // priority sort: Out of stock (by at-risk rev), Reorder now (by rec value), Low, Healthy, Overstock, Dead, Inactive
-  const rank={ "Out of stock":0,"Reorder now":1,"Low stock":2,"Healthy":3,"Overstock":4,"Dead stock":5,"Inactive":6 };
+  // priority sort: Out of stock, Stockout, Reorder now, Low, Healthy, Overstock, Dead, Inactive
+  const rank={ "Out of stock":0,"Stockout":1,"Reorder now":2,"Low stock":3,"Healthy":4,"Overstock":5,"Dead stock":6,"Inactive":7 };
   rows.sort((a,b)=> rank[a.status]-rank[b.status] || (b.atRiskRev+b.recValue)-(a.atRiskRev+a.recValue));
-  return {rows,params:{lead,target,safety,overTh}};
+  return {rows,params:{lead,target,service,overTh}};
 }
 
 /* ---------- render ---------- */
@@ -372,10 +415,11 @@ const COLS=[
   ["price","Price","n"],["units30","Sold 30d","n"],["velocity","Units/day","n"],
   ["available","Available","n"],["inbound","Inbound","n"],["reserved","Reserved","n"],
   ["unsellable","Unsellable","n"],["daysCover","Days cover","n"],["daysCoverPipe","Cover +inbnd","n"],
+  ["safetyStock","Safety stock","n"],
   ["recQty","Reorder qty","n"],["recValue","Reorder £","n"],["amzRecQty","Amzn rec qty","n"],
   ["amzShipDate","Ship by","t"],["atRiskRev","At-risk £30d","n"]
 ];
-const pillClass=s=>({"Out of stock":"s-lost","Reorder now":"s-now","Low stock":"s-low","Healthy":"s-healthy","Overstock":"s-over","Dead stock":"s-dead","Inactive":"s-inactive"}[s]||"s-inactive");
+const pillClass=s=>({"Out of stock":"s-lost","Stockout":"s-stockout","Reorder now":"s-now","Low stock":"s-low","Healthy":"s-healthy","Overstock":"s-over","Dead stock":"s-dead","Inactive":"s-inactive"}[s]||"s-inactive");
 const fmt=(v,t)=>{
   if(t==="n"){ if(v===Infinity) return "∞"; if(typeof v!=="number") return v;
     return Number.isInteger(v)?v.toLocaleString():v.toLocaleString(undefined,{maximumFractionDigits:1}); }
@@ -423,6 +467,7 @@ function render(){
   const sumUnits30=rows.reduce((s,r)=>s+r.units30,0);
   const sumRev30=rows.reduce((s,r)=>s+r.units30*r.price,0);
   const oos=rows.filter(r=>r.status==="Out of stock");
+  const stockout=rows.filter(r=>r.status==="Stockout");
   const now=rows.filter(r=>r.status==="Reorder now");
   const over=rows.filter(r=>r.status==="Overstock");
   const lostRev=oos.reduce((s,r)=>s+r.atRiskRev,0);
@@ -434,7 +479,7 @@ function render(){
     ["",sumUnits30.toLocaleString(),"Units sold (30d)"],
     ["",money(sumRev30),"Revenue (30d)"],
     ["alert",(oos.length).toLocaleString(),"Out of stock (lost sales)"],
-    ["warn",(now.length).toLocaleString(),"Reorder now"],
+    ["warn",(now.length+stockout.length).toLocaleString(),"Reorder now / stockout"],
     ["alert",money(lostRev),"At-risk revenue (30d)"],
     ["good",recUnits.toLocaleString(),"Units to reorder ("+money(recVal)+")"],
     ["",over.length.toLocaleString()+" · "+money(overVal),"Overstock items / value"]
@@ -443,8 +488,8 @@ function render(){
     `<div class="card ${c[0]}"><div class="v">${c[1]}</div><div class="k">${c[2]}</div></div>`).join("");
 
   // bars
-  const order=["Out of stock","Reorder now","Low stock","Healthy","Overstock","Dead stock","Inactive"];
-  const colorOf={ "Out of stock":"#ef4444","Reorder now":"#f59e0b","Low stock":"#eab308","Healthy":"#22c55e","Overstock":"#a78bfa","Dead stock":"#6b7280","Inactive":"#3a3f4a"};
+  const order=["Out of stock","Stockout","Reorder now","Low stock","Healthy","Overstock","Dead stock","Inactive"];
+  const colorOf={ "Out of stock":"#ef4444","Stockout":"#fb923c","Reorder now":"#f59e0b","Low stock":"#eab308","Healthy":"#22c55e","Overstock":"#a78bfa","Dead stock":"#6b7280","Inactive":"#3a3f4a"};
   const counts={}; order.forEach(s=>counts[s]=0); rows.forEach(r=>counts[r.status]++);
   const max=Math.max(...Object.values(counts),1);
   document.getElementById("bars").innerHTML=order.map(s=>
@@ -489,16 +534,16 @@ function applyFilter(){
 function toCSV(rows){
   const heads=["Status","Product Name","SKU","ASIN","Country","Price","Units Sold 30d","Daily Velocity",
     "Available","Inbound","Reserved","Unsellable","Days of Cover","Days of Cover incl Inbound",
-    "Reorder Point","Recommended Reorder Qty","Recommended Reorder Value","Amazon Recommended Qty",
+    "Safety Stock","Reorder Point","Recommended Reorder Qty","Recommended Reorder Value","Amazon Recommended Qty",
     "Amazon Recommended Ship Date","Amazon Alert","At-Risk Revenue 30d"];
   const esc=v=>{ v=(v==null?"":String(v)); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; };
   const line=r=>[r.status,r.name,r.sku,r.asin,r.country,r.price.toFixed(2),r.units30,r.velocity.toFixed(2),
     r.available,r.inbound,r.reserved,r.unsellable,
     isFinite(r.daysCover)?r.daysCover.toFixed(1):"Infinite",
     isFinite(r.daysCoverPipe)?r.daysCoverPipe.toFixed(1):"Infinite",
-    Math.round(r.reorderPoint),r.recQty,r.recValue.toFixed(2),r.amzRecQty,r.amzShipDate,r.amzAlert,
+    r.safetyStock,Math.round(r.reorderPoint),r.recQty,r.recValue.toFixed(2),r.amzRecQty,r.amzShipDate,r.amzAlert,
     r.atRiskRev.toFixed(2)].map(esc).join(",");
-  return heads.join(",")+"\n"+rows.map(line).join("\n");
+  return "\uFEFF"+heads.join(",")+"\n"+rows.map(line).join("\n");
 }
 function download(name,csv){
   const blob=new Blob([csv],{type:"text/csv;charset=utf-8;"});
@@ -517,7 +562,7 @@ document.getElementById("search").oninput=applyFilter;
 document.getElementById("statusFilter").onchange=applyFilter;
 document.getElementById("dlFull").onclick=()=>download("demand-forecast_"+stamp()+".csv",toCSV(ST.result.rows));
 document.getElementById("dlReorder").onclick=()=>{
-  const r=ST.result.rows.filter(x=>x.status==="Out of stock"||x.status==="Reorder now"||x.status==="Low stock"||x.recQty>0);
+  const r=ST.result.rows.filter(x=>x.status==="Out of stock"||x.status==="Stockout"||x.status==="Reorder now"||x.status==="Low stock"||x.recQty>0);
   download("reorder-list_"+stamp()+".csv",toCSV(r));
 };
 </script>
