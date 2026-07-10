@@ -226,7 +226,8 @@
     <a href="/#calculators">Calculators</a>
     <a href="/documents-generator.html">Documents</a>
     <a href="/#liq-planner">AI Demand Planner</a>
-    <a href="/fba-planner/">FBA Planner</a><a href="https://www.logicstiq.com/tms.html" style="color:#4F6BFF;font-weight:600;">TMS <span style="background:linear-gradient(135deg,#4F6BFF,#9B6BFF);color:#ffffff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;letter-spacing:0.5px;vertical-align:middle;">Beta</span></a>
+    <a href="/fba-planner/">FBA Planner</a>
+    <a href="https://www.logicstiq.com/tms.html" style="color:#4F6BFF;font-weight:600;">TMS <span style="background:linear-gradient(135deg,#4F6BFF,#9B6BFF);color:#ffffff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;letter-spacing:0.5px;vertical-align:middle;">Beta</span></a>
     <a href="/#blog">Blog</a>
     <a href="/about.html">About</a>
     <a href="/contact.html">Contact</a>
@@ -289,10 +290,10 @@
     <div>
       <div class="footer-col-t">Tools</div>
       <div class="footer-links">
-        <a href="/tms">Transportation (TMS)</a>
+        <a href="/tms">Transportation (TMS) <span style="background:linear-gradient(135deg,#4F6BFF,#9B6BFF);color:#ffffff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:999px;letter-spacing:0.5px;vertical-align:middle;">Beta</span></a>
         <a href="/#calculators">31 Calculators</a>
         <a href="/documents-generator.html">Document Generator</a>
-        <a href="/fba-planner/">FBA Planner</a><a href="https://www.logicstiq.com/tms.html" style="color:#4F6BFF;font-weight:600;">TMS <span style="background:linear-gradient(135deg,#4F6BFF,#9B6BFF);color:#ffffff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;letter-spacing:0.5px;vertical-align:middle;">Beta</span></a>
+        <a href="/fba-planner/">FBA Planner</a>
         <a href="/#liq-planner">AI Demand Planner</a>
       </div>
     </div>
@@ -459,10 +460,7 @@ function assignFleet(vehicles,ships){
 
 /* ---------- small render helpers ---------- */
 const el=(h)=>{const d=document.createElement("div");d.innerHTML=h;return d;};
-function head(t,s,right){return `<div class="h"><div><div class="t">${t}<span
-style="display:inline-block;margin-left:9px;padding:3px 9px;border-radius:999px;background:linear-gradient(135deg,#4F6BFF,#9B6
-BFF);color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;vertical-align:middle;text-transform:uppercase">Beta</span
-></div>${s?`<div class="s">${s}</div>`:""}</div><div>${right||""}</div></div>`;}
+function head(t,s,right){return `<div class="h"><div><div class="t">${t}<span style="display:inline-block;margin-left:9px;padding:3px 10px;border-radius:999px;background:linear-gradient(135deg,#4F6BFF,#9B6BFF);color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;vertical-align:middle;text-transform:uppercase">Beta</span><span style="display:inline-block;margin-left:8px;padding:3px 12px;border-radius:12px;border:1.5px solid #9B6BFF;background:rgba(155,107,255,.12);color:#9B6BFF;font-size:10px;font-weight:800;letter-spacing:.04em;vertical-align:middle;white-space:nowrap">✦ TMS Pro — Coming Soon</span></div>${s?`<div class="s">${s}</div>`:""}</div><div>${right||""}</div></div>`;}
   function stat(label,v,sub,color){return `<div class="card stat"><div class="lbl">${label}</div><div class="v" style="color:${color||"var(--text)"}">${v}</div>${sub?`<div class="muted" style="font-size:12px;margin-top:2px">${sub}</div>`:""}</div>`;}
 function pill(txt,color){return `<span class="pill" style="color:${color};background:${color==="var(--muted)"?"var(--bg)":"color-mix(in srgb,"+color+" 15%,transparent)"}">${txt}</span>`;}
 
@@ -656,7 +654,8 @@ function renderSide(){
   document.getElementById("side").innerHTML=
     NAV.map(([k,l,ic])=>`<div class="tab ${TAB===k?'active':''}" onclick="go('${k}')"><span class="ic">${ic}</span><span class="txt">${l}</span></div>`).join("")
     +`<div style="flex:1"></div>`
-    +`<div class="txt" style="padding:11px;border-radius:10px;background:var(--card2);border:1px solid var(--border);font-size:12px;color:var(--muted);margin-bottom:8px"><b style="color:var(--green)">● Free</b> · no login<div style="margin-top:2px">Saved on this device</div></div>` +`<div class="txt" style="padding:12px;border-radius:10px;background:linear-gradient(135deg,rgba(79,107,255,.10),rgba(155,107, 255,.10));border:1px solid rgba(79,107,255,.30);font-size:12px;color:var(--muted)"><div style="display:flex;align-items:center;gap:6px;margin-bottom:3px"><span style="font-size:13px">✦</span><b style="background:l inear-gradient(135deg,#4F6BFF,#9B6BFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;f ont-size:12.5px">TMS Pro</b></div><div style="font-size:11px;line-height:1.5">Multi-user, live carrier APIs &amp; automated freight audit. <b style="color:var(--b600)">Coming soon.</b></div></div>`;
+    +`<div class="txt" style="padding:11px;border-radius:10px;background:var(--card2);border:1px solid var(--border);font-size:12px;color:var(--muted);margin-bottom:8px"><b style="color:var(--green)">● Free</b> · no login<div style="margin-top:2px">Saved on this device</div></div>`
+    +`<div class="txt" style="padding:12px;border-radius:12px;background:linear-gradient(135deg,rgba(79,107,255,.10),rgba(155,107,255,.10));border:1.5px solid rgba(155,107,255,.45);font-size:12px;color:var(--muted)"><div style="display:flex;align-items:center;gap:6px;margin-bottom:3px"><span style="font-size:13px">✦</span><b style="background:linear-gradient(135deg,#4F6BFF,#9B6BFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:12.5px">TMS Pro</b></div><div style="font-size:11px;line-height:1.5">Multi-user, live carrier APIs &amp; automated freight audit. <b style="color:var(--b600)">Coming soon.</b></div></div>`;
 }
 function go(k){TAB=k;render();}
 
