@@ -1,3 +1,14 @@
+// ═══════════════════════════════════════════════════════════════════════════════════════════
+// forecast.js — LogicstIQ AI Demand Planner — AUDIT-CORRECTED BUILD (v10)
+// Patched 2026-07-10 after a full correctness audit. Every change is tagged "FIX(v10)" inline.
+// Fixes: (1) 'day' period-synonym hijack of sales cols (e.g. "Units Sold Last 30 Days");
+//        (2) safety-stock sigma uses /sqrt(gap) not /gap; (3) damped trend (phi=0.9);
+//        (4) seasonal period tied to data granularity; (5) multi-warehouse repeated-total guard;
+//        (6) real MAPE reported (was WMAPE relabelled); (7) Tally "Outwards" + Myntra "Style ID" synonyms;
+//        (8) whole-word matching for <=3-char synonyms; (9) service-level z hardening; (10) US mm/dd dates.
+// Documented-but-not-changed (see report): cold-start vs dead-stock, Excel multi-sheet column-order merge,
+//        overstock 120d-vs-UI-180d copy, festival 2028+ fallback. Original behaviour preserved elsewhere.
+// ═══════════════════════════════════════════════════════════════════════════════════════════
 // /api/forecast.js — LogicstIQ AI Demand Planner v9 (India edition)
 // ─────────────────────────────────────────────────────────────────────────────
 // WHAT CHANGED vs v8 (all fixes traceable to observed bugs on messy exports):
@@ -151,12 +162,12 @@ export function isJunkRow(row, map) {
 
 // ═══ COLUMN MAPPER ═══════════════════════════════════════════════════════════
 const SYN = {
-  sku: ['sku', 'sku id', 'sku code', 'seller sku', 'merchant sku', 'item id', 'item code', 'item number', 'product code', 'product id', 'part no', 'part number', 'article no', 'article code', 'stock code', 'stock id', 'material code', 'material number', 'asin', 'fnsku', 'fsn', 'barcode', 'upc', 'ean', 'isbn', 'material', 'matnr', 'stock item', 'stock item name', 'internal id', 'variant sku', 'skucode', 'sku_code', 'item_code', 'style code', 'listing id', 'product sku', 'vendor sku', 'variant id', 'default code'],
+  sku: ['sku', 'sku id', 'sku code', 'seller sku', 'merchant sku', 'item id', 'item code', 'item number', 'product code', 'product id', 'part no', 'part number', 'article no', 'article code', 'stock code', 'stock id', 'material code', 'material number', 'asin', 'fnsku', 'fsn', 'barcode', 'upc', 'ean', 'isbn', 'material', 'matnr', 'stock item', 'stock item name', 'internal id', 'variant sku', 'skucode', 'sku_code', 'item_code', 'style code', 'style id', 'listing id', 'product sku', 'vendor sku', 'variant id', 'default code'],
   product: ['product name', 'product title', 'product', 'title', 'item name', 'item description', 'product description', 'description', 'display name', 'item', 'goods', 'material description', 'stock item name', 'particulars', 'released product', 'channel product name', 'article name', 'style name'],
-  period: ['date', 'order date', 'order dt', 'sale date', 'sales date', 'txn date', 'transaction date', 'invoice date', 'billing date', 'posting date', 'document date', 'dispatch date', 'shipment date', 'movement date', 'month', 'week', 'period', 'sales month', 'sales period', 'reporting period', 'fiscal period', 'accounting period', 'day', 'order day', 'fy', 'month year', 'yyyy-mm-dd', 'dd-mm-yyyy'],
+  period: ['date', 'order date', 'order dt', 'sale date', 'sales date', 'txn date', 'transaction date', 'invoice date', 'billing date', 'posting date', 'document date', 'dispatch date', 'shipment date', 'movement date', 'month', 'week', 'period', 'sales month', 'sales period', 'reporting period', 'fiscal period', 'accounting period', 'fy', 'month year', 'yyyy-mm-dd', 'dd-mm-yyyy'],
   price: ['selling price', 'sale price', 'sell price', 'unit price', 'price', 'mrp', 'asp', 'rate', 'item price', 'online price', 'sales price', 'your price', 'buy box price', 'your selling price', 'discounted price', 'net price', 'retail price'],
   cost: ['unit cost', 'cost price', 'standard cost', 'purchase price', 'purchase rate', 'landed cost', 'cogs', 'cost of goods', 'buy price', 'moving average price', 'valuation price', 'cost', 'avg cost', 'average cost', 'wac'],
-  unitsSold: ['units sold', 'qty sold', 'quantity sold', 'sales qty', 'sales quantity', 'units sold last 30 days', 'units', 'qty', 'quantity', 'demand', 'monthly demand', 'monthly sales', 'daily sales', 'sales units', 'sold qty', 'items sold', 'pieces sold', 'qty dispatched', 'dispatched qty', 'delivery quantity', 'billed quantity', 'issued quantity', 'outward qty', 'shipped quantity', 'invoiced quantity', 'total sold', 'units ordered', 'order quantity', 'fulfilled quantity', 'net quantity', 'total sales', 'sales'],
+  unitsSold: ['units sold', 'qty sold', 'quantity sold', 'sales qty', 'sales quantity', 'units sold last 30 days', 'units', 'qty', 'quantity', 'demand', 'monthly demand', 'monthly sales', 'daily sales', 'sales units', 'sold qty', 'items sold', 'pieces sold', 'qty dispatched', 'dispatched qty', 'delivery quantity', 'billed quantity', 'issued quantity', 'outward qty', 'outward quantity', 'outwards', 'outward', 'shipped quantity', 'invoiced quantity', 'total sold', 'units ordered', 'order quantity', 'fulfilled quantity', 'net quantity', 'total sales', 'sales'],
   returns: ['returns', 'return qty', 'returned qty', 'returned units', 'return/rto qty', 'rto qty', 'rto', 'refunded qty', 'refund qty', 'returns qty', 'return units', 'customer returns', 'rto/return', 'returned quantity'],
   status: ['order status', 'status', 'order state', 'fulfilment status', 'fulfillment status', 'shipment status', 'delivery status'],
   velocity: ['daily velocity', 'velocity 7d', 'velocity 30d', 'velocity', 'daily demand', 'avg daily sales', 'daily run rate', 'run rate', 'units per day', 'sales per day', 'average daily demand', 'adu', 'average daily usage', 'daily avg'],
@@ -184,12 +195,18 @@ const SYN = {
   channel: ['channel', 'platform', 'sales channel', 'order source', 'fulfillment channel', 'marketplace'],
   uom: ['uom', 'unit of measure', 'unit', 'base unit', 'sales unit'],
 };
+// FIX(v10): short synonyms (<=3 chars: 'day','ean','lt','fc',...) must match a whole word, not a substring.
+function matchHeader(h, name) {
+  if (h === name) return true;
+  if (name.length <= 3) return new RegExp('(^|[^a-z0-9])' + name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '([^a-z0-9]|$)').test(h);
+  return h.includes(name) || (name.length > 4 && name.includes(h) && h.length > 3);
+}
 export function mapColumns(headers) {
   const map = {};
   const lh = headers.map(h => (h || '').toString().toLowerCase().trim().replace(/[_\-]/g, ' ').replace(/\s+/g, ' '));
   for (const [field, names] of Object.entries(SYN)) {
     for (const name of names) {
-      const idx = lh.findIndex(h => h === name || h.includes(name) || (name.length > 4 && name.includes(h) && h.length > 3));
+      const idx = lh.findIndex(h => matchHeader(h, name));
       if (idx !== -1 && map[field] === undefined && !Object.values(map).includes(idx)) { map[field] = idx; break; }
     }
   }
@@ -246,7 +263,7 @@ export function buildSkuMap(dataRows, map, cfg) {
         momTrend: mom, seasonalIndex: seas,
         category: get(row, 'category') || 'General', brand: get(row, 'brand') || '—',
         warehouse: wh, city: get(row, 'city') || '', channel: get(row, 'channel') || '—', uom: get(row, 'uom') || 'Units',
-        periods: [], _wh: {}, censoredObs: 0, totalObs: 0, oosFlag: false,
+        periods: [], _wh: {}, _salesByWh: {}, _retByWh: {}, _velByWh: {}, _rows: 0, _hasPeriod: false, censoredObs: 0, totalObs: 0, oosFlag: false,
       };
     }
     const e = skuMap[key];
@@ -266,6 +283,10 @@ export function buildSkuMap(dataRows, map, cfg) {
     e.grossUnits += grossAdd;
     e.returnUnits += returnAdd;
     e.dailyVelocity += vel;
+    e._rows++; if (period) e._hasPeriod = true;   // FIX(v10): track per-wh sales to catch repeated account-level totals
+    e._salesByWh[wh] = (e._salesByWh[wh] || 0) + grossAdd;
+    e._retByWh[wh] = (e._retByWh[wh] || 0) + returnAdd;
+    e._velByWh[wh] = (e._velByWh[wh] || 0) + vel;
 
     // STOCK: snapshot per warehouse — keep the max seen per distinct wh (dedupe repeats), sum across wh
     const prev = e._wh[wh] || { avail: 0, inbound: 0, reserved: 0 };
@@ -288,6 +309,16 @@ export function buildSkuMap(dataRows, map, cfg) {
     e.available = whs.reduce((a, w) => a + e._wh[w].avail, 0);
     e.inbound = whs.reduce((a, w) => a + e._wh[w].inbound, 0);
     e.reserved = whs.reduce((a, w) => a + e._wh[w].reserved, 0);
+    // FIX(v10): snapshot repeated-total guard — one row per distinct warehouse all carrying the SAME sales figure is
+    // an account-level total copied per FC, not additive order lines; collapse instead of multiplying demand.
+    const _sv = Object.values(e._salesByWh);
+    if (!e._hasPeriod && e.warehouseCount > 1 && e._rows === e.warehouseCount && _sv.length === e.warehouseCount && _sv.every(v => v === _sv[0]) && _sv[0] > 0) {
+      e.grossUnits = _sv[0];
+      const _rv = Object.values(e._retByWh); if (_rv.length) e.returnUnits = _rv[0];
+      const _vv = Object.values(e._velByWh); if (_vv.length && _vv.every(v => v === _vv[0])) e.dailyVelocity = _vv[0];
+      e.collapsedWhTotal = true;
+    }
+    delete e._salesByWh; delete e._retByWh; delete e._velByWh;
     e.netUnits = Math.max(0, e.grossUnits - e.returnUnits);
     e.returnRate = e.grossUnits > 0 ? e.returnUnits / e.grossUnits : 0;
     if (e.leadTime === 0) e.leadTime = cfg.qcom ? 2 : 30;
@@ -333,7 +364,7 @@ function normalisePeriod(raw) {
   // Excel serial date
   if (/^\d{5}(\.\d+)?$/.test(s)) { const n = parseInt(s, 10); const d = new Date(Date.UTC(1899, 11, 30) + n * 86400000); return d.toISOString().substring(0, 10); }
   const dmy = s.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})$/);
-  if (dmy) { const y = dmy[3].length === 2 ? '20' + dmy[3] : dmy[3]; return `${y}-${dmy[2].padStart(2, '0')}-${dmy[1].padStart(2, '0')}`; }
+  if (dmy) { let day = +dmy[1], mo = +dmy[2]; if (mo > 12 && day <= 12) { const t = day; day = mo; mo = t; } const y = dmy[3].length === 2 ? '20' + dmy[3] : dmy[3]; return `${y}-${String(mo).padStart(2, '0')}-${String(day).padStart(2, '0')}`; }
   const my = s.match(/^(\d{1,2})[\/\-](\d{4})$/);
   if (my) return `${my[2]}-${my[1].padStart(2, '0')}-01`;
   const M = { jan: '01', feb: '02', mar: '03', apr: '04', may: '05', jun: '06', jul: '07', aug: '08', sep: '09', oct: '10', nov: '11', dec: '12' };
@@ -385,14 +416,17 @@ function seasonalIndices(y, m) {
   const s = idx.map((v, i) => cnt[i] ? (v / cnt[i]) / o : 1); const avg = mean(s);
   return s.map(v => avg ? v / avg : 1);
 }
-export function buildForecaster(demands, method) {
+export function buildForecaster(demands, method, gap) {
   const n = demands.length;
   const cls = classifyDemand(demands);
   const ma = mean(demands.slice(-Math.min(3, n)));
   let lvl = demands[0]; for (let i = 1; i < n; i++) lvl = 0.4 * demands[i] + 0.6 * lvl;
   const { a, b } = linreg(demands); const last = n - 1;
-  const holt = k => Math.max(0, a + b * (last + k));
-  let season = null, m = 0; for (const c of [12, 7, 4]) { const s = seasonalIndices(demands, c); if (s) { season = s; m = c; break; } }
+  const phi = 0.9;   // FIX(v10): damped trend bounds runaway long-horizon extrapolation
+  const trendSum = k => { let s = 0; for (let i = 1; i <= k; i++) s += Math.pow(phi, i); return s; };
+  const holt = k => Math.max(0, (a + b * last) + b * trendSum(k));
+  const seasCands = gap == null ? [12, 7, 4] : (gap < 2 ? [7] : gap < 10 ? [] : gap < 45 ? [12] : gap < 135 ? [4] : []);   // FIX(v10): seasonal period tied to granularity
+  let season = null, m = 0; for (const c of seasCands) { const s = seasonalIndices(demands, c); if (s) { season = s; m = c; break; } }
 
   // intermittent/lumpy → TSB regardless of chosen method (unless user forces one)
   if ((cls.pattern === 'intermittent' || cls.pattern === 'lumpy') && (method === 'Auto' || method === 'ML Ensemble')) {
@@ -414,12 +448,12 @@ export function buildForecaster(demands, method) {
   return { f: k => Math.max(0, fn(k)), slope: b, level: Math.max(0, lvl), ma, seasonal: !!season, pattern: cls.pattern, adi: cls.adi, cv2: cls.cv2 };
 }
 // rolling-origin back-test → WMAPE (primary), bias, MASE
-export function backtest(demands, method) {
+export function backtest(demands, method, gap) {
   const n = demands.length; if (n < 4) return { wmape: null, bias: null, mase: null, mape: null };
   let sAbs = 0, sAct = 0, sErr = 0, naiveAbs = 0, apeSum = 0, apeCnt = 0;
   const start = Math.max(3, Math.floor(n / 2));
   for (let t = start; t < n; t++) {
-    const f = buildForecaster(demands.slice(0, t), method).f(1);
+    const f = buildForecaster(demands.slice(0, t), method, gap).f(1);
     const act = demands[t];
     sAbs += Math.abs(f - act); sAct += Math.abs(act); sErr += (f - act);
     naiveAbs += Math.abs(demands[t - 1] - act);
@@ -444,8 +478,9 @@ function demandOverDays(fc, D, gap, dayMult) {
 
 // ═══ SERVICE LEVEL → z ═══════════════════════════════════════════════════════
 function zForService(sl) {
-  const T = [[0.80, 0.84], [0.85, 1.04], [0.90, 1.28], [0.95, 1.65], [0.97, 1.88], [0.98, 2.05], [0.99, 2.33], [0.995, 2.58]];
-  let z = 1.65; for (const [p, v] of T) if (sl >= p) z = v; return z;
+  if (sl > 1) sl = sl / 100;   // FIX(v10): accept 95 as 0.95
+  const T = [[0.50, 0.00], [0.80, 0.84], [0.85, 1.04], [0.90, 1.28], [0.95, 1.65], [0.97, 1.88], [0.98, 2.05], [0.99, 2.33], [0.995, 2.58]];
+  let z = 0; for (const [p, v] of T) if (sl >= p) z = v; return z;   // FIX(v10): sub-0.80 no longer silently 95%
 }
 
 // ═══ COMPUTE ENGINE ══════════════════════════════════════════════════════════
@@ -475,10 +510,10 @@ export function computeSKU(s, isTS, today, cfg, map, catStats) {
     const pm = mean(demands);
     avgMonthly = Math.round(pm * (30 / gap) * 10) / 10;
     if (n >= 4) { const { b } = linreg(demands); const pct = pm > 0 ? (b * (n - 1) / pm) * 100 : 0; trend = pct > 8 ? 'up' : pct < -8 ? 'down' : 'flat'; trendPct = (pct >= 0 ? '+' : '') + Math.round(pct) + '%'; }
-    fc = buildForecaster(demands, cfg.method); pattern = fc.pattern;
-    const bt = backtest(demands, cfg.method); mape = bt.mape; wmape = bt.wmape; bias = bt.bias; mase = bt.mase;
+    fc = buildForecaster(demands, cfg.method, gap); pattern = fc.pattern;
+    const bt = backtest(demands, cfg.method, gap); mape = bt.mape; wmape = bt.wmape; bias = bt.bias; mase = bt.mase;
     dailyVel = fc.f(1) / gap;
-    sigmaDaily = std(demands) / gap;
+    sigmaDaily = std(demands) / Math.sqrt(gap);   // FIX(v10): period sigma -> daily scales by sqrt(gap), not gap
     conf = wmape != null ? (wmape <= 20 ? 'High' : wmape <= 40 ? 'Medium' : 'Low') : (n >= 4 ? 'Medium' : 'Low');
   } else {
     // snapshot mode
@@ -580,6 +615,8 @@ function buildSummary(results, isTS, cfg, map) {
   const w = active.filter(s => s.wmape != null);
   const avgWmape = w.length ? Math.round(w.reduce((a, r) => a + r.wmape, 0) / w.length) : null;
   const avgBias = w.length ? Math.round(w.reduce((a, r) => a + (r.bias || 0), 0) / w.length) : null;
+  const mp = active.filter(s => s.mape != null);   // FIX(v10): real average MAPE (was WMAPE relabelled)
+  const avgMape = mp.length ? Math.round(mp.reduce((a, r) => a + r.mape, 0) / mp.length) : null;
   const censoredN = results.filter(r => r.censored).length;
   const dataQuality = [];
   if (!isTS) dataQuality.push(`Snapshot file: sales treated as a ${cfg.salesWindow}-day figure. Set the correct Data Sales Period or daily numbers will be off. Upload dated rows for true trend/seasonality and back-tested accuracy.`);
@@ -608,7 +645,7 @@ function buildSummary(results, isTS, cfg, map) {
     isTS, erpSource: cfg.erpSource, planLevel: cfg.level, region: cfg.region,
     commerceType: cfg.qcom ? 'Quick Commerce' : 'E-Commerce', festivalMode: cfg.applyFestival,
     forecastMethod: cfg.method, periodGranularity: results.find(r => r.periodGranularity)?.periodGranularity || (isTS ? 'unknown' : 'snapshot'),
-    forecastAccuracyWmape: avgWmape, forecastAccuracyMape: avgWmape, forecastBias: avgBias,
+    forecastAccuracyWmape: avgWmape, forecastAccuracyMape: avgMape, forecastBias: avgBias,
     dataQuality, detectedColumns: Object.keys(map).join(', '),
   };
 }
