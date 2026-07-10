@@ -656,7 +656,7 @@ function renderSide(){
   document.getElementById("side").innerHTML=
     NAV.map(([k,l,ic])=>`<div class="tab ${TAB===k?'active':''}" onclick="go('${k}')"><span class="ic">${ic}</span><span class="txt">${l}</span></div>`).join("")
     +`<div style="flex:1"></div>`
-    +`<div class="txt" style="padding:11px;border-radius:10px;background:var(--card2);border:1px solid var(--border);font-size:12px;color:var(--muted)"><b style="color:var(--green)">● Free</b> · no login<div style="margin-top:2px">Saved on this device</div></div>`;
+    +`<div class="txt" style="padding:11px;border-radius:10px;background:var(--card2);border:1px solid var(--border);font-size:12px;color:var(--muted);margin-bottom:8px"><b style="color:var(--green)">● Free</b> · no login<div style="margin-top:2px">Saved on this device</div></div>` +`<div class="txt" style="padding:12px;border-radius:10px;background:linear-gradient(135deg,rgba(79,107,255,.10),rgba(155,107, 255,.10));border:1px solid rgba(79,107,255,.30);font-size:12px;color:var(--muted)"><div style="display:flex;align-items:center;gap:6px;margin-bottom:3px"><span style="font-size:13px">✦</span><b style="background:l inear-gradient(135deg,#4F6BFF,#9B6BFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;f ont-size:12.5px">TMS Pro</b></div><div style="font-size:11px;line-height:1.5">Multi-user, live carrier APIs &amp; automated freight audit. <b style="color:var(--b600)">Coming soon.</b></div></div>`;
 }
 function go(k){TAB=k;render();}
 
