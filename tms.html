@@ -459,8 +459,11 @@ function assignFleet(vehicles,ships){
 
 /* ---------- small render helpers ---------- */
 const el=(h)=>{const d=document.createElement("div");d.innerHTML=h;return d;};
-function head(t,s,right){return `<div class="h"><div><div class="t">${t}</div>${s?`<div class="s">${s}</div>`:""}</div><div>${right||""}</div></div>`;}
-function stat(label,v,sub,color){return `<div class="card stat"><div class="lbl">${label}</div><div class="v" style="color:${color||"var(--text)"}">${v}</div>${sub?`<div class="muted" style="font-size:12px;margin-top:2px">${sub}</div>`:""}</div>`;}
+function head(t,s,right){return `<div class="h"><div><div class="t">${t}<span
+style="display:inline-block;margin-left:9px;padding:3px 9px;border-radius:999px;background:linear-gradient(135deg,#4F6BFF,#9B6
+BFF);color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;vertical-align:middle;text-transform:uppercase">Beta</span
+></div>${s?`<div class="s">${s}</div>`:""}</div><div>${right||""}</div></div>`;}
+  function stat(label,v,sub,color){return `<div class="card stat"><div class="lbl">${label}</div><div class="v" style="color:${color||"var(--text)"}">${v}</div>${sub?`<div class="muted" style="font-size:12px;margin-top:2px">${sub}</div>`:""}</div>`;}
 function pill(txt,color){return `<span class="pill" style="color:${color};background:${color==="var(--muted)"?"var(--bg)":"color-mix(in srgb,"+color+" 15%,transparent)"}">${txt}</span>`;}
 
 /* ============================================================================
