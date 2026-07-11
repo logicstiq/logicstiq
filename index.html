@@ -64,6 +64,9 @@ body{font-family:'Wix Madefor Text','Inter',sans-serif;background:var(--bg);colo
 .nav-links a{font-size:13px;font-weight:600;color:var(--text3);text-decoration:none;transition:color .15s}
 .nav-links a:hover{color:var(--b600)}
 .nav-cta{background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;border:none;border-radius:9px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}
+.nav-burger{display:none;background:var(--white);border:1px solid var(--border2);border-radius:9px;width:38px;height:38px;padding:0;cursor:pointer;color:var(--text);align-items:center;justify-content:center;flex:0 0 auto}
+.nav-burger svg{width:22px;height:22px}
+.nav-burger:hover{border-color:#3A55FF;color:#3A55FF}
 /* ── HERO — dark navy ── */
 .hero{background:linear-gradient(135deg,#0F172A 0%,#1C2C73 45%,#2A40D6 100%);padding:72px 32px 60px;text-align:center;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='%23ffffff' fill-opacity='0.05'/%3E%3C/svg%3E");pointer-events:none}
@@ -255,7 +258,6 @@ footer{background:#0F172A;padding:52px 32px 28px}
 .footer-affiliate-note{border-top:1px solid #1E293B;padding:13px 0;text-align:center;font-size:11px;color:#64748B;line-height:1.7;max-width:1100px;margin:0 auto}
 @media(max-width:768px){.nav-tagline{display:none!important}}
 @media(max-width:768px){
-  .nav-links{display:none}
   .hero{padding:52px 20px 44px}
   .stat-row{gap:8px}
   .stat-box{padding:12px 16px;min-width:90px}
@@ -665,9 +667,18 @@ section,.section{padding:46px 0}
 .nav-cta{flex:0 0 auto;white-space:nowrap}
 @media(max-width:1240px){.nav-links{gap:16px}}
 @media(max-width:1080px){.nav{padding:0 18px}.nav-links{gap:12px}}
-@media(max-width:1100px){.nav-links{display:none}}
-@media(max-width:600px){.nav{padding:0 12px;gap:8px}.nav-logo svg{height:32px;width:auto}.nav-cta{padding:8px 12px;font-size:12px;white-space:nowrap}}
-@media(max-width:360px){.nav-logo svg{height:28px}.nav-cta{padding:7px 10px;font-size:11px}.footer-grid{grid-template-columns:1fr}}
+@media(max-width:1100px){
+  .nav-burger{display:inline-flex}
+  .nav-logo{margin-right:auto}
+  .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);box-shadow:0 16px 30px rgba(15,23,42,.12);padding:6px 0;max-height:0;overflow:hidden;opacity:0;visibility:hidden;transition:max-height .28s ease,opacity .2s ease,visibility .28s}
+  .nav.menu-open .nav-links{max-height:85vh;overflow-y:auto;opacity:1;visibility:visible}
+  .nav-links a{padding:13px 22px;font-size:15px;border-bottom:1px solid var(--border)}
+  .nav-links a:last-child{border-bottom:none}
+  [data-theme="dark"] .nav-links{background:#10131F;border-color:rgba(255,255,255,.12)}
+  [data-theme="dark"] .nav-links a{border-bottom-color:rgba(255,255,255,.08)}
+}
+@media(max-width:600px){.nav{padding:0 10px;gap:6px}.nav-logo svg{height:30px;width:auto}.nav-cta{padding:7px 10px;font-size:11px;white-space:nowrap}.nav-burger{width:34px;height:34px}.nav-burger svg{width:20px;height:20px}}
+@media(max-width:360px){.nav-logo svg{height:26px}.nav-cta{padding:6px 8px;font-size:10px}.footer-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -765,7 +776,7 @@ section,.section{padding:46px 0}
     <text x="98" y="44" font-family="'Plus Jakarta Sans','Inter',sans-serif" font-size="36" font-weight="800" letter-spacing="-1.4"><tspan fill="#4F6BFF">Logicst</tspan><tspan fill="#9B6BFF">IQ</tspan></text>
     <text x="99" y="70" font-family="'Inter',sans-serif" font-size="16" font-weight="600" letter-spacing="0.3" fill="#64748B">Where Logistics Meets Intelligence</text>
   </svg>
-</a>  <div class="nav-links">
+</a>  <div class="nav-links" id="navLinks">
     <a href="#calculators">Calculators</a>
     <a href="/documents-generator.html">Documents</a>
     <a href="/sourcing-procurement.html">Sourcing &amp; Procurement</a>
@@ -778,7 +789,21 @@ section,.section{padding:46px 0}
   </div>
   <button id="liqTheme" class="liq-theme-btn" type="button" aria-label="Toggle light or dark mode" title="Toggle light / dark">🌙</button>
   <button class="nav-cta" onclick="document.getElementById('liq-planner').scrollIntoView({behavior:'smooth'})">Free — No Login →</button>
+  <button class="nav-burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
 </nav>
+<script>
+(function(){
+  var nav=document.querySelector('nav.nav');
+  var burger=document.getElementById('navBurger');
+  var links=document.getElementById('navLinks');
+  if(!nav||!burger||!links)return;
+  function setOpen(open){nav.classList.toggle('menu-open',open);burger.setAttribute('aria-expanded',open?'true':'false');burger.setAttribute('aria-label',open?'Close menu':'Open menu');}
+  burger.addEventListener('click',function(e){e.stopPropagation();setOpen(!nav.classList.contains('menu-open'));});
+  links.addEventListener('click',function(e){if(e.target.closest('a'))setOpen(false);});
+  document.addEventListener('click',function(e){if(nav.classList.contains('menu-open')&&!nav.contains(e.target))setOpen(false);});
+  window.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});
+})();
+</script>
 <!-- ── HERO (premium, matches approved design) ── -->
 <section class="pf-hero">
   <div class="pf-wrap">
