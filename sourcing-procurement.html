@@ -163,12 +163,31 @@ table.lines tbody tr:nth-child(even){background:#fafbfe}
 [data-theme="dark"] .dash-card{background:#0E1320;border-color:#2b3654}
 [data-theme="dark"] .pstep{background:#17203a;color:#94A0BC}
 </style>
+<style id="liq-premium">
+.liq-i{width:1.05em;height:1.05em;vertical-align:-.16em;flex:0 0 auto}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.topbar{box-shadow:0 1px 0 rgba(23,37,84,.05),0 8px 24px rgba(23,37,84,.05)}
+.btn{transition:transform .15s ease,box-shadow .15s ease,filter .15s ease}
+.btn-blue{background:linear-gradient(135deg,#3A55FF,#770BFF)!important;border:none!important;box-shadow:0 8px 20px rgba(58,85,255,.28)}
+.btn-blue:hover{transform:translateY(-1px);box-shadow:0 13px 28px rgba(58,85,255,.36)}
+.btn-ghost{transition:transform .15s,border-color .15s,background .15s}
+.btn-ghost:hover{transform:translateY(-1px);border-color:#B9C6FF}
+.guidebtn{transition:transform .15s,box-shadow .15s}
+.guidebtn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(27,42,74,.25)}
+input:focus,select:focus,textarea:focus{border-color:#3A55FF!important;box-shadow:0 0 0 3px rgba(58,85,255,.16)!important}
+.panel{box-shadow:0 1px 3px rgba(23,37,84,.05),0 16px 36px rgba(23,37,84,.06)}
+.modetab{transition:all .15s}
+.doctabs button{transition:all .15s}
+.doctabs button.active{background:linear-gradient(135deg,#3A55FF,#770BFF)!important;border-color:transparent!important;box-shadow:0 6px 16px rgba(58,85,255,.28)}
+.doctabs button:not(.active):hover{border-color:#B9C6FF;color:#2A40D6}
+a:focus-visible,button:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(58,85,255,.18)}
+</style>
 </head>
 <body>
 <div class="topbar">
   <a class="brand" href="/" title="Back to LogicstIQ home"><b>Logicst<span>IQ</span></b><small>Where Logistics Meets Intelligence</small></a>
   <span class="modmark">Sourcing &amp; Procurement</span>
-  <a href="/documents-generator.html" style="text-decoration:none;font-size:12.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:7px 13px">📄 Document Generator</a>
+  <a href="/documents-generator.html" style="text-decoration:none;font-size:12.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:7px 13px"><svg class="liq-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7z"/><path d="M14 3v4h4"/><path d="M9 13h6M9 16.5h4"/></svg> Document Generator</a>
   <button class="guidebtn" id="guideOpen">📋 Procure-to-Pay guide</button>
   <div class="pill">🔒 Saved in your browser only</div>
 </div>
