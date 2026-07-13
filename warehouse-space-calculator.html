@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Volumetric Weight Calculator India — Chargeable Weight Tool | Free | LogicstIQ — Free Supply Chain Calculator</title>
+  <meta name="description" content="Free Volumetric Weight Calculator India. Calculate chargeable weight for Delhivery, Shiprocket, Blue Dart, DTDC. Compare actual vs. volumetric weight instantly. No login.">
+  <meta name="keywords" content="volumetric weight calculator India, dimensional weight calculator, chargeable weight calculator, Delhivery volumetric weight, Shiprocket weight calculator, DIM weight India">
+  <link rel="canonical" href="https://www.logicstiq.com/volumetric-weight-calculator">
+  <meta property="og:title" content="Volumetric Weight Calculator India — Chargeable Weight Tool | Free | LogicstIQ — Free Supply Chain Calculator">
+  <meta property="og:description" content="Free Volumetric Weight Calculator India. Calculate chargeable weight for Delhivery, Shiprocket, Blue Dart, DTDC. Compare actual vs. volumetric weight instantly. No login.">
+  <meta property="og:url" content="https://www.logicstiq.com/volumetric-weight-calculator">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LogicstIQ.com">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:#F4F7FF;color:#0F172A;min-height:100vh;font-size:16px;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;background:#FFFFFF;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100}
+    .nav-logo{font-weight:800;font-size:1.1rem;color:#0F172A}
+    .nav-back{color:#3A55FF;font-size:0.875rem;font-weight:600}
+    .nav-back:hover{color:#2A40D6}
+    .badge-bar{text-align:center;padding:12px;background:#FFFFFF;border-bottom:1px solid #E2E8F0;font-size:0.8rem;color:#3A55FF;font-weight:700;letter-spacing:0.5px}
+    .hero{max-width:760px;margin:0 auto;padding:48px 24px 32px;text-align:center}
+    .hero h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;color:#0F172A;line-height:1.2;margin-bottom:14px}
+    .hero h1 span{display:block;font-size:clamp(1rem,2vw,1.2rem);font-weight:500;color:#475569;margin-top:8px}
+    .hero-sub{color:#475569;font-size:0.9rem;margin-top:16px}
+    .trust-row{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:16px}
+    .trust-item{font-size:0.8rem;color:#3A55FF;font-weight:600}
+    .trust-item::before{content:"✓ "}
+    .calc-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
+    .calc-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;overflow:hidden}
+    .calc-header{background:#F8FAFF;padding:18px 24px;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:10px}
+    .calc-header-icon{font-size:1.2rem}
+    .calc-header-title{font-size:0.95rem;font-weight:700;color:#0F172A}
+    .calc-body{padding:24px}
+    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media(max-width:560px){.field-grid{grid-template-columns:1fr}}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field label{font-size:0.8rem;font-weight:700;color:#475569;letter-spacing:0.3px}
+    .field span{font-size:0.72rem;color:#94A3B8}
+    .field input,.field select{background:#FFFFFF;border:1px solid #CBD5E1;border-radius:8px;padding:10px 14px;color:#0F172A;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color .2s}
+    .field input:focus,.field select:focus{border-color:#3A55FF}
+    .field input::placeholder{color:#94A3B8}
+    .calc-btn{width:100%;margin-top:20px;background:linear-gradient(135deg,#3A55FF,#2A40D6);color:#fff;border:none;border-radius:10px;padding:14px;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:opacity .2s}
+    .calc-btn:hover{opacity:0.9}
+    .results{display:none;margin-top:20px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px}
+    .results.show{display:block}
+    .results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}
+    .result-item{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:16px;text-align:center}
+    .result-label{font-size:0.72rem;color:#475569;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+    .result-value{font-size:1.35rem;font-weight:800;color:#3A55FF}
+    .result-value.green{color:#059669}
+    .result-value.red{color:#DC2626}
+    .result-value.amber{color:#D97706}
+    .result-sub{font-size:0.7rem;color:#94A3B8;margin-top:4px}
+    .disclaimer{margin-top:16px;font-size:0.75rem;color:#94A3B8;padding:10px;background:#F4F7FF;border-radius:8px;border-left:3px solid #E2E8F0}
+    .content-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
+    .formula-box{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px 24px;margin-bottom:32px}
+    .formula-tag{font-size:0.7rem;font-weight:700;color:#3A55FF;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+    .formula-expr{font-family:'Courier New',monospace;font-size:0.9rem;color:#2A40D6;line-height:1.9}
+    .section-title{font-size:0.75rem;font-weight:700;color:#3A55FF;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+    .prose{color:#475569;font-size:0.9rem;line-height:1.75;margin-bottom:24px}
+    .prose strong{color:#0F172A}
+    .example-box{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px 24px;margin-bottom:32px}
+    .example-tag{font-size:0.7rem;font-weight:700;color:#059669;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+    .ex-p{font-size:0.85rem;color:#475569;margin-bottom:14px}
+    .ex-table{width:100%;border-collapse:collapse}
+    .ex-table td{padding:8px 0;font-size:0.875rem;color:#475569;border-bottom:1px solid #E2E8F0}
+    .ex-table td:last-child{text-align:right;color:#0F172A;font-weight:600}
+    .ex-table tr.total td{border-bottom:none;color:#3A55FF;font-weight:800;font-size:1rem}
+    .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:32px}
+    .why-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:18px}
+    .why-card h4{font-size:0.85rem;font-weight:700;color:#0F172A;margin-bottom:8px}
+    .why-card p{font-size:0.8rem;color:#475569;line-height:1.6}
+    .ai-cta{background:linear-gradient(135deg,#FFFFFF,#FFFFFF);border:1px solid #CBD5E1;border-radius:16px;padding:28px 24px;text-align:center;margin-bottom:32px}
+    .ai-cta h3{font-size:1.1rem;font-weight:800;color:#0F172A;margin-bottom:8px}
+    .ai-cta p{font-size:0.875rem;color:#475569;margin-bottom:20px}
+    .ai-cta a{display:inline-block;background:linear-gradient(135deg,#3A55FF,#2A40D6);color:#fff;padding:12px 28px;border-radius:10px;font-weight:700;font-size:0.9rem}
+    .ai-cta-tags{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+    .ai-cta-tag{font-size:0.72rem;color:#94A3B8}
+    .faq-item{border-bottom:1px solid #E2E8F0;padding:16px 0}
+    .faq-item:last-child{border-bottom:none}
+    .faq-q{font-size:0.9rem;font-weight:700;color:#0F172A;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .faq-q::after{content:"▾";color:#3A55FF;font-size:0.8rem}
+    .faq-a{font-size:0.85rem;color:#475569;line-height:1.7;margin-top:10px;display:none}
+    .faq-item.open .faq-a{display:block}
+    .faq-item.open .faq-q::after{content:"▴"}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:10px;margin-top:16px}
+    .related-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:16px;text-decoration:none;transition:border-color .2s;display:flex;flex-direction:column;gap:4px}
+    .related-card:hover{border-color:#3A55FF}
+    .related-search{font-size:0.65rem;color:#94A3B8}
+    .related-name{font-size:0.85rem;font-weight:700;color:#0F172A}
+    footer{background:#0F172A;border-top:1px solid #1E293B;padding:28px 32px;text-align:center;margin-top:20px}
+    .footer-copy{font-size:0.78rem;color:#94A3B8;line-height:1.8}
+    .footer-copy a{color:#94A3B8}
+    .footer-copy a:hover{color:#fff}
+    @media(max-width:600px){.nav{padding:14px 20px}.hero{padding:32px 20px 24px}.calc-body{padding:16px}}
+</style>
+<style id="liq-theme-css">
+.liq-theme-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--white);color:var(--text);font-size:15px;line-height:1;cursor:pointer;display:inline-grid;place-items:center;transition:.18s;margin-left:4px}
+.liq-theme-btn:hover{border-color:#3A55FF;transform:translateY(-1px)}
+.liq-theme-float{position:fixed;right:18px;bottom:18px;z-index:99999;width:44px;height:44px;border-radius:50%;box-shadow:0 8px 22px rgba(0,0,0,.28)}
+[data-theme="dark"]{
+  --bg:#070708;--white:#10131F;--border:rgba(255,255,255,.10);--border2:rgba(255,255,255,.17);
+  --b50:rgba(58,85,255,.12);--b100:rgba(58,85,255,.20);--b200:rgba(58,85,255,.32);
+  --text:#F1F5FF;--text2:#DBE3F5;--text3:#A7B0CC;--text4:#7E88A8;
+  --glight:rgba(16,185,129,.16);--rlight:rgba(239,68,68,.16);--alight:rgba(245,158,11,.16);--plight:rgba(119,11,255,.18);
+}
+[data-theme="dark"] body{background:#070708}
+[data-theme="dark"] .nav{background:rgba(9,10,18,.92)!important;border-bottom-color:rgba(255,255,255,.08)}
+[data-theme="dark"] .liq-theme-btn{background:rgba(255,255,255,.06)}
+[data-theme="dark"] .nav-logo text tspan:first-child{fill:#FFFFFF}
+[data-theme="dark"] .nav-logo span{color:#7D92FF!important}
+[data-theme="dark"] .card,[data-theme="dark"] .why-card,[data-theme="dark"] .results,[data-theme="dark"] .result-item,[data-theme="dark"] .related-card,[data-theme="dark"] .calc-card,[data-theme="dark"] .badge-bar,[data-theme="dark"] .result-stat,[data-theme="dark"] .f-var,[data-theme="dark"] .formula-var,[data-theme="dark"] .breakdown-item,[data-theme="dark"] .safety-card,[data-theme="dark"] .modal-card,[data-theme="dark"] .legal-note,[data-theme="dark"] .tab,[data-theme="dark"] .faq-q,[data-theme="dark"] .faq-item{background:#10131F!important;border-color:rgba(255,255,255,.12)!important}
+[data-theme="dark"] .formula-box,[data-theme="dark"] .example-box,[data-theme="dark"] .faq-a{background:#0C0F1A!important;border-color:rgba(255,255,255,.10)!important}
+[data-theme="dark"] table th{background:rgba(255,255,255,.05)!important;color:#CFD8EE!important}
+[data-theme="dark"] table td,[data-theme="dark"] table th{border-color:rgba(255,255,255,.08)!important}
+[data-theme="dark"] .section-eyebrow,[data-theme="dark"] .calc-tag,[data-theme="dark"] .blog-cat,[data-theme="dark"] .calc-cat{background:rgba(58,85,255,.14)!important;border-color:rgba(58,85,255,.32)!important;color:#AEBCFF!important}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo" aria-label="LogicstIQ — Home" style="display:inline-flex;align-items:center;text-decoration:none">
+  <svg width="245" height="50" viewBox="0 0 440 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible">
+    <defs>
+      <linearGradient id="liq_grad" x1="10" y1="70" x2="400" y2="20" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#4F6BFF"/><stop offset="100%" stop-color="#9B6BFF"/>
+      </linearGradient>
+    </defs>
+    <path d="M10 40 L26 40 L42 66 L64 22 L80 22" stroke="url(#liq_grad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M74 14 L82 22 L74 30" stroke="#9B6BFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <circle cx="42" cy="66" r="4.5" fill="#4F6BFF"/>
+    <circle cx="64" cy="22" r="4.5" fill="#9B6BFF"/>
+    <text x="98" y="44" font-family="'Plus Jakarta Sans','Inter',sans-serif" font-size="36" font-weight="800" letter-spacing="-1.4"><tspan fill="#4F6BFF">Logicst</tspan><tspan fill="#9B6BFF">IQ</tspan></text>
+    <text x="99" y="70" font-family="'Inter',sans-serif" font-size="16" font-weight="600" letter-spacing="0.3" fill="#64748B">Where Logistics Meets Intelligence</text>
+  </svg>
+</a>
+  <a href="https://www.logicstiq.com" class="nav-back">← All Calculators</a>
+</nav>
+<div class="badge-bar">🆓 Free · No Login · Instant Results</div>
+
+<section class="hero">
+  <h1>Volumetric Weight Calculator <span>Chargeable Weight for Indian Couriers — Free Tool</span></h1>
+  <p class="hero-sub">Know your chargeable weight before the carrier invoice arrives. Works for Delhivery, Shiprocket, Blue Dart, DTDC, XpressBees, and all Indian couriers.</p>
+  <div class="trust-row">
+    <span class="trust-item">No signup needed</span>
+    <span class="trust-item">No data stored</span>
+    <span class="trust-item">Works on mobile</span>
+    <span class="trust-item">Free forever</span>
+  </div>
+</section>
+
+<section class="calc-section">
+  <div class="calc-card">
+    <div class="calc-header">
+      <span class="calc-header-icon">📦</span>
+      <span class="calc-header-title">Volumetric Weight Calculator — Free Online Tool</span>
+    </div>
+    <div class="calc-body">
+      <div class="field-grid">
+        <div class="field"><label>Length (cm)</label><span>Outer carton length</span><input type="number" id="len" placeholder="e.g. 35" min="0"></div>
+        <div class="field"><label>Width (cm)</label><span>Outer carton width</span><input type="number" id="wid" placeholder="e.g. 22" min="0"></div>
+        <div class="field"><label>Height (cm)</label><span>Outer carton height</span><input type="number" id="hgt" placeholder="e.g. 14" min="0"></div>
+        <div class="field"><label>Actual Weight (kg)</label><span>Gross weight including packaging</span><input type="number" id="awt" placeholder="e.g. 1.4" min="0" step="0.1"></div>
+        <div class="field"><label>Courier / Divisor</label><span>Check your rate card</span><select id="div"><option value="5000">Delhivery / Shiprocket / Blue Dart (÷5000)</option><option value="4000">DTDC / XpressBees B2C (÷4000)</option><option value="6000">Surface / Road / Air IATA (÷6000)</option></select></div>
+        <div class="field"><label>Rate per kg ₹ (optional)</label><span>To estimate freight cost</span><input type="number" id="rate" placeholder="e.g. 45" min="0"></div>
+      </div>
+      <button class="calc-btn" onclick="runCalc()">Calculate Chargeable Weight →</button>
+      <div class="results" id="results">
+        <div class="results-grid">
+          <div class="result-item"><div class="result-label">Volumetric Weight</div><div class="result-value" id="r-vol">—</div><div class="result-sub">L×W×H ÷ divisor</div></div>
+          <div class="result-item"><div class="result-label">Actual Weight</div><div class="result-value" id="r-act">—</div><div class="result-sub">As entered</div></div>
+          <div class="result-item"><div class="result-label">Chargeable Weight</div><div class="result-value amber" id="r-chg">—</div><div class="result-sub">MAX of above two</div></div>
+          <div class="result-item"><div class="result-label">Est. Freight Cost</div><div class="result-value" id="r-cost">—</div><div class="result-sub">Before 18% GST</div></div>
+        </div>
+        <div class="disclaimer">⚠️ <strong>Reference only:</strong> Carrier rates vary. Verify chargeable weight with your carrier before shipping.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section">
+
+  <div class="formula-box">
+    <div class="formula-tag">📐 Volumetric Weight Formula</div>
+    <div class="formula-expr">Volumetric Weight (kg) = ( L × W × H in cm ) ÷ Divisor<br>Chargeable Weight = MAX ( Actual Weight, Volumetric Weight )<br>Divisors: Express courier ÷5000 · Surface ÷6000 · DTDC B2C ÷4000</div>
+  </div>
+
+  <div class="section-title">What is Volumetric Weight?</div>
+  <p class="prose"><strong>Volumetric weight</strong> (also called dimensional weight or DIM weight) is a pricing method used by couriers that accounts for the space a package takes up relative to its actual weight. When a package is large but light, the courier charges based on volumetric weight because the package occupies space that could carry heavier, more revenue-generating freight.</p>
+  <p class="prose">Indian couriers — Delhivery, Shiprocket, Blue Dart, DTDC, XpressBees — all apply volumetric weight. If volumetric weight exceeds actual weight, <strong>you are charged for the volumetric weight</strong>. Missing this calculation leads to systematic underestimation of freight cost and margin erosion.</p>
+
+  <div class="example-box">
+    <div class="example-tag">📊 Worked Example</div>
+    <p class="ex-p">An Amazon seller ships a shoe box via Delhivery (÷5000):</p>
+    <table class="ex-table">
+      <tr class=""><td>Box dimensions</td><td>35 × 22 × 14 cm</td></tr>      <tr class=""><td>Volumetric weight</td><td>35×22×14 ÷ 5000 = 2.16 kg</td></tr>      <tr class=""><td>Actual weight</td><td>1.4 kg</td></tr>      <tr class=""><td>Chargeable weight</td><td>MAX(2.16, 1.4) = 2.16 kg</td></tr>      <tr class=""><td>Rate</td><td>₹42/kg</td></tr>      <tr class="total"><td>Freight cost (before GST)</td><td>₹90.72 vs. ₹58.80 if ignored</td></tr>
+    </table>
+  </div>
+
+  <div class="section-title">Why This Calculator Matters</div>
+  <div class="why-grid">
+    <div class="why-card"><h4>Avoid Billing Surprises</h4><p>Couriers scan every package dimensionally. Volumetric charges appear on reconciliation statements weeks later — calculate upfront to protect your margins.</p></div>    <div class="why-card"><h4>Right-Size Packaging</h4><p>Reducing a box by 5cm in one dimension can lower your chargeable weight slab. Test packaging changes here before committing to a new carton design.</p></div>    <div class="why-card"><h4>Carrier Comparison</h4><p>Different carriers use different divisors. A shipment volumetrically heavy at ÷4000 may be cheaper on a ÷5000 carrier. Always compare chargeable weight, not actual weight.</p></div>    <div class="why-card"><h4>Amazon FBA Fees</h4><p>Amazon calculates FBA fulfilment fees using dimensional weight. Inaccurate dimensions in Seller Central lead to wrong fee tiers and unexpected charges.</p></div>
+  </div>
+
+  <div class="ai-cta">
+    <h3>🤖 Go Further with AI Demand Planning</h3>
+    <p>Upload your full inventory export and get demand forecasts, reorder plans, and stockout risk analysis across all your SKUs — free.</p>
+    <a href="https://www.logicstiq.com/#ai-demand-planner">Try Free AI Demand Planner →</a>
+    <div class="ai-cta-tags">
+      <span class="ai-cta-tag">Works with Tally · SAP · NetSuite · Amazon · Flipkart</span>
+      <span class="ai-cta-tag">No login · No data stored · Free forever</span>
+    </div>
+  </div>
+
+  <div class="section-title">Frequently Asked Questions</div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Should I measure the product or the shipping box?</div><div class="faq-a">Always measure the outer shipping carton — not the product inside. Couriers scan the outer box using dimensional scanners. Include all packaging materials (bubble wrap, foam inserts) in your measurement.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the GST rate on courier freight in India?</div><div class="faq-a">Courier services (Delhivery, Shiprocket, Blue Dart, XpressBees, DTDC) attract 18% GST under SAC code 9968. If you are a GST-registered business, you can claim full ITC on this 18% GST against your output liability.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Why do different couriers use different divisors?</div><div class="faq-a">The divisor is a commercial decision by each carrier reflecting how they value cubic space vs. weight capacity. Lower divisors (4000) penalise bulky shipments more. Always check your specific contract rate card — divisors can vary even within the same carrier based on your contract tier and volume.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I reduce volumetric weight charges?</div><div class="faq-a">Use right-sized packaging to eliminate void space. Switch to variable-size boxes. Use vacuum compression for soft goods like clothing and bedding. Even reducing one dimension by 3–5 cm can drop you to a lower chargeable weight slab and save meaningful cost at scale.</div></div>
+
+  <div style="margin-top:32px">
+    <div class="section-title">Related Free Calculators</div>
+    <div class="related-grid">
+      <a href="https://www.logicstiq.com/freight-cost-calculator" class="related-card"><span class="related-search">1,300/mo searches</span><span class="related-name">🚛 Freight Cost Calculator</span></a>      <a href="https://www.logicstiq.com/landed-cost-calculator" class="related-card"><span class="related-search">880/mo searches</span><span class="related-name">🌐 Landed Cost Calculator</span></a>      <a href="https://www.logicstiq.com/gst-calculator-logistics" class="related-card"><span class="related-search">720/mo searches</span><span class="related-name">🧾 GST Calculator</span></a>      <a href="https://www.logicstiq.com/carbon-footprint-logistics" class="related-card"><span class="related-search">590/mo searches</span><span class="related-name">🌱 Carbon Footprint</span></a>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <p class="footer-copy">
+    <strong>31 Free Supply Chain Calculators · AI Demand Planner · No Login Required · Free Forever</strong><br><br>
+    © 2025 <a href="https://www.logicstiq.com">LogicstIQ.com</a> ·
+    <a href="https://www.logicstiq.com/privacy-policy.html">Privacy Policy</a> ·
+    <a href="https://www.logicstiq.com/terms.html">Terms</a> ·
+    Results are for reference only.<br>
+    <strong>Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. We may earn a commission at no extra cost to you. All calculators are free forever.<br>
+    Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a>
+  </p>
+<p style="margin-top:10px;font-size:12px;color:#94A3B8">
+Contact: <a href="mailto:contactus@logicstiq.com"
+style="color:#9B6BFF;text-decoration:none;font-weight:600">contactus@logicstiq.com</a>
+</p>
+<p style="margin-top:6px;font-size:12px;color:#94A3B8">
+Tool question or bug? <a href="mailto:customercare@logicstiq.com"
+style="color:#9B6BFF;text-decoration:none;font-weight:600">customercare@logicstiq.com</a>
+</p>
+</footer>
+
+<script>function toggleFaq(el){el.closest('.faq-item').classList.toggle('open');}</script>
+<script>function runCalc(){
+  const l=parseFloat(document.getElementById('len').value)||0;
+  const w=parseFloat(document.getElementById('wid').value)||0;
+  const h=parseFloat(document.getElementById('hgt').value)||0;
+  const a=parseFloat(document.getElementById('awt').value)||0;
+  const d=parseFloat(document.getElementById('div').value)||5000;
+  const r=parseFloat(document.getElementById('rate').value)||0;
+  if(!l||!w||!h||!a){alert('Please enter all dimensions and actual weight.');return;}
+  const vol=(l*w*h)/d;
+  const chg=Math.max(vol,a);
+  const cost=r>0?chg*r:null;
+  document.getElementById('r-vol').textContent=vol.toFixed(2)+' kg';
+  document.getElementById('r-act').textContent=a.toFixed(2)+' kg';
+  document.getElementById('r-chg').textContent=chg.toFixed(2)+' kg';
+  document.getElementById('r-cost').textContent=cost!==null?'₹'+cost.toFixed(2):'Enter rate/kg';
+  document.getElementById('results').classList.add('show');
+}</script>
+
+<script>
+(function(){var r=document.documentElement;
+function lbl(){var b=document.getElementById('liqTheme');if(b)b.textContent=r.getAttribute('data-theme')==='dark'?'☀️':'🌙';}
+function set(t){r.setAttribute('data-theme',t);lbl();try{localStorage.setItem('liq-theme',t)}catch(e){}}
+try{var sv=localStorage.getItem('liq-theme');if(sv)r.setAttribute('data-theme',sv);}catch(e){}
+var btn=document.createElement('button');btn.id='liqTheme';btn.type='button';btn.className='liq-theme-btn';
+btn.setAttribute('aria-label','Toggle light or dark mode');btn.title='Toggle light / dark';btn.textContent='🌙';
+btn.addEventListener('click',function(){set(r.getAttribute('data-theme')==='dark'?'light':'dark');});
+function place(){var nav=document.querySelector('.nav');
+ if(nav){var cta=nav.querySelector('.nav-cta');if(cta&&cta.parentNode){cta.parentNode.insertBefore(btn,cta);}
+   else{var l=nav.querySelector('.nav-links');(l||nav).appendChild(btn);}}
+ else{btn.classList.add('liq-theme-float');document.body.appendChild(btn);}lbl();}
+if(document.readyState!=='loading')place();else document.addEventListener('DOMContentLoaded',place);})();
+</script>
+</body>
+</html>

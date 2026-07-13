@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FBA Inventory, Aging & Disposition Planner | LogicstIQ</title>
+<meta name="description" content="Free FBA inventory tool: fulfillable vs unfulfillable units, aged-inventory & long-term-storage fee risk, restock-limit check, and disposition (liquidate / remove / keep) recommendations. No login, nothing stored.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.logicstiq.com/fba-disposition">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@600;700;800&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+:root{
+  --blue:#3a55ff;--blue-d:#2a40d6;--azure:#0096fa;--violet:#770bff;--teal:#4cc3ae;
+  --good:#0ea66a;--amber:#d97706;--red:#dc2626;
+  --grad:linear-gradient(120deg,#3a55ff,#770bff);
+  --bg:#f5f8ff;--surface:#fff;--soft:#eef2fb;--soft2:#edf0ff;
+  --ink:#0b1430;--ink2:#33406b;--mut:#5d6a92;--line:#dbe3ef;--line2:#c4d3e3;
+  --eyebrow-bg:var(--soft2);--eyebrow-bd:#d6dbff;--eyebrow-tx:var(--blue-d);--tag:#3a55ff;
+  --shadow:0 12px 30px rgba(20,40,90,.10);
+}
+[data-theme="dark"]{
+  --bg:#070708;--surface:#10131f;--soft:#0c0f1a;--soft2:rgba(58,85,255,.14);
+  --ink:#fff;--ink2:#cdd6ea;--mut:#9aa6c8;--line:rgba(255,255,255,.10);--line2:rgba(255,255,255,.17);
+  --eyebrow-bg:rgba(58,85,255,.14);--eyebrow-bd:rgba(58,85,255,.4);--eyebrow-tx:#9db0ff;--tag:#7d92ff;
+  --shadow:0 12px 30px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Wix Madefor Text','Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink2);line-height:1.5;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+h1,h2,h3{font-family:'Wix Madefor Display','Segoe UI',sans-serif;color:var(--ink);letter-spacing:-.02em;line-height:1.15}
+a{color:var(--blue-d);text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:background .3s}
+[data-theme="dark"] .nav{background:rgba(9,10,18,.9)}
+.navrow{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;flex-direction:column;gap:3px;line-height:1.04}
+.logo-row{display:flex;align-items:center;gap:9px}
+.logo-mark{width:34px;height:28px;flex:0 0 auto}
+.brand .name{font-family:'Wix Madefor Display',sans-serif;font-weight:800;font-size:21px;color:var(--ink)}
+.brand .name .iq{color:var(--tag)}
+.brand .tag{font-size:10.5px;font-weight:600;color:var(--tag)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.nav-actions a{font-size:13.5px;font-weight:600;color:var(--ink2)}
+.theme-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--line2);background:var(--surface);color:var(--ink);font-size:15px;cursor:pointer;display:inline-grid;place-items:center}
+/* hero */
+.hero{padding:40px 0 8px}
+.eyebrow{display:inline-flex;gap:7px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--eyebrow-tx);background:var(--eyebrow-bg);border:1px solid var(--eyebrow-bd);padding:6px 13px;border-radius:999px}
+.hero h1{font-size:34px;font-weight:800;margin:14px 0 8px}
+.hero h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--ink2);font-size:16px;max-width:680px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;margin:18px 0;box-shadow:var(--shadow)}
+.card h2{font-size:19px;margin-bottom:4px}
+.card .sub{font-size:13px;color:var(--mut);margin-bottom:16px}
+/* upload */
+.dz{border:2px dashed var(--line2);border-radius:14px;padding:34px 20px;text-align:center;background:var(--soft);cursor:pointer;transition:.18s}
+.dz:hover,.dz.drag{border-color:var(--blue);background:var(--soft2)}
+.dz .ic{font-size:34px}.dz .t{font-weight:700;color:var(--ink);margin-top:8px}.dz .s{font-size:12.5px;color:var(--mut);margin-top:4px}
+.filechip{display:inline-flex;align-items:center;gap:8px;background:var(--soft2);border:1px solid var(--eyebrow-bd);border-radius:9px;padding:7px 13px;font-size:13px;color:var(--blue-d);font-weight:600;margin-top:12px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:14px;border-radius:11px;padding:11px 20px;cursor:pointer;border:1px solid transparent;font-family:inherit;transition:.18s}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 20px rgba(58,85,255,.3)}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-ghost{background:var(--surface);border-color:var(--line2);color:var(--ink2)}
+.btn-sm{padding:7px 13px;font-size:12.5px;border-radius:8px}
+/* settings */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.field label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);margin-bottom:5px}
+.field input,.field select{width:100%;background:var(--surface);border:1.5px solid var(--line2);border-radius:9px;color:var(--ink);padding:9px 11px;font-size:13.5px;font-family:inherit;outline:none}
+.field input:focus,.field select:focus{border-color:var(--blue)}
+/* KPIs */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:15px;position:relative;overflow:hidden}
+.kpi .accent{position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad)}
+.kpi .l{font-size:11px;color:var(--mut);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.kpi .v{font-size:24px;font-weight:800;color:var(--ink);margin-top:5px;line-height:1.1}
+.kpi .s{font-size:11px;color:var(--mut);margin-top:3px}
+.v.good{color:var(--good)}.v.warn{color:var(--amber)}.v.bad{color:var(--red)}
+/* bars */
+.barrow{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:13px}
+.barrow .lab{width:130px;flex:0 0 auto;color:var(--ink2);font-weight:600}
+.bartrack{flex:1;height:22px;background:var(--soft);border-radius:6px;overflow:hidden;display:flex}
+.bar-ful{background:linear-gradient(90deg,#0ea66a,#34d399);height:100%}
+.bar-unf{background:linear-gradient(90deg,#dc2626,#f87171);height:100%}
+.bar-age{height:100%}
+.barrow .val{width:120px;flex:0 0 auto;text-align:right;font-size:12px;color:var(--mut)}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--mut);margin-top:6px}
+.dot{width:10px;height:10px;border-radius:3px;display:inline-block;margin-right:5px;vertical-align:middle}
+/* table */
+.tbl-wrap{overflow:auto;border:1px solid var(--line);border-radius:11px}
+table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:620px}
+th{background:var(--soft);text-align:left;padding:9px 11px;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);font-weight:800;position:sticky;top:0}
+td{padding:8px 11px;border-top:1px solid var(--line);color:var(--ink2)}
+.num{text-align:right}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:10.5px;font-weight:800}
+.p-keep{background:rgba(14,166,106,.14);color:var(--good)}
+.p-liq{background:rgba(217,119,6,.16);color:var(--amber)}
+.p-rem{background:rgba(220,38,38,.14);color:var(--red)}
+.p-disp{background:rgba(119,11,255,.14);color:var(--violet)}
+.filterbar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
+.chip{cursor:pointer;border:1px solid var(--line2);background:var(--surface);color:var(--ink2);font-weight:600;font-size:12px;padding:6px 13px;border-radius:999px}
+.chip.active{background:var(--grad);color:#fff;border-color:transparent}
+.disclaimer{background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3);border-radius:11px;padding:12px 15px;font-size:12.5px;color:var(--amber);margin:14px 0}
+.err{background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.3);border-radius:10px;padding:12px 15px;color:var(--red);font-size:13.5px;margin-top:12px;display:none}
+.hidden{display:none}
+.det{font-size:11px;color:var(--mut)}
+footer{background:#0b1430;color:#aab6df;padding:30px 0;margin-top:40px;font-size:12.5px;text-align:center}
+footer a{color:#aab6df}
+@media(max-width:640px){.hero h1{font-size:26px}.barrow .lab{width:88px}.barrow .val{width:96px}}
+  .name{color:#4F6BFF!important}
+.iq{color:#9B6BFF!important}
+</style>
+</head>
+<body>
+<div class="nav"><div class="wrap navrow">
+  <a class="brand" href="/" aria-label="LogicstIQ — Where Logistics Meets Intelligence">
+    <span class="logo-row">
+      <svg class="logo-mark" viewBox="0 0 46 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="lg" x1="2" y1="36" x2="44" y2="3" gradientUnits="userSpaceOnUse"><stop stop-color="#4F6BFF"/><stop offset="1" stop-color="#9B6BFF"/></linearGradient></defs>
+        <path d="M3 16 L17 31 L42 5" stroke="url(#lg)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M31 5 L42 5 L42 16" stroke="url(#lg)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="name">Logicst<span class="iq">IQ</span></span>
+    </span>
+    <span class="tag">Where Logistics Meets Intelligence</span>
+  </a>
+  <div class="nav-actions">
+    <a href="/#liq-planner">AI Planner</a>
+    <button class="theme-btn" id="themeBtn" type="button" title="Toggle light / dark" aria-label="Toggle light or dark mode">🌙</button>
+  </div>
+</div></div>
+
+<div class="wrap">
+  <div class="hero">
+    <span class="eyebrow">📦 Free FBA tool · No login · Nothing stored</span>
+    <h1>FBA Inventory, Aging &amp; <span class="g">Disposition Planner</span></h1>
+    <p>Upload your FBA inventory or restock report and instantly see fulfillable vs. unfulfillable units, aged-inventory &amp; long-term-storage fee risk, a restock-limit check, and clear disposition recommendations (keep · liquidate · remove · dispose) with a downloadable worklist.</p>
+  </div>
+
+  <!-- UPLOAD -->
+  <div class="card">
+    <h2>1 · Upload your report</h2>
+    <div class="sub">FBA Inventory report, FBA Inventory Age report, or any inventory export (Excel / CSV). Read in your browser — never uploaded anywhere.</div>
+    <div class="dz" id="dz">
+      <div class="ic">📂</div>
+      <div class="t">Drop your file here, or click to browse</div>
+      <div class="s">.xlsx · .xls · .csv · .tsv — processed locally, nothing stored</div>
+      <input type="file" id="file" accept=".xlsx,.xls,.csv,.tsv,.txt" style="display:none">
+    </div>
+    <div id="chipWrap"></div>
+    <div class="row" style="margin-top:12px">
+      <button class="btn btn-ghost btn-sm" id="sampleBtn">Load sample data</button>
+      <span class="det" id="detInfo"></span>
+    </div>
+    <div class="err" id="err"></div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div class="card">
+    <h2>2 · Settings</h2>
+    <div class="sub">Tune the rules to your business. Defaults are sensible starting points.</div>
+    <div class="grid">
+      <div class="field"><label>Currency</label><select id="cur"><option value="$">$ USD</option><option value="₹">₹ INR</option><option value="£">£ GBP</option><option value="€">€ EUR</option><option value="CA$">CA$ CAD</option></select></div>
+      <div class="field"><label>Cover target (days)</label><input id="cover" type="number" value="60" min="1"></div>
+      <div class="field"><label>Lead time (days)</label><input id="lead" type="number" value="45" min="0"></div>
+      <div class="field"><label>Overstock if cover &gt; (days)</label><input id="overstock" type="number" value="120" min="1"></div>
+      <div class="field"><label>Aged surcharge / unit (est.)</label><input id="ltsfee" type="number" value="0.50" step="0.05" min="0"></div>
+      <div class="field"><label>Dispose if unit value &lt;</label><input id="disposeval" type="number" value="3" step="0.5" min="0"></div>
+      <div class="field"><label>Restock limit (units, optional)</label><input id="restockcap" type="number" placeholder="auto / leave blank" min="0"></div>
+    </div>
+    <div class="row" style="margin-top:18px">
+      <button class="btn btn-primary" id="runBtn" disabled>✦ Analyse Inventory</button>
+      <button class="btn btn-ghost btn-sm" id="resetBtn">Reset</button>
+    </div>
+  </div>
+
+  <div class="disclaimer">⚠️ <b>Reference only.</b> Recommendations and fee estimates are for planning — Amazon fees, aged-storage surcharges and restock limits change and depend on size tiers and storage type. Always verify in Seller Central before creating removals or shipments.</div>
+
+  <!-- RESULTS -->
+  <div id="results" class="hidden">
+    <div class="card"><h2>📊 Inventory health</h2><div class="kpis" id="kpis"></div></div>
+
+    <div class="card">
+      <h2>🟢 Fulfillable vs 🔴 Unfulfillable by marketplace</h2>
+      <div class="sub">Sellable units vs. stranded/unsellable units that need a disposition decision.</div>
+      <div id="mkbars"></div>
+      <div class="legend"><span><span class="dot" style="background:#0ea66a"></span>Fulfillable</span><span><span class="dot" style="background:#dc2626"></span>Unfulfillable</span></div>
+    </div>
+
+    <div class="card">
+      <h2>⏳ Aged inventory &amp; storage-fee risk</h2>
+      <div class="sub">Units by age bucket. Stock aged past ~180 days is typically subject to long-term-storage / aged-inventory surcharges.</div>
+      <div id="agebars"></div>
+      <div id="ageNote" class="det" style="margin-top:10px"></div>
+    </div>
+
+    <div class="card">
+      <h2>📈 FBA demand forecast</h2>
+      <div class="sub">Projected demand per SKU using velocity + MoM trend + seasonal index (used automatically when those columns are present). Reference only.</div>
+      <div class="kpis" id="fcKpis"></div>
+      <div class="tbl-wrap" style="margin-top:14px"><table id="fctbl"><thead></thead><tbody></tbody></table></div>
+      <div class="row" style="margin-top:10px"><button class="btn btn-ghost btn-sm" id="dlFc">⬇ Download forecast (CSV)</button><span class="det" id="fcCount"></span></div>
+      <div id="fcRolls" style="margin-top:18px"></div>
+    </div>
+
+    <div class="card">
+      <h2>🛒 Restock check</h2>
+      <div class="sub">Suggested reorder = (daily velocity × (lead time + cover target)) − on-hand − inbound, floored at 0.</div>
+      <div id="restockBox"></div>
+    </div>
+
+    <div class="card">
+      <h2>🧭 Disposition worklist</h2>
+      <div class="sub">Recommended action per SKU. Filter, then download the worklist as CSV.</div>
+      <div class="filterbar" id="filters">
+        <span class="chip active" data-f="all">All</span>
+        <span class="chip" data-f="Remove">🔴 Remove</span>
+        <span class="chip" data-f="Dispose">🟣 Dispose</span>
+        <span class="chip" data-f="Liquidate">🟠 Liquidate</span>
+        <span class="chip" data-f="Keep">🟢 Keep</span>
+        <button class="btn btn-ghost btn-sm" id="dlCsv" style="margin-left:auto">⬇ Download worklist (CSV)</button>
+      </div>
+      <div class="tbl-wrap"><table id="wtbl"><thead></thead><tbody></tbody></table></div>
+      <div class="det" id="wcount" style="margin-top:8px"></div>
+    </div>
+  </div>
+</div>
+
+<footer><div class="wrap">© 2026 LogicstIQ.com · <a href="/">Home</a> · <a href="/#liq-planner">AI Demand Planner</a> · Free FBA tools · Results are for reference only — validate in Seller Central.</div><p style="margin-top:10px;font-size:12px;color:#94A3B8">
+Contact: <a href="mailto:contactus@logicstiq.com"
+style="color:#9B6BFF;text-decoration:none;font-weight:600">contactus@logicstiq.com</a>
+</p>
+<p style="margin-top:6px;font-size:12px;color:#94A3B8">
+Tool question or bug? <a href="mailto:customercare@logicstiq.com"
+style="color:#9B6BFF;text-decoration:none;font-weight:600">customercare@logicstiq.com</a>
+</p>
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){const r=document.documentElement,b=document.getElementById('themeBtn');
+function set(t){r.setAttribute('data-theme',t);b.textContent=t==='dark'?'☀️':'🌙';try{localStorage.setItem('liq-theme',t)}catch(e){}}
+try{const s=localStorage.getItem('liq-theme');if(s)set(s);}catch(e){}
+b.addEventListener('click',()=>set(r.getAttribute('data-theme')==='dark'?'light':'dark'));})();
+
+/* ---------- helpers ---------- */
+const $=id=>document.getElementById(id);
+const num=v=>{if(v==null)return 0;const n=parseFloat(String(v).replace(/[^0-9.\-]/g,''));return isNaN(n)?0:n;};
+const fmt=n=>Math.round(n).toLocaleString();
+let CUR='$';const money=n=>CUR+fmt(n);
+let RAWROWS=null, WORK=[], curFilter='all';
+
+/* column synonyms */
+const SYN={
+  sku:['sku','msku','seller-sku','seller sku','merchant sku','fnsku','sku id','item id','product code'],
+  asin:['asin'],
+  name:['product-name','product name','title','item-name','name','description','product title'],
+  market:['marketplace','country','region','location','store','site','sales-channel','fulfillment-center-id','fc'],
+  ful:['afn-fulfillable-quantity','fulfillable','available','sellable','afn fulfillable','fulfillable-quantity','afn-fulfillable-quantity-local','available quantity','quantity available','on hand'],
+  unf:['afn-unsellable-quantity','unsellable','unfulfillable','afn-unsellable','damaged','defective','unsellable-quantity','stranded','afn-researching-quantity'],
+  reserved:['afn-reserved-quantity','reserved','reserved-quantity'],
+  inbound:['afn-inbound-working-quantity','afn-inbound-shipped-quantity','afn-inbound-receiving-quantity','inbound','inbound-quantity','on order','in transit'],
+  price:['your-price','price','sales price','selling price','mrp','sale price','unit price'],
+  cost:['cost','unit cost','cost price','cogs','landed cost'],
+  units30:['units-sold-last-30-days','units sold','sales last 30 days','units shipped t30','units-shipped-last-30-days','units ordered'],
+  velocity:['daily velocity','units per day','daily sales','avg daily sales'],
+  restock:['restock limit','maximum shipment quantity','max shipment quantity','supply limit','restock-limit','quantity limit'],
+  vel7:['velocity 7d','velocity 7','7d velocity','7 day velocity'],
+  vel30:['velocity 30d','velocity 30','30d velocity','30 day velocity'],
+  vel90:['velocity 90d','velocity 90','90d velocity','90 day velocity'],
+  mom:['mom trend','m-o-m','month over month','month-over-month','mom growth','mom','growth rate'],
+  seasonal:['seasonal index','seasonality index','seasonal factor','season index','seasonality'],
+  category:['category','department','product type','item type','product group','product class','class','sub category']
+};
+/* age bucket header detection: returns {bucketKey: colIndex} */
+function detectAge(headers){
+  const out={};headers.forEach((h,i)=>{const x=(h||'').toLowerCase();
+    if(!/age|aged|days/.test(x))return;
+    const nums=(x.match(/\d+/g)||[]).map(Number);
+    if(/365|>?\s*365|365\+|365 *and|over 365|365-plus/.test(x)&&!nums.some(n=>n<365)) {out.d365=i;return;}
+    const mx=nums.length?Math.max(...nums):0;
+    if(mx>=365||/plus|over|\+/.test(x)&&mx>=271)out.d365=i;
+    else if(mx>180&&mx<=365)out.d271=i;          // 181/271 – 365
+    else if(mx>90&&mx<=180)out.d91=i;            // 91 – 180
+    else if(mx>0&&mx<=90)out.d0=i;               // 0 – 90
+  });return out;
+}
+function mapCols(headers){
+  const lh=headers.map(h=>(h||'').toLowerCase().trim().replace(/[_]/g,'-').replace(/\s+/g,' '));
+  const map={};
+  for(const f in SYN){for(const name of SYN[f]){const idx=lh.findIndex((h,i)=>!Object.values(map).includes(i)&&(h===name||h.includes(name)));if(idx!==-1){map[f]=idx;break;}}}
+  // inbound can be multiple cols — collect all matching
+  map._inbound=[];lh.forEach((h,i)=>{if(/inbound/.test(h))map._inbound.push(i);});
+  map._age=detectAge(headers);
+  return map;
+}
+function bestHeader(rows){let hi=0,best=-1;const kw=['sku','asin','product','title','quantity','fulfillable','price','units','available','marketplace','msku','age','reserved','inbound'];
+  for(let i=0;i<Math.min(rows.length,15);i++){const l=rows[i].map(c=>(c||'').toString().toLowerCase()).join(' ');const sc=kw.filter(k=>l.includes(k)).length;if(sc>best){best=sc;hi=i;}}return hi;}
+
+/* ---------- file handling ---------- */
+const dz=$('dz'),fileInp=$('file');
+dz.addEventListener('click',()=>fileInp.click());
+dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag');});
+dz.addEventListener('dragleave',()=>dz.classList.remove('drag'));
+dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag');if(e.dataTransfer.files[0])readFile(e.dataTransfer.files[0]);});
+fileInp.addEventListener('change',e=>{if(e.target.files[0])readFile(e.target.files[0]);});
+function readFile(f){
+  $('err').style.display='none';
+  const r=new FileReader();
+  r.onload=ev=>{try{
+    const wb=XLSX.read(ev.target.result,{type:'array'});
+    const ws=wb.Sheets[wb.SheetNames[0]];
+    const aoa=XLSX.utils.sheet_to_json(ws,{header:1,blankrows:false,defval:''});
+    if(!aoa.length){showErr('That file looks empty.');return;}
+    RAWROWS=aoa.map(r=>r.map(c=>c==null?'':c));
+    $('chipWrap').innerHTML='<span class="filechip">📄 '+f.name+'  ·  '+(RAWROWS.length-1)+' rows</span>';
+    $('runBtn').disabled=false;
+    $('detInfo').textContent='Ready — click "Analyse Inventory".';
+  }catch(e){showErr('Could not read that file: '+e.message);}};
+  r.readAsArrayBuffer(f);
+}
+function showErr(m){const e=$('err');e.textContent='⚠️ '+m;e.style.display='block';}
+
+/* ---------- sample ---------- */
+$('sampleBtn').addEventListener('click',()=>{
+  const mks=['US','UK','EU','CA'];const cats=['Pet','Home','Sports','Beauty'];
+  const rows=[['marketplace','sku','asin','product-name','your-price','afn-fulfillable-quantity','afn-unsellable-quantity','afn-reserved-quantity','afn-inbound-working-quantity','units-sold-last-30-days','inv-age-0-to-90-days','inv-age-91-to-180-days','inv-age-181-to-270-days','inv-age-365-plus-days']];
+  for(let i=0;i<160;i++){const ful=Math.floor(Math.random()*400),unf=Math.random()<0.22?Math.floor(Math.random()*40):0,sold=Math.floor(Math.random()*120);
+    const a0=Math.floor(ful*0.5),a1=Math.floor(ful*0.25),a2=Math.floor(ful*0.15),a3=ful-a0-a1-a2;
+    rows.push([mks[i%4],'SK-'+(1000+i),'B0'+i+'XYZ','Product '+i+' '+cats[i%4],(4+Math.random()*40).toFixed(2),ful,unf,Math.floor(Math.random()*20),Math.floor(Math.random()*30),sold,a0,a1,a2,a3]);}
+  RAWROWS=rows;$('chipWrap').innerHTML='<span class="filechip">📄 sample_fba_inventory.csv  ·  160 rows</span>';$('runBtn').disabled=false;$('detInfo').textContent='Sample loaded — click "Analyse Inventory".';
+});
+$('resetBtn').addEventListener('click',()=>{RAWROWS=null;WORK=[];$('chipWrap').innerHTML='';$('results').classList.add('hidden');$('runBtn').disabled=true;$('detInfo').textContent='';fileInp.value='';});
+
+/* ---------- analyse ---------- */
+$('runBtn').addEventListener('click',analyse);
+function analyse(){
+  if(!RAWROWS){showErr('Upload a file or load the sample first.');return;}
+  CUR=$('cur').value;
+  const coverT=num($('cover').value)||60, lead=num($('lead').value)||45, overD=num($('overstock').value)||120;
+  const ltsFee=num($('ltsfee').value), disposeVal=num($('disposeval').value);
+  const hi=bestHeader(RAWROWS);const headers=RAWROWS[hi];const map=mapCols(headers);
+  if(map.sku===undefined&&map.asin===undefined){showErr('Could not find a SKU/ASIN column. Make sure your header row has SKU, MSKU or ASIN.');return;}
+  const get=(row,f)=>{const i=map[f];return i!==undefined?row[i]:'';};
+  const data=RAWROWS.slice(hi+1).filter(r=>r.some(c=>(c||'').toString().trim()));
+  const A=map._age||{};
+  const u30Daily=/velocity|daily|per day|run rate|adu/.test((map.units30!==undefined?(headers[map.units30]||''):'').toString().toLowerCase());
+  const items=data.map(row=>{
+    const ful=num(get(row,'ful')), unf=num(get(row,'unf')), reserved=num(get(row,'reserved'));
+    let inbound=0;(map._inbound||[]).forEach(i=>inbound+=num(row[i])); if(!map._inbound.length)inbound=num(get(row,'inbound'));
+    const price=num(get(row,'price'))||0, cost=num(get(row,'cost'))||0;
+    let vel=num(get(row,'velocity')); const u30=num(get(row,'units30'));
+    if(!vel && u30) vel = u30Daily ? u30 : u30/30; // daily velocity
+    const age0=A.d0!==undefined?num(row[A.d0]):0, age91=A.d91!==undefined?num(row[A.d91]):0,
+          age271=A.d271!==undefined?num(row[A.d271]):0, age365=A.d365!==undefined?num(row[A.d365]):0;
+    const haveAge=(A.d0!==undefined||A.d91!==undefined||A.d271!==undefined||A.d365!==undefined);
+    const market=(get(row,'market')||'Unknown').toString().trim()||'Unknown';
+    const category=(get(row,'category')||'Uncategorised').toString().trim()||'Uncategorised';
+    /* ---- forecast signals ---- */
+    const vel7=num(get(row,'vel7')),vel30=num(get(row,'vel30')),vel90=num(get(row,'vel90'));
+    const baseVel = vel30||vel7||vel90||vel||0;
+    let mom=num(get(row,'mom')); if(Math.abs(mom)>3) mom=mom/100; mom=Math.max(-0.5,Math.min(1,mom));
+    let seas=num(get(row,'seasonal'))||1; seas=Math.max(0.3,Math.min(3,seas));
+    const proj=H=>{const months=H/30;let m=(1+mom*months/2)*seas;m=Math.max(0.1,Math.min(4,m));return baseVel*H*m;};
+    const f30=proj(30),f60=proj(60),f90=proj(90);
+    const doc=baseVel>0?ful/baseVel:(ful>0?9999:0);
+    const stockoutDays=baseVel>0?ful/baseVel:(ful>0?9999:0);
+    const horizonR=lead+coverT;const tgtMult=Math.max(0.1,Math.min(4,(1+mom*(horizonR/30)/2)*seas));
+    const reorderQty=Math.max(0,Math.round(baseVel*horizonR*tgtMult-(ful+inbound)));
+    const reorderPoint=baseVel*lead*seas;
+    const daysToReorder=baseVel>0?Math.max(0,(ful-reorderPoint)/baseVel):9999;
+    return {market,category,sku:(get(row,'sku')||get(row,'asin')||'').toString(),asin:(get(row,'asin')||'').toString(),
+      name:(get(row,'name')||'').toString(),price,cost,ful,unf,reserved,inbound,vel,u30,baseVel,mom,seas,doc,
+      f30,f60,f90,stockoutDays,reorderQty,daysToReorder,
+      age0,age91,age271,age365,haveAge,agedRisk:age271+age365};
+  });
+
+  /* ---- disposition rules ---- */
+  WORK=items.map(it=>{
+    let action='Keep',reason='Healthy / selling',cls='p-keep';
+    const unitVal=it.price||it.cost||0;
+    if(it.unf>0){
+      if(unitVal<disposeVal){action='Dispose';reason='Unfulfillable & low unit value — dispose is cheaper than removal';cls='p-disp';}
+      else{action='Remove';reason='Unfulfillable units — create a removal order';cls='p-rem';}
+    } else if(it.age365>0 || (it.vel<=0.03 && it.ful>0 && it.doc>overD)){
+      action='Liquidate';reason=it.age365>0?'Aged 365+ days — liquidate to avoid surcharges':'No recent sales & overstocked';cls='p-liq';
+    } else if(it.doc>overD && it.ful>0){
+      action='Liquidate';reason='Overstock ('+Math.round(it.doc)+'d cover) — liquidate excess';cls='p-liq';
+    }
+    const excessUnits=it.doc>overD&&it.vel>0?Math.max(0,Math.round(it.ful-it.vel*overD)):(action==='Liquidate'?it.ful:0);
+    return {...it,action,reason,cls,excessUnits};
+  });
+
+  render(coverT,lead,overD,ltsFee,disposeVal,Object.keys(A).length>0);
+}
+
+function render(coverT,lead,overD,ltsFee,disposeVal,haveAge){
+  const T=WORK;
+  const sum=(k)=>T.reduce((a,b)=>a+(b[k]||0),0);
+  const totFul=sum('ful'),totUnf=sum('unf'),totRes=sum('reserved'),totInb=sum('inbound');
+  const stuckVal=T.reduce((a,b)=>a+b.unf*(b.price||0),0);
+  const agedRisk=sum('agedRisk');const estFee=agedRisk*ltsFee;
+  const remSk=T.filter(t=>t.action==='Remove').length, dispSk=T.filter(t=>t.action==='Dispose').length,
+        liqSk=T.filter(t=>t.action==='Liquidate').length, keepSk=T.filter(t=>t.action==='Keep').length;
+  const liqUnits=T.filter(t=>t.action==='Liquidate').reduce((a,b)=>a+b.excessUnits,0);
+  const oos=T.filter(t=>t.ful===0).length;
+
+  /* KPIs */
+  $('kpis').innerHTML=[
+    ['Total SKUs',fmt(T.length),'',''],
+    ['Fulfillable units',fmt(totFul),'good','sellable now'],
+    ['Unfulfillable units',fmt(totUnf),'bad',money(stuckVal)+' stuck'],
+    ['Aged-risk units (181+ d)',fmt(agedRisk),'warn','~'+money(estFee)+' est. surcharge'],
+    ['Out-of-stock SKUs',fmt(oos),oos?'warn':'good',''],
+    ['Units to liquidate',fmt(liqUnits),'warn',liqSk+' SKUs'],
+    ['Removal / dispose SKUs',fmt(remSk+dispSk),(remSk+dispSk)?'bad':'good',remSk+' remove · '+dispSk+' dispose']
+  ].map(k=>`<div class="kpi"><div class="accent"></div><div class="l">${k[0]}</div><div class="v ${k[2]}">${k[1]}</div><div class="s">${k[3]||''}</div></div>`).join('');
+
+  /* marketplace bars */
+  const byMk={};T.forEach(t=>{const m=t.market;if(!byMk[m])byMk[m]={ful:0,unf:0};byMk[m].ful+=t.ful;byMk[m].unf+=t.unf;});
+  const mkArr=Object.entries(byMk).sort((a,b)=>(b[1].ful+b[1].unf)-(a[1].ful+a[1].unf)).slice(0,12);
+  const mkMax=Math.max(1,...mkArr.map(m=>m[1].ful+m[1].unf));
+  $('mkbars').innerHTML=mkArr.map(([m,v])=>{const tot=v.ful+v.unf;const w=100*tot/mkMax;const fp=tot?100*v.ful/tot:0;
+    return `<div class="barrow"><span class="lab">${m}</span><div class="bartrack" style="width:${Math.max(8,w)}%"><div class="bar-ful" style="width:${fp}%"></div><div class="bar-unf" style="width:${100-fp}%"></div></div><span class="val">${fmt(v.ful)} / <span style="color:var(--red)">${fmt(v.unf)}</span></span></div>`;}).join('') || '<div class="det">No marketplace column found — showing combined totals.</div>';
+
+  /* age bars */
+  if(haveAge){
+    const a0=sum('age0'),a91=sum('age91'),a271=sum('age271'),a365=sum('age365');
+    const buckets=[['0–90 days',a0,'#0ea66a'],['91–180 days',a91,'#4cc3ae'],['181–365 days',a271,'#d97706'],['365+ days',a365,'#dc2626']];
+    const mx=Math.max(1,...buckets.map(b=>b[1]));
+    $('agebars').innerHTML=buckets.map(b=>`<div class="barrow"><span class="lab">${b[0]}</span><div class="bartrack" style="width:${Math.max(6,100*b[1]/mx)}%"><div class="bar-age" style="width:100%;background:${b[2]}"></div></div><span class="val">${fmt(b[1])} units</span></div>`).join('');
+    $('ageNote').innerHTML=`Units aged 181+ days: <b>${fmt(a271+a365)}</b> · estimated aged-storage surcharge at ${money(ltsFee)}/unit ≈ <b>${money((a271+a365)*ltsFee)}</b>. <span class="det">(Edit the rate in Settings to match your size tier.)</span>`;
+  } else {
+    $('agebars').innerHTML='<div class="det">No age columns detected in this file. Add an <b>FBA Inventory Age</b> report (with columns like "inv-age-181-to-270-days") to see aging &amp; storage-fee risk.</div>';
+    $('ageNote').innerHTML='';
+  }
+
+  /* restock */
+  let totReorder=0;const reorderRows=T.map(t=>{const target=t.vel*(lead+coverT);const need=Math.max(0,Math.round(target-(t.ful+t.inbound)));totReorder+=need;return {sku:t.sku,name:t.name,market:t.market,need,vel:t.vel};}).filter(r=>r.need>0).sort((a,b)=>b.need-a.need);
+  const capIn=num($('restockcap').value);const cap=capIn>0?capIn:0;
+  let restockHtml=`<div class="kpis"><div class="kpi"><div class="accent"></div><div class="l">Suggested reorder (total)</div><div class="v">${fmt(totReorder)}</div><div class="s">${reorderRows.length} SKUs need restock</div></div>`;
+  if(cap){const head=cap-totReorder;restockHtml+=`<div class="kpi"><div class="accent"></div><div class="l">Restock limit</div><div class="v">${fmt(cap)}</div><div class="s">your input</div></div><div class="kpi"><div class="accent"></div><div class="l">Headroom vs limit</div><div class="v ${head<0?'bad':'good'}">${fmt(head)}</div><div class="s">${head<0?'over limit — prioritise top movers':'within limit'}</div></div>`;}
+  restockHtml+='</div>';
+  if(reorderRows.length){restockHtml+='<div class="tbl-wrap" style="margin-top:12px"><table><thead><tr><th>SKU</th><th>Product</th><th>Mkt</th><th class="num">Daily velocity</th><th class="num">Suggested reorder</th></tr></thead><tbody>'+reorderRows.slice(0,30).map(r=>`<tr><td>${esc(r.sku)}</td><td>${esc(r.name).slice(0,40)}</td><td>${esc(r.market)}</td><td class="num">${r.vel.toFixed(2)}</td><td class="num"><b>${fmt(r.need)}</b></td></tr>`).join('')+'</tbody></table></div>';if(reorderRows.length>30)restockHtml+=`<div class="det" style="margin-top:6px">Showing top 30 of ${reorderRows.length}. Full list in the CSV download.</div>`;}
+  $('restockBox').innerHTML=restockHtml;
+
+  renderForecast();
+  renderWork();
+  $('results').classList.remove('hidden');
+  $('results').scrollIntoView({behavior:'smooth'});
+}
+
+function esc(s){return (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function renderWork(){
+  const rows=curFilter==='all'?WORK:WORK.filter(w=>w.action===curFilter);
+  const sorted=[...rows].sort((a,b)=>{const o={Remove:0,Dispose:1,Liquidate:2,Keep:3};return o[a.action]-o[b.action]||b.unf-a.unf;});
+  $('wtbl').querySelector('thead').innerHTML='<tr><th>Action</th><th>SKU</th><th>Product</th><th>Mkt</th><th class="num">Ful</th><th class="num">Unf</th><th class="num">Cover (d)</th><th>Why</th></tr>';
+  $('wtbl').querySelector('tbody').innerHTML=sorted.slice(0,200).map(w=>`<tr><td><span class="pill ${w.cls}">${w.action}</span></td><td>${esc(w.sku)}</td><td>${esc(w.name).slice(0,38)}</td><td>${esc(w.market)}</td><td class="num">${fmt(w.ful)}</td><td class="num">${w.unf?'<b style="color:var(--red)">'+fmt(w.unf)+'</b>':'0'}</td><td class="num">${w.doc>9000?'∞':Math.round(w.doc)}</td><td class="det">${esc(w.reason)}</td></tr>`).join('');
+  $('wcount').textContent=`${rows.length} SKUs in this view${rows.length>200?' (showing first 200; CSV has all)':''}.`;
+}
+$('filters').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');curFilter=c.dataset.f;renderWork();});
+$('dlCsv').addEventListener('click',()=>{
+  const rows=curFilter==='all'?WORK:WORK.filter(w=>w.action===curFilter);
+  const h=['Action','Reason','Marketplace','SKU','ASIN','Product','Price','Fulfillable','Unfulfillable','Reserved','Inbound','Daily Velocity','Days of Cover','Aged 181+','Excess/Liquidate Units'];
+  const lines=[h.join(',')].concat(rows.map(w=>[w.action,w.reason,w.market,w.sku,w.asin,w.name,w.price,w.ful,w.unf,w.reserved,w.inbound,w.vel.toFixed(2),w.doc>9000?'':Math.round(w.doc),w.agedRisk,w.excessUnits].map(v=>{v=v==null?'':String(v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}).join(',')));
+  const blob=new Blob([lines.join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='fba-disposition-worklist.csv';a.click();
+});
+
+/* ---------- demand forecast ---------- */
+function fcDate(d){if(d>9000)return '—';const x=new Date(Date.now()+d*86400000);return x.toISOString().slice(0,10);}
+function renderForecast(){
+  const T=WORK;
+  const s30=T.reduce((a,b)=>a+b.f30,0),s60=T.reduce((a,b)=>a+b.f60,0),s90=T.reduce((a,b)=>a+b.f90,0);
+  const rev90=T.reduce((a,b)=>a+b.f90*(b.price||0),0);
+  const reorderTot=T.reduce((a,b)=>a+b.reorderQty,0);
+  const soon=T.filter(t=>t.baseVel>0&&t.daysToReorder<=14).length;
+  $('fcKpis').innerHTML=[
+    ['Projected demand · 30d',fmt(s30),'',''],
+    ['Projected demand · 60d',fmt(s60),'',''],
+    ['Projected demand · 90d',fmt(s90),'','~'+money(rev90)+' revenue'],
+    ['Units to reorder',fmt(reorderTot),'warn','to hit cover target'],
+    ['Reorder within 14 days',fmt(soon),soon?'bad':'good','SKUs near reorder point']
+  ].map(k=>`<div class="kpi"><div class="accent"></div><div class="l">${k[0]}</div><div class="v ${k[2]}">${k[1]}</div><div class="s">${k[3]||''}</div></div>`).join('');
+  const sorted=[...T].filter(t=>t.baseVel>0).sort((a,b)=>b.f90-a.f90);
+  $('fctbl').querySelector('thead').innerHTML='<tr><th>SKU</th><th>Product</th><th>Mkt</th><th class="num">Daily vel</th><th class="num">Trend</th><th class="num">Seas</th><th class="num">30d</th><th class="num">60d</th><th class="num">90d</th><th>Stockout</th><th class="num">Reorder qty</th><th>Reorder by</th></tr>';
+  $('fctbl').querySelector('tbody').innerHTML=sorted.slice(0,200).map(t=>`<tr><td>${esc(t.sku)}</td><td>${esc(t.name).slice(0,34)}</td><td>${esc(t.market)}</td><td class="num">${t.baseVel.toFixed(2)}</td><td class="num">${(t.mom*100).toFixed(0)}%</td><td class="num">${t.seas.toFixed(2)}</td><td class="num">${fmt(t.f30)}</td><td class="num">${fmt(t.f60)}</td><td class="num"><b>${fmt(t.f90)}</b></td><td class="det">${fcDate(t.stockoutDays)}</td><td class="num">${t.reorderQty?'<b>'+fmt(t.reorderQty)+'</b>':'0'}</td><td class="det">${t.reorderQty?fcDate(t.daysToReorder):'—'}</td></tr>`).join('');
+  $('fcCount').textContent=`${sorted.length} active SKUs forecast${sorted.length>200?' · showing top 200 by 90-day demand (CSV has all)':''}.`;
+  const roll=(key,title)=>{const by={};T.forEach(t=>{const k=t[key]||'—';if(!by[k])by[k]={f30:0,f60:0,f90:0};by[k].f30+=t.f30;by[k].f60+=t.f60;by[k].f90+=t.f90;});
+    const arr=Object.entries(by).sort((a,b)=>b[1].f90-a[1].f90).slice(0,12);
+    return `<h3 style="font-size:14px;margin:0 0 6px">${title}</h3><div class="tbl-wrap"><table style="min-width:320px"><thead><tr><th>${title}</th><th class="num">30d</th><th class="num">60d</th><th class="num">90d</th></tr></thead><tbody>`+arr.map(([k,v])=>`<tr><td>${esc(k)}</td><td class="num">${fmt(v.f30)}</td><td class="num">${fmt(v.f60)}</td><td class="num"><b>${fmt(v.f90)}</b></td></tr>`).join('')+'</tbody></table></div>';};
+  $('fcRolls').innerHTML='<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">'+roll('market','By marketplace')+roll('category','By category')+'</div>';
+}
+$('dlFc').addEventListener('click',()=>{
+  const h=['SKU','ASIN','Product','Marketplace','Category','Daily Velocity','MoM Trend','Seasonal Index','Proj 30d','Proj 60d','Proj 90d','Proj 90d Revenue','Days to Stockout','Stockout Date','Reorder Qty','Reorder By'];
+  const lines=[h.join(',')].concat(WORK.map(t=>[t.sku,t.asin,t.name,t.market,t.category,t.baseVel.toFixed(2),(t.mom*100).toFixed(0)+'%',t.seas.toFixed(2),Math.round(t.f30),Math.round(t.f60),Math.round(t.f90),Math.round(t.f90*(t.price||0)),t.stockoutDays>9000?'':Math.round(t.stockoutDays),fcDate(t.stockoutDays),t.reorderQty,t.reorderQty?fcDate(t.daysToReorder):''].map(v=>{v=v==null?'':String(v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}).join(',')));
+  const blob=new Blob([lines.join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='fba-demand-forecast.csv';a.click();
+});
+</script>
+</body>
+</html>
