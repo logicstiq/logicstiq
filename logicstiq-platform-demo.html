@@ -682,13 +682,26 @@ function disposition(rid,choice){
 }
 
 /* ---------- wiring ---------- */
-document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+function activateTab(name,scroll){
+  const t=document.querySelector('.tab[data-tab="'+name+'"]'); if(!t) return;
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
   document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
   t.classList.add('active');
-  document.getElementById('view-'+t.dataset.tab).classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
+  const v=document.getElementById('view-'+name); if(v) v.classList.add('active');
+  if(scroll) window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  const name=t.dataset.tab;
+  activateTab(name,true);
+  if(history.replaceState) history.replaceState(null,'','#'+name);
 }));
+/* open the right tab from the URL, e.g. logicstiq-platform-demo.html#wms */
+function tabFromHash(){
+  const h=(location.hash||'').replace('#','').toLowerCase();
+  if(['dashboard','oms','wms','returns'].includes(h)) activateTab(h,false);
+}
+tabFromHash();
+window.addEventListener('hashchange',tabFromHash);
 document.getElementById('themeBtn').addEventListener('click',function(){
   const h=document.documentElement;const dark=h.getAttribute('data-theme')==='dark';
   h.setAttribute('data-theme',dark?'light':'dark');this.textContent=dark?'🌙':'☀️';
