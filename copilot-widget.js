@@ -1,224 +1,326 @@
-/* LogicstIQ AI Copilot — embeddable widget (vanilla JS, zero dependencies)
- * ------------------------------------------------------------------------
- * DROP-IN USAGE on any static HTML page:
- *   <script
- *     src="/copilot-widget.js"
- *     data-endpoint="/.netlify/functions/copilot"
- *     data-title="LogicstIQ Copilot"
- *     defer></script>
- *
- * It injects a floating button (bottom-right). No frameworks, no build step.
- * All styling is scoped inside a Shadow DOM so it can't clash with your site's CSS.
- */
-(function () {
-  "use strict";
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cash Conversion Cycle Calculator — Free CCC Tool India | LogicstIQ — Free Supply Chain Calculator</title>
+  <meta name="description" content="Free Cash Conversion Cycle (CCC) Calculator India. Calculate DIO + DSO − DPO to find how many days cash is tied up in your supply chain. Reduce CCC to free working capital.">
+  <meta name="keywords" content="cash conversion cycle calculator India, CCC calculator, DIO DSO DPO calculator, cash cycle calculator, working capital cycle, cash flow supply chain India">
+  <link rel="canonical" href="https://www.logicstiq.com/cash-conversion-cycle-calculator">
+  <meta property="og:title" content="Cash Conversion Cycle Calculator — Free CCC Tool India | LogicstIQ — Free Supply Chain Calculator">
+  <meta property="og:description" content="Free Cash Conversion Cycle (CCC) Calculator India. Calculate DIO + DSO − DPO to find how many days cash is tied up in your supply chain. Reduce CCC to free working capital.">
+  <meta property="og:url" content="https://www.logicstiq.com/cash-conversion-cycle-calculator">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LogicstIQ.com">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:#F4F7FF;color:#0F172A;min-height:100vh;font-size:16px;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;background:#FFFFFF;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100}
+    .nav-logo{font-weight:800;font-size:1.1rem;color:#0F172A}
+    .nav-back{color:#3A55FF;font-size:0.875rem;font-weight:600}
+    .nav-back:hover{color:#2A40D6}
+    .badge-bar{text-align:center;padding:12px;background:#FFFFFF;border-bottom:1px solid #E2E8F0;font-size:0.8rem;color:#3A55FF;font-weight:700;letter-spacing:0.5px}
+    .hero{max-width:760px;margin:0 auto;padding:48px 24px 32px;text-align:center}
+    .hero h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;color:#0F172A;line-height:1.2;margin-bottom:14px}
+    .hero h1 span{display:block;font-size:clamp(1rem,2vw,1.2rem);font-weight:500;color:#475569;margin-top:8px}
+    .hero-sub{color:#475569;font-size:0.9rem;margin-top:16px}
+    .trust-row{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:16px}
+    .trust-item{font-size:0.8rem;color:#3A55FF;font-weight:600}
+    .trust-item::before{content:"✓ "}
+    .calc-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
+    .calc-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;overflow:hidden}
+    .calc-header{background:#F8FAFF;padding:18px 24px;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:10px}
+    .calc-header-icon{font-size:1.2rem}
+    .calc-header-title{font-size:0.95rem;font-weight:700;color:#0F172A}
+    .calc-body{padding:24px}
+    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media(max-width:560px){.field-grid{grid-template-columns:1fr}}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field label{font-size:0.8rem;font-weight:700;color:#475569;letter-spacing:0.3px}
+    .field span{font-size:0.72rem;color:#94A3B8}
+    .field input,.field select{background:#FFFFFF;border:1px solid #CBD5E1;border-radius:8px;padding:10px 14px;color:#0F172A;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color .2s}
+    .field input:focus,.field select:focus{border-color:#3A55FF}
+    .field input::placeholder{color:#94A3B8}
+    .calc-btn{width:100%;margin-top:20px;background:linear-gradient(135deg,#3A55FF,#2A40D6);color:#fff;border:none;border-radius:10px;padding:14px;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:opacity .2s}
+    .calc-btn:hover{opacity:0.9}
+    .results{display:none;margin-top:20px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px}
+    .results.show{display:block}
+    .results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}
+    .result-item{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:16px;text-align:center}
+    .result-label{font-size:0.72rem;color:#475569;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+    .result-value{font-size:1.35rem;font-weight:800;color:#3A55FF}
+    .result-value.green{color:#059669}
+    .result-value.red{color:#DC2626}
+    .result-value.amber{color:#D97706}
+    .result-sub{font-size:0.7rem;color:#94A3B8;margin-top:4px}
+    .disclaimer{margin-top:16px;font-size:0.75rem;color:#94A3B8;padding:10px;background:#F4F7FF;border-radius:8px;border-left:3px solid #E2E8F0}
+    .content-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
+    .formula-box{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px 24px;margin-bottom:32px}
+    .formula-tag{font-size:0.7rem;font-weight:700;color:#3A55FF;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+    .formula-expr{font-family:'Courier New',monospace;font-size:0.9rem;color:#2A40D6;line-height:1.9}
+    .section-title{font-size:0.75rem;font-weight:700;color:#3A55FF;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+    .prose{color:#475569;font-size:0.9rem;line-height:1.75;margin-bottom:24px}
+    .prose strong{color:#0F172A}
+    .example-box{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px 24px;margin-bottom:32px}
+    .example-tag{font-size:0.7rem;font-weight:700;color:#059669;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+    .ex-p{font-size:0.85rem;color:#475569;margin-bottom:14px}
+    .ex-table{width:100%;border-collapse:collapse}
+    .ex-table td{padding:8px 0;font-size:0.875rem;color:#475569;border-bottom:1px solid #E2E8F0}
+    .ex-table td:last-child{text-align:right;color:#0F172A;font-weight:600}
+    .ex-table tr.total td{border-bottom:none;color:#3A55FF;font-weight:800;font-size:1rem}
+    .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:32px}
+    .why-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:18px}
+    .why-card h4{font-size:0.85rem;font-weight:700;color:#0F172A;margin-bottom:8px}
+    .why-card p{font-size:0.8rem;color:#475569;line-height:1.6}
+    .ai-cta{background:linear-gradient(135deg,#FFFFFF,#FFFFFF);border:1px solid #CBD5E1;border-radius:16px;padding:28px 24px;text-align:center;margin-bottom:32px}
+    .ai-cta h3{font-size:1.1rem;font-weight:800;color:#0F172A;margin-bottom:8px}
+    .ai-cta p{font-size:0.875rem;color:#475569;margin-bottom:20px}
+    .ai-cta a{display:inline-block;background:linear-gradient(135deg,#3A55FF,#2A40D6);color:#fff;padding:12px 28px;border-radius:10px;font-weight:700;font-size:0.9rem}
+    .ai-cta-tags{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+    .ai-cta-tag{font-size:0.72rem;color:#94A3B8}
+    .faq-item{border-bottom:1px solid #E2E8F0;padding:16px 0}
+    .faq-item:last-child{border-bottom:none}
+    .faq-q{font-size:0.9rem;font-weight:700;color:#0F172A;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .faq-q::after{content:"▾";color:#3A55FF;font-size:0.8rem}
+    .faq-a{font-size:0.85rem;color:#475569;line-height:1.7;margin-top:10px;display:none}
+    .faq-item.open .faq-a{display:block}
+    .faq-item.open .faq-q::after{content:"▴"}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:10px;margin-top:16px}
+    .related-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:16px;text-decoration:none;transition:border-color .2s;display:flex;flex-direction:column;gap:4px}
+    .related-card:hover{border-color:#3A55FF}
+    .related-search{font-size:0.65rem;color:#94A3B8}
+    .related-name{font-size:0.85rem;font-weight:700;color:#0F172A}
+    footer{background:#0F172A;border-top:1px solid #1E293B;padding:28px 32px;text-align:center;margin-top:20px}
+    .footer-copy{font-size:0.78rem;color:#94A3B8;line-height:1.8}
+    .footer-copy a{color:#94A3B8}
+    .footer-copy a:hover{color:#fff}
+    @media(max-width:600px){.nav{padding:14px 20px}.hero{padding:32px 20px 24px}.calc-body{padding:16px}}
+</style>
+<style id="liq-theme-css">
+.liq-theme-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--white);color:var(--text);font-size:15px;line-height:1;cursor:pointer;display:inline-grid;place-items:center;transition:.18s;margin-left:4px}
+.liq-theme-btn:hover{border-color:#3A55FF;transform:translateY(-1px)}
+.liq-theme-float{position:fixed;right:18px;bottom:18px;z-index:99999;width:44px;height:44px;border-radius:50%;box-shadow:0 8px 22px rgba(0,0,0,.28)}
+[data-theme="dark"]{
+  --bg:#070708;--white:#10131F;--border:rgba(255,255,255,.10);--border2:rgba(255,255,255,.17);
+  --b50:rgba(58,85,255,.12);--b100:rgba(58,85,255,.20);--b200:rgba(58,85,255,.32);
+  --text:#F1F5FF;--text2:#DBE3F5;--text3:#A7B0CC;--text4:#7E88A8;
+  --glight:rgba(16,185,129,.16);--rlight:rgba(239,68,68,.16);--alight:rgba(245,158,11,.16);--plight:rgba(119,11,255,.18);
+}
+[data-theme="dark"] body{background:#070708}
+[data-theme="dark"] .nav{background:rgba(9,10,18,.92)!important;border-bottom-color:rgba(255,255,255,.08)}
+[data-theme="dark"] .liq-theme-btn{background:rgba(255,255,255,.06)}
+[data-theme="dark"] .nav-logo text tspan:first-child{fill:#FFFFFF}
+[data-theme="dark"] .nav-logo span{color:#7D92FF!important}
+[data-theme="dark"] .card,[data-theme="dark"] .why-card,[data-theme="dark"] .results,[data-theme="dark"] .result-item,[data-theme="dark"] .related-card,[data-theme="dark"] .calc-card,[data-theme="dark"] .badge-bar,[data-theme="dark"] .result-stat,[data-theme="dark"] .f-var,[data-theme="dark"] .formula-var,[data-theme="dark"] .breakdown-item,[data-theme="dark"] .safety-card,[data-theme="dark"] .modal-card,[data-theme="dark"] .legal-note,[data-theme="dark"] .tab,[data-theme="dark"] .faq-q,[data-theme="dark"] .faq-item{background:#10131F!important;border-color:rgba(255,255,255,.12)!important}
+[data-theme="dark"] .formula-box,[data-theme="dark"] .example-box,[data-theme="dark"] .faq-a{background:#0C0F1A!important;border-color:rgba(255,255,255,.10)!important}
+[data-theme="dark"] table th{background:rgba(255,255,255,.05)!important;color:#CFD8EE!important}
+[data-theme="dark"] table td,[data-theme="dark"] table th{border-color:rgba(255,255,255,.08)!important}
+[data-theme="dark"] .section-eyebrow,[data-theme="dark"] .calc-tag,[data-theme="dark"] .blog-cat,[data-theme="dark"] .calc-cat{background:rgba(58,85,255,.14)!important;border-color:rgba(58,85,255,.32)!important;color:#AEBCFF!important}
+</style>
+</head>
+<body>
+<style>
+/* LogicstIQ Platform bar — self-contained module switcher */
+.liqpb{--pb-b1:#4F6BFF;--pb-b2:#9B6BFF;--pb-bg:#ffffff;--pb-bd:#e6e9f2;--pb-tx:#516079;--pb-tx2:#0f2a4a;--pb-chip:#f3f6fd;
+  font-family:'Plus Jakarta Sans','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--pb-bg);border-bottom:1px solid var(--pb-bd)}
+[data-theme="dark"] .liqpb{--pb-bg:#0d111c;--pb-bd:rgba(255,255,255,.10);--pb-tx:#aeb9cc;--pb-tx2:#e6edf7;--pb-chip:rgba(255,255,255,.06)}
+.liqpb-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:7px 16px}
+.liqpb-label{flex:none;display:inline-flex;align-items:center;gap:7px;font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--pb-tx)}
+.liqpb-label svg{width:15px;height:15px}
+.liqpb-tabs{display:flex;gap:5px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.liqpb-tabs::-webkit-scrollbar{display:none}
+.liqpb-tabs a{white-space:nowrap;font-size:12.5px;font-weight:650;color:var(--pb-tx);padding:7px 12px;border-radius:9px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:background .15s,color .15s}
+.liqpb-tabs a:hover{color:var(--pb-tx2);background:var(--pb-chip)}
+.liqpb-tabs a.is-active{color:#fff;background:linear-gradient(135deg,var(--pb-b1),var(--pb-b2));box-shadow:0 4px 12px rgba(79,107,255,.30)}
+.liqpb-b{font-size:9px;font-weight:800;padding:2px 6px;border-radius:999px;letter-spacing:.4px;color:#fff;line-height:1}
+.liqpb-b.demo{background:linear-gradient(135deg,#F59E0B,#D97706)}
+.liqpb-b.beta{background:linear-gradient(135deg,#4F6BFF,#9B6BFF)}
+.liqpb-tabs a.is-active .liqpb-b{background:rgba(255,255,255,.28)}
+@media(max-width:640px){.liqpb-label span{display:none}}
+</style>
+<div class="liqpb" role="navigation" aria-label="LogicstIQ platform modules">
+  <div class="liqpb-inner">
+    <span class="liqpb-label"><svg viewBox="0 0 24 24" fill="none" stroke="url(#pbg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="pbg" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#4F6BFF"/><stop offset="1" stop-color="#9B6BFF"/></linearGradient></defs><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg><span>Platform</span></span>
+    <div class="liqpb-tabs">
+      <a href="/#liq-planner" data-mod="planner">AI Demand Planner</a>
+      <a href="/fba-planner/" data-mod="fba">FBA Planner</a>
+      <a href="/sourcing-procurement.html" data-mod="sourcing">Sourcing &amp; Procurement</a>
+      <a href="/logicstiq-platform-demo.html#oms" data-mod="oms">OMS<span class="liqpb-b demo">Demo</span></a>
+      <a href="/logicstiq-platform-demo.html#wms" data-mod="wms">WMS<span class="liqpb-b demo">Demo</span></a>
+      <a href="/tms.html" data-mod="tms">TMS<span class="liqpb-b beta">Beta</span></a>
+      <a href="/logicstiq-platform-demo.html#returns" data-mod="returns">Returns<span class="liqpb-b demo">Demo</span></a>
+    </div>
+  </div>
+</div>
 
-  var script = document.currentScript;
-  var ENDPOINT = (script && script.getAttribute("data-endpoint")) || "/api/copilot";
-  var TITLE = (script && script.getAttribute("data-title")) || "LogicstIQ Copilot";
-  var ACCENT = (script && script.getAttribute("data-accent")) || "#1D9E75"; // teal, matches brand
 
-  var STARTERS = [
-    "How do I calculate safety stock?",
-    "How much inventory before Big Billion Days?",
-    "Reduce my Amazon FBA stockouts",
-    "What is a good OTIF target?",
-  ];
+<nav class="nav">
+  <a href="/" class="nav-logo" aria-label="LogicstIQ — Home" style="display:inline-flex;align-items:center;text-decoration:none">
+  <svg width="245" height="50" viewBox="0 0 440 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible">
+    <defs>
+      <linearGradient id="liq_grad" x1="10" y1="70" x2="400" y2="20" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#4F6BFF"/><stop offset="100%" stop-color="#9B6BFF"/>
+      </linearGradient>
+    </defs>
+    <path d="M10 40 L26 40 L42 66 L64 22 L80 22" stroke="url(#liq_grad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M74 14 L82 22 L74 30" stroke="#9B6BFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <circle cx="42" cy="66" r="4.5" fill="#4F6BFF"/>
+    <circle cx="64" cy="22" r="4.5" fill="#9B6BFF"/>
+    <text x="98" y="44" font-family="'Plus Jakarta Sans','Inter',sans-serif" font-size="36" font-weight="800" letter-spacing="-1.4"><tspan fill="#4F6BFF">Logicst</tspan><tspan fill="#9B6BFF">IQ</tspan></text>
+    <text x="99" y="70" font-family="'Inter',sans-serif" font-size="16" font-weight="600" letter-spacing="0.3" fill="#64748B">Where Logistics Meets Intelligence</text>
+  </svg>
+</a>
+  <a href="https://www.logicstiq.com" class="nav-back">← All Calculators</a>
+</nav>
+<div class="badge-bar">🆓 Free · No Login · Instant Results</div>
 
-  // --- Deep-link map: when a question matches, show a button to the matching LogicstIQ tool.
-  // Ordered MOST-SPECIFIC first (first match wins). Edit labels/URLs here anytime — one place.
-  // URLs are site-relative, so they work on any LogicstIQ page.
-  var TOOLS = [
-    [["reorder point", "when to reorder", "when to place"], "Reorder Point Calculator", "/reorder-point-calculator"],
-    [["safety stock", "buffer stock"], "Safety Stock Calculator", "/safety-stock-calculator"],
-    [["eoq", "economic order", "order quantity"], "EOQ Calculator", "/eoq-calculator"],
-    [["abc analysis", "abc classification"], "ABC Analysis Calculator", "/abc-analysis-calculator"],
-    [["inventory turnover", "turnover ratio", "stock turn"], "Inventory Turnover Calculator", "/inventory-turnover-calculator"],
-    [["moq", "minimum order quantity"], "MOQ Calculator", "/moq-calculator"],
-    [["dead stock", "non-moving", "obsolete stock"], "Dead Stock Calculator", "/dead-stock-calculator"],
-    [["otif", "on-time in-full", "on time in full"], "OTIF Calculator", "/otif-calculator"],
-    [["fill rate"], "Fill Rate Calculator", "/fill-rate-calculator"],
-    [["supplier scorecard", "rate suppliers", "compare suppliers"], "Supplier Scorecard", "/supplier-scorecard-calculator"],
-    [["cycle count", "physical count", "stock count"], "Cycle Count Calculator", "/cycle-count-calculator"],
-    [["lead time variability", "lead-time spread", "supplier reliability"], "Lead Time Variability Calculator", "/supplier-lead-time-variability-calculator"],
-    [["landed cost", "duties and freight", "true cost"], "Landed Cost Calculator", "/landed-cost-calculator"],
-    [["gst", "hsn", "cgst", "sgst", "igst"], "GST Calculator", "/gst-calculator-logistics"],
-    [["working capital"], "Working Capital Calculator", "/working-capital-calculator"],
-    [["carrying cost", "holding cost"], "Carrying Cost Calculator", "/carrying-cost-calculator"],
-    [["stockout cost", "cost of stockout", "lost sales"], "Stockout Cost Calculator", "/stockout-cost-calculator"],
-    [["cogs", "cost of goods"], "COGS Calculator", "/cogs-calculator"],
-    [["gross margin", "profit margin"], "Gross Margin Calculator", "/gross-margin-calculator"],
-    [["break-even", "break even", "breakeven"], "Break-Even Calculator", "/break-even-calculator"],
-    [["days inventory outstanding", "dio"], "Days Inventory Outstanding Calculator", "/days-inventory-outstanding-calculator"],
-    [["cash conversion cycle", "ccc"], "Cash Conversion Cycle Calculator", "/cash-conversion-cycle-calculator"],
-    [["freight cost", "carrier rate", "carrier rates"], "Freight Cost Calculator", "/freight-cost-calculator"],
-    [["carbon", "co2", "emission", "footprint"], "Carbon Footprint Calculator", "/carbon-footprint-logistics"],
-    [["warehouse space", "storage requirement", "storage space"], "Warehouse Space Calculator", "/warehouse-space-calculator"],
-    [["disruption", "supply chain risk"], "Disruption Impact Calculator", "/disruption-impact-calculator"],
-    [["shipping cost per unit", "per-unit shipping", "outbound shipping"], "Shipping Cost / Unit Calculator", "/shipping-cost-per-unit-calculator"],
-    [["volumetric", "dimensional weight", "dim weight"], "Volumetric Weight Calculator", "/volumetric-weight-calculator"],
-    [["pick and pack", "pick & pack", "pick pack", "fulfilment cost", "fulfillment cost"], "Pick & Pack Cost Calculator", "/pick-pack-cost-calculator"],
-    [["lead time"], "Lead Time Calculator", "/lead-time-calculator"],
-    [["fba", "long-term storage", "long term storage", "aged inventory", "disposition", "liquidate", "restock limit"], "FBA Planner", "/fba-disposition.html"],
-    [["invoice", "purchase order", " po ", "proforma", "quotation", "delivery challan", "packing list", "certificate of origin", "bill of lading", "shipping bill", "bill of entry", "ebrc", "rodtep", "exim", "commercial invoice", "customs doc"], "Documents Generator", "/documents-generator.html"],
-    [["forecast", "demand plan", "demand planning", "reorder suggestion", "predict demand", "upload"], "AI Demand Planner", "/#liq-planner"],
-  ];
+<section class="hero">
+  <h1>Cash Conversion Cycle Calculator <span>DIO + DSO − DPO — Free Working Capital Tool</span></h1>
+  <p class="hero-sub">Calculate how many days cash is locked in your supply chain — from paying your supplier to collecting from your customer. Reduce your CCC to free up working capital without borrowing.</p>
+  <div class="trust-row">
+    <span class="trust-item">No signup needed</span>
+    <span class="trust-item">No data stored</span>
+    <span class="trust-item">Works on mobile</span>
+    <span class="trust-item">Free forever</span>
+  </div>
+</section>
 
-  function findTool(text) {
-    var t = " " + String(text).toLowerCase() + " ";
-    for (var i = 0; i < TOOLS.length; i++) {
-      var kws = TOOLS[i][0];
-      for (var j = 0; j < kws.length; j++) {
-        if (t.indexOf(kws[j]) !== -1) return { label: TOOLS[i][1], url: TOOLS[i][2] };
-      }
-    }
-    return null;
-  }
+<section class="calc-section">
+  <div class="calc-card">
+    <div class="calc-header">
+      <span class="calc-header-icon">🔁</span>
+      <span class="calc-header-title">Cash Conversion Cycle Calculator — Free Online Tool</span>
+    </div>
+    <div class="calc-body">
+      <div class="field-grid">
+        <div class="field"><label>Average Inventory (₹)</label><span>Opening + Closing stock ÷ 2</span><input type="number" id="inventory" placeholder="e.g. 1500000" min="0"></div>
+        <div class="field"><label>COGS / Annual (₹)</label><span>Annual Cost of Goods Sold</span><input type="number" id="cogs" placeholder="e.g. 8000000" min="0"></div>
+        <div class="field"><label>Accounts Receivable (₹)</label><span>Outstanding customer payments</span><input type="number" id="ar" placeholder="e.g. 600000" min="0"></div>
+        <div class="field"><label>Annual Revenue (₹)</label><span>Total sales for the period</span><input type="number" id="revenue" placeholder="e.g. 12000000" min="0"></div>
+        <div class="field"><label>Accounts Payable (₹)</label><span>What you owe suppliers</span><input type="number" id="ap" placeholder="e.g. 400000" min="0"></div>
+        <div class="field"><label>Annual Purchases (₹)</label><span>Total inventory purchases</span><input type="number" id="purchases" placeholder="e.g. 7500000" min="0"></div>
+      </div>
+      <button class="calc-btn" onclick="runCalc()">Calculate Cash Conversion Cycle →</button>
+      <div class="results" id="results">
+        <div class="results-grid">
+          <div class="result-item"><div class="result-label">DIO (Days Inventory)</div><div class="result-value amber" id="r-dio">—</div><div class="result-sub">Days stock sits before sold</div></div>
+          <div class="result-item"><div class="result-label">DSO (Days Receivable)</div><div class="result-value amber" id="r-dso">—</div><div class="result-sub">Days to collect from customers</div></div>
+          <div class="result-item"><div class="result-label">DPO (Days Payable)</div><div class="result-value green" id="r-dpo">—</div><div class="result-sub">Days to pay suppliers</div></div>
+          <div class="result-item"><div class="result-label">Cash Conversion Cycle</div><div class="result-value" id="r-ccc">—</div><div class="result-sub">DIO + DSO − DPO</div></div>
+        </div>
+        <div class="disclaimer">⚠️ <strong>Reference only:</strong> Results are for planning purposes. Validate with your actual financial statements before making decisions.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  var messages = []; // {role, content}
-  var busy = false;
+<section class="content-section">
 
-  var host = document.createElement("div");
-  host.setAttribute("aria-live", "polite");
-  document.body.appendChild(host);
-  var root = host.attachShadow({ mode: "open" });
+  <div class="formula-box">
+    <div class="formula-tag">📐 Cash Conversion Cycle Formula</div>
+    <div class="formula-expr">DIO = ( Average Inventory ÷ COGS ) × 365<br>DSO = ( Accounts Receivable ÷ Revenue ) × 365<br>DPO = ( Accounts Payable ÷ Purchases ) × 365<br>CCC = DIO + DSO − DPO</div>
+  </div>
 
-  root.innerHTML =
-    '<style>' +
-    ':host{all:initial}' +
-    '*{box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}' +
-    '.fab{position:fixed;bottom:20px;right:20px;z-index:2147483000;width:58px;height:58px;border-radius:50%;' +
-    'background:' + ACCENT + ';color:#fff;border:none;cursor:pointer;font-size:24px;display:flex;align-items:center;' +
-    'justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.18)}' +
-    '.fab:hover{filter:brightness(1.05)}' +
-    '.panel{position:fixed;bottom:88px;right:20px;z-index:2147483000;width:380px;max-width:calc(100vw - 32px);' +
-    'height:560px;max-height:calc(100vh - 120px);background:#fff;border-radius:16px;overflow:hidden;display:none;' +
-    'flex-direction:column;box-shadow:0 12px 40px rgba(0,0,0,.22);border:1px solid #e6e6e6}' +
-    '.panel.open{display:flex}' +
-    '.hd{background:' + ACCENT + ';color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between}' +
-    '.hd b{font-size:15px;font-weight:600}.hd small{display:block;font-size:11px;opacity:.85;font-weight:400}' +
-    '.x{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;line-height:1}' +
-    '.body{flex:1;overflow-y:auto;padding:16px;background:#f7f8f7}' +
-    '.msg{margin:0 0 12px;display:flex}' +
-    '.msg.u{justify-content:flex-end}' +
-    '.bub{padding:10px 13px;border-radius:14px;font-size:14px;line-height:1.5;max-width:85%;white-space:pre-wrap;word-wrap:break-word}' +
-    '.msg.a .bub{background:#fff;border:1px solid #eaeaea;color:#1a1a1a;border-bottom-left-radius:4px}' +
-    '.msg.u .bub{background:' + ACCENT + ';color:#fff;border-bottom-right-radius:4px}' +
-    '.intro{color:#555;font-size:14px;line-height:1.5;margin-bottom:14px}' +
-    '.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4px}' +
-    '.chip{background:#fff;border:1px solid #dcdcdc;color:#333;border-radius:16px;padding:7px 12px;font-size:12.5px;' +
-    'cursor:pointer;text-align:left}.chip:hover{border-color:' + ACCENT + ';color:' + ACCENT + '}' +
-    '.dots span{display:inline-block;width:6px;height:6px;border-radius:50%;background:#bbb;margin-right:3px;' +
-    'animation:b 1s infinite}.dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}' +
-    '@keyframes b{0%,80%,100%{opacity:.3}40%{opacity:1}}' +
-    '.ft{padding:10px;border-top:1px solid #eee;background:#fff;display:flex;gap:8px}' +
-    '.ft input{flex:1;border:1px solid #d8d8d8;border-radius:20px;padding:10px 14px;font-size:14px;outline:none}' +
-    '.ft input:focus{border-color:' + ACCENT + '}' +
-    '.send{background:' + ACCENT + ';color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:16px}' +
-    '.send:disabled{opacity:.5;cursor:default}' +
-    '.dis{font-size:10.5px;color:#999;text-align:center;padding:6px 10px;background:#fff}' +
-    '</style>' +
-    '<button class="fab" aria-label="Open Copilot">&#9673;</button>' +
-    '<div class="panel" role="dialog" aria-label="' + TITLE + '">' +
-      '<div class="hd"><div><b>' + TITLE + '</b><small>End-to-end e-commerce supply chain</small></div>' +
-      '<button class="x" aria-label="Close">&times;</button></div>' +
-      '<div class="body"><div class="intro">Hi! Ask me anything about inventory, demand forecasting, ' +
-      'logistics, or marketplace operations.</div><div class="chips"></div></div>' +
-      '<div class="ft"><input type="text" placeholder="Ask about your supply chain..." aria-label="Message"/>' +
-      '<button class="send" aria-label="Send">&#8593;</button></div>' +
-      '<div class="dis">AI-generated. Verify important decisions. Not financial advice.</div>' +
-    '</div>';
+  <div class="section-title">What is the Cash Conversion Cycle?</div>
+  <p class="prose">The <strong>Cash Conversion Cycle (CCC)</strong> measures how many days it takes your business to convert inventory investment into cash collected from customers. A lower CCC means faster cash recovery and less working capital required to run your business.</p>
+  <p class="prose">CCC = DIO + DSO − DPO. You want <strong>DIO low</strong> (sell stock fast), <strong>DSO low</strong> (collect from customers fast), and <strong>DPO high</strong> (pay suppliers late). A <strong>negative CCC</strong> — achieved by Amazon, Zara, and quick commerce platforms — means you collect from customers before you pay suppliers. For most Indian SMEs, a CCC below 45 days is excellent.</p>
 
-  var fab = root.querySelector(".fab");
-  var panel = root.querySelector(".panel");
-  var closeBtn = root.querySelector(".x");
-  var bodyEl = root.querySelector(".body");
-  var chipsEl = root.querySelector(".chips");
-  var input = root.querySelector(".ft input");
-  var sendBtn = root.querySelector(".send");
+  <div class="example-box">
+    <div class="example-tag">📊 Worked Example</div>
+    <p class="ex-p">A B2B electronics distributor in Delhi calculates their CCC:</p>
+    <table class="ex-table">
+      <tr class=""><td>Average inventory</td><td>₹15,00,000</td></tr>      <tr class=""><td>Annual COGS</td><td>₹80,00,000</td></tr>      <tr class=""><td>DIO (Days Inventory Outstanding)</td><td>15L ÷ 80L × 365 = 68 days</td></tr>      <tr class=""><td>Accounts receivable</td><td>₹6,00,000</td></tr>      <tr class=""><td>Annual revenue</td><td>₹1.2 Cr</td></tr>      <tr class=""><td>DSO (Days Sales Outstanding)</td><td>6L ÷ 120L × 365 = 18 days</td></tr>      <tr class=""><td>Accounts payable</td><td>₹4,00,000 | DPO = 4L ÷ 75L × 365 = 19 days</td></tr>      <tr class="total"><td>Cash Conversion Cycle</td><td>68 + 18 − 19 = 67 days</td></tr>
+    </table>
+  </div>
 
-  STARTERS.forEach(function (s) {
-    var c = document.createElement("button");
-    c.className = "chip";
-    c.textContent = s;
-    c.onclick = function () { send(s); };
-    chipsEl.appendChild(c);
-  });
+  <div class="section-title">Why This Calculator Matters</div>
+  <div class="why-grid">
+    <div class="why-card"><h4>Reduce Working Capital Need</h4><p>Every 10-day reduction in CCC on ₹1 Cr of revenue frees approximately ₹27L of working capital. Less working capital needed = lower bank OD requirement = less interest cost.</p></div>    <div class="why-card"><h4>Improve Cash Flow</h4><p>A high CCC means cash is locked for longer before it cycles back. For growing businesses, this creates cash flow stress even when the P&L looks profitable — the classic 'profitable but cash-poor' trap.</p></div>    <div class="why-card"><h4>Benchmark Your Business</h4><p>FMCG distributors in India typically run CCC of 30–50 days. Fashion brands: 60–90 days. B2B industrial: 90–120 days. If your CCC is higher than your industry, there's a working capital optimisation opportunity.</p></div>    <div class="why-card"><h4>Investor & Banker Metric</h4><p>Bankers assess CCC to size working capital credit limits. VCs track it as a measure of operational efficiency. A falling CCC demonstrates improving business quality and reduced financing need.</p></div>
+  </div>
 
-  function toggle(open) {
-    panel.classList.toggle("open", open);
-    if (open) input.focus();
-  }
-  fab.onclick = function () { toggle(!panel.classList.contains("open")); };
-  closeBtn.onclick = function () { toggle(false); };
+  <div class="ai-cta">
+    <h3>🤖 Go Further with AI Demand Planning</h3>
+    <p>Upload your full inventory export and get demand forecasts, reorder plans, and stockout risk analysis across all your SKUs — free.</p>
+    <a href="https://www.logicstiq.com/#ai-demand-planner">Try Free AI Demand Planner →</a>
+    <div class="ai-cta-tags">
+      <span class="ai-cta-tag">Works with Tally · SAP · NetSuite · Amazon · Flipkart</span>
+      <span class="ai-cta-tag">No login · No data stored · Free forever</span>
+    </div>
+  </div>
 
-  function addBubble(role, text) {
-    var wrap = document.createElement("div");
-    wrap.className = "msg " + (role === "user" ? "u" : "a");
-    var b = document.createElement("div");
-    b.className = "bub";
-    b.textContent = text;
-    wrap.appendChild(b);
-    bodyEl.appendChild(wrap);
-    bodyEl.scrollTop = bodyEl.scrollHeight;
-    return b;
-  }
+  <div class="section-title">Frequently Asked Questions</div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is a good CCC for Indian businesses?</div><div class="faq-a">It varies significantly by sector. Grocery and FMCG: 15–35 days (or even negative for modern retail). Fashion: 45–80 days. B2B distributors: 45–90 days. Manufacturing: 60–120 days. Quick commerce suppliers: 7–20 days. The benchmark is not absolute — what matters is whether your CCC is improving quarter on quarter.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How can I reduce my DIO (Days Inventory)?</div><div class="faq-a">Improve demand forecasting to reduce overstock. Run ABC analysis and reduce safety stock on C-class items. Use EOQ to right-size order quantities. Identify and liquidate dead stock. Negotiate more frequent, smaller deliveries with suppliers — this reduces average inventory without risking stockouts.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How can I reduce my DSO (Days Receivable)?</div><div class="faq-a">Offer early payment discounts (1–2% for payment within 7 days). Implement stricter credit terms for new customers. Move to advance payment or PDC (post-dated cheque) for higher-risk customers. Use invoice discounting or factoring for large outstanding receivables. Follow up on overdue payments within 3 days of due date.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is a negative CCC always good?</div><div class="faq-a">Usually yes — it means suppliers are financing your business. Amazon and Reliance operate with negative CCC, which is a significant competitive advantage. However, a negative CCC achieved by stretching suppliers excessively can damage supplier relationships and supply chain reliability. The best negative CCC comes from fast inventory turnover and fast customer collection — not just delaying supplier payments.</div></div>
 
-  function typing() {
-    var wrap = document.createElement("div");
-    wrap.className = "msg a";
-    wrap.innerHTML = '<div class="bub dots"><span></span><span></span><span></span></div>';
-    bodyEl.appendChild(wrap);
-    bodyEl.scrollTop = bodyEl.scrollHeight;
-    return wrap;
-  }
+  <div style="margin-top:32px">
+    <div class="section-title">Related Free Calculators</div>
+    <div class="related-grid">
+      <a href="https://www.logicstiq.com/working-capital-calculator" class="related-card"><span class="related-search">1,300/mo searches</span><span class="related-name">📊 Working Capital Calculator</span></a>      <a href="https://www.logicstiq.com/inventory-turnover-calculator" class="related-card"><span class="related-search">3,600/mo searches</span><span class="related-name">🔄 Inventory Turnover</span></a>      <a href="https://www.logicstiq.com/cogs-calculator" class="related-card"><span class="related-search">2,900/mo searches</span><span class="related-name">💸 COGS Calculator</span></a>      <a href="https://www.logicstiq.com/carrying-cost-calculator" class="related-card"><span class="related-search">590/mo searches</span><span class="related-name">💰 Carrying Cost Calculator</span></a>
+    </div>
+  </div>
 
-  function addToolButton(tool) {
-    var wrap = document.createElement("div");
-    wrap.className = "msg a";
-    var a = document.createElement("a");
-    a.href = tool.url;
-    a.target = "_blank";
-    a.rel = "noopener";
-    a.textContent = "Open the " + tool.label + " ↗";
-    a.style.cssText =
-      "display:inline-block;text-decoration:none;background:" + ACCENT + ";color:#fff;" +
-      "border-radius:14px;padding:9px 14px;font-size:13px;font-weight:600;max-width:85%";
-    wrap.appendChild(a);
-    bodyEl.appendChild(wrap);
-    bodyEl.scrollTop = bodyEl.scrollHeight;
-  }
+</section>
 
-  function send(text) {
-    text = (text || input.value || "").trim();
-    if (!text || busy) return;
-    if (chipsEl.parentNode) { var i = root.querySelector(".intro"); if (i) i.remove(); chipsEl.remove(); }
-    input.value = "";
-    addBubble("user", text);
-    messages.push({ role: "user", content: text });
-    busy = true;
-    sendBtn.disabled = true;
-    var t = typing();
+<footer>
+  <p class="footer-copy">
+    <strong>31 Free Supply Chain Calculators · AI Demand Planner · No Login Required · Free Forever</strong><br><br>
+    © 2025 <a href="https://www.logicstiq.com">LogicstIQ.com</a> ·
+    <a href="https://www.logicstiq.com/privacy-policy.html">Privacy Policy</a> ·
+    <a href="https://www.logicstiq.com/terms.html">Terms</a> ·
+    Results are for reference only.<br>
+    <strong>Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. We may earn a commission at no extra cost to you. All calculators are free forever.<br>
+    Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a>
+  </p>
+<p style="margin-top:10px;font-size:12px;color:#94A3B8;text-align:center">
+Contact: <a href="mailto:contactus@logicstiq.com"
+style="color:#9B6BFF;text-decoration:none;font-weight:600">contactus@logicstiq.com</a>
+</p>
+<p style="margin-top:6px;font-size:12px;color:#94A3B8;text-align:center">
+Tool question or bug? <a href="mailto:customercare@logicstiq.com"
+style="color:#9B6BFF;text-decoration:none;font-weight:600">customercare@logicstiq.com</a>
+</p>
+</footer>
 
-    fetch(ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ messages: messages }),
-    })
-      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
-      .then(function (res) {
-        t.remove();
-        if (!res.ok) { addBubble("assistant", res.j.error || "Something went wrong. Please try again."); return; }
-        var reply = res.j.reply || "Sorry, I couldn't generate a response.";
-        addBubble("assistant", reply);
-        messages.push({ role: "assistant", content: reply });
-        var tool = findTool(text + " " + reply);
-        if (tool) addToolButton(tool);
-      })
-      .catch(function () { t.remove(); addBubble("assistant", "Network error. Please try again."); })
-      .finally(function () { busy = false; sendBtn.disabled = false; input.focus(); });
-  }
+<script>function toggleFaq(el){el.closest('.faq-item').classList.toggle('open');}</script>
+<script>function runCalc(){
+  const inv=parseFloat(document.getElementById('inventory').value)||0;
+  const cogs=parseFloat(document.getElementById('cogs').value)||0;
+  const ar=parseFloat(document.getElementById('ar').value)||0;
+  const rev=parseFloat(document.getElementById('revenue').value)||0;
+  const ap=parseFloat(document.getElementById('ap').value)||0;
+  const pur=parseFloat(document.getElementById('purchases').value)||0;
+  if(!inv||!cogs||!ar||!rev||!ap||!pur){alert('Please enter all six fields to calculate the full Cash Conversion Cycle.');return;}
+  const dio=(inv/cogs)*365;
+  const dso=(ar/rev)*365;
+  const dpo=(ap/pur)*365;
+  const ccc=dio+dso-dpo;
+  document.getElementById('r-dio').textContent=Math.round(dio)+' days';
+  document.getElementById('r-dso').textContent=Math.round(dso)+' days';
+  document.getElementById('r-dpo').textContent=Math.round(dpo)+' days';
+  const cccEl=document.getElementById('r-ccc');
+  cccEl.textContent=(ccc>=0?'+':'')+Math.round(ccc)+' days';
+  cccEl.className='result-value '+(ccc<=30?'green':(ccc<=70?'amber':'red'));
+  document.getElementById('results').classList.add('show');
+}</script>
 
-  sendBtn.onclick = function () { send(); };
-  input.addEventListener("keydown", function (e) { if (e.key === "Enter") send(); });
-})();
+<script>
+(function(){var r=document.documentElement;
+function lbl(){var b=document.getElementById('liqTheme');if(b)b.textContent=r.getAttribute('data-theme')==='dark'?'☀️':'🌙';}
+function set(t){r.setAttribute('data-theme',t);lbl();try{localStorage.setItem('liq-theme',t)}catch(e){}}
+try{var sv=localStorage.getItem('liq-theme');if(sv)r.setAttribute('data-theme',sv);}catch(e){}
+var btn=document.createElement('button');btn.id='liqTheme';btn.type='button';btn.className='liq-theme-btn';
+btn.setAttribute('aria-label','Toggle light or dark mode');btn.title='Toggle light / dark';btn.textContent='🌙';
+btn.addEventListener('click',function(){set(r.getAttribute('data-theme')==='dark'?'light':'dark');});
+function place(){var nav=document.querySelector('.nav');
+ if(nav){var cta=nav.querySelector('.nav-cta');if(cta&&cta.parentNode){cta.parentNode.insertBefore(btn,cta);}
+   else{var l=nav.querySelector('.nav-links');(l||nav).appendChild(btn);}}
+ else{btn.classList.add('liq-theme-float');document.body.appendChild(btn);}lbl();}
+if(document.readyState!=='loading')place();else document.addEventListener('DOMContentLoaded',place);})();
+</script>
+</body>
+</html>

@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Demand Forecast Calculator — Simple Statistical Forecasting | Free | LogicstIQ — Free Supply Chain Calculator</title>
-<meta name="description" content="Calculate demand forecasts using moving average, weighted average, and trend methods. Free demand forecasting calculator for supply chain planning.">
-<meta name="keywords" content="demand forecast calculator, simple demand forecasting, moving average forecast, demand planning calculator free, forecasting tool supply chain India">
-<link rel="canonical" href="https://www.logicstiq.com/demand-forecast-calculator">
+<title>Cycle Count Calculator — Inventory Count Planning | Free Tool | LogicstIQ — Free Supply Chain Calculator</title>
+<meta name="description" content="Plan your inventory cycle counting schedule. Calculate how many SKUs to count per day to cover your full warehouse on a weekly, monthly, or quarterly cycle.">
+<meta name="keywords" content="cycle count calculator, inventory cycle count planning, cycle count schedule, physical inventory count, cycle count frequency, warehouse cycle count India">
+<link rel="canonical" href="https://www.logicstiq.com/cycle-count-calculator">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <script type="application/ld+json">
 {
@@ -14,28 +14,28 @@
   "@graph":[
     {
       "@type":"SoftwareApplication",
-      "name":"Demand Forecast Calculator",
-      "url":"https://www.logicstiq.com/demand-forecast-calculator",
+      "name":"Cycle Count Calculator",
+      "url":"https://www.logicstiq.com/cycle-count-calculator",
       "applicationCategory":"BusinessApplication",
       "operatingSystem":"Web",
       "offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},
-      "description":"Free demand forecast calculator using moving average and weighted average methods for supply chain planning."
+      "description":"Free cycle count calculator. Plan and schedule physical inventory counts by category and counting frequency."
     },
     {
       "@type":"HowTo",
-      "name":"How to use the Demand Forecast Calculator",
+      "name":"How to use the Cycle Count Calculator",
       "step":[
-        {"@type":"HowToStep","name":"Enter your inputs","text":"Enter your sales data for the last 3-6 periods to calculate a moving average forecast"},
+        {"@type":"HowToStep","name":"Enter your inputs","text":"Enter your total SKU count, available counting days per year, and how many times each category should be counted per year"},
         {"@type":"HowToStep","name":"Click Calculate","text":"Press the calculate button to get your instant result"},
-        {"@type":"HowToStep","name":"Use the result","text":"Use the forecast to plan purchase orders, safety stock, and production schedules"}
+        {"@type":"HowToStep","name":"Use the result","text":"Use the result to assign daily counting tasks to warehouse staff and build a rolling cycle count schedule"}
       ]
     },
     {
       "@type":"FAQPage",
       "mainEntity":[
-        {"@type":"Question","name":"What is the difference between demand forecasting and demand planning?","acceptedAnswer":{"@type":"Answer","text":"Demand forecasting is the statistical process of predicting future demand using historical data. Demand planning is broader — it takes the forecast and translates it into operational decisions: what to order, when to order, how much safety stock to hold, and how to handle demand variability. LogicstIQ's AI Demand Planner does both: it generates forecasts and translates them into a complete reorder plan."}},
-        {"@type":"Question","name":"How accurate is a simple moving average forecast?","acceptedAnswer":{"@type":"Answer","text":"For stable, non-seasonal products, a 3-period moving average typically achieves Mean Absolute Percentage Error (MAPE) of 15-25%. For seasonal products or products with strong trends, accuracy degrades significantly. Adding seasonality factors and using weighted averages improves accuracy to 10-15% MAPE for many products. LogicstIQ's AI Demand Planner incorporates Indian seasonality (Diwali, Big Billion Days, etc.) automatically."}},
-        {"@type":"Question","name":"How do I handle Diwali and seasonal demand spikes in my forecast?","acceptedAnswer":{"@type":"Answer","text":"Simple moving averages will underforecast during Diwali and overforecast after. The correct approach: (1) Identify your seasonal lift factor — e.g., Diwali month typically sells 2.3x normal, (2) Multiply your base forecast by the seasonal factor for the festive period, (3) Plan purchase orders 8-12 weeks in advance given Indian supply chain lead times. LogicstIQ's AI Demand Planner includes an India-specific seasonal event calendar that handles this automatically."}}
+        {"@type":"Question","name":"What is the difference between cycle counting and physical inventory?","acceptedAnswer":{"@type":"Answer","text":"A physical inventory count counts every SKU in the warehouse at one time, typically annually, requiring a warehouse shutdown. Cycle counting counts a portion of SKUs every day on a rotating schedule, requiring no shutdown. Cycle counting is preferred for warehouses with more than 100 SKUs because it maintains continuous accuracy rather than point-in-time accuracy."}},
+        {"@type":"Question","name":"How accurate should my inventory be?","acceptedAnswer":{"@type":"Answer","text":"Industry best practice targets 98%+ inventory accuracy (measured as the percentage of SKUs with quantity matching the system record exactly). Below 95% causes significant operational problems: stockouts when system shows available, wrong reorder signals, customer fulfilment errors. Cycle counting is the primary tool for achieving and maintaining 98%+ accuracy."}},
+        {"@type":"Question","name":"How many times should I count A, B, and C items per year?","acceptedAnswer":{"@type":"Answer","text":"Standard practice: A items 12 times/year (monthly), B items 4 times/year (quarterly), C items 1-2 times/year (annually). Some high-accuracy operations count A items weekly (52x). The frequency should reflect how much damage an inventory error on that item would cause — high-value, fast-moving items need the most frequent verification."}}
       ]
     }
   ]
@@ -135,6 +135,41 @@ footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
 </style>
 </head>
 <body>
+<style>
+/* LogicstIQ Platform bar — self-contained module switcher */
+.liqpb{--pb-b1:#4F6BFF;--pb-b2:#9B6BFF;--pb-bg:#ffffff;--pb-bd:#e6e9f2;--pb-tx:#516079;--pb-tx2:#0f2a4a;--pb-chip:#f3f6fd;
+  font-family:'Plus Jakarta Sans','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--pb-bg);border-bottom:1px solid var(--pb-bd)}
+[data-theme="dark"] .liqpb{--pb-bg:#0d111c;--pb-bd:rgba(255,255,255,.10);--pb-tx:#aeb9cc;--pb-tx2:#e6edf7;--pb-chip:rgba(255,255,255,.06)}
+.liqpb-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:7px 16px}
+.liqpb-label{flex:none;display:inline-flex;align-items:center;gap:7px;font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--pb-tx)}
+.liqpb-label svg{width:15px;height:15px}
+.liqpb-tabs{display:flex;gap:5px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.liqpb-tabs::-webkit-scrollbar{display:none}
+.liqpb-tabs a{white-space:nowrap;font-size:12.5px;font-weight:650;color:var(--pb-tx);padding:7px 12px;border-radius:9px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:background .15s,color .15s}
+.liqpb-tabs a:hover{color:var(--pb-tx2);background:var(--pb-chip)}
+.liqpb-tabs a.is-active{color:#fff;background:linear-gradient(135deg,var(--pb-b1),var(--pb-b2));box-shadow:0 4px 12px rgba(79,107,255,.30)}
+.liqpb-b{font-size:9px;font-weight:800;padding:2px 6px;border-radius:999px;letter-spacing:.4px;color:#fff;line-height:1}
+.liqpb-b.demo{background:linear-gradient(135deg,#F59E0B,#D97706)}
+.liqpb-b.beta{background:linear-gradient(135deg,#4F6BFF,#9B6BFF)}
+.liqpb-tabs a.is-active .liqpb-b{background:rgba(255,255,255,.28)}
+@media(max-width:640px){.liqpb-label span{display:none}}
+</style>
+<div class="liqpb" role="navigation" aria-label="LogicstIQ platform modules">
+  <div class="liqpb-inner">
+    <span class="liqpb-label"><svg viewBox="0 0 24 24" fill="none" stroke="url(#pbg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="pbg" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#4F6BFF"/><stop offset="1" stop-color="#9B6BFF"/></linearGradient></defs><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg><span>Platform</span></span>
+    <div class="liqpb-tabs">
+      <a href="/#liq-planner" data-mod="planner">AI Demand Planner</a>
+      <a href="/fba-planner/" data-mod="fba">FBA Planner</a>
+      <a href="/sourcing-procurement.html" data-mod="sourcing">Sourcing &amp; Procurement</a>
+      <a href="/logicstiq-platform-demo.html#oms" data-mod="oms">OMS<span class="liqpb-b demo">Demo</span></a>
+      <a href="/logicstiq-platform-demo.html#wms" data-mod="wms">WMS<span class="liqpb-b demo">Demo</span></a>
+      <a href="/tms.html" data-mod="tms">TMS<span class="liqpb-b beta">Beta</span></a>
+      <a href="/logicstiq-platform-demo.html#returns" data-mod="returns">Returns<span class="liqpb-b demo">Demo</span></a>
+    </div>
+  </div>
+</div>
+
 <nav class="nav">
   <a href="/" class="nav-logo" aria-label="LogicstIQ — Home" style="display:inline-flex;align-items:center;text-decoration:none">
   <svg width="245" height="50" viewBox="0 0 440 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible">
@@ -156,8 +191,8 @@ footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
 
 <div class="hero">
   <div class="hero-badge">🆓 Free · No Login · Instant Results</div>
-  <h1>Demand Forecast Calculator<br><span>Simple Statistical Demand Forecasting — Free Tool</span></h1>
-  <p class="hero-sub">Calculate demand forecasts using moving average and weighted methods. Get a starting forecast for any product in seconds.</p>
+  <h1>Cycle Count Calculator<br><span>Plan Your Inventory Count Schedule — Free Tool</span></h1>
+  <p class="hero-sub">Calculate how many SKUs to count per day to maintain accurate inventory without annual shutdown counts. Plan your cycle count programme by ABC category.</p>
   <div class="trust-row">
     <span><span class="tick">✓</span>No signup needed</span>
     <span><span class="tick">✓</span>No data stored</span>
@@ -170,86 +205,88 @@ footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
 
   <!-- LIVE CALCULATOR -->
   <div class="calc-card">
-    <h2>🔢 Demand Forecast Calculator — Free Online Tool</h2>
+    <h2>🔢 Cycle Count Calculator — Free Online Tool</h2>
     <div class="input-grid">
       <div class="input-group">
-        <label for="p1">Period 1 Sales (oldest) (units)</label>
-        <input type="number" id="p1" placeholder="e.g. 420" min="0" step="1">
+        <label for="sku_a">Class A SKUs (SKUs)</label>
+        <input type="number" id="sku_a" placeholder="e.g. 50" min="0" step="1">
       </div>
       <div class="input-group">
-        <label for="p2">Period 2 Sales (units)</label>
-        <input type="number" id="p2" placeholder="e.g. 380" min="0" step="1">
+        <label for="count_a">Count A Items per Year (times/year)</label>
+        <input type="number" id="count_a" placeholder="e.g. 12" min="0" step="1">
       </div>
       <div class="input-group">
-        <label for="p3">Period 3 Sales (units)</label>
-        <input type="number" id="p3" placeholder="e.g. 450" min="0" step="1">
+        <label for="sku_b">Class B SKUs (SKUs)</label>
+        <input type="number" id="sku_b" placeholder="e.g. 150" min="0" step="1">
       </div>
       <div class="input-group">
-        <label for="p4">Period 4 Sales (units)</label>
-        <input type="number" id="p4" placeholder="e.g. 410" min="0" step="1">
+        <label for="count_b">Count B Items per Year (times/year)</label>
+        <input type="number" id="count_b" placeholder="e.g. 4" min="0" step="1">
       </div>
       <div class="input-group">
-        <label for="p5">Period 5 Sales (units)</label>
-        <input type="number" id="p5" placeholder="e.g. 490" min="0" step="1">
+        <label for="sku_c">Class C SKUs (SKUs)</label>
+        <input type="number" id="sku_c" placeholder="e.g. 400" min="0" step="1">
       </div>
       <div class="input-group">
-        <label for="p6">Period 6 Sales (most recent) (units)</label>
-        <input type="number" id="p6" placeholder="e.g. 470" min="0" step="1">
+        <label for="count_c">Count C Items per Year (times/year)</label>
+        <input type="number" id="count_c" placeholder="e.g. 1" min="0" step="1">
+      </div>
+      <div class="input-group">
+        <label for="working_days">Working Days per Year (days)</label>
+        <input type="number" id="working_days" placeholder="e.g. 250" min="0" step="1">
       </div>
     </div>
-    <button class="calc-btn" onclick="calculate()">Calculate Demand Forecast →</button>
+    <button class="calc-btn" onclick="calculate()">Calculate Cycle Count →</button>
     <div class="result-box" id="result">
-      <div class="result-label">Forecasted Demand</div>
+      <div class="result-label">SKUs to Count per Day</div>
       <div class="result-value" id="result-value">—</div>
-      <div class="result-unit">units for the next period</div>
+      <div class="result-unit">SKUs per working day</div>
       <div class="result-detail" id="result-detail"></div>
     </div>
     <div class="disclaimer" style="margin-top:12px">⚠️ <span><strong>Reference only:</strong> Results are for planning purposes. Validate with your ERP or business data before making decisions.</span></div>
   </div>
 
   <!-- WHAT IS -->
-  <h2 id="what">What is Demand Forecast Calculator?</h2>
-  <p><strong>Demand forecasting</strong> is the process of estimating future customer demand based on historical sales data and relevant factors. Even a simple statistical forecast is far more accurate than gut feel — and prevents both overstock and stockout situations.</p>
-  <p>For most Indian SMEs, a simple 3-period weighted moving average is sufficient for monthly demand planning. More sophisticated methods (exponential smoothing, ARIMA, machine learning) offer marginal improvement for the additional complexity — and LogicstIQ's AI Demand Planner handles those automatically when you upload your full sales file.</p>
+  <h2 id="what">What is Cycle Count Calculator?</h2>
+  <p><strong>Cycle counting</strong> is the practice of counting a small subset of your inventory on a rotating schedule throughout the year, rather than conducting one large annual physical inventory count that requires shutting down operations.</p>
+  <p>Cycle counting is superior to annual counts for three reasons: inventory accuracy is maintained year-round rather than drifting for 11 months, counting disruption is spread out across the year instead of concentrated in one shutdown, and discrepancies are caught quickly when they are smaller and easier to investigate.</p>
 
   <!-- FORMULA -->
-  <h2 id="formula">The Demand Forecast Formula</h2>
+  <h2 id="formula">The Cycle Count Formula</h2>
   <div class="formula-box">
     <div class="f-label">📐 Formula</div>
-    <div class="f-formula">3-Period Moving Average = (P4 + P5 + P6) ÷ 3 | Weighted: (P4×0.2 + P5×0.3 + P6×0.5)</div>
+    <div class="f-formula">Daily Count = [(A SKUs × A Frequency) + (B SKUs × B Frequency) + (C SKUs × C Frequency)] ÷ Working Days</div>
   </div>
-  <p>Moving average treats all past periods equally. Weighted average gives more importance to recent periods (weights: oldest 20%, middle 30%, most recent 50%). Weighted average responds faster to demand changes but is more sensitive to recent anomalies. Use weighted for trending products, simple moving average for stable demand.</p>
+  <p>Different ABC categories require different counting frequencies. A-items (high-value) should be counted most frequently (monthly or quarterly). B-items quarterly. C-items annually. This focuses counting effort where inventory accuracy matters most.</p>
 
   <!-- EXAMPLE -->
   <h2 id="example">Worked Example</h2>
-  <p>A Meesho seller forecasts next month's demand for a kurti using the last 6 months of sales data:</p>
+  <p>A warehouse has 600 SKUs split across ABC categories. They operate 250 days per year with A items counted monthly.</p>
   <div class="example-box">
     <div class="ex-title">📊 Example Calculation</div>
-    <div class="ex-row"><span class="ex-lbl">Month 1</span><span class="ex-val">320 units</span></div>
-    <div class="ex-row"><span class="ex-lbl">Month 2</span><span class="ex-val">280 units</span></div>
-    <div class="ex-row"><span class="ex-lbl">Month 3</span><span class="ex-val">350 units</span></div>
-    <div class="ex-row"><span class="ex-lbl">Month 4</span><span class="ex-val">410 units</span></div>
-    <div class="ex-row"><span class="ex-lbl">Month 5</span><span class="ex-val">490 units</span></div>
-    <div class="ex-row"><span class="ex-lbl">Month 6 (latest)</span><span class="ex-val">470 units</span></div>
-    <div class="ex-row"><span class="ex-lbl">3-Month Moving Avg</span><span class="ex-val">(410+490+470) ÷ 3 = 457 units</span></div>
-    <div class="ex-row"><span class="ex-lbl"><strong>Weighted Forecast</strong></span><span class="ex-result">(410×0.2)+(490×0.3)+(470×0.5) = 464 units</span></div>
+    <div class="ex-row"><span class="ex-lbl">Class A: 50 SKUs × 12 counts/year</span><span class="ex-val">600 count events</span></div>
+    <div class="ex-row"><span class="ex-lbl">Class B: 150 SKUs × 4 counts/year</span><span class="ex-val">600 count events</span></div>
+    <div class="ex-row"><span class="ex-lbl">Class C: 400 SKUs × 1 count/year</span><span class="ex-val">400 count events</span></div>
+    <div class="ex-row"><span class="ex-lbl">Total count events per year</span><span class="ex-val">1,600</span></div>
+    <div class="ex-row"><span class="ex-lbl">Working days per year</span><span class="ex-val">250</span></div>
+    <div class="ex-row"><span class="ex-lbl"><strong>SKUs to count per day</strong></span><span class="ex-result">1,600 ÷ 250 = 6.4 → 7 SKUs/day</span></div>
   </div>
-  <p>The upward trend (320→470) means the weighted forecast (464) is more reliable here than simple moving average (457) because it gives more weight to recent higher months. This seller should plan for approximately 460-470 units next month.</p>
+  <p>With a target of 7 SKUs per day, this warehouse maintains full cycle count coverage with minimal daily effort. An experienced counter can typically count 20-50 SKUs per hour, so this represents only 15-25 minutes of counting per day.</p>
 
   <!-- WHY IT MATTERS -->
-  <h2 id="why">Why Demand Forecast Matters for Your Business</h2>
-  <p>Better demand forecasts reduce both overstock (dead inventory) and stockouts (lost sales). A 10% improvement in forecast accuracy can reduce required inventory by 15-20%.</p>
+  <h2 id="why">Why Cycle Count Matters for Your Business</h2>
+  <p>Inventory accuracy above 95% is a prerequisite for reliable demand planning, order fulfilment, and financial reporting. Cycle counting is the most cost-effective way to maintain this accuracy.</p>
   <ul>
-  <li><strong>Purchase order planning:</strong> Order the right quantity based on expected demand, not historical averages</li>
-  <li><strong>Safety stock efficiency:</strong> Accurate forecasts reduce the safety stock buffer needed for the same service level</li>
-  <li><strong>Seasonal planning:</strong> Build seasonal uplift into forecasts using the India seasonality calendar</li>
-  <li><strong>Cash flow:</strong> Avoid over-ordering by right-sizing purchase quantities to forecasted demand</li>
+  <li><strong>No shutdown required:</strong> Operations continue normally while counting proceeds on a rolling schedule</li>
+  <li><strong>Faster discrepancy detection:</strong> Errors found within days, not months — easier to investigate</li>
+  <li><strong>ABC-weighted effort:</strong> High-value A items get the most attention</li>
+  <li><strong>GSTR compliance:</strong> Accurate inventory records support GST filing and audit defence</li>
   </ul>
 
   <!-- AI PLANNER CTA -->
   <div class="cta-box">
     <h3>🤖 Go Further with AI Demand Planning</h3>
-    <p>Upload your full inventory export and get Demand Forecast calculated automatically across all your SKUs — alongside demand forecasts, reorder plans, and stockout risk analysis.</p>
+    <p>Upload your full inventory export and get Cycle Count calculated automatically across all your SKUs — alongside demand forecasts, reorder plans, and stockout risk analysis.</p>
     <a href="https://www.logicstiq.com/#ai-demand-planner" class="cta-btn">Try Free AI Demand Planner →</a>
     <div class="cta-feats">
       <span class="cta-f">Works with Tally · SAP · NetSuite · Amazon · Flipkart</span>
@@ -259,9 +296,9 @@ footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
 
   <!-- FAQ -->
   <h2 id="faq">Frequently Asked Questions</h2>
-  <div class="faq-item open"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is the difference between demand forecasting and demand planning?<span>▾</span></div><div class="faq-a">Demand forecasting is the statistical process of predicting future demand using historical data. Demand planning is broader — it takes the forecast and translates it into operational decisions: what to order, when to order, how much safety stock to hold, and how to handle demand variability. LogicstIQ's AI Demand Planner does both: it generates forecasts and translates them into a complete reorder plan.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How accurate is a simple moving average forecast?<span>▾</span></div><div class="faq-a">For stable, non-seasonal products, a 3-period moving average typically achieves Mean Absolute Percentage Error (MAPE) of 15-25%. For seasonal products or products with strong trends, accuracy degrades significantly. Adding seasonality factors and using weighted averages improves accuracy to 10-15% MAPE for many products. LogicstIQ's AI Demand Planner incorporates Indian seasonality (Diwali, Big Billion Days, etc.) automatically.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I handle Diwali and seasonal demand spikes in my forecast?<span>▾</span></div><div class="faq-a">Simple moving averages will underforecast during Diwali and overforecast after. The correct approach: (1) Identify your seasonal lift factor — e.g., Diwali month typically sells 2.3x normal, (2) Multiply your base forecast by the seasonal factor for the festive period, (3) Plan purchase orders 8-12 weeks in advance given Indian supply chain lead times. LogicstIQ's AI Demand Planner includes an India-specific seasonal event calendar that handles this automatically.</div></div>
+  <div class="faq-item open"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is the difference between cycle counting and physical inventory?<span>▾</span></div><div class="faq-a">A physical inventory count counts every SKU in the warehouse at one time, typically annually, requiring a warehouse shutdown. Cycle counting counts a portion of SKUs every day on a rotating schedule, requiring no shutdown. Cycle counting is preferred for warehouses with more than 100 SKUs because it maintains continuous accuracy rather than point-in-time accuracy.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How accurate should my inventory be?<span>▾</span></div><div class="faq-a">Industry best practice targets 98%+ inventory accuracy (measured as the percentage of SKUs with quantity matching the system record exactly). Below 95% causes significant operational problems: stockouts when system shows available, wrong reorder signals, customer fulfilment errors. Cycle counting is the primary tool for achieving and maintaining 98%+ accuracy.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How many times should I count A, B, and C items per year?<span>▾</span></div><div class="faq-a">Standard practice: A items 12 times/year (monthly), B items 4 times/year (quarterly), C items 1-2 times/year (annually). Some high-accuracy operations count A items weekly (52x). The frequency should reflect how much damage an inventory error on that item would cause — high-value, fast-moving items need the most frequent verification.</div></div>
 
   <!-- RELATED CALCULATORS -->
   <h2>Related Free Calculators</h2>
@@ -291,7 +328,7 @@ style="color:#9B6BFF;text-decoration:none;font-weight:600">customercare@logicsti
 </footer>
 
 <script>
-function calculate(){const p=[parseFloat(document.getElementById('p1').value)||0,parseFloat(document.getElementById('p2').value)||0,parseFloat(document.getElementById('p3').value)||0,parseFloat(document.getElementById('p4').value)||0,parseFloat(document.getElementById('p5').value)||0,parseFloat(document.getElementById('p6').value)||0];const valid=p.filter(x=>x>0);if(valid.length<3){alert('Enter at least 3 periods of sales data.');return;}const last3=p.slice(-3);const ma3=Math.round((last3[0]+last3[1]+last3[2])/3);const wma=Math.round(last3[0]*0.2+last3[1]*0.3+last3[2]*0.5);const avg=Math.round((ma3+wma)/2);document.getElementById('result-value').textContent=avg.toLocaleString('en-IN');document.getElementById('result-detail').textContent='3-Period Moving Average: '+ma3+' units | 3-Period Weighted Average: '+wma+' units | Blended Forecast: '+avg+' units. For full AI-powered forecasting with seasonality and ERP data, use the AI Demand Planner above.';document.getElementById('result').classList.add('show');}
+function calculate(){const sa=parseFloat(document.getElementById('sku_a').value)||0;const fa=parseFloat(document.getElementById('count_a').value)||0;const sb=parseFloat(document.getElementById('sku_b').value)||0;const fb=parseFloat(document.getElementById('count_b').value)||0;const sc=parseFloat(document.getElementById('sku_c').value)||0;const fc=parseFloat(document.getElementById('count_c').value)||0;const wd=parseFloat(document.getElementById('working_days').value)||250;const total=(sa*fa)+(sb*fb)+(sc*fc);const daily=Math.ceil(total/wd);const total_skus=sa+sb+sc;document.getElementById('result-value').textContent=daily;document.getElementById('result-detail').textContent='Total count events/year: '+total+' (A: '+(sa*fa)+', B: '+(sb*fb)+', C: '+(sc*fc)+') | Total SKUs: '+total_skus+' | At '+daily+' SKUs/day, allow '+(Math.ceil(daily/30))+' counting hours/day (at 30 SKUs/hr pace).';document.getElementById('result').classList.add('show');}
 </script>
 <script>
 (function(){var r=document.documentElement;

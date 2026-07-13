@@ -1,281 +1,822 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Pick & Pack Cost Calculator — Free Warehouse Fulfilment Tool | LogicstIQ — Free Supply Chain Calculator</title>
-  <meta name="description" content="Free Pick & Pack Cost Calculator. Calculate true cost per order including labour, packaging, overhead, and error rate. Compare in-house vs. 3PL fulfilment costs. No login.">
-  <meta name="keywords" content="pick and pack cost calculator, pick pack cost per order, fulfilment cost calculator India, warehouse cost per order, 3PL vs in-house fulfilment cost, order fulfilment cost India">
-  <link rel="canonical" href="https://www.logicstiq.com/pick-pack-cost-calculator">
-  <meta property="og:title" content="Pick & Pack Cost Calculator — Free Warehouse Fulfilment Tool | LogicstIQ — Free Supply Chain Calculator">
-  <meta property="og:description" content="Free Pick & Pack Cost Calculator. Calculate true cost per order including labour, packaging, overhead, and error rate. Compare in-house vs. 3PL fulfilment costs. No login.">
-  <meta property="og:url" content="https://www.logicstiq.com/pick-pack-cost-calculator">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="LogicstIQ.com">
-  <meta name="robots" content="index, follow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Plus Jakarta Sans',sans-serif;background:#F4F7FF;color:#0F172A;min-height:100vh;font-size:16px;line-height:1.6}
-    a{color:inherit;text-decoration:none}
-    .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;background:#FFFFFF;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100}
-    .nav-logo{font-weight:800;font-size:1.1rem;color:#0F172A}
-    .nav-back{color:#3A55FF;font-size:0.875rem;font-weight:600}
-    .nav-back:hover{color:#2A40D6}
-    .badge-bar{text-align:center;padding:12px;background:#FFFFFF;border-bottom:1px solid #E2E8F0;font-size:0.8rem;color:#3A55FF;font-weight:700;letter-spacing:0.5px}
-    .hero{max-width:760px;margin:0 auto;padding:48px 24px 32px;text-align:center}
-    .hero h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;color:#0F172A;line-height:1.2;margin-bottom:14px}
-    .hero h1 span{display:block;font-size:clamp(1rem,2vw,1.15rem);font-weight:500;color:#475569;margin-top:8px}
-    .hero-sub{color:#475569;font-size:0.9rem;margin-top:16px;max-width:620px;margin-left:auto;margin-right:auto}
-    .trust-row{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:16px}
-    .trust-item{font-size:0.8rem;color:#3A55FF;font-weight:600}
-    .trust-item::before{content:"✓ "}
-    .calc-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
-    .calc-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;overflow:hidden}
-    .calc-header{background:#F8FAFF;padding:18px 24px;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:10px}
-    .calc-header-icon{font-size:1.2rem}
-    .calc-header-title{font-size:0.95rem;font-weight:700;color:#0F172A}
-    .calc-body{padding:24px}
-    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    @media(max-width:560px){.field-grid{grid-template-columns:1fr}}
-    .field{display:flex;flex-direction:column;gap:6px}
-    .field label{font-size:0.8rem;font-weight:700;color:#475569;letter-spacing:0.3px}
-    .field span{font-size:0.72rem;color:#94A3B8}
-    .field input,.field select{background:#FFFFFF;border:1px solid #CBD5E1;border-radius:8px;padding:10px 14px;color:#0F172A;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color .2s}
-    .field input:focus,.field select:focus{border-color:#3A55FF}
-    .field input::placeholder{color:#94A3B8}
-    .calc-btn{width:100%;margin-top:20px;background:linear-gradient(135deg,#3A55FF,#2A40D6);color:#fff;border:none;border-radius:10px;padding:14px;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:opacity .2s}
-    .calc-btn:hover{opacity:0.9}
-    .results{display:none;margin-top:20px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px}
-    .results.show{display:block}
-    .results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}
-    .result-item{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:16px;text-align:center}
-    .result-label{font-size:0.72rem;color:#475569;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
-    .result-value{font-size:1.35rem;font-weight:800;color:#3A55FF}
-    .result-value.green{color:#059669}
-    .result-value.red{color:#DC2626}
-    .result-value.amber{color:#D97706}
-    .result-sub{font-size:0.7rem;color:#94A3B8;margin-top:4px}
-    .disclaimer{margin-top:16px;font-size:0.75rem;color:#94A3B8;padding:10px;background:#F4F7FF;border-radius:8px;border-left:3px solid #E2E8F0}
-    .content-section{max-width:760px;margin:0 auto;padding:0 24px 40px}
-    .formula-box{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px 24px;margin-bottom:32px}
-    .formula-tag{font-size:0.7rem;font-weight:700;color:#3A55FF;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
-    .formula-expr{font-family:'Courier New',monospace;font-size:0.9rem;color:#2A40D6;line-height:1.9}
-    .section-title{font-size:0.75rem;font-weight:700;color:#3A55FF;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
-    .prose{color:#475569;font-size:0.9rem;line-height:1.75;margin-bottom:24px}
-    .prose strong{color:#0F172A}
-    .example-box{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px 24px;margin-bottom:32px}
-    .example-tag{font-size:0.7rem;font-weight:700;color:#059669;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
-    .ex-p{font-size:0.85rem;color:#475569;margin-bottom:14px}
-    .ex-table{width:100%;border-collapse:collapse}
-    .ex-table td{padding:8px 0;font-size:0.875rem;color:#475569;border-bottom:1px solid #E2E8F0}
-    .ex-table td:last-child{text-align:right;color:#0F172A;font-weight:600}
-    .ex-table tr.total td{border-bottom:none;color:#3A55FF;font-weight:800;font-size:1rem}
-    .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:32px}
-    .why-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:18px}
-    .why-card h4{font-size:0.85rem;font-weight:700;color:#0F172A;margin-bottom:8px}
-    .why-card p{font-size:0.8rem;color:#475569;line-height:1.6}
-    .ai-cta{background:linear-gradient(135deg,#FFFFFF,#FFFFFF);border:1px solid #CBD5E1;border-radius:16px;padding:28px 24px;text-align:center;margin-bottom:32px}
-    .ai-cta h3{font-size:1.1rem;font-weight:800;color:#0F172A;margin-bottom:8px}
-    .ai-cta p{font-size:0.875rem;color:#475569;margin-bottom:20px}
-    .ai-cta a{display:inline-block;background:linear-gradient(135deg,#3A55FF,#2A40D6);color:#fff;padding:12px 28px;border-radius:10px;font-weight:700;font-size:0.9rem}
-    .ai-cta-tags{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
-    .ai-cta-tag{font-size:0.72rem;color:#94A3B8}
-    .faq-item{border-bottom:1px solid #E2E8F0;padding:16px 0}
-    .faq-item:last-child{border-bottom:none}
-    .faq-q{font-size:0.9rem;font-weight:700;color:#0F172A;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
-    .faq-q::after{content:"▾";color:#3A55FF;font-size:0.8rem}
-    .faq-a{font-size:0.85rem;color:#475569;line-height:1.7;margin-top:10px;display:none}
-    .faq-item.open .faq-a{display:block}
-    .faq-item.open .faq-q::after{content:"▴"}
-    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:10px;margin-top:16px}
-    .related-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:16px;text-decoration:none;transition:border-color .2s;display:flex;flex-direction:column;gap:4px}
-    .related-card:hover{border-color:#3A55FF}
-    .related-search{font-size:0.65rem;color:#94A3B8}
-    .related-name{font-size:0.85rem;font-weight:700;color:#0F172A}
-    footer{background:#0F172A;border-top:1px solid #1E293B;padding:28px 32px;text-align:center;margin-top:20px}
-    .footer-copy{font-size:0.78rem;color:#94A3B8;line-height:1.8}
-    .footer-copy a{color:#94A3B8}
-    .footer-copy a:hover{color:#fff}
-    @media(max-width:600px){.nav{padding:14px 20px}.hero{padding:32px 20px 24px}.calc-body{padding:16px}}
-</style>
-<style id="liq-theme-css">
-.liq-theme-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--white);color:var(--text);font-size:15px;line-height:1;cursor:pointer;display:inline-grid;place-items:center;transition:.18s;margin-left:4px}
-.liq-theme-btn:hover{border-color:#3A55FF;transform:translateY(-1px)}
-.liq-theme-float{position:fixed;right:18px;bottom:18px;z-index:99999;width:44px;height:44px;border-radius:50%;box-shadow:0 8px 22px rgba(0,0,0,.28)}
-[data-theme="dark"]{
-  --bg:#070708;--white:#10131F;--border:rgba(255,255,255,.10);--border2:rgba(255,255,255,.17);
-  --b50:rgba(58,85,255,.12);--b100:rgba(58,85,255,.20);--b200:rgba(58,85,255,.32);
-  --text:#F1F5FF;--text2:#DBE3F5;--text3:#A7B0CC;--text4:#7E88A8;
-  --glight:rgba(16,185,129,.16);--rlight:rgba(239,68,68,.16);--alight:rgba(245,158,11,.16);--plight:rgba(119,11,255,.18);
-}
-[data-theme="dark"] body{background:#070708}
-[data-theme="dark"] .nav{background:rgba(9,10,18,.92)!important;border-bottom-color:rgba(255,255,255,.08)}
-[data-theme="dark"] .liq-theme-btn{background:rgba(255,255,255,.06)}
-[data-theme="dark"] .nav-logo text tspan:first-child{fill:#FFFFFF}
-[data-theme="dark"] .nav-logo span{color:#7D92FF!important}
-[data-theme="dark"] .card,[data-theme="dark"] .why-card,[data-theme="dark"] .results,[data-theme="dark"] .result-item,[data-theme="dark"] .related-card,[data-theme="dark"] .calc-card,[data-theme="dark"] .badge-bar,[data-theme="dark"] .result-stat,[data-theme="dark"] .f-var,[data-theme="dark"] .formula-var,[data-theme="dark"] .breakdown-item,[data-theme="dark"] .safety-card,[data-theme="dark"] .modal-card,[data-theme="dark"] .legal-note,[data-theme="dark"] .tab,[data-theme="dark"] .faq-q,[data-theme="dark"] .faq-item{background:#10131F!important;border-color:rgba(255,255,255,.12)!important}
-[data-theme="dark"] .formula-box,[data-theme="dark"] .example-box,[data-theme="dark"] .faq-a{background:#0C0F1A!important;border-color:rgba(255,255,255,.10)!important}
-[data-theme="dark"] table th{background:rgba(255,255,255,.05)!important;color:#CFD8EE!important}
-[data-theme="dark"] table td,[data-theme="dark"] table th{border-color:rgba(255,255,255,.08)!important}
-[data-theme="dark"] .section-eyebrow,[data-theme="dark"] .calc-tag,[data-theme="dark"] .blog-cat,[data-theme="dark"] .calc-cat{background:rgba(58,85,255,.14)!important;border-color:rgba(58,85,255,.32)!important;color:#AEBCFF!important}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LogicstIQ Platform — Live Demo (OMS · WMS · Returns)</title>
+<meta name="description" content="Interactive demo of the LogicstIQ connected platform: Order Management, Warehouse Management and Returns sharing one live inventory ledger. Data resets on refresh. Not connected to any marketplace.">
+<style>
+  :root{
+    --ink:#0f2a4a; --blue:#2563eb; --blue-d:#1d4ed8; --indigo:#4f46e5;
+    --slate:#475569; --muted:#64748b; --faint:#94a3b8;
+    --bg:#f4f7fb; --surface:#ffffff; --surface-2:#f6f9fc; --border:#e2e8f0;
+    --oms:#2563eb; --wms:#0d9488; --ret:#d97706;
+    --green:#16a34a; --amber:#d97706; --red:#dc2626; --sky:#0284c7;
+    --shadow:0 1px 2px rgba(15,42,74,.06),0 8px 24px rgba(15,42,74,.06);
+    --radius:14px; --mono:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  html[data-theme="dark"]{
+    --ink:#e6edf7; --blue:#5b8cff; --blue-d:#7aa2ff; --indigo:#8b8bff;
+    --slate:#aeb9cc; --muted:#8b98af; --faint:#6b7890;
+    --bg:#0b1220; --surface:#131c2e; --surface-2:#0f1728; --border:#26324a;
+    --oms:#5b8cff; --wms:#2dd4bf; --ret:#f59e0b;
+    --green:#34d399; --amber:#fbbf24; --red:#f87171; --sky:#38bdf8;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:var(--blue);text-decoration:none}
+
+  /* Top bar */
+  .topbar{position:sticky;top:0;z-index:40;background:var(--surface);border-bottom:1px solid var(--border);box-shadow:var(--shadow)}
+  .topbar-inner{max-width:1180px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .brand-mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--indigo));display:grid;place-items:center;flex:none}
+  .brand-mark svg{width:20px;height:20px;stroke:#fff}
+  .brand-text b{color:var(--ink);font-size:16px;letter-spacing:-.02em;display:block;line-height:1}
+  .brand-text span{color:var(--muted);font-size:10.5px;letter-spacing:.02em}
+  .spacer{flex:1}
+  .tabs{display:flex;gap:4px;background:var(--surface-2);padding:4px;border-radius:11px;border:1px solid var(--border);flex-wrap:wrap}
+  .tab{appearance:none;border:0;background:transparent;color:var(--muted);font:inherit;font-size:13px;font-weight:600;padding:7px 13px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:7px;transition:all .15s}
+  .tab svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+  .tab:hover{color:var(--ink)}
+  .tab.active{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+  .tab[data-tab="oms"].active{color:var(--oms)}
+  .tab[data-tab="wms"].active{color:var(--wms)}
+  .tab[data-tab="returns"].active{color:var(--ret)}
+  .iconbtn{appearance:none;border:1px solid var(--border);background:var(--surface);color:var(--ink);width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:16px;display:grid;place-items:center}
+  .ghostbtn{appearance:none;border:1px solid var(--border);background:var(--surface);color:var(--slate);font:inherit;font-size:12.5px;font-weight:600;padding:0 13px;height:38px;border-radius:10px;cursor:pointer}
+  .ghostbtn:hover{border-color:var(--blue);color:var(--blue)}
+
+  /* Demo banner */
+  .demo-banner{background:linear-gradient(90deg,rgba(217,119,6,.12),rgba(37,99,235,.10));border-bottom:1px solid var(--border);color:var(--ink)}
+  .demo-banner .inner{max-width:1180px;margin:0 auto;padding:9px 18px;font-size:12.5px;display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+  .demo-dot{width:8px;height:8px;border-radius:50%;background:var(--amber);flex:none;box-shadow:0 0 0 4px rgba(217,119,6,.18)}
+  .demo-banner b{color:var(--ink)}
+  .demo-banner span{color:var(--muted)}
+
+  /* Layout */
+  .wrap{max-width:1180px;margin:0 auto;padding:22px 18px 60px}
+  .view{display:none;animation:fade .25s ease}
+  .view.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.view{animation:none}}
+
+  .view-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+  .view-head .eyebrow{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin:0 0 3px}
+  .view-head h1{margin:0;font-size:24px;letter-spacing:-.02em}
+  .view-head p{margin:5px 0 0;color:var(--muted);font-size:14px;max-width:640px}
+  .pill{font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;white-space:nowrap}
+  .pill.plan{background:rgba(37,99,235,.12);color:var(--blue)}
+
+  .grid{display:grid;gap:16px}
+  @media(min-width:820px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g-side{grid-template-columns:1.4fr 1fr}}
+
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+  .card h3{margin:0 0 3px;font-size:15px;letter-spacing:-.01em}
+  .card .sub{color:var(--muted);font-size:12.5px;margin:0 0 14px}
+  .card-accent{border-top:3px solid var(--border)}
+  .accent-oms{border-top-color:var(--oms)} .accent-wms{border-top-color:var(--wms)} .accent-ret{border-top-color:var(--ret)}
+
+  /* KPIs */
+  .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  @media(min-width:640px){.kpis{grid-template-columns:repeat(4,1fr)}}
+  .kpi{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 15px;box-shadow:var(--shadow)}
+  .kpi .n{font-size:26px;font-weight:750;letter-spacing:-.02em;line-height:1}
+  .kpi .l{font-size:11.5px;color:var(--muted);margin-top:4px}
+  .kpi.good .n{color:var(--green)}
+
+  /* Table */
+  .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:12px}
+  table{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+  th{background:var(--surface-2);color:var(--muted);text-align:left;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:9px 12px;border-bottom:1px solid var(--border)}
+  td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+  tr:last-child td{border-bottom:0}
+  tbody tr.flash{animation:flash 1s ease}
+  @keyframes flash{0%{background:rgba(37,99,235,.16)}100%{background:transparent}}
+  .sku-code{font-family:var(--mono);font-size:12px;color:var(--ink);font-weight:600}
+  .muted{color:var(--muted)}
+  .num{font-variant-numeric:tabular-nums;font-family:var(--mono)}
+
+  /* status chips */
+  .chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+  .chip::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+  .c-avail{background:rgba(22,163,74,.13);color:var(--green)}
+  .c-reserved{background:rgba(217,119,6,.14);color:var(--amber)}
+  .c-inbound{background:rgba(2,132,199,.14);color:var(--sky)}
+  .c-damaged{background:rgba(220,38,38,.13);color:var(--red)}
+  .c-new{background:rgba(2,132,199,.14);color:var(--sky)}
+  .c-ready{background:rgba(37,99,235,.13);color:var(--blue)}
+  .c-shipped{background:rgba(22,163,74,.13);color:var(--green)}
+  .c-closed{background:rgba(100,116,139,.16);color:var(--muted)}
+
+  /* stock cells inline */
+  .stockline{display:flex;gap:12px;flex-wrap:wrap;font-size:12px}
+  .stockline b{font-family:var(--mono)}
+
+  /* forms */
+  label.fld{display:block;font-size:12px;font-weight:600;color:var(--slate);margin:0 0 5px}
+  select,input[type=number],input[type=text]{width:100%;font:inherit;font-size:14px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--ink)}
+  select:focus,input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.15)}
+  .row{display:grid;gap:12px}
+  @media(min-width:560px){.row.r2{grid-template-columns:1fr 1fr}.row.r3{grid-template-columns:1fr 1fr 1fr}}
+  .btn{appearance:none;border:0;font:inherit;font-size:14px;font-weight:650;padding:11px 18px;border-radius:11px;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--blue),var(--indigo));box-shadow:0 6px 16px rgba(37,99,235,.28);transition:transform .12s,box-shadow .12s;display:inline-flex;align-items:center;gap:8px;justify-content:center}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(37,99,235,.34)}
+  .btn:active{transform:none}
+  .btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+  .btn.wms{background:linear-gradient(135deg,var(--wms),#0f766e);box-shadow:0 6px 16px rgba(13,148,136,.28)}
+  .btn.ret{background:linear-gradient(135deg,var(--ret),#b45309);box-shadow:0 6px 16px rgba(217,119,6,.28)}
+  .btn.sm{padding:7px 12px;font-size:12.5px;box-shadow:none}
+  .btn.outline{background:transparent;color:var(--blue);border:1px solid var(--blue);box-shadow:none}
+  .atp{font-size:12.5px;margin-top:8px;padding:9px 12px;border-radius:9px;background:var(--surface-2);border:1px solid var(--border)}
+  .atp.bad{color:var(--red);border-color:rgba(220,38,38,.4);background:rgba(220,38,38,.07)}
+  .atp.ok{color:var(--green);border-color:rgba(22,163,74,.35);background:rgba(22,163,74,.07)}
+
+  .actions{display:flex;gap:7px;flex-wrap:wrap}
+  .empty{padding:26px;text-align:center;color:var(--muted);font-size:13px}
+
+  /* ledger log */
+  .log{font-family:var(--mono);font-size:12px;max-height:340px;overflow-y:auto}
+  .log-row{display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);align-items:baseline}
+  .log-row:last-child{border-bottom:0}
+  .log-t{color:var(--faint);flex:none;font-size:11px}
+  .log-m{flex:none;font-weight:700;font-size:10px;padding:1px 6px;border-radius:5px;text-transform:uppercase;letter-spacing:.04em}
+  .lm-oms{background:rgba(37,99,235,.14);color:var(--blue)}
+  .lm-wms{background:rgba(13,148,136,.16);color:var(--wms)}
+  .lm-ret{background:rgba(217,119,6,.16);color:var(--ret)}
+  .lm-sys{background:rgba(100,116,139,.16);color:var(--muted)}
+  .log-x{color:var(--ink)}
+  .delta{font-weight:700}.delta.up{color:var(--green)}.delta.dn{color:var(--red)}
+
+  /* flow spine */
+  .spine{display:flex;gap:6px;align-items:center;overflow-x:auto;padding:4px 0 8px}
+  .node{flex:none;font-size:11px;font-weight:700;padding:6px 11px;border-radius:9px;border:1px solid var(--border);background:var(--surface-2);color:var(--muted);white-space:nowrap}
+  .node.on{color:#fff;border-color:transparent}
+  .node.on.oms{background:linear-gradient(135deg,var(--oms),var(--indigo))}
+  .node.on.wms{background:linear-gradient(135deg,var(--wms),#0f766e)}
+  .node.on.ret{background:linear-gradient(135deg,var(--ret),#b45309)}
+  .arrow{flex:none;color:var(--faint)}
+
+  .note{font-size:12px;color:var(--muted);background:var(--surface-2);border:1px dashed var(--border);border-radius:10px;padding:11px 13px;margin-top:14px}
+  .note b{color:var(--ink)}
+
+  /* toast */
+  .toast-wrap{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:80;display:flex;flex-direction:column;gap:8px;width:min(92vw,420px)}
+  .toast{background:var(--ink);color:#fff;padding:12px 15px;border-radius:11px;font-size:13px;box-shadow:0 12px 30px rgba(0,0,0,.28);display:flex;gap:10px;align-items:flex-start;animation:pop .2s ease}
+  html[data-theme="dark"] .toast{background:#1e293b;border:1px solid var(--border)}
+  .toast.err{background:#7f1d1d}.toast.ok{background:#14532d}
+  @keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .toast svg{width:17px;height:17px;flex:none;margin-top:1px}
+
+  /* waitlist CTA band */
+  .cta-band{max-width:1180px;margin:34px auto 0;padding:0 18px}
+  .cta-inner{background:linear-gradient(135deg,var(--ink),#12325a);border-radius:20px;padding:30px 26px;color:#fff;position:relative;overflow:hidden}
+  html[data-theme="dark"] .cta-inner{background:linear-gradient(135deg,#131c2e,#1c2a45);border:1px solid var(--border)}
+  .cta-inner::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.5),transparent 70%);pointer-events:none}
+  .cta-grid{display:grid;gap:22px;position:relative;z-index:1}
+  @media(min-width:820px){.cta-grid{grid-template-columns:1.05fr .95fr;align-items:center}}
+  .cta-copy .eyebrow{color:#9db8ff;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:0 0 8px}
+  .cta-copy h2{margin:0 0 8px;font-size:23px;letter-spacing:-.02em;line-height:1.15}
+  .cta-copy p{margin:0;color:#c7d3e8;font-size:14px;max-width:460px}
+  .cta-form{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:15px;padding:18px}
+  .cta-form .row{gap:10px}
+  .cta-form label.fld{color:#c7d3e8;margin-bottom:4px}
+  .cta-form input{background:rgba(255,255,255,.95);border-color:transparent;color:#0f2a4a}
+  html[data-theme="dark"] .cta-form input{background:#0f1728;color:var(--ink);border:1px solid var(--border)}
+  .cta-form .btn{width:100%;margin-top:12px}
+  .cta-fine{color:#8ea3c7;font-size:11px;margin:10px 0 0;text-align:center}
+  .cta-done{text-align:center;padding:14px 6px;color:#fff}
+  .cta-done .tick{width:46px;height:46px;border-radius:50%;background:rgba(52,211,153,.2);display:grid;place-items:center;margin:0 auto 12px}
+  .cta-done .tick svg{width:24px;height:24px;stroke:#34d399;fill:none;stroke-width:2.4}
+  .cta-done h4{margin:0 0 4px;font-size:17px}
+  .cta-done p{margin:0;color:#c7d3e8;font-size:13px}
+  footer{border-top:1px solid var(--border);background:var(--surface);margin-top:30px}
+  .foot{max-width:1180px;margin:0 auto;padding:20px 18px;font-size:12px;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+  .foot a{color:var(--muted)} .foot a:hover{color:var(--blue)}
+  .badge{font-size:11px;font-weight:700;color:var(--blue);background:rgba(37,99,235,.1);padding:3px 9px;border-radius:999px}
 </style>
 </head>
 <body>
-
-<nav class="nav">
-  <a href="/" class="nav-logo" aria-label="LogicstIQ — Home" style="display:inline-flex;align-items:center;text-decoration:none">
-  <svg width="245" height="50" viewBox="0 0 440 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible">
-    <defs>
-      <linearGradient id="liq_grad" x1="10" y1="70" x2="400" y2="20" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stop-color="#4F6BFF"/><stop offset="100%" stop-color="#9B6BFF"/>
-      </linearGradient>
-    </defs>
-    <path d="M10 40 L26 40 L42 66 L64 22 L80 22" stroke="url(#liq_grad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <path d="M74 14 L82 22 L74 30" stroke="#9B6BFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <circle cx="42" cy="66" r="4.5" fill="#4F6BFF"/>
-    <circle cx="64" cy="22" r="4.5" fill="#9B6BFF"/>
-    <text x="98" y="44" font-family="'Plus Jakarta Sans','Inter',sans-serif" font-size="36" font-weight="800" letter-spacing="-1.4"><tspan fill="#4F6BFF">Logicst</tspan><tspan fill="#9B6BFF">IQ</tspan></text>
-    <text x="99" y="70" font-family="'Inter',sans-serif" font-size="16" font-weight="600" letter-spacing="0.3" fill="#64748B">Where Logistics Meets Intelligence</text>
-  </svg>
-</a>
-  <a href="https://www.logicstiq.com" class="nav-back">← All Calculators</a>
-</nav>
-<div class="badge-bar">🆓 Free · No Login · Instant Results</div>
-
-<section class="hero">
-  <h1>Pick & Pack Cost Calculator <span>True Cost Per Order — In-House vs. 3PL — Free Tool</span></h1>
-  <p class="hero-sub">Calculate the true cost of fulfilling each order — labour, packaging, overhead, and error rate — so you can price correctly and decide whether to use a 3PL.</p>
-  <div class="trust-row">
-    <span class="trust-item">No signup needed</span>
-    <span class="trust-item">No data stored</span>
-    <span class="trust-item">Works on mobile</span>
-    <span class="trust-item">Free forever</span>
-  </div>
-</section>
-
-<section class="calc-section">
-  <div class="calc-card">
-    <div class="calc-header">
-      <span class="calc-header-icon">📋</span>
-      <span class="calc-header-title">Pick & Pack Cost Calculator — Free Online Tool</span>
+<style>
+/* LogicstIQ Platform bar — self-contained module switcher */
+.liqpb{--pb-b1:#4F6BFF;--pb-b2:#9B6BFF;--pb-bg:#ffffff;--pb-bd:#e6e9f2;--pb-tx:#516079;--pb-tx2:#0f2a4a;--pb-chip:#f3f6fd;
+  font-family:'Plus Jakarta Sans','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--pb-bg);border-bottom:1px solid var(--pb-bd)}
+[data-theme="dark"] .liqpb{--pb-bg:#0d111c;--pb-bd:rgba(255,255,255,.10);--pb-tx:#aeb9cc;--pb-tx2:#e6edf7;--pb-chip:rgba(255,255,255,.06)}
+.liqpb-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:7px 16px}
+.liqpb-label{flex:none;display:inline-flex;align-items:center;gap:7px;font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--pb-tx)}
+.liqpb-label svg{width:15px;height:15px}
+.liqpb-tabs{display:flex;gap:5px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.liqpb-tabs::-webkit-scrollbar{display:none}
+.liqpb-tabs a{white-space:nowrap;font-size:12.5px;font-weight:650;color:var(--pb-tx);padding:7px 12px;border-radius:9px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:background .15s,color .15s}
+.liqpb-tabs a:hover{color:var(--pb-tx2);background:var(--pb-chip)}
+.liqpb-tabs a.is-active{color:#fff;background:linear-gradient(135deg,var(--pb-b1),var(--pb-b2));box-shadow:0 4px 12px rgba(79,107,255,.30)}
+.liqpb-b{font-size:9px;font-weight:800;padding:2px 6px;border-radius:999px;letter-spacing:.4px;color:#fff;line-height:1}
+.liqpb-b.demo{background:linear-gradient(135deg,#F59E0B,#D97706)}
+.liqpb-b.beta{background:linear-gradient(135deg,#4F6BFF,#9B6BFF)}
+.liqpb-tabs a.is-active .liqpb-b{background:rgba(255,255,255,.28)}
+@media(max-width:640px){.liqpb-label span{display:none}}
+</style>
+<div class="liqpb" role="navigation" aria-label="LogicstIQ platform modules">
+  <div class="liqpb-inner">
+    <span class="liqpb-label"><svg viewBox="0 0 24 24" fill="none" stroke="url(#pbg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="pbg" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#4F6BFF"/><stop offset="1" stop-color="#9B6BFF"/></linearGradient></defs><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg><span>Platform</span></span>
+    <div class="liqpb-tabs">
+      <a href="/#liq-planner" data-mod="planner">AI Demand Planner</a>
+      <a href="/fba-planner/" data-mod="fba">FBA Planner</a>
+      <a href="/sourcing-procurement.html" data-mod="sourcing">Sourcing &amp; Procurement</a>
+      <a href="/logicstiq-platform-demo.html#oms" data-mod="oms">OMS<span class="liqpb-b demo">Demo</span></a>
+      <a href="/logicstiq-platform-demo.html#wms" data-mod="wms">WMS<span class="liqpb-b demo">Demo</span></a>
+      <a href="/tms.html" data-mod="tms">TMS<span class="liqpb-b beta">Beta</span></a>
+      <a href="/logicstiq-platform-demo.html#returns" data-mod="returns">Returns<span class="liqpb-b demo">Demo</span></a>
     </div>
-    <div class="calc-body">
-      <div class="field-grid">
-        <div class="field"><label>Orders Per Day</label><span>Average daily orders fulfilled</span><input type="number" id="orders" placeholder="e.g. 200" min="1"></div>        <div class="field"><label>Pickers / Packers</label><span>Total staff in fulfilment</span><input type="number" id="staff" placeholder="e.g. 4" min="1"></div>        <div class="field"><label>Hourly Wage per Staff (₹)</label><span>Including PF, ESI, bonuses</span><input type="number" id="wage" placeholder="e.g. 80" min="0"></div>        <div class="field"><label>Shift Hours per Day</label><span>Working hours per shift</span><input type="number" id="hours" placeholder="e.g. 9" min="1" max="24"></div>        <div class="field"><label>Packaging Cost per Order (₹)</label><span>Box, tape, dunnage, labels</span><input type="number" id="packaging" placeholder="e.g. 22" min="0"></div>        <div class="field"><label>Overhead Rate %</label><span>Rent, equipment, WMS, utilities</span><input type="number" id="overhead" placeholder="e.g. 30" min="0" max="100"></div>
+  </div>
+</div>
+
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://www.logicstiq.com/">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 3 5-6"/></svg></span>
+      <span class="brand-text"><b>LogicstIQ</b><span>Where Logistics Meets Intelligence</span></span>
+    </a>
+    <div class="spacer"></div>
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="dashboard"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard</button>
+      <button class="tab" data-tab="oms"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>OMS</button>
+      <button class="tab" data-tab="wms"><svg viewBox="0 0 24 24"><path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35"/><path d="M2 8.35 12 2l10 6.35"/><path d="M6 22V12h12v10"/></svg>WMS</button>
+      <button class="tab" data-tab="returns"><svg viewBox="0 0 24 24"><path d="M3 7v6h6"/><path d="M3 13a9 9 0 1 0 3-7.7L3 8"/></svg>Returns</button>
+    </div>
+    <button class="ghostbtn" id="resetBtn" title="Reseed the demo">↺ Reset demo</button>
+    <button class="iconbtn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+  </div>
+</div>
+
+<div class="demo-banner">
+  <div class="inner">
+    <span class="demo-dot"></span>
+    <b>Interactive demo.</b>
+    <span>Everything runs in your browser memory only — <b>data resets when you refresh.</b> Not connected to any marketplace, courier, or database. This shows how the real connected platform will behave.</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- DASHBOARD -->
+  <section class="view active" id="view-dashboard" role="tabpanel">
+    <div class="view-head">
+      <div>
+        <p class="eyebrow" style="color:var(--blue)">Control Tower</p>
+        <h1>Live inventory ledger</h1>
+        <p>One source of truth. Every action in OMS, WMS and Returns reads and writes to this table — watch the numbers move as you use the modules.</p>
       </div>
-      <button class="calc-btn" onclick="runCalc()">Calculate Pick & Pack Cost →</button>
-      <div class="results" id="results">
-        <div class="results-grid">
-          <div class="result-item"><div class="result-label">Labour Per Order</div><div class="result-value" id="r-lpo">—</div><div class="result-sub">Staff cost per order</div></div>          <div class="result-item"><div class="result-label">Packaging Per Order</div><div class="result-value" id="r-ppo">—</div><div class="result-sub">Materials per order</div></div>          <div class="result-item"><div class="result-label">Overhead Per Order</div><div class="result-value amber" id="r-opo">—</div><div class="result-sub">Allocated overhead</div></div>          <div class="result-item"><div class="result-label">Total Cost Per Order</div><div class="result-value red" id="r-total">—</div><div class="result-sub">Full fulfilment cost</div></div>
+    </div>
+
+    <div class="spine" aria-hidden="true">
+      <span class="node">Plan</span><span class="arrow">→</span>
+      <span class="node">Source</span><span class="arrow">→</span>
+      <span class="node">Store</span><span class="arrow">→</span>
+      <span class="node on oms">Sell · OMS</span><span class="arrow">→</span>
+      <span class="node on wms">Fulfil · WMS</span><span class="arrow">→</span>
+      <span class="node">Ship</span><span class="arrow">→</span>
+      <span class="node on ret">Return</span>
+    </div>
+
+    <div class="kpis" id="kpis" style="margin:8px 0 18px"></div>
+
+    <div class="grid g-side">
+      <div class="card">
+        <h3>Inventory by SKU &amp; status</h3>
+        <p class="sub">Available can be sold now · Reserved is held for open orders · Damaged is quarantined from returns.</p>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>SKU</th><th>Product</th><th class="num">Available</th><th class="num">Reserved</th><th class="num">Damaged</th></tr></thead>
+            <tbody id="invBody"></tbody>
+          </table>
         </div>
-        <div class="disclaimer">⚠️ <strong>Reference only:</strong> Results are for planning purposes. Validate with your actual payroll and cost data.</div>
+        <div class="note"><b>Why this matters:</b> stock lives in exactly one place. Overselling happens when two systems each think they own the number — here they never do.</div>
+      </div>
+      <div class="card">
+        <h3>Transaction log</h3>
+        <p class="sub">Every stock movement, and which module caused it.</p>
+        <div class="log" id="logBody"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OMS -->
+  <section class="view" id="view-oms" role="tabpanel">
+    <div class="view-head">
+      <div>
+        <p class="eyebrow" style="color:var(--oms)">Order Management</p>
+        <h1>OMS — capture, promise, route</h1>
+        <p>Orders from every channel land here. Selling reserves stock against the shared ledger, so you can't promise what you don't have.</p>
+      </div>
+      <span class="pill plan">Demo of Phase 3</span>
+    </div>
+
+    <div class="grid g-side">
+      <div class="card card-accent accent-oms">
+        <h3>Simulate an incoming order</h3>
+        <p class="sub">Stands in for a real Amazon / Flipkart / Shopify order arriving over an API.</p>
+        <div class="row r2">
+          <div><label class="fld">Channel</label><select id="omsChannel"></select></div>
+          <div><label class="fld">Fulfilment node</label><select id="omsNode"></select></div>
+        </div>
+        <div class="row r2" style="margin-top:12px">
+          <div><label class="fld">SKU</label><select id="omsSku"></select></div>
+          <div><label class="fld">Quantity</label><input type="number" id="omsQty" min="1" value="1"></div>
+        </div>
+        <div class="atp" id="omsAtp"></div>
+        <div style="margin-top:14px"><button class="btn" id="omsPlace">Capture order &amp; reserve stock</button></div>
+        <div class="note"><b>Try the guardrail:</b> order more Yoga Mats than are available and watch the platform block the oversell instead of taking the order.</div>
+      </div>
+
+      <div class="card">
+        <h3>Available-to-promise</h3>
+        <p class="sub">Real-time, straight from the ledger.</p>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>SKU</th><th class="num">Sellable</th></tr></thead>
+            <tbody id="omsAtpTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h3>Order queue</h3>
+      <p class="sub">Reserved orders wait here until you release them to the warehouse for picking.</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Order</th><th>Channel</th><th>SKU</th><th class="num">Qty</th><th>Node</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody id="omsOrders"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- WMS -->
+  <section class="view" id="view-wms" role="tabpanel">
+    <div class="view-head">
+      <div>
+        <p class="eyebrow" style="color:var(--wms)">Warehouse Management</p>
+        <h1>WMS — receive, pick, pack, ship</h1>
+        <p>Receiving adds stock; shipping removes it. No handheld scanners — the phone camera is the scanner. Every scan updates the same ledger.</p>
+      </div>
+      <span class="pill plan">Demo of Phase 4</span>
+    </div>
+
+    <div class="grid g-side">
+      <div class="card card-accent accent-wms">
+        <h3>Receive inbound stock</h3>
+        <p class="sub">Stands in for a GRN against a purchase order — good stock enters the ledger.</p>
+        <div class="row r2">
+          <div><label class="fld">SKU</label><select id="wmsRecvSku"></select></div>
+          <div><label class="fld">Quantity received</label><input type="number" id="wmsRecvQty" min="1" value="10"></div>
+        </div>
+        <div style="margin-top:14px"><button class="btn wms" id="wmsReceive">📷 Scan &amp; receive</button></div>
+      </div>
+      <div class="card">
+        <h3>Warehouse stock</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>SKU</th><th class="num">Available</th><th class="num">Reserved</th></tr></thead>
+            <tbody id="wmsStock"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h3>Pick &amp; ship queue</h3>
+      <p class="sub">Orders released from OMS. Ship one to consume its reserved stock and create a shipment.</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Order</th><th>SKU</th><th class="num">Qty</th><th>Node</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody id="wmsQueue"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- RETURNS -->
+  <section class="view" id="view-returns" role="tabpanel">
+    <div class="view-head">
+      <div>
+        <p class="eyebrow" style="color:var(--ret)">Returns &amp; Reverse Logistics</p>
+        <h1>Returns — RMA, receive, disposition</h1>
+        <p>Close the loop. Every returned unit runs the disposition decision tree, and the ledger reflects the outcome — restocked, quarantined, or written off.</p>
+      </div>
+      <span class="pill plan">Demo of Phase 6</span>
+    </div>
+
+    <div class="grid g-side">
+      <div class="card card-accent accent-ret">
+        <h3>Raise a return (RMA)</h3>
+        <p class="sub">Pick a shipped order to start a return against it.</p>
+        <div class="row">
+          <div><label class="fld">Shipped order</label><select id="retOrder"></select></div>
+          <div><label class="fld">Reason</label><select id="retReason">
+            <option>Wrong size / fit</option><option>Damaged in transit</option><option>Not as described</option><option>Changed mind</option><option>Defective</option>
+          </select></div>
+        </div>
+        <div style="margin-top:14px"><button class="btn ret" id="retRaise">Create RMA</button></div>
+        <div class="note"><b>Disposition tree:</b> Relabel/Transfer → RTV → Liquidate → Dispose. Only <b>Relabel/Transfer</b> puts a unit back on sale; the rest remove it from sellable stock the honest way.</div>
+      </div>
+      <div class="card">
+        <h3>Returns snapshot</h3>
+        <div class="kpis" id="retKpis" style="grid-template-columns:1fr 1fr"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h3>Returns queue</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>RMA</th><th>Order</th><th>SKU</th><th class="num">Qty</th><th>Reason</th><th>Status</th><th>Disposition</th></tr></thead>
+          <tbody id="retQueue"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="cta-band">
+  <div class="cta-inner">
+    <div class="cta-grid">
+      <div class="cta-copy">
+        <p class="eyebrow">Preview</p>
+        <h2>This is a preview of what we're building</h2>
+        <p>OMS, WMS and Returns on one connected inventory ledger — priced for Indian SMB sellers, not enterprises. Join the waitlist and we'll tell you the moment it goes live.</p>
+      </div>
+      <div>
+        <div class="cta-form" id="waitForm">
+          <div class="row r2">
+            <div><label class="fld">Name</label><input type="text" id="wlName" placeholder="Your name"></div>
+            <div><label class="fld">Company</label><input type="text" id="wlCompany" placeholder="Brand / store (optional)"></div>
+          </div>
+          <div style="margin-top:10px"><label class="fld">Work email</label><input type="text" id="wlEmail" placeholder="you@yourbrand.com"></div>
+          <button class="btn" id="wlSubmit">Join the waitlist</button>
+          <p class="cta-fine">No spam. One email when the platform launches. Unsubscribe anytime.</p>
+        </div>
+        <div class="cta-done" id="waitDone" style="display:none">
+          <div class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h4>You're on the list</h4>
+          <p id="waitDoneMsg">We'll be in touch when it's live.</p>
+        </div>
       </div>
     </div>
   </div>
-</section>
-
-<section class="content-section">
-
-  <div class="formula-box">
-    <div class="formula-tag">📐 Pick & Pack Cost Formula</div>
-    <div class="formula-expr">Daily Labour Cost = Staff × Hours × Hourly Wage<br>Labour Per Order = Daily Labour Cost ÷ Orders Per Day<br>Overhead Per Order = (Labour + Packaging) × Overhead Rate%<br>Total Per Order = Labour + Packaging + Overhead</div>
-  </div>
-
-  <div class="section-title">What is Pick & Pack Cost?</div>
-  <p class="prose"><strong>Pick & Pack cost</strong> is the total internal cost of processing one customer order — picking the product from a shelf, packing it into a shipping box, labelling it, and handing it over to the carrier. It includes labour, packaging materials, and an allocation of warehouse overhead.</p>
-  <p class="prose">Most Indian businesses dramatically underestimate their pick & pack cost by only counting packaging materials and ignoring the true cost of labour (including PF, ESI) and overhead (warehouse rent, WMS subscription, equipment depreciation). This calculator captures all three components for an accurate cost-per-order that you can compare directly with 3PL quotes.</p>
-
-  <div class="example-box">
-    <div class="example-tag">📊 Worked Example</div>
-    <p class="ex-p">A D2C homeware brand processing 200 orders/day with 4 staff:</p>
-    <table class="ex-table">
-      <tr><td>Orders per day</td><td>200</td></tr>      <tr><td>Staff (4 pickers/packers × ₹80/hr × 9 hrs)</td><td>₹2,880/day</td></tr>      <tr><td>Labour per order</td><td>₹2,880 ÷ 200 = ₹14.40</td></tr>      <tr><td>Packaging per order (box + tape + label)</td><td>₹22</td></tr>      <tr><td>Overhead (30% of labour + packaging)</td><td>₹10.92</td></tr>      <tr class="total"><td>Total pick & pack cost per order</td><td>₹47.32</td></tr>
-    </table>
-  </div>
-
-  <div class="section-title">Why This Calculator Matters</div>
-  <div class="why-grid">
-    <div class="why-card"><h4>3PL vs. In-House Decision</h4><p>Calculate your true in-house cost here, then compare with 3PL fulfilment quotes. If a 3PL quotes ₹55/order and your in-house cost is ₹47, the ₹8 difference may be worth paying for flexibility and reduced management complexity.</p></div>    <div class="why-card"><h4>True Margin Per Order</h4><p>Add pick & pack cost to courier cost and packaging to get total fulfilment cost per order. Subtract from gross profit to see true per-order contribution margin. Many businesses are shocked to find orders below a certain value are unprofitable.</p></div>    <div class="why-card"><h4>Scale Planning</h4><p>As volume grows, labour productivity improves (more orders per staff hour). This calculator helps you model the cost per order at 2x, 5x, 10x your current volume to understand when you achieve fulfilment economies of scale.</p></div>    <div class="why-card"><h4>Minimum Order Value</h4><p>Use total fulfilment cost to set minimum order value for free shipping. If your total fulfilment cost is ₹80 per order, a product selling for ₹299 with 40% gross margin (₹120 gross profit) leaves only ₹40 after fulfilment — before marketing.</p></div>
-  </div>
-
-  <div class="ai-cta">
-    <h3>🤖 Go Further with AI Demand Planning</h3>
-    <p>Upload your full inventory export and get demand forecasts, reorder plans, and stockout risk analysis across all your SKUs — free.</p>
-    <a href="https://www.logicstiq.com/#ai-demand-planner">Try Free AI Demand Planner →</a>
-    <div class="ai-cta-tags">
-      <span class="ai-cta-tag">Works with Tally · SAP · NetSuite · Amazon · Flipkart</span>
-      <span class="ai-cta-tag">No login · No data stored · Free forever</span>
-    </div>
-  </div>
-
-  <div class="section-title">Frequently Asked Questions</div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What overhead costs should I include?</div><div class="faq-a">Warehouse rent (allocated to fulfilment area), equipment depreciation (conveyor belts, trolleys, scanners), WMS or OMS software subscription, electricity and utilities in the fulfilment area, quality control costs, and supervisor salary. A common approach: total monthly overhead ÷ monthly orders = overhead per order.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is a benchmark pick & pack cost in India?</div><div class="faq-a">Manual warehouse without automation: ₹25–60 per order. Semi-automated with conveyors: ₹18–35 per order. 3PL fulfilment centres: ₹40–80 per order (includes their margin). High-SKU complexity or large heavy items can reach ₹80–150 per order. The benchmark varies significantly with order volume — higher volume lowers per-order cost.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Should I include error cost in pick & pack calculation?</div><div class="faq-a">Yes for advanced analysis. If your pick accuracy is 98% (2% error rate) and each picking error costs ₹200 to resolve (return, reship, customer service), add ₹4 per order (2% × ₹200) as an error provision. Poor pick accuracy is a hidden cost that inflates effective fulfilment cost significantly.</div></div>  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">At what volume does outsourcing to a 3PL make sense?</div><div class="faq-a">Generally below 100 orders/day, in-house fulfilment is difficult to run cost-efficiently — fixed costs (warehouse, staff) are too high relative to volume. Above 500 orders/day, in-house fulfilment often becomes more cost-effective than 3PL. Between 100–500 orders/day is the decision zone where this calculator helps make the comparison objectively.</div></div>
-
-  <div style="margin-top:32px">
-    <div class="section-title">Related Free Calculators</div>
-    <div class="related-grid">
-      <a href="https://www.logicstiq.com/shipping-cost-per-unit-calculator" class="related-card"><span class="related-search">960/mo searches</span><span class="related-name">📬 Shipping Cost Per Unit</span></a>      <a href="https://www.logicstiq.com/warehouse-space-calculator" class="related-card"><span class="related-search">720/mo searches</span><span class="related-name">🏭 Warehouse Space Calculator</span></a>      <a href="https://www.logicstiq.com/freight-cost-calculator" class="related-card"><span class="related-search">1,300/mo searches</span><span class="related-name">🚛 Freight Cost Calculator</span></a>      <a href="https://www.logicstiq.com/break-even-calculator" class="related-card"><span class="related-search">3,600/mo searches</span><span class="related-name">⚖️ Break-Even Calculator</span></a>
-    </div>
-  </div>
-
-</section>
+</div>
 
 <footer>
-  <p class="footer-copy">
-    <strong>31 Free Supply Chain Calculators · AI Demand Planner · No Login Required · Free Forever</strong><br><br>
-    © 2025 <a href="https://www.logicstiq.com">LogicstIQ.com</a> ·
-    <a href="https://www.logicstiq.com/privacy-policy.html">Privacy Policy</a> ·
-    <a href="https://www.logicstiq.com/terms.html">Terms</a> ·
-    Results are for reference only.<br>
-    <strong>Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. We may earn a commission at no extra cost to you. All calculators are free forever.<br>
-    Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a>
-  </p>
-<p style="margin-top:10px;font-size:12px;color:#94A3B8;text-align:center">
-Contact: <a href="mailto:contactus@logicstiq.com"
-style="color:#9B6BFF;text-decoration:none;font-weight:600">contactus@logicstiq.com</a>
-</p>
-<p style="margin-top:6px;font-size:12px;color:#94A3B8;text-align:center">
-Tool question or bug? <a href="mailto:customercare@logicstiq.com"
-style="color:#9B6BFF;text-decoration:none;font-weight:600">customercare@logicstiq.com</a>
-</p>
+  <div class="foot">
+    <span>© 2026 LogicstIQ.com · <a href="https://www.logicstiq.com/">Where Logistics Meets Intelligence</a> · Prototype — reference only, always validate with your live system.</span>
+    <span class="badge">Connected demo · OMS · WMS · Returns</span>
+  </div>
 </footer>
-<script>function toggleFaq(el){el.closest('.faq-item').classList.toggle('open');}</script>
-<script>function runCalc(){
-  const orders=parseFloat(document.getElementById('orders').value)||0;
-  const staff=parseFloat(document.getElementById('staff').value)||0;
-  const wage=parseFloat(document.getElementById('wage').value)||0;
-  const hours=parseFloat(document.getElementById('hours').value)||0;
-  const pkg=parseFloat(document.getElementById('packaging').value)||0;
-  const ovh=parseFloat(document.getElementById('overhead').value)||0;
-  if(!orders||!staff||!wage||!hours){alert('Please enter Orders Per Day, Staff, Wage, and Shift Hours.');return;}
-  const daily_labour=staff*hours*wage;
-  const lpo=daily_labour/orders;
-  const ppo=pkg;
-  const opo=(lpo+ppo)*(ovh/100);
-  const total=lpo+ppo+opo;
-  const fmt=v=>'₹'+v.toFixed(2);
-  document.getElementById('r-lpo').textContent=fmt(lpo);
-  document.getElementById('r-ppo').textContent=fmt(ppo);
-  document.getElementById('r-opo').textContent=fmt(opo);
-  document.getElementById('r-total').textContent=fmt(total);
-  document.getElementById('results').classList.add('show');
-}</script>
+
+<div class="toast-wrap" id="toasts"></div>
+
 <script>
-(function(){var r=document.documentElement;
-function lbl(){var b=document.getElementById('liqTheme');if(b)b.textContent=r.getAttribute('data-theme')==='dark'?'☀️':'🌙';}
-function set(t){r.setAttribute('data-theme',t);lbl();try{localStorage.setItem('liq-theme',t)}catch(e){}}
-try{var sv=localStorage.getItem('liq-theme');if(sv)r.setAttribute('data-theme',sv);}catch(e){}
-var btn=document.createElement('button');btn.id='liqTheme';btn.type='button';btn.className='liq-theme-btn';
-btn.setAttribute('aria-label','Toggle light or dark mode');btn.title='Toggle light / dark';btn.textContent='🌙';
-btn.addEventListener('click',function(){set(r.getAttribute('data-theme')==='dark'?'light':'dark');});
-function place(){var nav=document.querySelector('.nav');
- if(nav){var cta=nav.querySelector('.nav-cta');if(cta&&cta.parentNode){cta.parentNode.insertBefore(btn,cta);}
-   else{var l=nav.querySelector('.nav-links');(l||nav).appendChild(btn);}}
- else{btn.classList.add('liq-theme-float');document.body.appendChild(btn);}lbl();}
-if(document.readyState!=='loading')place();else document.addEventListener('DOMContentLoaded',place);})();
+"use strict";
+
+/* =====================================================================
+   WAITLIST SETUP — pick ONE option so signups reach you:
+
+   Option A (recommended): paste your form handler URL. Works with your
+   existing form backend, Formspree, etc. It receives fields: name, email, company, source.
+       const WAITLIST_ENDPOINT = "https://formspree.io/f/xxxxxxx";
+
+   Option B: leave the endpoint blank and set your email. The form then
+   opens the visitor's mail app with the details pre-filled to you.
+       const WAITLIST_EMAIL = "hello@logicstiq.com";
+
+   If you leave BOTH blank, the form still works but only logs to the
+   browser console (nothing is sent) — fine for testing, not for launch.
+   ===================================================================== */
+const WAITLIST_ENDPOINT = "";   // <-- paste your form POST URL here
+const WAITLIST_EMAIL    = "";   // <-- or your contact email here
+
+/* ---------- Single shared state = the ledger spine ---------- */
+const CHANNELS = ["Amazon.in","Flipkart","Meesho","Shopify (D2C)"];
+const NODES = ["Self-ship","Amazon FBA","D2C warehouse"];
+const CARRIERS = ["Delhivery","Shadowfax","Ekart","Blue Dart"];
+
+function seed(){
+  return {
+    seq:{o:1004,r:2001,s:5001},
+    skus:[
+      {sku:"LIQ-TSHIRT-BLK-M", name:"Cotton T-Shirt · Black · M", available:40, reserved:0, damaged:0},
+      {sku:"LIQ-BOTTLE-750",   name:"Steel Bottle · 750ml",       available:18, reserved:0, damaged:0},
+      {sku:"LIQ-YOGA-MAT-6",   name:"Yoga Mat · 6mm",             available:5,  reserved:0, damaged:0},
+      {sku:"LIQ-EARBUD-X",     name:"Wireless Earbuds · X",       available:25, reserved:2, damaged:0},
+      {sku:"LIQ-DIWALI-LAMP",  name:"LED Diya Set · Festive",     available:9,  reserved:0, damaged:0}
+    ],
+    orders:[
+      {id:"SO-1001", channel:"Amazon.in", sku:"LIQ-EARBUD-X", qty:2, node:"Amazon FBA", status:"Reserved"},
+      {id:"SO-1002", channel:"Flipkart",  sku:"LIQ-TSHIRT-BLK-M", qty:3, node:"Self-ship", status:"Ready"},
+      {id:"SO-1003", channel:"Shopify (D2C)", sku:"LIQ-BOTTLE-750", qty:1, node:"D2C warehouse", status:"Shipped", tracking:"DLV-77413920", carrier:"Delhivery"}
+    ],
+    returns:[],
+    log:[],
+    stats:{oversell:0}
+  };
+}
+let S = seed();
+/* apply the one pre-shipped order's stock effect so the ledger is consistent at start */
+(function initConsistency(){
+  // SO-1003 already shipped: it consumed 1 bottle before seed snapshot -> reflect nothing extra (available already net). Reserved for SO-1001 shown as 2 on earbuds (matches seed). SO-1002 Ready reserves 3 tshirts:
+  const t = S.skus.find(x=>x.sku==="LIQ-TSHIRT-BLK-M"); t.available-=3; t.reserved+=3;
+  logEvent("sys","Demo seeded — starting inventory loaded","", null);
+})();
+
+/* ---------- helpers ---------- */
+function sk(code){return S.skus.find(x=>x.sku===code);}
+function now(){const d=new Date();return d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'});}
+function logEvent(module, text, skucode, delta){
+  S.log.unshift({t:now(), m:module, x:text, sku:skucode, d:delta});
+  if(S.log.length>120) S.log.pop();
+}
+function toast(msg, kind){
+  const wrap=document.getElementById('toasts');
+  const el=document.createElement('div');
+  el.className='toast '+(kind||'');
+  const icon = kind==='err'
+    ? '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>'
+    : '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>';
+  el.innerHTML=icon+'<span>'+msg+'</span>';
+  wrap.appendChild(el);
+  setTimeout(()=>{el.style.opacity='0';el.style.transition='opacity .3s';setTimeout(()=>el.remove(),300);},3200);
+}
+function flash(rowId){const r=document.getElementById(rowId);if(r){r.classList.remove('flash');void r.offsetWidth;r.classList.add('flash');}}
+
+/* ---------- renderers ---------- */
+function renderKpis(){
+  const totAvail=S.skus.reduce((a,b)=>a+b.available,0);
+  const totRes=S.skus.reduce((a,b)=>a+b.reserved,0);
+  const openOrders=S.orders.filter(o=>o.status!=="Shipped"&&o.status!=="Cancelled").length;
+  const shipped=S.orders.filter(o=>o.status==="Shipped").length;
+  document.getElementById('kpis').innerHTML=`
+    <div class="kpi"><div class="n num">${totAvail}</div><div class="l">Units sellable</div></div>
+    <div class="kpi"><div class="n num" style="color:var(--amber)">${totRes}</div><div class="l">Units reserved</div></div>
+    <div class="kpi"><div class="n num">${openOrders}</div><div class="l">Open orders</div></div>
+    <div class="kpi good"><div class="n num">${S.stats.oversell}</div><div class="l">Oversells prevented</div></div>`;
+}
+function renderInv(){
+  document.getElementById('invBody').innerHTML = S.skus.map(s=>`
+    <tr id="inv-${s.sku}">
+      <td><span class="sku-code">${s.sku}</span></td>
+      <td class="muted">${s.name}</td>
+      <td class="num"><span class="chip c-avail">${s.available}</span></td>
+      <td class="num">${s.reserved?`<span class="chip c-reserved">${s.reserved}</span>`:'<span class="muted">0</span>'}</td>
+      <td class="num">${s.damaged?`<span class="chip c-damaged">${s.damaged}</span>`:'<span class="muted">0</span>'}</td>
+    </tr>`).join('');
+}
+function renderLog(){
+  document.getElementById('logBody').innerHTML = S.log.map(l=>{
+    const cls={oms:'lm-oms',wms:'lm-wms',ret:'lm-ret',sys:'lm-sys'}[l.m]||'lm-sys';
+    let d='';
+    if(l.d!=null && l.d!==0){d=`<span class="delta ${l.d>0?'up':'dn'}">${l.d>0?'+':''}${l.d}</span>`;}
+    return `<div class="log-row"><span class="log-t">${l.t}</span><span class="log-m ${cls}">${l.m}</span><span class="log-x">${l.x} ${l.sku?'<span class="sku-code">'+l.sku+'</span>':''} ${d}</span></div>`;
+  }).join('') || '<div class="empty">No activity yet.</div>';
+}
+function fillSelect(el, arr, val){el.innerHTML=arr.map(v=>`<option ${v===val?'selected':''}>${v}</option>`).join('');}
+function fillSkuSelect(el){el.innerHTML=S.skus.map(s=>`<option value="${s.sku}">${s.sku} — ${s.name}</option>`).join('');}
+
+function renderOms(){
+  fillSelect(document.getElementById('omsChannel'),CHANNELS,CHANNELS[0]);
+  fillSelect(document.getElementById('omsNode'),NODES,NODES[0]);
+  const skuSel=document.getElementById('omsSku'); const prev=skuSel.value; fillSkuSelect(skuSel); if(prev) skuSel.value=prev;
+  renderAtp(); renderOmsAtpTable(); renderOmsOrders();
+}
+function renderAtp(){
+  const code=document.getElementById('omsSku').value; const qty=parseInt(document.getElementById('omsQty').value)||0;
+  const s=sk(code); const box=document.getElementById('omsAtp'); if(!s){box.textContent='';return;}
+  if(qty>0 && qty>s.available){box.className='atp bad';box.innerHTML=`⚠ Only <b>${s.available}</b> sellable — this order of <b>${qty}</b> would oversell. It will be blocked.`;}
+  else{box.className='atp ok';box.innerHTML=`✓ <b>${s.available}</b> sellable now · reserving <b>${qty||0}</b> leaves <b>${Math.max(s.available-(qty||0),0)}</b>.`;}
+}
+function renderOmsAtpTable(){
+  document.getElementById('omsAtpTable').innerHTML=S.skus.map(s=>`<tr><td><span class="sku-code">${s.sku}</span></td><td class="num"><span class="chip c-avail">${s.available}</span></td></tr>`).join('');
+}
+function statusChip(st){
+  const map={Reserved:'c-reserved',Ready:'c-ready',Shipped:'c-shipped',New:'c-new',Cancelled:'c-closed',
+    Requested:'c-new',Received:'c-ready',Closed:'c-closed'};
+  return `<span class="chip ${map[st]||'c-closed'}">${st}</span>`;
+}
+function renderOmsOrders(){
+  const rows=S.orders.filter(o=>o.status!=="Shipped"&&o.status!=="Cancelled");
+  const body=document.getElementById('omsOrders');
+  if(!rows.length){body.innerHTML=`<tr><td colspan="7"><div class="empty">No open orders. Capture one on the left.</div></td></tr>`;return;}
+  body.innerHTML=rows.map(o=>{
+    let act='';
+    if(o.status==="Reserved") act=`<button class="btn sm" data-release="${o.id}">Release to warehouse →</button> <button class="btn sm outline" data-cancel="${o.id}">Cancel</button>`;
+    else if(o.status==="Ready") act='<span class="muted">Waiting in WMS</span>';
+    return `<tr><td><span class="sku-code">${o.id}</span></td><td>${o.channel}</td><td><span class="sku-code">${o.sku}</span></td><td class="num">${o.qty}</td><td class="muted">${o.node}</td><td>${statusChip(o.status)}</td><td><div class="actions">${act}</div></td></tr>`;
+  }).join('');
+}
+
+function renderWms(){
+  const rs=document.getElementById('wmsRecvSku'); const p=rs.value; fillSkuSelect(rs); if(p) rs.value=p;
+  document.getElementById('wmsStock').innerHTML=S.skus.map(s=>`<tr><td><span class="sku-code">${s.sku}</span></td><td class="num"><span class="chip c-avail">${s.available}</span></td><td class="num">${s.reserved?`<span class="chip c-reserved">${s.reserved}</span>`:'<span class="muted">0</span>'}</td></tr>`).join('');
+  const q=S.orders.filter(o=>o.status==="Ready");
+  const body=document.getElementById('wmsQueue');
+  if(!q.length){body.innerHTML=`<tr><td colspan="6"><div class="empty">Nothing to pick. Release an order from OMS first.</div></td></tr>`;}
+  else body.innerHTML=q.map(o=>`<tr><td><span class="sku-code">${o.id}</span></td><td><span class="sku-code">${o.sku}</span></td><td class="num">${o.qty}</td><td class="muted">${o.node}</td><td>${statusChip(o.status)}</td><td><button class="btn sm wms" data-ship="${o.id}">📷 Pick · pack · ship</button></td></tr>`).join('');
+}
+
+function renderReturns(){
+  const shipped=S.orders.filter(o=>o.status==="Shipped");
+  const sel=document.getElementById('retOrder');
+  sel.innerHTML = shipped.length ? shipped.map(o=>`<option value="${o.id}">${o.id} — ${o.sku} ×${o.qty} (${o.channel})</option>`).join('')
+    : '<option value="">No shipped orders yet — ship one in WMS</option>';
+  document.getElementById('retRaise').disabled = !shipped.length;
+  const closed=S.returns.filter(r=>r.status==="Closed").length;
+  const restocked=S.returns.filter(r=>r.disposition==="Relabel/Transfer").reduce((a,b)=>a+b.qty,0);
+  document.getElementById('retKpis').innerHTML=`
+    <div class="kpi"><div class="n num">${S.returns.length}</div><div class="l">RMAs raised</div></div>
+    <div class="kpi good"><div class="n num">${restocked}</div><div class="l">Units restocked</div></div>`;
+  const body=document.getElementById('retQueue');
+  if(!S.returns.length){body.innerHTML=`<tr><td colspan="7"><div class="empty">No returns yet. Raise an RMA on the left.</div></td></tr>`;return;}
+  body.innerHTML=S.returns.map(r=>{
+    let disp='';
+    if(r.status==="Requested") disp=`<button class="btn sm ret" data-recv="${r.id}">Receive at dock</button>`;
+    else if(r.status==="Received") disp=`
+      <div class="actions">
+        <button class="btn sm outline" data-disp="${r.id}|Relabel/Transfer">Relabel/Transfer</button>
+        <button class="btn sm outline" data-disp="${r.id}|RTV">RTV</button>
+        <button class="btn sm outline" data-disp="${r.id}|Liquidate">Liquidate</button>
+        <button class="btn sm outline" data-disp="${r.id}|Dispose">Dispose</button>
+      </div>`;
+    else disp=`<span class="chip c-closed">${r.disposition}</span>`;
+    return `<tr><td><span class="sku-code">${r.id}</span></td><td><span class="sku-code">${r.orderId}</span></td><td><span class="sku-code">${r.sku}</span></td><td class="num">${r.qty}</td><td class="muted">${r.reason}</td><td>${statusChip(r.status)}</td><td>${disp}</td></tr>`;
+  }).join('');
+}
+
+function renderAll(){renderKpis();renderInv();renderLog();renderOms();renderWms();renderReturns();}
+
+/* ---------- actions (the cross-module logic) ---------- */
+function placeOrder(){
+  const channel=document.getElementById('omsChannel').value;
+  const node=document.getElementById('omsNode').value;
+  const code=document.getElementById('omsSku').value;
+  const qty=parseInt(document.getElementById('omsQty').value)||0;
+  const s=sk(code);
+  if(qty<1){toast('Enter a quantity of at least 1.','err');return;}
+  if(qty>s.available){
+    S.stats.oversell++;
+    logEvent('oms',`Blocked oversell — order for ${qty} but only ${s.available} sellable`,code,null);
+    toast(`Oversell blocked: only ${s.available} of ${code} are sellable.`,'err');
+    renderKpis();renderLog();return;
+  }
+  const id="SO-"+(++S.seq.o);
+  s.available-=qty; s.reserved+=qty;
+  S.orders.unshift({id,channel,sku:code,qty,node,status:"Reserved"});
+  logEvent('oms',`Order ${id} captured · reserved`,code,-qty);
+  toast(`${id} captured — ${qty} × ${code} reserved.`,'ok');
+  renderAll();flash('inv-'+code);
+}
+function releaseOrder(id){const o=S.orders.find(x=>x.id===id);if(!o)return;o.status="Ready";logEvent('oms',`Order ${id} released to warehouse`,o.sku,null);toast(`${id} sent to the pick queue.`,'ok');renderAll();}
+function cancelOrder(id){const o=S.orders.find(x=>x.id===id);if(!o)return;const s=sk(o.sku);s.reserved-=o.qty;s.available+=o.qty;o.status="Cancelled";logEvent('oms',`Order ${id} cancelled · reservation released`,o.sku,+o.qty);toast(`${id} cancelled, stock released.`,'ok');renderAll();flash('inv-'+o.sku);}
+function receiveStock(){
+  const code=document.getElementById('wmsRecvSku').value;const qty=parseInt(document.getElementById('wmsRecvQty').value)||0;
+  if(qty<1){toast('Enter a quantity of at least 1.','err');return;}
+  const s=sk(code);s.available+=qty;
+  logEvent('wms',`Received & put away`,code,+qty);
+  toast(`Received ${qty} × ${code} into stock.`,'ok');renderAll();flash('inv-'+code);
+}
+function shipOrder(id){
+  const o=S.orders.find(x=>x.id===id);if(!o)return;const s=sk(o.sku);
+  s.reserved-=o.qty; // reserved units leave the building
+  o.status="Shipped"; o.carrier=CARRIERS[Math.floor(Math.random()*CARRIERS.length)];
+  o.tracking=(o.carrier.slice(0,3).toUpperCase())+"-"+Math.floor(10000000+Math.random()*89999999);
+  const sid="SHP-"+(++S.seq.s);
+  logEvent('wms',`Picked, packed & shipped ${id} via ${o.carrier} (${o.tracking})`,o.sku,-o.qty);
+  toast(`${id} shipped via ${o.carrier}.`,'ok');renderAll();flash('inv-'+o.sku);
+}
+function raiseReturn(){
+  const oid=document.getElementById('retOrder').value;if(!oid){toast('No shipped order to return.','err');return;}
+  const o=S.orders.find(x=>x.id===oid);const reason=document.getElementById('retReason').value;
+  const rid="RMA-"+(++S.seq.r);
+  S.returns.unshift({id:rid,orderId:oid,sku:o.sku,qty:o.qty,reason,status:"Requested",disposition:null});
+  logEvent('ret',`RMA ${rid} raised against ${oid} (${reason})`,o.sku,null);
+  toast(`${rid} created for ${oid}.`,'ok');renderReturns();renderLog();
+}
+function receiveReturn(rid){const r=S.returns.find(x=>x.id===rid);if(!r)return;r.status="Received";logEvent('ret',`Return ${rid} received at dock · awaiting disposition`,r.sku,null);toast(`${rid} received — choose a disposition.`,'ok');renderReturns();renderLog();}
+function disposition(rid,choice){
+  const r=S.returns.find(x=>x.id===rid);if(!r)return;const s=sk(r.sku);
+  r.disposition=choice;r.status="Closed";
+  if(choice==="Relabel/Transfer"){s.available+=r.qty;logEvent('ret',`${rid} ${choice} · back to sellable`,r.sku,+r.qty);toast(`${r.qty} × ${r.sku} restocked.`,'ok');}
+  else if(choice==="RTV"){logEvent('ret',`${rid} returned to vendor · removed from stock`,r.sku,null);toast(`${rid} returned to vendor.`,'ok');}
+  else if(choice==="Liquidate"){logEvent('ret',`${rid} sent to liquidation · written off sellable`,r.sku,null);toast(`${rid} liquidated.`,'ok');}
+  else{s.damaged+=r.qty;logEvent('ret',`${rid} disposed · quarantined as damaged`,r.sku,null);toast(`${rid} disposed (quarantined).`,'ok');}
+  renderAll();flash('inv-'+r.sku);
+}
+
+/* ---------- wiring ---------- */
+function activateTab(name,scroll){
+  const t=document.querySelector('.tab[data-tab="'+name+'"]'); if(!t) return;
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  const v=document.getElementById('view-'+name); if(v) v.classList.add('active');
+  if(scroll) window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  const name=t.dataset.tab;
+  activateTab(name,true);
+  if(history.replaceState) history.replaceState(null,'','#'+name);
+}));
+/* open the right tab from the URL, e.g. logicstiq-platform-demo.html#wms */
+function tabFromHash(){
+  const h=(location.hash||'').replace('#','').toLowerCase();
+  if(['dashboard','oms','wms','returns'].includes(h)) activateTab(h,false);
+}
+tabFromHash();
+window.addEventListener('hashchange',tabFromHash);
+document.getElementById('themeBtn').addEventListener('click',function(){
+  const h=document.documentElement;const dark=h.getAttribute('data-theme')==='dark';
+  h.setAttribute('data-theme',dark?'light':'dark');this.textContent=dark?'🌙':'☀️';
+});
+document.getElementById('resetBtn').addEventListener('click',()=>{
+  S=seed();
+  const t=sk("LIQ-TSHIRT-BLK-M");t.available-=3;t.reserved+=3;
+  logEvent("sys","Demo reset — starting inventory reloaded","",null);
+  renderAll();toast('Demo reset to starting data.','ok');
+});
+document.getElementById('omsPlace').addEventListener('click',placeOrder);
+document.getElementById('omsSku').addEventListener('change',renderAtp);
+document.getElementById('omsQty').addEventListener('input',renderAtp);
+document.getElementById('wmsReceive').addEventListener('click',receiveStock);
+document.getElementById('retRaise').addEventListener('click',raiseReturn);
+
+/* ---------- waitlist ---------- */
+function validEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);}
+function waitlistDone(msg){
+  document.getElementById('waitForm').style.display='none';
+  const d=document.getElementById('waitDone'); d.style.display='block';
+  if(msg) document.getElementById('waitDoneMsg').textContent=msg;
+}
+function submitWaitlist(){
+  const name=document.getElementById('wlName').value.trim();
+  const company=document.getElementById('wlCompany').value.trim();
+  const email=document.getElementById('wlEmail').value.trim();
+  if(!name){toast('Please add your name.','err');return;}
+  if(!validEmail(email)){toast('Please enter a valid email address.','err');return;}
+  const payload={name,email,company,source:"platform-demo waitlist"};
+
+  if(WAITLIST_ENDPOINT){
+    const fd=new FormData();Object.keys(payload).forEach(k=>fd.append(k,payload[k]));
+    const btn=document.getElementById('wlSubmit');btn.disabled=true;btn.textContent='Joining…';
+    fetch(WAITLIST_ENDPOINT,{method:'POST',body:fd,headers:{'Accept':'application/json'}})
+      .then(r=>{ if(r.ok){waitlistDone("Thanks "+name+" — we'll email "+email+" at launch.");}
+                else{throw new Error('bad response');} })
+      .catch(()=>{ btn.disabled=false;btn.textContent='Join the waitlist';
+                   toast('Could not submit. Please email us instead.','err'); });
+    return;
+  }
+  if(WAITLIST_EMAIL){
+    const subject=encodeURIComponent('LogicstIQ platform waitlist');
+    const body=encodeURIComponent('Name: '+name+'\nCompany: '+company+'\nEmail: '+email+'\n\nAdd me to the platform waitlist.');
+    window.location.href='mailto:'+WAITLIST_EMAIL+'?subject='+subject+'&body='+body;
+    waitlistDone("Your mail app is opening — hit send and you're on the list.");
+    return;
+  }
+  console.log('[Waitlist signup — not wired to a backend]',payload);
+  waitlistDone("Thanks "+name+"! (Test mode: set WAITLIST_ENDPOINT or WAITLIST_EMAIL to receive this.)");
+}
+document.getElementById('wlSubmit').addEventListener('click',submitWaitlist);
+
+/* delegated buttons */
+document.body.addEventListener('click',(e)=>{
+  const rel=e.target.closest('[data-release]'); if(rel){releaseOrder(rel.getAttribute('data-release'));return;}
+  const can=e.target.closest('[data-cancel]'); if(can){cancelOrder(can.getAttribute('data-cancel'));return;}
+  const shp=e.target.closest('[data-ship]'); if(shp){shipOrder(shp.getAttribute('data-ship'));return;}
+  const rcv=e.target.closest('[data-recv]'); if(rcv){receiveReturn(rcv.getAttribute('data-recv'));return;}
+  const dsp=e.target.closest('[data-disp]'); if(dsp){const [id,ch]=dsp.getAttribute('data-disp').split('|');disposition(id,ch);return;}
+});
+
+renderAll();
+</script>
+<script>
+(function(){
+  function syncPB(){
+    var h=(location.hash||'').replace('#','').toLowerCase();
+    var links=document.querySelectorAll('.liqpb-tabs a');
+    for(var i=0;i<links.length;i++) links[i].classList.remove('is-active');
+    if(['oms','wms','returns'].indexOf(h)>-1){
+      var el=document.querySelector('.liqpb-tabs a[data-mod="'+h+'"]');
+      if(el) el.classList.add('is-active');
+    }
+  }
+  syncPB();
+  window.addEventListener('hashchange',syncPB);
+  var tabs=document.querySelectorAll('.tab');
+  for(var i=0;i<tabs.length;i++) tabs[i].addEventListener('click',function(){setTimeout(syncPB,0);});
+})();
 </script>
 </body>
 </html>

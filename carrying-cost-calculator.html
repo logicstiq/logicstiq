@@ -2,139 +2,131 @@
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Inventory Carrying Cost Calculator — Cost of Holding Stock | Free | LogicstIQ — Free Supply Chain Calculator</title>
-<meta name="description" content="Calculate the annual cost of holding inventory. Find your carrying cost percentage and total annual holding cost including storage, capital, insurance and obsolescence.">
-<meta name="keywords" content="inventory carrying cost calculator, holding cost calculator, cost of carrying inventory, inventory holding cost formula, carrying cost percentage, warehouse holding cost India">
-<link rel="canonical" href="https://www.logicstiq.com/carrying-cost-calculator">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Big Billion Days Inventory Plan — Worked Example for Flipkart & Amazon Sellers | LogicstIQ</title>
+<meta name="description" content="A step-by-step worked example: how a Flipkart & Amazon.in seller plans inventory for Big Billion Days and Great Indian Festival — baseline demand, festive uplift, safety stock and reorder timing, using LogicstIQ's free calculators and AI Demand Planner.">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://www.logicstiq.com/big-billion-days-inventory-plan"/>
+<meta property="og:title" content="Big Billion Days Inventory Plan — Worked Example | LogicstIQ">
+<meta property="og:description" content="Step-by-step festive-sale inventory planning for Indian marketplace sellers — with free calculators and an AI Demand Planner.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.logicstiq.com/big-billion-days-inventory-plan"/>
+<meta property="og:locale" content="en_IN">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@graph":[
-    {
-      "@type":"SoftwareApplication",
-      "name":"Inventory Carrying Cost Calculator",
-      "url":"https://www.logicstiq.com/carrying-cost-calculator",
-      "applicationCategory":"BusinessApplication",
-      "operatingSystem":"Web",
-      "offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},
-      "description":"Free inventory carrying cost calculator. Calculate the annual cost of holding inventory including storage, capital, insurance and obsolescence."
-    },
-    {
-      "@type":"HowTo",
-      "name":"How to use the Inventory Carrying Cost Calculator",
-      "step":[
-        {"@type":"HowToStep","name":"Enter your inputs","text":"Enter your average inventory value and the individual cost components as percentages"},
-        {"@type":"HowToStep","name":"Click Calculate","text":"Press the calculate button to get your instant result"},
-        {"@type":"HowToStep","name":"Use the result","text":"Use the carrying cost to optimise order quantities using EOQ and justify safety stock reduction initiatives"}
-      ]
-    },
-    {
-      "@type":"FAQPage",
-      "mainEntity":[
-        {"@type":"Question","name":"What is a typical carrying cost percentage for Indian businesses?","acceptedAnswer":{"@type":"Answer","text":"For Indian businesses, total carrying cost typically ranges from 18% to 30% of inventory value annually. Breakdown: Cost of capital 10-14% (bank OD rates), Warehouse/storage 5-10%, Insurance 0.5-1.5%, Obsolescence/shrinkage 2-5%. FMCG and fashion tend to have higher obsolescence costs. Industrial components tend to have lower shrinkage."}},
-        {"@type":"Question","name":"How does carrying cost affect the EOQ calculation?","acceptedAnswer":{"@type":"Answer","text":"Carrying cost is one of the two key inputs in the EOQ formula: EOQ = √(2DS/H) where H is the annual holding cost per unit. A higher carrying cost percentage results in a lower EOQ (smaller, more frequent orders) because the cost of holding a large order outweighs the ordering savings. Accurate carrying cost is essential for meaningful EOQ calculation."}},
-        {"@type":"Question","name":"Should I include depreciation in carrying cost?","acceptedAnswer":{"@type":"Answer","text":"Yes, for physical goods that lose value over time — electronics, fashion, food, chemicals — include depreciation or obsolescence as a percentage of inventory value. For stable goods like industrial components or construction materials, obsolescence may be low (1-2%). For fast-changing categories like mobile phones, it can be 10-15% or more."}}
-      ]
-    }
-  ]
-}
+{"@context":"https://schema.org","@type":"Article","headline":"Big Billion Days Inventory Plan — Worked Example for Flipkart & Amazon Sellers","description":"A step-by-step worked example of festive-sale inventory planning for Indian marketplace sellers using LogicstIQ's calculators and AI Demand Planner.","author":{"@type":"Organization","name":"LogicstIQ"},"publisher":{"@type":"Organization","name":"LogicstIQ","logo":{"@type":"ImageObject","url":"https://www.logicstiq.com/favicon.svg"}},"mainEntityOfPage":"https://www.logicstiq.com/big-billion-days-inventory-plan"}
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&family=Wix+Madefor+Display:wght@600;700;800&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#F4F7FF;--white:#FFFFFF;--border:#E2E8F0;--b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b600:#3A55FF;--b700:#2A40D6;--b900:#1C2C73;--green:#059669;--amber:#D97706;--text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8;}
-body{font-family:"Inter",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
-.nav{background:#fff;border-bottom:1px solid var(--border);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.04)}
-.nav-logo{text-decoration:none;display:flex;align-items:center}
-.nav-back{font-size:13px;font-weight:600;color:var(--b600);text-decoration:none}
-.hero{background:linear-gradient(135deg,#0F172A 0%,#1C2C73 50%,#2A40D6 100%);padding:52px 32px 44px;text-align:center}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:5px 14px;font-size:11px;font-weight:800;color:#BFDBFE;text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px}
-.hero h1{font-size:clamp(24px,4vw,44px);font-weight:900;color:#fff;line-height:1.12;letter-spacing:-.03em;max-width:700px;margin:0 auto 12px;font-family:"Plus Jakarta Sans",sans-serif}
-.hero h1 span{color:#AEBCFF}
-.hero-sub{font-size:14px;color:#BFDBFE;max-width:560px;margin:0 auto 20px;line-height:1.7}
-.trust-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;font-size:12px;color:rgba(255,255,255,.85);font-weight:600}
-.trust-row .tick{color:#34D399}
-.wrap{max-width:820px;margin:0 auto;padding:44px 24px 60px}
-.calc-card{background:var(--white);border:2px solid var(--b200);border-radius:20px;padding:32px;margin-bottom:28px;box-shadow:0 4px 20px rgba(30,58,138,.08)}
-.calc-card h2{font-size:20px;font-weight:900;color:var(--b900);margin-bottom:20px;font-family:"Plus Jakarta Sans",sans-serif;letter-spacing:-.02em}
-.input-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:18px}
-.input-group label{display:block;font-size:12px;font-weight:700;color:var(--text3);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em}
-.input-group input,.input-group select{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;color:var(--text);background:#fff;transition:border-color .15s;outline:none}
-.input-group input:focus,.input-group select:focus{border-color:var(--b600);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
-.calc-btn{width:100%;background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:800;font-family:inherit;cursor:pointer;box-shadow:0 4px 16px rgba(37,99,235,.35);transition:all .2s;margin-bottom:14px}
-.calc-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,99,235,.45)}
-.result-box{background:linear-gradient(135deg,var(--b50),#E0F2FE);border:2px solid var(--b200);border-radius:14px;padding:22px;text-align:center;display:none}
-.result-box.show{display:block}
-.result-label{font-size:11px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
-.result-value{font-size:42px;font-weight:900;color:var(--b700);line-height:1;letter-spacing:-.03em}
-.result-unit{font-size:14px;color:var(--text3);margin-top:6px;font-weight:600}
-.result-detail{font-size:13px;color:var(--text2);margin-top:12px;line-height:1.7;background:rgba(255,255,255,.7);border-radius:8px;padding:12px}
-.disclaimer{background:#FEF9C3;border:1px solid #FDE68A;border-radius:10px;padding:10px 14px;font-size:11px;color:#92400E;line-height:1.6;font-weight:600;display:flex;align-items:flex-start;gap:8px}
-h2{font-size:24px;font-weight:900;color:var(--text);letter-spacing:-.02em;margin:36px 0 12px;border-top:2px solid var(--b100);padding-top:8px;font-family:"Plus Jakarta Sans",sans-serif}
-h3{font-size:18px;font-weight:800;color:var(--text2);margin:24px 0 8px}
-p{margin-bottom:14px;color:var(--text2);line-height:1.8;font-size:15px}
-ul,ol{padding-left:22px;margin-bottom:14px}
-li{margin-bottom:7px;color:var(--text2);line-height:1.7}
-strong{color:var(--text);font-weight:700}
-a{color:var(--b600);font-weight:600;text-decoration:none}
-.formula-box{background:linear-gradient(135deg,#EFF6FF,#E0F2FE);border:2px solid var(--b200);border-radius:14px;padding:22px;margin:18px 0;text-align:center}
-.f-label{font-size:10px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
-.f-formula{font-size:clamp(13px,2vw,18px);font-weight:900;color:var(--b700);font-family:"Courier New",monospace;line-height:1.6}
-.example-box{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:24px;margin:18px 0;box-shadow:0 2px 8px rgba(30,58,138,.05)}
-.ex-title{font-size:11px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
-.ex-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px}
-.ex-row:last-child{border-bottom:none;padding-top:12px}
-.ex-lbl{color:var(--text3)}
-.ex-val{font-weight:700;color:var(--text);font-family:"Courier New",monospace}
-.ex-result{font-size:22px;font-weight:900;color:var(--b700)}
-.faq-item{background:var(--white);border:1.5px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}
-.faq-q{padding:16px 20px;font-size:14px;font-weight:700;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
-.faq-q:hover{background:var(--b50)}
-.faq-q span{color:var(--b600);font-size:16px;transition:transform .2s;flex-shrink:0;margin-left:10px}
-.faq-a{padding:14px 20px;font-size:13px;color:var(--text3);line-height:1.75;background:#F8FAFF;border-top:1px solid var(--border);display:none}
-.faq-item.open .faq-a{display:block}
-.faq-item.open .faq-q span{transform:rotate(180deg)}
-.cta-box{background:linear-gradient(135deg,#0F172A,#1C2C73);border-radius:20px;padding:32px;text-align:center;margin:36px 0}
-.cta-box h3{font-size:20px;font-weight:900;color:#fff;margin-bottom:8px;font-family:"Plus Jakarta Sans",sans-serif}
-.cta-box p{font-size:13px;color:#BFDBFE;margin-bottom:18px;line-height:1.65}
-.cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;text-decoration:none;padding:13px 26px;border-radius:12px;font-size:14px;font-weight:800;box-shadow:0 4px 16px rgba(37,99,235,.4)}
-.cta-feats{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:14px}
-.cta-f{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:3px 10px;font-size:11px;font-weight:600;color:#E0E7FF}
-.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:16px 0}
-.related-card{background:var(--white);border:1.5px solid var(--border);border-radius:11px;padding:14px;text-decoration:none;transition:all .2s;display:block}
-.related-card:hover{border-color:var(--b200);box-shadow:0 4px 12px rgba(30,58,138,.07);transform:translateY(-1px)}
-.rc-name{font-size:13px;font-weight:800;color:var(--text);margin-bottom:3px}
-.rc-vol{font-size:11px;color:var(--b600);font-weight:600}
-.aff-note{background:var(--white);border:1px solid var(--border);border-radius:9px;padding:11px 14px;margin:24px 0;font-size:12px;color:var(--text4);line-height:1.6}
-footer{background:#0F172A;padding:28px 32px;text-align:center;color:#64748B;font-size:13px;margin-top:0}
-footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
-@media(max-width:600px){.wrap{padding:28px 16px 48px}.hero{padding:40px 20px 36px}.input-grid{grid-template-columns:1fr}}
-</style>
-<style id="liq-theme-css">
-.liq-theme-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--white);color:var(--text);font-size:15px;line-height:1;cursor:pointer;display:inline-grid;place-items:center;transition:.18s;margin-left:4px}
-.liq-theme-btn:hover{border-color:#3A55FF;transform:translateY(-1px)}
-.liq-theme-float{position:fixed;right:18px;bottom:18px;z-index:99999;width:44px;height:44px;border-radius:50%;box-shadow:0 8px 22px rgba(0,0,0,.28)}
+:root{
+  --bg:#F4F7FF;--white:#FFFFFF;--border:#E2E8F0;--border2:#C8D4EC;
+  --b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b600:#3A55FF;--b700:#2A40D6;--b900:#1C2C73;
+  --green:#059669;--glight:#D1FAE5;--amber:#D97706;--alight:#FEF3C7;--purple:#770BFF;
+  --text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8;
+}
+/* ── DARK MODE (reads same 'liq-theme' preference as the homepage) ── */
 [data-theme="dark"]{
   --bg:#070708;--white:#10131F;--border:rgba(255,255,255,.10);--border2:rgba(255,255,255,.17);
-  --b50:rgba(58,85,255,.12);--b100:rgba(58,85,255,.20);--b200:rgba(58,85,255,.32);
+  --b50:rgba(58,85,255,.12);--b100:rgba(58,85,255,.22);--b200:rgba(58,85,255,.32);
+  --alight:rgba(245,158,11,.16);
   --text:#F1F5FF;--text2:#DBE3F5;--text3:#A7B0CC;--text4:#7E88A8;
-  --glight:rgba(16,185,129,.16);--rlight:rgba(239,68,68,.16);--alight:rgba(245,158,11,.16);--plight:rgba(119,11,255,.18);
 }
-[data-theme="dark"] body{background:#070708}
-[data-theme="dark"] .nav{background:rgba(9,10,18,.92)!important;border-bottom-color:rgba(255,255,255,.08)}
-[data-theme="dark"] .liq-theme-btn{background:rgba(255,255,255,.06)}
-[data-theme="dark"] .nav-logo text tspan:first-child{fill:#FFFFFF}
-[data-theme="dark"] .nav-logo span{color:#7D92FF!important}
-[data-theme="dark"] .card,[data-theme="dark"] .why-card,[data-theme="dark"] .results,[data-theme="dark"] .result-item,[data-theme="dark"] .related-card,[data-theme="dark"] .calc-card,[data-theme="dark"] .badge-bar,[data-theme="dark"] .result-stat,[data-theme="dark"] .f-var,[data-theme="dark"] .formula-var,[data-theme="dark"] .breakdown-item,[data-theme="dark"] .safety-card,[data-theme="dark"] .modal-card,[data-theme="dark"] .legal-note,[data-theme="dark"] .tab,[data-theme="dark"] .faq-q,[data-theme="dark"] .faq-item{background:#10131F!important;border-color:rgba(255,255,255,.12)!important}
-[data-theme="dark"] .formula-box,[data-theme="dark"] .example-box,[data-theme="dark"] .faq-a{background:#0C0F1A!important;border-color:rgba(255,255,255,.10)!important}
-[data-theme="dark"] table th{background:rgba(255,255,255,.05)!important;color:#CFD8EE!important}
-[data-theme="dark"] table td,[data-theme="dark"] table th{border-color:rgba(255,255,255,.08)!important}
-[data-theme="dark"] .section-eyebrow,[data-theme="dark"] .calc-tag,[data-theme="dark"] .blog-cat,[data-theme="dark"] .calc-cat{background:rgba(58,85,255,.14)!important;border-color:rgba(58,85,255,.32)!important;color:#AEBCFF!important}
+body{font-family:'Wix Madefor Text','Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;transition:background .3s,color .3s}
+a{color:var(--b600);text-decoration:none}
+a:hover{text-decoration:underline}
+.nav{background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-links{display:flex;gap:22px;align-items:center}
+.nav-links a{font-size:13px;font-weight:600;color:var(--text3)}
+.nav-links a:hover{color:var(--b600);text-decoration:none}
+.theme-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--white);color:var(--text);font-size:15px;cursor:pointer;line-height:1;display:inline-grid;place-items:center;transition:.18s}
+.theme-btn:hover{border-color:#3A55FF;transform:translateY(-1px)}
+.wrap{max-width:820px;margin:0 auto;padding:44px 24px 64px}
+.crumb{font-size:12px;color:var(--text4);font-weight:600;margin-bottom:16px}
+.badge{display:inline-flex;align-items:center;gap:7px;background:var(--b50);border:1px solid var(--b200);color:var(--b700);border-radius:999px;padding:5px 14px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px}
+h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.15;letter-spacing:-.025em;margin-bottom:14px}
+.lede{font-size:17px;color:var(--text3);margin-bottom:18px}
+.note{background:var(--alight);border:1px solid #FDE68A;border-radius:10px;padding:11px 16px;font-size:12.5px;color:#92400E;margin-bottom:32px;line-height:1.6}
+h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:800;letter-spacing:-.02em;margin:36px 0 12px;color:var(--text)}
+h3{font-size:16px;font-weight:800;margin:24px 0 8px;color:var(--text2)}
+p{margin-bottom:14px;color:var(--text2)}
+.step{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px 26px;margin:18px 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.step-lbl{font-size:11px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.09em;margin-bottom:8px}
+.formula{background:var(--b50);border:1px solid var(--b100);border-left:3px solid var(--b600);border-radius:8px;padding:12px 16px;font-family:'Courier New',monospace;font-size:13px;color:var(--b900);margin:12px 0;line-height:1.7;white-space:pre-wrap}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0;background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+th{background:#F8FAFF;padding:10px 13px;text-align:left;font-size:11px;font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border)}
+td{padding:10px 13px;border-bottom:1px solid #F1F5F9;color:var(--text2)}
+tr:last-child td{border-bottom:none}
+.tool-cta{display:inline-flex;align-items:center;gap:8px;background:var(--b600);color:#fff;border-radius:10px;padding:10px 18px;font-size:14px;font-weight:700;margin:6px 8px 6px 0}
+.tool-cta:hover{background:var(--b700);text-decoration:none}
+.tool-cta.ghost{background:var(--white);border:1.5px solid var(--border2);color:var(--b700)}
+.tool-cta.ghost:hover{border-color:var(--b600)}
+.result{background:linear-gradient(135deg,#ECFDF5,#F0FDF4);border:1.5px solid #A7F3D0;border-radius:16px;padding:24px 26px;margin:24px 0}
+.result h3{color:#065F46;margin-top:0}
+.result p{color:#065F46}
+.tools-used{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px 26px;margin:28px 0}
+.tools-used ul{list-style:none;margin:12px 0 0}
+.tools-used li{padding:8px 0;border-bottom:1px solid #F1F5F9;font-size:14px}
+.tools-used li:last-child{border-bottom:none}
+.endcta{text-align:center;background:linear-gradient(135deg,#0F172A,#1C2C73);border-radius:20px;padding:36px 28px;margin:40px 0 0;color:#fff}
+.endcta h2{color:#fff;margin-top:0}
+.endcta p{color:#BFDBFE;max-width:520px;margin:0 auto 20px}
+footer{background:#0F172A;padding:32px;text-align:center;color:#64748B;font-size:12px;line-height:1.9}
+footer a{color:#94A3B8}
+/* dark-mode targeted overrides for hardcoded light colors */
+[data-theme="dark"] .nav{background:rgba(9,10,18,.92);border-bottom-color:rgba(255,255,255,.08)}
+[data-theme="dark"] a{color:#7D92FF}
+[data-theme="dark"] .nav-links a{color:var(--text3)}
+[data-theme="dark"] .badge{background:rgba(58,85,255,.14);border-color:rgba(58,85,255,.32);color:#AEBCFF}
+[data-theme="dark"] .step-lbl{color:#AEBCFF}
+[data-theme="dark"] .formula{color:#C9D4FF;border-color:rgba(58,85,255,.3)}
+[data-theme="dark"] th{background:rgba(255,255,255,.04);color:#A7B0CC}
+[data-theme="dark"] td{border-bottom-color:rgba(255,255,255,.06)}
+[data-theme="dark"] .note{background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.3);color:#FCD9A0}
+[data-theme="dark"] .result{background:linear-gradient(135deg,#0B1F18,#0A1A14);border-color:rgba(16,185,129,.32)}
+[data-theme="dark"] .result h3,[data-theme="dark"] .result p{color:#A7F3D0}
+[data-theme="dark"] .tool-cta.ghost{background:#10131F;color:#AEBCFF}
+[data-theme="dark"] .tools-used li{border-bottom-color:rgba(255,255,255,.06)}
+@media(max-width:600px){.wrap{padding:32px 16px 48px}.nav-links{display:none}}
 </style>
 </head>
 <body>
+<style>
+/* LogicstIQ Platform bar — self-contained module switcher */
+.liqpb{--pb-b1:#4F6BFF;--pb-b2:#9B6BFF;--pb-bg:#ffffff;--pb-bd:#e6e9f2;--pb-tx:#516079;--pb-tx2:#0f2a4a;--pb-chip:#f3f6fd;
+  font-family:'Plus Jakarta Sans','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--pb-bg);border-bottom:1px solid var(--pb-bd)}
+[data-theme="dark"] .liqpb{--pb-bg:#0d111c;--pb-bd:rgba(255,255,255,.10);--pb-tx:#aeb9cc;--pb-tx2:#e6edf7;--pb-chip:rgba(255,255,255,.06)}
+.liqpb-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:7px 16px}
+.liqpb-label{flex:none;display:inline-flex;align-items:center;gap:7px;font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--pb-tx)}
+.liqpb-label svg{width:15px;height:15px}
+.liqpb-tabs{display:flex;gap:5px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.liqpb-tabs::-webkit-scrollbar{display:none}
+.liqpb-tabs a{white-space:nowrap;font-size:12.5px;font-weight:650;color:var(--pb-tx);padding:7px 12px;border-radius:9px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:background .15s,color .15s}
+.liqpb-tabs a:hover{color:var(--pb-tx2);background:var(--pb-chip)}
+.liqpb-tabs a.is-active{color:#fff;background:linear-gradient(135deg,var(--pb-b1),var(--pb-b2));box-shadow:0 4px 12px rgba(79,107,255,.30)}
+.liqpb-b{font-size:9px;font-weight:800;padding:2px 6px;border-radius:999px;letter-spacing:.4px;color:#fff;line-height:1}
+.liqpb-b.demo{background:linear-gradient(135deg,#F59E0B,#D97706)}
+.liqpb-b.beta{background:linear-gradient(135deg,#4F6BFF,#9B6BFF)}
+.liqpb-tabs a.is-active .liqpb-b{background:rgba(255,255,255,.28)}
+@media(max-width:640px){.liqpb-label span{display:none}}
+</style>
+<div class="liqpb" role="navigation" aria-label="LogicstIQ platform modules">
+  <div class="liqpb-inner">
+    <span class="liqpb-label"><svg viewBox="0 0 24 24" fill="none" stroke="url(#pbg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="pbg" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#4F6BFF"/><stop offset="1" stop-color="#9B6BFF"/></linearGradient></defs><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg><span>Platform</span></span>
+    <div class="liqpb-tabs">
+      <a href="/#liq-planner" data-mod="planner">AI Demand Planner</a>
+      <a href="/fba-planner/" data-mod="fba">FBA Planner</a>
+      <a href="/sourcing-procurement.html" data-mod="sourcing">Sourcing &amp; Procurement</a>
+      <a href="/logicstiq-platform-demo.html#oms" data-mod="oms">OMS<span class="liqpb-b demo">Demo</span></a>
+      <a href="/logicstiq-platform-demo.html#wms" data-mod="wms">WMS<span class="liqpb-b demo">Demo</span></a>
+      <a href="/tms.html" data-mod="tms">TMS<span class="liqpb-b beta">Beta</span></a>
+      <a href="/logicstiq-platform-demo.html#returns" data-mod="returns">Returns<span class="liqpb-b demo">Demo</span></a>
+    </div>
+  </div>
+</div>
+
 <nav class="nav">
   <a href="/" class="nav-logo" aria-label="LogicstIQ — Home" style="display:inline-flex;align-items:center;text-decoration:none">
   <svg width="245" height="50" viewBox="0 0 440 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible">
@@ -151,155 +143,103 @@ footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
     <text x="99" y="70" font-family="'Inter',sans-serif" font-size="16" font-weight="600" letter-spacing="0.3" fill="#64748B">Where Logistics Meets Intelligence</text>
   </svg>
 </a>
-  <a href="https://www.logicstiq.com" class="nav-back">← All Calculators</a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="/#calculators">Calculators</a>
+      <a href="/#liq-planner">AI Demand Planner</a>
+      <a href="/#blog">Blog</a>
+      <a href="/#calculators">← All tools</a>
+    </div>
+    <button id="liqTheme" class="theme-btn" type="button" aria-label="Toggle light or dark mode" title="Toggle light / dark">🌙</button>
+  </div>
 </nav>
-
-<div class="hero">
-  <div class="hero-badge">🆓 Free · No Login · Instant Results</div>
-  <h1>Inventory Carrying Cost Calculator<br><span>How Much Does It Cost to Hold Your Stock?</span></h1>
-  <p class="hero-sub">Calculate the true annual cost of holding inventory — including storage, tied-up capital, insurance, and obsolescence. Most businesses underestimate this by 50%.</p>
-  <div class="trust-row">
-    <span><span class="tick">✓</span>No signup needed</span>
-    <span><span class="tick">✓</span>No data stored</span>
-    <span><span class="tick">✓</span>Works on mobile</span>
-    <span><span class="tick">✓</span>Free forever</span>
+<article class="wrap">
+  <div class="crumb"><a href="/">Home</a> › Case Studies › Big Billion Days inventory plan</div>
+  <div class="badge">📦 Worked Example · Marketplace Sellers</div>
+  <h1>How a Flipkart &amp; Amazon seller plans inventory for Big Billion Days</h1>
+  <p class="lede">A step-by-step walkthrough of festive-sale inventory planning for an Indian marketplace seller — from baseline demand to festive uplift, safety stock and reorder timing — using LogicstIQ's free tools.</p>
+  <div class="note">ℹ️ This is an <strong>illustrative worked example</strong> built to show the method and the tools. The seller and numbers are representative, not a real named customer. Always validate against your own data before placing purchase orders.</div>
+  <h2>The situation</h2>
+  <p>Meet a mid-size seller of phone accessories (cases, chargers, TWS earbuds) selling on Flipkart and Amazon.in. Last year they under-stocked their hero SKU before Big Billion Days, went out of stock on day 2, lost the sales rank they'd built, and spent weeks recovering. This year they want to plan properly — but they don't have SAP, and Excel-plus-WhatsApp isn't cutting it.</p>
+  <p>Their goal: work out <strong>how many units of each hero SKU to order, and by when</strong>, so they survive the Big Billion Days + Great Indian Festival window without stocking out or drowning in dead stock afterward.</p>
+  <h2>The plan, in four steps</h2>
+  <div class="step">
+    <div class="step-lbl">Step 1 — Establish baseline demand</div>
+    <p>Start with normal, non-sale velocity. For the hero SKU (a TWS earbud), the last 30 days sold 900 units — an average of <strong>30 units/day</strong>. That's the baseline the festive multiplier will be applied to.</p>
+    <div class="formula">Baseline daily demand = 900 units ÷ 30 days = 30 units/day</div>
+    <p>Rather than doing this SKU-by-SKU in a spreadsheet, upload your Flipkart/Amazon sales export to the AI Demand Planner — it computes per-SKU velocity, trend and 30/60/90-day forecasts automatically.</p>
+    <a class="tool-cta" href="/#liq-planner">⚡ Open the AI Demand Planner</a>
   </div>
-</div>
-
-<div class="wrap">
-
-  <!-- LIVE CALCULATOR -->
-  <div class="calc-card">
-    <h2>🔢 Inventory Carrying Cost Calculator — Free Online Tool</h2>
-    <div class="input-grid">
-      <div class="input-group">
-        <label for="avg_inv">Average Inventory Value (₹)</label>
-        <input type="number" id="avg_inv" placeholder="e.g. 2000000" min="0" step="1">
-      </div>
-      <div class="input-group">
-        <label for="capital_cost">Cost of Capital % (% per year)</label>
-        <input type="number" id="capital_cost" placeholder="e.g. 12" min="0" step="0.5">
-      </div>
-      <div class="input-group">
-        <label for="storage_cost">Storage / Warehouse Cost % (% per year)</label>
-        <input type="number" id="storage_cost" placeholder="e.g. 8" min="0" step="0.5">
-      </div>
-      <div class="input-group">
-        <label for="insurance_cost">Insurance % (% per year)</label>
-        <input type="number" id="insurance_cost" placeholder="e.g. 1" min="0" step="0.1">
-      </div>
-      <div class="input-group">
-        <label for="obsolescence">Obsolescence / Shrinkage % (% per year)</label>
-        <input type="number" id="obsolescence" placeholder="e.g. 3" min="0" step="0.5">
-      </div>
-    </div>
-    <button class="calc-btn" onclick="calculate()">Calculate Carrying Cost →</button>
-    <div class="result-box" id="result">
-      <div class="result-label">Annual Carrying Cost</div>
-      <div class="result-value" id="result-value">—</div>
-      <div class="result-unit">₹ per year</div>
-      <div class="result-detail" id="result-detail"></div>
-    </div>
-    <div class="disclaimer" style="margin-top:12px">⚠️ <span><strong>Reference only:</strong> Results are for planning purposes. Validate with your ERP or business data before making decisions.</span></div>
+  <div class="step">
+    <div class="step-lbl">Step 2 — Apply the festive uplift</div>
+    <p>Indian festive sales don't nudge demand — they multiply it. For electronics accessories, a 4× uplift over the peak sale days is realistic. Over a 10-day peak window:</p>
+    <div class="formula">Festive daily demand = 30 units/day × 4 = 120 units/day
+Peak-window demand = 120 × 10 days = 1,200 units</div>
+    <p>The Demand Planner's India Festival Intelligence applies category-specific uplift automatically for Big Billion Days, Great Indian Festival, Diwali, Navratri and Myntra EORS that fall inside your horizon — so you don't have to guess the multiplier per category.</p>
   </div>
-
-  <!-- WHAT IS -->
-  <h2 id="what">What is Inventory Carrying Cost Calculator?</h2>
-  <p><strong>Inventory carrying cost</strong> (also called holding cost) is the total annual cost of maintaining inventory in your warehouse. It includes direct costs like storage and insurance, and indirect costs like the opportunity cost of capital tied up in stock.</p>
-  <p>The most commonly underestimated component is cost of capital. If your inventory is funded by a bank loan at 12% interest, or if that cash could earn 12% invested elsewhere, then holding ₹20L of inventory costs ₹2.4L/year in capital cost alone — before adding warehouse rent, insurance, and shrinkage.</p>
-
-  <!-- FORMULA -->
-  <h2 id="formula">The Carrying Cost Formula</h2>
-  <div class="formula-box">
-    <div class="f-label">📐 Formula</div>
-    <div class="f-formula">Carrying Cost = Average Inventory Value × Carrying Cost Rate %</div>
+  <div class="step">
+    <div class="step-lbl">Step 3 — Add safety stock for the spike</div>
+    <p>Demand and supplier lead times both get more variable around festivals, so a buffer is essential. Using the standard formula at a 95% service level (Z = 1.65), with daily-demand variability of 25 units and a 9-day lead time:</p>
+    <div class="formula">Safety stock = Z × σd × √LT
+= 1.65 × 25 × √9
+= 1.65 × 25 × 3 ≈ 124 units</div>
+    <a class="tool-cta ghost" href="/safety-stock-calculator">🛡️ Safety Stock Calculator</a>
   </div>
-  <p>The carrying cost rate is the sum of all individual holding cost components expressed as a percentage of inventory value. Typical range: 18-35% annually. Most Indian SMEs underestimate this because they only count warehouse rent and ignore the cost of capital tied up in stock.</p>
-
-  <!-- EXAMPLE -->
-  <h2 id="example">Worked Example</h2>
-  <p>A FMCG distributor holds an average inventory of ₹25 lakh. Their carrying cost components:</p>
-  <div class="example-box">
-    <div class="ex-title">📊 Example Calculation</div>
-    <div class="ex-row"><span class="ex-lbl">Average inventory</span><span class="ex-val">₹25,00,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">Cost of capital (bank OD at 12%)</span><span class="ex-val">12% × ₹25L = ₹3,00,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">Warehouse rent + utilities</span><span class="ex-val">8% × ₹25L = ₹2,00,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">Insurance</span><span class="ex-val">1% × ₹25L = ₹25,000</span></div>
-    <div class="ex-row"><span class="ex-lbl">Obsolescence + shrinkage</span><span class="ex-val">3% × ₹25L = ₹75,000</span></div>
-    <div class="ex-row"><span class="ex-lbl"><strong>Total Carrying Cost</strong></span><span class="ex-result">₹6,00,000/year = 24%</span></div>
+  <div class="step">
+    <div class="step-lbl">Step 4 — Set the reorder point and order date</div>
+    <p>The reorder point tells you the stock level that should trigger your festive PO — accounting for the lead time at <em>festive</em> velocity, plus the safety stock:</p>
+    <div class="formula">Reorder point = (festive daily demand × lead time) + safety stock
+= (120 × 9) + 124
+= 1,080 + 124 = 1,204 units</div>
+    <p>With a 9-day supplier lead time, the PO must be placed <strong>at least 9 days before</strong> the sale — and earlier in practice, since supplier and courier lead times stretch before Diwali. The planner flags the reorder-by date for every SKU so nothing slips.</p>
+    <a class="tool-cta ghost" href="/reorder-point-calculator">🎯 Reorder Point Calculator</a>
   </div>
-  <p>This distributor spends ₹6 lakh per year just to hold their inventory — ₹50,000 per month. Every ₹1 lakh reduction in average inventory saves ₹24,000 annually. This is why EOQ and safety stock optimisation have direct, measurable financial returns.</p>
-
-  <!-- WHY IT MATTERS -->
-  <h2 id="why">Why Carrying Cost Matters for Your Business</h2>
-  <p>Carrying cost is the "hidden tax" on inventory. Most businesses see the cost of buying inventory but not the cost of holding it — leading to systematic over-ordering.</p>
-  <ul>
-  <li><strong>EOQ optimisation:</strong> Carrying cost is a direct input into the EOQ formula — accurate carrying cost gives accurate EOQ</li>
-  <li><strong>Dead stock decisions:</strong> Compare the carrying cost of holding slow stock vs. the cost of clearing it</li>
-  <li><strong>Working capital management:</strong> Justify inventory reduction initiatives to management using annual carrying cost savings</li>
-  <li><strong>Safety stock calibration:</strong> Balance the cost of carrying safety stock against the cost of a stockout</li>
-  </ul>
-
-  <!-- AI PLANNER CTA -->
-  <div class="cta-box">
-    <h3>🤖 Go Further with AI Demand Planning</h3>
-    <p>Upload your full inventory export and get Carrying Cost calculated automatically across all your SKUs — alongside demand forecasts, reorder plans, and stockout risk analysis.</p>
-    <a href="https://www.logicstiq.com/#ai-demand-planner" class="cta-btn">Try Free AI Demand Planner →</a>
-    <div class="cta-feats">
-      <span class="cta-f">Works with Tally · SAP · NetSuite · Amazon · Flipkart</span>
-      <span class="cta-f">No login · No data stored · Free forever</span>
-    </div>
+  <h2>Putting the numbers together</h2>
+  <table>
+    <thead><tr><th>Metric</th><th>Value</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>Baseline daily demand</td><td>30 units/day</td><td>Step 1</td></tr>
+      <tr><td>Festive daily demand (4×)</td><td>120 units/day</td><td>Step 2</td></tr>
+      <tr><td>10-day peak-window demand</td><td>1,200 units</td><td>Step 2</td></tr>
+      <tr><td>Safety stock (95% service)</td><td>124 units</td><td>Step 3</td></tr>
+      <tr><td>Reorder point (order trigger)</td><td>1,204 units</td><td>Step 4</td></tr>
+      <tr><td>Order lead time</td><td>9+ days before sale</td><td>Step 4</td></tr>
+    </tbody>
+  </table>
+  <div class="result">
+    <h3>✅ The outcome</h3>
+    <p>Instead of eyeballing it, the seller now knows: order enough to cover ~1,200 peak-window units plus a 124-unit buffer, and trigger the PO when stock hits 1,204 — at least 9 days out. They enter the sale covered, hold rank through the peak, and avoid the post-festival dead-stock hangover on the SKUs they didn't over-order.</p>
   </div>
-
-  <!-- FAQ -->
-  <h2 id="faq">Frequently Asked Questions</h2>
-  <div class="faq-item open"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is a typical carrying cost percentage for Indian businesses?<span>▾</span></div><div class="faq-a">For Indian businesses, total carrying cost typically ranges from 18% to 30% of inventory value annually. Breakdown: Cost of capital 10-14% (bank OD rates), Warehouse/storage 5-10%, Insurance 0.5-1.5%, Obsolescence/shrinkage 2-5%. FMCG and fashion tend to have higher obsolescence costs. Industrial components tend to have lower shrinkage.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does carrying cost affect the EOQ calculation?<span>▾</span></div><div class="faq-a">Carrying cost is one of the two key inputs in the EOQ formula: EOQ = √(2DS/H) where H is the annual holding cost per unit. A higher carrying cost percentage results in a lower EOQ (smaller, more frequent orders) because the cost of holding a large order outweighs the ordering savings. Accurate carrying cost is essential for meaningful EOQ calculation.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Should I include depreciation in carrying cost?<span>▾</span></div><div class="faq-a">Yes, for physical goods that lose value over time — electronics, fashion, food, chemicals — include depreciation or obsolescence as a percentage of inventory value. For stable goods like industrial components or construction materials, obsolescence may be low (1-2%). For fast-changing categories like mobile phones, it can be 10-15% or more.</div></div>
-
-  <!-- RELATED CALCULATORS -->
-  <h2>Related Free Calculators</h2>
-  <div class="related-grid">
-    <a href="https://www.logicstiq.com/eoq-calculator" class="related-card"><div class="rc-name">EOQ Calculator</div><div class="rc-vol">2,400/mo monthly searches</div></a>
-    <a href="https://www.logicstiq.com/safety-stock-calculator" class="related-card"><div class="rc-name">Safety Stock Calculator</div><div class="rc-vol">1,900/mo monthly searches</div></a>
-    <a href="https://www.logicstiq.com/reorder-point-calculator" class="related-card"><div class="rc-name">Reorder Point Calculator</div><div class="rc-vol">1,600/mo monthly searches</div></a>
-    <a href="https://www.logicstiq.com/otif-calculator" class="related-card"><div class="rc-name">OTIF Calculator</div><div class="rc-vol">2,900/mo monthly searches</div></a>
-    <a href="https://www.logicstiq.com/inventory-turnover-calculator" class="related-car
+  <div class="tools-used">
+    <h3 style="margin-top:0">Tools used in this example</h3>
+    <ul>
+      <li>⚡ <a href="/#liq-planner">AI Demand Planner</a> — per-SKU velocity, forecasts &amp; festive uplift from your sales file</li>
+      <li>🛡️ <a href="/safety-stock-calculator">Safety Stock Calculator</a> — buffer for demand &amp; lead-time variability</li>
+      <li>🎯 <a href="/reorder-point-calculator">Reorder Point Calculator</a> — the order-trigger level and timing</li>
+      <li>💀 <a href="/dead-stock-calculator">Dead Stock Calculator</a> — check post-festival for anything that didn't move</li>
+    </ul>
   </div>
-
-  <div class="aff-note"><strong>Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. When you sign up for a third-party service via these links, we may earn a small commission at no extra cost to you. All calculators are and always will be completely free.</div>
-
-</div>
-
+  <div class="endcta">
+    <h2>Plan your own festive season</h2>
+    <p>Upload your Flipkart, Amazon or Meesho sales export and get per-SKU forecasts, reorder dates and festive uplift in seconds. Free, no login, nothing stored.</p>
+    <a class="tool-cta" href="/#liq-planner" style="background:#fff;color:#1C2C73">⚡ Launch the AI Demand Planner</a>
+  </div>
+</article>
 <footer>
-  <p>© 2025 <a href="https://www.logicstiq.com">LogicstIQ.com</a> · 31 Free Supply Chain Calculators + AI Demand Planner · No Login · Free Forever · Where Logistics Meets Intelligence</p>
-  <p style="margin-top:8px">Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a></p>
+  <div><strong style="color:#94A3B8">LogicstIQ</strong> · Where Logistics Meets Intelligence</div>
+  <div style="margin-top:6px"><a href="/">Home</a> · <a href="/#calculators">Calculators</a> · <a href="/#liq-planner">AI Demand Planner</a> · <a href="/privacy-policy.html">Privacy</a></div>
+  <div style="margin-top:6px">Illustrative worked example. Results are for reference only — always validate with your own data before making business decisions.</div>
 <p style="margin-top:10px;font-size:12px;color:#94A3B8;text-align:center">
 Contact: <a href="mailto:contactus@logicstiq.com"
 style="color:#9B6BFF;text-decoration:none;font-weight:600">contactus@logicstiq.com</a>
 </p>
-<p style="margin-top:6px;font-size:12px;color:#94A3B8;text-align:center">
-Tool question or bug? <a href="mailto:customercare@logicstiq.com"
-style="color:#9B6BFF;text-decoration:none;font-weight:600">customercare@logicstiq.com</a>
-</p>
 </footer>
-
 <script>
-function calculate(){const inv=parseFloat(document.getElementById('avg_inv').value)||0;const cap=parseFloat(document.getElementById('capital_cost').value)||0;const stor=parseFloat(document.getElementById('storage_cost').value)||0;const ins=parseFloat(document.getElementById('insurance_cost').value)||0;const obs=parseFloat(document.getElementById('obsolescence').value)||0;if(inv<=0){alert('Enter your average inventory value.');return;}const total_rate=(cap+stor+ins+obs)/100;const total_cost=inv*total_rate;const monthly=total_cost/12;document.getElementById('result-value').textContent='₹'+total_cost.toLocaleString('en-IN',{minimumFractionDigits:0});document.getElementById('result-detail').textContent='Total carrying rate: '+((cap+stor+ins+obs).toFixed(1))+'% per year | Monthly cost: ₹'+monthly.toLocaleString('en-IN',{maximumFractionDigits:0})+' | Per ₹1L inventory: ₹'+(total_rate*100000).toLocaleString('en-IN',{maximumFractionDigits:0})+'/year.';document.getElementById('result').classList.add('show');}
+(function(){var r=document.documentElement,b=document.getElementById('liqTheme');
+function set(t){r.setAttribute('data-theme',t);if(b)b.textContent=(t==='dark')?'☀️':'🌙';try{localStorage.setItem('liq-theme',t)}catch(e){}}
+try{var sv=localStorage.getItem('liq-theme');if(sv)set(sv);}catch(e){}
+if(b)b.addEventListener('click',function(){set(r.getAttribute('data-theme')==='dark'?'light':'dark');});})();
 </script>
-<script>
-(function(){var r=document.documentElement;
-function lbl(){var b=document.getElementById('liqTheme');if(b)b.textContent=r.getAttribute('data-theme')==='dark'?'☀️':'🌙';}
-function set(t){r.setAttribute('data-theme',t);lbl();try{localStorage.setItem('liq-theme',t)}catch(e){}}
-try{var sv=localStorage.getItem('liq-theme');if(sv)r.setAttribute('data-theme',sv);}catch(e){}
-var btn=document.createElement('button');btn.id='liqTheme';btn.type='button';btn.className='liq-theme-btn';
-btn.setAttribute('aria-label','Toggle light or dark mode');btn.title='Toggle light / dark';btn.textContent='🌙';
-btn.addEventListener('click',function(){set(r.getAttribute('data-theme')==='dark'?'light':'dark');});
-function place(){var nav=document.querySelector('.nav');
- if(nav){var cta=nav.querySelector('.nav-cta');if(cta&&cta.parentNode){cta.parentNode.insertBefore(btn,cta);}
-   else{var l=nav.querySelector('.nav-links');(l||nav).appendChild(btn);}}
- else{btn.classList.add('liq-theme-float');document.body.appendChild(btn);}lbl();}
-if(document.readyState!=='loading')place();else document.addEventListener('DOMContentLoaded',place);})();
-</script>
+<script src="/copilot-widget.js" data-endpoint="/api/copilot" data-title="LogicstIQ Copilot" data-accent="#1D9E75" defer></script>
 </body>
 </html>
