@@ -186,7 +186,7 @@ a:focus-visible,button:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(58,8
     <text x="98" y="44" font-family="'Plus Jakarta Sans','Inter',sans-serif" font-size="36" font-weight="800" letter-spacing="-1.4"><tspan fill="#4F6BFF">Logicst</tspan><tspan fill="#9B6BFF">IQ</tspan></text>
     <text x="99" y="70" font-family="'Inter',sans-serif" font-size="16" font-weight="600" letter-spacing="0.3" fill="#64748B">Where Logistics Meets Intelligence</text>
   </svg>
-</a><style>[data-theme="dark"] .nav-logo text tspan:first-child{fill:#FFFFFF}</style>
+</a><style>[data-theme="dark"] .nav-logo text tspan:first-child{fill:#FFFFFF}[data-theme="dark"] .topbar{background:#141926!important;border-color:#26304A!important}[data-theme="dark"] .topbar .pill{background:#17203a}</style>
   <a href="/sourcing-procurement.html" style="text-decoration:none;font-size:12.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:7px 13px"><svg class="liq-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="19.5" r="1.4"/><circle cx="17" cy="19.5" r="1.4"/><path d="M3.5 4h2l2.1 10.4a1.5 1.5 0 0 0 1.5 1.2h7.2a1.5 1.5 0 0 0 1.5-1.2L20.5 8H7"/></svg> Sourcing &amp; Procurement</a>
   <button class="guidebtn" id="guideOpen">📋 EXIM Guide — what to file & where</button>
   <div class="pill">🔒 No login · Nothing stored</div>
@@ -739,7 +739,7 @@ try{var sv=localStorage.getItem('liq-theme');if(sv)r.setAttribute('data-theme',s
 var btn=document.createElement('button');btn.id='liqTheme';btn.type='button';btn.className='liq-theme-btn';
 btn.setAttribute('aria-label','Toggle light or dark mode');btn.title='Toggle light / dark';btn.textContent='🌙';
 btn.addEventListener('click',function(){set(r.getAttribute('data-theme')==='dark'?'light':'dark');});
-function place(){var nav=document.querySelector('.nav');
+function place(){var nav=document.querySelector('.topbar')||document.querySelector('.nav');
  if(nav){var cta=nav.querySelector('.nav-cta');if(cta&&cta.parentNode){cta.parentNode.insertBefore(btn,cta);}
    else{var l=nav.querySelector('.nav-links');(l||nav).appendChild(btn);}}
  else{btn.classList.add('liq-theme-float');document.body.appendChild(btn);}lbl();}
