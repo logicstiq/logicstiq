@@ -766,7 +766,7 @@ section,.section{padding:46px 0}
 .lnav{position:sticky;top:0;z-index:9000;background:#fff;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:18px;padding:0 22px;height:64px;font-family:'Inter','Plus Jakarta Sans',sans-serif}
 .lnav-logo{display:inline-flex;align-items:center;text-decoration:none;flex-shrink:0}
 .lnav-menu{display:flex;align-items:center;gap:2px;margin-left:auto}
-.lnav-item{position:static}
+.lnav-item{position:static;display:flex;align-items:center;align-self:stretch}
 .lnav-top{display:inline-flex;align-items:center;gap:5px;padding:9px 11px;border-radius:9px;font-size:13.5px;font-weight:600;color:#0F172A;text-decoration:none;white-space:nowrap;cursor:pointer;background:none;border:none;font-family:inherit}
 .lnav-top:hover{background:#EFF3FF;color:#3A55FF}
 .lnav-car{font-size:9px;opacity:.55;transition:transform .18s}
@@ -781,14 +781,14 @@ section,.section{padding:46px 0}
 .lnav-viewall{margin-top:14px;padding-top:14px;border-top:1px solid #E2E8F0;width:100%}
 .lnav-viewall a{display:inline-block;font-size:13px;font-weight:800;color:#3A55FF!important}
 .lnav-burger{display:none;margin-left:auto;background:#fff;border:1px solid #CBD5E1;border-radius:9px;width:40px;height:40px;cursor:pointer;font-size:18px;color:#0F172A;line-height:1}
-@media(hover:hover) and (min-width:1101px){.lnav-item:hover>.lnav-panel,.lnav-item:focus-within>.lnav-panel{display:block}.lnav-item:hover .lnav-car{transform:rotate(180deg)}}
+@media(hover:hover) and (min-width:1101px){.lnav-item.open>.lnav-panel,.lnav-item:focus-within>.lnav-panel{display:block}.lnav-item.open .lnav-car{transform:rotate(180deg)}}
 @media(max-width:1100px){
  .lnav{flex-wrap:wrap;height:auto;min-height:60px;padding:8px 14px}
  .lnav-logo svg{height:34px;width:auto}
  .lnav-burger{display:inline-flex;align-items:center;justify-content:center}
  .lnav-menu{display:none;flex-direction:column;align-items:stretch;width:100%;gap:0;padding:6px 0 12px}
  .lnav.open .lnav-menu{display:flex}
- .lnav-item{position:relative;width:100%}
+ .lnav-item{position:relative;width:100%;display:block;align-self:auto}
  .lnav-top{width:100%;justify-content:space-between;padding:13px 8px;font-size:15px;border-bottom:1px solid #EEF2F7;border-radius:0}
  .lnav-panel{position:static;box-shadow:none;border:none;padding:4px 8px 10px;background:#F8FAFF}
  .lnav-item.open>.lnav-panel{display:block}
@@ -830,11 +830,10 @@ section,.section{padding:46px 0}
       <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col"><div class="lnav-colt">📦 Inventory & Planning</div><a href="/eoq-calculator">EOQ Calculator</a><a href="/safety-stock-calculator">Safety Stock</a><a href="/reorder-point-calculator">Reorder Point</a><a href="/abc-analysis-calculator">ABC Analysis</a><a href="/inventory-turnover-calculator">Inventory Turnover</a><a href="/moq-calculator">MOQ Calculator</a><a href="/dead-stock-calculator">Dead Stock</a><a href="/cycle-count-calculator">Cycle Count</a></div><div class="lnav-col"><div class="lnav-colt">⏱️ Performance & Suppliers</div><a href="/otif-calculator">OTIF Calculator</a><a href="/fill-rate-calculator">Fill Rate</a><a href="/demand-forecast-calculator">Demand Forecast</a><a href="/supplier-scorecard-calculator">Supplier Scorecard</a><a href="/supplier-lead-time-variability-calculator">Lead Time Variability</a><a href="/disruption-impact-calculator">Disruption Impact</a></div><div class="lnav-col"><div class="lnav-colt">💰 Costing & Finance</div><a href="/landed-cost-calculator">Landed Cost</a><a href="/gst-calculator-logistics">GST Calculator</a><a href="/cogs-calculator">COGS Calculator</a><a href="/gross-margin-calculator">Gross Margin</a><a href="/break-even-calculator">Break-Even</a><a href="/working-capital-calculator">Working Capital</a><a href="/carrying-cost-calculator">Carrying Cost</a><a href="/stockout-cost-calculator">Stockout Cost</a><a href="/days-inventory-outstanding-calculator">Days Inventory Outstanding</a><a href="/cash-conversion-cycle-calculator">Cash Conversion Cycle</a></div><div class="lnav-col"><div class="lnav-colt">🚛 Logistics & Warehouse</div><a href="/freight-cost-calculator">Freight Cost</a><a href="/warehouse-space-calculator">Warehouse Space</a><a href="/lead-time-calculator">Lead Time</a><a href="/shipping-cost-per-unit-calculator">Shipping Cost / Unit</a><a href="/volumetric-weight-calculator">Volumetric Weight</a><a href="/pick-pack-cost-calculator">Pick & Pack Cost</a><a href="/carbon-footprint-logistics">Carbon Footprint</a></div><div class="lnav-viewall"><a href="/calculators.html">View all 31 calculators →</a></div></div></div>
     </div>
     <a class="lnav-top" href="/demand-planner.html">AI Demand Planner</a>
-    <a class="lnav-top" href="/documents-generator.html">Documents</a>
-    <a class="lnav-top" href="/sourcing-procurement.html">Sourcing</a>
+    <a class="lnav-top" href="/documents-generator.html">Paperwork Studio</a>
     <div class="lnav-item">
       <a class="lnav-top" href="/ecommerce.html">Ecommerce <span class="lnav-car">▼</span></a>
-      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col" style="min-width:280px"><div class="lnav-colt">🏪 Ecommerce Suite</div><a href="/fba-planner/">📦 FBA Planner <span class="lnav-mini">Live</span></a><a href="/oms.html">🧾 OMS — Order Management <span class="lnav-mini">Coming soon</span></a><a href="/wms.html">🏭 WMS — Warehouse Management <span class="lnav-mini">Coming soon</span></a><a href="/returns.html">↩️ Returns Management <span class="lnav-mini">Coming soon</span></a><div class="lnav-viewall"><a href="/ecommerce.html">Open Ecommerce hub →</a></div></div></div></div>
+      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col" style="min-width:280px"><div class="lnav-colt">🏪 Ecommerce Suite</div><a href="/fba-planner/">📦 FBA Planner <span class="lnav-mini">Live</span></a><a href="/sourcing-procurement.html">🛒 Seller Paperwork Hub <span class="lnav-mini">Live</span></a><a href="/oms.html">🧾 OMS — Order Management <span class="lnav-mini">Coming soon</span></a><a href="/wms.html">🏭 WMS — Warehouse Management <span class="lnav-mini">Coming soon</span></a><a href="/returns.html">↩️ Returns Management <span class="lnav-mini">Coming soon</span></a><div class="lnav-viewall"><a href="/ecommerce.html">Open Ecommerce hub →</a></div></div></div></div>
     </div>
     <a class="lnav-top" href="/tms.html">TMS <span class="lnav-beta">Beta</span></a>
     <div class="lnav-item">
@@ -858,6 +857,13 @@ nav.querySelectorAll('.lnav-item>.lnav-top').forEach(function(t){
     nav.querySelectorAll('.lnav-item.open').forEach(function(o){if(o!==it)o.classList.remove('open');});
     it.classList.add('open');}
   }});});
+var hoverTimer=null;
+nav.querySelectorAll('.lnav-item').forEach(function(it){
+ it.addEventListener('mouseenter',function(){if(mobile())return;clearTimeout(hoverTimer);
+  nav.querySelectorAll('.lnav-item.open').forEach(function(o){if(o!==it)o.classList.remove('open');});it.classList.add('open');});
+ it.addEventListener('mouseleave',function(){if(mobile())return;clearTimeout(hoverTimer);
+  hoverTimer=setTimeout(function(){it.classList.remove('open');},300);});
+});
 document.addEventListener('click',function(e){if(!nav.contains(e.target)){nav.classList.remove('open');nav.querySelectorAll('.lnav-item.open').forEach(function(o){o.classList.remove('open');});}});
 window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList.remove('open');nav.querySelectorAll('.lnav-item.open').forEach(function(o){o.classList.remove('open');});}});
 })();
@@ -1437,8 +1443,8 @@ function esc(s){const d=document.createElement('div');d.textContent=String(s??''
 <a href="/moq-calculator">MOQ Calculator</a>
 <a href="/dead-stock-calculator">Dead Stock Calculator</a>
 <a href="/volumetric-weight-calculator">Volumetric Weight</a>
-<a href="/documents-generator.html">Document Generator</a>
-<a href="/sourcing-procurement.html">Sourcing &amp; Procurement</a>
+<a href="/documents-generator.html">Paperwork Studio</a>
+<a href="/sourcing-procurement.html">Seller Paperwork Hub</a>
       </div>
     </div>
     <div>

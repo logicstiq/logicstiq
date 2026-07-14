@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sourcing &amp; Procurement Generator — LogicstIQ.com | ERP + E-commerce (Amazon, Flipkart, Myntra, Meesho)</title>
-<meta name="description" content="Free Sourcing &amp; Procurement document generator for Indian SMEs and e-commerce sellers. Two tabs: a general ERP procure-to-pay suite (PR, RFQ, PO, GRN, 2-way &amp; 3-way match) and a marketplace-aware e-commerce suite (Amazon FBA, Flipkart, Myntra, Meesho, quick commerce, D2C) with SKU/ASIN/FNSKU/FSN identifiers, landed cost, ASN &amp; carton manifests. Supplier directory + status tracker saved only in your browser. No login.">
+<title>Seller Paperwork Hub — Ecommerce Documents &amp; Procurement | LogicstIQ (Amazon, Flipkart, Myntra, Meesho)</title>
+<meta name="description" content="Seller Paperwork Hub — free e-commerce paperwork &amp; procurement generator for Indian sellers and SMEs. Two tabs: a general ERP procure-to-pay suite (PR, RFQ, PO, GRN, 2-way &amp; 3-way match) and a marketplace-aware e-commerce suite (Amazon FBA, Flipkart, Myntra, Meesho, quick commerce, D2C) with SKU/ASIN/FNSKU/FSN identifiers, landed cost, ASN &amp; carton manifests. Supplier directory + status tracker saved only in your browser. No login.">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
@@ -208,8 +208,8 @@ a:focus-visible,button:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(58,8
     <text x="99" y="70" font-family="'Inter',sans-serif" font-size="16" font-weight="600" letter-spacing="0.3" fill="#64748B">Where Logistics Meets Intelligence</text>
   </svg>
 </a><style>[data-theme="dark"] .nav-logo text tspan:first-child{fill:#FFFFFF}</style>
-  <span class="modmark">Sourcing &amp; Procurement</span>
-  <a href="/documents-generator.html" style="text-decoration:none;font-size:12.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:7px 13px"><svg class="liq-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7z"/><path d="M14 3v4h4"/><path d="M9 13h6M9 16.5h4"/></svg> Document Generator</a>
+  <span class="modmark">Seller Paperwork Hub</span>
+  <a href="/documents-generator.html" style="text-decoration:none;font-size:12.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:7px 13px"><svg class="liq-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7z"/><path d="M14 3v4h4"/><path d="M9 13h6M9 16.5h4"/></svg> Paperwork Studio</a>
   <button class="guidebtn" id="guideOpen">📋 Procure-to-Pay guide</button>
   <div class="pill">🔒 Saved in your browser only</div>
 </div>
@@ -218,7 +218,7 @@ a:focus-visible,button:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(58,8
 
 <div class="wrap">
   <div class="panel">
-    <h2 id="docH2">Sourcing &amp; Procurement</h2>
+    <h2 id="docH2">Seller Paperwork Hub</h2>
     <p class="sub" id="docSub">Pick a document, fill the details, then Print or Download PDF. Everything stays in your browser.</p>
 
     <div id="tabGroups"></div>
@@ -380,6 +380,57 @@ a:focus-visible,button:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(58,8
     <p class="gnote">Reference only. The tool prepares portal-ready documents; it does not connect to or scrape any seller panel — file statutory documents on ICEGATE / GST / e-Way Bill / the marketplace portals yourself. Rates, schemes and marketplace rules change; always confirm current requirements.</p>
   </div>
 </div>
+
+<!-- ===== Seller Paperwork Hub — document guide ===== -->
+<style>
+.sph-guide{max-width:1060px;margin:34px auto 46px;padding:0 20px;font-family:inherit}
+.sph-guide h2{font-size:24px;font-weight:900;letter-spacing:-.02em;color:var(--ink,#0F172A);margin-bottom:6px}
+.sph-guide .lead{font-size:14.5px;color:var(--muted,#475569);max-width:820px;line-height:1.75;margin-bottom:18px}
+.sph-flow{background:linear-gradient(135deg,#EAF1FE,#F3EEFF);border:1.5px solid #cfe0fc;border-radius:14px;padding:16px 20px;font-weight:800;font-size:13.5px;color:#1C2C73;margin-bottom:22px;line-height:1.9}
+.sph-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.sph-card{background:var(--card,#fff);border:1.5px solid var(--line,#E2E8F0);border-radius:13px;padding:16px 18px}
+.sph-card h3{font-size:14.5px;font-weight:800;color:var(--ink,#0F172A);margin-bottom:5px}
+.sph-card p{font-size:12.8px;color:var(--muted,#475569);line-height:1.7;margin:0}
+.sph-h3{font-size:17px;font-weight:900;color:var(--ink,#0F172A);margin:26px 0 10px}
+[data-theme="dark"] .sph-flow{background:#141926;border-color:#26304A;color:#DBE3F5}
+</style>
+<section class="sph-guide" id="how-it-works">
+  <h2>📖 How the Seller Paperwork Hub works</h2>
+  <p class="lead">Every purchase you make — from a supplier in Delhi or a factory in Shenzhen — generates paperwork. This tool creates all of it, in the correct order, with your data flowing from one document to the next. Use the <b>E-commerce tab</b> if you sell on Amazon, Flipkart, Myntra, Meesho, quick commerce or D2C (documents carry SKU / ASIN / FNSKU / FSN identifiers and channel tags). Use the <b>General (ERP) tab</b> if you are a manufacturer, importer or distributor running a classic procure-to-pay process.</p>
+  <div class="sph-flow">The procure-to-pay flow:&nbsp; 📝 Purchase Requisition → 📨 RFQ → ⚖️ Comparative Statement → 📋 Purchase Order → 🌐 Landed Cost → 🚚 Inbound / ASN → 📦 Carton Manifest → ✅ GRN → 🔍 2-way / 3-way Match → 💳 Payment</div>
+
+  <div class="sph-h3">Sourcing documents — deciding who to buy from</div>
+  <div class="sph-grid">
+    <div class="sph-card"><h3>📝 Purchase Requisition (PR)</h3><p>The internal "we need to buy this" request. It lists what is needed, how much, and by when — and becomes the paper trail that authorises a purchase before any money is committed.</p></div>
+    <div class="sph-card"><h3>📨 RFQ — Request for Quotation</h3><p>Sent to shortlisted suppliers asking them to quote price, lead time and terms for the items on your PR. Sending the same RFQ to 3+ suppliers is what makes prices comparable.</p></div>
+    <div class="sph-card"><h3>⚖️ Comparative Statement</h3><p>A side-by-side comparison of the quotes you received — landed price, lead time, payment terms, MOQ. This is the document that justifies <i>why</i> you picked a supplier.</p></div>
+  </div>
+
+  <div class="sph-h3">Replenishment documents — placing and costing the order</div>
+  <div class="sph-grid">
+    <div class="sph-card"><h3>📋 Purchase Order (PO)</h3><p>The legally meaningful order: items, quantities, rates, GST, delivery date and terms. In the E-commerce tab it also carries marketplace identifiers (ASIN/FNSKU/FSN) and the sales channel, so warehouse and accounts always know which channel stock belongs to.</p></div>
+    <div class="sph-card"><h3>🌐 Landed Cost Worksheet</h3><p>Adds freight, insurance, customs duty (BCD + SWS + IGST) and clearing charges on top of the PO value to reveal the true per-unit cost — the number your selling price must be built on.</p></div>
+    <div class="sph-card"><h3>✅ GRN — Goods Receipt Note</h3><p>Recorded when stock physically arrives: what was received, what was short, what was damaged. The GRN is your proof of receipt and the trigger for quality checks and supplier payment.</p></div>
+  </div>
+
+  <div class="sph-h3">Inbound documents — getting stock into an FC or dark store</div>
+  <div class="sph-grid">
+    <div class="sph-card"><h3>🚚 Inbound / ASN</h3><p>The Advance Shipment Notice tells the fulfilment centre (Amazon FC, Flipkart FF, dark store) exactly what is arriving and when — required for booking inbound appointments and avoiding rejected deliveries.</p></div>
+    <div class="sph-card"><h3>📦 Carton Manifest</h3><p>The carton-by-carton packing detail: which SKUs, in what quantity, in which box. FCs scan against this; a correct manifest is the difference between same-day receiving and week-long discrepancies.</p></div>
+    <div class="sph-card"><h3>🧾 Platform PO</h3><p>For quick commerce and B2B relationships where the <i>platform</i> raises the PO on you (Blinkit, Zepto, BigBasket, Amazon vendor). This formats your acceptance and delivery paperwork against their PO.</p></div>
+  </div>
+
+  <div class="sph-h3">Reconciliation &amp; vendor documents — closing the loop</div>
+  <div class="sph-grid">
+    <div class="sph-card"><h3>🔍 Two-way Match</h3><p>Checks supplier invoice against the PO (price × quantity). Catches over-billing before payment when no formal goods receipt exists.</p></div>
+    <div class="sph-card"><h3>🔎 Three-way Match</h3><p>The gold standard: PO vs GRN vs invoice. You only pay for what was ordered <i>and</i> actually received in good condition. This single habit stops most procurement leakage.</p></div>
+    <div class="sph-card"><h3>🗂️ Supplier Registration</h3><p>Captures a new vendor's legal name, GSTIN, bank details and contacts in one standard form — so onboarding is consistent and audit-ready.</p></div>
+    <div class="sph-card"><h3>📊 Supplier Scorecard</h3><p>Rates each supplier on delivery, quality, price and responsiveness over time. The scorecard turns "gut feel" about vendors into data you can negotiate with.</p></div>
+  </div>
+
+  <div class="sph-h3">Connected tools</div>
+  <p class="lead" style="margin-bottom:8px">Pair this hub with the <a href="/landed-cost-calculator" style="color:#2E6BE6;font-weight:700">Landed Cost Calculator</a> for import costing, the <a href="/demand-planner.html" style="color:#2E6BE6;font-weight:700">AI Demand Planner</a> to know <i>when and how much</i> to reorder, the <a href="/fba-planner/" style="color:#2E6BE6;font-weight:700">FBA Planner</a> for Amazon replenishment, and <a href="/documents-generator.html" style="color:#2E6BE6;font-weight:700">Paperwork Studio</a> for GST invoices, billing and EXIM documents.</p>
+</section>
 
 <script>
 "use strict";
@@ -624,7 +675,7 @@ function partiesHTML(){var c=cfg();
 function linesTable(thead,rows){return '<table class="lines"><thead>'+thead+'</thead><tbody>'+(rows||'<tr><td colspan="12" style="text-align:center;color:#999;padding:16px">Add line items…</td></tr>')+'</tbody></table>';}
 function flag(kind,txt){return '<span class="flag '+kind+'">'+txt+'</span>';}
 function disclaimer(c){var msg=c.vendor?"For onboarding and master-data reference.":(c.worksheet?"Worksheet for reference — file statutory documents on the official portals (ICEGATE / GST / e-Way Bill / marketplace).":"Computer-generated document. Verify GST / HSN and commercial terms before filing or payment.");
- return '<div class="disc">'+msg+'</div><div class="foot-note">Generated with LogicstIQ.com Sourcing &amp; Procurement · Where Logistics Meets Intelligence</div>';}
+ return '<div class="disc">'+msg+'</div><div class="foot-note">Generated with LogicstIQ.com Seller Paperwork Hub · Where Logistics Meets Intelligence</div>';}
 
 /* ============ MAIN RENDER ============ */
 function render(){

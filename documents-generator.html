@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document Generator — LogicstIQ.com | GST Invoice, PO, Commercial Invoice, Bill of Lading & EXIM Docs</title>
-<meta name="description" content="Free end-to-end document generator for Indian sellers, manufacturers, suppliers, importers & exporters. GST invoices, purchase orders, quotations, delivery challans, packing lists AND EXIM documents — commercial invoice, certificate of origin, bill of lading, shipping bill & bill of entry worksheets, LC checklist, bill of exchange, eBRC & RoDTEP. Built-in validation with GSTIN/IEC/HSN format checks + EXIM filing guide. Auto GST & customs duty, amount in words, print or download PDF. No login. Nothing stored.">
+<title>Paperwork Studio — LogicstIQ.com | GST Invoices, Bills, POs & Supply Chain Documents</title>
+<meta name="description" content="Paperwork Studio — free end-to-end document generator for Indian sellers, manufacturers, suppliers, importers & exporters. GST invoices, purchase orders, quotations, delivery challans, packing lists AND EXIM documents — commercial invoice, certificate of origin, bill of lading, shipping bill & bill of entry worksheets, LC checklist, bill of exchange, eBRC & RoDTEP. Built-in validation with GSTIN/IEC/HSN format checks + EXIM filing guide. Auto GST & customs duty, amount in words, print or download PDF. No login. Nothing stored.">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
@@ -187,19 +187,27 @@ a:focus-visible,button:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(58,8
     <text x="99" y="70" font-family="'Inter',sans-serif" font-size="16" font-weight="600" letter-spacing="0.3" fill="#64748B">Where Logistics Meets Intelligence</text>
   </svg>
 </a><style>[data-theme="dark"] .nav-logo text tspan:first-child{fill:#FFFFFF}[data-theme="dark"] .topbar{background:#141926!important;border-color:#26304A!important}[data-theme="dark"] .topbar .pill{background:#17203a}</style>
-  <a href="/sourcing-procurement.html" style="text-decoration:none;font-size:12.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:7px 13px"><svg class="liq-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="19.5" r="1.4"/><circle cx="17" cy="19.5" r="1.4"/><path d="M3.5 4h2l2.1 10.4a1.5 1.5 0 0 0 1.5 1.2h7.2a1.5 1.5 0 0 0 1.5-1.2L20.5 8H7"/></svg> Sourcing &amp; Procurement</a>
+  
   <button class="guidebtn" id="guideOpen">📋 EXIM Guide — what to file & where</button>
   <div class="pill">🔒 No login · Nothing stored</div>
 </div>
 <div class="wrap">
   <div class="panel">
-    <h2>End-to-End Document Generator</h2>
-    <p class="sub">Domestic + EXIM. Pick a document, fill the details, then Print or Download PDF. Built for Indian sellers, manufacturers, suppliers, importers & exporters.</p>
+    <h2>Paperwork Studio</h2>
+    <p class="sub">Every business document in one studio. <b>Business Billing</b> for shops, retailers &amp; small businesses (invoices, quotations, challans) and <b>Supply Chain &amp; EXIM Documentation</b> for manufacturers, importers &amp; exporters. Pick a document, fill the details, Print or Download PDF.</p>
 
-    <div class="grouplbl">Domestic / GST</div>
+    <div class="grouplbl">🏪 Business Billing — shops, retail &amp; small business</div>
     <div class="doctabs" id="tabsDom"></div>
-    <div class="grouplbl" style="margin-top:10px">EXIM (Export–Import)</div>
+    <div class="grouplbl" style="margin-top:10px">🔗 Supply Chain &amp; EXIM Documentation</div>
     <div class="doctabs" id="tabsExim"></div>
+    <div class="grouplbl" style="margin-top:12px">🧰 Connected supply chain tools</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+      <a href="/landed-cost-calculator" style="text-decoration:none;font-size:11.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:5px 11px">🌐 Landed Cost</a>
+      <a href="/gst-calculator-logistics" style="text-decoration:none;font-size:11.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:5px 11px">🧾 GST Calculator</a>
+      <a href="/ecommerce.html" style="text-decoration:none;font-size:11.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:5px 11px">🏪 Ecommerce Suite</a>
+      <a href="/tms.html" style="text-decoration:none;font-size:11.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:5px 11px">🚛 TMS</a>
+      <a href="/demand-planner.html" style="text-decoration:none;font-size:11.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:5px 11px">🤖 AI Demand Planner</a>
+    </div>
 
     <div id="docTip" class="tip" style="display:none"></div>
 
@@ -710,7 +718,7 @@ function docHead(c,metaHtml){
 }
 function disclaimer(c){
   const msg=c.group==="exim"?"Template for reference. Validate against current Customs, DGFT, RBI-FEMA and GST regulations before official filing.":(c.colset==="gst"?"Computer-generated document. Verify GST/HSN details before filing returns.":"Template for reference only.");
-  return `<div class="disc">${msg}</div><div class="foot-note">Generated with LogicstIQ.com Document Generator · Where Logistics Meets Intelligence</div>`;
+  return `<div class="disc">${msg}</div><div class="foot-note">Generated with LogicstIQ.com Paperwork Studio · Where Logistics Meets Intelligence</div>`;
 }
 
 $("guideOpen").onclick=()=>$("eximGuide").classList.add("open");

@@ -766,7 +766,7 @@ section,.section{padding:46px 0}
 .lnav{position:sticky;top:0;z-index:9000;background:#fff;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:18px;padding:0 22px;height:64px;font-family:'Inter','Plus Jakarta Sans',sans-serif}
 .lnav-logo{display:inline-flex;align-items:center;text-decoration:none;flex-shrink:0}
 .lnav-menu{display:flex;align-items:center;gap:2px;margin-left:auto}
-.lnav-item{position:static}
+.lnav-item{position:static;display:flex;align-items:center;align-self:stretch}
 .lnav-top{display:inline-flex;align-items:center;gap:5px;padding:9px 11px;border-radius:9px;font-size:13.5px;font-weight:600;color:#0F172A;text-decoration:none;white-space:nowrap;cursor:pointer;background:none;border:none;font-family:inherit}
 .lnav-top:hover{background:#EFF3FF;color:#3A55FF}
 .lnav-car{font-size:9px;opacity:.55;transition:transform .18s}
@@ -781,14 +781,14 @@ section,.section{padding:46px 0}
 .lnav-viewall{margin-top:14px;padding-top:14px;border-top:1px solid #E2E8F0;width:100%}
 .lnav-viewall a{display:inline-block;font-size:13px;font-weight:800;color:#3A55FF!important}
 .lnav-burger{display:none;margin-left:auto;background:#fff;border:1px solid #CBD5E1;border-radius:9px;width:40px;height:40px;cursor:pointer;font-size:18px;color:#0F172A;line-height:1}
-@media(hover:hover) and (min-width:1101px){.lnav-item:hover>.lnav-panel,.lnav-item:focus-within>.lnav-panel{display:block}.lnav-item:hover .lnav-car{transform:rotate(180deg)}}
+@media(hover:hover) and (min-width:1101px){.lnav-item.open>.lnav-panel,.lnav-item:focus-within>.lnav-panel{display:block}.lnav-item.open .lnav-car{transform:rotate(180deg)}}
 @media(max-width:1100px){
  .lnav{flex-wrap:wrap;height:auto;min-height:60px;padding:8px 14px}
  .lnav-logo svg{height:34px;width:auto}
  .lnav-burger{display:inline-flex;align-items:center;justify-content:center}
  .lnav-menu{display:none;flex-direction:column;align-items:stretch;width:100%;gap:0;padding:6px 0 12px}
  .lnav.open .lnav-menu{display:flex}
- .lnav-item{position:relative;width:100%}
+ .lnav-item{position:relative;width:100%;display:block;align-self:auto}
  .lnav-top{width:100%;justify-content:space-between;padding:13px 8px;font-size:15px;border-bottom:1px solid #EEF2F7;border-radius:0}
  .lnav-panel{position:static;box-shadow:none;border:none;padding:4px 8px 10px;background:#F8FAFF}
  .lnav-item.open>.lnav-panel{display:block}
@@ -830,11 +830,10 @@ section,.section{padding:46px 0}
       <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col"><div class="lnav-colt">📦 Inventory & Planning</div><a href="/eoq-calculator">EOQ Calculator</a><a href="/safety-stock-calculator">Safety Stock</a><a href="/reorder-point-calculator">Reorder Point</a><a href="/abc-analysis-calculator">ABC Analysis</a><a href="/inventory-turnover-calculator">Inventory Turnover</a><a href="/moq-calculator">MOQ Calculator</a><a href="/dead-stock-calculator">Dead Stock</a><a href="/cycle-count-calculator">Cycle Count</a></div><div class="lnav-col"><div class="lnav-colt">⏱️ Performance & Suppliers</div><a href="/otif-calculator">OTIF Calculator</a><a href="/fill-rate-calculator">Fill Rate</a><a href="/demand-forecast-calculator">Demand Forecast</a><a href="/supplier-scorecard-calculator">Supplier Scorecard</a><a href="/supplier-lead-time-variability-calculator">Lead Time Variability</a><a href="/disruption-impact-calculator">Disruption Impact</a></div><div class="lnav-col"><div class="lnav-colt">💰 Costing & Finance</div><a href="/landed-cost-calculator">Landed Cost</a><a href="/gst-calculator-logistics">GST Calculator</a><a href="/cogs-calculator">COGS Calculator</a><a href="/gross-margin-calculator">Gross Margin</a><a href="/break-even-calculator">Break-Even</a><a href="/working-capital-calculator">Working Capital</a><a href="/carrying-cost-calculator">Carrying Cost</a><a href="/stockout-cost-calculator">Stockout Cost</a><a href="/days-inventory-outstanding-calculator">Days Inventory Outstanding</a><a href="/cash-conversion-cycle-calculator">Cash Conversion Cycle</a></div><div class="lnav-col"><div class="lnav-colt">🚛 Logistics & Warehouse</div><a href="/freight-cost-calculator">Freight Cost</a><a href="/warehouse-space-calculator">Warehouse Space</a><a href="/lead-time-calculator">Lead Time</a><a href="/shipping-cost-per-unit-calculator">Shipping Cost / Unit</a><a href="/volumetric-weight-calculator">Volumetric Weight</a><a href="/pick-pack-cost-calculator">Pick & Pack Cost</a><a href="/carbon-footprint-logistics">Carbon Footprint</a></div><div class="lnav-viewall"><a href="/calculators.html">View all 31 calculators →</a></div></div></div>
     </div>
     <a class="lnav-top" href="/demand-planner.html">AI Demand Planner</a>
-    <a class="lnav-top" href="/documents-generator.html">Documents</a>
-    <a class="lnav-top" href="/sourcing-procurement.html">Sourcing</a>
+    <a class="lnav-top" href="/documents-generator.html">Paperwork Studio</a>
     <div class="lnav-item">
       <a class="lnav-top" href="/ecommerce.html">Ecommerce <span class="lnav-car">▼</span></a>
-      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col" style="min-width:280px"><div class="lnav-colt">🏪 Ecommerce Suite</div><a href="/fba-planner/">📦 FBA Planner <span class="lnav-mini">Live</span></a><a href="/oms.html">🧾 OMS — Order Management <span class="lnav-mini">Coming soon</span></a><a href="/wms.html">🏭 WMS — Warehouse Management <span class="lnav-mini">Coming soon</span></a><a href="/returns.html">↩️ Returns Management <span class="lnav-mini">Coming soon</span></a><div class="lnav-viewall"><a href="/ecommerce.html">Open Ecommerce hub →</a></div></div></div></div>
+      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col" style="min-width:280px"><div class="lnav-colt">🏪 Ecommerce Suite</div><a href="/fba-planner/">📦 FBA Planner <span class="lnav-mini">Live</span></a><a href="/sourcing-procurement.html">🛒 Seller Paperwork Hub <span class="lnav-mini">Live</span></a><a href="/oms.html">🧾 OMS — Order Management <span class="lnav-mini">Coming soon</span></a><a href="/wms.html">🏭 WMS — Warehouse Management <span class="lnav-mini">Coming soon</span></a><a href="/returns.html">↩️ Returns Management <span class="lnav-mini">Coming soon</span></a><div class="lnav-viewall"><a href="/ecommerce.html">Open Ecommerce hub →</a></div></div></div></div>
     </div>
     <a class="lnav-top" href="/tms.html">TMS <span class="lnav-beta">Beta</span></a>
     <div class="lnav-item">
@@ -858,6 +857,13 @@ nav.querySelectorAll('.lnav-item>.lnav-top').forEach(function(t){
     nav.querySelectorAll('.lnav-item.open').forEach(function(o){if(o!==it)o.classList.remove('open');});
     it.classList.add('open');}
   }});});
+var hoverTimer=null;
+nav.querySelectorAll('.lnav-item').forEach(function(it){
+ it.addEventListener('mouseenter',function(){if(mobile())return;clearTimeout(hoverTimer);
+  nav.querySelectorAll('.lnav-item.open').forEach(function(o){if(o!==it)o.classList.remove('open');});it.classList.add('open');});
+ it.addEventListener('mouseleave',function(){if(mobile())return;clearTimeout(hoverTimer);
+  hoverTimer=setTimeout(function(){it.classList.remove('open');},300);});
+});
 document.addEventListener('click',function(e){if(!nav.contains(e.target)){nav.classList.remove('open');nav.querySelectorAll('.lnav-item.open').forEach(function(o){o.classList.remove('open');});}});
 window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList.remove('open');nav.querySelectorAll('.lnav-item.open').forEach(function(o){o.classList.remove('open');});}});
 })();
@@ -938,14 +944,74 @@ window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList
   <div class="calc-grid cg-4" style="max-width:1120px">
     <a href="/calculators.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🧮</div><div class="calc-tag">Free Tools</div><div class="calc-name">31 Calculators</div><div class="calc-desc">EOQ, safety stock, landed cost, GST, freight &amp; 26 more — instant, no login</div></div></a>
     <a href="/demand-planner.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🤖</div><div class="calc-tag">AI</div><div class="calc-name">AI Demand Planner</div><div class="calc-desc">Upload sales history — get forecasts, stockout alerts &amp; reorder points</div></div></a>
-    <a href="/documents-generator.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📄</div><div class="calc-tag">Documents</div><div class="calc-name">Document Generator</div><div class="calc-desc">GST invoices, POs, challans + full EXIM document suite with validation</div></div></a>
-    <a href="/sourcing-procurement.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🛒</div><div class="calc-tag">Procurement</div><div class="calc-name">Sourcing &amp; Procurement</div><div class="calc-desc">PR → RFQ → PO → GRN with 3-way match, plus marketplace-aware e-commerce suite</div></div></a>
+    <a href="/documents-generator.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📄</div><div class="calc-tag">Documents</div><div class="calc-name">Paperwork Studio</div><div class="calc-desc">Bills &amp; GST invoices for every business + full supply chain &amp; EXIM documents</div></div></a>
+    <a href="/sourcing-procurement.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🛒</div><div class="calc-tag">Ecommerce</div><div class="calc-name">Seller Paperwork Hub</div><div class="calc-desc">PR → RFQ → PO → GRN paperwork for Amazon, Flipkart, Meesho, quick-com &amp; D2C</div></div></a>
     <a href="/ecommerce.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🏪</div><div class="calc-tag">Ecommerce</div><div class="calc-name">Ecommerce Suite</div><div class="calc-desc">FBA Planner live now · OMS, WMS &amp; Returns coming soon</div></div></a>
     <a href="/tms.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🚛</div><div class="calc-tag">Beta</div><div class="calc-name">TMS</div><div class="calc-desc">Transportation management — carriers, rates, tracking &amp; dispatch</div></div></a>
     <a href="/blog.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📚</div><div class="calc-tag">Learn</div><div class="calc-name">Blog &amp; Guides</div><div class="calc-desc">Formulas, worked examples and India-specific supply chain guides</div></div></a>
     <a href="/about.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🇮🇳</div><div class="calc-tag">Free Forever</div><div class="calc-name">Why LogicstIQ</div><div class="calc-desc">Fortune-500 grade tools, free for every Indian seller — our story</div></div></a>
   </div>
 </section>
+
+<!-- ===== What each tool does ===== -->
+<style>
+.twd{max-width:1080px;margin:0 auto;padding:8px 24px 56px}
+.twd-row{display:flex;gap:22px;align-items:flex-start;background:#fff;border:1.5px solid #E2E8F0;border-radius:18px;padding:26px 28px;margin-bottom:16px}
+.twd-ico{font-size:34px;flex-shrink:0;width:58px;height:58px;display:grid;place-items:center;background:linear-gradient(135deg,#EFF6FF,#F5F3FF);border-radius:14px}
+.twd-b h3{font-size:19px;font-weight:900;letter-spacing:-.01em;color:#0F172A;margin:0 0 6px;font-family:'Plus Jakarta Sans','Inter',sans-serif}
+.twd-b p{font-size:14px;color:#475569;line-height:1.75;margin:0 0 8px}
+.twd-for{font-size:12.5px;font-weight:700;color:#3A55FF;background:#EFF6FF;border-radius:8px;padding:5px 11px;display:inline-block;margin-right:8px;margin-bottom:6px}
+.twd-go{font-size:13.5px;font-weight:800;color:#3A55FF;text-decoration:none;white-space:nowrap}
+@media(max-width:720px){.twd-row{flex-direction:column;gap:12px}}
+[data-theme="dark"] .twd-row{background:#10131F;border-color:rgba(255,255,255,.12)}
+[data-theme="dark"] .twd-b h3{color:#F1F5FF}
+[data-theme="dark"] .twd-b p{color:#A7B0CC}
+[data-theme="dark"] .twd-for{background:rgba(58,85,255,.14);color:#AEBCFF}
+[data-theme="dark"] .twd-ico{background:rgba(58,85,255,.12)}
+</style>
+<section class="section center" style="padding-bottom:0">
+  <div class="section-eyebrow">🧭 Find Your Tool</div>
+  <h2 class="section-title">What Each Tool Does</h2>
+  <p class="section-sub">Not sure where to start? Here is every tool on LogicstIQ, what it does, and who it is built for.</p>
+</section>
+<div class="twd">
+  <div class="twd-row"><div class="twd-ico">🧮</div><div class="twd-b" style="flex:1">
+    <h3>31 Free Calculators</h3>
+    <p>Instant answers to everyday supply chain maths: how much to order (EOQ, MOQ), how much buffer to keep (safety stock, reorder point), what things truly cost (landed cost, COGS, carrying cost, freight, GST), and how healthy your operation is (inventory turnover, OTIF, fill rate, cash conversion cycle). Every calculator shows the formula, a worked example and FAQs.</p>
+    <span class="twd-for">Everyone — no login, ever</span><a class="twd-go" href="/calculators.html">Open Calculators →</a>
+  </div></div>
+  <div class="twd-row"><div class="twd-ico">🤖</div><div class="twd-b" style="flex:1">
+    <h3>AI Demand Planner</h3>
+    <p>Upload your sales history (Excel or CSV export from any marketplace) and get demand forecasts per SKU, stockout alerts, seasonality patterns, safety stock and reorder points — with the results explained in plain language by AI, not just numbers in a grid.</p>
+    <span class="twd-for">Marketplace &amp; D2C sellers planning inventory</span><a class="twd-go" href="/demand-planner.html">Open AI Demand Planner →</a>
+  </div></div>
+  <div class="twd-row"><div class="twd-ico">📄</div><div class="twd-b" style="flex:1">
+    <h3>Paperwork Studio</h3>
+    <p>Every business document in one place, in two sections. <b>Business Billing</b>: GST invoices, proformas, quotations, delivery challans and packing lists — perfect for shops, retailers and small businesses that just need clean, correct bills. <b>Supply Chain &amp; EXIM Documentation</b>: commercial invoices, certificates of origin, bills of lading, ICEGATE shipping bills, LC checklists and more for importers and exporters — connected to the landed cost and GST calculators.</p>
+    <span class="twd-for">Shops &amp; small businesses</span><span class="twd-for">Manufacturers, importers &amp; exporters</span><a class="twd-go" href="/documents-generator.html">Open Paperwork Studio →</a>
+  </div></div>
+  <div class="twd-row"><div class="twd-ico">🛒</div><div class="twd-b" style="flex:1">
+    <h3>Seller Paperwork Hub <span style="font-size:11px;font-weight:800;color:#9B6BFF;background:rgba(155,107,255,.12);border-radius:999px;padding:2px 9px;vertical-align:middle">Ecommerce Suite</span></h3>
+    <p>The complete procure-to-pay paper trail for e-commerce: purchase requisitions, RFQs, supplier comparisons, purchase orders with marketplace identifiers (ASIN / FNSKU / FSN), landed cost worksheets, inbound ASN and carton manifests for FC deliveries, GRNs and 2-way / 3-way matching. Includes a full guide explaining what every document does.</p>
+    <span class="twd-for">Amazon, Flipkart, Myntra, Meesho, quick-com &amp; D2C sellers</span><a class="twd-go" href="/sourcing-procurement.html">Open Seller Paperwork Hub →</a>
+  </div></div>
+  <div class="twd-row"><div class="twd-ico">🏪</div><div class="twd-b" style="flex:1">
+    <h3>Ecommerce Suite</h3>
+    <p>Operations after the order: the <b>FBA Planner</b> (live) for Amazon replenishment and fulfillable-vs-unfulfillable disposition, the <b>Seller Paperwork Hub</b> (live) for procurement documents, and <b>OMS</b>, <b>WMS</b> and <b>Returns Management</b> arriving soon to manage orders, warehouse operations and returns across all your channels.</p>
+    <span class="twd-for">Marketplace sellers scaling operations</span><a class="twd-go" href="/ecommerce.html">Open Ecommerce Suite →</a>
+  </div></div>
+  <div class="twd-row"><div class="twd-ico">🚛</div><div class="twd-b" style="flex:1">
+    <h3>TMS — Transportation Management <span style="font-size:11px;font-weight:800;color:#fff;background:linear-gradient(135deg,#4F6BFF,#9B6BFF);border-radius:999px;padding:2px 9px;vertical-align:middle">Beta</span></h3>
+    <p>Plan and track shipments: compare carrier rates, build multi-stop routes, generate dispatch documents and monitor deliveries — a lightweight TMS built for Indian SME logistics rather than enterprise complexity.</p>
+    <span class="twd-for">Businesses managing their own dispatch &amp; freight</span><a class="twd-go" href="/tms.html">Open TMS →</a>
+  </div></div>
+  <div class="twd-row"><div class="twd-ico">📚</div><div class="twd-b" style="flex:1">
+    <h3>Blog &amp; Guides</h3>
+    <p>Practical, India-specific guides with formulas and worked examples: landed cost and import duty, EOQ, safety stock, demand planning for Amazon &amp; Flipkart, GST on freight, OTIF, inventory turnover and ABC analysis — each linked to its free calculator.</p>
+    <span class="twd-for">Anyone learning supply chain</span><a class="twd-go" href="/blog.html">Read the Blog →</a>
+  </div></div>
+</div>
+
 
 
 
@@ -1106,8 +1172,8 @@ function liqFeedbackSubmit(){
 <a href="/moq-calculator">MOQ Calculator</a>
 <a href="/dead-stock-calculator">Dead Stock Calculator</a>
 <a href="/volumetric-weight-calculator">Volumetric Weight</a>
-<a href="/documents-generator.html">Document Generator</a>
-<a href="/sourcing-procurement.html">Sourcing &amp; Procurement</a>
+<a href="/documents-generator.html">Paperwork Studio</a>
+<a href="/sourcing-procurement.html">Seller Paperwork Hub</a>
       </div>
     </div>
     <div>

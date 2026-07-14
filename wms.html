@@ -1,36 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WMS — Warehouse Management System (Beta) | LogicstIQ</title>
-<meta name="description" content="LogicstIQ WMS — lightweight bin, putaway, picking and packing control for SME sellers. Keep stock accuracy high without an enterprise WMS. Free preview.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://www.logicstiq.com/wms.html"/>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&family=Wix+Madefor+Display:wght@600;700;800&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WMS — Warehouse Management System — Coming Soon | LogicstIQ</title>
+<meta name="description" content="Lightweight warehouse control for SME sellers: locations & bins, putaway, pick-pack workflows and stock accuracy tracking. Coming soon on LogicstIQ, free for Indian sellers.">
+<link rel="canonical" href="https://www.logicstiq.com/wms.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#F4F7FF;--white:#FFFFFF;--border:#E2E8F0;--border2:#CBD5E1;
-  --b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b400:#7A92FF;
-  --b500:#5069FF;--b600:#3A55FF;--b700:#2A40D6;--b800:#2436B5;--b900:#1C2C73;
-  --cyan:#770BFF;--green:#059669;--glight:#D1FAE5;
-  --amber:#D97706;--alight:#FEF3C7;--red:#DC2626;--rlight:#FEE2E2;
-  --purple:#7C3AED;--slate:#64748B;
-  --text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8;
-}
-[data-theme="dark"]{
-  --bg:#070708;--white:#10131F;--border:rgba(255,255,255,.10);--border2:rgba(255,255,255,.17);
-  --b50:rgba(58,85,255,.12);--b100:rgba(58,85,255,.20);--b200:rgba(58,85,255,.32);
-  --text:#F1F5FF;--text2:#DBE3F5;--text3:#A7B0CC;--text4:#7E88A8;
-  --glight:rgba(16,185,129,.16);--rlight:rgba(239,68,68,.16);--alight:rgba(245,158,11,.16);
-}
-body{font-family:'Wix Madefor Text','Inter',sans-serif;background:var(--bg);color:var(--text);transition:background .3s,color .3s}
+body{font-family:'Inter',sans-serif;background:#F4F7FF;color:#0F172A;line-height:1.7}
+.wrap{max-width:1080px;margin:0 auto;padding:56px 24px 72px;text-align:center}
+.eyebrow{display:inline-flex;background:#EFF6FF;border:1px solid #DBEAFE;color:#3A55FF;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;border-radius:999px;padding:6px 15px;margin-bottom:16px}
+h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(28px,4.5vw,44px);font-weight:900;letter-spacing:-.03em;margin-bottom:12px}
+.sub{font-size:16px;color:#475569;max-width:680px;margin:0 auto 36px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;text-align:left}
+.card{background:#fff;border:1.5px solid #E2E8F0;border-radius:18px;padding:26px;text-decoration:none;color:inherit;display:block;transition:.18s;position:relative}
+.card:hover{transform:translateY(-3px);border-color:#3A55FF;box-shadow:0 14px 34px rgba(58,85,255,.13)}
+.card .ico{font-size:30px;margin-bottom:10px}
+.card .tag{display:inline-block;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#3A55FF;background:#EFF6FF;border-radius:999px;padding:3px 10px;margin-bottom:9px}
+.card .tag.soon{color:#9B6BFF;background:rgba(155,107,255,.1)}
+.card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;margin-bottom:6px}
+.card p{font-size:13.5px;color:#475569}
+.notice{background:linear-gradient(135deg,#EFF6FF,#F5F3FF);border:1.5px solid #DBEAFE;border-radius:18px;padding:34px;margin-top:8px}
+.notice h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;margin-bottom:8px}
+.notice p{font-size:14.5px;color:#475569;max-width:640px;margin:0 auto 18px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#4F6BFF,#9B6BFF);color:#fff;text-decoration:none;padding:12px 26px;border-radius:12px;font-size:14px;font-weight:800;box-shadow:0 6px 18px rgba(79,107,255,.35)}
+.liq-theme-btn{width:44px;height:44px;border-radius:50%;border:1px solid #CBD5E1;background:#fff;font-size:16px;cursor:pointer}
+.liq-theme-float{position:fixed;right:18px;bottom:18px;z-index:99999;box-shadow:0 8px 22px rgba(0,0,0,.25)}
+footer{background:#0F172A;padding:30px 24px;text-align:center;color:#64748B;font-size:13px}
+footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
+[data-theme="dark"] body{background:#070708;color:#F1F5FF}
+[data-theme="dark"] .card{background:#10131F;border-color:rgba(255,255,255,.12)}
+[data-theme="dark"] .card p,[data-theme="dark"] .sub,[data-theme="dark"] .notice p{color:#A7B0CC}
+[data-theme="dark"] .notice{background:#0D101C;border-color:rgba(255,255,255,.1)}
+[data-theme="dark"] .eyebrow{background:rgba(58,85,255,.14);border-color:rgba(58,85,255,.32);color:#AEBCFF}
+[data-theme="dark"] .liq-theme-btn{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.2)}
+</style>
+</head>
+<body>
+<!-- ===== LogicstIQ unified navigation ===== -->
+<style id="lnav-css">
 .lnav{position:sticky;top:0;z-index:9000;background:#fff;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:18px;padding:0 22px;height:64px;font-family:'Inter','Plus Jakarta Sans',sans-serif}
 .lnav-logo{display:inline-flex;align-items:center;text-decoration:none;flex-shrink:0}
 .lnav-menu{display:flex;align-items:center;gap:2px;margin-left:auto}
-.lnav-item{position:static}
+.lnav-item{position:static;display:flex;align-items:center;align-self:stretch}
 .lnav-top{display:inline-flex;align-items:center;gap:5px;padding:9px 11px;border-radius:9px;font-size:13.5px;font-weight:600;color:#0F172A;text-decoration:none;white-space:nowrap;cursor:pointer;background:none;border:none;font-family:inherit}
 .lnav-top:hover{background:#EFF3FF;color:#3A55FF}
 .lnav-car{font-size:9px;opacity:.55;transition:transform .18s}
@@ -45,15 +59,19 @@ body{font-family:'Wix Madefor Text','Inter',sans-serif;background:var(--bg);colo
 .lnav-viewall{margin-top:14px;padding-top:14px;border-top:1px solid #E2E8F0;width:100%}
 .lnav-viewall a{display:inline-block;font-size:13px;font-weight:800;color:#3A55FF!important}
 .lnav-burger{display:none;margin-left:auto;background:#fff;border:1px solid #CBD5E1;border-radius:9px;width:40px;height:40px;cursor:pointer;font-size:18px;color:#0F172A;line-height:1}
-@media(hover:hover) and (min-width:1101px){.lnav-item:hover>.lnav-panel,.lnav-item:focus-within>.lnav-panel{display:block}.lnav-item:hover .lnav-car{transform:rotate(180deg)}}
+@media(hover:hover) and (min-width:1101px){.lnav-item.open>.lnav-panel,.lnav-item:focus-within>.lnav-panel{display:block}.lnav-item.open .lnav-car{transform:rotate(180deg)}}
 @media(max-width:1100px){
- .lnav{flex-wrap:wrap;height:auto;min-height:60px;padding:8px 14px}.lnav-logo svg{height:34px;width:auto}
+ .lnav{flex-wrap:wrap;height:auto;min-height:60px;padding:8px 14px}
+ .lnav-logo svg{height:34px;width:auto}
  .lnav-burger{display:inline-flex;align-items:center;justify-content:center}
- .lnav-menu{display:none;flex-direction:column;align-items:stretch;width:100%;gap:0;padding:6px 0 12px;order:10}
- .lnav.open .lnav-menu{display:flex}.lnav-item{position:relative;width:100%}
+ .lnav-menu{display:none;flex-direction:column;align-items:stretch;width:100%;gap:0;padding:6px 0 12px}
+ .lnav.open .lnav-menu{display:flex}
+ .lnav-item{position:relative;width:100%;display:block;align-self:auto}
  .lnav-top{width:100%;justify-content:space-between;padding:13px 8px;font-size:15px;border-bottom:1px solid #EEF2F7;border-radius:0}
  .lnav-panel{position:static;box-shadow:none;border:none;padding:4px 8px 10px;background:#F8FAFF}
- .lnav-item.open>.lnav-panel{display:block}.lnav-item.open .lnav-car{transform:rotate(180deg)}.lnav-panel-in{flex-direction:column;gap:14px}
+ .lnav-item.open>.lnav-panel{display:block}
+ .lnav-item.open .lnav-car{transform:rotate(180deg)}
+ .lnav-panel-in{flex-direction:column;gap:14px}
 }
 [data-theme="dark"] .lnav{background:rgba(9,10,18,.94);border-bottom-color:rgba(255,255,255,.09)}
 [data-theme="dark"] .lnav-top{color:#E7ECFB}
@@ -65,71 +83,13 @@ body{font-family:'Wix Madefor Text','Inter',sans-serif;background:var(--bg);colo
 [data-theme="dark"] .lnav-burger{background:rgba(255,255,255,.06);color:#E7ECFB;border-color:rgba(255,255,255,.2)}
 [data-theme="dark"] .lnav-logo text tspan:first-child{fill:#FFFFFF}
 [data-theme="dark"] .lnav-viewall{border-top-color:rgba(255,255,255,.09)}
+[data-theme="dark"] .lnav-panel .lnav-viewall a{color:#AEBCFF!important}
+[data-theme="dark"] .lnav-top,[data-theme="dark"] .lnav-panel a{border-bottom-color:rgba(255,255,255,.06)}
 .lnav>.liq-theme-btn{flex-shrink:0;width:36px;height:36px;border-radius:9px;border:1px solid #CBD5E1;background:#fff;color:#0F172A;font-size:15px;line-height:1;cursor:pointer;display:inline-grid;place-items:center;padding:0}
 .lnav>.liq-theme-btn:hover{border-color:#3A55FF}
 [data-theme="dark"] .lnav>.liq-theme-btn{background:rgba(255,255,255,.07);color:#E7ECFB;border-color:rgba(255,255,255,.22)}
-.dwrap{max-width:1200px;margin:0 auto;padding:0 22px}
-.dhero{padding:34px 0 4px}
-.dbadge{display:inline-flex;align-items:center;gap:6px;background:var(--b50);border:1px solid var(--b200);color:var(--b600);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;padding:5px 12px;border-radius:999px}
-.dhero h1{font-family:'Plus Jakarta Sans','Inter',sans-serif;font-size:clamp(24px,3.4vw,33px);font-weight:900;letter-spacing:-.025em;color:var(--text);margin:13px 0 6px}
-.dhero p.sub{color:var(--text3);max-width:770px;font-size:14px;line-height:1.65}
-.dnote{font-size:12px;color:var(--text4);margin-top:9px}.ddot{color:var(--green);font-weight:800}
-.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:22px 0}
-.kpi{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:15px 16px;box-shadow:0 2px 8px rgba(30,58,138,.06)}
-.kpi .l{font-size:10px;color:var(--text4);font-weight:800;text-transform:uppercase;letter-spacing:.05em}
-.kpi .v{font-size:22px;font-weight:900;font-family:'Plus Jakarta Sans','Inter',sans-serif;color:var(--text);margin-top:6px}
-.kpi .d{font-size:11px;margin-top:3px;color:var(--text4)}
-.kpi.acc{background:linear-gradient(160deg,var(--b50),var(--white))}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 16px}
-.tab{padding:9px 15px;border-radius:11px;font-size:13px;font-weight:800;cursor:pointer;background:var(--white);border:1px solid var(--border);color:var(--text3);display:flex;gap:8px;align-items:center}
-.tab.on{background:linear-gradient(135deg,#3A55FF,#770BFF);color:#fff;border-color:transparent}
-.tab .cnt{font-size:11px;background:rgba(255,255,255,.2);padding:1px 7px;border-radius:10px}
-.tab:not(.on) .cnt{background:var(--b50);color:var(--text3)}
-.card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;box-shadow:0 2px 8px rgba(30,58,138,.06);overflow:hidden;margin-bottom:46px}
-.tools{display:flex;gap:10px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border)}
-.tools h3{font-size:13px;color:var(--text);font-weight:800}
-.search{margin-left:auto;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:9px 13px;color:var(--text);font-size:13px;min-width:210px;outline:none;font-family:inherit}
-.search::placeholder{color:var(--text4)}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th{text-align:left;padding:10px 16px;font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--text4);border-bottom:1px solid var(--border);font-weight:800}
-td{padding:11px 16px;border-bottom:1px solid var(--border);color:var(--text2)}
-tr:last-child td{border-bottom:none}
-tbody tr:hover{background:var(--b50)}
-.bin{font-weight:800;font-family:ui-monospace,Menlo,monospace;color:#4F6BFF}
-.mut{color:var(--text4)}
-.util{display:flex;align-items:center;gap:9px}
-.track{width:90px;height:8px;border-radius:6px;background:var(--b50);overflow:hidden}
-.fill{height:100%;border-radius:6px}
-.zone{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--b50);color:var(--text3)}
-.tag{font-size:10px;font-weight:800;padding:3px 9px;border-radius:999px}
-.tag.md{background:rgba(217,119,6,.16);color:#E0912A}
-.tag.blue{background:rgba(58,85,255,.14);color:#4F6BFF}
-.act{font-size:11.5px;font-weight:800;padding:6px 11px;border-radius:8px;border:1px solid var(--border2);background:var(--white);color:var(--b600);cursor:pointer;font-family:inherit}
-.act:hover{border-color:#3A55FF}
-.act.done{color:#10B981;border-color:transparent;background:transparent;cursor:default}
-.path{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#770BFF;font-weight:700}
-footer{background:#0F172A;padding:52px 32px 28px;margin-top:10px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;max-width:1100px;margin:0 auto 36px}
-.footer-brand p{font-size:13px;color:#94A3B8;line-height:1.75;margin:10px 0 16px}
-.footer-logo{display:flex;align-items:center}
-.footer-tagline{font-size:11px;color:#AEBCFF;margin-top:3px}
-.footer-socials{display:flex;gap:8px;margin-top:4px}
-.social-btn{width:30px;height:30px;border-radius:8px;border:1px solid rgba(255,255,255,.15);color:#BFDBFE;display:inline-grid;place-items:center;font-size:12px;font-weight:800;text-decoration:none}
-.social-btn:hover{background:rgba(255,255,255,.08)}
-.footer-col-t{font-size:11px;font-weight:800;color:#F1F5F9;text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px}
-.footer-links{display:flex;flex-direction:column;gap:9px}
-.footer-links a{font-size:13px;color:#94A3B8;text-decoration:none}
-.footer-links a:hover{color:#fff}
-.footer-founder{font-size:13px;color:#94A3B8;line-height:1.9}
-.footer-founder a{color:#BFDBFE;text-decoration:none;font-weight:600}
-.footer-founder-role{font-size:11px;color:#475569}
-.footer-bottom{border-top:1px solid #1E293B;padding-top:20px;text-align:center;font-size:11px;color:#64748B;line-height:1.9;max-width:1100px;margin:0 auto}
-.footer-bottom a{color:#94A3B8;text-decoration:none}
-@media(max-width:900px){.kpis{grid-template-columns:repeat(3,1fr)}.footer-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.kpis{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr}}
+@media(max-width:1100px){.lnav-menu{order:10}}
 </style>
-</head>
-<body>
 <nav class="lnav" id="lnav">
 <a href="/" class="lnav-logo" aria-label="LogicstIQ — Home">
   <svg width="200" height="41" viewBox="0 0 440 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible">
@@ -145,116 +105,24 @@ footer{background:#0F172A;padding:52px 32px 28px;margin-top:10px}
   <div class="lnav-menu">
     <div class="lnav-item">
       <a class="lnav-top" href="/calculators.html">Calculators <span class="lnav-car">▼</span></a>
-      <div class="lnav-panel"><div class="lnav-panel-in">
-        <div class="lnav-col"><div class="lnav-colt">📦 Inventory &amp; Planning</div>
-          <a href="/eoq-calculator">EOQ Calculator</a><a href="/safety-stock-calculator">Safety Stock</a><a href="/reorder-point-calculator">Reorder Point</a><a href="/abc-analysis-calculator">ABC Analysis</a><a href="/inventory-turnover-calculator">Inventory Turnover</a><a href="/moq-calculator">MOQ Calculator</a><a href="/dead-stock-calculator">Dead Stock</a><a href="/cycle-count-calculator">Cycle Count</a></div>
-        <div class="lnav-col"><div class="lnav-colt">⏱️ Performance &amp; Suppliers</div>
-          <a href="/otif-calculator">OTIF Calculator</a><a href="/fill-rate-calculator">Fill Rate</a><a href="/demand-forecast-calculator">Demand Forecast</a><a href="/supplier-scorecard-calculator">Supplier Scorecard</a><a href="/supplier-lead-time-variability-calculator">Lead Time Variability</a><a href="/disruption-impact-calculator">Disruption Impact</a></div>
-        <div class="lnav-col"><div class="lnav-colt">💰 Costing &amp; Finance</div>
-          <a href="/landed-cost-calculator">Landed Cost</a><a href="/gst-calculator-logistics">GST Calculator</a><a href="/cogs-calculator">COGS Calculator</a><a href="/gross-margin-calculator">Gross Margin</a><a href="/break-even-calculator">Break-Even</a><a href="/working-capital-calculator">Working Capital</a><a href="/carrying-cost-calculator">Carrying Cost</a><a href="/stockout-cost-calculator">Stockout Cost</a><a href="/days-inventory-outstanding-calculator">Days Inventory Outstanding</a><a href="/cash-conversion-cycle-calculator">Cash Conversion Cycle</a></div>
-        <div class="lnav-col"><div class="lnav-colt">🚛 Logistics &amp; Warehouse</div>
-          <a href="/freight-cost-calculator">Freight Cost</a><a href="/warehouse-space-calculator">Warehouse Space</a><a href="/lead-time-calculator">Lead Time</a><a href="/shipping-cost-per-unit-calculator">Shipping Cost / Unit</a><a href="/volumetric-weight-calculator">Volumetric Weight</a><a href="/pick-pack-cost-calculator">Pick &amp; Pack Cost</a><a href="/carbon-footprint-logistics">Carbon Footprint</a></div>
-        <div class="lnav-viewall"><a href="/calculators.html">View all 31 calculators →</a></div>
-      </div></div>
+      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col"><div class="lnav-colt">📦 Inventory & Planning</div><a href="/eoq-calculator">EOQ Calculator</a><a href="/safety-stock-calculator">Safety Stock</a><a href="/reorder-point-calculator">Reorder Point</a><a href="/abc-analysis-calculator">ABC Analysis</a><a href="/inventory-turnover-calculator">Inventory Turnover</a><a href="/moq-calculator">MOQ Calculator</a><a href="/dead-stock-calculator">Dead Stock</a><a href="/cycle-count-calculator">Cycle Count</a></div><div class="lnav-col"><div class="lnav-colt">⏱️ Performance & Suppliers</div><a href="/otif-calculator">OTIF Calculator</a><a href="/fill-rate-calculator">Fill Rate</a><a href="/demand-forecast-calculator">Demand Forecast</a><a href="/supplier-scorecard-calculator">Supplier Scorecard</a><a href="/supplier-lead-time-variability-calculator">Lead Time Variability</a><a href="/disruption-impact-calculator">Disruption Impact</a></div><div class="lnav-col"><div class="lnav-colt">💰 Costing & Finance</div><a href="/landed-cost-calculator">Landed Cost</a><a href="/gst-calculator-logistics">GST Calculator</a><a href="/cogs-calculator">COGS Calculator</a><a href="/gross-margin-calculator">Gross Margin</a><a href="/break-even-calculator">Break-Even</a><a href="/working-capital-calculator">Working Capital</a><a href="/carrying-cost-calculator">Carrying Cost</a><a href="/stockout-cost-calculator">Stockout Cost</a><a href="/days-inventory-outstanding-calculator">Days Inventory Outstanding</a><a href="/cash-conversion-cycle-calculator">Cash Conversion Cycle</a></div><div class="lnav-col"><div class="lnav-colt">🚛 Logistics & Warehouse</div><a href="/freight-cost-calculator">Freight Cost</a><a href="/warehouse-space-calculator">Warehouse Space</a><a href="/lead-time-calculator">Lead Time</a><a href="/shipping-cost-per-unit-calculator">Shipping Cost / Unit</a><a href="/volumetric-weight-calculator">Volumetric Weight</a><a href="/pick-pack-cost-calculator">Pick & Pack Cost</a><a href="/carbon-footprint-logistics">Carbon Footprint</a></div><div class="lnav-viewall"><a href="/calculators.html">View all 31 calculators →</a></div></div></div>
     </div>
     <a class="lnav-top" href="/demand-planner.html">AI Demand Planner</a>
-    <a class="lnav-top" href="/documents-generator.html">Documents</a>
-    <a class="lnav-top" href="/sourcing-procurement.html">Sourcing</a>
+    <a class="lnav-top" href="/documents-generator.html">Paperwork Studio</a>
     <div class="lnav-item">
       <a class="lnav-top" href="/ecommerce.html">Ecommerce <span class="lnav-car">▼</span></a>
-      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col" style="min-width:280px"><div class="lnav-colt">🏪 Ecommerce Suite</div>
-        <a href="/fba-planner/">📦 FBA Planner <span class="lnav-mini">Live</span></a>
-        <a href="/oms.html">🧾 OMS — Order Management <span class="lnav-mini">Coming soon</span></a>
-        <a href="/wms.html">🏭 WMS — Warehouse Management <span class="lnav-mini">Coming soon</span></a>
-        <a href="/returns.html">↩️ Returns Management <span class="lnav-mini">Coming soon</span></a>
-        <div class="lnav-viewall"><a href="/ecommerce.html">Open Ecommerce hub →</a></div></div></div></div>
+      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col" style="min-width:280px"><div class="lnav-colt">🏪 Ecommerce Suite</div><a href="/fba-planner/">📦 FBA Planner <span class="lnav-mini">Live</span></a><a href="/sourcing-procurement.html">🛒 Seller Paperwork Hub <span class="lnav-mini">Live</span></a><a href="/oms.html">🧾 OMS — Order Management <span class="lnav-mini">Coming soon</span></a><a href="/wms.html">🏭 WMS — Warehouse Management <span class="lnav-mini">Coming soon</span></a><a href="/returns.html">↩️ Returns Management <span class="lnav-mini">Coming soon</span></a><div class="lnav-viewall"><a href="/ecommerce.html">Open Ecommerce hub →</a></div></div></div></div>
     </div>
     <a class="lnav-top" href="/tms.html">TMS <span class="lnav-beta">Beta</span></a>
-    <a class="lnav-top" href="/blog.html">Blog</a>
+    <div class="lnav-item">
+      <a class="lnav-top" href="/blog.html">Blog <span class="lnav-car">▼</span></a>
+      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col" style="min-width:320px"><div class="lnav-colt">📚 Guides</div><a href="/blog/landed-cost-guide.html">Landed Cost Explained</a><a href="/blog/eoq-calculator.html">EOQ — Complete Guide</a><a href="/blog/demand-planning-amazon-flipkart.html">Demand Planning for Amazon & Flipkart</a><a href="/blog/safety-stock-calculator.html">Safety Stock Formula</a><a href="/blog/what-is-otif.html">What is OTIF?</a><a href="/blog/inventory-turnover-formula.html">Inventory Turnover Formula</a><a href="/blog/abc-analysis-guide.html">ABC Analysis Guide</a><a href="/blog/gst-calculator-logistics.html">GST on Freight & Logistics</a><div class="lnav-viewall"><a href="/blog.html">View all articles →</a></div></div></div></div>
+    </div>
     <a class="lnav-top" href="/about.html">About</a>
     <a class="lnav-top" href="/contact.html">Contact</a>
   </div>
   <button id="liqTheme" class="liq-theme-btn" type="button" aria-label="Toggle light or dark mode" title="Toggle light / dark">🌙</button>
 </nav>
-
-<div class="dwrap">
-  <div class="dhero">
-    <span class="dbadge">🏭 WMS · Preview</span>
-    <h1>Warehouse Management</h1>
-    <p class="sub">Lightweight bin, putaway, pick and pack control built for SME sellers — keep stock accuracy high without an enterprise WMS.</p>
-    <p class="dnote"><span class="ddot">●</span> Preview · demo data · runs in your browser · nothing stored</p>
-  </div>
-  <div class="kpis" id="kpis"></div>
-  <div class="tabs" id="tabs"></div>
-  <div class="card">
-    <div class="tools"><h3 id="ttl">Inventory</h3><input class="search" id="q" placeholder="Search bin, SKU or product…" oninput="render()"></div>
-    <table><thead id="head"></thead><tbody id="rows"></tbody></table>
-  </div>
-</div>
-
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <div class="footer-logo" style="margin-bottom:4px">
-        <svg width="158" height="38" viewBox="0 0 260 68" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="LogicstIQ" style="display:block">
-          <defs><linearGradient id="ft_g" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="rgba(255,255,255,0.5)"/><stop offset="100%" stop-color="rgba(255,255,255,0.92)"/></linearGradient></defs>
-          <path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#ft_g)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <path d="M59 8 L66 14 L59 20" stroke="rgba(255,255,255,0.72)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <circle cx="32" cy="50" r="3.5" fill="rgba(255,255,255,0.38)"/><circle cx="50" cy="14" r="3.5" fill="rgba(255,255,255,0.88)"/>
-          <text x="82" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5"><tspan fill="#FFFFFF">Logicst</tspan><tspan fill="#AEBCFF">IQ</tspan></text>
-        </svg>
-      </div>
-      <div class="footer-tagline">Where Logistics Meets Intelligence</div>
-      <p>India's free AI supply chain platform for sellers &amp; D2C brands. 31 calculators + AI Demand Planner. No login. No data stored. Free forever.</p>
-      <div class="footer-socials">
-        <a href="https://www.linkedin.com/in/amiitkumar" target="_blank" rel="noopener" class="social-btn">in</a>
-        <a href="https://www.linkedin.com/in/sachin-s-0b1179162" target="_blank" rel="noopener" class="social-btn">in</a>
-      </div>
-    </div>
-    <div>
-      <div class="footer-col-t">Ecommerce Suite</div>
-      <div class="footer-links">
-        <a href="/fba-planner/">FBA Planner</a>
-        <a href="/oms.html">OMS — Orders</a>
-        <a href="/wms.html">WMS — Warehouse</a>
-        <a href="/returns.html">Returns</a>
-        <a href="/ecommerce.html">Ecommerce hub</a>
-        <a href="/tms.html">TMS (Beta)</a>
-      </div>
-    </div>
-    <div>
-      <div class="footer-col-t">Tools</div>
-      <div class="footer-links">
-        <a href="/demand-planner.html">AI Demand Planner</a>
-        <a href="/calculators.html">31 Calculators</a>
-        <a href="/documents-generator.html">Document Generator</a>
-        <a href="/sourcing-procurement.html">Sourcing &amp; Procurement</a>
-        <a href="/blog.html">Blog &amp; Guides</a>
-      </div>
-    </div>
-    <div>
-      <div class="footer-col-t">Company</div>
-      <div class="footer-founder">
-        <a href="https://www.linkedin.com/in/amiitkumar" target="_blank" rel="noopener">Amit Kumar</a><br>
-        <span class="footer-founder-role">Co-Founder · LogicstIQ</span><br><br>
-        <a href="https://www.linkedin.com/in/sachin-s-0b1179162" target="_blank" rel="noopener">Sachin Sirwani</a><br>
-        <span class="footer-founder-role">Co-Founder · LogicstIQ</span>
-      </div>
-      <div class="footer-links" style="margin-top:16px">
-        <a href="/privacy-policy.html">Privacy Policy</a>
-        <a href="/terms.html">Terms of Service</a>
-        <a href="/disclaimer.html">Disclaimer</a>
-        <a href="/about.html">About</a>
-        <a href="/contact.html">Contact</a>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div style="margin-bottom:6px"><strong style="color:#94A3B8">Ecommerce Suite · WMS preview · Demo data — not connected to a live warehouse.</strong></div>
-    <div>© 2026 LogicstIQ.com · Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a> · Results are for reference only. Always validate with your ERP/WMS.</div>
-  </div>
-</footer>
-
 <script id="lnav-js">
 (function(){var nav=document.getElementById('lnav');if(!nav)return;
 var burger=document.getElementById('lnavBurger');
@@ -267,78 +135,41 @@ nav.querySelectorAll('.lnav-item>.lnav-top').forEach(function(t){
     nav.querySelectorAll('.lnav-item.open').forEach(function(o){if(o!==it)o.classList.remove('open');});
     it.classList.add('open');}
   }});});
+var hoverTimer=null;
+nav.querySelectorAll('.lnav-item').forEach(function(it){
+ it.addEventListener('mouseenter',function(){if(mobile())return;clearTimeout(hoverTimer);
+  nav.querySelectorAll('.lnav-item.open').forEach(function(o){if(o!==it)o.classList.remove('open');});it.classList.add('open');});
+ it.addEventListener('mouseleave',function(){if(mobile())return;clearTimeout(hoverTimer);
+  hoverTimer=setTimeout(function(){it.classList.remove('open');},300);});
+});
 document.addEventListener('click',function(e){if(!nav.contains(e.target)){nav.classList.remove('open');nav.querySelectorAll('.lnav-item.open').forEach(function(o){o.classList.remove('open');});}});
 window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList.remove('open');nav.querySelectorAll('.lnav-item.open').forEach(function(o){o.classList.remove('open');});}});
 })();
 </script>
+<!-- ===== end unified navigation ===== -->
+<div class="wrap">
+  <div class="eyebrow">🏭 Ecommerce Suite</div>
+  <h1>WMS — Warehouse Management System</h1>
+  <p class="sub">Lightweight warehouse control for SME sellers: locations & bins, putaway, pick-pack workflows and stock accuracy tracking.</p>
+  <div class="notice">
+    <h2>🚧 Coming soon</h2>
+    <p>This tool is in active development and will launch here shortly — free, like everything else on LogicstIQ. Meanwhile, the FBA Planner is live, and all 31 calculators are ready to use.</p>
+    <a class="btn" href="/ecommerce.html">← Back to Ecommerce Suite</a>&nbsp;&nbsp;<a class="btn" style="background:linear-gradient(135deg,#0F172A,#334155)" href="/calculators.html">Explore 31 Free Calculators</a>
+  </div>
+</div>
+<footer>
+  <p>© 2026 <a href="https://www.logicstiq.com">LogicstIQ.com</a> · Where Logistics Meets Intelligence</p>
+  <p style="margin-top:10px;font-size:12px;color:#94A3B8;text-align:center">Contact: <a href="mailto:contactus@logicstiq.com" style="color:#9B6BFF">contactus@logicstiq.com</a></p>
+</footer>
 <script>
-(function(){var r=document.documentElement,b=document.getElementById('liqTheme');
-function set(t){r.setAttribute('data-theme',t);if(b)b.textContent=(t==='dark')?'☀️':'🌙';try{localStorage.setItem('liq-theme',t)}catch(e){}}
-try{var sv=localStorage.getItem('liq-theme');if(sv)set(sv);}catch(e){}
-if(b)b.addEventListener('click',function(){set(r.getAttribute('data-theme')==='dark'?'light':'dark');});})();
+(function(){var r=document.documentElement;
+function lbl(){var b=document.getElementById('liqTheme');if(b)b.textContent=r.getAttribute('data-theme')==='dark'?'\u2600\ufe0f':'\ud83c\udf19';}
+function set(t){r.setAttribute('data-theme',t);lbl();try{localStorage.setItem('liq-theme',t)}catch(e){}}
+try{var sv=localStorage.getItem('liq-theme');if(sv)r.setAttribute('data-theme',sv);}catch(e){}
+var btn=document.getElementById('liqTheme')||document.createElement('button');btn.id='liqTheme';btn.type='button';btn.className=btn.className||'liq-theme-btn';
+btn.setAttribute('aria-label','Toggle light or dark mode');btn.title='Toggle light / dark';btn.textContent='\ud83c\udf19';
+btn.addEventListener('click',function(){set(r.getAttribute('data-theme')==='dark'?'light':'dark');});
+if(!btn.parentNode){btn.classList.add('liq-theme-float');document.body.appendChild(btn);}lbl();})();
 </script>
-<script>
-var inventory=[
- {bin:"A-01-02",zone:"Fast",sku:"EAR-PRO",prod:"Wireless Earbuds Pro",qty:180,cap:200},
- {bin:"A-01-05",zone:"Fast",sku:"BTL-1L",prod:"Steel Water Bottle 1L",qty:42,cap:150},
- {bin:"A-02-01",zone:"Fast",sku:"YOG-MAT",prod:"Yoga Mat Premium",qty:96,cap:120},
- {bin:"B-03-04",zone:"Bulk",sku:"SHO-RUN9",prod:"Running Shoes (9)",qty:210,cap:240},
- {bin:"B-04-02",zone:"Bulk",sku:"BED-DBL",prod:"Bedsheet Double",qty:12,cap:180},
- {bin:"C-01-01",zone:"Slow",sku:"CLK-WALL",prod:"Wall Clock",qty:8,cap:100},
- {bin:"C-02-03",zone:"Slow",sku:"LMP-LED",prod:"LED Desk Lamp",qty:64,cap:80},
- {bin:"D-01-01",zone:"Cold",sku:"SER-FACE",prod:"Face Serum 30ml",qty:150,cap:160}
-];
-var putaway=[
- {asn:"ASN-4471",sku:"EAR-PRO",prod:"Wireless Earbuds Pro",qty:120,bin:"A-01-02",tag:["blue","Suggested"]},
- {asn:"ASN-4471",sku:"BTL-1L",prod:"Steel Water Bottle 1L",qty:200,bin:"A-01-06",tag:["blue","New bin"]},
- {asn:"ASN-4472",sku:"BED-DBL",prod:"Bedsheet Double",qty:150,bin:"B-04-02",tag:["md","Top-up"]}
-];
-var picking=[
- {wave:"WAVE-118",order:"AMZ-90412",prod:"Wireless Earbuds Pro",qty:1,bin:"A-01-02"},
- {wave:"WAVE-118",order:"FK-55231",prod:"Steel Water Bottle 1L",qty:2,bin:"A-01-05"},
- {wave:"WAVE-118",order:"MEE-11876",prod:"Cotton Kurti (M)",qty:1,bin:"C-03-02"},
- {wave:"WAVE-119",order:"BLK-33420",prod:"Protein Bar x6",qty:3,bin:"D-02-01"}
-];
-var packing=[
- {order:"AMZ-90455",items:1,box:"S",wt:"0.4 kg",ch:"Amazon.in"},
- {order:"ZEP-20981",items:1,box:"XS",wt:"0.2 kg",ch:"Zepto"},
- {order:"D2C-10233",items:3,box:"M",wt:"1.8 kg",ch:"D2C"}
-];
-var tab="inv";
-function kpis(){
-  var avgU=Math.round(inventory.reduce(function(s,b){return s+b.qty/b.cap},0)/inventory.length*100);
-  var K=[["SKUs stocked",inventory.length,"active"],["Bins occupied",inventory.length+" / 96","8% used"],["Pick accuracy","99.2%","last 7 days","acc"],["Avg bin fill",avgU+"%","utilisation"],["Putaway pending",putaway.length,"inbound"],["Picks pending",picking.length,"open waves"]];
-  document.getElementById('kpis').innerHTML=K.map(function(k){return '<div class="kpi '+(k[3]||'')+'"><div class="l">'+k[0]+'</div><div class="v">'+k[1]+'</div><div class="d">'+k[2]+'</div></div>'}).join('');
-}
-var TABS=[["inv","📦 Inventory",inventory.length],["put","📥 Putaway",putaway.length],["pick","🛒 Picking",picking.length],["pack","📦 Packing",packing.length]];
-function tabsUI(){document.getElementById('tabs').innerHTML=TABS.map(function(t){return '<span class="tab '+(tab===t[0]?'on':'')+'" onclick="setTab(\''+t[0]+'\')">'+t[1]+'<span class="cnt">'+t[2]+'</span></span>'}).join('')}
-function setTab(t){tab=t;render()}
-function uColor(p){return p>=90?'#F87171':p>=60?'#E0912A':'#10B981'}
-function esc(s){return (''+s).toLowerCase()}
-function render(){
-  tabsUI();
-  var q=document.getElementById('q').value.toLowerCase();
-  var head=document.getElementById('head'),rows=document.getElementById('rows');
-  document.getElementById('ttl').textContent={inv:"Inventory by bin",put:"Putaway queue",pick:"Pick waves",pack:"Ready to pack"}[tab];
-  var f=function(arr){return arr.filter(function(o){return JSON.stringify(o).toLowerCase().indexOf(q)>=0})};
-  if(tab==="inv"){
-    head.innerHTML='<tr><th>Bin</th><th>Zone</th><th>SKU</th><th>Product</th><th>On hand</th><th>Utilisation</th></tr>';
-    rows.innerHTML=f(inventory).map(function(b){var p=Math.round(b.qty/b.cap*100);return '<tr><td class="bin">'+b.bin+'</td><td><span class="zone">'+b.zone+'</span></td><td class="mut">'+b.sku+'</td><td>'+b.prod+'</td><td>'+b.qty+' <span class="mut">/ '+b.cap+'</span></td><td><span class="util"><span class="track"><span class="fill" style="width:'+p+'%;background:'+uColor(p)+'"></span></span><b>'+p+'%</b></span></td></tr>'}).join('');
-  } else if(tab==="put"){
-    head.innerHTML='<tr><th>ASN</th><th>SKU</th><th>Product</th><th>Qty</th><th>Suggested bin</th><th></th></tr>';
-    rows.innerHTML=f(putaway).map(function(p){return '<tr><td class="bin">'+p.asn+'</td><td class="mut">'+p.sku+'</td><td>'+p.prod+'</td><td>'+p.qty+'</td><td><span class="bin">'+p.bin+'</span> <span class="tag '+p.tag[0]+'">'+p.tag[1]+'</span></td><td><button class="act" onclick="this.textContent=\'Put away ✓\';this.className=\'act done\'">Confirm →</button></td></tr>'}).join('');
-  } else if(tab==="pick"){
-    head.innerHTML='<tr><th>Wave</th><th>Order</th><th>Product</th><th>Qty</th><th>Location</th><th></th></tr>';
-    rows.innerHTML=f(picking).map(function(p){return '<tr><td class="bin">'+p.wave+'</td><td>'+p.order+'</td><td>'+p.prod+'</td><td>'+p.qty+'</td><td class="path">➜ '+p.bin+'</td><td><button class="act" onclick="this.textContent=\'Picked ✓\';this.className=\'act done\'">Pick →</button></td></tr>'}).join('');
-  } else {
-    head.innerHTML='<tr><th>Order</th><th>Items</th><th>Suggested box</th><th>Est. weight</th><th>Channel</th><th></th></tr>';
-    rows.innerHTML=f(packing).map(function(p){return '<tr><td class="bin">'+p.order+'</td><td>'+p.items+'</td><td><span class="tag blue">Box '+p.box+'</span></td><td>'+p.wt+'</td><td class="mut">'+p.ch+'</td><td><button class="act" onclick="this.textContent=\'Packed ✓\';this.className=\'act done\'">Pack &amp; label →</button></td></tr>'}).join('');
-  }
-  if(!rows.innerHTML)rows.innerHTML='<tr><td colspan="6" class="mut" style="text-align:center;padding:26px">Nothing matches.</td></tr>';
-  kpis();
-}
-render();
-</script>
-<script src="/copilot-widget.js" data-endpoint="/api/copilot" data-title="LogicstIQ Copilot" data-accent="#1D9E75" defer></script>
 </body>
 </html>
