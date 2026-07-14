@@ -168,6 +168,10 @@ footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
 [data-theme="dark"] .lnav-viewall{border-top-color:rgba(255,255,255,.09)}
 [data-theme="dark"] .lnav-panel .lnav-viewall a{color:#AEBCFF!important}
 [data-theme="dark"] .lnav-top,[data-theme="dark"] .lnav-panel a{border-bottom-color:rgba(255,255,255,.06)}
+.lnav>.liq-theme-btn{flex-shrink:0;width:36px;height:36px;border-radius:9px;border:1px solid #CBD5E1;background:#fff;color:#0F172A;font-size:15px;line-height:1;cursor:pointer;display:inline-grid;place-items:center;padding:0}
+.lnav>.liq-theme-btn:hover{border-color:#3A55FF}
+[data-theme="dark"] .lnav>.liq-theme-btn{background:rgba(255,255,255,.07);color:#E7ECFB;border-color:rgba(255,255,255,.22)}
+@media(max-width:1100px){.lnav-menu{order:10}}
 </style>
 <nav class="lnav" id="lnav">
 <a href="/" class="lnav-logo" aria-label="LogicstIQ — Home">
@@ -201,6 +205,7 @@ footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
     <a class="lnav-top" href="/about.html">About</a>
     <a class="lnav-top" href="/contact.html">Contact</a>
   </div>
+  <button id="liqTheme" class="liq-theme-btn" type="button" aria-label="Toggle light or dark mode" title="Toggle light / dark">🌙</button>
 </nav>
 <script id="lnav-js">
 (function(){var nav=document.getElementById('lnav');if(!nav)return;
@@ -429,10 +434,10 @@ style="color:#9B6BFF;text-decoration:none;font-weight:600">contactus@logicstiq.c
 function lbl(){var b=document.getElementById('liqTheme');if(b)b.textContent=r.getAttribute('data-theme')==='dark'?'☀️':'🌙';}
 function set(t){r.setAttribute('data-theme',t);lbl();try{localStorage.setItem('liq-theme',t)}catch(e){}}
 try{var sv=localStorage.getItem('liq-theme');if(sv)r.setAttribute('data-theme',sv);}catch(e){}
-var btn=document.createElement('button');btn.id='liqTheme';btn.type='button';btn.className='liq-theme-btn';
+var btn=document.getElementById('liqTheme')||document.createElement('button');btn.id='liqTheme';btn.type='button';btn.className='liq-theme-btn';
 btn.setAttribute('aria-label','Toggle light or dark mode');btn.title='Toggle light / dark';btn.textContent='🌙';
 btn.addEventListener('click',function(){set(r.getAttribute('data-theme')==='dark'?'light':'dark');});
-function place(){var nav=document.querySelector('.nav');
+function place(){if(btn.parentNode){lbl();return;}var nav=document.querySelector('.nav');
  if(nav){var cta=nav.querySelector('.nav-cta');if(cta&&cta.parentNode){cta.parentNode.insertBefore(btn,cta);}
    else{var l=nav.querySelector('.nav-links');(l||nav).appendChild(btn);}}
  else{btn.classList.add('liq-theme-float');document.body.appendChild(btn);}lbl();}

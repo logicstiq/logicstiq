@@ -252,6 +252,10 @@
 [data-theme="dark"] .lnav-viewall{border-top-color:rgba(255,255,255,.09)}
 [data-theme="dark"] .lnav-panel .lnav-viewall a{color:#AEBCFF!important}
 [data-theme="dark"] .lnav-top,[data-theme="dark"] .lnav-panel a{border-bottom-color:rgba(255,255,255,.06)}
+.lnav>.liq-theme-btn{flex-shrink:0;width:36px;height:36px;border-radius:9px;border:1px solid #CBD5E1;background:#fff;color:#0F172A;font-size:15px;line-height:1;cursor:pointer;display:inline-grid;place-items:center;padding:0}
+.lnav>.liq-theme-btn:hover{border-color:#3A55FF}
+[data-theme="dark"] .lnav>.liq-theme-btn{background:rgba(255,255,255,.07);color:#E7ECFB;border-color:rgba(255,255,255,.22)}
+@media(max-width:1100px){.lnav-menu{order:10}}
 </style>
 <nav class="lnav" id="lnav">
 <a href="/" class="lnav-logo" aria-label="LogicstIQ — Home">
@@ -285,6 +289,7 @@
     <a class="lnav-top" href="/about.html">About</a>
     <a class="lnav-top" href="/contact.html">Contact</a>
   </div>
+  <button id="liqTheme" class="liq-theme-btn" type="button" aria-label="Toggle light or dark mode" title="Toggle light / dark">🌙</button>
 </nav>
 <script id="lnav-js">
 (function(){var nav=document.getElementById('lnav');if(!nav)return;
