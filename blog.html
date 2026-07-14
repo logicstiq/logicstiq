@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supply Chain Blog — Guides, Formulas & Worked Examples | LogicstIQ</title>
+<meta name="description" content="Supply chain guides for Indian sellers: EOQ, safety stock, demand planning for Amazon & Flipkart, landed cost, GST on freight, OTIF, inventory turnover and ABC analysis.">
+<meta name="keywords" content="supply chain calculator, logistics calculator, EOQ calculator, reorder point calculator, safety stock calculator, OTIF calculator, fill rate calculator, demand forecasting tool, landed cost calculator, freight cost calculator, inventory turnover, warehouse utilization, ABC analysis, COGS calculator, lead time calculator, supplier scorecard, carbon footprint logistics, GST calculator supply chain, LogicstIQ, COGS calculator India, break even calculator India, gross margin calculator India, MOQ
+calculator, dead stock calculator, volumetric weight calculator India, cash conversion cycle calculator, days inventory outstanding calculator, pick and pack cost calculator, shipping cost per unit calculator, supply chain calculator free India">
+<meta name="author" content="Amit Kumar &amp; Sachin Sirwani — LogicstIQ.com">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="language" content="English">
+<meta name="revisit-after" content="7 days">
+<meta name="category" content="Supply Chain, Logistics, Inventory Management, E-Commerce">
+<link rel="canonical" href="https://www.logicstiq.com/blog.html"/>
+<meta name="google-site-verification" content="FHSe095yxAfCfD-6wIiL3z1NJthHHyxDFvenqPU14WQ">
+<meta property="og:title" content="AI Demand Planner for India – Flipkart, Meesho, Blinkit &amp; Zepto | LogicstIQ">
+<meta property="og:description" content="Free AI Demand Planner built for Indian e-commerce &amp; quick commerce — festive-sale forecasting for Big Billion Days, Great Indian Festival, Diwali &amp; Myntra EORS. Works with Flipkart, Myntra, Meesho, Blinkit, Zepto &amp; more.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.logicstiq.com/"/>
+<meta property="og:image" content="https://www.logicstiq.com/og-image.png">
+<meta property="og:locale" content="en_IN">
+<meta property="og:site_name" content="LogicstIQ.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Demand Planner for India – Flipkart, Meesho, Blinkit &amp; Zepto">
+<meta name="twitter:description" content="Free India AI Demand Planner — festive-sale forecasting for Flipkart, Meesho, Blinkit &amp; Zepto. No login.">
+<meta name="twitter:image" content="https://www.logicstiq.com/og-image.png">
+<meta name="twitter:creator" content="@LogicstIQ">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&family=Wix+Madefor+Display:wght@600;700;800&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<!-- Google AdSense — activate after approval: replace ca-pub-XXXXXXXXXXXXXXXX with your Publisher ID and remove the comment tags -->
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"LogicstIQ","alternateName":["LogicstIQ.com","Logicstiq","LogicstIQ Supply Chain","Free Supply Chain Calculator","LogicstIQ AI Planner"],"url":"https://www.logicstiq.com"
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"LogicstIQ","url":"https://www.logicstiq.com","logo":"https://www.logicstiq.com/favicon.svg","founders":[{"@type":"Person","name":"Amit Kumar","sameAs":"https://www.linkedin.com/in/amiitkumar"},{"@type":"Person","name":"Sachin Sirwani","sameAs":"https://www.linkedin.com/in/sachin-s-0b1179162"}],"contactPoint":{"@type":"ContactPoint","email":"privacy@logicstiq.com","contactType":"customer support"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is LogicstIQ completely free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes — all 31 calculators and the AI Demand Planner are completely free. No login, no signup, no credit card, no usage limits. Free forever."}},{"@type":"Question","name":"Does LogicstIQ store my inventory data?","acceptedAnswer":{"@type":"Answer","text":"Never. Your file is processed on our secure server and immediately discarded after your results are generated. Zero data is stored, logged, or shared. Close the tab and it is permanently gone."}},{"@type":"Question","name":"What file formats are supported?","acceptedAnswer":{"@type":"Answer","text":"Excel (.xlsx and .xls), CSV, TSV, and TXT files up to 25MB. Real Excel files are read natively using SheetJS — no conversion to CSV needed. Supports exports from Flipkart, Myntra, Meesho, Amazon.in, Shopify, Blinkit, Zepto and any other CSV or Excel export."}},{"@type":"Question","name":"Who is LogicstIQ for?","acceptedAnswer":{"@type":"Answer","text":"D2C brands, marketplace sellers, manufacturers, distributors, 3PL companies, quick commerce suppliers, import/export businesses, and supply chain professionals globally."}},{"@type":"Question","name":"How accurate are the AI forecasts?","acceptedAnswer":{"@type":"Answer","text":"The planner is built for India: forecasts apply a baked-in festive-sale calendar (Big Billion Days, Great Indian Festival, Diwali, Navratri, Myntra EORS, Republic and Independence Day sales) with category-specific demand uplift, plus a quick-commerce mode for Blinkit, Zepto and Instamart. Accuracy still depends on the quality of your input data, and all results are for planning reference only — always validate with your ERP or WMS before placing purchase orders."}}]}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F4F7FF;--white:#FFFFFF;--border:#E2E8F0;--border2:#CBD5E1;
+  --b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b400:#7A92FF;
+  --b500:#5069FF;--b600:#3A55FF;--b700:#2A40D6;--b800:#2436B5;--b900:#1C2C73;
+  --cyan:#770BFF;--green:#059669;--glight:#D1FAE5;
+  --amber:#D97706;--alight:#FEF3C7;--red:#DC2626;--rlight:#FEE2E2;
+  --purple:#7C3AED;--slate:#64748B;
+  --text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8;
+}
+body{font-family:'Wix Madefor Text','Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;transition:background .3s,color .3s}
+/* ── PREVIEW BAR ── */
+.preview-bar{display:none;background:linear-gradient(90deg,#3A55FF,#770BFF);padding:10px 20px;text-align:center;font-size:12px;font-weight:800;color:#fff;letter-spacing:.04em;position:sticky;top:0;z-index:999}
+.preview-bar span{display:none;opacity:.75;font-weight:500;margin-left:8px}
+/* ── NAVIGATION ── */
+.nav{background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.nav-logo{text-decoration:none;display:flex;align-items:center;line-height:1}
+.nav-logo span{background:linear-gradient(135deg,#3A55FF,#770BFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:13px;font-weight:600;color:var(--text3);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--b600)}
+.nav-cta{background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;border:none;border-radius:9px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}
+.nav-burger{display:none;background:var(--white);border:1px solid var(--border2);border-radius:9px;width:38px;height:38px;padding:0;cursor:pointer;color:var(--text);align-items:center;justify-content:center;flex:0 0 auto}
+.nav-burger svg{width:22px;height:22px}
+.nav-burger:hover{border-color:#3A55FF;color:#3A55FF}
+/* ── HERO — dark navy ── */
+.hero{background:linear-gradient(135deg,#0F172A 0%,#1C2C73 45%,#2A40D6 100%);padding:72px 32px 60px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='%23ffffff' fill-opacity='0.05'/%3E%3C/svg%3E");pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:6px 16px;font-size:11px;font-weight:800;color:#BFDBFE;text-transform:uppercase;letter-spacing:.09em;margin-bottom:18px}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:#34D399;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+.hero h1{font-size:clamp(30px,5vw,58px);font-weight:900;color:#fff;line-height:1.08;letter-spacing:-.035em;margin-bottom:14px;font-family:'Plus Jakarta Sans',sans-serif;position:relative}
+.hero h1 span{background:linear-gradient(135deg,#AEBCFF,#C4B5FD);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(14px,2vw,18px);color:rgba(255,255,255,.82);max-width:580px;margin:0 auto 28px;line-height:1.7;position:relative}
+/* Pain pills */
+.liq-pain-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px;position:relative}
+.liq-pain-pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 14px;font-size:12px;font-weight:600;color:rgba(255,255,255,.85)}
+.liq-pain-pill em{color:#FCA5A5;font-style:normal;font-weight:800}
+/* Logo strip */
+.logos-wrap{margin-bottom:24px;position:relative}
+.logos-label{font-size:10px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+.liq-logo-row{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.liq-logo-pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:7px;padding:4px 12px;font-size:10px;font-weight:700;color:rgba(255,255,255,.88)}
+/* Trust bar */
+.liq-trust-bar{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;font-size:12px;color:rgba(255,255,255,.88);font-weight:600;position:relative}
+.liq-trust-bar .tick{color:#34D399;margin-right:4px}
+/* Stat boxes */
+.stat-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:24px 0 0;position:relative}
+.stat-box{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:16px 24px;text-align:center;min-width:110px}
+.stat-num{font-size:26px;font-weight:900;line-height:1;margin-bottom:4px}
+.stat-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.6)}
+.made-india{display:inline-flex;align-items:center;gap:6px;background:rgba(255,127,80,.15);border:1px solid rgba(255,127,80,.3);border-radius:999px;padding:4px 12px;font-size:10px;font-weight:800;color:#FED7AA;margin-top:12px;position:relative}
+/* ── ADSENSE SLOT ── */
+.ad-slot{margin:16px 32px;border:1px dashed #BFDBFE;border-radius:10px;padding:12px 20px;display:flex;align-items:center;gap:12px;background:#EFF6FF}
+.ad-label{font-size:9px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em;flex-shrink:0}
+.ad-bar{flex:1;height:36px;background:linear-gradient(90deg,#DBEAFE,#BAE6FD);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--text4);font-weight:600}
+/* ── CALCULATORS ── */
+.section{padding:72px 32px}
+.section-title,.section-sub,.section-eyebrow{max-width:1200px;margin-left:auto;margin-right:auto}
+.section.center .section-title,.section.center .section-sub{margin-left:auto;margin-right:auto}
+.section-eyebrow{display:inline-flex;align-items:center;gap:6px;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:999px;padding:5px 14px;margin-bottom:14px;font-size:10px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em}
+.section-title{font-size:clamp(22px,3.5vw,34px);font-weight:900;letter-spacing:-.025em;margin-bottom:8px;color:var(--text)}
+.section-sub{font-size:14px;color:var(--text3);line-height:1.65;max-width:560px;margin:0 auto 28px}
+.section.center{text-align:center}
+.calc-cat-lbl{font-size:11px;font-weight:800;color:var(--b600);text-transform:uppercase;letter-spacing:.1em;margin:40px auto 20px;display:flex;align-items:center;gap:14px;max-width:1200px;text-align:left}
+.calc-cat-lbl::after{content:'';flex:1;height:1px;background:var(--border)}
+.calc-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin-bottom:24px;max-width:1200px;margin-left:auto;margin-right:auto}
+.calc-grid>a{flex:0 1 calc(25% - 18px);min-width:220px;max-width:270px}
+.calc-grid.cg-2>a{flex:0 1 calc(50% - 12px);max-width:380px}
+.calc-grid.cg-3>a{flex:0 1 calc(33.333% - 16px);max-width:290px}
+@media(max-width:900px){.calc-grid>a,.calc-grid.cg-2>a,.calc-grid.cg-3>a{flex:0 1 calc(50% - 12px);max-width:none}}
+@media(max-width:560px){.calc-grid>a,.calc-grid.cg-2>a,.calc-grid.cg-3>a{flex:0 1 100%}}
+.calc-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:24px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(30,58,138,.06);height:100%;text-align:left}
+.calc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--b600),var(--cyan));transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.calc-card:hover{border-color:#BFDBFE;transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,58,138,.09)}
+.calc-card:hover::before{transform:scaleX(1)}
+.calc-ico{font-size:26px;margin-bottom:8px}
+.calc-tag{display:inline-flex;align-items:center;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:5px;padding:2px 8px;font-size:9px;font-weight:800;color:var(--b700);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
+.calc-name{font-size:13px;font-weight:800;color:var(--text);margin-bottom:4px;line-height:1.3}
+.calc-desc{font-size:11px;color:var(--text3);line-height:1.55}
+/* ── AI DEMAND PLANNER ── */
+.planner-section{margin:0 0 0;background:linear-gradient(135deg,#0F172A 0%,#1C2C73 45%,#2A40D6 100%);padding:60px 32px 48px;text-align:center}
+.planner-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:5px 14px;font-size:10px;font-weight:800;color:#BFDBFE;text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px}
+.planner-badge .dot{width:6px;height:6px;border-radius:50%;background:#34D399;animation:pulse 2s infinite}
+.plan-title{font-size:clamp(22px,3.5vw,40px);font-weight:900;color:#fff;letter-spacing:-.025em;margin-bottom:10px;font-family:'Plus Jakarta Sans',sans-serif}
+.plan-title span{color:#AEBCFF}
+.plan-sub{font-size:14px;color:#BFDBFE;line-height:1.7;margin-bottom:22px;max-width:580px;margin-left:auto;margin-right:auto}
+/* Channel pills */
+.ch-rows{display:flex;flex-direction:column;gap:7px;align-items:center;margin-bottom:28px}
+.ch-row{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;align-items:center}
+.ch-lbl{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);padding-right:4px}
+.ch-pill{padding:3px 10px;border-radius:999px;font-size:9px;font-weight:700;border:1px solid}
+.ch-ecom{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.88)}
+.ch-qcom{background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.25);color:#A7F3D0}
+.ch-erp{background:rgba(147,197,253,.1);border-color:rgba(147,197,253,.25);color:#BFDBFE}
+/* Planner mockup */
+.planner-mock{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:22px;max-width:780px;margin:0 auto;text-align:left}
+.mock-steps{display:flex;gap:8px;margin-bottom:16px;overflow-x:auto}
+.mock-step{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 14px;font-size:11px;font-weight:700;color:rgba(255,255,255,.8);white-space:nowrap;flex-shrink:0}
+.mock-step.active{background:rgba(37,99,235,.5);border-color:rgba(96,165,250,.5);color:#fff}
+.mock-src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:7px;margin-bottom:16px}
+.mock-src{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:8px 6px;text-align:center}
+.mock-src.sel{border-color:#7A92FF;background:rgba(96,165,250,.15)}
+.mock-src-ico{font-size:18px;margin-bottom:3px}
+.mock-src-name{font-size:9px;font-weight:700;color:rgba(255,255,255,.82);line-height:1.3}
+.mock-dz{border:2px dashed rgba(255,255,255,.22);border-radius:12px;padding:24px 16px;text-align:center;background:rgba(255,255,255,.05);margin-bottom:14px}
+.mock-dz-ico{font-size:28px;margin-bottom:7px}
+.mock-dz-t{font-size:13px;font-weight:700;color:#fff;margin-bottom:4px}
+.mock-dz-s{font-size:11px;color:rgba(255,255,255,.7)}
+.mock-btn{background:linear-gradient(135deg,#3A55FF,#2A40D6);color:#fff;border:none;border-radius:11px;padding:12px 28px;font-size:14px;font-weight:800;font-family:inherit;cursor:pointer;width:100%;box-shadow:0 4px 20px rgba(37,99,235,.4)}
+.liq-disclaimer-bar{background:#FEF9C3;border:1px solid #FDE68A;border-radius:9px;padding:9px 14px;margin-top:10px;font-size:11px;color:#92400E;line-height:1.6;font-weight:500;display:flex;align-items:flex-start;gap:7px;text-align:left}
+/* Results KPIs */
+.mock-results{margin-top:20px}
+.mock-results-lbl{font-size:10px;font-weight:800;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.09em;text-align:center;margin-bottom:14px}
+.mock-kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:9px;margin-bottom:14px}
+.mock-kpi{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);border-radius:11px;padding:12px 10px;position:relative;overflow:hidden}
+.mock-kpi-accent{position:absolute;top:0;left:0;right:0;height:3px;border-radius:11px 11px 0 0}
+.mock-kpi-lbl{font-size:9px;color:rgba(255,255,255,.6);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.mock-kpi-val{font-size:18px;font-weight:900;line-height:1}
+.mock-kpi-sub{font-size:9px;color:rgba(255,255,255,.5);margin-top:3px}
+/* Tabs */
+.mock-tabs{display:flex;gap:3px;background:rgba(0,0,0,.35);border-radius:9px;padding:4px;overflow-x:auto;margin-bottom:12px;scrollbar-width:none}
+.mock-tabs::-webkit-scrollbar{display:none}
+.mock-tab{padding:6px 12px;border-radius:7px;font-size:10px;font-weight:600;color:rgba(255,255,255,.65);white-space:nowrap;cursor:pointer}
+.mock-tab.act{background:rgba(255,255,255,.14);color:#fff;font-weight:700}
+/* Health bar */
+.mock-hb{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:11px;padding:14px;margin-bottom:12px}
+.mock-hb-t{font-size:10px;font-weight:700;color:rgba(255,255,255,.82);margin-bottom:10px}
+.mock-hb-bar{display:flex;height:10px;border-radius:5px;overflow:hidden;gap:2px;margin-bottom:10px}
+.mock-hb-seg{border-radius:3px;height:100%}
+.mock-hb-legend{display:flex;flex-wrap:wrap;gap:10px}
+.mock-hb-leg{display:flex;align-items:center;gap:4px;font-size:9px;color:rgba(255,255,255,.75);font-weight:600}
+.mock-hb-dot{width:8px;height:8px;border-radius:2px}
+/* Mini table */
+.mock-tbl-wrap{background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+.mock-tbl{width:100%;border-collapse:collapse;font-size:10px}
+.mock-tbl th{background:rgba(0,0,0,.25);padding:8px 10px;text-align:left;font-size:9px;font-weight:800;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.06em}
+.mock-tbl td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.82)}
+.mock-tbl tr:last-child td{border-bottom:none}
+.pill-urg{display:inline-flex;padding:2px 7px;border-radius:999px;font-size:9px;font-weight:700;background:#FEE2E2;color:#B91C1C}
+.pill-high{display:inline-flex;padding:2px 7px;border-radius:999px;font-size:9px;font-weight:700;background:#FEF3C7;color:#B45309}
+.pill-ok{display:inline-flex;padding:2px 7px;border-radius:999px;font-size:9px;font-weight:700;background:#DCFCE7;color:#15803D}
+/* ── TESTIMONIALS ── */
+.testi-section{padding:56px 32px;background:var(--white);border-top:1px solid var(--border)}
+.liq-testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.liq-testi-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:24px;transition:all .2s;position:relative;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.liq-testi-card:hover{border-color:#BFDBFE;box-shadow:0 6px 20px rgba(30,58,138,.08);transform:translateY(-2px)}
+.liq-testi-stars{color:#F59E0B;font-size:14px;margin-bottom:12px;letter-spacing:2px}
+.liq-testi-text{font-size:13px;color:var(--text2);line-height:1.75;margin-bottom:16px;font-style:italic}
+.liq-testi-text::before{content:'"';font-size:32px;color:var(--b200);line-height:0;vertical-align:-.4em;margin-right:4px}
+.liq-testi-author{font-size:13px;font-weight:800;color:var(--text)}
+.liq-testi-role{font-size:11px;color:var(--text4);margin-top:2px}
+.liq-testi-badge{position:absolute;top:16px;right:16px;font-size:10px;font-weight:700;background:var(--b50);border:1px solid var(--b100);color:var(--b600);border-radius:5px;padding:2px 8px}
+/* ── DATA SAFETY ── */
+.safety-section{background:linear-gradient(135deg,#ECFDF5,#F0FDF4);border:1.5px solid #A7F3D0;border-radius:20px;padding:44px 40px;margin:32px auto;max-width:1200px;display:flex;gap:36px;align-items:flex-start;flex-wrap:wrap;box-shadow:0 4px 24px rgba(5,150,105,.07)}
+.safety-shield{width:76px;height:76px;background:linear-gradient(135deg,#059669,#047857);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:36px;box-shadow:0 8px 28px rgba(5,150,105,.25);flex-shrink:0}
+.safety-content{flex:1;min-width:260px}
+.safety-tag{display:inline-flex;align-items:center;gap:6px;background:#D1FAE5;border:1px solid #6EE7B7;border-radius:999px;padding:4px 14px;font-size:10px;font-weight:800;color:#065F46;text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px}
+.safety-title{font-size:22px;font-weight:900;color:#064E3B;letter-spacing:-.02em;margin-bottom:8px}
+.safety-sub{font-size:13px;color:#065F46;line-height:1.7;margin-bottom:20px;max-width:600px}
+.safety-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:768px){.safety-grid{grid-template-columns:1fr}}
+.safety-card{background:#fff;border:1px solid #A7F3D0;border-radius:13px;padding:15px 17px;display:flex;align-items:flex-start;gap:11px;transition:box-shadow .2s}
+.safety-card:hover{box-shadow:0 4px 14px rgba(5,150,105,.1)}
+.safety-card-ico{font-size:21px;flex-shrink:0;margin-top:1px}
+.safety-card-t{font-size:12px;font-weight:800;color:#065F46;margin-bottom:3px}
+.safety-card-b{font-size:11px;color:#047857;line-height:1.55}
+/* ── BLOG SECTION ── */
+.blog-section{padding:52px 32px;background:var(--white);border-top:1px solid var(--border)}
+.blog-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;max-width:1120px;margin:0 auto}
+.blog-grid>a{flex:0 1 calc(33.333% - 16px);min-width:280px;max-width:350px}
+@media(max-width:900px){.blog-grid>a{flex:0 1 calc(50% - 12px);max-width:none}}
+@media(max-width:560px){.blog-grid>a{flex:0 1 100%}}
+.blog-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:24px;transition:all .2s;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(30,58,138,.06);text-align:left;height:100%}
+.blog-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--b600),var(--cyan));transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.blog-card:hover{border-color:#BFDBFE;box-shadow:0 8px 24px rgba(30,58,138,.09);transform:translateY(-2px)}
+.blog-card:hover::before{transform:scaleX(1)}
+.blog-cat{display:inline-flex;align-items:center;gap:5px;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:999px;padding:3px 11px;font-size:10px;font-weight:800;color:#2A40D6;margin-bottom:12px;text-transform:uppercase;letter-spacing:.07em}
+.blog-card-t{font-size:15px;font-weight:800;color:var(--text);line-height:1.35;margin-bottom:8px;letter-spacing:-.01em}
+.blog-card-d{font-size:12px;color:var(--text3);line-height:1.7;margin-bottom:12px}
+.blog-meta{font-size:11px;color:var(--text4);font-weight:600;margin-bottom:8px}
+.blog-read{display:inline-flex;align-items:center;gap:4px;color:var(--b600);font-size:12px;font-weight:800}
+/* ── FAQ ── */
+.faq-section{padding:52px 32px;background:var(--bg);border-top:1px solid var(--border)}
+.faq-list{max-width:720px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.faq-q{padding:17px 20px;font-size:14px;font-weight:700;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--white);line-height:1.4}
+.faq-q:hover{background:var(--b50)}
+.faq-q .arr{color:var(--b600);font-size:16px;transition:transform .2s;flex-shrink:0;margin-left:10px}
+.faq-a{padding:15px 20px;font-size:13px;color:var(--text3);line-height:1.75;background:#F8FAFF;border-top:1px solid var(--border);display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .arr{transform:rotate(180deg)}
+/* ── ADSENSE FOOTER SLOT ── */
+/* ── FOOTER ── */
+footer{background:#0F172A;padding:52px 32px 28px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;max-width:1100px;margin:0 auto 36px}
+.footer-brand p{font-size:13px;color:#94A3B8;line-height:1.75;margin:10px 0 16px}
+.footer-logo{display:flex;align-items:center}
+.footer-tagline{font-size:11px;color:#475569;margin-top:3px}
+.footer-socials{display:flex;gap:8px;margin-top:4px}
+.social-btn{width:34px;height:34px;border-radius:9px;background:#1E293B;border:1px solid #334155;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#94A3B8;cursor:pointer;text-decoration:none;transition:all .15s}
+.social-btn:hover{background:#3A55FF;border-color:#3A55FF;color:#fff}
+.footer-col-t{font-size:11px;font-weight:800;color:#F1F5F9;text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px}
+.footer-links{display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:13px;color:#94A3B8;text-decoration:none;transition:color .15s}
+.footer-links a:hover{color:#fff}
+.footer-founder{font-size:13px;color:#94A3B8;line-height:1.9}
+.footer-founder a{color:#BFDBFE;text-decoration:none;font-weight:600}
+.footer-founder a:hover{color:#fff}
+.footer-founder-role{font-size:11px;color:#475569}
+.footer-bottom{border-top:1px solid #1E293B;padding-top:20px;text-align:center;font-size:11px;color:#64748B;line-height:1.9;max-width:1100px;margin:0 auto}
+.footer-bottom a{color:#94A3B8;text-decoration:none}
+.footer-bottom a:hover{color:#fff}
+.footer-affiliate-note{border-top:1px solid #1E293B;padding:13px 0;text-align:center;font-size:11px;color:#64748B;line-height:1.7;max-width:1100px;margin:0 auto}
+@media(max-width:768px){.nav-tagline{display:none!important}}
+@media(max-width:768px){
+  .hero{padding:52px 20px 44px}
+  .stat-row{gap:8px}
+  .stat-box{padding:12px 16px;min-width:90px}
+  .section{padding:36px 16px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .safety-section{padding:28px 20px;margin:20px 16px}
+  .ad-slot{margin:12px 16px}
+  .blog-section,.testi-section{padding:36px 16px}
+  .faq-section{padding:36px 16px}
+}
+/* ══ PLANNER OVERRIDES & ADDITIONS ══ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&display=swap');
+/* ── ARCTIC WHITE TOKENS ── */
+:root{
+  --bg:      #F4F7FF;
+  --surface: #FFFFFF;
+  --card:    #FFFFFF;
+  --card2:   #F0F4FF;
+  --border:  #E2E8F0;
+  --border2: #C8D4EC;
+  --b50:     #EFF6FF;
+  --b100:    #DBEAFE;
+  --b200:    #BFDBFE;
+  --b500:    #5069FF;
+  --b600:    #3A55FF;
+  --b700:    #2A40D6;
+  --b800:    #2436B5;
+  --b900:    #1C2C73;
+  --green:   #059669;
+  --glight:  #D1FAE5;
+  --red:     #DC2626;
+  --rlight:  #FEE2E2;
+  --amber:   #D97706;
+  --alight:  #FEF3C7;
+  --purple:  #7C3AED;
+  --plight:  #EDE9FE;
+  --cyan:    #770BFF;
+  --slate:   #64748B;
+  --text:    #0F172A;
+  --text2:   #1E293B;
+  --text3:   #475569;
+  --text4:   #94A3B8;
+  --grad:    linear-gradient(135deg,#3A55FF,#770BFF);
+}
+#liq-planner{font-family:'Wix Madefor Text','Inter',sans-serif;background:var(--bg);padding:64px 24px;}
+#liq-planner *{box-sizing:border-box;}
+  /* ■ LAYOUT SYSTEM ■ */
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.narrow{max-width:720px;margin:0 auto;padding:0 24px}
+section,.section{padding:96px 0}
+@media(max-width:768px){section,.section{padding:56px 0}}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+@media(max-width:900px){.grid-4,.grid-3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}}
+.cat-label{display:flex;align-items:center;gap:14px;font-size:12px;
+font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#475569;margin:40px 0 20px}
+.cat-label::after{content:'';flex:1;height:1px;background:#E2E8F0}
+
+/* ── HERO — dark navy gradient (contrast section) ── */
+.liq-hero{
+  text-align:center;margin-bottom:48px;
+  background:linear-gradient(135deg,#0F172A 0%,#1C2C73 45%,#2A40D6 100%);
+  border-radius:24px;padding:60px 36px;position:relative;overflow:hidden;
+  box-shadow:0 20px 60px rgba(30,58,138,.25);
+}
+.liq-hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='%23ffffff' fill-opacity='0.06'/%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.liq-hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  border-radius:999px;padding:6px 16px;margin-bottom:20px;
+  font-size:11px;font-weight:700;color:#BFDBFE;text-transform:uppercase;letter-spacing:.09em;
+}
+.liq-hero-dot{width:6px;height:6px;border-radius:50%;background:#34D399;animation:liq-pulse 2s infinite;}
+@keyframes liq-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
+.liq-hero h2{
+  font-size:clamp(28px,4.5vw,50px);font-weight:900;color:#fff;
+  line-height:1.1;margin-bottom:12px;letter-spacing:-.03em;
+  font-family:'Plus Jakarta Sans',sans-serif;
+}
+.liq-hero h2 span{color:#AEBCFF;}
+.liq-hero-sub{color:#BFDBFE;font-size:15px;max-width:600px;margin:0 auto 28px;line-height:1.7;}
+/* channel pills */
+.liq-ch-rows{display:flex;flex-direction:column;gap:8px;align-items:center;}
+.liq-ch-row{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;}
+.liq-ch-tag{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.35);padding-right:4px;}
+.liq-ch-pill{padding:4px 11px;border-radius:999px;font-size:10px;font-weight:700;border:1px solid;}
+.liq-ch-pill.ecom{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:#EEF2FF;}
+.liq-ch-pill.qcom{background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.25);color:#A7F3D0;}
+.liq-ch-pill.erp{background:rgba(147,197,253,.12);border-color:rgba(147,197,253,.25);color:#BFDBFE;}
+/* ── FORM CARD — white ── */
+.liq-form-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:20px;padding:32px;margin-bottom:24px;
+  box-shadow:0 1px 3px rgba(0,0,0,.04),0 8px 24px rgba(30,58,138,.06);
+}
+.liq-form-lbl{
+  font-size:11px;font-weight:800;color:var(--b600);
+  text-transform:uppercase;letter-spacing:.09em;
+  margin-bottom:16px;display:flex;align-items:center;gap:8px;
+}
+.liq-form-lbl::before{content:'';width:3px;height:14px;background:var(--b600);border-radius:2px;}
+/* ── CONFIG ── */
+.liq-config-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:24px;}
+.liq-field{display:flex;flex-direction:column;gap:5px;}
+.liq-label{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;}
+.liq-select{
+  background:var(--card);border:1.5px solid var(--border2);
+  border-radius:10px;color:var(--text);padding:10px 13px;
+  font-size:13px;font-family:inherit;outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.liq-select:focus{border-color:var(--b500);box-shadow:0 0 0 3px rgba(59,130,246,.1);}
+/* ── SOURCE GRID ── */
+.liq-source-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin-bottom:20px;}
+.liq-source-btn{
+  padding:10px 8px;border-radius:10px;border:1.5px solid var(--border);
+  background:var(--card);cursor:pointer;transition:all .15s;text-align:center;
+  font-family:inherit;
+}
+.liq-source-btn:hover{border-color:var(--b400);background:var(--b50);}
+.liq-source-btn.liq-selected{border-color:var(--b600);background:var(--b50);box-shadow:0 0 0 3px rgba(37,99,235,.08);}
+.liq-source-ico{font-size:20px;margin-bottom:4px;}
+.liq-source-name{font-size:10px;font-weight:700;color:var(--text2);line-height:1.3;}
+.liq-source-type{font-size:9px;color:var(--text4);margin-top:2px;}
+/* ── CHANNEL PICKER ── */
+.liq-ch-picker{
+  display:flex;flex-wrap:wrap;gap:6px;padding:14px;
+  background:var(--b50);border:1.5px solid var(--b100);
+  border-radius:12px;max-height:116px;overflow-y:auto;scrollbar-width:thin;
+}
+.liq-ch-toggle{padding:4px 11px;border-radius:999px;font-size:11px;font-weight:600;cursor:pointer;border:1.5px solid;transition:all .15s;user-select:none;}
+.liq-ch-toggle.ecom{border-color:var(--b200);color:var(--b700);background:var(--card);}
+.liq-ch-toggle.ecom.liq-on{background:var(--b700);border-color:var(--b700);color:#fff;}
+.liq-ch-toggle.qcom{border-color:#A7F3D0;color:#065F46;background:var(--card);}
+.liq-ch-toggle.qcom.liq-on{background:#059669;border-color:#059669;color:#fff;}
+/* ── DROP ZONE ── */
+.liq-dropzone{
+  border:2px dashed var(--b200);border-radius:14px;
+  padding:36px 20px;text-align:center;cursor:pointer;
+  transition:all .2s;background:var(--b50);position:relative;margin-bottom:10px;
+}
+.liq-dropzone:hover,.liq-dropzone.liq-drag{
+  border-color:var(--b500);background:#EBF4FF;
+  box-shadow:0 0 0 4px rgba(37,99,235,.07);
+}
+.liq-dz-icon{font-size:36px;margin-bottom:10px;}
+.liq-dz-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.liq-dz-sub{font-size:12px;color:var(--text3);}
+.liq-dz-file{
+  margin-top:12px;display:inline-flex;align-items:center;gap:8px;
+  background:var(--b100);border:1px solid var(--b200);
+  border-radius:8px;padding:7px 14px;font-size:13px;color:var(--b700);font-weight:600;
+}
+.liq-file-remove{cursor:pointer;color:var(--red);margin-left:4px;font-size:15px;}
+.liq-file-hint{font-size:11px;color:var(--text4);margin-top:6px;text-align:center;line-height:1.6;}
+.liq-sample-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:6px;}
+.liq-sample-btn{
+  background:var(--card);border:1.5px solid var(--border2);border-radius:8px;
+  padding:6px 14px;color:var(--b600);font-size:11px;font-family:inherit;
+  font-weight:700;cursor:pointer;transition:all .2s;
+}
+.liq-sample-btn:hover{border-color:var(--b500);background:var(--b50);}
+/* ── COLUMN PREVIEW ── */
+.liq-col-preview{
+  background:var(--b50);border:1.5px solid var(--b100);
+  border-radius:12px;padding:14px 16px;margin-bottom:18px;display:none;
+}
+.liq-col-preview-title{font-size:10px;font-weight:800;color:var(--b700);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;}
+.liq-col-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.liq-col-tag{padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700;}
+.liq-col-tag.found{background:#DCFCE7;color:#15803D;}
+.liq-col-tag.miss{background:#FEF3C7;color:#B45309;}
+/* ── BUTTONS ── */
+.liq-cta{display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap;}
+.liq-btn{border:none;border-radius:12px;padding:13px 30px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:8px;}
+.liq-btn-primary{background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;box-shadow:0 4px 14px rgba(37,99,235,.3);}
+.liq-btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(37,99,235,.4);}
+.liq-btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
+.liq-btn-ghost{background:var(--card);border:1.5px solid var(--border2);color:var(--text2);}
+.liq-btn-ghost:hover{border-color:var(--b400);color:var(--b600);background:var(--b50);}
+.liq-btn-sm{padding:8px 16px;font-size:12px;border-radius:8px;}
+/* ── SPINNER ── */
+.liq-spinner{display:inline-block;width:16px;height:16px;border:2.5px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:liq-spin .7s linear infinite;}
+@keyframes liq-spin{to{transform:rotate(360deg)}}
+/* ── PROGRESS ── */
+.liq-progress{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:18px 22px;margin:20px 0;
+  box-shadow:0 1px 4px rgba(0,0,0,.04);
+}
+.liq-prog-step{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);}
+.liq-prog-step:last-child{border-bottom:none;}
+.liq-prog-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.liq-prog-dot.done{background:var(--green);}
+.liq-prog-dot.active{background:var(--b500);animation:liq-pulse 1s infinite;}
+.liq-prog-dot.wait{background:var(--border2);}
+.liq-prog-text{font-size:12px;color:var(--text4);}
+.liq-prog-text.done{color:var(--green);font-weight:600;}
+.liq-prog-text.active{color:var(--text);font-weight:600;}
+/* ── ERROR ── */
+.liq-error{background:var(--rlight);border:1px solid #FECACA;border-radius:10px;padding:14px 18px;color:var(--red);font-size:13px;font-weight:500;margin-top:14px;}
+/* ════════════ DASHBOARD ════════════ */
+#liq-results{margin-top:32px;display:none;}
+.liq-dash-meta{font-size:11px;color:var(--text4);margin-bottom:20px;text-align:right;font-weight:500;}
+/* KPI */
+.liq-kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:12px;margin-bottom:20px;}
+.liq-kpi{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:18px 16px;position:relative;overflow:hidden;
+  box-shadow:0 1px 3px rgba(0,0,0,.03);
+  transition:box-shadow .2s,transform .2s;
+}
+.liq-kpi:hover{box-shadow:0 6px 20px rgba(30,58,138,.1);transform:translateY(-1px);}
+.liq-kpi-accent{position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.liq-kpi-icon{font-size:20px;margin-bottom:8px;}
+.liq-kpi-lbl{font-size:10px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;}
+.liq-kpi-val{font-size:clamp(20px,2.5vw,28px);font-weight:900;line-height:1;letter-spacing:-.02em;}
+.liq-kpi-sub{font-size:10px;color:var(--text4);margin-top:5px;font-weight:500;}
+/* Health bar */
+.liq-health-wrap{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:22px 24px;margin-bottom:20px;
+  box-shadow:0 1px 3px rgba(0,0,0,.03);
+}
+.liq-health-title{font-size:13px;font-weight:800;color:var(--text);margin-bottom:16px;}
+.liq-health-bar{display:flex;height:16px;border-radius:8px;overflow:hidden;gap:2px;margin-bottom:14px;}
+.liq-health-seg{border-radius:4px;transition:flex .6s ease;}
+.liq-health-legend{display:flex;flex-wrap:wrap;gap:16px;}
+.liq-leg-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);}
+.liq-leg-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0;}
+/* Tabs */
+.liq-tabs{
+  display:flex;gap:4px;overflow-x:auto;margin-bottom:20px;
+  background:#F1F5F9;border-radius:12px;padding:4px;scrollbar-width:none;
+}
+.liq-tabs::-webkit-scrollbar{display:none;}
+.liq-tab{
+  padding:8px 16px;border-radius:9px;font-size:12px;font-weight:600;
+  cursor:pointer;border:none;background:transparent;color:var(--text3);
+  font-family:inherit;white-space:nowrap;transition:all .15s;flex-shrink:0;
+}
+.liq-tab.liq-active{background:var(--card);color:var(--b700);box-shadow:0 1px 4px rgba(0,0,0,.08);}
+.liq-tab:hover:not(.liq-active){color:var(--text2);background:rgba(255,255,255,.7);}
+.liq-tab-ct{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:17px;height:17px;border-radius:999px;font-size:9px;font-weight:800;
+  margin-left:5px;background:#E2E8F0;color:var(--text3);
+}
+.liq-active .liq-tab-ct{background:var(--b600);color:#fff;}
+.liq-tab-ct.red{background:#FEE2E2;color:var(--red);}
+.liq-active .liq-tab-ct.red{background:var(--red);color:#fff;}
+/* Panels */
+.liq-panel{display:none;}
+.liq-panel.liq-visible{display:block;}
+.liq-panel-inner{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:24px;
+  box-shadow:0 1px 3px rgba(0,0,0,.03);
+}
+/* Insights */
+.liq-insights{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
+.liq-insight{display:flex;align-items:flex-start;gap:12px;border-radius:12px;padding:14px 16px;border-left:4px solid;}
+.liq-insight.green{background:#F0FDF4;border-color:var(--green);}
+.liq-insight.orange{background:var(--alight);border-color:var(--amber);}
+.liq-insight.blue{background:var(--b50);border-color:var(--b500);}
+.liq-insight.red{background:var(--rlight);border-color:var(--red);}
+.liq-insight.purple{background:var(--plight);border-color:var(--purple);}
+.liq-insight-ico{font-size:17px;flex-shrink:0;margin-top:1px;}
+.liq-insight-text{font-size:12.5px;color:var(--text2);line-height:1.6;font-weight:500;}
+/* Section title */
+.liq-sec-title{font-size:11px;font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.liq-sec-title::after{content:'';flex:1;height:1px;background:var(--border);margin-left:6px;}
+/* Channel forecast cards */
+.liq-ch-fcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin-bottom:22px;}
+.liq-ch-fcard{background:var(--b50);border:1px solid var(--b100);border-radius:12px;padding:16px;transition:box-shadow .2s;}
+.liq-ch-fcard:hover{box-shadow:0 4px 12px rgba(30,58,138,.08);}
+.liq-ch-fname{font-size:10px;font-weight:700;color:var(--text3);margin-bottom:7px;display:flex;align-items:center;gap:5px;}
+.liq-ch-fdot{width:7px;height:7px;border-radius:50%;}
+.liq-ch-fval{font-size:18px;font-weight:900;letter-spacing:-.01em;}
+.liq-ch-fsub{font-size:10px;color:var(--text4);margin-top:3px;}
+/* Table */
+.liq-table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border);margin-bottom:14px;}
+.liq-tbl{width:100%;border-collapse:collapse;font-size:12px;}
+.liq-tbl th{background:#F8FAFF;padding:11px 13px;text-align:left;font-size:10px;font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;border-bottom:1px solid var(--border);}
+.liq-tbl td{padding:11px 13px;border-bottom:1px solid #F1F5F9;white-space:nowrap;vertical-align:middle;color:var(--text2);}
+.liq-tbl tr:last-child td{border-bottom:none;}
+.liq-tbl tr:hover td{background:var(--b50);}
+.mono{font-family:'Courier New',monospace;font-size:11px;}
+/* Pills */
+.liq-pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;font-size:10px;font-weight:700;}
+.p-urgent{background:#FEE2E2;color:#B91C1C;}
+.p-high{background:#FEF3C7;color:#B45309;}
+.p-medium{background:#FEF9C3;color:#A16207;}
+.p-low{background:#DCFCE7;color:#15803D;}
+.p-up{background:#DCFCE7;color:#15803D;}
+.p-down{background:#FEE2E2;color:#B91C1C;}
+.p-flat{background:#F1F5F9;color:var(--slate);}
+.p-dead{background:#F1F5F9;color:#475569;}
+.p-healthy{background:#DCFCE7;color:#15803D;}
+.p-over{background:var(--plight);color:#6D28D9;}
+.p-slow{background:#FEF3C7;color:#B45309;}
+/* Prob bar */
+.liq-prob-bar{width:72px;height:6px;background:var(--border);border-radius:3px;overflow:hidden;display:inline-block;vertical-align:middle;}
+.liq-prob-fill{height:100%;border-radius:3px;}
+/* Season */
+.liq-season-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
+.liq-season-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.03);}
+.liq-season-reg{font-size:11px;font-weight:800;color:var(--b700);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;}
+.liq-season-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.liq-season-tag{padding:3px 9px;background:var(--b50);border:1px solid var(--b100);border-radius:5px;font-size:10px;color:var(--b700);font-weight:600;}
+/* QC */
+.liq-qc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:13px;margin-bottom:18px;}
+.liq-qc-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.03);}
+.liq-qc-lbl{font-size:10px;color:var(--text3);font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;}
+.liq-qc-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);font-size:11px;}
+.liq-qc-row:last-child{border-bottom:none;}
+.liq-qc-name{color:var(--text3);}
+.liq-qc-val{font-weight:700;font-family:'Courier New',monospace;font-size:11px;}
+/* Downloads */
+.liq-dl-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.liq-info-box{background:var(--b50);border:1px solid var(--b100);border-radius:12px;padding:14px 16px;font-size:12px;color:var(--text2);line-height:1.6;margin-top:16px;}
+/* ── DISCLAIMER BAR ── */
+.liq-disclaimer-bar{background:#FEF9C3;border:1px solid #FDE68A;border-radius:10px;padding:10px 16px;margin-top:12px;font-size:11px;color:#92400E;line-height:1.6;font-weight:500;display:flex;align-items:flex-start;gap:7px;}
+@media(max-width:600px){
+  #liq-planner{padding:36px 12px;}
+  .liq-hero{padding:44px 20px;}
+  .liq-kpi-grid{grid-template-columns:repeat(2,1fr);}
+  .liq-cta{flex-direction:column;}
+  .liq-btn{justify-content:center;}
+  .liq-form-card{padding:20px;}
+  .liq-source-grid{grid-template-columns:repeat(3,1fr);}
+}
+</style>
+<script defer src="/_vercel/insights/script.js"></script><style id="liq-premium">
+:root{--lq-sh:0 18px 44px rgba(23,37,84,.13);--lq-sh-sm:0 6px 18px rgba(23,37,84,.08);--lq-ring:0 0 0 4px rgba(58,85,255,.18)}
+html{scroll-behavior:smooth}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.liq-i{width:1.05em;height:1.05em;vertical-align:-.16em;flex:0 0 auto}
+h1,.pf-hero h1,.section-title{letter-spacing:-.032em}
+.section-title{font-weight:900}
+.nav{backdrop-filter:saturate(1.5) blur(16px)}
+.nav-links a{position:relative;transition:color .15s}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:-5px;height:2px;background:var(--grad);border-radius:2px;transition:right .25s cubic-bezier(.2,.7,.2,1)}
+.nav-links a:hover::after{right:0}
+.nav-cta{background:var(--grad)!important;box-shadow:0 8px 20px rgba(58,85,255,.30);transition:transform .16s,box-shadow .16s}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(58,85,255,.38)}
+.nav-cta:active{transform:translateY(0) scale(.98)}
+.pf-btn{border-radius:12px;transition:transform .16s,box-shadow .16s}
+.pf-btn-primary{background:var(--grad)!important;box-shadow:0 12px 28px rgba(58,85,255,.32)}
+.pf-btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(58,85,255,.42)}
+.pf-btn-ghost{transition:transform .16s,border-color .16s,background .16s}
+.pf-btn-ghost:hover{transform:translateY(-2px)}
+.section-eyebrow{border-radius:999px;box-shadow:var(--lq-sh-sm)}
+.calc-cat-lbl{gap:9px}
+.calc-ico{display:inline-flex!important;align-items:center;justify-content:center;width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--b50),#ECF1FF);border:1px solid var(--b100);font-size:23px;line-height:1;margin-bottom:13px;box-shadow:inset 0 1px 0 rgba(255,255,255,.7);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s}
+.calc-card:hover .calc-ico{transform:translateY(-2px) scale(1.05);box-shadow:0 10px 20px rgba(58,85,255,.18)}
+.calc-card,.blog-card,.liq-testi-card{border-radius:16px;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s,border-color .22s}
+.calc-card:hover,.blog-card:hover,.liq-testi-card:hover{transform:translateY(-5px);box-shadow:var(--lq-sh);border-color:var(--b200)}
+.pf-card{box-shadow:0 34px 80px rgba(15,23,42,.18);border-radius:18px}
+.pf-badge{box-shadow:var(--lq-sh-sm)}
+.pf-logo{transition:transform .16s}
+.pf-logo:hover{transform:translateY(-2px)}
+.pf-stat .n{letter-spacing:-.02em}
+a:focus-visible,button:focus-visible{outline:none;box-shadow:var(--lq-ring);border-radius:10px}
+.lq-rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.lq-rv.lq-in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.lq-rv{opacity:1!important;transform:none!important}}
+</style>
+<style id="liq-compact">
+section,.section{padding:46px 0}
+@media(max-width:768px){section,.section{padding:30px 0}}
+.pf-hero{padding:42px 32px 34px}
+@media(max-width:768px){.pf-hero{padding:30px 18px 26px}}
+.pf-wrap{gap:30px}
+.pf-sub{font-size:15px;margin-bottom:16px}
+.pf-cta{margin-bottom:12px}
+.pf-rows{margin-top:16px}
+.pf-card{padding:16px}
+.pf-pains,.pf-logos{margin-bottom:10px}
+.planner-section{padding:40px 24px 34px}
+.blog-section,.testi-section,.faq-section{padding:38px 24px}
+.safety-section{padding:30px 30px;margin:22px auto}
+.section-sub{margin-bottom:18px}
+.section-title{margin-bottom:6px}
+.calc-cat-lbl{margin:22px auto 12px}
+.calc-grid{margin-bottom:14px}
+#calculators .calc-grid{flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;justify-content:flex-start;gap:12px;padding-bottom:8px;scrollbar-width:thin;scrollbar-color:#cbd5e8 transparent}
+#calculators .calc-grid::-webkit-scrollbar{height:6px}
+#calculators .calc-grid::-webkit-scrollbar-thumb{background:#cbd5e8;border-radius:6px}
+#calculators .calc-grid>a{flex:1 1 0;min-width:112px;max-width:none}
+#calculators .calc-card{padding:13px 12px}
+#calculators .calc-ico{width:34px;height:34px;border-radius:10px;font-size:17px;margin-bottom:8px}
+#calculators .calc-tag{display:none}
+#calculators .calc-name{font-size:11.5px;margin-bottom:2px;line-height:1.25}
+#calculators .calc-desc{font-size:9.7px;line-height:1.38;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+@media(max-width:768px){#calculators .calc-grid>a{flex:0 0 auto;min-width:138px}}
+</style>
+<style id="liq-navfix">
+.nav{gap:14px}
+.liq-theme-btn{flex:0 0 auto;margin-left:6px}
+.nav-cta{flex:0 0 auto;white-space:nowrap}
+@media(max-width:1240px){.nav-links{gap:16px}}
+@media(max-width:1080px){.nav{padding:0 18px}.nav-links{gap:12px}}
+@media(max-width:1100px){
+  .nav-burger{display:inline-flex}
+  .nav-logo{margin-right:auto}
+  .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);box-shadow:0 16px 30px rgba(15,23,42,.12);padding:6px 0;max-height:0;overflow:hidden;opacity:0;visibility:hidden;transition:max-height .28s ease,opacity .2s ease,visibility .28s}
+  .nav.menu-open .nav-links{max-height:85vh;overflow-y:auto;opacity:1;visibility:visible}
+  .nav-links a{padding:13px 22px;font-size:15px;border-bottom:1px solid var(--border)}
+  .nav-links a:last-child{border-bottom:none}
+  [data-theme="dark"] .nav-links{background:#10131F;border-color:rgba(255,255,255,.12)}
+  [data-theme="dark"] .nav-links a{border-bottom-color:rgba(255,255,255,.08)}
+}
+@media(max-width:600px){.nav{padding:0 10px;gap:6px}.nav-logo svg{height:30px;width:auto}.nav-cta{padding:7px 10px;font-size:11px;white-space:nowrap}.nav-burger{width:34px;height:34px}.nav-burger svg{width:20px;height:20px}}
+@media(max-width:360px){.nav-logo svg{height:26px}.nav-cta{padding:6px 8px;font-size:10px}.footer-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<!-- ── NAVIGATION ── -->
+<style id="liq-theme-css">
+/* ===== PREMIUM HERO (matches approved design) ===== */
+.pf-hero{position:relative;overflow:hidden;padding:74px 32px 58px;background:
+  radial-gradient(680px 360px at 88% -5%,rgba(119,11,255,.13),transparent 60%),
+  radial-gradient(620px 380px at 3% 8%,rgba(58,85,255,.14),transparent 55%),var(--bg)}
+.pf-hero::after{content:"";position:absolute;inset:0;background-image:
+  linear-gradient(rgba(58,85,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(58,85,255,.05) 1px,transparent 1px);
+  background-size:46px 46px;-webkit-mask:radial-gradient(800px 480px at 50% 20%,#000,transparent 75%);mask:radial-gradient(800px 480px at 50% 20%,#000,transparent 75%);pointer-events:none}
+.pf-wrap{max-width:1140px;margin:0 auto;position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+.pf-badge{display:inline-flex;align-items:center;gap:8px;background:var(--b50);border:1px solid var(--b200);color:var(--b700);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
+.pf-hero h1{font-family:'Wix Madefor Display','Plus Jakarta Sans',sans-serif;font-size:clamp(30px,4.6vw,52px);font-weight:800;line-height:1.08;letter-spacing:-.03em;color:var(--text);margin:16px 0 14px}
+.pf-hero h1 .g{background:linear-gradient(120deg,#3A55FF,#770BFF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.pf-sub{font-size:17px;color:var(--text3);max-width:540px;line-height:1.6;margin-bottom:22px}
+.pf-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.pf-btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;border-radius:12px;padding:13px 22px;cursor:pointer;border:1px solid transparent;text-decoration:none}
+.pf-btn-primary{background:linear-gradient(120deg,#3A55FF,#770BFF);color:#fff;box-shadow:0 8px 22px rgba(58,85,255,.34)}
+.pf-btn-primary:hover{transform:translateY(-2px)}
+.pf-btn-ghost{background:var(--white);border-color:var(--border2);color:var(--text)}
+.pf-btn-ghost:hover{border-color:#3A55FF;color:#3A55FF}
+.pf-ticks{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;font-weight:600;color:var(--text2)}
+.pf-ticks .c{color:#0EA66A;font-weight:900;margin-right:4px}
+.pf-card{background:var(--white);border:1px solid var(--border);border-radius:20px;box-shadow:0 24px 60px rgba(15,23,42,.14);padding:20px}
+.pf-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.pf-chip{font-size:11px;font-weight:800;color:#770BFF;background:rgba(119,11,255,.1);border:1px solid rgba(119,11,255,.2);padding:4px 10px;border-radius:999px}
+.pf-minis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pf-mini{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:12px}
+.pf-mini .l{font-size:11px;color:var(--text4);font-weight:600}
+.pf-mini .v{font-size:20px;font-weight:800;color:var(--text)}
+.pf-mini .v.up{color:#0EA66A}.pf-mini .v.warn{color:#D97706}
+.pf-bars{display:flex;align-items:flex-end;gap:6px;height:56px;margin-top:12px;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:12px}
+.pf-bars i{flex:1;background:linear-gradient(180deg,#3A55FF,#770BFF);border-radius:4px 4px 0 0;opacity:.85}
+.pf-rows{max-width:1140px;margin:28px auto 0;position:relative;z-index:2}
+.pf-pains{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.pf-pain{background:var(--white);border:1px solid var(--border);border-radius:999px;padding:6px 13px;font-size:12px;font-weight:600;color:var(--text3)}
+.pf-pain em{font-style:normal;font-weight:800;color:#770BFF}
+.pf-logos-l{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--text4);margin-bottom:8px}
+.pf-logos{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.pf-logo{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:5px 12px;font-size:11px;font-weight:700;color:var(--text2)}
+.pf-stats{display:flex;flex-wrap:wrap;gap:10px}
+.pf-stat{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:12px 20px;text-align:center;min-width:96px}
+.pf-stat .n{font-size:24px;font-weight:900;background:linear-gradient(120deg,#3A55FF,#770BFF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.pf-stat .l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text4)}
+.pf-india{display:inline-flex;align-items:center;gap:6px;background:rgba(255,127,80,.12);border:1px solid rgba(255,127,80,.28);border-radius:999px;padding:4px 12px;font-size:10px;font-weight:800;color:#B45309;margin-top:16px}
+[data-theme="dark"] .pf-hero{background:radial-gradient(680px 360px at 88% -5%,rgba(119,11,255,.2),transparent 60%),radial-gradient(620px 380px at 3% 8%,rgba(58,85,255,.22),transparent 55%),#070708}
+[data-theme="dark"] .pf-card,[data-theme="dark"] .pf-pain,[data-theme="dark"] .pf-logo,[data-theme="dark"] .pf-stat{background:#10131F;border-color:rgba(255,255,255,.12)}
+[data-theme="dark"] .pf-mini,[data-theme="dark"] .pf-bars{background:#0C0F1A;border-color:rgba(255,255,255,.10)}
+[data-theme="dark"] .pf-btn-ghost{background:#10131F}
+@media(max-width:1024px){.pf-wrap{grid-template-columns:1fr}.pf-card{order:-1}}
+
+.liq-theme-btn{width:38px;height:38px;border-radius:9px;border:1px solid var(--border2);background:var(--white);color:var(--text);font-size:15px;cursor:pointer;line-height:1;display:inline-grid;place-items:center;transition:.18s;margin-right:4px}
+.liq-theme-btn:hover{border-color:#3A55FF;transform:translateY(-1px)}
+[data-theme="dark"]{
+  --bg:#070708;--white:#10131F;--surface:#10131F;--card:#10131F;--card2:#161A2E;
+  --border:rgba(255,255,255,.10);--border2:rgba(255,255,255,.17);
+  --b50:rgba(58,85,255,.12);--b100:rgba(58,85,255,.20);--b200:rgba(58,85,255,.32);
+  --text:#F1F5FF;--text2:#DBE3F5;--text3:#A7B0CC;--text4:#7E88A8;
+  --glight:rgba(16,185,129,.16);--rlight:rgba(239,68,68,.16);--alight:rgba(245,158,11,.16);--plight:rgba(119,11,255,.18);
+}
+[data-theme="dark"] .nav{background:rgba(9,10,18,.92)!important;border-bottom-color:rgba(255,255,255,.08)}
+[data-theme="dark"] .liq-theme-btn{background:rgba(255,255,255,.06)}
+[data-theme="dark"] .liq-wordmark{fill:#FFFFFF}
+[data-theme="dark"] .nav-tagline{color:#7D92FF!important}
+[data-theme="dark"] .section-eyebrow,[data-theme="dark"] .calc-tag,[data-theme="dark"] .blog-cat{background:rgba(58,85,255,.14)!important;border-color:rgba(58,85,255,.32)!important;color:#AEBCFF!important}
+[data-theme="dark"] .calc-cat-lbl{color:#AEBCFF}
+[data-theme="dark"] .calc-cat-lbl::after{background:rgba(255,255,255,.1)}
+[data-theme="dark"] .faq-a{background:rgba(255,255,255,.03)!important;border-top-color:rgba(255,255,255,.08)!important}
+[data-theme="dark"] .faq-q:hover{background:rgba(255,255,255,.04)}
+[data-theme="dark"] .testi-section,[data-theme="dark"] .blog-section{border-top-color:rgba(255,255,255,.08)}
+[data-theme="dark"] .liq-testi-text{color:#C7D0E8}
+[data-theme="dark"] .liq-testi-role,[data-theme="dark"] .blog-meta{color:#8A93B2}
+[data-theme="dark"] .safety-section{background:linear-gradient(135deg,#0B1F18,#0A1A14)!important;border-color:rgba(16,185,129,.32)!important}
+[data-theme="dark"] .safety-card{background:rgba(255,255,255,.04)!important;border-color:rgba(16,185,129,.28)!important}
+[data-theme="dark"] .safety-title{color:#A7F3D0}
+[data-theme="dark"] .safety-sub,[data-theme="dark"] .safety-card-b{color:#86EFCB}
+[data-theme="dark"] .safety-card-t{color:#D1FAE5}
+[data-theme="dark"] .liq-disclaimer-bar{background:rgba(245,158,11,.12)!important;border-color:rgba(245,158,11,.3)!important;color:#FCD9A0!important}
+[data-theme="dark"] .liq-col-preview{background:rgba(58,85,255,.08)!important}
+</style>
+<!-- ===== LogicstIQ unified navigation ===== -->
+<style id="lnav-css">
+.lnav{position:sticky;top:0;z-index:9000;background:#fff;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:18px;padding:0 22px;height:64px;font-family:'Inter','Plus Jakarta Sans',sans-serif}
+.lnav-logo{display:inline-flex;align-items:center;text-decoration:none;flex-shrink:0}
+.lnav-menu{display:flex;align-items:center;gap:2px;margin-left:auto}
+.lnav-item{position:static}
+.lnav-top{display:inline-flex;align-items:center;gap:5px;padding:9px 11px;border-radius:9px;font-size:13.5px;font-weight:600;color:#0F172A;text-decoration:none;white-space:nowrap;cursor:pointer;background:none;border:none;font-family:inherit}
+.lnav-top:hover{background:#EFF3FF;color:#3A55FF}
+.lnav-car{font-size:9px;opacity:.55;transition:transform .18s}
+.lnav-beta{background:linear-gradient(135deg,#4F6BFF,#9B6BFF);color:#fff;font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:999px;letter-spacing:.5px}
+.lnav-panel{position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid #E2E8F0;box-shadow:0 18px 40px rgba(15,23,42,.12);display:none;padding:26px 32px;z-index:9001}
+.lnav-panel-in{max-width:1080px;margin:0 auto;display:flex;gap:40px;flex-wrap:wrap}
+.lnav-col{min-width:200px}
+.lnav-colt{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#94A3B8;margin-bottom:9px}
+.lnav-panel a{display:block;padding:6px 8px;margin:0 -8px;border-radius:7px;font-size:13px;font-weight:600;color:#1E293B;text-decoration:none}
+.lnav-panel a:hover{background:#EFF3FF;color:#3A55FF}
+.lnav-mini{font-size:10px;font-weight:700;color:#9B6BFF;background:rgba(155,107,255,.1);padding:1px 7px;border-radius:999px;margin-left:6px}
+.lnav-viewall{margin-top:14px;padding-top:14px;border-top:1px solid #E2E8F0;width:100%}
+.lnav-viewall a{display:inline-block;font-size:13px;font-weight:800;color:#3A55FF!important}
+.lnav-burger{display:none;margin-left:auto;background:#fff;border:1px solid #CBD5E1;border-radius:9px;width:40px;height:40px;cursor:pointer;font-size:18px;color:#0F172A;line-height:1}
+@media(hover:hover) and (min-width:1101px){.lnav-item:hover>.lnav-panel,.lnav-item:focus-within>.lnav-panel{display:block}.lnav-item:hover .lnav-car{transform:rotate(180deg)}}
+@media(max-width:1100px){
+ .lnav{flex-wrap:wrap;height:auto;min-height:60px;padding:8px 14px}
+ .lnav-logo svg{height:34px;width:auto}
+ .lnav-burger{display:inline-flex;align-items:center;justify-content:center}
+ .lnav-menu{display:none;flex-direction:column;align-items:stretch;width:100%;gap:0;padding:6px 0 12px}
+ .lnav.open .lnav-menu{display:flex}
+ .lnav-item{position:relative;width:100%}
+ .lnav-top{width:100%;justify-content:space-between;padding:13px 8px;font-size:15px;border-bottom:1px solid #EEF2F7;border-radius:0}
+ .lnav-panel{position:static;box-shadow:none;border:none;padding:4px 8px 10px;background:#F8FAFF}
+ .lnav-item.open>.lnav-panel{display:block}
+ .lnav-item.open .lnav-car{transform:rotate(180deg)}
+ .lnav-panel-in{flex-direction:column;gap:14px}
+}
+[data-theme="dark"] .lnav{background:rgba(9,10,18,.94);border-bottom-color:rgba(255,255,255,.09)}
+[data-theme="dark"] .lnav-top{color:#E7ECFB}
+[data-theme="dark"] .lnav-top:hover{background:rgba(58,85,255,.14);color:#AEBCFF}
+[data-theme="dark"] .lnav-panel{background:#0D101C;border-color:rgba(255,255,255,.09)}
+[data-theme="dark"] .lnav-panel a{color:#DBE3F5}
+[data-theme="dark"] .lnav-panel a:hover{background:rgba(58,85,255,.14);color:#AEBCFF}
+[data-theme="dark"] .lnav-colt{color:#7E88A8}
+[data-theme="dark"] .lnav-burger{background:rgba(255,255,255,.06);color:#E7ECFB;border-color:rgba(255,255,255,.2)}
+[data-theme="dark"] .lnav-logo text tspan:first-child{fill:#FFFFFF}
+[data-theme="dark"] .lnav-viewall{border-top-color:rgba(255,255,255,.09)}
+[data-theme="dark"] .lnav-panel .lnav-viewall a{color:#AEBCFF!important}
+[data-theme="dark"] .lnav-top,[data-theme="dark"] .lnav-panel a{border-bottom-color:rgba(255,255,255,.06)}
+</style>
+<nav class="lnav" id="lnav">
+<a href="/" class="lnav-logo" aria-label="LogicstIQ — Home">
+  <svg width="200" height="41" viewBox="0 0 440 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible">
+    <defs><linearGradient id="lnav_grad" x1="10" y1="70" x2="400" y2="20" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F6BFF"/><stop offset="100%" stop-color="#9B6BFF"/></linearGradient></defs>
+    <path d="M10 40 L26 40 L42 66 L64 22 L80 22" stroke="url(#lnav_grad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M74 14 L82 22 L74 30" stroke="#9B6BFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <circle cx="42" cy="66" r="4.5" fill="#4F6BFF"/><circle cx="64" cy="22" r="4.5" fill="#9B6BFF"/>
+    <text x="98" y="44" font-family="'Plus Jakarta Sans','Inter',sans-serif" font-size="36" font-weight="800" letter-spacing="-1.4"><tspan fill="#4F6BFF">Logicst</tspan><tspan fill="#9B6BFF">IQ</tspan></text>
+    <text x="99" y="70" font-family="'Inter',sans-serif" font-size="16" font-weight="600" letter-spacing="0.3" fill="#64748B">Where Logistics Meets Intelligence</text>
+  </svg>
+</a>
+  <button class="lnav-burger" id="lnavBurger" type="button" aria-label="Open menu">☰</button>
+  <div class="lnav-menu">
+    <div class="lnav-item">
+      <a class="lnav-top" href="/calculators.html">Calculators <span class="lnav-car">▼</span></a>
+      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col"><div class="lnav-colt">📦 Inventory & Planning</div><a href="/eoq-calculator">EOQ Calculator</a><a href="/safety-stock-calculator">Safety Stock</a><a href="/reorder-point-calculator">Reorder Point</a><a href="/abc-analysis-calculator">ABC Analysis</a><a href="/inventory-turnover-calculator">Inventory Turnover</a><a href="/moq-calculator">MOQ Calculator</a><a href="/dead-stock-calculator">Dead Stock</a><a href="/cycle-count-calculator">Cycle Count</a></div><div class="lnav-col"><div class="lnav-colt">⏱️ Performance & Suppliers</div><a href="/otif-calculator">OTIF Calculator</a><a href="/fill-rate-calculator">Fill Rate</a><a href="/demand-forecast-calculator">Demand Forecast</a><a href="/supplier-scorecard-calculator">Supplier Scorecard</a><a href="/supplier-lead-time-variability-calculator">Lead Time Variability</a><a href="/disruption-impact-calculator">Disruption Impact</a></div><div class="lnav-col"><div class="lnav-colt">💰 Costing & Finance</div><a href="/landed-cost-calculator">Landed Cost</a><a href="/gst-calculator-logistics">GST Calculator</a><a href="/cogs-calculator">COGS Calculator</a><a href="/gross-margin-calculator">Gross Margin</a><a href="/break-even-calculator">Break-Even</a><a href="/working-capital-calculator">Working Capital</a><a href="/carrying-cost-calculator">Carrying Cost</a><a href="/stockout-cost-calculator">Stockout Cost</a><a href="/days-inventory-outstanding-calculator">Days Inventory Outstanding</a><a href="/cash-conversion-cycle-calculator">Cash Conversion Cycle</a></div><div class="lnav-col"><div class="lnav-colt">🚛 Logistics & Warehouse</div><a href="/freight-cost-calculator">Freight Cost</a><a href="/warehouse-space-calculator">Warehouse Space</a><a href="/lead-time-calculator">Lead Time</a><a href="/shipping-cost-per-unit-calculator">Shipping Cost / Unit</a><a href="/volumetric-weight-calculator">Volumetric Weight</a><a href="/pick-pack-cost-calculator">Pick & Pack Cost</a><a href="/carbon-footprint-logistics">Carbon Footprint</a></div><div class="lnav-viewall"><a href="/calculators.html">View all 31 calculators →</a></div></div></div>
+    </div>
+    <a class="lnav-top" href="/demand-planner.html">AI Demand Planner</a>
+    <a class="lnav-top" href="/documents-generator.html">Documents</a>
+    <a class="lnav-top" href="/sourcing-procurement.html">Sourcing</a>
+    <div class="lnav-item">
+      <a class="lnav-top" href="/ecommerce.html">Ecommerce <span class="lnav-car">▼</span></a>
+      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col" style="min-width:280px"><div class="lnav-colt">🏪 Ecommerce Suite</div><a href="/fba-planner/">📦 FBA Planner <span class="lnav-mini">Live</span></a><a href="/oms.html">🧾 OMS — Order Management <span class="lnav-mini">Coming soon</span></a><a href="/wms.html">🏭 WMS — Warehouse Management <span class="lnav-mini">Coming soon</span></a><a href="/returns.html">↩️ Returns Management <span class="lnav-mini">Coming soon</span></a><div class="lnav-viewall"><a href="/ecommerce.html">Open Ecommerce hub →</a></div></div></div></div>
+    </div>
+    <a class="lnav-top" href="/tms.html">TMS <span class="lnav-beta">Beta</span></a>
+    <div class="lnav-item">
+      <a class="lnav-top" href="/blog.html">Blog <span class="lnav-car">▼</span></a>
+      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col" style="min-width:320px"><div class="lnav-colt">📚 Guides</div><a href="/blog/landed-cost-guide.html">Landed Cost Explained</a><a href="/blog/eoq-calculator.html">EOQ — Complete Guide</a><a href="/blog/demand-planning-amazon-flipkart.html">Demand Planning for Amazon & Flipkart</a><a href="/blog/safety-stock-calculator.html">Safety Stock Formula</a><a href="/blog/what-is-otif.html">What is OTIF?</a><a href="/blog/inventory-turnover-formula.html">Inventory Turnover Formula</a><a href="/blog/abc-analysis-guide.html">ABC Analysis Guide</a><a href="/blog/gst-calculator-logistics.html">GST on Freight & Logistics</a><div class="lnav-viewall"><a href="/blog.html">View all articles →</a></div></div></div></div>
+    </div>
+    <a class="lnav-top" href="/about.html">About</a>
+    <a class="lnav-top" href="/contact.html">Contact</a>
+  </div>
+</nav>
+<script id="lnav-js">
+(function(){var nav=document.getElementById('lnav');if(!nav)return;
+var burger=document.getElementById('lnavBurger');
+if(burger)burger.addEventListener('click',function(e){e.stopPropagation();nav.classList.toggle('open');});
+var mobile=function(){return window.matchMedia('(max-width:1100px)').matches;};
+nav.querySelectorAll('.lnav-item>.lnav-top').forEach(function(t){
+ t.addEventListener('click',function(e){
+  if(mobile()){var it=t.parentElement;
+   if(!it.classList.contains('open')){e.preventDefault();
+    nav.querySelectorAll('.lnav-item.open').forEach(function(o){if(o!==it)o.classList.remove('open');});
+    it.classList.add('open');}
+  }});});
+document.addEventListener('click',function(e){if(!nav.contains(e.target)){nav.classList.remove('open');nav.querySelectorAll('.lnav-item.open').forEach(function(o){o.classList.remove('open');});}});
+window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList.remove('open');nav.querySelectorAll('.lnav-item.open').forEach(function(o){o.classList.remove('open');});}});
+})();
+</script>
+<!-- ===== end unified navigation ===== -->
+<script>
+(function(){
+  var nav=document.querySelector('nav.nav');
+  var burger=document.getElementById('navBurger');
+  var links=document.getElementById('navLinks');
+  if(!nav||!burger||!links)return;
+  function setOpen(open){nav.classList.toggle('menu-open',open);burger.setAttribute('aria-expanded',open?'true':'false');burger.setAttribute('aria-label',open?'Close menu':'Open menu');}
+  burger.addEventListener('click',function(e){e.stopPropagation();setOpen(!nav.classList.contains('menu-open'));});
+  links.addEventListener('click',function(e){if(e.target.closest('a'))setOpen(false);});
+  document.addEventListener('click',function(e){if(nav.classList.contains('menu-open')&&!nav.contains(e.target))setOpen(false);});
+  window.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});
+})();
+</script>
+<!-- ── HERO (premium, matches approved design) ── -->
+<section class="section center" style="padding-top:56px;padding-bottom:8px">
+  <div class="section-eyebrow">📚 LogicstIQ</div>
+  <h1 class="section-title" style="font-size:clamp(28px,4.5vw,44px)">Supply Chain Blog & Guides</h1>
+  <p class="section-sub" style="max-width:720px;margin-left:auto;margin-right:auto">Practical guides with formulas, worked examples and free calculators — written for Indian e-commerce, D2C and marketplace sellers.</p>
+</section>
+
+  <!-- ── WHICH TOOL? · India Demand Planner vs Global Amazon FBA Planner ── -->
+<!-- Uses your existing .section / .section-eyebrow / .section-title / .calc-card classes. -->
+<!-- No new CSS needed. Dark mode + hover inherited automatically. -->
+
+
+
+<!-- ── ADSENSE SLOT 1 — Top Banner (activate after AdSense approval) ── -->
+<!-- <div class="ad-slot"><span class="ad-label">Advertisement</span><div class="ad-bar"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div></div> -->
+<!-- ── CALCULATORS ── -->
+
+
+
+
+<!-- ── CASE STUDIES / PLAYBOOKS ── -->
+
+
+
+
+<!-- ── ADSENSE SLOT 2 — Mid page (activate after AdSense approval) ── -->
+<!-- <div class="ad-slot"><span class="ad-label">Advertisement</span><div class="ad-bar"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div></div> -->
+<!-- ── AI DEMAND PLANNER v4 — FUNCTIONAL ── -->
+
+
+<section id="blog" class="blog-section center" style="text-align:center">
+  <div style="margin-bottom:28px">
+    <div class="section-eyebrow">📚 Free Resources</div>
+    <h2 class="section-title">Supply Chain Guides &amp; Tutorials</h2>
+    <p class="section-sub" style="margin:8px auto 0">Practical guides, formulas, and tutorials for supply chain professionals, marketplace sellers, and D2C brands.</p>
+  </div>
+  <div class="blog-grid">
+    <a href="/blog/eoq-calculator.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">📦 Inventory</div><div class="blog-card-t">EOQ Formula — Complete Guide with Calculator &amp; Examples</div><div class="blog-card-d">Economic Order Quantity from scratch. Worked examples for Amazon FBA, D2C brands, and offline retail with a free calculator.</div><div class="blog-meta">📖 8 min read · Free Calculator included</div><div class="blog-read">Read Guide →</div></div></a>
+    <a href="/blog/demand-planning-amazon-flipkart.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">📈 Forecasting</div><div class="blog-card-t">Demand Planning for Amazon &amp; Flipkart Sellers — Step by Step</div><div class="blog-card-d">How to forecast demand for Indian marketplace sellers. Full seasonality calendar including Diwali, Big Billion Days, Prime Day.</div><div class="blog-meta">📖 10 min read · AI Planner tutorial</div><div class="blog-read">Read Guide →</div></div></a>
+    <a href="/blog/safety-stock-calculator.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">🛡️ Safety Stock</div><div class="blog-card-t">Safety Stock Formula — How to Calculate Buffer Stock</div><div class="blog-card-d">Three formula versions from simple to advanced. Service levels explained. Worked example with reorder point integration.</div><div class="blog-meta">📖 7 min read · Free Calculator included</div><div class="blog-read">Read Guide →</div></div></a>
+    <a href="/blog/what-is-otif.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">✅ KPI Guide</div><div class="blog-card-t">What is OTIF? On-Time In-Full Explained — Formula &amp; Benchmarks</div><div class="blog-card-d">Complete guide to OTIF — the gold standard KPI for supply chain delivery performance. Includes industry benchmarks and improvement tips.</div><div class="blog-meta">📖 6 min read · Industry benchmarks</div><div class="blog-read">Read Guide →</div></div></a>
+    <a href="/blog/inventory-turnover-formula.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">📊 Inventory</div><div class="blog-card-t">Inventory Turnover Formula — How to Calculate &amp; Improve</div><div class="blog-card-d">Inventory Turnover Ratio explained with formula, worked examples, industry benchmarks and practical improvement strategies.</div><div class="blog-meta">📖 7 min read · Industry benchmarks</div><div class="blog-read">Read Guide →</div></div></a>
+    <a href="/blog/abc-analysis-guide.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">🔡 Classification</div><div class="blog-card-t">ABC Analysis in Inventory Management — Complete Guide</div><div class="blog-card-d">ABC analysis from scratch: classify your SKUs by revenue contribution, set replenishment policies, and free up working capital.</div><div class="blog-meta">📖 8 min read · Free Calculator</div><div class="blog-read">Read Guide →</div></div></a>
+    <a href="/blog/gst-calculator-logistics.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">🧾 India Tax</div><div class="blog-card-t">GST on Freight &amp; Logistics Services — Complete Guide (2024–25)</div><div class="blog-card-d">GST rates for freight, warehousing, courier services, and import-export in India. CGST vs IGST explained with calculation examples.</div><div class="blog-meta">📖 9 min read · India specific</div><div class="blog-read">Read Guide →</div></div></a>
+    <a href="/blog/landed-cost-guide.html" style="text-decoration:none"><div class="blog-card"><div class="blog-cat">🌐 Costing</div><div class="blog-card-t">Landed Cost Explained — True Cost of Imported Goods</div><div class="blog-card-d">How to calculate the real per-unit cost of imported inventory including freight, customs duty, insurance and clearing charges — with a free calculator.</div><div class="blog-meta">📖 7 min read · Free Calculator included</div><div class="blog-read">Read Guide →</div></div></a>
+  </div>
+</section>
+<!-- ── FAQ SECTION ── -->
+
+<section id="case-studies" class="section center">
+  <div class="section-eyebrow">📘 Playbooks</div>
+  <h2 class="section-title">Worked Examples &amp; Case Studies</h2>
+  <p class="section-sub">Step-by-step playbooks showing how Indian sellers use LogicstIQ to solve real supply chain problems — with the exact formulas and tools.</p>
+  <div class="calc-grid cg-2" style="max-width:760px">
+    <a href="/big-billion-days-inventory-plan" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📦</div><div class="calc-tag">Festive Planning</div><div class="calc-name">Big Billion Days Inventory Plan</div><div class="calc-desc">How a Flipkart &amp; Amazon seller plans stock for the festive peak — baseline, uplift, safety stock &amp; reorder timing</div></div></a>
+    <a href="/fba-restock-before-big-billion-days" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📦</div><div class="calc-tag">Amazon FBA</div><div class="calc-name">FBA Restock Before Big Billion Days</div><div class="calc-desc">How much to send into FBA, when to ship, and staying inside restock limits</div></div></a>
+    <a href="/quick-commerce-replenishment-blinkit-zepto" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">⚡</div><div class="calc-tag">Quick Commerce</div><div class="calc-name">Blinkit &amp; Zepto Replenishment</div><div class="calc-desc">Per-dark-store reorder points for 10-minute delivery, with short lead times</div></div></a>
+    <a href="/cut-dead-stock-free-working-capital" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">💀</div><div class="calc-tag">Working Capital</div><div class="calc-name">Cut Dead Stock, Free Cash</div><div class="calc-desc">Find non-moving SKUs, quantify trapped capital, and turn it back into cash</div></div></a>
+  </div>
+</section><section class="faq-section">
+  <div style="text-align:center;margin-bottom:28px">
+    <div class="section-eyebrow">❓ FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item open"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is LogicstIQ completely free to use?<span class="arr">▾</span></div><div class="faq-a">Yes — all 31 calculators and the AI Demand Planner are completely free. No login, no signup, no credit card, no usage limits. Free forever.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does LogicstIQ store my inventory data?<span class="arr">▾</span></div><div class="faq-a">Never. Your file is processed on our secure server and immediately discarded after your results are generated. Zero data is stored, logged, or shared. Close the tab and it's permanently gone.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What file formats are supported?<span class="arr">▾</span></div><div class="faq-a">Excel (.xlsx and .xls), CSV, TSV, and TXT files up to 25MB. Real Excel files are read natively using SheetJS — no conversion to CSV needed. Supports exports from Flipkart Seller Hub, Myntra, Meesho, Amazon.in Seller Central, Shopify, Nykaa, Ajio, Blinkit, Zepto, Swiggy Instamart, BigBasket, and any other CSV or Excel export.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Who is LogicstIQ for?<span class="arr">▾</span></div><div class="faq-a">D2C brands, marketplace sellers (Amazon, Flipkart, Meesho, Myntra), manufacturers, distributors, C&amp;F agents, 3PL companies, quick commerce suppliers, import/export businesses, and supply chain professionals globally.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does it work for Blinkit and Zepto suppliers?<span class="arr">▾</span></div><div class="faq-a">Yes. The AI Demand Planner has a dedicated Quick Commerce tab that plans by city, by dark store, and by time of day. It's the only free tool designed specifically for the hyperlocal replenishment challenges of Blinkit, Zepto, Swiggy Instamart, and BigBasket.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How accurate are the AI forecasts?<span class="arr">▾</span></div><div class="faq-a">Accuracy depends on the quality and completeness of your input data. The AI Demand Planner uses Gemini 2.5 Flash with statistical forecasting models. All results are for planning reference only — always validate with your ERP or WMS before placing purchase orders.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will you add more tools?<span class="arr">▾</span></div><div class="faq-a">Yes. LogicstIQ is actively developed. Upcoming additions include a TMS (Transportation Management System) for carrier rate comparison and route optimisation, and a Pro plan for teams needing saved forecasts, scheduled reports, and API integrations.</div></div>
+  </div>
+</section>
+<!-- ── ADSENSE SLOT 3 — Footer (activate after AdSense approval) ── -->
+<!-- <div class="ad-slot" style="margin-bottom:0"><span class="ad-label">Advertisement</span><div class="ad-bar"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div></div> -->
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo" style="margin-bottom:4px">
+        <svg width="158" height="38" viewBox="0 0 260 68" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="LogicstIQ" style="display:block">
+          <defs>
+            <linearGradient id="ft_g" x1="4" y1="28" x2="66" y2="14" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.5)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0.92)"/>
+            </linearGradient>
+          </defs>
+          <path d="M4 28 L18 28 L32 50 L50 14 L64 14" stroke="url(#ft_g)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M59 8 L66 14 L59 20" stroke="rgba(255,255,255,0.72)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="32" cy="50" r="3.5" fill="rgba(255,255,255,0.38)"/>
+          <circle cx="50" cy="14" r="3.5" fill="rgba(255,255,255,0.88)"/>
+          <text x="82" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="-1.5">
+            <tspan fill="#FFFFFF">Logicst</tspan><tspan fill="#AEBCFF">IQ</tspan>
+          </text>
+        </svg>
+      </div>
+      <div class="footer-tagline">Where Logistics Meets Intelligence</div>
+      <p>India's free AI supply chain platform for sellers & D2C brands. 31 calculators + AI Demand Planner. No login. No data stored. Free forever.</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/amiitkumar" target="_blank" rel="noopener" class="social-btn">in</a>
+        <a href="https://www.linkedin.com/in/sachin-s-0b1179162" target="_blank" rel="noopener" class="social-btn">in</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-t">Calculators</div>
+      <div class="footer-links">
+        <a href="/eoq-calculator">EOQ Calculator</a>
+        <a href="/safety-stock-calculator">Safety Stock</a>
+        <a href="/reorder-point-calculator">Reorder Point</a>
+        <a href="/abc-analysis-calculator">ABC Analysis</a>
+        <a href="/otif-calculator">OTIF Calculator</a>
+        <a href="/landed-cost-calculator">Landed Cost</a>
+        <a href="/gst-calculator-logistics">GST Calculator</a>
+        <a href="/carbon-footprint-logistics">Carbon Footprint</a>
+        <a href="/cogs-calculator">COGS Calculator</a>
+<a href="/gross-margin-calculator">Gross Margin</a>
+<a href="/break-even-calculator">Break-Even Calculator</a>
+<a href="/moq-calculator">MOQ Calculator</a>
+<a href="/dead-stock-calculator">Dead Stock Calculator</a>
+<a href="/volumetric-weight-calculator">Volumetric Weight</a>
+<a href="/documents-generator.html">Document Generator</a>
+<a href="/sourcing-procurement.html">Sourcing &amp; Procurement</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-t">AI Planner</div>
+      <div class="footer-links">
+        <a href="/demand-planner.html">Demand Forecast</a>
+        <a href="/demand-planner.html">Reorder Plan</a>
+        <a href="/demand-planner.html">Inventory IQ</a>
+        <a href="/demand-planner.html">Stockout Risk</a>
+        <a href="/demand-planner.html">Slow Movers</a>
+        <a href="/demand-planner.html">Q-Commerce</a>
+        <a href="/demand-planner.html">Event Calendar</a>
+        <a href="/blog.html">Blog &amp; Guides</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-t">Company</div>
+      <div class="footer-founder">
+        <a href="https://www.linkedin.com/in/amiitkumar" target="_blank" rel="noopener">Amit Kumar</a><br>
+        <span class="footer-founder-role">Co-Founder · LogicstIQ</span><br><br>
+        <a href="https://www.linkedin.com/in/sachin-s-0b1179162" target="_blank" rel="noopener">Sachin Sirwani</a><br>
+        <span class="footer-founder-role">Co-Founder · LogicstIQ</span>
+      </div>
+      <div class="footer-links" style="margin-top:16px">
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="mailto:privacy@logicstiq.com">privacy@logicstiq.com</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-affiliate-note">
+    <strong style="color:#94A3B8">Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. When you sign up for a third-party service via these links, we may earn a small commission at no extra cost to you. This does not affect our editorial independence or recommendations.
+  </div>
+  <div class="footer-bottom">
+    <div style="margin-bottom:6px"><strong style="color:#94A3B8">31 Free Supply Chain Calculators · AI Demand Planner · No Login Required · Instant Results · Free Forever</strong></div>
+    <div>© 2026 LogicstIQ.com · Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a> · Where Logistics Meets Intelligence</div>
+    <div style="margin-top:6px"><a href="/privacy-policy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a> · <a href="/disclaimer.html">Disclaimer</a> · Results are for reference only. Always validate with your ERP/WMS before making business decisions.</div>
+  </div>
+<p style="margin-top:10px;font-size:12px;color:#94A3B8;text-align:center">
+Contact: <a href="mailto:contactus@logicstiq.com"
+style="color:#9B6BFF;text-decoration:none;font-weight:600">contactus@logicstiq.com</a>
+</p>
+</footer>
+
+<!-- ===== LogicstIQ — Demo Video Popup (auto-opens muted + Watch demo button) ===== -->
+<div id="liq-vm" class="liq-vm" aria-hidden="true">
+  <div class="liq-vm__backdrop" data-liq-close></div>
+  <div class="liq-vm__dialog" role="dialog" aria-modal="true" aria-label="LogicstIQ product demo video">
+    <button class="liq-vm__close" type="button" aria-label="Close video" data-liq-close>&times;</button>
+    <div class="liq-vm__frame">
+      <video id="liq-video" class="liq-vm__video" playsinline muted preload="metadata" controls poster="/logicstiq-poster.png">
+        <source src="/logicstiq-demo.mp4" type="video/mp4" />
+        Your browser does not support HTML5 video.
+      </video>
+      <button id="liq-unmute" class="liq-vm__unmute" type="button" aria-label="Unmute video"><span class="liq-vm__spk">&#128266;</span> Tap for sound</button>
+    </div>
+    <div class="liq-vm__bar">
+      <span class="liq-vm__tag">31 free supply chain tools &middot; AI Demand Planner</span>
+      <a class="liq-vm__cta" href="/calculators.html" data-liq-close>Explore free tools &rarr;</a>
+    </div>
+  </div>
+</div>
+<button id="liq-open" class="liq-vm-launch" type="button" aria-haspopup="dialog" aria-controls="liq-vm"><span class="liq-vm-launch__play">&#9658;</span> Watch demo</button>
+<style>
+  .liq-vm{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px}
+  .liq-vm.is-open{display:flex}
+  .liq-vm__backdrop{position:absolute;inset:0;background:rgba(6,9,18,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;transition:opacity .25s ease}
+  .liq-vm.is-open .liq-vm__backdrop{opacity:1}
+  .liq-vm__dialog{position:relative;width:min(960px,100%);background:#121a30;border:1px solid rgba(24,226,202,.25);border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.6);overflow:hidden;transform:scale(.94) translateY(10px);opacity:0;transition:transform .28s cubic-bezier(.2,.8,.2,1),opacity .28s ease}
+  .liq-vm.is-open .liq-vm__dialog{transform:scale(1) translateY(0);opacity:1}
+  .liq-vm__close{position:absolute;top:10px;right:12px;z-index:3;width:40px;height:40px;border:none;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;font-size:26px;line-height:1;cursor:pointer;transition:background .2s}
+  .liq-vm__close:hover{background:rgba(0,0,0,.75)}
+  .liq-vm__frame{position:relative;background:#000}
+  .liq-vm__video{display:block;width:100%;height:auto;aspect-ratio:16/9}
+  .liq-vm__unmute{position:absolute;left:50%;bottom:64px;transform:translateX(-50%);background:#18e2ca;color:#06212b;font-weight:700;font-size:15px;border:none;border-radius:999px;padding:10px 18px;cursor:pointer;box-shadow:0 6px 20px rgba(24,226,202,.45);display:inline-flex;align-items:center;gap:8px;animation:liqvmpulse 1.8s ease-in-out infinite}
+  .liq-vm__unmute:hover{filter:brightness(1.08)}
+  .liq-vm__spk{font-size:17px}
+  @keyframes liqvmpulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.06)}}
+  .liq-vm__bar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 18px;flex-wrap:wrap}
+  .liq-vm__tag{color:#c7d2e6;font:600 15px/1.3 'Inter',system-ui,Arial,sans-serif}
+  .liq-vm__cta{background:#18e2ca;color:#06212b;text-decoration:none;font:700 15px/1 'Inter',system-ui,Arial,sans-serif;padding:11px 18px;border-radius:999px;white-space:nowrap;transition:filter .2s}
+  .liq-vm__cta:hover{filter:brightness(1.08)}
+  .liq-vm-launch{position:fixed;left:20px;bottom:20px;z-index:99998;background:#18e2ca;color:#06212b;border:none;cursor:pointer;font:700 15px/1 'Inter',system-ui,Arial,sans-serif;padding:13px 20px;border-radius:999px;box-shadow:0 8px 24px rgba(24,226,202,.45);display:inline-flex;align-items:center;gap:9px;transition:transform .2s,filter .2s}
+  .liq-vm-launch:hover{transform:translateY(-2px);filter:brightness(1.08)}
+  .liq-vm-launch__play{font-size:13px}
+  @media(max-width:560px){.liq-vm__bar{justify-content:center;text-align:center}.liq-vm-launch{left:14px;bottom:14px;padding:11px 16px;font-size:14px}}
+  @media(prefers-reduced-motion:reduce){.liq-vm__backdrop,.liq-vm__dialog{transition:none}.liq-vm__unmute{animation:none}}
+</style>
+<script>
+(function(){
+  var AUTO_OPEN=true,AUTO_OPEN_DELAY=1200,AUTO_OPEN_MODE="once"; // "always" | "session" | "once"
+  var modal=document.getElementById("liq-vm"),video=document.getElementById("liq-video"),
+      unmute=document.getElementById("liq-unmute"),openBtn=document.getElementById("liq-open"),lastFocus=null;
+  function open(){lastFocus=document.activeElement;modal.classList.add("is-open");modal.setAttribute("aria-hidden","false");
+    document.body.style.overflow="hidden";video.muted=true;var p=video.play();if(p&&p.catch)p.catch(function(){});
+    unmute.style.display="inline-flex";setTimeout(function(){modal.querySelector(".liq-vm__close").focus();},50);}
+  function close(){modal.classList.remove("is-open");modal.setAttribute("aria-hidden","true");document.body.style.overflow="";
+    try{video.pause();video.currentTime=0;}catch(e){}if(lastFocus&&lastFocus.focus)lastFocus.focus();}
+  unmute.addEventListener("click",function(){video.muted=false;video.volume=1;var p=video.play();if(p&&p.catch)p.catch(function(){});unmute.style.display="none";});
+  openBtn.addEventListener("click",open);
+  modal.addEventListener("click",function(e){if(e.target.hasAttribute("data-liq-close"))close();});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&modal.classList.contains("is-open"))close();});
+  function shouldAuto(){if(!AUTO_OPEN)return false;try{
+      if(AUTO_OPEN_MODE==="once"){if(localStorage.getItem("liqDemoSeen"))return false;localStorage.setItem("liqDemoSeen","1");}
+      else if(AUTO_OPEN_MODE==="session"){if(sessionStorage.getItem("liqDemoSeen"))return false;sessionStorage.setItem("liqDemoSeen","1");}
+    }catch(e){}return true;}
+  if(shouldAuto())window.addEventListener("load",function(){setTimeout(open,AUTO_OPEN_DELAY);});
+})();
+</script>
+<script>
+(function(){var r=document.documentElement,b=document.getElementById('liqTheme');
+function set(t){r.setAttribute('data-theme',t);if(b)b.textContent=(t==='dark')?'☀️':'🌙';try{localStorage.setItem('liq-theme',t)}catch(e){}}
+try{var sv=localStorage.getItem('liq-theme');if(sv)set(sv);}catch(e){}
+if(b)b.addEventListener('click',function(){set(r.getAttribute('data-theme')==='dark'?'light':'dark');});})();
+</script>
+<!-- ===== end LogicstIQ Demo Video Popup ===== -->
+  <script src="/copilot-widget.js" data-endpoint="/api/copilot" data-title="LogicstIQ Copilot" data-accent="#1D9E75" defer></script>
+<script>
+(function(){try{
+if(!('IntersectionObserver' in window))return;
+var els=[].slice.call(document.querySelectorAll('.calc-card,.blog-card,.liq-testi-card,.pf-stat,.safety-card'));
+var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('lq-in');io.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -6% 0px'});
+els.forEach(function(el,i){el.classList.add('lq-rv');el.style.transitionDelay=((i%6)*45)+'ms';io.observe(el);});
+}catch(e){}})();
+</script>
+</body>
+</html>

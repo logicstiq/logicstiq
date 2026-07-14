@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EOQ Calculator — Economic Order Quantity Formula | LogicstIQ</title>
+<meta name="description" content="Free EOQ Calculator. Calculate Economic Order Quantity instantly. Works for Amazon FBA, D2C brands, retail & manufacturing. Formula, examples & reorder guidance included.">
+<meta name="keywords" content="EOQ calculator, economic order quantity, EOQ formula, inventory order quantity, reorder quantity calculator, supply chain calculator">
+<meta name="author" content="Amit Kumar & Sachin Sirwani — LogicstIQ.com">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.logicstiq.com/eoq-calculator">
+<meta property="og:title" content="Free EOQ Calculator — Economic Order Quantity | LogicstIQ">
+<meta property="og:description" content="Calculate your Economic Order Quantity instantly. Free, no login. Includes formula explanation and worked examples.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.logicstiq.com/eoq-calculator">
+<meta property="og:site_name" content="LogicstIQ.com">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&family=Wix+Madefor+Display:wght@600;700;800&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"EOQ Calculator","url":"https://www.logicstiq.com/eoq-calculator","description":"Free Economic Order Quantity calculator for supply chain professionals.","isPartOf":{"@type":"WebSite","name":"LogicstIQ.com","url":"https://www.logicstiq.com"}}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F4F7FF;--white:#FFFFFF;--border:#E2E8F0;--border2:#CBD5E1;
+  --b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b400:#7A92FF;
+  --b500:#5069FF;--b600:#3A55FF;--b700:#2A40D6;--b800:#2436B5;--b900:#1C2C73;
+  --cyan:#770BFF;--green:#059669;--glight:#D1FAE5;
+  --amber:#D97706;--alight:#FEF3C7;--red:#DC2626;--rlight:#FEE2E2;
+  --purple:#7C3AED;--slate:#64748B;
+  --text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8;
+}
+body{font-family:'Wix Madefor Text','Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+.preview-bar{background:linear-gradient(90deg,#3A55FF,#770BFF);padding:10px 20px;text-align:center;font-size:12px;font-weight:800;color:#fff;letter-spacing:.04em;position:sticky;top:0;z-index:999}
+.nav{background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:40px;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.nav-logo{text-decoration:none;display:flex;align-items:center;line-height:1}
+.nav-logo span{background:linear-gradient(135deg,#3A55FF,#770BFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:13px;font-weight:600;color:var(--text3);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--b600)}
+.nav-cta{background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;border:none;border-radius:9px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-block}
+
+/* Page hero */
+.calc-hero{background:linear-gradient(135deg,#0F172A 0%,#1C2C73 45%,#2A40D6 100%);padding:52px 32px 44px;text-align:center}
+.calc-hero .breadcrumb{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:12px}
+.calc-hero .breadcrumb a{color:rgba(255,255,255,.6);text-decoration:none}
+.calc-hero .breadcrumb a:hover{color:#fff}
+.calc-hero h1{font-size:clamp(24px,4vw,44px);font-weight:900;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.03em;margin-bottom:10px}
+.calc-hero h1 span{background:linear-gradient(135deg,#AEBCFF,#C4B5FD);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.calc-hero p{font-size:15px;color:rgba(255,255,255,.78);max-width:520px;margin:0 auto}
+
+/* Main layout */
+.calc-wrap{max-width:900px;margin:0 auto;padding:40px 20px 60px}
+
+/* Card */
+.card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:32px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+.card-title{font-size:18px;font-weight:800;color:var(--text);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+
+/* Form */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:600px){.form-grid{grid-template-columns:1fr}}
+.form-group label{display:block;font-size:12px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.form-group input{width:100%;padding:11px 14px;border:1.5px solid var(--border2);border-radius:10px;font-size:15px;font-family:inherit;color:var(--text);background:#fff;transition:border .15s}
+.form-group input:focus{outline:none;border-color:var(--b500)}
+.form-hint{font-size:11px;color:var(--text4);margin-top:4px}
+
+/* Button */
+.btn-calc{width:100%;background:linear-gradient(135deg,var(--b600),var(--b700));color:#fff;border:none;border-radius:12px;padding:15px;font-size:16px;font-weight:800;cursor:pointer;font-family:inherit;margin-top:20px;transition:opacity .15s}
+.btn-calc:hover{opacity:.9}
+
+/* Result */
+.result-box{display:none;background:linear-gradient(135deg,#EFF6FF,#DBEAFE);border:2px solid var(--b200);border-radius:16px;padding:28px;text-align:center;margin-top:20px}
+.result-box.show{display:block}
+.result-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--b600);margin-bottom:8px}
+.result-value{font-size:52px;font-weight:900;color:var(--b700);font-family:'Plus Jakarta Sans',sans-serif;line-height:1}
+.result-unit{font-size:16px;font-weight:600;color:var(--b600);margin-top:4px}
+.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+@media(max-width:600px){.result-grid{grid-template-columns:1fr 1fr}}
+.result-stat{background:#fff;border-radius:12px;padding:14px;text-align:center;border:1px solid var(--b100)}
+.result-stat-val{font-size:20px;font-weight:800;color:var(--b700)}
+.result-stat-lbl{font-size:11px;color:var(--text3);font-weight:600;margin-top:3px}
+
+/* Formula box */
+.formula-box{background:var(--b50);border:1px solid var(--b100);border-radius:14px;padding:20px;margin-bottom:20px;text-align:center}
+.formula-box .formula{font-size:18px;font-weight:700;color:var(--b800);letter-spacing:.02em;margin-bottom:8px}
+.formula-box p{font-size:13px;color:var(--text3)}
+
+/* Info table */
+.var-table{width:100%;border-collapse:collapse;font-size:14px}
+.var-table th{background:var(--b50);color:var(--b800);font-weight:700;padding:10px 14px;text-align:left;border-bottom:2px solid var(--b100)}
+.var-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text3)}
+.var-table tr:last-child td{border-bottom:none}
+
+/* Section titles */
+.section-eyebrow{display:inline-block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--b600);background:var(--b50);border:1px solid var(--b100);border-radius:999px;padding:4px 12px;margin-bottom:10px}
+.section-title{font-size:clamp(20px,3vw,28px);font-weight:900;color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;margin-bottom:8px}
+
+/* FAQ */
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq-q{padding:16px 20px;font-weight:700;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--text)}
+.faq-a{display:none;padding:0 20px 16px;font-size:14px;color:var(--text3);line-height:1.7}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .arr{transform:rotate(180deg)}
+.arr{transition:transform .2s;color:var(--text4)}
+
+/* CTA banner */
+.cta-banner{background:linear-gradient(135deg,#0F172A,#1C2C73);border-radius:18px;padding:36px;text-align:center;color:#fff;margin-bottom:24px}
+.cta-banner h3{font-size:22px;font-weight:900;font-family:'Plus Jakarta Sans',sans-serif;margin-bottom:8px}
+.cta-banner p{font-size:14px;color:rgba(255,255,255,.75);margin-bottom:20px}
+.cta-banner a{background:linear-gradient(135deg,var(--b400),var(--cyan));color:#fff;text-decoration:none;border-radius:10px;padding:12px 28px;font-size:14px;font-weight:800;display:inline-block}
+
+/* Footer */
+footer{background:#0F172A;color:rgba(255,255,255,.6);padding:40px 32px 24px}
+.footer-bottom{text-align:center;font-size:12px;border-top:1px solid rgba(255,255,255,.08);padding-top:20px;margin-top:24px}
+.footer-bottom a{color:rgba(255,255,255,.5);text-decoration:none}
+.footer-bottom a:hover{color:#fff}
+</style>
+<style id="liq-theme-css">
+.liq-theme-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--white);color:var(--text);font-size:15px;line-height:1;cursor:pointer;display:inline-grid;place-items:center;transition:.18s;margin-left:4px}
+.liq-theme-btn:hover{border-color:#3A55FF;transform:translateY(-1px)}
+.liq-theme-float{position:fixed;right:18px;bottom:18px;z-index:99999;width:44px;height:44px;border-radius:50%;box-shadow:0 8px 22px rgba(0,0,0,.28)}
+[data-theme="dark"]{
+  --bg:#070708;--white:#10131F;--border:rgba(255,255,255,.10);--border2:rgba(255,255,255,.17);
+  --b50:rgba(58,85,255,.12);--b100:rgba(58,85,255,.20);--b200:rgba(58,85,255,.32);
+  --text:#F1F5FF;--text2:#DBE3F5;--text3:#A7B0CC;--text4:#7E88A8;
+  --glight:rgba(16,185,129,.16);--rlight:rgba(239,68,68,.16);--alight:rgba(245,158,11,.16);--plight:rgba(119,11,255,.18);
+}
+[data-theme="dark"] body{background:#070708}
+[data-theme="dark"] .nav{background:rgba(9,10,18,.92)!important;border-bottom-color:rgba(255,255,255,.08)}
+[data-theme="dark"] .liq-theme-btn{background:rgba(255,255,255,.06)}
+[data-theme="dark"] .nav-logo text tspan:first-child{fill:#FFFFFF}
+[data-theme="dark"] .nav-logo span{color:#7D92FF!important}
+[data-theme="dark"] .card,[data-theme="dark"] .why-card,[data-theme="dark"] .results,[data-theme="dark"] .result-item,[data-theme="dark"] .related-card,[data-theme="dark"] .calc-card,[data-theme="dark"] .badge-bar,[data-theme="dark"] .result-stat,[data-theme="dark"] .f-var,[data-theme="dark"] .formula-var,[data-theme="dark"] .breakdown-item,[data-theme="dark"] .safety-card,[data-theme="dark"] .modal-card,[data-theme="dark"] .legal-note,[data-theme="dark"] .tab,[data-theme="dark"] .faq-q,[data-theme="dark"] .faq-item{background:#10131F!important;border-color:rgba(255,255,255,.12)!important}
+[data-theme="dark"] .formula-box,[data-theme="dark"] .example-box,[data-theme="dark"] .faq-a{background:#0C0F1A!important;border-color:rgba(255,255,255,.10)!important}
+[data-theme="dark"] table th{background:rgba(255,255,255,.05)!important;color:#CFD8EE!important}
+[data-theme="dark"] table td,[data-theme="dark"] table th{border-color:rgba(255,255,255,.08)!important}
+[data-theme="dark"] .section-eyebrow,[data-theme="dark"] .calc-tag,[data-theme="dark"] .blog-cat,[data-theme="dark"] .calc-cat{background:rgba(58,85,255,.14)!important;border-color:rgba(58,85,255,.32)!important;color:#AEBCFF!important}
+</style>
+</head>
+<body>
+
+<div class="preview-bar">🚀 LogicstIQ — 31 Free Supply Chain Calculators + AI Demand Planner <span>No login. No data stored. Free forever.</span></div>
+
+<!-- ===== LogicstIQ unified navigation ===== -->
+<style id="lnav-css">
+.lnav{position:sticky;top:0;z-index:9000;background:#fff;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:18px;padding:0 22px;height:64px;font-family:'Inter','Plus Jakarta Sans',sans-serif}
+.lnav-logo{display:inline-flex;align-items:center;text-decoration:none;flex-shrink:0}
+.lnav-menu{display:flex;align-items:center;gap:2px;margin-left:auto}
+.lnav-item{position:static}
+.lnav-top{display:inline-flex;align-items:center;gap:5px;padding:9px 11px;border-radius:9px;font-size:13.5px;font-weight:600;color:#0F172A;text-decoration:none;white-space:nowrap;cursor:pointer;background:none;border:none;font-family:inherit}
+.lnav-top:hover{background:#EFF3FF;color:#3A55FF}
+.lnav-car{font-size:9px;opacity:.55;transition:transform .18s}
+.lnav-beta{background:linear-gradient(135deg,#4F6BFF,#9B6BFF);color:#fff;font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:999px;letter-spacing:.5px}
+.lnav-panel{position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid #E2E8F0;box-shadow:0 18px 40px rgba(15,23,42,.12);display:none;padding:26px 32px;z-index:9001}
+.lnav-panel-in{max-width:1080px;margin:0 auto;display:flex;gap:40px;flex-wrap:wrap}
+.lnav-col{min-width:200px}
+.lnav-colt{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#94A3B8;margin-bottom:9px}
+.lnav-panel a{display:block;padding:6px 8px;margin:0 -8px;border-radius:7px;font-size:13px;font-weight:600;color:#1E293B;text-decoration:none}
+.lnav-panel a:hover{background:#EFF3FF;color:#3A55FF}
+.lnav-mini{font-size:10px;font-weight:700;color:#9B6BFF;background:rgba(155,107,255,.1);padding:1px 7px;border-radius:999px;margin-left:6px}
+.lnav-viewall{margin-top:14px;padding-top:14px;border-top:1px solid #E2E8F0;width:100%}
+.lnav-viewall a{display:inline-block;font-size:13px;font-weight:800;color:#3A55FF!important}
+.lnav-burger{display:none;margin-left:auto;background:#fff;border:1px solid #CBD5E1;border-radius:9px;width:40px;height:40px;cursor:pointer;font-size:18px;color:#0F172A;line-height:1}
+@media(hover:hover) and (min-width:1101px){.lnav-item:hover>.lnav-panel,.lnav-item:focus-within>.lnav-panel{display:block}.lnav-item:hover .lnav-car{transform:rotate(180deg)}}
+@media(max-width:1100px){
+ .lnav{flex-wrap:wrap;height:auto;min-height:60px;padding:8px 14px}
+ .lnav-logo svg{height:34px;width:auto}
+ .lnav-burger{display:inline-flex;align-items:center;justify-content:center}
+ .lnav-menu{display:none;flex-direction:column;align-items:stretch;width:100%;gap:0;padding:6px 0 12px}
+ .lnav.open .lnav-menu{display:flex}
+ .lnav-item{position:relative;width:100%}
+ .lnav-top{width:100%;justify-content:space-between;padding:13px 8px;font-size:15px;border-bottom:1px solid #EEF2F7;border-radius:0}
+ .lnav-panel{position:static;box-shadow:none;border:none;padding:4px 8px 10px;background:#F8FAFF}
+ .lnav-item.open>.lnav-panel{display:block}
+ .lnav-item.open .lnav-car{transform:rotate(180deg)}
+ .lnav-panel-in{flex-direction:column;gap:14px}
+}
+[data-theme="dark"] .lnav{background:rgba(9,10,18,.94);border-bottom-color:rgba(255,255,255,.09)}
+[data-theme="dark"] .lnav-top{color:#E7ECFB}
+[data-theme="dark"] .lnav-top:hover{background:rgba(58,85,255,.14);color:#AEBCFF}
+[data-theme="dark"] .lnav-panel{background:#0D101C;border-color:rgba(255,255,255,.09)}
+[data-theme="dark"] .lnav-panel a{color:#DBE3F5}
+[data-theme="dark"] .lnav-panel a:hover{background:rgba(58,85,255,.14);color:#AEBCFF}
+[data-theme="dark"] .lnav-colt{color:#7E88A8}
+[data-theme="dark"] .lnav-burger{background:rgba(255,255,255,.06);color:#E7ECFB;border-color:rgba(255,255,255,.2)}
+[data-theme="dark"] .lnav-logo text tspan:first-child{fill:#FFFFFF}
+[data-theme="dark"] .lnav-viewall{border-top-color:rgba(255,255,255,.09)}
+[data-theme="dark"] .lnav-panel .lnav-viewall a{color:#AEBCFF!important}
+[data-theme="dark"] .lnav-top,[data-theme="dark"] .lnav-panel a{border-bottom-color:rgba(255,255,255,.06)}
+</style>
+<nav class="lnav" id="lnav">
+<a href="/" class="lnav-logo" aria-label="LogicstIQ — Home">
+  <svg width="200" height="41" viewBox="0 0 440 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible">
+    <defs><linearGradient id="lnav_grad" x1="10" y1="70" x2="400" y2="20" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F6BFF"/><stop offset="100%" stop-color="#9B6BFF"/></linearGradient></defs>
+    <path d="M10 40 L26 40 L42 66 L64 22 L80 22" stroke="url(#lnav_grad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M74 14 L82 22 L74 30" stroke="#9B6BFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <circle cx="42" cy="66" r="4.5" fill="#4F6BFF"/><circle cx="64" cy="22" r="4.5" fill="#9B6BFF"/>
+    <text x="98" y="44" font-family="'Plus Jakarta Sans','Inter',sans-serif" font-size="36" font-weight="800" letter-spacing="-1.4"><tspan fill="#4F6BFF">Logicst</tspan><tspan fill="#9B6BFF">IQ</tspan></text>
+    <text x="99" y="70" font-family="'Inter',sans-serif" font-size="16" font-weight="600" letter-spacing="0.3" fill="#64748B">Where Logistics Meets Intelligence</text>
+  </svg>
+</a>
+  <button class="lnav-burger" id="lnavBurger" type="button" aria-label="Open menu">☰</button>
+  <div class="lnav-menu">
+    <div class="lnav-item">
+      <a class="lnav-top" href="/calculators.html">Calculators <span class="lnav-car">▼</span></a>
+      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col"><div class="lnav-colt">📦 Inventory & Planning</div><a href="/eoq-calculator">EOQ Calculator</a><a href="/safety-stock-calculator">Safety Stock</a><a href="/reorder-point-calculator">Reorder Point</a><a href="/abc-analysis-calculator">ABC Analysis</a><a href="/inventory-turnover-calculator">Inventory Turnover</a><a href="/moq-calculator">MOQ Calculator</a><a href="/dead-stock-calculator">Dead Stock</a><a href="/cycle-count-calculator">Cycle Count</a></div><div class="lnav-col"><div class="lnav-colt">⏱️ Performance & Suppliers</div><a href="/otif-calculator">OTIF Calculator</a><a href="/fill-rate-calculator">Fill Rate</a><a href="/demand-forecast-calculator">Demand Forecast</a><a href="/supplier-scorecard-calculator">Supplier Scorecard</a><a href="/supplier-lead-time-variability-calculator">Lead Time Variability</a><a href="/disruption-impact-calculator">Disruption Impact</a></div><div class="lnav-col"><div class="lnav-colt">💰 Costing & Finance</div><a href="/landed-cost-calculator">Landed Cost</a><a href="/gst-calculator-logistics">GST Calculator</a><a href="/cogs-calculator">COGS Calculator</a><a href="/gross-margin-calculator">Gross Margin</a><a href="/break-even-calculator">Break-Even</a><a href="/working-capital-calculator">Working Capital</a><a href="/carrying-cost-calculator">Carrying Cost</a><a href="/stockout-cost-calculator">Stockout Cost</a><a href="/days-inventory-outstanding-calculator">Days Inventory Outstanding</a><a href="/cash-conversion-cycle-calculator">Cash Conversion Cycle</a></div><div class="lnav-col"><div class="lnav-colt">🚛 Logistics & Warehouse</div><a href="/freight-cost-calculator">Freight Cost</a><a href="/warehouse-space-calculator">Warehouse Space</a><a href="/lead-time-calculator">Lead Time</a><a href="/shipping-cost-per-unit-calculator">Shipping Cost / Unit</a><a href="/volumetric-weight-calculator">Volumetric Weight</a><a href="/pick-pack-cost-calculator">Pick & Pack Cost</a><a href="/carbon-footprint-logistics">Carbon Footprint</a></div><div class="lnav-viewall"><a href="/calculators.html">View all 31 calculators →</a></div></div></div>
+    </div>
+    <a class="lnav-top" href="/demand-planner.html">AI Demand Planner</a>
+    <a class="lnav-top" href="/documents-generator.html">Documents</a>
+    <a class="lnav-top" href="/sourcing-procurement.html">Sourcing</a>
+    <div class="lnav-item">
+      <a class="lnav-top" href="/ecommerce.html">Ecommerce <span class="lnav-car">▼</span></a>
+      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col" style="min-width:280px"><div class="lnav-colt">🏪 Ecommerce Suite</div><a href="/fba-planner/">📦 FBA Planner <span class="lnav-mini">Live</span></a><a href="/oms.html">🧾 OMS — Order Management <span class="lnav-mini">Coming soon</span></a><a href="/wms.html">🏭 WMS — Warehouse Management <span class="lnav-mini">Coming soon</span></a><a href="/returns.html">↩️ Returns Management <span class="lnav-mini">Coming soon</span></a><div class="lnav-viewall"><a href="/ecommerce.html">Open Ecommerce hub →</a></div></div></div></div>
+    </div>
+    <a class="lnav-top" href="/tms.html">TMS <span class="lnav-beta">Beta</span></a>
+    <div class="lnav-item">
+      <a class="lnav-top" href="/blog.html">Blog <span class="lnav-car">▼</span></a>
+      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col" style="min-width:320px"><div class="lnav-colt">📚 Guides</div><a href="/blog/landed-cost-guide.html">Landed Cost Explained</a><a href="/blog/eoq-calculator.html">EOQ — Complete Guide</a><a href="/blog/demand-planning-amazon-flipkart.html">Demand Planning for Amazon & Flipkart</a><a href="/blog/safety-stock-calculator.html">Safety Stock Formula</a><a href="/blog/what-is-otif.html">What is OTIF?</a><a href="/blog/inventory-turnover-formula.html">Inventory Turnover Formula</a><a href="/blog/abc-analysis-guide.html">ABC Analysis Guide</a><a href="/blog/gst-calculator-logistics.html">GST on Freight & Logistics</a><div class="lnav-viewall"><a href="/blog.html">View all articles →</a></div></div></div></div>
+    </div>
+    <a class="lnav-top" href="/about.html">About</a>
+    <a class="lnav-top" href="/contact.html">Contact</a>
+  </div>
+</nav>
+<script id="lnav-js">
+(function(){var nav=document.getElementById('lnav');if(!nav)return;
+var burger=document.getElementById('lnavBurger');
+if(burger)burger.addEventListener('click',function(e){e.stopPropagation();nav.classList.toggle('open');});
+var mobile=function(){return window.matchMedia('(max-width:1100px)').matches;};
+nav.querySelectorAll('.lnav-item>.lnav-top').forEach(function(t){
+ t.addEventListener('click',function(e){
+  if(mobile()){var it=t.parentElement;
+   if(!it.classList.contains('open')){e.preventDefault();
+    nav.querySelectorAll('.lnav-item.open').forEach(function(o){if(o!==it)o.classList.remove('open');});
+    it.classList.add('open');}
+  }});});
+document.addEventListener('click',function(e){if(!nav.contains(e.target)){nav.classList.remove('open');nav.querySelectorAll('.lnav-item.open').forEach(function(o){o.classList.remove('open');});}});
+window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList.remove('open');nav.querySelectorAll('.lnav-item.open').forEach(function(o){o.classList.remove('open');});}});
+})();
+</script>
+<!-- ===== end unified navigation ===== -->
+
+<div class="calc-hero">
+  <div class="breadcrumb"><a href="/">Home</a> › <a href="/calculators.html">Calculators</a> › EOQ Calculator</div>
+  <h1>📦 <span>EOQ</span> Calculator</h1>
+  <p>Calculate your Economic Order Quantity instantly — the optimal order size that minimises total inventory costs.</p>
+</div>
+
+<div class="calc-wrap">
+
+  <!-- Formula -->
+  <div class="card">
+    <div class="section-eyebrow">📐 The Formula</div>
+    <div class="formula-box" style="margin-top:12px">
+      <div class="formula">EOQ = √( 2 × D × S / H )</div>
+      <p>Where D = Annual Demand · S = Ordering Cost · H = Holding Cost per unit per year</p>
+    </div>
+    <table class="var-table">
+      <thead><tr><th>Variable</th><th>What It Means</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><strong>D</strong> — Annual Demand</td><td>Total units sold or consumed per year</td><td>12,000 units/year</td></tr>
+        <tr><td><strong>S</strong> — Ordering Cost</td><td>Cost to place one purchase order (admin, freight setup)</td><td>₹500 per order</td></tr>
+        <tr><td><strong>H</strong> — Holding Cost</td><td>Cost to store one unit for one year (rent, insurance, capital)</td><td>₹120 per unit/year</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Calculator -->
+  <div class="card">
+    <div class="card-title">🧮 Calculate Your EOQ</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Annual Demand (D) — Units</label>
+        <input type="number" id="demand" placeholder="e.g. 12000" min="1">
+        <div class="form-hint">Total units sold or consumed per year</div>
+      </div>
+      <div class="form-group">
+        <label>Ordering Cost (S) — ₹ per Order</label>
+        <input type="number" id="orderCost" placeholder="e.g. 500" min="0.01" step="0.01">
+        <div class="form-hint">Cost to place a single purchase order</div>
+      </div>
+      <div class="form-group">
+        <label>Holding Cost (H) — ₹ per Unit per Year</label>
+        <input type="number" id="holdCost" placeholder="e.g. 120" min="0.01" step="0.01">
+        <div class="form-hint">Annual cost to store one unit (warehousing, insurance, capital)</div>
+      </div>
+      <div class="form-group">
+        <label>Unit Cost (optional) — ₹ per Unit</label>
+        <input type="number" id="unitCost" placeholder="e.g. 800" min="0" step="0.01">
+        <div class="form-hint">Used to calculate annual inventory investment</div>
+      </div>
+    </div>
+    <button class="btn-calc" onclick="calcEOQ()">Calculate EOQ →</button>
+
+    <div class="result-box" id="resultBox">
+      <div class="result-label">Your Optimal Order Quantity (EOQ)</div>
+      <div class="result-value" id="eoqVal">—</div>
+      <div class="result-unit">units per order</div>
+      <div class="result-grid">
+        <div class="result-stat">
+          <div class="result-stat-val" id="ordersPerYear">—</div>
+          <div class="result-stat-lbl">Orders / Year</div>
+        </div>
+        <div class="result-stat">
+          <div class="result-stat-val" id="cycleTime">—</div>
+          <div class="result-stat-lbl">Days Between Orders</div>
+        </div>
+        <div class="result-stat">
+          <div class="result-stat-val" id="totalCost">—</div>
+          <div class="result-stat-lbl">Min. Total Annual Cost</div>
+        </div>
+      </div>
+      <div id="unitCostResult" style="margin-top:14px;font-size:13px;color:var(--b700);font-weight:600"></div>
+    </div>
+  </div>
+
+  <!-- Worked Example -->
+  <div class="card">
+    <div class="card-title">📖 Worked Example</div>
+    <p style="font-size:14px;color:var(--text3);line-height:1.8;margin-bottom:16px">
+      <strong>Scenario:</strong> An Amazon FBA seller sells 12,000 units/year of a skincare product. Each purchase order costs ₹500 to place and process. Storing one unit costs ₹120/year (warehouse + insurance + tied-up capital).
+    </p>
+    <div class="formula-box">
+      <div class="formula" style="font-size:15px">EOQ = √( 2 × 12,000 × 500 / 120 ) = √(100,000) = <strong>316 units</strong></div>
+    </div>
+    <p style="font-size:14px;color:var(--text3);line-height:1.8">
+      ✅ Place orders of <strong>316 units</strong> — roughly <strong>38 orders per year</strong> (every ~10 days). This minimises combined ordering + holding costs.
+    </p>
+  </div>
+
+  <!-- AI Planner CTA -->
+  <div class="cta-banner">
+    <h3>Need a Full Demand Forecast?</h3>
+    <p>Upload your inventory file and get AI-powered reorder plans, SKU-level EOQ, stockout risk analysis and more — free.</p>
+    <a href="/demand-planner.html">Try the AI Demand Planner →</a>
+  </div>
+
+  <!-- FAQ -->
+  <div class="card">
+    <div class="card-title">❓ Frequently Asked Questions</div>
+    <div class="faq-item open">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is Economic Order Quantity (EOQ)? <span class="arr">▾</span></div>
+      <div class="faq-a">EOQ is the ideal order quantity a company should purchase to minimise the total costs of inventory — balancing ordering frequency costs against holding/storage costs. It was developed by Ford W. Harris in 1913 and remains the most widely used inventory optimisation formula.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What should I include in ordering cost? <span class="arr">▾</span></div>
+      <div class="faq-a">Include: staff time to create and process the PO, supplier communication, freight/shipping setup charges, quality inspection per order, and any fixed transaction fees. A typical range is ₹200–₹2,000 per order depending on complexity.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I calculate holding cost? <span class="arr">▾</span></div>
+      <div class="faq-a">Holding cost = (warehouse rent per unit + insurance + obsolescence risk + cost of capital) per year. A common rule of thumb: holding cost ≈ 20–30% of unit cost per year. If a unit costs ₹500 and your holding rate is 24%, holding cost = ₹120/unit/year.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does EOQ work for Amazon FBA sellers? <span class="arr">▾</span></div>
+      <div class="faq-a">Yes, with adjustments. For FBA, your ordering cost includes prep + shipping to FC, and your holding cost includes FBA storage fees (especially aged inventory surcharges). Also factor in lead time from your supplier to avoid stockouts before the next shipment arrives at the FC.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What are the limitations of EOQ? <span class="arr">▾</span></div>
+      <div class="faq-a">EOQ assumes constant demand and costs, no quantity discounts, and instant replenishment. In reality, demand fluctuates and lead times vary — which is why safety stock and reorder points are used alongside EOQ. Our AI Demand Planner handles all these variables dynamically.</div>
+    </div>
+  </div>
+
+  <!-- Other Calculators -->
+  <div class="card">
+    <div class="card-title">🔗 Related Calculators</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px">
+      <a href="/safety-stock-calculator" style="text-decoration:none;background:var(--b50);border:1px solid var(--b100);border-radius:12px;padding:14px;display:block;text-align:center">
+        <div style="font-size:22px;margin-bottom:6px">🛡️</div>
+        <div style="font-size:13px;font-weight:700;color:var(--b700)">Safety Stock Calculator</div>
+      </a>
+      <a href="/reorder-point-calculator" style="text-decoration:none;background:var(--b50);border:1px solid var(--b100);border-radius:12px;padding:14px;display:block;text-align:center">
+        <div style="font-size:22px;margin-bottom:6px">🔁</div>
+        <div style="font-size:13px;font-weight:700;color:var(--b700)">Reorder Point Calculator</div>
+      </a>
+      <a href="/inventory-turnover-calculator" style="text-decoration:none;background:var(--b50);border:1px solid var(--b100);border-radius:12px;padding:14px;display:block;text-align:center">
+        <div style="font-size:22px;margin-bottom:6px">📊</div>
+        <div style="font-size:13px;font-weight:700;color:var(--b700)">Inventory Turnover</div>
+      </a>
+      <a href="/abc-analysis-calculator" style="text-decoration:none;background:var(--b50);border:1px solid var(--b100);border-radius:12px;padding:14px;display:block;text-align:center">
+        <div style="font-size:22px;margin-bottom:6px">🔡</div>
+        <div style="font-size:13px;font-weight:700;color:var(--b700)">ABC Analysis</div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <div style="margin-bottom:6px"><strong style="color:#94A3B8">31 Free Supply Chain Calculators · AI Demand Planner · No Login Required · Free Forever</strong></div>
+    <div>© 2025 LogicstIQ.com · <a href="/">Home</a> · <a href="/privacy-policy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a> · Results are for reference only.</div>
+  </div>
+<p style="margin-top:10px;font-size:12px;color:#94A3B8;text-align:center">
+Contact: <a href="mailto:contactus@logicstiq.com"
+style="color:#9B6BFF;text-decoration:none;font-weight:600">contactus@logicstiq.com</a>
+</p>
+<p style="margin-top:6px;font-size:12px;color:#94A3B8;text-align:center">
+Tool question or bug? <a href="mailto:customercare@logicstiq.com"
+style="color:#9B6BFF;text-decoration:none;font-weight:600">customercare@logicstiq.com</a>
+</p>
+</footer>
+
+<script>
+function calcEOQ() {
+  const D = parseFloat(document.getElementById('demand').value);
+  const S = parseFloat(document.getElementById('orderCost').value);
+  const H = parseFloat(document.getElementById('holdCost').value);
+  const UC = parseFloat(document.getElementById('unitCost').value) || 0;
+
+  if (!D || !S || !H || D <= 0 || S <= 0 || H <= 0) {
+    alert('Please enter valid values for Annual Demand, Ordering Cost, and Holding Cost.');
+    return;
+  }
+
+  const eoq = Math.round(Math.sqrt((2 * D * S) / H));
+  const ordersPerYear = Math.round((D / eoq) * 10) / 10;
+  const cycleTime = Math.round(365 / ordersPerYear);
+  const totalCost = Math.round(((D / eoq) * S) + ((eoq / 2) * H));
+
+  document.getElementById('eoqVal').textContent = eoq.toLocaleString('en-IN');
+  document.getElementById('ordersPerYear').textContent = ordersPerYear;
+  document.getElementById('cycleTime').textContent = cycleTime + ' days';
+  document.getElementById('totalCost').textContent = '₹' + totalCost.toLocaleString('en-IN');
+
+  if (UC > 0) {
+    const inv = Math.round((eoq / 2) * UC);
+    document.getElementById('unitCostResult').textContent = `💰 Average inventory investment: ₹${inv.toLocaleString('en-IN')} (= EOQ/2 × unit cost)`;
+  } else {
+    document.getElementById('unitCostResult').textContent = '';
+  }
+
+  document.getElementById('resultBox').classList.add('show');
+  document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Enter') calcEOQ(); });
+</script>
+<script>
+(function(){var r=document.documentElement;
+function lbl(){var b=document.getElementById('liqTheme');if(b)b.textContent=r.getAttribute('data-theme')==='dark'?'☀️':'🌙';}
+function set(t){r.setAttribute('data-theme',t);lbl();try{localStorage.setItem('liq-theme',t)}catch(e){}}
+try{var sv=localStorage.getItem('liq-theme');if(sv)r.setAttribute('data-theme',sv);}catch(e){}
+var btn=document.createElement('button');btn.id='liqTheme';btn.type='button';btn.className='liq-theme-btn';
+btn.setAttribute('aria-label','Toggle light or dark mode');btn.title='Toggle light / dark';btn.textContent='🌙';
+btn.addEventListener('click',function(){set(r.getAttribute('data-theme')==='dark'?'light':'dark');});
+function place(){var nav=document.querySelector('.nav');
+ if(nav){var cta=nav.querySelector('.nav-cta');if(cta&&cta.parentNode){cta.parentNode.insertBefore(btn,cta);}
+   else{var l=nav.querySelector('.nav-links');(l||nav).appendChild(btn);}}
+ else{btn.classList.add('liq-theme-float');document.body.appendChild(btn);}lbl();}
+if(document.readyState!=='loading')place();else document.addEventListener('DOMContentLoaded',place);})();
+</script>
+</body>
+</html>
