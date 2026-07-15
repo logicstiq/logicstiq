@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Paperwork Studio — LogicstIQ.com | GST Invoices, Bills, POs & Supply Chain Documents</title>
-<meta name="description" content="Paperwork Studio — free end-to-end document generator for Indian sellers, manufacturers, suppliers, importers & exporters. GST invoices, purchase orders, quotations, delivery challans, packing lists AND EXIM documents — commercial invoice, certificate of origin, bill of lading, shipping bill & bill of entry worksheets, LC checklist, bill of exchange, eBRC & RoDTEP. Built-in validation with GSTIN/IEC/HSN format checks + EXIM filing guide. Auto GST & customs duty, amount in words, print or download PDF. No login. Nothing stored.">
+<meta name="description" content="Paperwork Studio — free end-to-end document generator for Indian sellers, manufacturers, suppliers, importers & exporters. GST invoices, purchase orders, quotations, delivery challans, packing lists AND EXIM documents — commercial invoice, certificate of origin, bill of lading, shipping bill & bill of entry worksheets, LC checklist, bill of exchange, eBRC & RoDTEP. Built-in validation with GSTIN/IEC/HSN format checks + EXIM filing guide. Auto GST & customs duty, amount in words, print or download PDF. Your data stays in your browser.">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
@@ -188,8 +188,9 @@ a:focus-visible,button:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(58,8
   </svg>
 </a><style>[data-theme="dark"] .nav-logo text tspan:first-child{fill:#FFFFFF}[data-theme="dark"] .topbar{background:#141926!important;border-color:#26304A!important}[data-theme="dark"] .topbar .pill{background:#17203a}</style>
   
+  <a href="/sourcing-procurement.html" style="text-decoration:none;font-size:12.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:7px 13px">🛒 Seller Paperwork Hub</a>
   <button class="guidebtn" id="guideOpen">📋 EXIM Guide — what to file & where</button>
-  <div class="pill">🔒 No login · Nothing stored</div>
+  <div class="pill">🔒 Your data stays in your browser</div>
 </div>
 <div class="wrap">
   <div class="panel">
@@ -205,6 +206,7 @@ a:focus-visible,button:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(58,8
       <a href="/landed-cost-calculator" style="text-decoration:none;font-size:11.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:5px 11px">🌐 Landed Cost</a>
       <a href="/gst-calculator-logistics" style="text-decoration:none;font-size:11.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:5px 11px">🧾 GST Calculator</a>
       <a href="/ecommerce.html" style="text-decoration:none;font-size:11.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:5px 11px">🏪 Ecommerce Suite</a>
+      <a href="/sourcing-procurement.html" style="text-decoration:none;font-size:11.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:5px 11px">🛒 Seller Paperwork Hub</a>
       <a href="/tms.html" style="text-decoration:none;font-size:11.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:5px 11px">🚛 TMS</a>
       <a href="/demand-planner.html" style="text-decoration:none;font-size:11.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:5px 11px">🤖 AI Demand Planner</a>
     </div>
@@ -420,7 +422,7 @@ const CONFIGS={
     meta:[["docNo","Worksheet Ref","text",""],["date","Date","date",""]]}
 };
 
-let docType="invoice",logoData="",items=[];
+let docType=(function(){try{var h=(location.hash||"").replace("#","");if(h&&CONFIGS[h])return h;}catch(e){}return "invoice";})(),logoData="",items=[];
 const $=id=>document.getElementById(id);
 const cfg=()=>CONFIGS[docType];
 function fillSel(sel,arr,fmt,def){sel.innerHTML="";arr.forEach(v=>{const o=document.createElement("option");const pair=fmt(v);o.value=pair[0];o.textContent=pair[1];sel.appendChild(o)});if(def!=null)sel.value=def;}
