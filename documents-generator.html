@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paperwork Studio — LogicstIQ.com | GST Invoices, Bills, POs & Supply Chain Documents</title>
-<meta name="description" content="Paperwork Studio — free end-to-end document generator for Indian sellers, manufacturers, suppliers, importers & exporters. GST invoices, purchase orders, quotations, delivery challans, packing lists AND EXIM documents — commercial invoice, certificate of origin, bill of lading, shipping bill & bill of entry worksheets, LC checklist, bill of exchange, eBRC & RoDTEP. Built-in validation with GSTIN/IEC/HSN format checks + EXIM filing guide. Auto GST & customs duty, amount in words, print or download PDF. Your data stays in your browser.">
+<title>Paperwork Hub — LogicstIQ.com | GST Invoices, Bills, POs & Supply Chain Documents</title>
+<meta name="description" content="Paperwork Hub — free end-to-end document generator for Indian sellers, manufacturers, suppliers, importers & exporters. GST invoices, purchase orders, quotations, delivery challans, packing lists AND EXIM documents — commercial invoice, certificate of origin, bill of lading, shipping bill & bill of entry worksheets, LC checklist, bill of exchange, eBRC & RoDTEP. Built-in validation with GSTIN/IEC/HSN format checks + EXIM filing guide. Auto GST & customs duty, amount in words, print or download PDF. Your data stays in your browser.">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
@@ -188,25 +188,65 @@ a:focus-visible,button:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(58,8
   </svg>
 </a><style>[data-theme="dark"] .nav-logo text tspan:first-child{fill:#FFFFFF}[data-theme="dark"] .topbar{background:#141926!important;border-color:#26304A!important}[data-theme="dark"] .topbar .pill{background:#17203a}</style>
   
-  <a href="/sourcing-procurement.html" style="text-decoration:none;font-size:12.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:7px 13px">🛒 Seller Paperwork Hub</a>
   <button class="guidebtn" id="guideOpen">📋 EXIM Guide — what to file & where</button>
   <div class="pill">🔒 Your data stays in your browser</div>
 </div>
-<div class="wrap">
+
+<!-- ===== Paperwork Hub — how it works ===== -->
+<style>
+.pwh-guide{scroll-margin-top:84px;max-width:1060px;margin:26px auto 30px;padding:0 20px}
+.pwh-guide h2{font-size:24px;font-weight:900;letter-spacing:-.02em;color:var(--ink,#0F172A);margin-bottom:6px}
+.pwh-guide .lead{font-size:14.5px;color:var(--muted,#475569);max-width:840px;line-height:1.75;margin-bottom:16px}
+.pwh-flow{background:linear-gradient(135deg,#EAF1FE,#F3EEFF);border:1.5px solid #cfe0fc;border-radius:14px;padding:15px 20px;font-weight:800;font-size:13.5px;color:#1C2C73;margin-bottom:20px;line-height:1.9}
+.pwh-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.pwh-card{background:var(--card,#fff);border:1.5px solid var(--line,#E2E8F0);border-radius:13px;padding:16px 18px}
+.pwh-card h3{font-size:14.5px;font-weight:800;color:var(--ink,#0F172A);margin-bottom:5px}
+.pwh-card p{font-size:12.8px;color:var(--muted,#475569);line-height:1.7;margin:0}
+.pwh-h3{font-size:17px;font-weight:900;color:var(--ink,#0F172A);margin:24px 0 10px}
+[data-theme="dark"] .pwh-flow{background:#141926;border-color:#26304A;color:#DBE3F5}
+</style>
+<section class="pwh-guide" id="how-it-works">
+  <h2>📖 What the Paperwork Hub does — and how to use it</h2>
+  <p class="lead">The Paperwork Hub creates professional, print-ready business documents in your browser — no software, no templates to buy, nothing uploaded to any server. It covers two families of paperwork: <b>Business Billing</b> for shops, retailers and small businesses that need clean, GST-correct bills, and <b>Supply Chain &amp; EXIM Documentation</b> for manufacturers, importers and exporters moving goods across borders.</p>
+  <div class="pwh-flow">How to use it:&nbsp; ① Pick a document below&nbsp;→&nbsp;② Fill in your company &amp; party details (save your company once, reuse forever)&nbsp;→&nbsp;③ Add line items — GST, totals and amount-in-words calculate automatically&nbsp;→&nbsp;④ The tool validates GSTIN / HSN formats and flags anything missing&nbsp;→&nbsp;⑤ Print or Download PDF</div>
+
+  <div class="pwh-h3">🏪 Business Billing — for shops, retail &amp; small business</div>
+  <div class="pwh-grid">
+    <div class="pwh-card"><h3>🧾 GST Invoice</h3><p>The everyday tax invoice: CGST + SGST for same-state sales, IGST for inter-state, computed automatically from your state selections. Includes bank details, place of supply and amount in words.</p></div>
+    <div class="pwh-card"><h3>📋 Purchase Order &amp; Proforma</h3><p>Order goods from a supplier with a formal PO, or send a proforma invoice to collect advance payment before shipping.</p></div>
+    <div class="pwh-card"><h3>💬 Quotation, Challan &amp; Packing List</h3><p>Quote a price to a prospect, send goods with a delivery challan (movement without sale), and list carton contents for dispatch.</p></div>
+  </div>
+
+  <div class="pwh-h3">🔗 Supply Chain &amp; EXIM — for importers, exporters &amp; manufacturers</div>
+  <div class="pwh-grid">
+    <div class="pwh-card"><h3>🌐 Export set</h3><p>Commercial Invoice, Export Packing List, Export Proforma and Certificate of Origin — the core set every shipment abroad needs, formatted to international norms.</p></div>
+    <div class="pwh-card"><h3>🚢 Transport &amp; customs</h3><p>Bill of Lading / Airway Bill details, ICEGATE Shipping Bill (exports) and Bill of Entry (imports) worksheets — with AD-code and IEC validation prompts so filings don't bounce.</p></div>
+    <div class="pwh-card"><h3>🏦 Banking &amp; incentives</h3><p>LC document checklist, Bill of Exchange, eBRC worksheet for bank realisation, and RoDTEP / Duty Drawback calculators to claim export incentives.</p></div>
+  </div>
+
+  <div class="pwh-h3">🏭 Need procurement paperwork instead?</div>
+  <p class="lead" style="margin-bottom:8px">Purchase Requisitions, RFQs, GRNs and 2/3-way matches live in their own tools: e-commerce sellers should use the <a href="/sourcing-procurement.html" style="color:#2E6BE6;font-weight:700">Sourcing &amp; Procurement — Seller Paperwork Hub</a> (marketplace-aware documents), while manufacturers and distributors can open the <a href="/sourcing-procurement.html?mode=general" style="color:#2E6BE6;font-weight:700">General (ERP) edition</a> directly.</p>
+  <p style="margin-top:14px"><a href="#tool" style="display:inline-block;text-decoration:none;font-size:13.5px;font-weight:800;color:#fff;background:linear-gradient(135deg,#4F6BFF,#9B6BFF);border-radius:11px;padding:11px 22px">⬇️ Skip to the tool — start creating documents</a></p>
+</section>
+
+<div class="wrap" id="tool" style="scroll-margin-top:80px">
   <div class="panel">
-    <h2>Paperwork Studio</h2>
+    <h2>Paperwork Hub</h2>
     <p class="sub">Every business document in one studio. <b>Business Billing</b> for shops, retailers &amp; small businesses (invoices, quotations, challans) and <b>Supply Chain &amp; EXIM Documentation</b> for manufacturers, importers &amp; exporters. Pick a document, fill the details, Print or Download PDF.</p>
 
     <div class="grouplbl">🏪 Business Billing — shops, retail &amp; small business</div>
     <div class="doctabs" id="tabsDom"></div>
     <div class="grouplbl" style="margin-top:10px">🔗 Supply Chain &amp; EXIM Documentation</div>
     <div class="doctabs" id="tabsExim"></div>
+    <div class="grouplbl" style="margin-top:12px">🏭 General (ERP) Procurement</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+      <a href="/sourcing-procurement.html?mode=general" style="text-decoration:none;font-size:11.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:5px 11px">🏭 PR · RFQ · PO · GRN · 3-way Match (ERP edition) →</a>
+    </div>
     <div class="grouplbl" style="margin-top:12px">🧰 Connected supply chain tools</div>
     <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
       <a href="/landed-cost-calculator" style="text-decoration:none;font-size:11.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:5px 11px">🌐 Landed Cost</a>
       <a href="/gst-calculator-logistics" style="text-decoration:none;font-size:11.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:5px 11px">🧾 GST Calculator</a>
       <a href="/ecommerce.html" style="text-decoration:none;font-size:11.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:5px 11px">🏪 Ecommerce Suite</a>
-      <a href="/sourcing-procurement.html" style="text-decoration:none;font-size:11.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:5px 11px">🛒 Seller Paperwork Hub</a>
       <a href="/tms.html" style="text-decoration:none;font-size:11.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:5px 11px">🚛 TMS</a>
       <a href="/demand-planner.html" style="text-decoration:none;font-size:11.5px;font-weight:700;color:#2E6BE6;background:#EAF1FE;border:1px solid #cfe0fc;border-radius:30px;padding:5px 11px">🤖 AI Demand Planner</a>
     </div>
@@ -720,7 +760,7 @@ function docHead(c,metaHtml){
 }
 function disclaimer(c){
   const msg=c.group==="exim"?"Template for reference. Validate against current Customs, DGFT, RBI-FEMA and GST regulations before official filing.":(c.colset==="gst"?"Computer-generated document. Verify GST/HSN details before filing returns.":"Template for reference only.");
-  return `<div class="disc">${msg}</div><div class="foot-note">Generated with LogicstIQ.com Paperwork Studio · Where Logistics Meets Intelligence</div>`;
+  return `<div class="disc">${msg}</div><div class="foot-note">Generated with LogicstIQ.com Paperwork Hub · Where Logistics Meets Intelligence</div>`;
 }
 
 $("guideOpen").onclick=()=>$("eximGuide").classList.add("open");
