@@ -889,6 +889,14 @@ window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList
 })();
 </script>
 <!-- ── HERO (premium, matches approved design) ── -->
+<style id="liq-suite-css">
+.liqs-m{text-decoration:none;display:flex;flex-direction:column;justify-content:center;gap:4px;transition:transform .15s,border-color .15s,box-shadow .15s}
+.liqs-m:hover{transform:translateY(-2px);border-color:var(--b600)!important;box-shadow:0 10px 22px rgba(58,85,255,.18)}
+.liqs-nm{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:800;color:var(--text);line-height:1.15}
+.liqs-nm svg{width:16px;height:16px;flex:0 0 auto;color:var(--b600)}
+.liqs-d2{font-size:11px;color:var(--text4);font-weight:600;line-height:1.25}
+.liqs-d2 .ar{color:var(--b600);font-weight:900}
+</style>
 <section class="pf-hero">
   <div class="pf-wrap">
     <div>
@@ -902,12 +910,12 @@ window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList
       <div class="pf-ticks"><span><span class="c">✓</span>31 free calculators</span><span><span class="c">✓</span>AI-powered</span><span><span class="c">✓</span>Any device</span><span><span class="c">✓</span>Excel &amp; CSV</span></div>       <div style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:var(--b50);border:1px solid var(--b200);color:var(--b700);border-radius:999px;padding:8px 16px;font-size:13px;font-weight:700"><svg class="liq-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l1.6 3.8L17.5 9l-3.9 1.2L12 14l-1.6-3.8L6.5 9l3.9-1.2z"/><path d="M18 14.5l.7 1.7 1.8.8-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.8z"/></svg> New — ask our free AI Copilot (bottom-right) anything about e-commerce supply chain</div>
     </div>
     <div class="pf-card">
-      <div class="pf-card-top"><b style="font-size:14px;color:var(--text)"><svg class="liq-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><rect x="5.5" y="10" width="3.2" height="7.5" rx="1"/><rect x="10.4" y="5.5" width="3.2" height="12" rx="1"/><rect x="15.3" y="13" width="3.2" height="4.5" rx="1"/></svg> Inventory Health</b><span class="pf-chip">AI · live demo</span></div>
+      <div class="pf-card-top"><b style="font-size:14px;color:var(--text)"><svg class="liq-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--b600)"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg> Ecommerce Suite</b><span class="pf-chip">4 tools &middot; live</span></div>
       <div class="pf-minis">
-        <div class="pf-mini"><div class="l">SKUs analysed</div><div class="v">500</div></div>
-        <div class="pf-mini"><div class="l">Healthy stock</div><div class="v up">271</div></div>
-        <div class="pf-mini"><div class="l">Urgent reorders</div><div class="v warn">188</div></div>
-        <div class="pf-mini"><div class="l">Revenue at risk 90d</div><div class="v">₹4.35 Cr</div></div>
+        <a class="pf-mini liqs-m" href="/demand-planner.html"><div class="liqs-nm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5v14h16"/><path d="M8 15l3-3 3 2 5-6"/></svg> AI Demand Planner</div><div class="liqs-d2">Forecasts &amp; replenishment <span class="ar">&rarr;</span></div></a>
+        <a class="pf-mini liqs-m" href="/fba-planner/"><div class="liqs-nm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5"/><path d="M12 12v9"/></svg> FBA Planner &amp; Disposition</div><div class="liqs-d2">Fulfillable vs unfulfillable <span class="ar">&rarr;</span></div></a>
+        <a class="pf-mini liqs-m" href="/sourcing-procurement.html"><div class="liqs-nm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M2 3h3l2.4 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L23 6H6"/></svg> Sourcing &amp; Procurement</div><div class="liqs-d2">Supplier &amp; seller paperwork <span class="ar">&rarr;</span></div></a>
+        <a class="pf-mini liqs-m" href="/documents-generator.html"><div class="liqs-nm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></svg> EXIM &amp; GST paperwork</div><div class="liqs-d2">Invoices, BOL, COO, more <span class="ar">&rarr;</span></div></a>
       </div>
       <div class="pf-bars"><i style="height:40%"></i><i style="height:62%"></i><i style="height:50%"></i><i style="height:78%"></i><i style="height:66%"></i><i style="height:90%"></i><i style="height:72%"></i><i style="height:84%"></i><i style="height:96%"></i></div>
     </div>
@@ -943,6 +951,7 @@ window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList
 <!-- ── ADSENSE SLOT 1 — Top Banner (activate after AdSense approval) ── -->
 <!-- <div class="ad-slot"><span class="ad-label">Advertisement</span><div class="ad-bar"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div></div> -->
 <!-- ── CALCULATORS ── -->
+
 <section id="tools" class="section center">
   <div class="section-eyebrow">🚀 The Platform</div>
   <h2 class="section-title">Everything LogicstIQ Offers</h2>
