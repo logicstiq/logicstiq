@@ -1117,6 +1117,31 @@ window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList
 <!-- <div class="ad-slot"><span class="ad-label">Advertisement</span><div class="ad-bar"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div></div> -->
 <!-- ── AI DEMAND PLANNER v4 — FUNCTIONAL ── -->
 
+<style id="liq-optA">
+/* ===== Option A — elevated glass: Reviews (.testi-section) + FAQ (.faq-section) ===== */
+.testi-section .section-eyebrow,.faq-section .section-eyebrow{display:inline-flex;align-items:center;gap:6px;background:var(--b50);color:var(--b700);border:1px solid var(--b200);border-radius:999px;padding:6px 14px;font-weight:800}
+[data-theme="dark"] .testi-section .section-eyebrow,[data-theme="dark"] .faq-section .section-eyebrow{background:#171C2E;color:#B9C6FF;border-color:#2B3654}
+.testi-section .liq-form-card{position:relative;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px 24px 22px;box-shadow:var(--lq-sh);overflow:hidden}
+.testi-section .liq-form-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#3A55FF,#9B6BFF)}
+.testi-section .liq-form-lbl{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--b600);margin-bottom:16px}
+.testi-section .liq-form-lbl::before{content:"";width:3px;height:14px;border-radius:3px;background:linear-gradient(180deg,#3A55FF,#770BFF)}
+.testi-section .liq-label{font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--text3)}
+.testi-section .liq-select{background:var(--card2);border:1px solid var(--border2);border-radius:10px;color:var(--text);transition:border-color .15s,box-shadow .15s}
+[data-theme="dark"] .testi-section .liq-select{background:#0E1320;border-color:#2B3654;color:#EAEEF7}
+.testi-section .liq-select:focus{outline:none;border-color:#3A55FF;box-shadow:0 0 0 3px rgba(58,85,255,.22)}
+.testi-section .liq-btn-primary{background:linear-gradient(135deg,#3A55FF,#770BFF)!important;border:none!important;box-shadow:0 12px 26px rgba(58,85,255,.36);border-radius:11px}
+.testi-section .liq-btn-primary:hover{transform:translateY(-1px);box-shadow:0 16px 32px rgba(58,85,255,.42)}
+.testi-section .liq-disclaimer-bar{background:var(--wlight);border:1px solid #F0D28A;color:#8A5A00;border-radius:10px;padding:10px 14px;font-size:12px}
+[data-theme="dark"] .testi-section .liq-disclaimer-bar{background:#241B10;border-color:#4A3A1A;color:#F5C97A}
+.faq-section .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;box-shadow:var(--lq-sh-sm);transition:transform .15s,border-color .15s,box-shadow .15s}
+.faq-section .faq-item:hover{transform:translateY(-2px);border-color:#3A55FF;box-shadow:0 14px 30px rgba(58,85,255,.14)}
+.faq-section .faq-q{background:var(--card);color:var(--text);gap:12px}
+.faq-section .faq-q:hover{background:var(--card2)}
+[data-theme="dark"] .faq-section .faq-q:hover{background:#1B2130!important}
+.faq-section .faq-q .arr{width:24px;height:24px;flex:0 0 auto;border-radius:50%;background:linear-gradient(135deg,#3A55FF,#770BFF);color:#fff;display:grid;place-items:center;font-size:11px;transition:transform .2s}
+.faq-section .faq-a{background:var(--card2);border-top:1px solid var(--border);color:var(--text3)}
+[data-theme="dark"] .faq-section .faq-a{background:#0E1320!important;border-top-color:#242C3D!important;color:#8A94AB}
+</style>
 <section class="testi-section" id="feedback">
   <div style="text-align:center;margin-bottom:28px">
     <div class="section-eyebrow">⭐ Reviews</div>
