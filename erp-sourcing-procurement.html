@@ -324,7 +324,7 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
   <div class="sxp-grid"><div class="sxp-step"><span class="sxp-num">1</span><div><b>Purchase Requisition</b><span>Internal request to buy - department, cost centre, priority and required-by date.</span></div></div><div class="sxp-step"><span class="sxp-num">2</span><div><b>RFQ / RFP</b><span>Invite quotes or proposals from shortlisted suppliers on the same specification.</span></div></div><div class="sxp-step"><span class="sxp-num">3</span><div><b>Comparative Statement</b><span>Score bids on price, lead time and terms; record why you picked the vendor.</span></div></div><div class="sxp-step"><span class="sxp-num">4</span><div><b>Purchase Order</b><span>Formal order with GST, payment terms and Incoterms.</span></div></div><div class="sxp-step"><span class="sxp-num">5</span><div><b>Landed Cost</b><span>Freight, duty (BCD + SWS + IGST) and FX give the true per-unit cost.</span></div></div><div class="sxp-step"><span class="sxp-num">6</span><div><b>GRN + Inspection</b><span>Receive goods, log a Goods Receipt Note and run a quality inspection.</span></div></div><div class="sxp-step"><span class="sxp-num">7</span><div><b>3-way Match</b><span>PO vs GRN vs supplier invoice - pay only for what arrived in good order.</span></div></div><div class="sxp-step"><span class="sxp-num">8</span><div><b>Payment + Vendor Scorecard</b><span>Release payment and score the vendor on delivery, quality and price.</span></div></div></div>
 </section>
 
-<!-- ===== Seller Paperwork Hub — document guide ===== -->
+<!-- ===== General ERP — document guide ===== -->
 <style>
 .sph-guide{scroll-margin-top:84px;max-width:1060px;margin:26px auto 30px;padding:0 20px;font-family:inherit}
 .sph-guide h2{font-size:24px;font-weight:900;letter-spacing:-.02em;color:var(--ink,#0F172A);margin-bottom:6px}
@@ -339,40 +339,39 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
 </style>
 <section class="sph-guide" id="how-it-works">
   <h2>📖 What every document does</h2>
-  <p class="lead">Every purchase you make — from a supplier in Delhi or a factory in Shenzhen — generates paperwork. This tool creates all of it, in the correct order, with your data flowing from one document to the next. A general-ERP procure-to-pay trail for importers, manufacturers &amp; distributors — supplier discovery, RFQs, POs, landed cost, GRN with inspection, 2-way / 3-way match and vendor scorecards, with your data flowing from one document to the next.</p>
-  <div class="sph-flow">The procure-to-pay flow:&nbsp; 📝 Purchase Requisition → 📨 RFQ → ⚖️ Comparative Statement → 📋 Purchase Order → 🌐 Landed Cost → 🚚 Inbound / ASN → 📦 Carton Manifest → ✅ GRN → 🔍 2-way / 3-way Match → 💳 Payment</div>
+  <p class="lead">Every purchase you make — from a supplier in Delhi or a factory in Shenzhen — generates paperwork. This tool creates all of it, in the correct order, with your data flowing from one document to the next: a complete procure-to-pay trail built for <b>importers, manufacturers &amp; distributors</b> — supplier discovery, RFQs, comparative statements, purchase orders, landed cost, GRN with inspection, 2-way / 3-way match, debit/credit notes, payment advice and vendor scorecards.</p>
+  <div class="sph-flow">The procure-to-pay flow:&nbsp; 📝 Purchase Requisition → 📨 RFQ / RFP → ⚖️ Comparative Statement → 📋 Purchase Order → 🌐 Landed Cost → ✅ GRN + Inspection → 🔍 2-way / 3-way Match → 🧾 Debit / Credit Note → 💳 Payment Advice → 📊 Vendor Scorecard</div>
 
-  <div class="sph-h3">Sourcing documents — deciding who to buy from</div>
+  <div class="sph-h3">Sourcing — deciding who to buy from</div>
   <div class="sph-grid">
-    <div class="sph-card"><h3>📝 Purchase Requisition (PR)</h3><p>The internal "we need to buy this" request. It lists what is needed, how much, and by when — and becomes the paper trail that authorises a purchase before any money is committed.</p></div>
-    <div class="sph-card"><h3>📨 RFQ — Request for Quotation</h3><p>Sent to shortlisted suppliers asking them to quote price, lead time and terms for the items on your PR. Sending the same RFQ to 3+ suppliers is what makes prices comparable.</p></div>
-    <div class="sph-card"><h3>⚖️ Comparative Statement</h3><p>A side-by-side comparison of the quotes you received — landed price, lead time, payment terms, MOQ. This is the document that justifies <i>why</i> you picked a supplier.</p></div>
+    <div class="sph-card"><h3>📝 Purchase Requisition (PR)</h3><p>The internal "we need to buy this" request — department, cost centre, quantity and required-by date. It authorises a purchase and starts the paper trail before any money is committed.</p></div>
+    <div class="sph-card"><h3>📨 RFQ / RFP</h3><p>Sent to shortlisted suppliers asking them to quote price, lead time and terms against the same specification. Inviting 3+ suppliers is what makes prices genuinely comparable.</p></div>
+    <div class="sph-card"><h3>⚖️ Comparative Statement</h3><p>A side-by-side comparison of the quotes received — landed price, lead time, payment terms, MOQ — that justifies <i>why</i> you picked a supplier and keeps procurement audit-ready.</p></div>
   </div>
 
-  <div class="sph-h3">Replenishment documents — placing and costing the order</div>
+  <div class="sph-h3">Ordering &amp; costing — placing and pricing the order</div>
   <div class="sph-grid">
-    <div class="sph-card"><h3>📋 Purchase Order (PO)</h3><p>The legally meaningful order: items, quantities, rates, GST, delivery date and terms. In the E-commerce tab it also carries marketplace identifiers (ASIN/FNSKU/FSN) and the sales channel, so warehouse and accounts always know which channel stock belongs to.</p></div>
-    <div class="sph-card"><h3>🌐 Landed Cost Worksheet</h3><p>Adds freight, insurance, customs duty (BCD + SWS + IGST) and clearing charges on top of the PO value to reveal the true per-unit cost — the number your selling price must be built on.</p></div>
-    <div class="sph-card"><h3>✅ GRN — Goods Receipt Note</h3><p>Recorded when stock physically arrives: what was received, what was short, what was damaged. The GRN is your proof of receipt and the trigger for quality checks and supplier payment.</p></div>
+    <div class="sph-card"><h3>📋 Purchase Order (PO)</h3><p>The legally meaningful order: line items, quantities, rates, GST (auto CGST/SGST or IGST), delivery date, Incoterms and payment terms — issued to your domestic supplier or overseas manufacturer.</p></div>
+    <div class="sph-card"><h3>🌐 Landed Cost Worksheet</h3><p>For importers: adds ocean/air freight, insurance, customs duty (BCD + SWS + IGST) and clearing charges on top of FOB to reveal the true per-unit cost — the number your pricing must be built on.</p></div>
+    <div class="sph-card"><h3>✅ GRN + Inspection</h3><p>Recorded when goods arrive at your warehouse or factory: what was received, short or damaged, plus a quality inspection result. Your proof of receipt and the trigger for supplier payment.</p></div>
   </div>
 
-  <div class="sph-h3">Inbound documents — getting stock into an FC or dark store</div>
+  <div class="sph-h3">Reconciliation &amp; payment — closing the loop</div>
   <div class="sph-grid">
-    <div class="sph-card"><h3>🚚 Inbound / ASN</h3><p>The Advance Shipment Notice tells the fulfilment centre (Amazon FC, Flipkart FF, dark store) exactly what is arriving and when — required for booking inbound appointments and avoiding rejected deliveries.</p></div>
-    <div class="sph-card"><h3>📦 Carton Manifest</h3><p>The carton-by-carton packing detail: which SKUs, in what quantity, in which box. FCs scan against this; a correct manifest is the difference between same-day receiving and week-long discrepancies.</p></div>
-    <div class="sph-card"><h3>🧾 Platform PO</h3><p>For quick commerce and B2B relationships where the <i>platform</i> raises the PO on you (Blinkit, Zepto, BigBasket, Amazon vendor). This formats your acceptance and delivery paperwork against their PO.</p></div>
+    <div class="sph-card"><h3>🔍 Two-way Match</h3><p>Checks the supplier invoice against the PO (price × quantity) — catches over-billing before payment when there is no formal goods receipt.</p></div>
+    <div class="sph-card"><h3>🔎 Three-way Match</h3><p>The gold standard: PO vs GRN vs invoice. You pay only for what was ordered <i>and</i> actually received in good condition — the single habit that stops most procurement leakage.</p></div>
+    <div class="sph-card"><h3>🧾 Debit / Credit Note</h3><p>Adjusts a supplier's account for short supply, rate differences, quality rejections or returns — the GST-correct way to settle a discrepancy found at GRN or match.</p></div>
+    <div class="sph-card"><h3>💳 Payment Advice</h3><p>Confirms what you've paid and against which invoices — mode (NEFT/RTGS), UTR reference and amount, with the balance clearly reconciled.</p></div>
   </div>
 
-  <div class="sph-h3">Reconciliation &amp; vendor documents — closing the loop</div>
+  <div class="sph-h3">Vendor master — building a reliable supply base</div>
   <div class="sph-grid">
-    <div class="sph-card"><h3>🔍 Two-way Match</h3><p>Checks supplier invoice against the PO (price × quantity). Catches over-billing before payment when no formal goods receipt exists.</p></div>
-    <div class="sph-card"><h3>🔎 Three-way Match</h3><p>The gold standard: PO vs GRN vs invoice. You only pay for what was ordered <i>and</i> actually received in good condition. This single habit stops most procurement leakage.</p></div>
-    <div class="sph-card"><h3>🗂️ Supplier Registration</h3><p>Captures a new vendor's legal name, GSTIN, bank details and contacts in one standard form — so onboarding is consistent and audit-ready.</p></div>
-    <div class="sph-card"><h3>📊 Supplier Scorecard</h3><p>Rates each supplier on delivery, quality, price and responsiveness over time. The scorecard turns "gut feel" about vendors into data you can negotiate with.</p></div>
+    <div class="sph-card"><h3>🗂️ Vendor Registration</h3><p>Captures a new supplier's legal name, GSTIN / PAN, MSME status, bank details and contacts in one standard form — so onboarding is consistent and audit-ready.</p></div>
+    <div class="sph-card"><h3>📊 Vendor Scorecard</h3><p>Rates each supplier on delivery, quality, price and responsiveness over time — turning "gut feel" about vendors into data you can negotiate with.</p></div>
   </div>
 
   <div class="sph-h3">Connected tools</div>
-  <p class="lead" style="margin-bottom:8px">Pair this hub with the <a href="/landed-cost-calculator" style="color:#2E6BE6;font-weight:700">Landed Cost Calculator</a> for import costing, the <a href="/demand-planner.html" style="color:#2E6BE6;font-weight:700">AI Demand Planner</a> to know <i>when and how much</i> to reorder, the <a href="/fba-planner/" style="color:#2E6BE6;font-weight:700">FBA Planner</a> for Amazon replenishment. Only need standalone billing, GST invoices or EXIM paperwork — without the full Ecommerce Suite? The <a href="/documents-generator.html" style="color:#2E6BE6;font-weight:700">Paperwork Hub</a> covers exactly that.</p>
+  <p class="lead" style="margin-bottom:8px">Pair this hub with the <a href="/landed-cost-calculator" style="color:var(--b600,#2E6BE6);font-weight:700">Landed Cost Calculator</a> for import costing, the <a href="/gst-calculator-logistics" style="color:var(--b600,#2E6BE6);font-weight:700">GST Calculator</a> for tax on goods &amp; freight, and the <a href="/documents-generator.html" style="color:var(--b600,#2E6BE6);font-weight:700">Paperwork Hub</a> for standalone GST invoices and EXIM documents. Run an online store instead? Use the marketplace-aware <a href="/sourcing-procurement.html" style="color:var(--b600,#2E6BE6);font-weight:700">e-commerce Sourcing &amp; Procurement</a>.</p>
   <p style="margin-top:18px"><a href="#tool" style="display:inline-block;text-decoration:none;font-size:13.5px;font-weight:800;color:#fff;background:linear-gradient(135deg,#4F6BFF,#9B6BFF);border-radius:11px;padding:11px 22px">⬇️ Skip to the tool — start generating documents</a></p>
 </section>
 
@@ -496,7 +495,7 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
     <div class="row3"><div><label>Phone</label><input id="sPhone"></div><div><label>Email</label><input id="sEmail"></div><div><label>Payment terms</label><input id="sTerms" placeholder="Net 30"></div></div>
     <div class="row3"><div><label>Lead time (days)</label><input id="sLead" type="number"></div><div><label>MOQ</label><input id="sMOQ" type="number"></div><div><label>Case pack</label><input id="sCase" type="number"></div></div>
     <div class="row3"><div><label>Bank</label><input id="sBank"></div><div><label>Account</label><input id="sAcc"></div><div><label>IFSC / SWIFT</label><input id="sIfsc"></div></div>
-    <label>Channels served (e-com)</label><input id="sChannels" placeholder="Amazon.in, Flipkart, Blinkit">
+    <label>Categories / regions served</label><input id="sChannels" placeholder="e.g. Raw materials · North India · imports">
     <div class="savebar"><button class="btn btn-blue" id="sSave">＋ Save supplier</button><button class="btn btn-ghost" id="sClear">Clear form</button></div>
     <div class="sup-list" id="supList"></div>
   </div>
@@ -506,7 +505,7 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
   <div class="modal-card">
     <button class="x" id="dashClose">×</button>
     <h2>📊 Procurement tracker</h2>
-    <p class="lead">Saved POs, GRNs and platform orders across both tabs — status, value and overdue alerts. Browser-only.</p>
+    <p class="lead">Saved POs, GRNs and match documents — status, value and overdue alerts. Browser-only.</p>
     <div class="dash-cards" id="dashCards"></div>
     <div id="dashBody"></div>
   </div>
@@ -516,30 +515,29 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
   <div class="modal-card">
     <button class="x" id="guideClose">×</button>
     <h2>📋 Procure-to-Pay guide</h2>
-    <p class="lead">The procurement journey for Indian SMEs and e-commerce sellers. Generate every document here; file the statutory ones (e-Way Bill, GST) on the official portals.</p>
+    <p class="lead">The procurement journey for importers, manufacturers &amp; distributors. Generate every document here; file the statutory ones (e-Way Bill, GST, import entries) on the official portals.</p>
     <div class="gsec">
       <h3>The core loop</h3>
       <ol class="steps">
         <li><b>Requisition (PR)</b> — someone asks to buy; route for approval.</li>
-        <li><b>RFQ → Comparative Statement</b> — get quotes, compare on landed cost, pick a supplier.</li>
-        <li><b>Purchase Order</b> — order it. E-commerce POs can be pre-filled from the Demand Planner reorder recommendation.</li>
-        <li><b>Inbound (ASN + Carton Manifest)</b> — for Amazon FBA / Flipkart FF / dark-store inbound; upload to the portal yourself.</li>
+        <li><b>RFQ / RFP → Comparative Statement</b> — get quotes, compare on landed cost, pick a supplier.</li>
+        <li><b>Purchase Order</b> — issue the order with GST, Incoterms and payment terms.</li>
+        <li><b>Landed Cost (imports)</b> — add freight, customs duty (BCD + SWS + IGST) and clearing to get the true per-unit cost.</li>
         <li><b>Goods Receipt Note (GRN) + Inspection</b> — record what actually arrived and its quality.</li>
         <li><b>2-way / 3-way match</b> — reconcile PO ↔ (GRN) ↔ Invoice; flag short delivery or over-billing before you pay.</li>
         <li><b>Debit/Credit Note + Payment Advice</b> — settle differences and remit.</li>
       </ol>
     </div>
     <div class="gsec">
-      <h3>Marketplace identifiers (e-commerce tab)</h3>
-      <table class="gtable"><thead><tr><th>Marketplace</th><th>Product identity</th><th>Inbound / fulfilment</th></tr></thead><tbody>
-        <tr><td><b>Amazon.in</b></td><td>SKU · GTIN · ASIN · FNSKU</td><td>FBA (ASN + Box ID), Easy Ship, Seller Flex, Vendor Central</td></tr>
-        <tr><td><b>Flipkart</b></td><td>SKU · FSN · Listing ID</td><td>Flipkart Fulfillment (FF), Seller Smart, self-ship · F-Assured</td></tr>
-        <tr><td><b>Myntra</b></td><td>Style ID · vendor article · size</td><td>Myntra FC (PPS), SJIT · QC step</td></tr>
-        <tr><td><b>Meesho</b></td><td>Product ID · supplier SKU</td><td>Supplier-shipped via Valmo</td></tr>
-        <tr><td><b>Quick commerce</b></td><td>Item code · EAN</td><td>Platform POs you; deliver to dark-store DC</td></tr>
+      <h3>Taxes, duty &amp; compliance</h3>
+      <table class="gtable"><thead><tr><th>Area</th><th>What applies</th><th>Where to file</th></tr></thead><tbody>
+        <tr><td><b>GST</b></td><td>CGST + SGST (intra-state) or IGST (inter-state); input credit on purchases</td><td>GST portal · e-invoice / GSTR</td></tr>
+        <tr><td><b>Import duty</b></td><td>BCD + Social Welfare Surcharge + IGST on CIF value</td><td>ICEGATE (Bill of Entry)</td></tr>
+        <tr><td><b>Goods movement</b></td><td>e-Way Bill for consignments above the threshold</td><td>e-Way Bill portal</td></tr>
+        <tr><td><b>Vendor terms</b></td><td>PAN / GSTIN, MSME (Udyam) status, TDS on payments where applicable</td><td>Your books / TDS return</td></tr>
       </tbody></table>
     </div>
-    <p class="gnote">Reference only. The tool prepares portal-ready documents; it does not connect to or scrape any seller panel — file statutory documents on ICEGATE / GST / e-Way Bill / the marketplace portals yourself. Rates, schemes and marketplace rules change; always confirm current requirements.</p>
+    <p class="gnote">Reference only. The tool prepares print-ready documents; it does not connect to any government or bank portal — file statutory documents on ICEGATE / GST / e-Way Bill portals yourself. Duty rates, GST slabs and schemes change; always confirm current requirements.</p>
   </div>
 </div>
 
@@ -788,7 +786,7 @@ function partiesHTML(){var c=cfg();
 function linesTable(thead,rows){return '<table class="lines"><thead>'+thead+'</thead><tbody>'+(rows||'<tr><td colspan="12" style="text-align:center;color:#999;padding:16px">Add line items…</td></tr>')+'</tbody></table>';}
 function flag(kind,txt){return '<span class="flag '+kind+'">'+txt+'</span>';}
 function disclaimer(c){var msg=c.vendor?"For onboarding and master-data reference.":(c.worksheet?"Worksheet for reference — file statutory documents on the official portals (ICEGATE / GST / e-Way Bill / marketplace).":"Computer-generated document. Verify GST / HSN and commercial terms before filing or payment.");
- return '<div class="disc">'+msg+'</div><div class="foot-note">Generated with LogicstIQ.com Seller Paperwork Hub · Where Logistics Meets Intelligence</div>';}
+ return '<div class="disc">'+msg+'</div><div class="foot-note">Generated with LogicstIQ.com · Sourcing &amp; Procurement (General ERP) · Where Logistics Meets Intelligence</div>';}
 
 /* ============ MAIN RENDER ============ */
 function render(){
