@@ -1392,6 +1392,7 @@ function renderDashboard(data,sym,horizon,region){
   renderPanelDashboard(data,sym,horizon);renderPanelForecast(data,sym,horizon);renderPanelReorder(data,sym);renderPanelInventory(data,sym);renderPanelSlowMovers(data,sym);renderPanelStockout(data,sym,horizon);renderPanelEvents(data);renderPanelQCommerce(data,sym);
   document.getElementById('liq-results').style.display='block';document.getElementById('liq-reset-btn').style.display='';showTab(activeTab);
   document.getElementById('liq-results').scrollIntoView({behavior:'smooth',block:'start'});
+  try{liqAcctOnRun();}catch(e){}
 }
 function renderPanelDashboard(data,sym,horizon){
   const sm=data.summary||{};
@@ -1470,6 +1471,57 @@ function showError(msg){const el=document.getElementById('liq-error');el.style.d
 function fmtV(sym,n){return sym+(n>=1e7?(n/1e7).toFixed(1)+'Cr':n>=1e5?(n/1e5).toFixed(1)+'L':n>=1e3?(n/1e3).toFixed(1)+'K':Math.round(n).toLocaleString());}
 function fmtN(n){return n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?(n/1e3).toFixed(1)+'K':Math.round(n).toLocaleString();}
 function esc(s){const d=document.createElement('div');d.textContent=String(s??'');return d.innerHTML;}
+
+/* ===== Account storage — save & reuse analyses (encrypted, per-user via Firebase) ===== */
+var liqAcctCache=[];
+async function liqGunzip(b64){try{if(!('DecompressionStream' in window))return null;var bin=atob(b64);var arr=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)arr[i]=bin.charCodeAt(i);var ds=new DecompressionStream('gzip');var st=new Blob([arr]).stream().pipeThrough(ds);return await new Response(st).text();}catch(e){return null;}}
+function liqAcctFileName(){var el=document.querySelector('.liq-dz-file');return el?el.textContent.replace('✕','').trim():'';}
+function liqAcctBar(){
+  if(document.getElementById('liq-acct-bar'))return;
+  var host=document.getElementById('liq-results');if(!host)return;
+  var bar=document.createElement('div');bar.id='liq-acct-bar';
+  bar.style.cssText='display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0 0 16px;padding:10px 12px;border:1px solid #E6EAF2;border-radius:10px;background:#F5F8FF';
+  bar.innerHTML='<span style="font-size:12px;font-weight:700;color:#2A40D6">☁ Your account</span>'
+    +'<button id="liq-acct-save" class="liq-btn liq-btn-ghost liq-btn-sm" onclick="liqAcctSave()">💾 Save this analysis</button>'
+    +'<select id="liq-acct-list" onchange="if(this.value){liqAcctRestore(this.value);this.value=\'\';}" style="font-size:12px;padding:7px 9px;border:1px solid #E6EAF2;border-radius:8px;background:#fff;color:#0F172A"><option value="">📂 My saved analyses…</option></select>'
+    +'<span style="font-size:11px;color:#94A3B8">🔒 encrypted &amp; private to you · your saved history sharpens future forecasts</span>';
+  host.insertBefore(bar,host.firstChild);
+}
+function liqAcctOnRun(){ if(!window.LIQ)return; liqAcctBar(); liqAcctRefreshList(); }
+async function liqAcctRefreshList(){
+  var sel=document.getElementById('liq-acct-list'); if(!sel||!window.LIQ||!window.LIQ.user)return;
+  try{
+    liqAcctCache=await window.LIQ.listDocs('planner');
+    sel.innerHTML='<option value="">📂 My saved analyses ('+liqAcctCache.length+')…</option>'+liqAcctCache.map(function(r){
+      var d=(r.savedAt&&r.savedAt.toDate)?(' · '+r.savedAt.toDate().toLocaleDateString()):'';
+      return '<option value="'+r.id+'">'+String(r.title||'Forecast').replace(/</g,'&lt;')+d+'</option>';
+    }).join('');
+  }catch(e){}
+}
+async function liqAcctSave(){
+  if(!computedResult)return;
+  if(!window.LIQ||!window.LIQ.user){ if(window.LIQ)window.LIQ.openAuth(); return; }
+  var btn=document.getElementById('liq-acct-save'); if(btn){btn.disabled=true;btn.textContent='Saving…';}
+  try{
+    var gz=await liqGzip(fileText||'');
+    var rec={ title:(liqAcctFileName()||('Forecast '+new Date().toLocaleDateString())),
+      meta:{horizon:computedResult.horizon,region:computedResult.region,sym:computedResult.sym},
+      summary:(computedResult.data&&computedResult.data.summary)||{} };
+    if(gz && gz.length<900000){ rec.dataGz=gz; } else { rec.note='large-dataset-not-stored'; }
+    await window.LIQ.saveDoc('planner',rec);
+    if(btn){btn.textContent='✓ Saved to your account';setTimeout(function(){btn.disabled=false;btn.textContent='💾 Save this analysis';},1800);}
+    liqAcctRefreshList();
+  }catch(e){ if(btn){btn.disabled=false;btn.textContent='💾 Save this analysis';} showError('Could not save to your account: '+(e.message||e)); }
+}
+async function liqAcctRestore(id){
+  var rec=liqAcctCache.filter(function(r){return r.id===id;})[0]; if(!rec)return;
+  if(!rec.dataGz){ showError('That saved analysis didn’t include the dataset (it was too large to store) — please re-upload the file.'); return; }
+  var txt=await liqGunzip(rec.dataGz);
+  if(!txt){ showError('Could not restore this dataset in your browser.'); return; }
+  fileText=txt; showFileChip(rec.title||'Saved dataset'); previewColumns(fileText); updateRunBtn(); showError('');
+  liqRun();
+}
+window.liqAcctSave=liqAcctSave; window.liqAcctRestore=liqAcctRestore;
 })();
 </script>
 <!-- ── SHARE YOUR FEEDBACK (Google Form) — replaces old fake testimonials ── -->
