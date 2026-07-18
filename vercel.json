@@ -5,6 +5,8 @@
     }
   },
   "rewrites": [
+    { "source": "/blog/:page", "destination": "/blog/:page.html" },
+    { "source": "/fba-planner/:page", "destination": "/fba-planner/:page.html" },
     { "source": "/:page", "destination": "/:page.html" }
   ],
   "headers": [
