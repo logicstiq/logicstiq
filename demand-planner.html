@@ -1487,7 +1487,22 @@ function liqAcctBar(){
     +'<span style="font-size:11px;color:#94A3B8">🔒 encrypted &amp; private to you · your saved history sharpens future forecasts</span>';
   host.insertBefore(bar,host.firstChild);
 }
-function liqAcctOnRun(){ if(!window.LIQ)return; liqAcctBar(); liqAcctRefreshList(); }
+function liqAcctOnRun(){ if(!window.LIQ)return; liqAcctBar(); liqAcctRefreshList(); liqAcctAutoSave(); }
+var liqAcctAutoSig=null;
+async function liqAcctAutoSave(){
+  if(!window.LIQ||!window.LIQ.user||!computedResult)return;
+  var sig=(fileText||'').length+'|'+(computedResult.horizon||'')+'|'+(computedResult.region||'');
+  if(sig===liqAcctAutoSig)return; liqAcctAutoSig=sig;
+  try{
+    var gz=await liqGzip(fileText||'');
+    var rec={ title:'Auto · '+(liqAcctFileName()||new Date().toLocaleDateString()), auto:true,
+      meta:{horizon:computedResult.horizon,region:computedResult.region,sym:computedResult.sym},
+      summary:(computedResult.data&&computedResult.data.summary)||{} };
+    if(gz&&gz.length<900000)rec.dataGz=gz;
+    await window.LIQ.saveDoc('planner',rec);
+    liqAcctRefreshList();
+  }catch(e){}
+}
 async function liqAcctRefreshList(){
   var sel=document.getElementById('liq-acct-list'); if(!sel||!window.LIQ||!window.LIQ.user)return;
   try{
