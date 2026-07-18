@@ -33,6 +33,8 @@ textarea{resize:vertical;min-height:54px}
 .doctabs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:4px}
 .doctabs button{flex:1 1 auto;min-width:84px;border:1px solid var(--line);background:#fff;color:var(--navy);padding:8px 7px;border-radius:9px;font-size:11.5px;font-weight:600;cursor:pointer;transition:.15s}
 .doctabs button.active{background:var(--blue);border-color:var(--blue);color:#fff}
+[data-theme="dark"] .doctabs button:not(.active){background:#1B2130;color:#DBE3F5;border-color:#2B3654}
+[data-theme="dark"] .doctabs button:not(.active):hover{border-color:#4E66FF;color:#FFFFFF}
 .section-title{font-size:12px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.4px;margin:16px 0 6px;padding-top:12px;border-top:1px dashed var(--line)}
 .fieldnote{font-size:10.5px;margin-top:3px;font-weight:600}
 .fieldnote.ok{color:var(--green)}.fieldnote.bad{color:var(--red)}
