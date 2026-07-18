@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My account — LogicstIQ</title>
+<meta name="robots" content="noindex,follow">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7F9FD;--card:#FFFFFF;--text:#0F1729;--text3:#64708A;--border:#E6EAF2;--b50:#EEF1FF;--b600:#3A55FF}
+html[data-theme="dark"]{--bg:#0A0D16;--card:#141824;--text:#EAEEF7;--text3:#8A94AB;--border:#242C3D;--b50:#171C2E;--b600:#4E66FF}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text)}
+.top{display:flex;align-items:center;gap:10px;padding:14px 22px;border-bottom:1px solid var(--border);background:var(--card)}
+.mk{width:28px;height:28px;border-radius:9px;background:linear-gradient(135deg,#4F6BFF,#9B6BFF);display:grid;place-items:center;color:#fff;font-weight:800;font-family:'Plus Jakarta Sans'}
+.brand{font-family:'Plus Jakarta Sans';font-weight:800;letter-spacing:-.02em}.brand i{font-style:normal;color:#7C3AED}
+html[data-theme="dark"] .brand i{color:#B69BFF}
+.wrap{max-width:860px;margin:0 auto;padding:28px 22px 60px}
+h1{font-family:'Plus Jakarta Sans';font-weight:800;letter-spacing:-.02em;font-size:26px;margin:0 0 4px}
+.sub{color:var(--text3);font-size:13px;margin:0 0 22px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:16px;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#3A55FF,#9B6BFF)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.lbl{font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--text3)}
+.val{font-size:15px;font-weight:700;margin-top:2px}
+.btn{border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:10px;padding:9px 15px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}
+.btn.pri{background:linear-gradient(135deg,#3A55FF,#770BFF);color:#fff;border:none}
+.btn.danger{color:#DC2626;border-color:#f0c2c2;background:#fdf3f3}
+html[data-theme="dark"] .btn.danger{background:#2A1516;border-color:#5a2a2a;color:#F87171}
+.list{margin-top:12px;display:grid;gap:8px}
+.item{border:1px solid var(--border);border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;gap:10px;font-size:13px}
+.muted{color:var(--text3);font-size:12.5px}
+.enc{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:#0f7a44;background:#E7F6EC;border:1px solid #a7e0bd;border-radius:20px;padding:4px 10px}
+html[data-theme="dark"] .enc{background:#10231A;border-color:#1f6e46;color:#4ade80}
+</style>
+</head>
+<body data-liq-gate>
+  <div class="top"><span class="mk">Q</span><span class="brand">Logicst<i>IQ</i></span>
+    <a href="/" style="margin-left:auto;color:var(--text3);text-decoration:none;font-size:13px;font-weight:600">← Home</a></div>
+
+  <div class="wrap" data-liq-protected>
+    <h1>My account</h1>
+    <p class="sub">Everything you save is private to your account and encrypted at rest. <span class="enc">🔒 Encrypted &amp; isolated to you</span></p>
+
+    <div class="card">
+      <div class="row">
+        <div><div class="lbl">Signed in as</div><div class="val" id="acEmail">—</div></div>
+        <div style="display:flex;gap:8px"><button class="btn" id="acSignout">Sign out</button></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="lbl">Saved Demand Planner runs</div>
+      <div class="list" id="acPlanner"><div class="muted">Loading…</div></div>
+    </div>
+
+    <div class="card">
+      <div class="lbl">Saved documents</div>
+      <div class="list" id="acDocs"><div class="muted">Loading…</div></div>
+    </div>
+
+    <div class="card">
+      <div class="lbl">Your data &amp; privacy</div>
+      <p class="muted" style="margin:8px 0 12px">You control your data. Delete everything saved to your account at any time — this permanently removes your saved runs and documents from our database.</p>
+      <button class="btn danger" id="acWipe">Delete all my saved data</button>
+      <p class="muted" style="margin-top:10px">See our <a href="/privacy-policy.html" style="color:var(--b600);font-weight:600">Privacy Policy</a> for how we store and protect your information.</p>
+    </div>
+  </div>
+
+<script type="module" src="/js/liq-auth.js"></script>
+<script>
+  function esc(s){return String(s==null?"":s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+  async function render(u){
+    if(!u) return; // gate shows the wall
+    document.getElementById("acEmail").textContent = u.email || "(no email)";
+    async function fill(sub, elId, labelFn){
+      const el=document.getElementById(elId);
+      try{
+        const rows= await window.LIQ.listDocs(sub);
+        if(!rows.length){ el.innerHTML='<div class="muted">Nothing saved yet.</div>'; return; }
+        el.innerHTML = rows.map(r=>`<div class="item"><span>${esc(labelFn(r))}</span>
+          <button class="btn danger" data-sub="${sub}" data-id="${r.id}" style="padding:5px 10px;font-size:12px">Delete</button></div>`).join("");
+        el.querySelectorAll("[data-id]").forEach(b=>b.onclick=async()=>{ await window.LIQ.deleteUserDoc(b.dataset.sub,b.dataset.id); render(window.LIQ.user); });
+      }catch(e){ el.innerHTML='<div class="muted">Could not load — check your connection.</div>'; }
+    }
+    fill("planner","acPlanner", r=> (r.title||"Forecast run") + (r.savedAt&&r.savedAt.toDate? " · "+r.savedAt.toDate().toLocaleDateString():""));
+    fill("documents","acDocs", r=> (r.title||r.type||"Document") + (r.savedAt&&r.savedAt.toDate? " · "+r.savedAt.toDate().toLocaleDateString():""));
+  }
+  document.addEventListener("liq-auth", e=>render(e.detail.user));
+  document.addEventListener("DOMContentLoaded", ()=>{
+    document.getElementById("acSignout").onclick=()=>{ window.LIQ && window.LIQ.signOut().then(()=>location.href="/"); };
+    document.getElementById("acWipe").onclick=async()=>{
+      if(!confirm("Delete ALL your saved planner runs and documents? This cannot be undone.")) return;
+      for(const sub of ["planner","documents"]){ const rows=await window.LIQ.listDocs(sub); for(const r of rows) await window.LIQ.deleteUserDoc(sub,r.id); }
+      render(window.LIQ.user);
+    };
+  });
+</script>
+</body>
+</html>
