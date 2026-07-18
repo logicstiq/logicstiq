@@ -190,7 +190,7 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
 </script>
 <!--/LQDS-->
 </head>
-<body>
+<body data-liq-gate>
 <style id="fbd-css">
 /* ===== FBA Fulfillable/Unfulfillable dashboard — scoped under #fbd, LogicstIQ tokens ===== */
 #fbd{
@@ -738,5 +738,6 @@ function downloadCSV(name,rows){
 <script>(function(){var r=document.documentElement;function apply(t){r.setAttribute("data-theme",t==="dark"?"dark":"light");}function cur(){try{var s=localStorage.getItem("liq-theme");if(s==="dark"||s==="light")return s;}catch(e){}return "light";}apply(cur());window.addEventListener("message",function(e){var d=e&&e.data;if(d&&d.liqTheme){apply(d.liqTheme);try{localStorage.setItem("liq-theme",d.liqTheme);}catch(_){}}});window.addEventListener("storage",function(e){if(e.key==="liq-theme"&&e.newValue)apply(e.newValue);});})();</script>
 
 <script src="/js/liq-logo.js?v=2" defer></script>
+<script type="module" src="/js/liq-auth.js"></script>
 </body>
 </html>
