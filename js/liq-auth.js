@@ -95,8 +95,13 @@ function injectStyles(){
   [data-theme="dark"] .liqa-tab.on{background:#171C2E;color:#B9C6FF;border-color:#2B3654}
   .liqa-lock{filter:blur(7px);pointer-events:none;user-select:none}
   .liqa-chip{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;cursor:pointer;
-    border:1px solid var(--border,#E6EAF2);border-radius:30px;padding:6px 12px;color:var(--text,#0F1729);background:var(--card,#fff)}
+    border:1px solid var(--border,#E6EAF2);border-radius:30px;padding:6px 12px;color:var(--text,#0F1729);background:var(--card,#fff);
+    flex:0 0 auto;margin-left:8px;margin-right:6px;white-space:nowrap;max-width:150px;overflow:hidden}
+  .liqa-chip span:last-child{overflow:hidden;text-overflow:ellipsis}
   [data-theme="dark"] .liqa-chip{background:#141824;border-color:#242C3D;color:#EAEEF7}
+  @media(max-width:640px){.liqa-chip{max-width:44px;padding:6px}.liqa-chip span:last-child{display:none}}
+  .liqa-mark{display:inline-flex;flex:0 0 auto}
+  .liqa-mark svg{display:block;overflow:visible}
   .liqa-av{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#3A55FF,#770BFF);color:#fff;
     display:grid;place-items:center;font-size:11px;font-weight:800}
   `;
@@ -112,7 +117,7 @@ function buildModal(){
   ov.innerHTML = `
     <div class="liqa-card" role="dialog" aria-modal="true" aria-label="Sign in to LogicstIQ">
       <button class="liqa-x" aria-label="Close">×</button>
-      <div class="liqa-logo"><span class="liqa-av">Q</span><b>Logicst<i>IQ</i></b></div>
+      <div class="liqa-logo"><span class="liqa-mark"><svg width="34" height="30" viewBox="0 0 92 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="liqa_lg" x1="10" y1="70" x2="82" y2="14" gradientUnits="userSpaceOnUse"><stop stop-color="#4F6BFF"/><stop offset="1" stop-color="#9B6BFF"/></linearGradient></defs><path d="M10 40 L26 40 L42 66 L64 22 L80 22" stroke="url(#liqa_lg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M74 14 L82 22 L74 30" stroke="#9B6BFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="42" cy="66" r="4.5" fill="#4F6BFF"/><circle cx="64" cy="22" r="4.5" fill="#9B6BFF"/></svg></span><b>Logicst<i>IQ</i></b></div>
       <div class="liqa-tabs">
         <div class="liqa-tab on" data-m="signup">Create account</div>
         <div class="liqa-tab" data-m="login">Sign in</div>
@@ -242,12 +247,16 @@ async function upsertUser(u){
 function initials(u){ const s=(u.displayName||u.email||"U").trim(); return (s[0]||"U").toUpperCase(); }
 function renderChip(){
   injectStyles();
-  let host=document.querySelector(".topbar")||document.querySelector(".nav")||document.querySelector("header nav")||document.querySelector("header");
+  let host=document.querySelector(".lnav")||document.querySelector(".topbar")||document.querySelector(".nav")||document.querySelector("header nav")||document.querySelector("header")||document.querySelector(".top");
   let chip=document.getElementById("liqaChip");
   if(!chip){
     chip=document.createElement(host?"span":"div"); chip.id="liqaChip"; chip.className="liqa-chip";
-    if(!host){ chip.style.cssText="position:fixed;top:12px;right:12px;z-index:9998"; document.body.appendChild(chip); }
-    else host.appendChild(chip);
+    if(!host){ chip.style.cssText="position:fixed;bottom:14px;right:14px;z-index:9998"; document.body.appendChild(chip); }
+    else{
+      // Sit inside the nav row, just BEFORE the light/dark toggle — never on top of it.
+      const themeBtn=host.querySelector("#liqTheme")||host.querySelector(".liq-theme-btn");
+      if(themeBtn) host.insertBefore(chip, themeBtn); else host.appendChild(chip);
+    }
     chip.onclick=()=>{ if(CURRENT_USER) location.href="/account.html"; else showModal(true); };
   }
   if(CURRENT_USER){ chip.innerHTML=`<span class="liqa-av">${initials(CURRENT_USER)}</span><span>${(CURRENT_USER.email||"Account").split("@")[0]}</span>`; }

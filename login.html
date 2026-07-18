@@ -23,13 +23,21 @@ a.home{display:block;margin-top:16px;color:#9DB0FF;font-size:12px;text-decoratio
 </head>
 <body>
   <div class="wrap">
-    <div class="mk">Q</div>
+    <div style="margin:0 auto 10px;width:64px">
+      <svg width="64" height="56" viewBox="0 0 92 80" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible" aria-hidden="true">
+        <defs><linearGradient id="login_lg" x1="10" y1="70" x2="82" y2="14" gradientUnits="userSpaceOnUse"><stop stop-color="#4F6BFF"/><stop offset="1" stop-color="#9B6BFF"/></linearGradient></defs>
+        <path d="M10 40 L26 40 L42 66 L64 22 L80 22" stroke="url(#login_lg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M74 14 L82 22 L74 30" stroke="#9B6BFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="42" cy="66" r="4.5" fill="#4F6BFF"/><circle cx="64" cy="22" r="4.5" fill="#9B6BFF"/>
+      </svg>
+    </div>
     <h1>Logicst<span style="color:#B69BFF">IQ</span></h1>
+    <p style="margin:-2px 0 14px;font-size:10.5px;letter-spacing:.04em;color:#8A94AB">WHERE LOGISTICS MEETS INTELLIGENCE</p>
     <p id="msg">Sign in or create your free account to continue.</p>
     <button class="go" id="open">Continue →</button>
     <a class="home" href="/">← Back to home</a>
   </div>
-<script type="module" src="/js/liq-auth.js"></script>
+<script type="module" src="/js/liq-auth.js?v=10"></script>
 <script>
   // If the magic-link completes or the user is already signed in, send them on.
   document.addEventListener("liq-auth", function(e){
