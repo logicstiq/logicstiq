@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&family=Wix+Madefor+Display:wght@600;700;800&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#F4F7FF;--white:#FFFFFF;--border:#E2E8F0;--b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b600:#3A55FF;--b700:#2A40D6;--b900:#1C2C73;--green:#059669;--amber:#D97706;--alight:#FEF3C7;--red:#DC2626;--rlight:#FEE2E2;--orange:#EA580C;--text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8;}
+:root{--bg:#F7F9FD;--white:#FFFFFF;--border:#E2E8F0;--b50:#EFF6FF;--b100:#DBEAFE;--b200:#BFDBFE;--b600:#3A55FF;--b700:#2A40D6;--b900:#1C2C73;--green:#059669;--amber:#D97706;--alight:#FEF3C7;--red:#DC2626;--rlight:#FEE2E2;--orange:#EA580C;--text:#0F172A;--text2:#1E293B;--text3:#475569;--text4:#94A3B8;}
 body{font-family:'Wix Madefor Text','Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:16px}
 .nav{background:#fff;border-bottom:1px solid var(--border);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .nav-logo{font-size:18px;font-weight:900;text-decoration:none;display:flex;align-items:center}
@@ -92,22 +92,78 @@ footer a{color:#FED7AA;text-decoration:none;font-weight:600}
 .liq-theme-btn:hover{border-color:#3A55FF;transform:translateY(-1px)}
 .liq-theme-float{position:fixed;right:18px;bottom:18px;z-index:99999;width:44px;height:44px;border-radius:50%;box-shadow:0 8px 22px rgba(0,0,0,.28)}
 [data-theme="dark"]{
-  --bg:#070708;--white:#10131F;--border:rgba(255,255,255,.10);--border2:rgba(255,255,255,.17);
+  --bg:#0A0D16;--white:#141824;--border:rgba(255,255,255,.10);--border2:rgba(255,255,255,.17);
   --b50:rgba(58,85,255,.12);--b100:rgba(58,85,255,.20);--b200:rgba(58,85,255,.32);
   --text:#F1F5FF;--text2:#DBE3F5;--text3:#A7B0CC;--text4:#7E88A8;
   --glight:rgba(16,185,129,.16);--rlight:rgba(239,68,68,.16);--alight:rgba(245,158,11,.16);--plight:rgba(119,11,255,.18);
 }
-[data-theme="dark"] body{background:#070708}
+[data-theme="dark"] body{background:#0A0D16}
 [data-theme="dark"] .nav{background:rgba(9,10,18,.92)!important;border-bottom-color:rgba(255,255,255,.08)}
 [data-theme="dark"] .liq-theme-btn{background:rgba(255,255,255,.06)}
 [data-theme="dark"] .nav-logo text tspan:first-child{fill:#FFFFFF}
 [data-theme="dark"] .nav-logo span{color:#7D92FF!important}
-[data-theme="dark"] .card,[data-theme="dark"] .why-card,[data-theme="dark"] .results,[data-theme="dark"] .result-item,[data-theme="dark"] .related-card,[data-theme="dark"] .calc-card,[data-theme="dark"] .badge-bar,[data-theme="dark"] .result-stat,[data-theme="dark"] .f-var,[data-theme="dark"] .formula-var,[data-theme="dark"] .breakdown-item,[data-theme="dark"] .safety-card,[data-theme="dark"] .modal-card,[data-theme="dark"] .legal-note,[data-theme="dark"] .tab,[data-theme="dark"] .faq-q,[data-theme="dark"] .faq-item{background:#10131F!important;border-color:rgba(255,255,255,.12)!important}
+[data-theme="dark"] .card,[data-theme="dark"] .why-card,[data-theme="dark"] .results,[data-theme="dark"] .result-item,[data-theme="dark"] .related-card,[data-theme="dark"] .calc-card,[data-theme="dark"] .badge-bar,[data-theme="dark"] .result-stat,[data-theme="dark"] .f-var,[data-theme="dark"] .formula-var,[data-theme="dark"] .breakdown-item,[data-theme="dark"] .safety-card,[data-theme="dark"] .modal-card,[data-theme="dark"] .legal-note,[data-theme="dark"] .tab,[data-theme="dark"] .faq-q,[data-theme="dark"] .faq-item{background:#141824!important;border-color:rgba(255,255,255,.12)!important}
 [data-theme="dark"] .formula-box,[data-theme="dark"] .example-box,[data-theme="dark"] .faq-a{background:#0C0F1A!important;border-color:rgba(255,255,255,.10)!important}
 [data-theme="dark"] table th{background:rgba(255,255,255,.05)!important;color:#CFD8EE!important}
 [data-theme="dark"] table td,[data-theme="dark"] table th{border-color:rgba(255,255,255,.08)!important}
 [data-theme="dark"] .section-eyebrow,[data-theme="dark"] .calc-tag,[data-theme="dark"] .blog-cat,[data-theme="dark"] .calc-cat{background:rgba(58,85,255,.14)!important;border-color:rgba(58,85,255,.32)!important;color:#AEBCFF!important}
 </style>
+
+
+
+<style id="liq-ds-v1">
+/* ===== LogicstIQ unified design system v1 — light + dark, high-specificity so it governs every page ===== */
+html:not([data-theme="dark"]){
+--bg:#F7F9FD;--surface:#FFFFFF;--card:#FFFFFF;--card2:#F2F5FB;--nav:#FFFFFF;--navtext:#0F1729;
+--text:#0F1729;--text2:#3A445C;--text3:#64708A;--text4:#93A0B7;--muted:#64708A;--ink:#0F1729;--navy:#0F1729;--slate:#64748B;
+--border:#E6EAF2;--border2:#D9DFEA;--line:#E6EAF2;--line2:#D9DFEA;
+--b50:#EEF1FF;--b100:#DEE3FF;--b200:#C4CCFF;--b400:#8A97FF;--b500:#5B6DFF;--b600:#3A55FF;--b700:#2E42D6;--b800:#243086;--b900:#1B2775;
+--blue:#3A55FF;--blue2:#3A55FF;--blue-soft:#EEF1FF;--violet:#7C3AED;--purple:#7C3AED;
+--green:#16A34A;--amber:#D97706;--red:#DC2626;
+--glight:#E7F6EC;--alight:#FBEEDD;--rlight:#FCEAEA;--plight:#F1EBFE;--wlight:#FEF3C7;
+--grad:linear-gradient(135deg,#3A55FF,#770BFF);
+--lq-sh:0 18px 44px rgba(23,37,84,.13);--lq-sh-sm:0 6px 18px rgba(23,37,84,.08);--lq-ring:0 0 0 4px rgba(58,85,255,.18);--shadow:0 10px 30px rgba(23,37,84,.10);
+}
+html[data-theme="dark"]{
+--bg:#0A0D16;--surface:#141824;--card:#141824;--card2:#1B2130;--nav:#0E1220;--navtext:#EAEEF7;
+--text:#EAEEF7;--text2:#C2CAD9;--text3:#8A94AB;--text4:#5C6579;--muted:#8A94AB;--ink:#EAEEF7;--navy:#EAEEF7;--slate:#94A3B8;
+--border:#242C3D;--border2:#2E3648;--line:#242C3D;--line2:#2E3648;
+--b50:#171C2E;--b100:#1E2742;--b200:#28345E;--b400:#5D70F0;--b500:#7385FF;--b600:#4E66FF;--b700:#7C8CFF;--b800:#9DB0FF;--b900:#C3CEFF;
+--blue:#4E66FF;--blue2:#4E66FF;--blue-soft:#171C2E;--violet:#A78BFA;--purple:#A78BFA;
+--green:#3DD68C;--amber:#F5B342;--red:#F87171;
+--glight:#10231A;--alight:#2A2113;--rlight:#2A1516;--plight:#1E1636;--wlight:#2A2410;
+--grad:linear-gradient(135deg,#3A55FF,#770BFF);
+--lq-sh:0 20px 50px rgba(0,0,0,.55);--lq-sh-sm:0 8px 24px rgba(0,0,0,.45);--lq-ring:0 0 0 4px rgba(91,114,255,.30);--shadow:0 12px 34px rgba(0,0,0,.5);
+}
+html{scroll-behavior:smooth}
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+body,.panel,.card,.calc-card,.tool-card,header,nav,.topbar,.nav,input,select,textarea,button{transition:background-color .25s ease,border-color .25s ease,color .2s ease,box-shadow .2s ease}
+::selection{background:rgba(58,85,255,.22)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(58,85,255,.35);border-radius:8px}
+*{scrollbar-width:thin;scrollbar-color:#B9C3DA transparent}
+html[data-theme="dark"] *{scrollbar-color:#39435C transparent}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-thumb{background:#C3CCDE;border-radius:20px;border:3px solid transparent;background-clip:content-box}
+::-webkit-scrollbar-thumb:hover{background:#9AA6C0;border:3px solid transparent;background-clip:content-box}
+html[data-theme="dark"] ::-webkit-scrollbar-thumb{background:#33405C;border:3px solid transparent;background-clip:content-box}
+html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover{background:#465477;border:3px solid transparent;background-clip:content-box}
+/* ---- motion layer (reference language: fade-up, float, rising bars, page-in) — graceful fallback, reduced-motion aware ---- */
+@keyframes lq-fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes lq-rise{from{transform:scaleY(0);opacity:.5}to{transform:scaleY(1);opacity:1}}
+@keyframes lq-floatm{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes lq-pagein{from{opacity:0}to{opacity:1}}
+body{animation:lq-pagein .45s ease both}
+.pf-badge{animation:lq-fadeup .7s ease .10s both}
+.pf-hero h1{animation:lq-fadeup .7s ease .20s both}
+.pf-sub{animation:lq-fadeup .7s ease .32s both}
+.pf-cta{animation:lq-fadeup .7s ease .44s both}
+.pf-ticks{animation:lq-fadeup .7s ease .56s both}
+.pf-card{animation:lq-fadeup .7s ease .50s both, lq-floatm 6s ease-in-out 1.4s infinite}
+.pf-bars i{transform-origin:bottom;animation:lq-rise .8s cubic-bezier(.2,.7,.2,1) both}
+.pf-bars i:nth-child(1){animation-delay:.60s}.pf-bars i:nth-child(2){animation-delay:.67s}.pf-bars i:nth-child(3){animation-delay:.74s}.pf-bars i:nth-child(4){animation-delay:.81s}.pf-bars i:nth-child(5){animation-delay:.88s}.pf-bars i:nth-child(6){animation-delay:.95s}.pf-bars i:nth-child(7){animation-delay:1.02s}.pf-bars i:nth-child(8){animation-delay:1.09s}.pf-bars i:nth-child(9){animation-delay:1.16s}.pf-bars i:nth-child(10){animation-delay:1.23s}.pf-bars i:nth-child(11){animation-delay:1.3s}.pf-bars i:nth-child(12){animation-delay:1.37s}
+@media(prefers-reduced-motion:reduce){body,.pf-badge,.pf-hero h1,.pf-sub,.pf-cta,.pf-ticks,.pf-card,.pf-bars i{animation:none!important}}
+</style>
+
 </head>
 <body>
 <!-- ===== LogicstIQ unified navigation ===== -->
