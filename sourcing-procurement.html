@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sourcing &amp; Procurement — Seller Paperwork Hub | LogicstIQ Ecommerce Documents (Amazon, Flipkart, Myntra, Meesho)</title>
-<meta name="description" content="Sourcing &amp; Procurement — Seller Paperwork Hub: free e-commerce paperwork generator for Indian sellers and SMEs. Two tabs: a general ERP procure-to-pay suite (PR, RFQ, PO, GRN, 2-way &amp; 3-way match) and a marketplace-aware e-commerce suite (Amazon FBA, Flipkart, Myntra, Meesho, quick commerce, D2C) with SKU/ASIN/FNSKU/FSN identifiers, landed cost, ASN &amp; carton manifests. Supplier directory + status tracker saved only in your browser.">
+<title>Sourcing &amp; Procurement — Seller Paperwork Hub | LogicstIQ (Amazon, Flipkart, Myntra, Meesho)</title>
+<meta name="description" content="Sourcing &amp; Procurement - Seller Paperwork Hub: free marketplace-aware procure-to-pay generator for Indian e-commerce and D2C sellers. PR, RFQ, PO with SKU/ASIN/FNSKU/FSN, landed cost, inbound ASN &amp; carton manifests, GRN, 2-way/3-way match and platform POs for Amazon FBA, Flipkart, Myntra, Meesho and quick commerce.">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
@@ -216,16 +216,24 @@ a:focus-visible,button:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(58,8
 
 
 <!-- ===== Sourcing & Procurement — explainer ===== -->
-<section class="sph-guide" id="sourcing-explained" style="margin-bottom:10px">
-  <h2>🛒 E-commerce Sourcing &amp; Procurement, explained</h2>
-  <p class="lead">For a marketplace or D2C seller, <b>sourcing</b> is finding and choosing the suppliers behind your listings — on IndiaMART, at trade fairs, or from factories abroad via Alibaba/1688 — sampling products, collecting quotes, and comparing them on <i>landed cost</i>, MOQ and lead time. <b>Procurement</b> is the operational loop that follows every reorder: raising the PO, getting stock into an FC or dark store on time, verifying what arrived, and paying only for good units. In e-commerce this loop runs constantly — every restock, every sale event, every new SKU — and <b>your margin is largely decided at the moment you buy, not the moment you sell</b>.</p>
-  <div class="sph-grid">
-    <div class="sph-card"><h3>🔎 Sourcing for sellers</h3><p>Shortlist 3+ suppliers per SKU, order samples, and send the same RFQ to each so quotes are comparable. Compare on landed cost (price + freight + duty + GST treatment), never invoice price — a supplier who looks 5% cheaper can be 10% costlier once freight and duty land.</p></div>
-    <div class="sph-card"><h3>🔁 The e-commerce reorder loop</h3><p>PR → PO (carrying SKU / ASIN / FNSKU / FSN and the sales channel) → inbound ASN and FC appointment → carton manifest the FC can scan → GRN when stock is received → 2/3-way match before payment. Documents flow into each other so nothing is retyped.</p></div>
-    <div class="sph-card"><h3>⚡ Marketplace &amp; quick-com specifics</h3><p>Amazon and Flipkart reject inbounds with wrong manifests; Blinkit, Zepto and BigBasket flip the flow by raising <i>their</i> PO on you (Platform PO). Sale events compress everything — Big Billion Days stock must be sourced, ordered and inbounded weeks ahead.</p></div>
-    <div class="sph-card"><h3>📊 Supplier discipline = margin</h3><p>Score suppliers quarterly on delivery, quality, price and responsiveness. Sellers who track scorecards negotiate from data, catch slipping quality before reviews do, and keep backup vendors ready for festive-season disruption.</p></div>
-  </div>
-  <p class="lead" style="margin-top:14px;margin-bottom:0">The section below walks through the full flow and what every document in this hub does.</p>
+<!-- ===== Sourcing & Procurement — explainer ===== -->
+<style>
+.sxp{scroll-margin-top:84px;max-width:1060px;margin:26px auto 22px;padding:0 20px;font-family:inherit}
+.sxp .sxp-badge{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:800;color:#fff;background:linear-gradient(135deg,#3A55FF,#770BFF);border-radius:999px;padding:6px 13px;margin-bottom:6px}
+.sxp h2{font-size:24px;font-weight:900;letter-spacing:-.02em;color:var(--ink);margin:6px 0 4px}
+.sxp .lead{font-size:14.5px;color:var(--muted);line-height:1.7;max-width:880px;margin:6px 0 16px}
+.sxp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.sxp-step{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 15px;transition:transform .14s,border-color .14s,box-shadow .14s}
+.sxp-step:hover{transform:translateY(-2px);border-color:var(--blue2);box-shadow:0 10px 24px rgba(58,85,255,.13)}
+.sxp-num{flex:0 0 auto;width:28px;height:28px;border-radius:9px;background:linear-gradient(135deg,#3A55FF,#770BFF);color:#fff;font-size:13px;font-weight:800;display:grid;place-items:center}
+.sxp-step b{display:block;font-size:14px;font-weight:800;color:var(--ink);line-height:1.25}
+.sxp-step span{display:block;font-size:12.3px;color:var(--muted);line-height:1.6;margin-top:2px}
+</style>
+<section class="sph-guide sxp" id="sourcing-explained" style="margin-bottom:10px">
+  <span class="sxp-badge">🛒 E-commerce · Amazon · Flipkart · Meesho · quick-com · D2C</span>
+  <h2>How Sourcing &amp; Procurement works</h2>
+  <p class="lead"><b>Sourcing</b> is choosing the suppliers behind your listings; <b>procurement</b> is the reorder loop that follows - raise the PO, get stock into an FC or dark store, verify what arrived, and pay only for good units. Built for marketplace &amp; D2C sellers, every document carries SKU / ASIN / FNSKU / FSN identifiers.</p>
+  <div class="sxp-grid"><div class="sxp-step"><span class="sxp-num">1</span><div><b>Purchase Requisition</b><span>Straight from your planner / reorder-point recommendation.</span></div></div><div class="sxp-step"><span class="sxp-num">2</span><div><b>RFQ</b><span>Request quotes keyed to SKU / ASIN so they are comparable.</span></div></div><div class="sxp-step"><span class="sxp-num">3</span><div><b>Purchase Order</b><span>Carries marketplace IDs - ASIN / FNSKU / FSN - and the sales channel.</span></div></div><div class="sxp-step"><span class="sxp-num">4</span><div><b>Landed Cost</b><span>Import duty and FX per unit to set a margin-safe selling price.</span></div></div><div class="sxp-step"><span class="sxp-num">5</span><div><b>Inbound ASN + Carton Manifest</b><span>Plan boxes into the FC / 3PL (Amazon FBA, Flipkart FF, dark store).</span></div></div><div class="sxp-step"><span class="sxp-num">6</span><div><b>GRN + 2/3-way Match</b><span>Reconcile receipts, service bills and invoices before paying.</span></div></div></div>
 </section>
 
 <!-- ===== Seller Paperwork Hub — document guide ===== -->
@@ -243,7 +251,7 @@ a:focus-visible,button:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(58,8
 </style>
 <section class="sph-guide" id="how-it-works">
   <h2>📖 How the Seller Paperwork Hub works</h2>
-  <p class="lead">Every purchase you make — from a supplier in Delhi or a factory in Shenzhen — generates paperwork. This tool creates all of it, in the correct order, with your data flowing from one document to the next. Built for sellers on Amazon, Flipkart, Myntra, Meesho, quick commerce and D2C — documents carry SKU / ASIN / FNSKU / FSN identifiers and channel tags.</p>
+  <p class="lead">Every purchase you make — from a supplier in Delhi or a factory in Shenzhen — generates paperwork. This tool creates all of it, in the correct order, with your data flowing from one document to the next. Built for sellers on Amazon, Flipkart, Myntra, Meesho, quick commerce and D2C — every document carries SKU / ASIN / FNSKU / FSN identifiers and channel tags, and your data flows from one document to the next.</p>
   <div class="sph-flow">The procure-to-pay flow:&nbsp; 📝 Purchase Requisition → 📨 RFQ → ⚖️ Comparative Statement → 📋 Purchase Order → 🌐 Landed Cost → 🚚 Inbound / ASN → 📦 Carton Manifest → ✅ GRN → 🔍 2-way / 3-way Match → 💳 Payment</div>
 
   <div class="sph-h3">Sourcing documents — deciding who to buy from</div>
@@ -945,7 +953,7 @@ function init(){
  $("printBtn").onclick=doPrint;$("pdfBtn").onclick=doPDF;
  $("logo").addEventListener("change",function(e){var f=e.target.files[0];if(!f)return;var rd=new FileReader();rd.onload=function(ev){logoData=ev.target.result;render();};rd.readAsDataURL(f);});
  ["coName","coAddr","coGstin","coState","coPhone","coEmail","ptName","ptAddr","ptGstin","ptState","notes","bkBank","bkAcc","bkIfsc","bkUpi","chFreight","chOther","chAdvance"].forEach(function(id){var e=$(id);if(e){e.addEventListener("input",render);e.addEventListener("change",render);}});
- try{if(new URLSearchParams(location.search).get("mode")==="general"){mode="general";docType=GROUPS["general"][0][1][0];var mm=document.querySelector(".modmark");if(mm)mm.textContent="General (ERP) Procurement";}}catch(e){}
+ try{}catch(e){}
  buildModes();switchDoc();initTheme();
  try{if(lsGet(LSK_PROFILE))loadProfile(true);}catch(e){}
 }
