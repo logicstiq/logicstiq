@@ -322,3 +322,23 @@ function boot(){
   if(document.body && document.body.hasAttribute("data-liq-gate")) gate();
 }
 if(document.readyState!=="loading") boot(); else document.addEventListener("DOMContentLoaded",boot);
+
+/* ── Cookie consent banner (DPDP + GDPR) ─────────────────────────── */
+(function(){
+  try{ if(localStorage.getItem("liq_cookie_ok")) return; }catch(e){ return; }
+  function show(){
+    if(document.getElementById("liqCookie")) return;
+    var b=document.createElement("div"); b.id="liqCookie";
+    b.style.cssText="position:fixed;left:12px;right:12px;bottom:12px;z-index:99997;max-width:660px;margin:0 auto;"+
+      "background:var(--card,#fff);color:var(--text,#0F1729);border:1px solid var(--border,#E6EAF2);border-radius:14px;"+
+      "box-shadow:0 10px 34px rgba(15,23,41,.18);padding:14px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;font:500 12.5px/1.5 'Inter',system-ui,sans-serif";
+    b.innerHTML='<span style="flex:1;min-width:220px">🍪 We use cookies for analytics and (in future) ads. Calculators store no personal data; signed-in tools save your work to your private account. See our <a href="/privacy-policy" style="color:#4F6BFF;font-weight:700">Privacy Policy</a>.</span>'+
+      '<button id="liqCookieOk" style="flex:0 0 auto;background:linear-gradient(90deg,#4F6BFF,#9B6BFF);color:#fff;border:0;border-radius:9px;padding:9px 18px;font-weight:800;font-size:12.5px;cursor:pointer">Got it</button>';
+    document.body.appendChild(b);
+    document.getElementById("liqCookieOk").onclick=function(){
+      try{ localStorage.setItem("liq_cookie_ok", new Date().toISOString()); }catch(e){}
+      b.remove();
+    };
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",show); else show();
+})();

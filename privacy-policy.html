@@ -261,13 +261,13 @@ window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList
 <!-- ===== end unified navigation ===== -->
 <div class="hero">
   <h1>Privacy Policy</h1>
-  <p class="hero-sub">LogicstIQ.com · Effective Date: 1 July 2025 · Last Updated: 1 July 2025</p>
+  <p class="hero-sub">LogicstIQ.com · Effective Date: 1 July 2025 · Last Updated: 20 July 2026</p>
 </div>
 <div class="wrap">
   <p class="updated">This Privacy Policy applies to all users of LogicstIQ.com, including users in India (DPDP Act 2023), the European Union (GDPR), and globally. Please read it carefully.</p>
 
   <div class="highlight">
-    <p>🔒 The short version: LogicstIQ does not require login, does not store your inventory data, and does not sell or share your personal data with third parties. Your uploaded files are processed for analysis and immediately discarded.</p>
+    <p>🔒 The short version: The 31 calculators need no login and store nothing. Our other tools (AI Demand Planner, Paperwork Hub, Sourcing &amp; Procurement, FBA Planner, TMS) require a free account; when you use them, we store your uploaded files and forecasts in your private, encrypted account so you can return to them. We never sell your data, and you can delete your account and all its data anytime.</p>
   </div>
 
   <h2>1. Who We Are</h2>
@@ -280,9 +280,9 @@ window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList
   <ul>
     <li>Processed on our secure server (hosted on Vercel) to generate your forecast</li>
     <li>Sent in summarised form to Google Gemini AI to generate written insights</li>
-    <li><strong>Never stored, logged, or retained after your session ends</strong></li>
+    <li><strong>Not retained after your session</strong> — unless you are signed in and choose to save the analysis to your account</li>
     <li>Never shared with any third party for commercial purposes</li>
-    <li>Deleted automatically when you close the browser tab</li>
+    <li>Signed out: discarded when you close the browser tab. Signed in: analyses you save are stored in your private account until you delete them</li>
   </ul>
   <p>The 31 calculators, blog and case studies require <strong>no login</strong> and collect no personal data. Some tools (the AI Demand Planner, Paperwork Hub, Sourcing &amp; Procurement, FBA Planner and TMS) require a free account.</p>
 
@@ -307,6 +307,7 @@ window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList
   <ul>
     <li>To process inventory files and generate demand forecasts and insights</li>
     <li>To improve the performance and accuracy of our tools</li>
+    <li>To create and secure your account, and to save and display your work across devices</li>
     <li>To respond to contact form enquiries</li>
     <li>To display relevant advertisements via Google AdSense (cookies)</li>
     <li>To comply with legal obligations</li>
@@ -322,6 +323,7 @@ window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList
   <h2>6. Third-Party Services</h2>
   <ul>
     <li><strong>Vercel</strong> — hosting and serverless functions</li>
+    <li><strong>Google Firebase</strong> — account authentication and encrypted storage of your saved data (Cloud Firestore, region: asia-south1 — Mumbai, India)</li>
     <li><strong>Google Gemini API</strong> — AI insight generation</li>
     <li><strong>Google AdSense</strong> — advertising</li>
     <li><strong>SheetJS (XLSX)</strong> — client-side Excel file parsing (runs in your browser, no data sent to SheetJS)</li>
@@ -350,6 +352,9 @@ window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList
   <p>All data transmission between your browser and our servers is encrypted using HTTPS/TLS. Our servers (Vercel) implement industry-standard security measures. API keys and credentials are stored as environment variables and are never exposed to end users. We conduct periodic reviews of our security practices.</p>
   <p><strong>Accounts &amp; saved data:</strong> user accounts and any data you save are managed through Google Firebase. Passwords are never seen or stored by us (Firebase Authentication handles them); saved data is <strong>encrypted at rest (AES-256)</strong>, transmitted over HTTPS/TLS, and isolated to your own account by server-enforced security rules so that no other user can read it. We collect only your email for account and lead purposes — nothing more. No security system is perfect, but we minimise the data we hold, encrypt it, and keep it walled off per user.</p>
 
+  <h3>Data retention &amp; deletion</h3>
+  <p>Saved forecasts, documents and account data are retained until <strong>you</strong> delete them or close your account — deletion from your account page permanently removes the underlying database records, not just hides them. Contact form data is deleted after 12 months. Signup lead records (your email and signup date) are retained while your account exists.</p>
+
   <h2>9. Children's Privacy</h2>
   <p>LogicstIQ.com is not directed at children under 18. We do not knowingly collect personal data from minors. If you believe we have inadvertently collected data from a minor, please contact us at privacy@logicstiq.com and we will delete it immediately.</p>
 
@@ -370,7 +375,7 @@ window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList
   </div>
 </div>
 <footer>
-  © 2025 LogicstIQ.com · <a href="/privacy-policy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a> · <a href="/disclaimer.html">Disclaimer</a> · Where Logistics Meets Intelligence
+  © 2026 LogicstIQ.com · <a href="/privacy-policy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a> · <a href="/disclaimer.html">Disclaimer</a> · Where Logistics Meets Intelligence
 <p style="margin-top:10px;font-size:12px;color:#94A3B8;text-align:center">
 Contact: <a href="mailto:contactus@logicstiq.com"
 style="color:#9B6BFF;text-decoration:none;font-weight:600">contactus@logicstiq.com</a>
@@ -392,7 +397,7 @@ if(document.readyState!=='loading')place();else document.addEventListener('DOMCo
 </script>
 
 <script src="/js/liq-logo.js?v=2" defer></script>
-<script type="module" src="/js/liq-auth.js?v=10"></script>
+<script type="module" src="/js/liq-auth.js?v=14"></script>
 <script src="/js/liq-icons.js?v=4" defer></script>
 </body>
 </html>
