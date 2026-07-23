@@ -11,6 +11,9 @@
     },
     "api/connect/amazon.mjs": {
       "maxDuration": 60
+    },
+    "api/ai.mjs": {
+      "maxDuration": 30
     }
   },
   "rewrites": [
