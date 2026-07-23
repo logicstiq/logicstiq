@@ -77,6 +77,9 @@ export function computeUnitEconomics(sku = {}, opts = {}) {
   if (price <= 0) {
     return { ok: false, reason: 'no-price', channel, netRealization: null, contributionPerUnit: null, trueContribution: null };
   }
+  // The engine falls back to unitCost = price when no cost column exists. Detect that so we don't
+  // cry "profit drain" on SKUs whose COGS is simply unknown (e.g. Shopify orders carry no cost).
+  const costKnown = cost > 0 && cost < price * 0.999;
 
   // ── Fees ──────────────────────────────────────────────────────────────────
   const commissionPct = opts.commissionPct != null ? opts.commissionPct
@@ -116,8 +119,8 @@ export function computeUnitEconomics(sku = {}, opts = {}) {
 
   const marginPct = price > 0 ? contributionPerUnit / price : 0;
   const trueMarginPct = price > 0 ? trueContribution / price : 0;
-  const isProfitDrain = trueContribution <= 0 && num(sku.grossUnits) > 0;
-  const rtoIsDecisive = contributionPerUnit > 0 && trueContribution <= 0;   // profitable until RTO flips it
+  const isProfitDrain = costKnown && trueContribution <= 0 && num(sku.grossUnits) > 0;   // only when COGS is known
+  const rtoIsDecisive = costKnown && contributionPerUnit > 0 && trueContribution <= 0;   // profitable until RTO flips it
 
   // Contribution at risk = engine's revenue-at-risk re-expressed in TRUE contribution terms.
   const contributionAtRisk = num(sku.revenueAtRisk) > 0 ? Math.round(num(sku.revenueAtRisk) * clamp(trueMarginPct, 0, 1)) : 0;
@@ -131,7 +134,7 @@ export function computeUnitEconomics(sku = {}, opts = {}) {
     contributionPerUnit: r2(contributionPerUnit), marginPct: Math.round(marginPct * 100),
     reverseProb: Math.round(reverseProb * 100), rtoCostPerOrder: r2(rtoCostPerOrder), expectedRtoLoss: r2(expectedRtoLoss),
     trueContribution: r2(trueContribution), trueMarginPct: Math.round(trueMarginPct * 100),
-    isProfitDrain, rtoIsDecisive, contributionAtRisk,
+    costKnown, isProfitDrain, rtoIsDecisive, contributionAtRisk,
     codShare: Math.round(codShare * 100),
   };
 }

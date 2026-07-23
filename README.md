@@ -16,6 +16,10 @@ This README documents the **God-mode engine upgrades** (v11) layered on top of t
 | `api/fba-forecast.mjs` | **FBA Planner (transformed)** | Full FBA demand-planning engine: auto model + probabilistic band, **restock-limit-capped send plan**, FBA fee economics, **LTSF/aged-inventory risk + removal**, stranded detection, Q4 storage forecast, Gemini insights. |
 | `api/sourcing.mjs` | Sourcing & Procurement | Supplier scorecard (OTIF/lead-time/price/quality/fill), landed-cost comparison, reorder → PO (feeds inbound back to the planner). |
 | `api/tms-rateshop.mjs` | TMS | **RTO-aware carrier rate-shop** (weight-slab + zone + COD), cost-per-delivered-order feeding unit economics. |
+| `api/connectors/normalize.mjs` | Connectors | Canonical normalizer: Shopify + Amazon SP-API payloads → engine CSV. Add a marketplace = one normalizer. |
+| `api/connect/shopify.mjs` | Connectors | **Shopify** OAuth install/callback + HMAC verify + Admin-API pull → normalize (secrets from env). |
+| `api/connect/amazon.mjs` | Connectors | **Amazon SP-API** LWA token → Orders + FBA Inventory pull → normalize (official API, no scraping). |
+| `api/history.mjs` + `js/liq-history.js` | Saved history | Merge to lengthen the series + **forecast-vs-actual** accuracy badge, persisted in the seller's existing Firestore (no new secrets). |
 
 The AI Demand Planner engine (`api/forecast.js`) now returns, additively: per-SKU `econ` + `forecastQuantiles`, and top-level `buyPlan`, `purchaseOrders`, and `profitLeaks`.
 
@@ -34,10 +38,20 @@ See `LogistiQ-AI-Demand-Planner-God-Mode-Blueprint.md` for the full strategy and
 Set in Vercel Project Settings → Environment Variables (never commit secrets):
 
 ```
-GEMINI_API_KEY=<your key>     # used by /api/forecast and /api/fba-forecast for narrative insights only
+GEMINI_API_KEY=<your key>        # /api/forecast + /api/fba-forecast narrative insights only
+
+# Connectors (optional — only if you enable Shopify / Amazon sync). See CONNECTORS.md.
+SHOPIFY_API_KEY=...
+SHOPIFY_API_SECRET=...           # never commit
+SHOPIFY_SCOPES=read_orders,read_products,read_inventory
+APP_URL=https://YOUR_DOMAIN
+LWA_CLIENT_ID=...
+LWA_CLIENT_SECRET=...            # never commit
+SPAPI_REFRESH_TOKEN=...          # never commit
+SPAPI_HOST=sellingpartnerapi-eu.amazon.com
 ```
 
-Both engines fall back to deterministic insights when the key is absent, so they work without it.
+Both planners fall back to deterministic insights when `GEMINI_API_KEY` is absent, so they work without it. Connectors are optional; the planners work upload-only until you configure them. **Saved history/accuracy needs no secrets** — it reuses the seller's existing Firestore account.
 
 ## Fee / economics assumptions
 
@@ -50,12 +64,13 @@ All commission, fee, storage, RTO and carrier figures in `econ.mjs`, `fba-foreca
 Plain Node ≥ 18, no dependencies, no build step:
 
 ```bash
-node test/engine.test.mjs    # econ + probabilistic + buyplan  (49 assertions)
-node test/fba.test.mjs       # FBA forecasting engine          (20 assertions)
-node test/tools.test.mjs     # sourcing + TMS engines          (20 assertions)
+node test/engine.test.mjs      # econ + probabilistic + buyplan   (49 assertions)
+node test/fba.test.mjs         # FBA forecasting engine           (20 assertions)
+node test/tools.test.mjs       # sourcing + TMS engines           (20 assertions)
+node test/connectors.test.mjs  # normalizers + HMAC + history     (24 assertions)
 ```
 
-All three should print `passed, 0 failed`.
+All four should print `passed, 0 failed` (113 assertions total).
 
 ## Deploy
 
@@ -74,8 +89,16 @@ api/
   fba-forecast.mjs    FBA demand-planning engine (+ Gemini insights)
   sourcing.mjs        supplier scorecard + landed cost + PO
   tms-rateshop.mjs    RTO-aware carrier rate-shop
+  history.mjs         merge history + forecast-vs-actual (pure)
+  connectors/normalize.mjs   Shopify/Amazon payload → engine CSV
+  connect/shopify.mjs        Shopify OAuth + pull
+  connect/amazon.mjs         Amazon SP-API pull
   copilot.mjs, distance.js, sr-*.js, tms-ai.js   (existing)
+js/
+  liq-history.js      saved history + accuracy badge (reuses Firestore)
+  liq-auth.js, liq-cloud.js, liq-icons.js, liq-logo.js   (existing)
 test/
-  engine.test.mjs, fba.test.mjs, tools.test.mjs
+  engine.test.mjs, fba.test.mjs, tools.test.mjs, connectors.test.mjs
+CONNECTORS.md         connector setup guide (Shopify + SP-API + env vars)
 demand-planner.html, fba-planner/, sourcing-procurement.html, tms.html, *-calculator.html, ...
 ```
