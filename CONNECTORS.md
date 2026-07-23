@@ -5,7 +5,7 @@ Turn the planner from "upload a CSV" into "connect once, sync forever." Official
 ## How it flows
 
 ```
-Marketplace API  →  api/connectors/normalize.mjs  →  engine CSV  →  /api/forecast  →  plan
+Marketplace API  →  lib/normalize.mjs  →  engine CSV  →  /api/forecast  →  plan
    (Shopify / Amazon)      (canonical rows)                         (unchanged engine)
 ```
 
@@ -53,7 +53,7 @@ Already wired into the Demand Planner (one `<script>` tag) and **needs no new se
 
 - After each forecast run it saves that run's per-SKU forecast to the user's private account.
 - On a later run, when the newly uploaded/synced actuals cover a month it previously predicted, it scores the old forecast and shows an accuracy badge: *"~92% accurate (WMAPE 8%) across N SKU-months — e.g. KURTA-M: predicted 214, sold 227."*
-- The pure math (`api/history.mjs`: `mergeHistory`, `reconcileForecastVsActual`) is unit-tested.
+- The pure math (`lib/history.mjs`: `mergeHistory`, `reconcileForecastVsActual`) is unit-tested.
 
 **Next step (optional):** feed merged history back into the upload so each run forecasts on a longer series — `mergeHistory()` is ready; wiring it into the request body is the remaining hook.
 

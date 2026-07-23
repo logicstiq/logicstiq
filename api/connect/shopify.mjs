@@ -14,7 +14,7 @@
 // Official Shopify Admin API only — no scraping.
 // ─────────────────────────────────────────────────────────────────────────────
 import crypto from 'node:crypto';
-import { canonicalFromShopify, toForecastCsv } from '../connectors/normalize.mjs';
+import { canonicalFromShopify, toForecastCsv } from '../../lib/normalize.mjs';
 
 const API_VERSION = '2024-10';
 const DEFAULT_SCOPES = 'read_orders,read_products,read_inventory';

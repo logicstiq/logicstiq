@@ -4,9 +4,9 @@
 // Covers: econ.mjs (India unit economics), probabilistic.mjs (quantiles/newsvendor),
 //         buyplan.mjs (budget knapsack + PO/replenishment grouping), incl. a QUICK-COMMERCE scenario.
 // ═══════════════════════════════════════════════════════════════════════════════════════════
-import { computeUnitEconomics, enrichWithEconomics, profitLeaks } from '../api/econ.mjs';
-import { quantileForecast, coverage, newsvendorReorderPoint, probit } from '../api/probabilistic.mjs';
-import { budgetConstrainedPlan, groupPurchaseOrders } from '../api/buyplan.mjs';
+import { computeUnitEconomics, enrichWithEconomics, profitLeaks } from '../lib/econ.mjs';
+import { quantileForecast, coverage, newsvendorReorderPoint, probit } from '../lib/probabilistic.mjs';
+import { budgetConstrainedPlan, groupPurchaseOrders } from '../lib/buyplan.mjs';
 
 let pass = 0, fail = 0;
 const ok = (cond, msg) => { if (cond) { pass++; } else { fail++; console.log('  ✗ FAIL:', msg); } };

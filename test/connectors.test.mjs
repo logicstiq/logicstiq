@@ -3,9 +3,9 @@
 // Run:  node test/connectors.test.mjs        (plain Node ≥18, no deps)
 // ═══════════════════════════════════════════════════════════════════════════════════════════
 import crypto from 'node:crypto';
-import { canonicalFromShopify, canonicalFromAmazon, toForecastCsv } from '../api/connectors/normalize.mjs';
+import { canonicalFromShopify, canonicalFromAmazon, toForecastCsv } from '../lib/normalize.mjs';
 import { buildInstallUrl, verifyOauthHmac } from '../api/connect/shopify.mjs';
-import { mergeHistory, reconcileForecastVsActual, factsToMonthly } from '../api/history.mjs';
+import { mergeHistory, reconcileForecastVsActual, factsToMonthly } from '../lib/history.mjs';
 
 let pass = 0, fail = 0;
 const ok = (c, m) => { if (c) pass++; else { fail++; console.log('  ✗ FAIL:', m); } };

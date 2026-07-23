@@ -13,7 +13,7 @@
 // app + seller authorization; live calls must be tested against a real seller account.
 // The normalizer is fully unit-tested; the pull functions follow the documented endpoints.
 // ─────────────────────────────────────────────────────────────────────────────
-import { canonicalFromAmazon, toForecastCsv } from '../connectors/normalize.mjs';
+import { canonicalFromAmazon, toForecastCsv } from '../../lib/normalize.mjs';
 
 const IN_MARKETPLACE = 'A21TJRUUN4KGV';   // Amazon.in
 function env(k, d) { return (typeof process !== 'undefined' && process.env && process.env[k]) || d; }

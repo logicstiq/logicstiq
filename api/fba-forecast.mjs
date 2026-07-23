@@ -16,7 +16,7 @@
 // SELF-CONTAINED: imports only probabilistic.mjs (a clean .mjs). Runs in plain Node with no config.
 // All fee figures are INDICATIVE India FBA defaults, seller-overridable, and superseded by report values.
 // ─────────────────────────────────────────────────────────────────────────────
-import { quantileForecast, newsvendorReorderPoint } from './probabilistic.mjs';
+import { quantileForecast, newsvendorReorderPoint } from '../lib/probabilistic.mjs';
 
 // ═══ CONFIG — India FBA fee defaults (directional; report values win when present) ═══════════
 export const FBA_DEFAULTS = {

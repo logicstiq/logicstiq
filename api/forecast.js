@@ -45,9 +45,9 @@
 //   • buyplan.mjs      — budget-constrained buy plan + supplier/dark-store purchase orders
 // These only ADD fields to the JSON the engine returns; the existing UI ignores them until wired.
 // ─────────────────────────────────────────────────────────────────────────────
-import { enrichWithEconomics, profitLeaks } from './econ.mjs';
-import { quantileForecast } from './probabilistic.mjs';
-import { budgetConstrainedPlan, groupPurchaseOrders } from './buyplan.mjs';
+import { enrichWithEconomics, profitLeaks } from '../lib/econ.mjs';
+import { quantileForecast } from '../lib/probabilistic.mjs';
+import { budgetConstrainedPlan, groupPurchaseOrders } from '../lib/buyplan.mjs';
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
