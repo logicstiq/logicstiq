@@ -39,6 +39,15 @@
 // Gemini 2.5 Flash is used ONLY to write the narrative insights from computed
 // numbers — it never produces a forecast figure.
 // ─────────────────────────────────────────────────────────────────────────────
+// GOD-MODE ADD-ONS (v11, additive — no change to existing behaviour, visuals or copy):
+//   • econ.mjs         — India unit economics (fees, GST, RTO) → true contribution per SKU
+//   • probabilistic.mjs — P50/P90/P95 quantile band around each horizon forecast
+//   • buyplan.mjs      — budget-constrained buy plan + supplier/dark-store purchase orders
+// These only ADD fields to the JSON the engine returns; the existing UI ignores them until wired.
+// ─────────────────────────────────────────────────────────────────────────────
+import { enrichWithEconomics, profitLeaks } from './econ.mjs';
+import { quantileForecast } from './probabilistic.mjs';
+import { budgetConstrainedPlan, groupPurchaseOrders } from './buyplan.mjs';
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -49,7 +58,7 @@ export default async function handler(req, res) {
 
   const apiKey = process.env.GEMINI_API_KEY;
 
-  let { csvText, csvGz, horizon, currency, region, channels, planLevel, erpSource, method, salesWindowDays, festivalMode, commerceType, serviceLevel } = req.body || {};
+  let { csvText, csvGz, horizon, currency, region, channels, planLevel, erpSource, method, salesWindowDays, festivalMode, commerceType, serviceLevel, codShare, poBudget, econOverrides } = req.body || {};
   if (!csvText && csvGz) {
     try { const zlib = await import('node:zlib'); csvText = zlib.gunzipSync(Buffer.from(csvGz, 'base64')).toString('utf8'); }
     catch (e) { return res.status(400).json({ error: 'Could not read the compressed file.' }); }
@@ -66,6 +75,9 @@ export default async function handler(req, res) {
     channels: Array.isArray(channels) ? channels : [],
     erpSource: erpSource || 'auto',
     serviceLevel: serviceLevel != null ? parseFloat(serviceLevel) : null,
+    codShare: codShare != null ? parseFloat(codShare) : null,       // God-mode: COD share for RTO economics
+    poBudget: poBudget != null ? parseFloat(poBudget) : 0,          // God-mode: cash budget for this PO cycle
+    econOverrides: (econOverrides && typeof econOverrides === 'object') ? econOverrides : {},
   };
   cfg.isIndia = (region == null) || /india/i.test(cfg.region.toString());
   cfg.qcom = /quick|q-?com/i.test((commerceType || '').toString()) ||
@@ -102,21 +114,28 @@ export function runForecast(csvText, cfg) {
   if (!skuList.length) return { error: 'No valid SKUs found after cleaning the file.' };
 
   const today = new Date();
-  const results = skuList.map(s => computeSKU(s, isTS, today, cfg, map, catStats));
+  let results = skuList.map(s => computeSKU(s, isTS, today, cfg, map, catStats));
+  // GOD-MODE: enrich every SKU with India unit economics (additive — original fields untouched).
+  results = enrichWithEconomics(results, { codShare: cfg.codShare, overrides: cfg.econOverrides || {} });
 
   const summary = buildSummary(results, isTS, cfg, map);
   const active = results.filter(s => s.isActive);
   const pOrd = { URGENT: 0, HIGH: 1, MEDIUM: 2, LOW: 3 };
+  const reorderPlanArr = results.filter(s => s.needsReorder).sort((a, b) => (pOrd[a.priority] || 3) - (pOrd[b.priority] || 3)).slice(0, 60);
 
   return {
     summary,
     demandForecast: active.slice().sort((a, b) => b.avgMonthlyDemand - a.avgMonthlyDemand).slice(0, 100),
-    reorderPlan: results.filter(s => s.needsReorder).sort((a, b) => (pOrd[a.priority] || 3) - (pOrd[b.priority] || 3)).slice(0, 60),
+    reorderPlan: reorderPlanArr,
     slowMoversAll: results.filter(s => s.isSlowMover || s.isDead).sort((a, b) => b.invValue - a.invValue).slice(0, 50),
     stockoutRisk: results.filter(s => s.stockoutProb > 30).sort((a, b) => b.stockoutProb - a.stockoutProb).slice(0, 30),
     allSKUs: results,
     groupedForecast: buildGroups(results, cfg.level),
     upcomingEvents: cfg.applyFestival ? upcomingIndiaEvents(today) : [],
+    // GOD-MODE additive outputs (existing UI ignores these until wired):
+    buyPlan: budgetConstrainedPlan(reorderPlanArr, cfg.poBudget || 0),
+    purchaseOrders: groupPurchaseOrders(reorderPlanArr, { groupBy: cfg.qcom ? 'warehouse' : 'brand' }),
+    profitLeaks: profitLeaks(results).slice(0, 50),
     insights: [],
   };
 }
@@ -498,7 +517,7 @@ export function computeSKU(s, isTS, today, cfg, map, catStats) {
   let dailyVel = 0, avgMonthly = 0, trend = 'flat', trendPct = 'n/a', conf = 'Low';
   let mape = null, wmape = null, bias = null, mase = null, sigmaDaily = 0;
   let periodGranularity = isTS ? 'unknown' : 'snapshot';
-  let pattern = 'n/a', fc = null, gap = 30, censored = false;
+  let pattern = 'n/a', fc = null, gap = 30, censored = false, tsDemands = null;
 
   const censorShare = s.totalObs > 0 ? s.censoredObs / s.totalObs : 0;
 
@@ -506,6 +525,7 @@ export function computeSKU(s, isTS, today, cfg, map, catStats) {
     const usable = s.periods.filter(p => !p.stockout);            // stockout days excluded so they don't deflate demand
     const demands = (usable.length >= 2 ? usable : s.periods).map(p => p.units).filter(d => d >= 0);
     if (s.periods.some(p => p.stockout)) censored = true;
+    tsDemands = demands;   // GOD-MODE: retained for probabilistic quantile band
     const n = demands.length; gap = detectGapDays(usable.length >= 2 ? usable : s.periods); periodGranularity = gapLabel(gap);
     const pm = mean(demands);
     avgMonthly = Math.round(pm * (30 / gap) * 10) / 10;
@@ -543,6 +563,12 @@ export function computeSKU(s, isTS, today, cfg, map, catStats) {
   const next30 = demandOverDays(fc, 30, gap, dayMult);
   const next60 = demandOverDays(fc, 60, gap, dayMult);
   const next90 = demandOverDays(fc, 90, gap, dayMult);
+  // GOD-MODE: probabilistic band (P50/P90/P95) around the horizon point forecast, centred on nextH.
+  let forecastQuantiles = null;
+  if (tsDemands && tsDemands.length >= 3) {
+    const _qf = quantileForecast(tsDemands, { gap, horizonDays: cfg.horizDays, centre: nextH, pattern });
+    forecastQuantiles = { p50: _qf.p50, p90: _qf.p90, p95: _qf.p95, dist: _qf.dist };
+  }
 
   let seasonalUplift = 1, nearMult = 1, peakEvent = null;
   if (applyFestival) {
@@ -598,7 +624,7 @@ export function computeSKU(s, isTS, today, cfg, map, catStats) {
     grossUnits: Math.round(s.grossUnits), returnUnits: Math.round(s.returnUnits), returnRate: Math.round(s.returnRate * 100),
     avgMonthlyDemand: Math.round(avgMonthly), dailyVelocity: Math.round(dailyVel * 100) / 100,
     festiveDailyVelocity: Math.round(effVel * 100) / 100, seasonalUplift, nearTermUplift: nearMult, peakEvent, categoryBucket: catBucket,
-    nextH, next30, next60, next90, trend, trendPct, confidence: conf,
+    nextH, next30, next60, next90, forecastQuantiles, trend, trendPct, confidence: conf,
     demandPattern: pattern, censored, mape, wmape, bias, mase,
     periodGranularity, forecastMethod: cfg.method,
     daysOfCover, weeksOfSupply: Math.round(daysOfCover / 7 * 10) / 10, safetyStock, reorderPoint,

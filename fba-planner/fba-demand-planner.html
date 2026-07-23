@@ -871,13 +871,13 @@ function wireDrop(dropId,inputId,nameId,kind){
           var trows = isExcel ? excelTrendRows(e.target.result) : parseCSV(e.target.result);
           var mkt=E.buildMarketFactors(trows);
           if(!mkt){ showErr('"'+file.name+'" doesn\'t look like a sales-trend export (need Marketplace + Units + monthly rows).'); return; }
-          ST.market=mkt; populateMarketSelect(mkt);
+          ST.market=mkt; ST.trendRows=trows; populateMarketSelect(mkt);
           nm.textContent="✓ "+file.name+" — "+mkt.meta.marketplaces+" Amazon marketplaces, "+mkt.meta.monthsBlended+" months";
         } else if(kind==="asp"){
           var arows = isExcel ? excelTrendRows(e.target.result) : parseCSV(e.target.result);
           var amap=E.buildAspMap(arows);
           if(!amap){ showErr('"'+file.name+'" doesn\'t look like a Revenue & Units export (need ASIN + Units + Revenue).'); return; }
-          ST.aspMap=amap;
+          ST.aspMap=amap; ST.aspRows=arows;
           nm.textContent="✓ "+file.name+" — "+amap.count.toLocaleString()+" ASINs priced";
         }
         showErr(""); drop.classList.add("loaded"); refreshRunState();
@@ -1107,11 +1107,94 @@ function toCSV(rows){
 function download(name,csv){ var blob=new Blob([csv],{type:"text/csv;charset=utf-8;"}); var a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); a.remove(); }
 function stamp(){ return new Date().toISOString().slice(0,10); }
 
+/* ---------- God-mode: server FBA engine (additive; reuses existing styles, no change to the view above) ---------- */
+function rowsToCsv(rows){
+  if(!rows||!rows.length) return "";
+  var heads=Object.keys(rows[0]);
+  function esc(v){ v=(v==null?"":String(v)); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; }
+  return heads.join(",")+"\n"+rows.map(function(r){return heads.map(function(h){return esc(r[h]);}).join(",");}).join("\n");
+}
+function fbaAiContainer(){
+  var host=document.getElementById("results");
+  var el=document.getElementById("fbaAi");
+  if(!el){ el=document.createElement("div"); el.id="fbaAi"; el.style.marginTop="26px"; host.appendChild(el); }
+  return el;
+}
+async function runFbaAi(){
+  if(!ST.restock){ return; }
+  var el=fbaAiContainer();
+  el.innerHTML='<h2>AI demand plan <span class="note" style="font-weight:400">— server engine</span></h2><p class="note">Crunching your reports…</p>';
+  var body={
+    restockCsv: rowsToCsv(ST.restock),
+    inventoryCsv: ST.inventory?rowsToCsv(ST.inventory):"",
+    trendCsv: ST.trendRows?rowsToCsv(ST.trendRows):"",
+    aspCsv: ST.aspRows?rowsToCsv(ST.aspRows):"",
+    serviceLevel: Math.min(99.9,Math.max(50,num(document.getElementById("pService").value)||95))/100,
+    targetDaysOfSupply: Math.max(1,num(document.getElementById("pTarget").value)),
+    leadTime: num(document.getElementById("pLead").value)||undefined,
+    currency: CUR
+  };
+  try{
+    var res=await fetch("/api/fba-forecast",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+    var data=await res.json();
+    if(data.error){ el.innerHTML='<h2>AI demand plan</h2><p class="note">'+data.error+'</p>'; return; }
+    renderFbaAi(el,data);
+  }catch(e){ el.innerHTML='<h2>AI demand plan</h2><p class="note">Server engine unavailable ('+(e&&e.message||e)+'). The forecast above still applies.</p>'; }
+}
+function renderFbaAi(el,d){
+  function escH(v){ return String(v==null?"":v).replace(/[<&]/g,function(c){return c==="<"?"&lt;":"&amp;";}); }
+  var s=d.summary||{};
+  var ins=(d.insights||[]).map(function(i){return '<div class="kv2"><span>'+(i.icon||'•')+' '+escH(i.text)+'</span></div>';}).join("");
+  var kpis=[
+    ["",(s.skus||0).toLocaleString(),"ASINs analysed"],
+    ["warn",(s.reorderNow||0)+" / "+(s.sendSoon||0),"Reorder now / soon"],
+    ["good",(s.unitsToSend||0).toLocaleString(),"Units to send"+(d.sendPlan&&d.sendPlan.capped?" (capped)":"")],
+    ["alert",(s.stranded||0).toLocaleString(),"Stranded (unsellable)"],
+    ["",(s.agedRisk||0).toLocaleString(),"Aged / LTSF risk"],
+    ["alert",(s.profitDrainSKUs||0).toLocaleString(),"Loss-making after fees"]
+  ];
+  var cards=kpis.map(function(c){return '<div class="card '+c[0]+'"><div class="v">'+c[1]+'</div><div class="k">'+c[2]+'</div></div>';}).join("");
+  // Inventory status — fulfillable vs unfulfillable
+  var ful=s.fulfillableUnits||0, unf=s.unfulfillableUnits||0, tot=ful+unf||1;
+  var statusBox='<div class="box" style="margin-top:14px"><h4>Inventory status — fulfillable vs unfulfillable</h4>'+
+    '<div style="display:flex;height:18px;border-radius:6px;overflow:hidden;margin:6px 0 8px">'+
+    '<span style="width:'+(ful/tot*100)+'%;background:#059669" title="Fulfillable"></span>'+
+    '<span style="width:'+(unf/tot*100)+'%;background:#DC2626" title="Unfulfillable"></span></div>'+
+    '<div class="kv2"><span>🟢 Fulfillable</span><b>'+ful.toLocaleString()+' ('+Math.round(ful/tot*100)+'%)</b></div>'+
+    '<div class="kv2"><span>🔴 Unfulfillable (unsellable)</span><b>'+unf.toLocaleString()+'</b></div>'+
+    '<div class="kv2"><span>Reserved</span><b>'+(s.reservedUnits||0).toLocaleString()+'</b></div>'+
+    '<div class="kv2"><span>Inbound</span><b>'+(s.inboundUnits||0).toLocaleString()+'</b></div>'+
+    '<div class="kv2"><span>Stranded ASINs (0 sellable, has unsellable)</span><b>'+(s.stranded||0).toLocaleString()+'</b></div></div>';
+  function tbl(title,heads,rows){ if(!rows.length) return "";
+    return '<div class="box" style="margin-top:14px"><h4>'+title+'</h4><div style="overflow:auto"><table style="width:100%;border-collapse:collapse;font-size:12px">'+
+      '<thead><tr>'+heads.map(function(h,i){return '<th style="text-align:'+(i===0?'left':'right')+';padding:6px 8px;border-bottom:1px solid rgba(120,120,120,.25);color:#64748B;white-space:nowrap">'+h+'</th>';}).join("")+'</tr></thead>'+
+      '<tbody>'+rows+'</tbody></table></div></div>';
+  }
+  function cell(v,align){ return '<td style="padding:6px 8px;text-align:'+(align||'left')+'">'+v+'</td>'; }
+  var sp=((d.sendPlan&&d.sendPlan.lines)||[]).slice(0,60).map(function(l){
+    return '<tr>'+cell(escH(l.name||l.sku))+cell('<span class="pill '+pillClass(l.priority==="URGENT"?"Reorder now":"Low stock")+'">'+l.priority+'</span>')+cell((l.send||0).toLocaleString()+(l.capped?' ⚠':''),'right')+cell((l.daysOfSupply>=999?'∞':l.daysOfSupply)+'d','right')+'</tr>';
+  }).join("");
+  var rem=(d.removalRecommendations||[]).slice(0,60).map(function(r){
+    return '<tr>'+cell(escH(r.name||r.sku))+cell((r.units||0).toLocaleString(),'right')+cell(escH(r.reason||""))+'</tr>';
+  }).join("");
+  var lk=(d.profitLeaks||[]).slice(0,60).map(function(r){
+    return '<tr>'+cell(escH(r.name||r.sku))+cell('<b style="color:#DC2626">'+money(r.trueContribution)+'</b>','right')+cell(escH(r.why||""))+'</tr>';
+  }).join("");
+  el.innerHTML='<h2>AI demand plan <span class="note" style="font-weight:400">— server engine: probabilistic forecast, FBA economics, restock-limit send plan</span></h2>'+
+    (ins?'<div class="box"><h4>Insights</h4>'+ins+'</div>':'')+
+    '<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">'+cards+'</div>'+
+    statusBox+
+    tbl("Send plan (restock-limit aware)",["Product / SKU","Priority","Send qty","Cover"],sp)+
+    tbl("Long-term-storage risk — remove / liquidate",["Product / SKU","Units","Why"],rem)+
+    tbl("Profit leaks (loss-making after FBA fees)",["Product / SKU","True /unit","Why"],lk)+
+    (d.storageForecast?'<p class="note" style="margin-top:10px">Est. monthly storage ~'+money(d.storageForecast.monthlyStorageFee)+' · LTSF exposure ~'+money(d.storageForecast.ltsfExposure)+'. '+escH(d.storageForecast.peakNote)+'</p>':'');
+}
 document.getElementById("runBtn").onclick=function(){
   ST.result=buildForecast();
   document.getElementById("results").classList.remove("hidden");
   render();
   document.getElementById("results").scrollIntoView({behavior:"smooth"});
+  try{ runFbaAi(); }catch(e){}   /* God-mode: server engine (additive) */
 };
 document.getElementById("search").oninput=applyFilter;
 document.getElementById("statusFilter").onchange=applyFilter;
