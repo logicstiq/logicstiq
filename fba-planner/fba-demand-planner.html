@@ -1114,6 +1114,15 @@ function rowsToCsv(rows){
   function esc(v){ v=(v==null?"":String(v)); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; }
   return heads.join(",")+"\n"+rows.map(function(r){return heads.map(function(h){return esc(r[h]);}).join(",");}).join("\n");
 }
+// Keep only columns the FBA engine actually reads — drops the dozens of unused Amazon-report
+// columns so the payload stays under the serverless size limit. Falls back to all columns if none match.
+var FBA_KEEP=/sku|asin|fnsku|merchant|seller|product|name|category|unit|sold|sales|qty|quantity|available|fulfill|reserved|inbound|unsell|unfulfil|lead|price|cost|age|storage|\bdate\b|month|period|size|stock|order|warehouse/i;
+function rowsToCsvSlim(rows){
+  if(!rows||!rows.length) return "";
+  var all=Object.keys(rows[0]); var heads=all.filter(function(h){return FBA_KEEP.test(h);}); if(!heads.length) heads=all;
+  function esc(v){ v=(v==null?"":String(v)); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; }
+  return heads.join(",")+"\n"+rows.map(function(r){return heads.map(function(h){return esc(r[h]);}).join(",");}).join("\n");
+}
 function fbaAiContainer(){
   var host=document.getElementById("results");
   var el=document.getElementById("fbaAi");
@@ -1125,15 +1134,20 @@ async function runFbaAi(){
   if(!ST.restock){ return; }
   var el=fbaAiContainer();
   el.innerHTML='<h2>AI demand plan <span class="note" style="font-weight:400">— server engine</span></h2><p class="note">Crunching your reports…</p>';
-  var reports={ restock: rowsToCsv(ST.restock), inventory: ST.inventory?rowsToCsv(ST.inventory):"", trend: ST.trendRows?rowsToCsv(ST.trendRows):"", asp: ST.aspRows?rowsToCsv(ST.aspRows):"" };
+  var reports={ restock: rowsToCsvSlim(ST.restock), inventory: ST.inventory?rowsToCsvSlim(ST.inventory):"", trend: ST.trendRows?rowsToCsvSlim(ST.trendRows):"", asp: ST.aspRows?rowsToCsvSlim(ST.aspRows):"" };
   var body={
     serviceLevel: Math.min(99.9,Math.max(50,num(document.getElementById("pService").value)||95))/100,
     targetDaysOfSupply: Math.max(1,num(document.getElementById("pTarget").value)),
     leadTime: num(document.getElementById("pLead").value)||undefined,
     currency: CUR
   };
-  // gzip each report so we stay under the serverless request-size limit (mirrors the Demand Planner)
-  for(var k in reports){ if(!reports[k]) continue; var g=await fbaGz(reports[k]); if(g){ body[k+'Gz']=g; } else { body[k+'Csv']=reports[k]; } }
+  // Slim + gzip each report to stay under the serverless request-size limit (mirrors the Demand Planner).
+  var order=['restock','inventory','trend','asp'];
+  for(var oi=0;oi<order.length;oi++){ var k=order[oi]; if(!reports[k]) continue; var g=await fbaGz(reports[k]); if(g){ body[k+'Gz']=g; } else { body[k+'Csv']=reports[k]; } }
+  // Vercel caps request bodies at 4.5MB. If still too big, shed the optional reports (ASP, then Trend);
+  // Restock + Inventory are essential and always kept (forecast falls back to 30-day velocity without Trend).
+  var shed=['asp','trend'];
+  for(var sh=0; sh<shed.length && JSON.stringify(body).length>4000000; sh++){ delete body[shed[sh]+'Gz']; delete body[shed[sh]+'Csv']; }
   try{
     var res=await fetch("/api/fba-forecast",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
     var txt=await res.text(), data=null;
