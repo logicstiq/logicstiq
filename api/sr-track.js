@@ -6,9 +6,9 @@
 //
 // Input  (POST { awb }  or  GET ?awb=...)
 // Output (200 JSON): { source, awb, status, courier, origin, destination, etd, scans:[{date,activity,location}] }
-const { srGet, isConfigured } = require("./_sr");
+import { srGet, isConfigured } from "./_sr.js";
 
-module.exports = async (req, res) => {
+export default async (req, res) => {
   const awb = String(
     (req.method === "POST" ? (req.body || {}).awb : (req.query || {}).awb) || ""
   ).trim();

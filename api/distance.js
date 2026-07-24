@@ -7,7 +7,7 @@
 // Output: { matrix: { "Mumbai|Delhi": { km, min }, ... }, source:"ors" }
 //
 // The free matrix handles well over 25 stops; we cap at 25 to stay comfortably in limits.
-module.exports = async (req, res) => {
+export default async (req, res) => {
   if (req.method !== "POST") return res.status(405).json({ error: "POST only" });
   const { points = [] } = req.body || {};
   const token = process.env.ORS_TOKEN;

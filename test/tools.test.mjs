@@ -2,8 +2,8 @@
 // tools.test.mjs — LogistiQ Sourcing + TMS engines — tests
 // Run:  node test/tools.test.mjs        (plain Node ≥18, no deps)
 // ═══════════════════════════════════════════════════════════════════════════════════════════
-import { scoreSupplier, rankSuppliers, compareLandedCost, reorderToPurchaseOrders } from '../api/sourcing.mjs';
-import { chargeableWeight, rateShop, costPerDeliveredOrder, SAMPLE_CARRIERS } from '../api/tms-rateshop.mjs';
+import { scoreSupplier, rankSuppliers, compareLandedCost, reorderToPurchaseOrders } from '../api/_lib/sourcing.mjs';
+import { chargeableWeight, rateShop, costPerDeliveredOrder, SAMPLE_CARRIERS } from '../api/_lib/tms-rateshop.mjs';
 
 let pass = 0, fail = 0;
 const ok = (c, m) => { if (c) pass++; else { fail++; console.log('  ✗ FAIL:', m); } };

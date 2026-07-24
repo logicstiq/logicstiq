@@ -2,7 +2,7 @@
 // Your Gemini key stays here (server-side), never in the browser.
 // Set GEMINI_API_KEY in Vercel → Project → Settings → Environment Variables.
 // Uses Gemini 2.5 Flash (same model your Demand Planner uses).
-module.exports = async (req, res) => {
+export default async (req, res) => {
   if (req.method !== "POST") return res.status(405).json({ text: "POST only" });
   const { system = "", userText = "" } = req.body || {};
   try {

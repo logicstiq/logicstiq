@@ -8,9 +8,9 @@
 //
 // Input  (POST JSON): { pickup, delivery, weightKg, cod }   pincodes are 6-digit
 // Output (200 JSON) : { source, pickup, delivery, weightKg, cod, couriers:[{name,rate,etdDays,rating,cod}] }
-const { srGet, isConfigured } = require("./_sr");
+import { srGet, isConfigured } from "./_sr.js";
 
-module.exports = async (req, res) => {
+export default async (req, res) => {
   if (req.method !== "POST") return res.status(405).json({ error: "POST only" });
   const b = req.body || {};
   const pickup = String(b.pickup || "").trim();

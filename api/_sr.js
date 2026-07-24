@@ -53,4 +53,4 @@ async function srGet(path) {
   return { ok: r.ok, status: r.status, data };
 }
 
-module.exports = { BASE, isConfigured, getToken, srGet };
+export { BASE, isConfigured, getToken, srGet };
