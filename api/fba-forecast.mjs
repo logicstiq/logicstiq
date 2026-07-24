@@ -420,7 +420,16 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Use POST.' });
-  const { restockCsv, inventoryCsv, trendCsv, aspCsv, ...cfg } = req.body || {};
+  let { restockCsv, inventoryCsv, trendCsv, aspCsv, restockGz, inventoryGz, trendGz, aspGz, ...cfg } = req.body || {};
+  // Reports are gzip-compressed client-side to stay under the request-size limit; gunzip here.
+  if (restockGz || inventoryGz || trendGz || aspGz) {
+    try {
+      const zlib = await import('node:zlib');
+      const un = b => b ? zlib.gunzipSync(Buffer.from(b, 'base64')).toString('utf8') : '';
+      restockCsv = restockCsv || un(restockGz); inventoryCsv = inventoryCsv || un(inventoryGz);
+      trendCsv = trendCsv || un(trendGz); aspCsv = aspCsv || un(aspGz);
+    } catch (e) { return res.status(400).json({ error: 'Could not read the compressed reports.' }); }
+  }
   if (!restockCsv && !inventoryCsv) return res.status(400).json({ error: 'Upload at least the Restock or Inventory report.' });
   try {
     const out = runFbaForecast({ restockCsv, inventoryCsv, trendCsv, aspCsv }, cfg);
