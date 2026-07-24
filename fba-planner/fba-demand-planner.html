@@ -1120,23 +1120,24 @@ function fbaAiContainer(){
   if(!el){ el=document.createElement("div"); el.id="fbaAi"; el.style.marginTop="26px"; host.appendChild(el); }
   return el;
 }
+async function fbaGz(t){ try{ if(!('CompressionStream' in window)) return null; var cs=new CompressionStream('gzip'); var st=new Blob([t]).stream().pipeThrough(cs); var ab=await new Response(st).arrayBuffer(); var b=new Uint8Array(ab); var bin=''; var CH=0x8000; for(var i=0;i<b.length;i+=CH){ bin+=String.fromCharCode.apply(null,b.subarray(i,i+CH)); } return btoa(bin); }catch(e){ return null; } }
 async function runFbaAi(){
   if(!ST.restock){ return; }
   var el=fbaAiContainer();
   el.innerHTML='<h2>AI demand plan <span class="note" style="font-weight:400">— server engine</span></h2><p class="note">Crunching your reports…</p>';
+  var reports={ restock: rowsToCsv(ST.restock), inventory: ST.inventory?rowsToCsv(ST.inventory):"", trend: ST.trendRows?rowsToCsv(ST.trendRows):"", asp: ST.aspRows?rowsToCsv(ST.aspRows):"" };
   var body={
-    restockCsv: rowsToCsv(ST.restock),
-    inventoryCsv: ST.inventory?rowsToCsv(ST.inventory):"",
-    trendCsv: ST.trendRows?rowsToCsv(ST.trendRows):"",
-    aspCsv: ST.aspRows?rowsToCsv(ST.aspRows):"",
     serviceLevel: Math.min(99.9,Math.max(50,num(document.getElementById("pService").value)||95))/100,
     targetDaysOfSupply: Math.max(1,num(document.getElementById("pTarget").value)),
     leadTime: num(document.getElementById("pLead").value)||undefined,
     currency: CUR
   };
+  // gzip each report so we stay under the serverless request-size limit (mirrors the Demand Planner)
+  for(var k in reports){ if(!reports[k]) continue; var g=await fbaGz(reports[k]); if(g){ body[k+'Gz']=g; } else { body[k+'Csv']=reports[k]; } }
   try{
     var res=await fetch("/api/fba-forecast",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
-    var data=await res.json();
+    var txt=await res.text(), data=null;
+    try{ data=JSON.parse(txt); }catch(_){ el.innerHTML='<h2>AI demand plan</h2><p class="note">Server engine unavailable ('+(res.status===413?'reports too large — try uploading fewer/smaller files':('HTTP '+res.status))+'). The forecast above still applies.</p>'; return; }
     if(data.error){ el.innerHTML='<h2>AI demand plan</h2><p class="note">'+data.error+'</p>'; return; }
     renderFbaAi(el,data);
   }catch(e){ el.innerHTML='<h2>AI demand plan</h2><p class="note">Server engine unavailable ('+(e&&e.message||e)+'). The forecast above still applies.</p>'; }
