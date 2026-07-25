@@ -1064,6 +1064,8 @@ window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList
   <!-- RESULTS -->
   <div id="liq-results">
     <div class="liq-dash-meta" id="liq-dash-meta"></div>
+    <div id="liq-ai-summary"></div>
+    <div id="liq-action-cards"></div>
     <div class="liq-kpi-grid" id="liq-kpi-grid"></div>
     <div class="liq-health-wrap"><div class="liq-health-title">📊 Inventory Health Breakdown</div><div class="liq-health-bar" id="liq-health-bar"></div><div class="liq-health-legend" id="liq-health-legend"></div></div>
     <div class="liq-tabs" id="liq-tabs"></div>
@@ -1371,23 +1373,36 @@ function renderDashboard(data,sym,horizon,region){
   const s=data.summary;
   const srcName=SOURCES.find(x=>x.id===s.erpSource)?.name||s.erpSource||'Auto';
   document.getElementById('liq-dash-meta').textContent=(s.isTS?'Time-series':'Snapshot')+' · '+horizon+' · '+region+' · '+(s.commerceType||'E-Commerce')+(s.festivalMode?' · 🪔 Festival ON':'')+' · Source: '+srcName+' · '+selectedChannels.length+' channels · '+s.totalSKUs.toLocaleString()+' SKUs';
+  // ── Plain-language AI summary (explain-it-simply line) ──
+  const _ai=document.getElementById('liq-ai-summary');
+  if(_ai) _ai.innerHTML = data.plainSummary ? `<div style="display:flex;gap:10px;background:#EEF2FF;border:1px solid #C7D2FE;border-radius:12px;padding:13px 15px;margin-bottom:16px"><span style="font-size:18px;line-height:1.4;flex:none">✨</span><p style="margin:0;font-size:14px;line-height:1.6;color:#1E293B">${esc(data.plainSummary)}</p></div>` : '';
+  // ── One-glance action cards (click to open the matching tab) ──
+  const _reNow=data.reorderPlan.filter(r=>r.reorderBy==='REORDER NOW'||r.priority==='URGENT').length;
+  const _low=Math.max(0,data.reorderPlan.length-_reNow);
+  const _over=data.slowMoversAll.length;
+  const _leak=(data.profitLeaks||[]).length;
+  const _card=(ic,col,label,count,desc,tab)=>`<div onclick="liqSwitchTab('${tab}')" style="cursor:pointer;background:#fff;border:1px solid #E6EAF2;border-radius:12px;padding:13px 15px" onmouseover="this.style.borderColor='#C7D2FE'" onmouseout="this.style.borderColor='#E6EAF2'"><div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><span style="font-size:17px">${ic}</span><span style="font-size:13px;font-weight:600;color:#0F172A">${label}</span><span style="margin-left:auto;font-size:22px;font-weight:700;color:${col}">${fmtN(count)}</span></div><div style="font-size:12px;color:#64748B;line-height:1.5">${desc}</div></div>`;
+  const _ac=document.getElementById('liq-action-cards');
+  if(_ac) _ac.innerHTML=`<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-bottom:20px">`
+    +_card('🚨','#DC2626','Reorder now',_reNow,'Will run out before new stock arrives — order today.','reorder')
+    +_card('⏳','#D97706','Running low',_low,'Getting thin — plan a purchase order this week.','stockout')
+    +_card('📦','#7C3AED','Overstocked / dead',_over,'Cash sitting idle — pause reorders or clear it.','slowmovers')
+    +_card('💸','#2A40D6','Losing money',_leak,'Sell well but lose money after fees and returns.','dashboard')
+    +`</div>`;
+  const _fc=Math.round((data.allSKUs||[]).reduce((a,r)=>a+(r.nextH||0),0));
+  const _acc=s.forecastAccuracyWmape!=null?Math.max(0,100-s.forecastAccuracyWmape)+'%':'—';
   const kpis=[
-    {l:'Total SKUs',v:s.totalSKUs.toLocaleString(),sub:s.activeSKUs.toLocaleString()+' active',ac:'#3A55FF',ic:'📦'},
-    {l:'Healthy Stock',v:s.healthySKUs.toLocaleString(),sub:Math.round(s.healthySKUs/Math.max(s.totalSKUs,1)*100)+'% of portfolio',ac:'#059669',ic:'✅'},
-    {l:'Urgent Reorders',v:s.urgentSKUs.toLocaleString(),sub:'URGENT + HIGH priority',ac:'#DC2626',ic:'🚨'},
-    {l:'Dead Stock',v:s.deadSKUs.toLocaleString(),sub:'Zero velocity SKUs',ac:'#64748B',ic:'💀'},
-    {l:'Overstock',v:s.overstockSKUs.toLocaleString(),sub:'>180 days of cover',ac:'#7C3AED',ic:'📈'},
-    {l:'Revenue at Risk',v:fmtV(sym,s.totalAtRisk),sub:'next '+horizon,ac:'#DC2626',ic:'⚠️'},
-    {l:'Excess Capital',v:fmtV(sym,s.totalExcess),sub:'tied in overstock',ac:'#D97706',ic:'💸'},
-    {l:'Inventory Value',v:fmtV(sym,s.totalInvValue),sub:'total on-hand',ac:'#770BFF',ic:'🏦'},
-    {l:'Avg Days Cover',v:s.avgDoC+'d',sub:'across active SKUs',ac:'#3A55FF',ic:'📅'},
+    {l:'Products',v:s.totalSKUs.toLocaleString(),sub:s.activeSKUs.toLocaleString()+' active',ac:'#3A55FF',ic:'📦'},
+    {l:'Forecast · next '+horizon,v:fmtN(_fc),sub:'expected units',ac:'#2A40D6',ic:'📈'},
+    {l:'Inventory value',v:fmtV(sym,s.totalInvValue),sub:'on hand now',ac:'#770BFF',ic:'🏦'},
+    {l:'Forecast accuracy',v:_acc,sub:'back-test on your history',ac:'#059669',ic:'🎯'},
   ];
   document.getElementById('liq-kpi-grid').innerHTML=kpis.map(k=>`<div class="liq-kpi"><div class="liq-kpi-accent" style="background:${k.ac}"></div><div class="liq-kpi-icon">${k.ic}</div><div class="liq-kpi-lbl">${k.l}</div><div class="liq-kpi-val" style="color:${k.ac}">${k.v}</div><div class="liq-kpi-sub">${k.sub}</div></div>`).join('');
   const tot=Math.max(s.totalSKUs,1);
   const segs=[{l:'Healthy',n:s.healthySKUs,c:'#059669'},{l:'Overstock',n:s.overstockSKUs,c:'#7C3AED'},{l:'Slow Movers',n:s.slowMoverSKUs,c:'#D97706'},{l:'Dead Stock',n:s.deadSKUs,c:'#94A3B8'},{l:'Urgent',n:s.urgentSKUs,c:'#DC2626'}];
   document.getElementById('liq-health-bar').innerHTML=segs.map(sg=>sg.n>0?`<div class="liq-health-seg" style="flex:${sg.n};background:${sg.c};min-width:8px" title="${sg.l}: ${sg.n}"></div>`:'').join('');
   document.getElementById('liq-health-legend').innerHTML=segs.map(sg=>`<div class="liq-leg-item"><div class="liq-leg-dot" style="background:${sg.c}"></div><strong style="color:#0F172A">${sg.n.toLocaleString()}</strong>&nbsp;${sg.l}&nbsp;<span style="color:#94A3B8">(${Math.round(sg.n/tot*100)}%)</span></div>`).join('');
-  const tabs=[{k:'dashboard',l:'📊 Dashboard'},{k:'forecast',l:'📈 Forecast',n:data.demandForecast.length},{k:'reorder',l:'🔄 Reorder Plan',n:data.reorderPlan.length,red:data.reorderPlan.filter(r=>r.priority==='URGENT').length},{k:'inventory',l:'📦 Inventory IQ',n:data.allSKUs.length},{k:'slowmovers',l:'🐢 Slow Movers',n:data.slowMoversAll.length},{k:'stockout',l:'⚠️ Stockout Risk',n:data.stockoutRisk.length},{k:'events',l:'🗓️ Events'},{k:'qcommerce',l:'⚡ Quick Commerce'}];
+  const tabs=[{k:'dashboard',l:'Overview'},{k:'forecast',l:'Forecast',n:data.demandForecast.length},{k:'reorder',l:'Reorder',n:data.reorderPlan.length,red:data.reorderPlan.filter(r=>r.priority==='URGENT').length},{k:'inventory',l:'All products',n:data.allSKUs.length},{k:'slowmovers',l:'Dead stock',n:data.slowMoversAll.length},{k:'stockout',l:'Stockout risk',n:data.stockoutRisk.length},{k:'events',l:'Calendar'},{k:'qcommerce',l:'Quick commerce'}];
   document.getElementById('liq-tabs').innerHTML=tabs.map(t=>`<button class="liq-tab${t.k===activeTab?' liq-active':''}" onclick="liqSwitchTab('${t.k}')">${t.l}${t.n?`<span class="liq-tab-ct${t.red?' red':''}">${t.n}</span>`:''}</button>`).join('');
   renderPanelDashboard(data,sym,horizon);renderPanelForecast(data,sym,horizon);renderPanelReorder(data,sym);renderPanelInventory(data,sym);renderPanelSlowMovers(data,sym);renderPanelStockout(data,sym,horizon);renderPanelEvents(data);renderPanelQCommerce(data,sym);
   document.getElementById('liq-results').style.display='block';document.getElementById('liq-reset-btn').style.display='';showTab(activeTab);
