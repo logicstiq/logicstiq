@@ -1327,14 +1327,14 @@ function liqShrink(text){try{
   const lines=text.split(/\r?\n/).filter(l=>l.trim()); if(lines.length<2) return {text,trimmed:false};
   const d=(lines[0].split('\t').length>lines[0].split(',').length)?'\t':',';
   const headers=liqParseLine(lines[0],d); const lh=headers.map(h=>(h||'').toLowerCase().trim());
-  const KEEP=['sku','asin','fnsku','product','title','name','description','price','mrp','cost','sold','sales','qty','quantity','units','stock','available','on hand','closing','inbound','transit','reserved','customer order','category','brand','vendor','manufacturer','warehouse','fc','dark store','store','city','date','order','status','return','rto','lead time','alert','recommended','velocity','demand','total units'];
+  const KEEP=['sku','asin','fnsku','product','title','name','description','price','mrp','cost','sold','sales','qty','quantity','units','stock','stock level','available','on hand','on-hand','inventory','soh','opening','closing','balance','inbound','transit','reserved','customer order','category','brand','vendor','manufacturer','warehouse','fc','dark store','store','region','city','date','order','status','return','rto','lead time','alert','recommended','velocity','demand','total units'];
   const keepIdx=[]; lh.forEach((h,i)=>{ if(KEEP.some(k=>h.includes(k))) keepIdx.push(i); });
   if(keepIdx.length<2) return {text,trimmed:false};
   // genuine time-series date column (not "recommended ship date" etc.)
   const isSeriesDate=h=>h==='date'||h==='month'||h==='week'||h==='period'||/(order|sale|sales|txn|transaction|invoice|posting)\s*(date|dt)|sales (month|period)|reporting period/.test(h);
   const snapshot=!lh.some(isSeriesDate);
   const salesI=lh.findIndex(h=>/(units sold|qty sold|quantity sold|sales qty|\bsold\b|\bunits\b|\bqty\b|\bdemand\b|\bsales\b)/.test(h));
-  const stockI=lh.findIndex(h=>/(available|on hand|in stock|current stock|closing|total units|\bstock\b)/.test(h));
+  const stockI=lh.findIndex(h=>/(available|on hand|in stock|current stock|closing|total units|inventory|\bstock\b)/.test(h));
   const num=v=>{const n=parseFloat(String(v||'').replace(/[^\d.\-]/g,''));return isNaN(n)?0:n;};
   const emit=cells=>keepIdx.map(i=>{let v=cells[i]!==undefined?cells[i]:'';if(/[",\n]/.test(v))v='"'+v.replace(/"/g,'""')+'"';return v;}).join(',');
   const out=[emit(headers)];
@@ -1354,8 +1354,18 @@ window.liqRun=async function(){
   const timer=setInterval(()=>{const i=stepStates.indexOf('active');if(i>=0&&i<STEPS.length-1){stepStates[i]='done';stepStates[i+1]='active';renderProgress();}},700);
   try{
     let liqSend=liqTrimCSV(fileText);
-    if(liqSend.length>4000000){const sh=liqShrink(liqSend);if(sh.trimmed&&sh.text.length<liqSend.length){liqSend=sh.text;const hint=document.getElementById('liq-file-hint');if(hint)hint.textContent='📦 Large file optimised for upload — kept '+ (sh.keptRows||0).toLocaleString() +' active SKUs'+(sh.snapshot?' (dropped rows with no sales & no stock)':'')+' and the forecasting columns. Nothing forecastable was lost.';}}
-    const liqGz=await liqGzip(liqSend);
+    // Gzip the FULL file first — CSV compresses ~10x, so even 20-25MB files fit under the serverless
+    // request cap with ALL columns intact. Only shrink (drop unused columns / dead rows) if the
+    // COMPRESSED payload is still too big, then re-gzip. This is what stops the stock column being lost.
+    const GZ_LIMIT=3800000;   // ~3.8MB base64-gzip budget (Vercel body cap ~4.5MB)
+    let liqGz=await liqGzip(liqSend);
+    if(liqGz ? liqGz.length>GZ_LIMIT : liqSend.length>4000000){
+      const sh=liqShrink(liqSend);
+      if(sh.trimmed&&sh.text.length<liqSend.length){
+        liqSend=sh.text; if(liqGz)liqGz=await liqGzip(liqSend);
+        const hint=document.getElementById('liq-file-hint');if(hint)hint.textContent='📦 Very large file optimised for upload — kept '+(sh.keptRows||0).toLocaleString()+' active SKUs'+(sh.snapshot?' (dropped rows with no sales & no stock)':'')+' and the forecasting columns.';
+      }
+    }
     const liqPayload={horizon,currency:sym,region,channels:selectedChannels,planLevel:document.getElementById('liq-planlevel').value,erpSource:selectedSource,method:document.getElementById('liq-method').value,salesWindowDays:parseInt(document.getElementById('liq-saleswindow').value)||30,commerceType:document.getElementById('liq-commercetype').value,festivalMode:document.getElementById('liq-festival').value!=='off'};
     if(liqGz){liqPayload.csvGz=liqGz;}else{liqPayload.csvText=liqSend;}
     const res=await fetch('/api/forecast',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(liqPayload)});
