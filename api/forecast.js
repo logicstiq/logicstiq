@@ -89,7 +89,11 @@ export default async function handler(req, res) {
   catch (e) { return res.status(400).json({ error: 'Could not process your file: ' + e.message }); }
   if (out.error) return res.status(400).json(out);
 
-  out.insights = await generateInsights(out.summary, out.reorderPlan, out.slowMoversAll, cfg, apiKey);
+  const [insights, plainSummary] = await Promise.all([
+    generateInsights(out.summary, out.reorderPlan, out.slowMoversAll, cfg, apiKey),
+    generatePlainSummary(out, cfg, apiKey),
+  ]);
+  out.insights = insights; out.plainSummary = plainSummary;
   return res.status(200).json(out);
 }
 
@@ -190,7 +194,7 @@ const SYN = {
   returns: ['returns', 'return qty', 'returned qty', 'returned units', 'return/rto qty', 'rto qty', 'rto', 'refunded qty', 'refund qty', 'returns qty', 'return units', 'customer returns', 'rto/return', 'returned quantity'],
   status: ['order status', 'status', 'order state', 'fulfilment status', 'fulfillment status', 'shipment status', 'delivery status'],
   velocity: ['daily velocity', 'velocity 7d', 'velocity 30d', 'velocity', 'daily demand', 'avg daily sales', 'daily run rate', 'run rate', 'units per day', 'sales per day', 'average daily demand', 'adu', 'average daily usage', 'daily avg'],
-  available: ['available', 'on hand', 'qty available', 'stock', 'in stock', 'current stock', 'closing stock', 'closing balance', 'closing qty', 'sellable units', 'fulfillable qty', 'warehouse stock', 'physical stock', 'net stock', 'usable stock', 'free stock', 'available quantity', 'godown stock', 'stock in hand', 'quantity on hand', 'quantity available', 'on hand quantity', 'inventory on hand', 'available inventory', 'sellable inventory', 'fulfillable quantity', 'afn sellable quantity', 'inventory quantity', 'qty on hand'],
+  available: ['available', 'on hand', 'on-hand', 'qty available', 'stock', 'in stock', 'current stock', 'closing stock', 'closing balance', 'closing qty', 'sellable units', 'fulfillable qty', 'warehouse stock', 'physical stock', 'net stock', 'usable stock', 'free stock', 'available quantity', 'godown stock', 'stock in hand', 'quantity on hand', 'quantity available', 'on hand quantity', 'inventory on hand', 'available inventory', 'sellable inventory', 'fulfillable quantity', 'afn sellable quantity', 'inventory quantity', 'qty on hand', 'inventory level', 'inventory', 'stock level', 'stock on hand', 'soh', 'opening stock', 'ending inventory', 'closing inventory', 'inventory on-hand', 'balance qty', 'balance quantity'],
   inbound: ['inbound', 'on order', 'in transit', 'po qty', 'incoming', 'ordered qty', 'open po', 'purchase order qty', 'po quantity', 'receiving', 'fc transfer', 'inbound qty', 'scheduled receipts', 'quantity on order', 'quantity in transit', 'due in', 'incoming quantity'],
   reserved: ['reserved', 'customer order', 'unfulfilled', 'pending dispatch', 'committed', 'allocated', 'reserved stock', 'quantity committed', 'reserved physical'],
   leadTime: ['lead time', 'lead time (days)', 'lt', 'lead time days', 'supplier lead time', 'replenishment lead time', 'procurement lead time', 'days to receive', 'delivery days', 'planned delivery time', 'vendor lead time'],
@@ -307,16 +311,37 @@ export function buildSkuMap(dataRows, map, cfg) {
     e._retByWh[wh] = (e._retByWh[wh] || 0) + returnAdd;
     e._velByWh[wh] = (e._velByWh[wh] || 0) + vel;
 
-    // STOCK: snapshot per warehouse — keep the max seen per distinct wh (dedupe repeats), sum across wh
-    const prev = e._wh[wh] || { avail: 0, inbound: 0, reserved: 0 };
-    e._wh[wh] = { avail: Math.max(prev.avail, avail), inbound: Math.max(prev.inbound, inbound), reserved: Math.max(prev.reserved, reserved) };
-
-    // TIME SERIES: one net observation per dated row (unconstrained for stockout)
+    // STOCK per warehouse: for DATED data keep the LATEST date's snapshot (on-hand changes over time,
+    // so the most recent reading is the real position); for undated exports keep the max seen (dedupe
+    // repeated rows). Summed across distinct warehouses in the finalise step.
+    const prev = e._wh[wh] || { avail: 0, inbound: 0, reserved: 0, _d: '' };
     if (period) {
+      const _d = normalisePeriod(period);
+      e._wh[wh] = (_d >= (prev._d || '')) ? { avail, inbound, reserved, _d } : prev;
+    } else {
+      e._wh[wh] = { avail: Math.max(prev.avail, avail), inbound: Math.max(prev.inbound, inbound), reserved: Math.max(prev.reserved, reserved), _d: prev._d };
+    }
+
+    // TIME SERIES: one net observation per DATE. Multiple rows sharing the same (SKU, date) —
+    // e.g. the same product across several stores/warehouses in a panel export — are SUMMED into a
+    // single daily observation, so the series is one clean demand line per SKU (huge accuracy win on
+    // multi-store daily data, and always correct: a SKU can't have two different sales for one date).
+    if (period) {
+      const np = normalisePeriod(period);
       const net = Math.max(0, grossAdd - returnAdd);
       const fullyOut = availFrac != null && availFrac <= 0.05;
       const trueDemand = (availFrac != null && availFrac > 0.05 && availFrac < 1) ? net / Math.max(0.2, availFrac) : net;
-      e.periods.push({ period: normalisePeriod(period), units: Math.round(trueDemand * 100) / 100, raw: net, availFrac, stockout: fullyOut });
+      if (!e._pidx) e._pidx = {};
+      const ex = e._pidx[np];
+      if (ex) {
+        ex.units = Math.round((ex.units + trueDemand) * 100) / 100;
+        ex.raw += net;
+        if (availFrac != null) ex.availFrac = (ex.availFrac == null) ? availFrac : Math.max(ex.availFrac, availFrac);
+        ex.stockout = ex.stockout && fullyOut;   // a date is only "out" if every row that day was out
+      } else {
+        const o = { period: np, units: Math.round(trueDemand * 100) / 100, raw: net, availFrac, stockout: fullyOut };
+        e._pidx[np] = o; e.periods.push(o);
+      }
     }
     if (availFrac != null) { e.totalObs++; if (availFrac < 0.95) e.censoredObs++; }
   }
@@ -337,7 +362,7 @@ export function buildSkuMap(dataRows, map, cfg) {
       const _vv = Object.values(e._velByWh); if (_vv.length && _vv.every(v => v === _vv[0])) e.dailyVelocity = _vv[0];
       e.collapsedWhTotal = true;
     }
-    delete e._salesByWh; delete e._retByWh; delete e._velByWh;
+    delete e._salesByWh; delete e._retByWh; delete e._velByWh; delete e._pidx;
     e.netUnits = Math.max(0, e.grossUnits - e.returnUnits);
     e.returnRate = e.grossUnits > 0 ? e.returnUnits / e.grossUnits : 0;
     if (e.leadTime === 0) e.leadTime = cfg.qcom ? 2 : 30;
@@ -435,17 +460,29 @@ function seasonalIndices(y, m) {
   const s = idx.map((v, i) => cnt[i] ? (v / cnt[i]) / o : 1); const avg = mean(s);
   return s.map(v => avg ? v / avg : 1);
 }
+// Winsorize a series to the [2nd, 95th] percentile — tames promo/outlier spikes so the level and
+// trend fit the true baseline instead of chasing one-off days. Robust-stats accuracy win, universal.
+function winsorize(a) {
+  if (a.length < 5) return a.slice();
+  const s = a.slice().sort((x, y) => x - y);
+  const q = p => s[Math.min(s.length - 1, Math.max(0, Math.floor(p * (s.length - 1))))];
+  const lo = q(0.02), hi = q(0.95);
+  return a.map(v => Math.max(lo, Math.min(hi, v)));
+}
 export function buildForecaster(demands, method, gap) {
   const n = demands.length;
   const cls = classifyDemand(demands);
-  const ma = mean(demands.slice(-Math.min(3, n)));
-  let lvl = demands[0]; for (let i = 1; i < n; i++) lvl = 0.4 * demands[i] + 0.6 * lvl;
-  const { a, b } = linreg(demands); const last = n - 1;
+  const w = winsorize(demands);                                  // robust series for level/trend fitting
+  const maWin = (gap != null && gap < 2) ? Math.min(n, 14) : (gap != null && gap < 10) ? Math.min(n, 6) : Math.min(n, 3);
+  const ma = mean(w.slice(-Math.max(1, maWin)));                 // window widens on noisy daily data
+  const alpha = (gap != null && gap < 2) ? 0.25 : 0.4;           // smoother on daily, reactive on coarse
+  let lvl = w[0]; for (let i = 1; i < n; i++) lvl = alpha * w[i] + (1 - alpha) * lvl;
+  const { a, b } = linreg(w); const last = n - 1;
   const phi = 0.9;   // FIX(v10): damped trend bounds runaway long-horizon extrapolation
   const trendSum = k => { let s = 0; for (let i = 1; i <= k; i++) s += Math.pow(phi, i); return s; };
   const holt = k => Math.max(0, (a + b * last) + b * trendSum(k));
   const seasCands = gap == null ? [12, 7, 4] : (gap < 2 ? [7] : gap < 10 ? [] : gap < 45 ? [12] : gap < 135 ? [4] : []);   // FIX(v10): seasonal period tied to granularity
-  let season = null, m = 0; for (const c of seasCands) { const s = seasonalIndices(demands, c); if (s) { season = s; m = c; break; } }
+  let season = null, m = 0; for (const c of seasCands) { const s = seasonalIndices(w, c); if (s) { season = s; m = c; break; } }
 
   // intermittent/lumpy → TSB regardless of chosen method (unless user forces one)
   if ((cls.pattern === 'intermittent' || cls.pattern === 'lumpy') && (method === 'Auto' || method === 'ML Ensemble')) {
@@ -461,7 +498,11 @@ export function buildForecaster(demands, method, gap) {
   let fn;
   if (method === 'Auto' || !base[method]) {
     const slopeShare = ma > 0 ? Math.abs(b) / ma : 0;
-    fn = (n >= 4 && slopeShare > 0.03) ? holt : (n >= 3 ? () => Math.max(0, lvl) : () => ma);
+    // strong sustained trend → damped Holt (weighted with the level); otherwise a robust 3-way ensemble
+    // (MA + smoothing level + damped Holt) — ensembling cuts model-selection risk and lowers error.
+    if (n >= 6 && slopeShare > 0.05) fn = k => Math.max(0, 0.6 * holt(k) + 0.4 * Math.max(0, lvl));
+    else if (n >= 4) fn = k => Math.max(0, (ma + Math.max(0, lvl) + holt(k)) / 3);
+    else fn = (n >= 2) ? () => Math.max(0, lvl) : () => ma;
   } else fn = base[method];
   if (season) { const bf = fn; fn = k => bf(k) * season[(last + k) % m]; }
   return { f: k => Math.max(0, fn(k)), slope: b, level: Math.max(0, lvl), ma, seasonal: !!season, pattern: cls.pattern, adi: cls.adi, cv2: cls.cv2 };
@@ -801,6 +842,34 @@ export function upcomingIndiaEvents(today) {
 }
 
 // ═══ GEMINI: narrative insights only (never numbers) ═════════════════════════
+// Plain-language one-liner shown at the top of the results — "explain it simply". Deterministic by
+// default; Gemini rephrases it more naturally when a key is set (uses only the computed numbers).
+export async function generatePlainSummary(out, cfg, apiKey) {
+  const s = out.summary || {}, sym = cfg.sym || '';
+  const fN = n => Math.round(n || 0).toLocaleString();
+  const horizon = (cfg.horizDays || 90) + ' days';
+  const nextTotal = Math.round((out.allSKUs || []).reduce((a, r) => a + (r.nextH || 0), 0));
+  const acc = s.forecastAccuracyWmape != null ? Math.max(0, 100 - s.forecastAccuracyWmape) : null;
+  const parts = [`You have ${fN(s.totalSKUs)} products; expected demand is about ${fN(nextTotal)} units over the next ${horizon}.`];
+  const acts = [];
+  if (s.urgentSKUs) acts.push(`${s.urgentSKUs} need reordering now`);
+  const slowDead = (s.slowMoverSKUs || 0) + (s.deadSKUs || 0); if (slowDead) acts.push(`${slowDead} slow or dead`);
+  if (s.overstockSKUs) acts.push(`${s.overstockSKUs} overstocked`);
+  if (acts.length) parts.push(acts.join(', ') + '.');
+  if (s.totalExcess > 0) parts.push(`About ${sym}${fN(s.totalExcess)} is tied up in excess stock you can free.`);
+  if (acc != null) parts.push(`Forecasts back-test at ~${acc}% accuracy on your history.`);
+  const deterministic = parts.join(' ');
+  if (!apiKey) return deterministic;
+  const prompt = `Rewrite this inventory summary as ONE friendly, plain-English sentence (max 45 words) for a non-technical shop owner. Use ONLY these facts and numbers; invent nothing; no jargon. Return just the sentence.\nFACTS: ${deterministic}`;
+  try {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.3, maxOutputTokens: 160, thinkingConfig: { thinkingBudget: 0 } } }) });
+    const j = await r.json();
+    const txt = (j?.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('').trim();
+    if (txt && txt.length > 10) return txt.replace(/^["']+|["']+$/g, '');
+  } catch (e) { /* fall through */ }
+  return deterministic;
+}
 async function generateInsights(summary, reorderPlan, slowMoversAll, cfg, apiKey) {
   const fallback = [
     { type: 'red', icon: '🚨', text: `${summary.urgentSKUs} SKUs need immediate reorders to prevent stockouts.` },
