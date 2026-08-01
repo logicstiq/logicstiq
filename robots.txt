@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.logicstiq.com/sitemap.xml
+Disallow: /partials/
+Disallow: /scripts/

@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Warehouse Management — Space, Stock &amp; Cost Planning | LogicstIQ</title>
-<meta name="description" content="Warehouse planning for Indian sellers and 3PLs: space utilisation, pick-and-pack cost per order, cycle counting, dead stock identification and carrying cost. Live calculators today, full WMS module in development.">
-<meta name="keywords" content="warehouse management India, warehouse space calculator, pick pack cost, cycle count, dead stock, carrying cost, WMS for sellers India">
+<title>True Margin per SKU — After Commission, Fees, GST &amp; RTO | LogicstIQ</title>
+<meta name="description" content="Your listed margin ignores returns. LogicstIQ computes true contribution per SKU after marketplace commission, fulfilment and closing fees, GST and RTO — per channel, for Amazon, Flipkart, Myntra, Meesho and quick commerce. Free to use.">
+<meta name="keywords" content="RTO cost calculator, true margin per SKU, contribution margin ecommerce India, marketplace commission calculator, Amazon fees India, Flipkart commission, profit leak detection, unit economics ecommerce India">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-<link rel="canonical" href="https://www.logicstiq.com/wms.html"/>
-<meta property="og:title" content="Warehouse planning that starts with cost | LogicstIQ">
-<meta property="og:description" content="Space utilisation, pick-and-pack cost, cycle counting and dead stock. Live calculators today, full module in development.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.logicstiq.com/wms.html"/>
+<link rel="canonical" href="https://www.logicstiq.com/unit-economics.html"/>
+<meta property="og:title" content="Your real margin per SKU — after RTO | LogicstIQ">
+<meta property="og:description" content="Commission, fulfilment fees, GST and RTO subtracted per channel, so you know which SKUs actually make money.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.logicstiq.com/unit-economics.html"/>
 <meta property="og:image" content="https://www.logicstiq.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -20,9 +20,14 @@
 <link rel="stylesheet" href="/css/liq.css?v=1">
 <script>try{var t=localStorage.getItem('liq-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
-{"@type":"ListItem","position":1,"name":"Home","item":"https://www.logicstiq.com/"},
-{"@type":"ListItem","position":2,"name":"Warehouse Management","item":"https://www.logicstiq.com/wms.html"}]}
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+ {"@type":"ListItem","position":1,"name":"Home","item":"https://www.logicstiq.com/"},
+ {"@type":"ListItem","position":2,"name":"True margin per SKU","item":"https://www.logicstiq.com/unit-economics.html"}]},
+{"@type":"FAQPage","mainEntity":[
+ {"@type":"Question","name":"Why does RTO change my margin so much?","acceptedAnswer":{"@type":"Answer","text":"An RTO unit costs you forward shipping, return shipping, handling, and often the product itself if it comes back damaged or unsellable, while earning zero revenue. At a 24% RTO rate every four units sold funds one unit of pure loss, which is why a SKU showing 25% margin on paper can contribute almost nothing."}},
+ {"@type":"Question","name":"Do I need to know my exact fee structure?","acceptedAnswer":{"@type":"Answer","text":"No. Channel defaults for commission, fulfilment and closing fees are pre-loaded per marketplace and category. Override any of them with your actual negotiated rates and the calculation updates."}},
+ {"@type":"Question","name":"What is a profit leak?","acceptedAnswer":{"@type":"Answer","text":"A SKU with healthy revenue and healthy listed margin whose true contribution is near zero or negative once RTO and fees are subtracted. These are usually your bestsellers, which is why they go unnoticed."}}]}]}
 </script>
 </head>
 <body>
@@ -151,89 +156,142 @@
 
 <header class="phero">
   <div class="container">
-    <p class="eyebrow">Inventory &amp; warehouse</p>
-    <h1 class="h1 mt-1">Know what your warehouse costs you per order before you optimise it</h1>
-    <p class="lead">Warehouse software usually starts with execution: bins, scans, pick paths. We start one step earlier, with the numbers that tell you whether a change is worth making: cost per order picked, space actually used, and how much capital is sitting in stock that will not move.</p>
+    <p class="eyebrow">Unit economics</p>
+    <h1 class="h1 mt-1">Your margin report is lying to you. RTO is the reason.</h1>
+    <p class="lead">
+      Every seller knows their listed margin. Almost none know their contribution per unit
+      after marketplace commission, fulfilment and closing fees, GST, and the real cost of
+      returns. LogicstIQ computes it per SKU, per channel, and tells you which of your
+      bestsellers are quietly funded by you.
+    </p>
     <div class="btn-row">
-      <a class="btn btn--primary" href="/warehouse-space-calculator?utm_content=wms_hero">Use the warehouse calculators &rarr;</a>
-      <a class="btn btn--ghost" href="/contact.html?utm_content=wms_waitlist">Join the WMS waitlist</a>
+      <a class="btn btn--primary" href="/demand-planner.html?utm_content=econ_hero">Run it on your data →</a>
+      <a class="btn btn--ghost" href="/gross-margin-calculator">Try the margin calculator</a>
     </div>
-    <p class="small mt-2">Status: the planning calculators are live and free today. The full warehouse module is in development.</p>
   </div>
 </header>
 
 <section class="section">
   <div class="container">
-    <h2 class="h2 center">What it answers</h2>
-    <p class="lead measure-center center mt-2">Questions a warehouse manager gets asked by finance, that execution software rarely answers directly.</p>
-    <div class="grid grid--3 mt-4">
-      <div class="card card--flat">
-        <h3 class="card__title">Is the space actually full?</h3>
-        <p class="card__body">Utilisation against usable cubic capacity rather than floor area, so you find out whether you need another facility or just better slotting, before signing a lease.</p>
-      </div>
-      <div class="card card--flat">
-        <h3 class="card__title">What does one order cost to pick?</h3>
-        <p class="card__body">Labour, consumables and time per order, so the cost of a promotion that triples order count is known in advance rather than discovered in the monthly P&amp;L.</p>
-      </div>
-      <div class="card card--flat">
-        <h3 class="card__title">How much cash is asleep on the racks?</h3>
-        <p class="card__body">Dead and slow-moving stock quantified in rupees of trapped working capital, with carrying cost applied. Usually the largest recoverable number in the building.</p>
+    <h2 class="h2 center">The same SKU, two very different answers</h2>
+    <p class="lead measure-center center mt-2">
+      A ₹1,299 kurta on Myntra. On the left, the margin most sellers work from.
+      On the right, what actually reaches your bank account.
+    </p>
+
+    <div class="grid grid--2 mt-4" style="align-items:start">
+      <div>
+        <p class="eyebrow center">What your margin report shows</p>
+        <dl class="ledger mt-2">
+          <div class="head"><dt>Selling price</dt><dd>₹1,299</dd></div>
+          <div class="neg"><dt>Cost of goods</dt><dd>−₹520</dd></div>
+          <div class="neg"><dt>Marketplace commission (22%)</dt><dd>−₹286</dd></div>
+          <div class="neg"><dt>Fulfilment + closing fees</dt><dd>−₹94</dd></div>
+          <div class="neg"><dt>GST payable (net)</dt><dd>−₹68</dd></div>
+          <div class="foot"><dt>Margin per unit</dt><dd>₹331</dd></div>
+        </dl>
+        <p class="small center mt-2">25.5% margin. Looks like a SKU worth restocking hard.</p>
       </div>
 
+      <div>
+        <p class="eyebrow center">What LogicstIQ shows</p>
+        <dl class="ledger mt-2">
+          <div class="head"><dt>Margin before returns</dt><dd>₹331</dd></div>
+          <div class="neg"><dt>Forward shipping on RTO units</dt><dd>−₹79</dd></div>
+          <div class="neg"><dt>Return leg + handling</dt><dd>−₹86</dd></div>
+          <div class="neg"><dt>Unsellable on return (est. 12%)</dt><dd>−₹32</dd></div>
+          <div class="foot"><dt>True contribution per unit</dt><dd>₹134</dd></div>
+        </dl>
+        <p class="small center mt-2">10.3% real contribution. At a 24% RTO rate, three-fifths of the margin is gone.</p>
+      </div>
     </div>
+
+    <p class="callout measure-center mt-4">
+      <b>Why this matters more than it sounds.</b> Restock decisions are made on margin.
+      If the margin figure is wrong by 60%, every reorder quantity, every EOQ, every
+      budget allocation built on it is wrong too, and the error compounds every cycle.
+      Figures above are illustrative; the engine uses your channel rates and your measured RTO.
+    </p>
   </div>
 </section>
 
 <section class="section section--soft">
   <div class="container">
-    <h2 class="h2 center">The path we are taking</h2>
+    <h2 class="h2 center">What the engine subtracts, and where it gets the numbers</h2>
     <ol class="steps measure-center mt-4">
       <li><div>
-        <b>Start with the maths, free and open</b>
-        <p>Warehouse space, pick-and-pack cost, cycle count, carrying cost, dead stock and inventory turnover are live calculators today. No login, results update as you type.</p>
+        <b>Marketplace commission, per channel and category</b>
+        <p>Amazon.in, Flipkart, Myntra, Meesho, Nykaa, Ajio and quick-commerce rates are pre-loaded as defaults. Override any of them with your actual negotiated rate.</p>
       </div></li>
       <li><div>
-        <b>Then connect them to real stock data</b>
-        <p>The module in development applies those same formulas to your uploaded inventory file, per SKU and per location, instead of you keying in averages.</p>
+        <b>Fulfilment, closing and weight-slab fees</b>
+        <p>Pick-pack, weight handling and closing fees, including FBA fee structures for Amazon and the equivalents on Flipkart Smart and Myntra PPMP.</p>
       </div></li>
       <li><div>
-        <b>Then close the loop with the planner</b>
-        <p>Carrying cost and space constraints become inputs to the buy plan, so a reorder recommendation cannot quietly propose more stock than you can physically hold.</p>
+        <b>GST, netted correctly</b>
+        <p>Output GST against input credit on cost and freight, so the number reflects what you actually remit rather than the headline rate.</p>
       </div></li>
       <li><div>
-        <b>Execution stays where it is</b>
-        <p>Bin management, handheld scanning and pick-path optimisation are not on our roadmap. Those belong in a dedicated WMS, and our numbers are designed to sit alongside one.</p>
+        <b>RTO, the part nobody models</b>
+        <p>Your measured return rate per channel, applied to forward shipping, the return leg, handling, and the share of returned units that come back unsellable. This is where most of the margin goes.</p>
       </div></li>
-
+      <li><div>
+        <b>Cost per delivered order from your carriers</b>
+        <p>If you use the TMS rate shop, real weight-slab, zone and COD costs feed straight into this calculation instead of an average.</p>
+      </div></li>
+      <li><div>
+        <b>Then it flags the leaks</b>
+        <p>SKUs with strong revenue and healthy listed margin whose true contribution is near zero or negative. Usually your bestsellers, which is exactly why they go unnoticed.</p>
+      </div></li>
     </ol>
-    <p class="callout measure-center mt-4"><b>Said plainly:</b> this is warehouse <em>planning</em>, not warehouse <em>execution</em>. If your operators need barcode workflows across multiple facilities today, buy a real WMS. Use us for the cost and capacity decisions that surround it.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <h2 class="h2 center">Available today, while this is in build</h2>
-    <p class="lead measure-center center mt-2">Six live calculators cover most of what this module will automate. All free, no login, results update as you type.</p>
-    <div class="channels mt-3">
-      <a class="chip" href="/warehouse-space-calculator">Warehouse space</a>
-      <a class="chip" href="/pick-pack-cost-calculator">Pick &amp; pack cost</a>
-      <a class="chip" href="/cycle-count-calculator">Cycle count</a>
-      <a class="chip" href="/carrying-cost-calculator">Carrying cost</a>
-      <a class="chip" href="/dead-stock-calculator">Dead stock</a>
-      <a class="chip" href="/inventory-turnover-calculator">Inventory turnover</a>
-      <a class="chip" href="/abc-analysis-calculator">ABC analysis</a>
+    <h2 class="h2 center">What you do with the answer</h2>
+    <div class="grid grid--3 mt-4">
+      <div class="card card--flat">
+        <h3 class="card__title">Buy by contribution, not revenue</h3>
+        <p class="card__body">The buy plan ranks SKUs by protected contribution per rupee of working capital, so a limited budget goes to the stock that actually earns. Partial fills included.</p>
+      </div>
+      <div class="card card--flat">
+        <h3 class="card__title">Fix the RTO rate, not just the price</h3>
+        <p class="card__body">Once you can see which SKUs and which channels carry the return cost, sizing charts, imagery and COD rules become measurable decisions rather than guesses.</p>
+      </div>
+      <div class="card card--flat">
+        <h3 class="card__title">Stop funding the wrong bestseller</h3>
+        <p class="card__body">Profit-leak detection surfaces high-volume SKUs contributing nothing. Delisting one of those often beats optimising ten healthy ones.</p>
+      </div>
+    </div>
 
+    <div class="center mt-4">
+      <a class="btn btn--primary" href="/demand-planner.html?utm_content=econ_close">Upload one export and see yours →</a>
+      <p class="small mt-2">Free · No card · Nothing shared with the AI except computed summary numbers</p>
     </div>
   </div>
 </section>
 
 <section class="section section--tight section--soft">
-  <div class="container center">
-    <h2 class="h2">Start with the number that hurts most</h2>
-    <p class="lead measure-center mt-2">For most warehouses that is dead stock. It takes about two minutes to find out what yours is worth.</p>
-    <div class="btn-row btn-row--center mt-3">
-      <a class="btn btn--primary" href="/warehouse-space-calculator?utm_content=wms_hero">Use the warehouse calculators &rarr;</a>
-      <a class="btn btn--ghost" href="/contact.html">Tell us what you need from it</a>
+  <div class="container">
+    <h2 class="h2 center">Questions</h2>
+    <div class="faq mt-4">
+      <details>
+        <summary>Why does RTO change my margin so much?</summary>
+        <p>An RTO unit costs you forward shipping, the return leg, handling, and often the product itself if it comes back damaged or unsellable — while earning zero revenue. At a 24% return rate, every four units sold fund one unit of pure loss. That is why a SKU showing 25% margin on paper can contribute close to nothing.</p>
+      </details>
+      <details>
+        <summary>Do I need to know my exact fee structure?</summary>
+        <p>No. Channel and category defaults are pre-loaded for every major Indian marketplace. Override any of them with your negotiated rates and the whole calculation updates. Accuracy improves as you replace defaults with your real numbers.</p>
+      </details>
+      <details>
+        <summary>What counts as a profit leak?</summary>
+        <p>A SKU with healthy revenue and a healthy listed margin whose true contribution is near zero or negative once fees and RTO are subtracted. They are almost always high-volume lines, because volume is what makes the return cost material.</p>
+      </details>
+      <details>
+        <summary>Can I trust these numbers for accounting?</summary>
+        <p>No, and you shouldn't. These are planning figures for purchasing decisions. Reconcile against your marketplace settlement reports and your books before filing anything. <a href="/disclaimer.html">Full disclaimer</a>.</p>
+      </details>
     </div>
   </div>
 </section>

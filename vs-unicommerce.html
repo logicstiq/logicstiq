@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Warehouse Management — Space, Stock &amp; Cost Planning | LogicstIQ</title>
-<meta name="description" content="Warehouse planning for Indian sellers and 3PLs: space utilisation, pick-and-pack cost per order, cycle counting, dead stock identification and carrying cost. Live calculators today, full WMS module in development.">
-<meta name="keywords" content="warehouse management India, warehouse space calculator, pick pack cost, cycle count, dead stock, carrying cost, WMS for sellers India">
+<title>LogicstIQ vs Unicommerce — An Honest Comparison for Indian Sellers</title>
+<meta name="description" content="Unicommerce executes orders; LogicstIQ decides what to buy. A fair, specific comparison of where each fits, who each is priced for, and when running both together makes the most sense.">
+<meta name="keywords" content="LogicstIQ vs Unicommerce, Unicommerce alternative India, Uniware alternative, demand planning vs OMS, ecommerce software comparison India">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-<link rel="canonical" href="https://www.logicstiq.com/wms.html"/>
-<meta property="og:title" content="Warehouse planning that starts with cost | LogicstIQ">
-<meta property="og:description" content="Space utilisation, pick-and-pack cost, cycle counting and dead stock. Live calculators today, full module in development.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.logicstiq.com/wms.html"/>
+<link rel="canonical" href="https://www.logicstiq.com/vs-unicommerce.html"/>
+<meta property="og:title" content="LogicstIQ vs Unicommerce — an honest comparison">
+<meta property="og:description" content="Different layers of the stack. Where each fits, who each is priced for, and when running both makes sense.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.logicstiq.com/vs-unicommerce.html"/>
 <meta property="og:image" content="https://www.logicstiq.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -20,9 +20,14 @@
 <link rel="stylesheet" href="/css/liq.css?v=1">
 <script>try{var t=localStorage.getItem('liq-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
-{"@type":"ListItem","position":1,"name":"Home","item":"https://www.logicstiq.com/"},
-{"@type":"ListItem","position":2,"name":"Warehouse Management","item":"https://www.logicstiq.com/wms.html"}]}
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+ {"@type":"ListItem","position":1,"name":"Home","item":"https://www.logicstiq.com/"},
+ {"@type":"ListItem","position":2,"name":"Compare","item":"https://www.logicstiq.com/vs-unicommerce.html"}]},
+{"@type":"FAQPage","mainEntity":[
+ {"@type":"Question","name":"Is LogicstIQ a Unicommerce alternative?","acceptedAnswer":{"@type":"Answer","text":"Not a direct one. Unicommerce is an execution platform — order management, warehouse management, shipping and reconciliation. LogicstIQ is a planning and unit-economics layer that decides what to buy, how much, and at what real margin. Many sellers run a planning tool alongside an execution platform rather than choosing between them."}},
+ {"@type":"Question","name":"Can I use both together?","acceptedAnswer":{"@type":"Answer","text":"Yes, and for sellers above roughly 5,000 orders a month that is usually the right setup. Export sales history from your execution platform, plan in LogicstIQ, and raise the resulting purchase orders back in the platform that actually moves your stock."}},
+ {"@type":"Question","name":"When should I choose an execution platform instead?","acceptedAnswer":{"@type":"Answer","text":"If your bottleneck is fulfilment rather than planning — multiple warehouses, item-level barcoding, handheld picking workflows, courier label generation at volume, or enterprise procurement requiring ISO certification — buy the execution platform first. Planning helps most once fulfilment is already reliable."}}]}]}
 </script>
 </head>
 <body>
@@ -151,89 +156,172 @@
 
 <header class="phero">
   <div class="container">
-    <p class="eyebrow">Inventory &amp; warehouse</p>
-    <h1 class="h1 mt-1">Know what your warehouse costs you per order before you optimise it</h1>
-    <p class="lead">Warehouse software usually starts with execution: bins, scans, pick paths. We start one step earlier, with the numbers that tell you whether a change is worth making: cost per order picked, space actually used, and how much capital is sitting in stock that will not move.</p>
-    <div class="btn-row">
-      <a class="btn btn--primary" href="/warehouse-space-calculator?utm_content=wms_hero">Use the warehouse calculators &rarr;</a>
-      <a class="btn btn--ghost" href="/contact.html?utm_content=wms_waitlist">Join the WMS waitlist</a>
-    </div>
-    <p class="small mt-2">Status: the planning calculators are live and free today. The full warehouse module is in development.</p>
+    <p class="eyebrow">Comparison</p>
+    <h1 class="h1 mt-1">LogicstIQ vs Unicommerce: different layers, not rivals</h1>
+    <p class="lead">
+      We get asked this often enough to answer it properly, including the parts where they win.
+      The short version: Unicommerce is built to <em>execute</em> your orders. LogicstIQ is built
+      to <em>decide</em> what you should buy and what it will actually earn. Those are different
+      jobs, and plenty of sellers need both.
+    </p>
   </div>
 </header>
 
 <section class="section">
   <div class="container">
-    <h2 class="h2 center">What it answers</h2>
-    <p class="lead measure-center center mt-2">Questions a warehouse manager gets asked by finance, that execution software rarely answers directly.</p>
+    <h2 class="h2 center">Where each one sits in the stack</h2>
+    <p class="lead measure-center center mt-2">
+      Most confusion about this comparison disappears once the layers are drawn out.
+    </p>
+
+    <div class="frame">
+      <div class="frame__bar">
+        <span class="frame__dot"></span><span class="frame__dot"></span><span class="frame__dot"></span>
+        <span class="frame__label">The e-commerce operations stack</span>
+      </div>
+      <div class="frame__body">
+        <div class="stats" style="grid-template-columns:1fr">
+          <div class="stat" style="background:var(--brand-tint)">
+            <b style="color:var(--brand-ink)">Decide</b>
+            <span style="color:var(--brand-ink)">What to buy, how much, when, at what true margin. <strong>LogicstIQ</strong></span>
+          </div>
+          <div class="stat">
+            <b>Execute</b>
+            <span>Process the order, allocate stock, pick, pack, invoice. Uniware and platforms like it</span>
+          </div>
+          <div class="stat">
+            <b>Deliver</b>
+            <span>Courier allocation, NDR handling, tracking, returns processing. Shipway and similar</span>
+          </div>
+          <div class="stat">
+            <b>Engage</b>
+            <span>WhatsApp, SMS, retention campaigns. Convertway and similar</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="callout measure-center mt-4">
+      Unicommerce has built across the bottom three layers, and does so at real scale, with thousands of clients and a very large share of Indian dropship shipment volume.
+      We work in the top layer only, and we intend to keep it that way.
+    </p>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <h2 class="h2 center">Side by side, including where we lose</h2>
+    <div class="cmp-wrap mt-4">
+      <table class="cmp">
+        <thead>
+          <tr><th></th><th>LogicstIQ</th><th>Unicommerce</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Primary job</th>
+              <td class="win">Decide what to buy and at what real margin</td>
+              <td class="win">Execute orders, warehouses and shipping</td></tr>
+          <tr><th>Demand forecasting</th>
+              <td class="win">Core product. P50/P90/P95 bands, per SKU</td>
+              <td class="lose">Not the focus; inventory sync and control</td></tr>
+          <tr><th>True margin per SKU after RTO</th>
+              <td class="win">Yes. Commission, fees, net GST and RTO</td>
+              <td class="lose">Payment reconciliation, not per-SKU contribution</td></tr>
+          <tr><th>Per-dark-store quick commerce planning</th>
+              <td class="win">Yes. City, store and time of day</td>
+              <td class="lose">Quick-commerce order capture and routing</td></tr>
+          <tr><th>Order, warehouse &amp; picking execution</th>
+              <td class="lose">No. Planning only, by design</td>
+              <td class="win">Mature, multi-facility, item-level barcoding</td></tr>
+          <tr><th>Prebuilt integrations</th>
+              <td class="lose">2 direct APIs, 10 channel fee models, any file</td>
+              <td class="win">Very large prebuilt connector library</td></tr>
+          <tr><th>Enterprise certifications</th>
+              <td class="lose">Encryption + DPDP compliance, no ISO audit yet</td>
+              <td class="win">ISO 27001 and 27701 certified</td></tr>
+          <tr><th>Analyst recognition</th>
+              <td class="lose">None yet. We're new</td>
+              <td class="win">Gartner and Forrester coverage</td></tr>
+          <tr><th>Scale proven</th>
+              <td class="lose">Early-stage</td>
+              <td class="win">Thousands of clients, listed company</td></tr>
+          <tr><th>Cost</th>
+              <td class="win">Free</td>
+              <td class="lose">Quoted by a sales team</td></tr>
+          <tr><th>Time to first useful output</th>
+              <td class="win">Around two minutes from one export</td>
+              <td class="lose">Implementation project, typically weeks</td></tr>
+          <tr><th>Try it without talking to anyone</th>
+              <td class="win">Yes, 31 calculators need no account at all</td>
+              <td class="lose">Demo-led</td></tr>
+          <tr><th>Best fit volume</th>
+              <td>Roughly 10 – 5,000 orders a month</td>
+              <td>Roughly 5,000 orders a month and above</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small center mt-3">
+      Compiled from Unicommerce's public product and pricing pages, August 2026. If anything here
+      is out of date or unfair, <a href="/contact.html">tell us</a> and we'll correct it.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="h2 center">Choosing honestly</h2>
     <div class="grid grid--3 mt-4">
       <div class="card card--flat">
-        <h3 class="card__title">Is the space actually full?</h3>
-        <p class="card__body">Utilisation against usable cubic capacity rather than floor area, so you find out whether you need another facility or just better slotting, before signing a lease.</p>
+        <h3 class="card__title">Start with us if…</h3>
+        <p class="card__body">
+          Your fulfilment already works but you're guessing at purchase quantities, planning in
+          Excel, unsure which SKUs actually make money, or you've been quoted enterprise pricing
+          that doesn't match your order volume yet.
+        </p>
       </div>
       <div class="card card--flat">
-        <h3 class="card__title">What does one order cost to pick?</h3>
-        <p class="card__body">Labour, consumables and time per order, so the cost of a promotion that triples order count is known in advance rather than discovered in the monthly P&amp;L.</p>
+        <h3 class="card__title">Start with them if…</h3>
+        <p class="card__body">
+          Your bottleneck is fulfilment, not planning: several warehouses, item-level barcoding,
+          handheld picking, courier labels at volume, or a procurement process that requires ISO
+          certification and analyst coverage before it can sign.
+        </p>
       </div>
       <div class="card card--flat">
-        <h3 class="card__title">How much cash is asleep on the racks?</h3>
-        <p class="card__body">Dead and slow-moving stock quantified in rupees of trapped working capital, with carrying cost applied. Usually the largest recoverable number in the building.</p>
+        <h3 class="card__title">Run both if…</h3>
+        <p class="card__body">
+          You're past roughly 5,000 orders a month. Export your sales history, plan here, and
+          raise the resulting purchase orders in the platform that actually moves your stock.
+          That's the setup we designed for.
+        </p>
       </div>
-
     </div>
   </div>
 </section>
 
 <section class="section section--soft">
   <div class="container">
-    <h2 class="h2 center">The path we are taking</h2>
-    <ol class="steps measure-center mt-4">
-      <li><div>
-        <b>Start with the maths, free and open</b>
-        <p>Warehouse space, pick-and-pack cost, cycle count, carrying cost, dead stock and inventory turnover are live calculators today. No login, results update as you type.</p>
-      </div></li>
-      <li><div>
-        <b>Then connect them to real stock data</b>
-        <p>The module in development applies those same formulas to your uploaded inventory file, per SKU and per location, instead of you keying in averages.</p>
-      </div></li>
-      <li><div>
-        <b>Then close the loop with the planner</b>
-        <p>Carrying cost and space constraints become inputs to the buy plan, so a reorder recommendation cannot quietly propose more stock than you can physically hold.</p>
-      </div></li>
-      <li><div>
-        <b>Execution stays where it is</b>
-        <p>Bin management, handheld scanning and pick-path optimisation are not on our roadmap. Those belong in a dedicated WMS, and our numbers are designed to sit alongside one.</p>
-      </div></li>
-
-    </ol>
-    <p class="callout measure-center mt-4"><b>Said plainly:</b> this is warehouse <em>planning</em>, not warehouse <em>execution</em>. If your operators need barcode workflows across multiple facilities today, buy a real WMS. Use us for the cost and capacity decisions that surround it.</p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <h2 class="h2 center">Available today, while this is in build</h2>
-    <p class="lead measure-center center mt-2">Six live calculators cover most of what this module will automate. All free, no login, results update as you type.</p>
-    <div class="channels mt-3">
-      <a class="chip" href="/warehouse-space-calculator">Warehouse space</a>
-      <a class="chip" href="/pick-pack-cost-calculator">Pick &amp; pack cost</a>
-      <a class="chip" href="/cycle-count-calculator">Cycle count</a>
-      <a class="chip" href="/carrying-cost-calculator">Carrying cost</a>
-      <a class="chip" href="/dead-stock-calculator">Dead stock</a>
-      <a class="chip" href="/inventory-turnover-calculator">Inventory turnover</a>
-      <a class="chip" href="/abc-analysis-calculator">ABC analysis</a>
-
+    <h2 class="h2 center">Questions</h2>
+    <div class="faq mt-4">
+      <details>
+        <summary>Is LogicstIQ a Unicommerce alternative?</summary>
+        <p>Not a direct one, and we'd rather not be sold as one. They run your operations; we tell you what to buy and what it earns. If someone pitches a planning tool as a replacement for an execution platform, be sceptical, including of us.</p>
+      </details>
+      <details>
+        <summary>Can I use both together?</summary>
+        <p>Yes, and above roughly 5,000 orders a month that's usually the right answer. Export sales history from your execution platform, plan in LogicstIQ, and raise the resulting POs back where your stock actually moves.</p>
+      </details>
+      <details>
+        <summary>Why should I trust a comparison written by you?</summary>
+        <p>You shouldn't take it on faith, which is why the table above lists nine rows where they win and names the specific reasons. Everything is drawn from their public pages and ours, and we'll correct anything you can show is wrong.</p>
+      </details>
+      <details>
+        <summary>What happens when you build OMS and WMS?</summary>
+        <p>They'll be planning-first and deliberately narrow: cost, capacity and contribution, not pick paths and barcode scanning. We're not trying to become an execution platform. <a href="/oms.html">Our OMS approach</a> · <a href="/wms.html">our WMS approach</a>.</p>
+      </details>
     </div>
-  </div>
-</section>
-
-<section class="section section--tight section--soft">
-  <div class="container center">
-    <h2 class="h2">Start with the number that hurts most</h2>
-    <p class="lead measure-center mt-2">For most warehouses that is dead stock. It takes about two minutes to find out what yours is worth.</p>
-    <div class="btn-row btn-row--center mt-3">
-      <a class="btn btn--primary" href="/warehouse-space-calculator?utm_content=wms_hero">Use the warehouse calculators &rarr;</a>
-      <a class="btn btn--ghost" href="/contact.html">Tell us what you need from it</a>
+    <div class="center mt-4">
+      <a class="btn btn--primary" href="/demand-planner.html?utm_content=vs_close">Try the planning layer free →</a>
+      <p class="small mt-2">No card. Nothing to uninstall if it isn't for you.</p>
     </div>
   </div>
 </section>

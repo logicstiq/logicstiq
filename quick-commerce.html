@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Warehouse Management — Space, Stock &amp; Cost Planning | LogicstIQ</title>
-<meta name="description" content="Warehouse planning for Indian sellers and 3PLs: space utilisation, pick-and-pack cost per order, cycle counting, dead stock identification and carrying cost. Live calculators today, full WMS module in development.">
-<meta name="keywords" content="warehouse management India, warehouse space calculator, pick pack cost, cycle count, dead stock, carrying cost, WMS for sellers India">
+<title>Quick Commerce Replenishment Planning — Blinkit, Zepto, Instamart | LogicstIQ</title>
+<meta name="description" content="Plan per dark store, per city, per time of day. Free replenishment planning for Blinkit, Zepto, Swiggy Instamart, Flipkart Minutes, BigBasket and Amazon Fresh suppliers — built for 10-minute delivery lead times, not adapted from a warehouse model.">
+<meta name="keywords" content="Blinkit replenishment, Zepto supplier planning, Swiggy Instamart inventory, dark store reorder point, quick commerce demand planning India, Flipkart Minutes supplier, BigBasket replenishment, q-commerce forecasting">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-<link rel="canonical" href="https://www.logicstiq.com/wms.html"/>
-<meta property="og:title" content="Warehouse planning that starts with cost | LogicstIQ">
-<meta property="og:description" content="Space utilisation, pick-and-pack cost, cycle counting and dead stock. Live calculators today, full module in development.">
+<link rel="canonical" href="https://www.logicstiq.com/quick-commerce.html"/>
+<meta property="og:title" content="Quick commerce planning, per dark store | LogicstIQ">
+<meta property="og:description" content="Replenishment planning for Blinkit, Zepto, Instamart and Flipkart Minutes suppliers. Per city, per dark store, per time of day.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.logicstiq.com/wms.html"/>
+<meta property="og:url" content="https://www.logicstiq.com/quick-commerce.html"/>
 <meta property="og:image" content="https://www.logicstiq.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -20,9 +20,14 @@
 <link rel="stylesheet" href="/css/liq.css?v=1">
 <script>try{var t=localStorage.getItem('liq-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
-{"@type":"ListItem","position":1,"name":"Home","item":"https://www.logicstiq.com/"},
-{"@type":"ListItem","position":2,"name":"Warehouse Management","item":"https://www.logicstiq.com/wms.html"}]}
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+ {"@type":"ListItem","position":1,"name":"Home","item":"https://www.logicstiq.com/"},
+ {"@type":"ListItem","position":2,"name":"Quick commerce","item":"https://www.logicstiq.com/quick-commerce.html"}]},
+{"@type":"FAQPage","mainEntity":[
+ {"@type":"Question","name":"Why can't I plan quick commerce like a warehouse?","acceptedAnswer":{"@type":"Answer","text":"A warehouse aggregates demand across a whole region, so variability averages out. A dark store serves a few square kilometres, holds days of cover rather than weeks, and has demand concentrated into specific hours. Averaging across stores hides exactly the volatility you need to plan for."}},
+ {"@type":"Question","name":"What data do I need?","acceptedAnswer":{"@type":"Answer","text":"A sales or offtake export with store or city identifiers, dates and quantities. Blinkit, Zepto, Swiggy Instamart, BigBasket, Flipkart Minutes and Amazon Fresh exports all work, as does any CSV or Excel file."}},
+ {"@type":"Question","name":"Does it handle fill rate penalties?","acceptedAnswer":{"@type":"Answer","text":"Yes. Reorder points are set against your target fill rate rather than a generic service level, because quick-commerce platforms penalise short supply directly."}}]}]}
 </script>
 </head>
 <body>
@@ -151,89 +156,114 @@
 
 <header class="phero">
   <div class="container">
-    <p class="eyebrow">Inventory &amp; warehouse</p>
-    <h1 class="h1 mt-1">Know what your warehouse costs you per order before you optimise it</h1>
-    <p class="lead">Warehouse software usually starts with execution: bins, scans, pick paths. We start one step earlier, with the numbers that tell you whether a change is worth making: cost per order picked, space actually used, and how much capital is sitting in stock that will not move.</p>
+    <p class="eyebrow">Quick commerce</p>
+    <h1 class="h1 mt-1">Ten-minute delivery doesn't forgive a regional average</h1>
+    <p class="lead">
+      Dark stores hold days of cover, not weeks. Demand is concentrated into specific hours and
+      specific pincodes. Plan them like a warehouse and you'll be simultaneously out of stock in
+      Powai and overstocked in Andheri. LogicstIQ plans per city, per dark store, per time of day.
+    </p>
     <div class="btn-row">
-      <a class="btn btn--primary" href="/warehouse-space-calculator?utm_content=wms_hero">Use the warehouse calculators &rarr;</a>
-      <a class="btn btn--ghost" href="/contact.html?utm_content=wms_waitlist">Join the WMS waitlist</a>
+      <a class="btn btn--primary" href="/demand-planner.html?utm_content=qcom_hero">Plan your dark stores →</a>
+      <a class="btn btn--ghost" href="/quick-commerce-replenishment-blinkit-zepto">Read the worked playbook</a>
     </div>
-    <p class="small mt-2">Status: the planning calculators are live and free today. The full warehouse module is in development.</p>
+    <div class="channels mt-3" style="justify-content:flex-start">
+      <span class="chip">Blinkit</span><span class="chip">Zepto</span><span class="chip">Swiggy Instamart</span>
+      <span class="chip">Flipkart Minutes</span><span class="chip">BigBasket</span><span class="chip">Amazon Fresh</span>
+    </div>
   </div>
 </header>
 
 <section class="section">
   <div class="container">
-    <h2 class="h2 center">What it answers</h2>
-    <p class="lead measure-center center mt-2">Questions a warehouse manager gets asked by finance, that execution software rarely answers directly.</p>
+    <h2 class="h2 center">Why the warehouse model breaks here</h2>
     <div class="grid grid--3 mt-4">
       <div class="card card--flat">
-        <h3 class="card__title">Is the space actually full?</h3>
-        <p class="card__body">Utilisation against usable cubic capacity rather than floor area, so you find out whether you need another facility or just better slotting, before signing a lease.</p>
+        <h3 class="card__title">Lead times in hours</h3>
+        <p class="card__body">
+          Replenishment cycles are measured in hours, not weeks, so a stockout can't be
+          absorbed by safety stock sized for a monthly PO. Reorder points have to be
+          recalculated against a short, volatile lead time.
+        </p>
       </div>
       <div class="card card--flat">
-        <h3 class="card__title">What does one order cost to pick?</h3>
-        <p class="card__body">Labour, consumables and time per order, so the cost of a promotion that triples order count is known in advance rather than discovered in the monthly P&amp;L.</p>
+        <h3 class="card__title">Variability doesn't average out</h3>
+        <p class="card__body">
+          One dark store serves a few square kilometres. Rain, a local festival or a
+          nearby office holiday moves demand 40% in a day. Pool that across a city and
+          the signal you needed disappears.
+        </p>
       </div>
       <div class="card card--flat">
-        <h3 class="card__title">How much cash is asleep on the racks?</h3>
-        <p class="card__body">Dead and slow-moving stock quantified in rupees of trapped working capital, with carrying cost applied. Usually the largest recoverable number in the building.</p>
+        <h3 class="card__title">Fill rate is the scorecard</h3>
+        <p class="card__body">
+          Platforms penalise short supply directly and delist quietly. Reorder points
+          get set against your target fill rate, not a generic 95% service level
+          borrowed from retail.
+        </p>
       </div>
-
     </div>
   </div>
 </section>
 
 <section class="section section--soft">
   <div class="container">
-    <h2 class="h2 center">The path we are taking</h2>
+    <h2 class="h2 center">What you get back</h2>
     <ol class="steps measure-center mt-4">
       <li><div>
-        <b>Start with the maths, free and open</b>
-        <p>Warehouse space, pick-and-pack cost, cycle count, carrying cost, dead stock and inventory turnover are live calculators today. No login, results update as you type.</p>
+        <b>A reorder point per SKU, per dark store</b>
+        <p>Not per city and not per region. Each store gets its own number, sized to its own demand distribution and its own lead time.</p>
       </div></li>
       <li><div>
-        <b>Then connect them to real stock data</b>
-        <p>The module in development applies those same formulas to your uploaded inventory file, per SKU and per location, instead of you keying in averages.</p>
+        <b>Time-of-day demand shape</b>
+        <p>Morning grocery, evening snacking and late-night convenience are different demand curves. Replenishment windows are planned against the shape, not the daily total.</p>
       </div></li>
       <li><div>
-        <b>Then close the loop with the planner</b>
-        <p>Carrying cost and space constraints become inputs to the buy plan, so a reorder recommendation cannot quietly propose more stock than you can physically hold.</p>
+        <b>Stores ranked by stockout risk</b>
+        <p>P90 stockout probability per store, so a limited delivery slot goes where the loss would be largest instead of where the route is easiest.</p>
       </div></li>
       <li><div>
-        <b>Execution stays where it is</b>
-        <p>Bin management, handheld scanning and pick-path optimisation are not on our roadmap. Those belong in a dedicated WMS, and our numbers are designed to sit alongside one.</p>
+        <b>Contribution per store</b>
+        <p>Quick-commerce margins are thin and platform fees vary. The same RTO-and-fee engine that runs on marketplace SKUs runs here, so you can see which stores are worth serving. <a href="/unit-economics.html">How that's calculated →</a></p>
       </div></li>
-
+      <li><div>
+        <b>A dispatch-ready purchase plan</b>
+        <p>Per-store quantities aggregated into a single supplier PO and carton manifest, so the plan survives contact with your warehouse team.</p>
+      </div></li>
     </ol>
-    <p class="callout measure-center mt-4"><b>Said plainly:</b> this is warehouse <em>planning</em>, not warehouse <em>execution</em>. If your operators need barcode workflows across multiple facilities today, buy a real WMS. Use us for the cost and capacity decisions that surround it.</p>
+
+    <p class="callout measure-center mt-4">
+      <b>Honest limitation.</b> We plan; we don't integrate into platform vendor portals for automatic
+      PO submission. You upload an offtake export and take the plan back to the portal yourself.
+      For most suppliers that's a few minutes a week, and it's why this is free.
+    </p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <h2 class="h2 center">Available today, while this is in build</h2>
-    <p class="lead measure-center center mt-2">Six live calculators cover most of what this module will automate. All free, no login, results update as you type.</p>
-    <div class="channels mt-3">
-      <a class="chip" href="/warehouse-space-calculator">Warehouse space</a>
-      <a class="chip" href="/pick-pack-cost-calculator">Pick &amp; pack cost</a>
-      <a class="chip" href="/cycle-count-calculator">Cycle count</a>
-      <a class="chip" href="/carrying-cost-calculator">Carrying cost</a>
-      <a class="chip" href="/dead-stock-calculator">Dead stock</a>
-      <a class="chip" href="/inventory-turnover-calculator">Inventory turnover</a>
-      <a class="chip" href="/abc-analysis-calculator">ABC analysis</a>
-
+    <h2 class="h2 center">Questions</h2>
+    <div class="faq mt-4">
+      <details>
+        <summary>Why can't I plan quick commerce like a warehouse?</summary>
+        <p>A warehouse aggregates demand across a whole region, so variability averages out. A dark store serves a few square kilometres, holds days of cover rather than weeks, and concentrates demand into specific hours. Averaging across stores hides exactly the volatility you need to plan for.</p>
+      </details>
+      <details>
+        <summary>What data do I need to start?</summary>
+        <p>A sales or offtake export with store or city identifiers, dates and quantities. Blinkit, Zepto, Swiggy Instamart, BigBasket, Flipkart Minutes and Amazon Fresh exports all work, as does any CSV or Excel file up to 25 MB.</p>
+      </details>
+      <details>
+        <summary>How many stores can it handle?</summary>
+        <p>There's no store limit on the upload. Very large files are summarised before the AI writes its explanation, but every store still gets its own computed reorder point.</p>
+      </details>
+      <details>
+        <summary>Does it work alongside my existing WMS?</summary>
+        <p>Yes, and that's the intended setup. We produce the plan; your WMS or the platform's own systems execute it. Nothing here needs to replace what you already run.</p>
+      </details>
     </div>
-  </div>
-</section>
-
-<section class="section section--tight section--soft">
-  <div class="container center">
-    <h2 class="h2">Start with the number that hurts most</h2>
-    <p class="lead measure-center mt-2">For most warehouses that is dead stock. It takes about two minutes to find out what yours is worth.</p>
-    <div class="btn-row btn-row--center mt-3">
-      <a class="btn btn--primary" href="/warehouse-space-calculator?utm_content=wms_hero">Use the warehouse calculators &rarr;</a>
-      <a class="btn btn--ghost" href="/contact.html">Tell us what you need from it</a>
+    <div class="center mt-4">
+      <a class="btn btn--primary" href="/demand-planner.html?utm_content=qcom_close">Start free →</a>
+      <p class="small mt-2">Free · No card · Works from any offtake export</p>
     </div>
   </div>
 </section>

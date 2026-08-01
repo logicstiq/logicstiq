@@ -33,8 +33,131 @@ html[data-theme="dark"] .btn.danger{background:#2A1516;border-color:#5a2a2a;colo
 .enc{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:#0f7a44;background:#E7F6EC;border:1px solid #a7e0bd;border-radius:20px;padding:4px 10px}
 html[data-theme="dark"] .enc{background:#10231A;border-color:#1f6e46;color:#4ade80}
 </style>
+<link rel="stylesheet" href="/css/liq.css?v=1">
+<script>try{var t=localStorage.getItem('liq-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 </head>
 <body data-liq-gate>
+
+<!--#NAV-->
+<nav class="lnav" id="lnav">
+  <a href="/" class="lnav-logo" aria-label="LogicstIQ — Home">
+    <svg width="188" height="34" viewBox="0 0 440 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="lnav_grad" x1="10" y1="60" x2="330" y2="18" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#4F6BFF"/><stop offset="100%" stop-color="#9B6BFF"/></linearGradient></defs>
+      <path d="M8 36 L23 36 L38 60 L59 20 L74 20" stroke="url(#lnav_grad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M68 12 L76 20 L68 28" stroke="#9B6BFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="38" cy="60" r="4.5" fill="#4F6BFF"/><circle cx="59" cy="20" r="4.5" fill="#9B6BFF"/>
+      <text x="92" y="46" font-family="Inter,sans-serif" font-size="36" font-weight="600" letter-spacing="-1.6">
+        <tspan fill="#4F6BFF">Logicst</tspan><tspan fill="#9B6BFF">IQ</tspan></text>
+    </svg>
+  </a>
+
+  <div class="lnav-actions">
+    <button id="liqTheme" class="liq-theme-btn" type="button" aria-label="Toggle light or dark mode" title="Toggle light / dark">◐</button>
+    <a class="btn btn--primary btn--sm" href="/demand-planner.html?utm_content=nav_cta">Start free</a>
+  </div>
+  <button class="lnav-burger" id="lnavBurger" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+
+  <div class="lnav-menu">
+
+    <div class="lnav-item">
+      <a class="lnav-top" href="/tools.html">Products <span class="lnav-car" aria-hidden="true">▼</span></a>
+      <div class="lnav-panel lnav-panel--wide">
+        <div class="lnav-cols">
+          <div>
+            <div class="lnav-colt">Planning &amp; Forecasting</div>
+            <a href="/demand-planner.html">AI Demand Planner<span>Never lose sales to stockouts</span></a>
+            <a href="/unit-economics.html">True Margin per SKU<span>See profit after fees, GST and RTO</span></a>
+            <a href="/quick-commerce.html">Quick Commerce<span>Capture every instant purchase</span></a>
+            <a href="/fba-planner/">Amazon FBA Planner<span>Restock inside your limits</span></a>
+          </div>
+          <div>
+            <div class="lnav-colt">Inventory &amp; Warehouse</div>
+            <a href="/wms.html">Warehouse Management<span>Fulfil faster, cut operating cost</span></a>
+            <a href="/calculators.html">Inventory Control<span>EOQ, safety stock, reorder points</span></a>
+            <a href="/sourcing-procurement.html">Sourcing &amp; Procurement<span>PR to PO to GRN, matched</span></a>
+            <a href="/erp-sourcing-procurement.html">General ERP<span>Procure-to-pay for manufacturers</span></a>
+          </div>
+          <div>
+            <div class="lnav-colt">Order &amp; Fulfilment</div>
+            <a href="/oms.html">Order Management<span>One panel for every channel</span></a>
+            <a href="/tms.html">Transportation<span>Rate-shop carriers, track dispatch</span></a>
+            <a href="/returns.html">Returns &amp; RTO<span>Recover margin lost to returns</span></a>
+            <a href="/documents-generator.html">Paperwork &amp; EXIM<span>GST invoices to ICEGATE bills</span></a>
+          </div>
+        </div>
+        <div class="lnav-foot"><a href="/tools.html">See all tools and what each one does →</a></div>
+      </div>
+    </div>
+
+    <div class="lnav-item">
+      <a class="lnav-top" href="/integrations.html">Integrations <span class="lnav-car" aria-hidden="true">▼</span></a>
+      <div class="lnav-panel lnav-panel--wide">
+        <div class="lnav-cols">
+          <div>
+            <div class="lnav-colt">Marketplace &amp; Quick Commerce</div>
+            <a href="/integrations.html#marketplace">Amazon, Flipkart, Myntra<span>Expand reach, maximise sales</span></a>
+            <a href="/integrations.html#cart">Shopify, WooCommerce<span>Own your brand, control margins</span></a>
+            <a href="/integrations.html#qcom">Blinkit, Zepto, Instamart<span>Ten-minute delivery, planned</span></a>
+          </div>
+          <div>
+            <div class="lnav-colt">Shipping &amp; Logistics</div>
+            <a href="/integrations.html#carriers">Delhivery, Xpressbees, Bluedart<span>Pan-India coverage, compared</span></a>
+            <a href="/integrations.html#carriers">Shiprocket, Ecom Express<span>Multi-carrier choice, lower cost</span></a>
+            <a href="/tms.html#audit">Freight audit<span>Catch every billing error</span></a>
+          </div>
+          <div>
+            <div class="lnav-colt">Files, ERP &amp; API</div>
+            <a href="/integrations.html#files">Excel &amp; CSV, any source<span>Works with what you export today</span></a>
+            <a href="/integrations.html#erp">Accounting &amp; ERP<span>Tally-ready exports, GSTIN validated</span></a>
+            <a href="/integrations.html#api">API access<span>Feed your own systems, free</span></a>
+          </div>
+        </div>
+        <div class="lnav-foot"><a href="/integrations.html">See every supported channel, carrier and format →</a></div>
+      </div>
+    </div>
+
+    <div class="lnav-item">
+      <a class="lnav-top" href="/calculators.html">Calculators <span class="lnav-car" aria-hidden="true">▼</span></a>
+      <div class="lnav-panel">
+        <a href="/eoq-calculator">EOQ<span>How much to order per PO</span></a>
+        <a href="/safety-stock-calculator">Safety Stock<span>Buffer for demand and lead-time swings</span></a>
+        <a href="/reorder-point-calculator">Reorder Point<span>When to place the next order</span></a>
+        <a href="/landed-cost-calculator">Landed Cost<span>True cost after duty, freight and GST</span></a>
+        <hr>
+        <a href="/calculators.html">All 31 calculators →<span>Live results, no login, free forever</span></a>
+      </div>
+    </div>
+
+    <div class="lnav-item">
+      <a class="lnav-top" href="/pricing.html">Pricing</a>
+    </div>
+
+    <div class="lnav-item">
+      <a class="lnav-top" href="/blog.html">Resources <span class="lnav-car" aria-hidden="true">▼</span></a>
+      <div class="lnav-panel lnav-panel--wide">
+        <div class="lnav-cols lnav-cols--2">
+          <div>
+            <div class="lnav-colt">Learn</div>
+            <a href="/blog.html">Guides &amp; formulas<span>Worked Indian examples</span></a>
+            <a href="/big-billion-days-inventory-plan">Playbooks<span>Festive, FBA, q-com, dead stock</span></a>
+            <a href="/tools.html">What each tool does<span>The whole platform, explained</span></a>
+          </div>
+          <div>
+            <div class="lnav-colt">Company</div>
+            <a href="/vs-unicommerce.html">Compare<span>Where we fit alongside Unicommerce</span></a>
+            <a href="/about.html">About us<span>Why we built this</span></a>
+            <a href="/contact.html">Contact<span>Talk to a founder</span></a>
+            <a href="/feedback.html">Leave a review<span>Shape what we build next</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+<!--/#NAV-->
+
   <div class="top">
     <a href="/" aria-label="LogicstIQ — Home" style="display:inline-flex;align-items:center;text-decoration:none;color:inherit">
       <svg width="200" height="41" viewBox="0 0 440 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible">
@@ -107,5 +230,68 @@ html[data-theme="dark"] .enc{background:#10231A;border-color:#1f6e46;color:#4ade
   });
 </script>
 <script src="/js/liq-icons.js?v=4" defer></script>
+
+<!--#FOOTER-->
+<footer class="lfoot">
+  <div class="container">
+    <div class="lfoot-grid">
+      <div>
+        <h4>LogicstIQ</h4>
+        <p class="small" style="max-width:34ch">
+          Where logistics meets intelligence. Planning and unit-economics tools for
+          Indian sellers and D2C brands. Made in India.
+        </p>
+        <p class="small mt-2">
+          <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp;
+          <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a>, co-founders
+        </p>
+      </div>
+      <div>
+        <h4>Plan</h4>
+        <a href="/demand-planner.html">AI Demand Planner</a>
+        <a href="/unit-economics.html">True margin per SKU</a>
+        <a href="/quick-commerce.html">Quick commerce</a>
+        <a href="/fba-planner/">FBA Planner</a>
+        <a href="/tms.html">Transportation</a>
+        <a href="/tools.html">All tools</a>
+      </div>
+      <div>
+        <h4>Calculators</h4>
+        <a href="/eoq-calculator">EOQ</a>
+        <a href="/safety-stock-calculator">Safety stock</a>
+        <a href="/reorder-point-calculator">Reorder point</a>
+        <a href="/landed-cost-calculator">Landed cost</a>
+        <a href="/gst-calculator-logistics">GST on freight</a>
+        <a href="/calculators.html">All 31 →</a>
+      </div>
+      <div>
+        <h4>Paperwork</h4>
+        <a href="/documents-generator.html">GST &amp; EXIM documents</a>
+        <a href="/sourcing-procurement.html">Sourcing &amp; procurement</a>
+        <a href="/erp-sourcing-procurement.html">General ERP</a>
+        <h4 class="mt-3">Learn</h4>
+        <a href="/blog.html">Guides</a>
+        <a href="/pricing.html">Pricing (free)</a>
+        <a href="/vs-unicommerce.html">Compare</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/feedback.html">Leave a review</a>
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+      </div>
+    </div>
+    <div class="lfoot-bottom">
+      <span>© 2026 LogicstIQ.com · Free to use · 31 calculators need no login</span>
+      <span>Results are planning inputs. Validate against your ERP or WMS before purchasing.
+        <a href="/disclaimer.html">Affiliate disclosure</a></span>
+    </div>
+  </div>
+</footer>
+<!--/#FOOTER-->
+<script defer src="/js/liq-shell.js?v=1"></script>
 </body>
 </html>

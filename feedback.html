@@ -3,27 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Warehouse Management — Space, Stock &amp; Cost Planning | LogicstIQ</title>
-<meta name="description" content="Warehouse planning for Indian sellers and 3PLs: space utilisation, pick-and-pack cost per order, cycle counting, dead stock identification and carrying cost. Live calculators today, full WMS module in development.">
-<meta name="keywords" content="warehouse management India, warehouse space calculator, pick pack cost, cycle count, dead stock, carrying cost, WMS for sellers India">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-<link rel="canonical" href="https://www.logicstiq.com/wms.html"/>
-<meta property="og:title" content="Warehouse planning that starts with cost | LogicstIQ">
-<meta property="og:description" content="Space utilisation, pick-and-pack cost, cycle counting and dead stock. Live calculators today, full module in development.">
+<title>Leave a Review — Tell Us How LogicstIQ Worked for You</title>
+<meta name="description" content="Used a LogicstIQ calculator or the AI Demand Planner? Share how it went. Your feedback shapes what we build next.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.logicstiq.com/feedback.html"/>
+<meta property="og:title" content="Leave a review — LogicstIQ">
+<meta property="og:description" content="Tell us how LogicstIQ worked for you. Your feedback shapes what we build next.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.logicstiq.com/wms.html"/>
+<meta property="og:url" content="https://www.logicstiq.com/feedback.html"/>
 <meta property="og:image" content="https://www.logicstiq.com/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/liq.css?v=1">
 <script>try{var t=localStorage.getItem('liq-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
-{"@type":"ListItem","position":1,"name":"Home","item":"https://www.logicstiq.com/"},
-{"@type":"ListItem","position":2,"name":"Warehouse Management","item":"https://www.logicstiq.com/wms.html"}]}
-</script>
+<style>
+  /* Page-specific only. Everything else comes from liq.css. */
+  .form{ max-width:560px; margin-inline:auto }
+  .form label{ display:block; margin-bottom:6px; font-size:var(--t-sm); font-weight:600 }
+  .form input, .form select, .form textarea{
+    width:100%; padding:11px var(--s2); font:inherit; font-size:var(--t-sm);
+    color:var(--text); background:var(--bg);
+    border:1px solid var(--border-2); border-radius:var(--r);
+  }
+  .form input:focus, .form select:focus, .form textarea:focus{ outline:2px solid var(--brand); outline-offset:1px; border-color:var(--brand) }
+  .form .row{ display:grid; gap:var(--s2); grid-template-columns:1fr 1fr }
+  .form .field + .field{ margin-top:var(--s2) }
+  .form textarea{ min-height:120px; resize:vertical }
+  @media (max-width:560px){ .form .row{ grid-template-columns:1fr } }
+</style>
 </head>
 <body>
 
@@ -150,90 +158,77 @@
 <main>
 
 <header class="phero">
-  <div class="container">
-    <p class="eyebrow">Inventory &amp; warehouse</p>
-    <h1 class="h1 mt-1">Know what your warehouse costs you per order before you optimise it</h1>
-    <p class="lead">Warehouse software usually starts with execution: bins, scans, pick paths. We start one step earlier, with the numbers that tell you whether a change is worth making: cost per order picked, space actually used, and how much capital is sitting in stock that will not move.</p>
-    <div class="btn-row">
-      <a class="btn btn--primary" href="/warehouse-space-calculator?utm_content=wms_hero">Use the warehouse calculators &rarr;</a>
-      <a class="btn btn--ghost" href="/contact.html?utm_content=wms_waitlist">Join the WMS waitlist</a>
-    </div>
-    <p class="small mt-2">Status: the planning calculators are live and free today. The full warehouse module is in development.</p>
+  <div class="container center">
+    <p class="eyebrow">Feedback</p>
+    <h1 class="h1 mt-1" style="margin-inline:auto">Tell us how it actually went</h1>
+    <p class="lead measure-center">
+      Used a calculator or run a forecast? What worked, what didn't, and what you wish it did. All of it shapes what we build next. Two founders read every one of these.
+    </p>
   </div>
 </header>
 
 <section class="section">
   <div class="container">
-    <h2 class="h2 center">What it answers</h2>
-    <p class="lead measure-center center mt-2">Questions a warehouse manager gets asked by finance, that execution software rarely answers directly.</p>
-    <div class="grid grid--3 mt-4">
-      <div class="card card--flat">
-        <h3 class="card__title">Is the space actually full?</h3>
-        <p class="card__body">Utilisation against usable cubic capacity rather than floor area, so you find out whether you need another facility or just better slotting, before signing a lease.</p>
+    <form class="form" id="liqReview" novalidate>
+      <div class="row">
+        <div class="field">
+          <label for="rvName">Your name</label>
+          <input id="rvName" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="rvCompany">Company</label>
+          <input id="rvCompany" name="company" type="text" autocomplete="organization">
+        </div>
       </div>
-      <div class="card card--flat">
-        <h3 class="card__title">What does one order cost to pick?</h3>
-        <p class="card__body">Labour, consumables and time per order, so the cost of a promotion that triples order count is known in advance rather than discovered in the monthly P&amp;L.</p>
+      <div class="row mt-2">
+        <div class="field">
+          <label for="rvRole">Your role</label>
+          <input id="rvRole" name="role" type="text" placeholder="Supply chain lead, founder, planner…">
+        </div>
+        <div class="field">
+          <label for="rvTool">Which tool?</label>
+          <select id="rvTool" name="tool">
+            <option>AI Demand Planner</option>
+            <option>A calculator</option>
+            <option>Paperwork Hub</option>
+            <option>Sourcing &amp; Procurement</option>
+            <option>FBA Planner</option>
+            <option>TMS</option>
+            <option>Something else</option>
+          </select>
+        </div>
       </div>
-      <div class="card card--flat">
-        <h3 class="card__title">How much cash is asleep on the racks?</h3>
-        <p class="card__body">Dead and slow-moving stock quantified in rupees of trapped working capital, with carrying cost applied. Usually the largest recoverable number in the building.</p>
+      <div class="field mt-2">
+        <label for="rvRating">Rating</label>
+        <select id="rvRating" name="rating">
+          <option value="5">★★★★★ Excellent</option>
+          <option value="4">★★★★ Good</option>
+          <option value="3">★★★ Average</option>
+          <option value="2">★★ Poor</option>
+          <option value="1">★ Bad</option>
+        </select>
       </div>
-
-    </div>
-  </div>
-</section>
-
-<section class="section section--soft">
-  <div class="container">
-    <h2 class="h2 center">The path we are taking</h2>
-    <ol class="steps measure-center mt-4">
-      <li><div>
-        <b>Start with the maths, free and open</b>
-        <p>Warehouse space, pick-and-pack cost, cycle count, carrying cost, dead stock and inventory turnover are live calculators today. No login, results update as you type.</p>
-      </div></li>
-      <li><div>
-        <b>Then connect them to real stock data</b>
-        <p>The module in development applies those same formulas to your uploaded inventory file, per SKU and per location, instead of you keying in averages.</p>
-      </div></li>
-      <li><div>
-        <b>Then close the loop with the planner</b>
-        <p>Carrying cost and space constraints become inputs to the buy plan, so a reorder recommendation cannot quietly propose more stock than you can physically hold.</p>
-      </div></li>
-      <li><div>
-        <b>Execution stays where it is</b>
-        <p>Bin management, handheld scanning and pick-path optimisation are not on our roadmap. Those belong in a dedicated WMS, and our numbers are designed to sit alongside one.</p>
-      </div></li>
-
-    </ol>
-    <p class="callout measure-center mt-4"><b>Said plainly:</b> this is warehouse <em>planning</em>, not warehouse <em>execution</em>. If your operators need barcode workflows across multiple facilities today, buy a real WMS. Use us for the cost and capacity decisions that surround it.</p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <h2 class="h2 center">Available today, while this is in build</h2>
-    <p class="lead measure-center center mt-2">Six live calculators cover most of what this module will automate. All free, no login, results update as you type.</p>
-    <div class="channels mt-3">
-      <a class="chip" href="/warehouse-space-calculator">Warehouse space</a>
-      <a class="chip" href="/pick-pack-cost-calculator">Pick &amp; pack cost</a>
-      <a class="chip" href="/cycle-count-calculator">Cycle count</a>
-      <a class="chip" href="/carrying-cost-calculator">Carrying cost</a>
-      <a class="chip" href="/dead-stock-calculator">Dead stock</a>
-      <a class="chip" href="/inventory-turnover-calculator">Inventory turnover</a>
-      <a class="chip" href="/abc-analysis-calculator">ABC analysis</a>
-
-    </div>
+      <div class="field mt-2">
+        <label for="rvBody">Your review</label>
+        <textarea id="rvBody" name="review" required placeholder="What did you use it for, and what happened?"></textarea>
+      </div>
+      <button class="btn btn--primary mt-3" type="submit" style="width:100%">Submit feedback</button>
+      <p class="small mt-2">
+        Your feedback may be featured on LogicstIQ. We never share your details with third parties.
+        <a href="/privacy-policy.html">Privacy policy</a>
+      </p>
+      <p class="callout mt-3" id="rvDone" hidden>Thank you. Your feedback has been submitted.</p>
+    </form>
   </div>
 </section>
 
 <section class="section section--tight section--soft">
   <div class="container center">
-    <h2 class="h2">Start with the number that hurts most</h2>
-    <p class="lead measure-center mt-2">For most warehouses that is dead stock. It takes about two minutes to find out what yours is worth.</p>
+    <h2 class="h2">Would rather just talk?</h2>
+    <p class="lead measure-center mt-2">Both founders are reachable directly.</p>
     <div class="btn-row btn-row--center mt-3">
-      <a class="btn btn--primary" href="/warehouse-space-calculator?utm_content=wms_hero">Use the warehouse calculators &rarr;</a>
-      <a class="btn btn--ghost" href="/contact.html">Tell us what you need from it</a>
+      <a class="btn btn--ghost" href="/contact.html">Contact us</a>
+      <a class="btn btn--ghost" href="/about.html">Why we built this</a>
     </div>
   </div>
 </section>
@@ -306,5 +301,23 @@
 <script defer src="/js/liq-auth.js?v=14"></script>
 <script defer src="/copilot-widget.js"></script>
 <script defer src="/js/liq-shell.js?v=1"></script>
+<script>
+/* Wire this to whatever the old homepage form posted to (Firestore via liq-cloud.js,
+   or your form endpoint). Kept as a no-backend stub so the page never silently fails. */
+(function(){
+  var f=document.getElementById('liqReview'), done=document.getElementById('rvDone');
+  if(!f) return;
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!f.rvName && !document.getElementById('rvName').value.trim()) return;
+    if(window.LIQ && typeof window.LIQ.saveReview==='function'){
+      window.LIQ.saveReview(Object.fromEntries(new FormData(f)));
+    }
+    f.querySelector('button[type=submit]').disabled=true;
+    done.hidden=false;
+    done.scrollIntoView({block:'center'});
+  });
+})();
+</script>
 </body>
 </html>

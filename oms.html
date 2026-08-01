@@ -1,291 +1,308 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OMS — Order Management System — Coming Soon | LogicstIQ</title>
-<meta name="description" content="A single dashboard for orders across Amazon, Flipkart, Meesho, quick commerce and your D2C store — statuses, SLAs, and dispatch readiness. Coming soon on LogicstIQ, free for Indian sellers.">
-<link rel="canonical" href="https://www.logicstiq.com/oms">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800;900&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:#F7F9FD;color:#0F172A;line-height:1.7}
-.wrap{max-width:1080px;margin:0 auto;padding:56px 24px 72px;text-align:center}
-.eyebrow{display:inline-flex;background:#EFF6FF;border:1px solid #DBEAFE;color:#3A55FF;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;border-radius:999px;padding:6px 15px;margin-bottom:16px}
-h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(28px,4.5vw,44px);font-weight:900;letter-spacing:-.03em;margin-bottom:12px}
-.sub{font-size:16px;color:#475569;max-width:680px;margin:0 auto 36px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;text-align:left}
-.card{background:#fff;border:1.5px solid #E2E8F0;border-radius:18px;padding:26px;text-decoration:none;color:inherit;display:block;transition:.18s;position:relative}
-.card:hover{transform:translateY(-3px);border-color:#3A55FF;box-shadow:0 14px 34px rgba(58,85,255,.13)}
-.card .ico{font-size:30px;margin-bottom:10px}
-.card .tag{display:inline-block;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#3A55FF;background:#EFF6FF;border-radius:999px;padding:3px 10px;margin-bottom:9px}
-.card .tag.soon{color:#9B6BFF;background:rgba(155,107,255,.1)}
-.card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;margin-bottom:6px}
-.card p{font-size:13.5px;color:#475569}
-.notice{background:linear-gradient(135deg,#EFF6FF,#F5F3FF);border:1.5px solid #DBEAFE;border-radius:18px;padding:34px;margin-top:8px}
-.notice h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;margin-bottom:8px}
-.notice p{font-size:14.5px;color:#475569;max-width:640px;margin:0 auto 18px}
-.btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#4F6BFF,#9B6BFF);color:#fff;text-decoration:none;padding:12px 26px;border-radius:12px;font-size:14px;font-weight:800;box-shadow:0 6px 18px rgba(79,107,255,.35)}
-.liq-theme-btn{width:44px;height:44px;border-radius:50%;border:1px solid #CBD5E1;background:#fff;font-size:16px;cursor:pointer}
-.liq-theme-float{position:fixed;right:18px;bottom:18px;z-index:99999;box-shadow:0 8px 22px rgba(0,0,0,.25)}
-footer{background:#0F172A;padding:30px 24px;text-align:center;color:#64748B;font-size:13px}
-footer a{color:#BFDBFE;text-decoration:none;font-weight:600}
-[data-theme="dark"] body{background:#0A0D16;color:#F1F5FF}
-[data-theme="dark"] .card{background:#141824;border-color:rgba(255,255,255,.12)}
-[data-theme="dark"] .card p,[data-theme="dark"] .sub,[data-theme="dark"] .notice p{color:#A7B0CC}
-[data-theme="dark"] .notice{background:#0D101C;border-color:rgba(255,255,255,.1)}
-[data-theme="dark"] .eyebrow{background:rgba(58,85,255,.14);border-color:rgba(58,85,255,.32);color:#AEBCFF}
-[data-theme="dark"] .liq-theme-btn{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.2)}
-</style>
-<!--LQDS-->
-<style id="liq-ds-v1">
-
-html:not([data-theme="dark"]){
---bg:#F7F9FD;--surface:#FFFFFF;--card:#FFFFFF;--card2:#F2F5FB;--nav:#FFFFFF;--navtext:#0F1729;
---text:#0F1729;--text2:#3A445C;--text3:#64708A;--text4:#93A0B7;--muted:#64708A;--ink:#0F1729;--navy:#0F1729;--slate:#64748B;
---border:#E6EAF2;--border2:#D9DFEA;--line:#E6EAF2;--line2:#D9DFEA;
---b50:#EEF1FF;--b100:#DEE3FF;--b200:#C4CCFF;--b400:#8A97FF;--b500:#5B6DFF;--b600:#3A55FF;--b700:#2E42D6;--b800:#243086;--b900:#1B2775;
---blue:#3A55FF;--blue2:#3A55FF;--blue-soft:#EEF1FF;--violet:#7C3AED;--purple:#7C3AED;
---green:#16A34A;--amber:#D97706;--red:#DC2626;
---glight:#E7F6EC;--alight:#FBEEDD;--rlight:#FCEAEA;--plight:#F1EBFE;--wlight:#FEF3C7;
---grad:linear-gradient(135deg,#3A55FF,#770BFF);
---lq-sh:0 18px 44px rgba(23,37,84,.13);--lq-sh-sm:0 6px 18px rgba(23,37,84,.08);--lq-ring:0 0 0 4px rgba(58,85,255,.18);--shadow:0 10px 30px rgba(23,37,84,.10);
-}
-html[data-theme="dark"]{
---bg:#0A0D16;--surface:#141824;--card:#141824;--card2:#1B2130;--nav:#0E1220;--navtext:#EAEEF7;
---text:#EAEEF7;--text2:#C2CAD9;--text3:#8A94AB;--text4:#5C6579;--muted:#8A94AB;--ink:#EAEEF7;--navy:#EAEEF7;--slate:#94A3B8;
---border:#242C3D;--border2:#2E3648;--line:#242C3D;--line2:#2E3648;
---b50:#171C2E;--b100:#1E2742;--b200:#28345E;--b400:#5D70F0;--b500:#7385FF;--b600:#4E66FF;--b700:#7C8CFF;--b800:#9DB0FF;--b900:#C3CEFF;
---blue:#4E66FF;--blue2:#4E66FF;--blue-soft:#171C2E;--violet:#A78BFA;--purple:#A78BFA;
---green:#3DD68C;--amber:#F5B342;--red:#F87171;
---glight:#10231A;--alight:#2A2113;--rlight:#2A1516;--plight:#1E1636;--wlight:#2A2410;
---grad:linear-gradient(135deg,#3A55FF,#770BFF);
---lq-sh:0 20px 50px rgba(0,0,0,.55);--lq-sh-sm:0 8px 24px rgba(0,0,0,.45);--lq-ring:0 0 0 4px rgba(91,114,255,.30);--shadow:0 12px 34px rgba(0,0,0,.5);
-}
-html{scroll-behavior:smooth}
-body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
-body,.panel,.card,.calc-card,.tool-card,header,nav,.topbar,.nav,input,select,textarea,button{transition:background-color .25s ease,border-color .25s ease,color .2s ease,box-shadow .2s ease}
-::selection{background:rgba(58,85,255,.22)}
-a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(58,85,255,.35);border-radius:8px}
-*{scrollbar-width:thin;scrollbar-color:#B9C3DA transparent}
-html[data-theme="dark"] *{scrollbar-color:#39435C transparent}
-::-webkit-scrollbar{width:11px;height:11px}
-::-webkit-scrollbar-thumb{background:#C3CCDE;border-radius:20px;border:3px solid transparent;background-clip:content-box}
-html[data-theme="dark"] ::-webkit-scrollbar-thumb{background:#33405C;border:3px solid transparent;background-clip:content-box}
-
-@keyframes lq-fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@keyframes lq-rise{from{transform:scaleY(0);opacity:.5}to{transform:scaleY(1);opacity:1}}
-@keyframes lq-floatm{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes lq-pagein{from{opacity:0}to{opacity:1}}
-@keyframes lq-shine{0%{transform:translateX(-160%) skewX(-18deg)}55%,100%{transform:translateX(360%) skewX(-18deg)}}
-@keyframes lq-barwave{0%,100%{transform:scaleY(.7)}50%{transform:scaleY(1)}}
-@keyframes lq-mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-body{animation:lq-pagein .45s ease both}
-.pf-badge{animation:lq-fadeup .7s ease .10s both}
-.pf-hero h1{animation:lq-fadeup .7s ease .20s both}
-.pf-sub{animation:lq-fadeup .7s ease .32s both}
-.pf-cta{animation:lq-fadeup .7s ease .44s both}
-.pf-ticks{animation:lq-fadeup .7s ease .56s both}
-.pf-card{animation:lq-fadeup .7s ease .50s both, lq-floatm 6s ease-in-out 1.4s infinite}
-.pf-btn-primary{position:relative;overflow:hidden}
-.pf-btn-primary::after{content:"";position:absolute;top:0;left:0;height:100%;width:38%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.5),transparent);transform:translateX(-160%) skewX(-18deg);animation:lq-shine 3.8s ease-in-out 1.4s infinite;pointer-events:none}
-.pf-bars i{transform-origin:bottom;animation:lq-rise .8s cubic-bezier(.2,.7,.2,1) both, lq-barwave 2.8s ease-in-out 1.5s infinite}
-.pf-bars i:nth-child(1){animation-delay:0.6s,1.5s}
-.pf-bars i:nth-child(2){animation-delay:0.67s,1.62s}
-.pf-bars i:nth-child(3){animation-delay:0.74s,1.74s}
-.pf-bars i:nth-child(4){animation-delay:0.81s,1.86s}
-.pf-bars i:nth-child(5){animation-delay:0.88s,1.98s}
-.pf-bars i:nth-child(6){animation-delay:0.95s,2.1s}
-.pf-bars i:nth-child(7){animation-delay:1.02s,2.22s}
-.pf-bars i:nth-child(8){animation-delay:1.09s,2.34s}
-.pf-bars i:nth-child(9){animation-delay:1.16s,2.46s}
-.pf-bars i:nth-child(10){animation-delay:1.23s,2.58s}
-.pf-bars i:nth-child(11){animation-delay:1.3s,2.7s}
-.pf-bars i:nth-child(12){animation-delay:1.37s,2.82s}
-.lq-mqtrack{display:inline-flex;align-items:center;gap:34px;white-space:nowrap;animation:lq-mq 34s linear infinite;will-change:transform}
-.pf-logos:hover .lq-mqtrack{animation-play-state:paused}
-.lqr{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
-.lqr.lqin{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){body,.pf-badge,.pf-hero h1,.pf-sub,.pf-cta,.pf-ticks,.pf-card,.pf-bars i,.pf-btn-primary::after,.lq-mqtrack{animation:none!important}.lqr{opacity:1!important;transform:none!important;transition:none!important}}
-</style>
-<script id="liq-ds-js">
-(function(){function init(){try{
-var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-try{document.querySelectorAll('.pf-logos').forEach(function(el){if(el.dataset.lqmq)return;el.dataset.lqmq='1';var t=document.createElement('span');t.className='lq-mqtrack';while(el.firstChild){t.appendChild(el.firstChild);}t.innerHTML+=t.innerHTML;el.appendChild(t);el.style.overflow='hidden';el.style.display='block';el.style.whiteSpace='nowrap';});}catch(e){}
-if(reduce)return;
-var sel='.calc-card,.twd-card,.sph-card,.sxp-step,.faq-item,.play-card,.review-card,.feature-card,.tool-card,.metric-card,.stat-card,.pfeat';
-var els=[].slice.call(document.querySelectorAll(sel)).filter(function(e){return !(e.closest&&e.closest('.pf-hero'));});
-if(!els.length)return;
-els.forEach(function(e){e.classList.add('lqr');});
-if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('lqin');});return;}
-var io=new IntersectionObserver(function(ents){ents.forEach(function(en){if(en.isIntersecting){en.target.classList.add('lqin');io.unobserve(en.target);}});},{threshold:0.08,rootMargin:'0px 0px -6% 0px'});
-els.forEach(function(e){io.observe(e);});
-setTimeout(function(){els.forEach(function(e){e.classList.add('lqin');});},1800);
-}catch(e){}}
-if(document.readyState!=='loading')init();else document.addEventListener('DOMContentLoaded',init);})();
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Management — Planning-First OMS for Indian Sellers | LogicstIQ</title>
+<meta name="description" content="A planning-first order management layer for Indian marketplace and D2C sellers. One view of orders across Amazon, Flipkart, Myntra, Meesho, Shopify and quick commerce, with contribution per order after fees, GST and RTO. In active development.">
+<meta name="keywords" content="order management system India, multichannel OMS, OMS for Amazon Flipkart sellers, order management software India, contribution per order">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://www.logicstiq.com/oms.html"/>
+<meta property="og:title" content="Order Management, built planning-first | LogicstIQ">
+<meta property="og:description" content="One view of orders across every channel, with true contribution per order. In active development.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.logicstiq.com/oms.html"/>
+<meta property="og:image" content="https://www.logicstiq.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/liq.css?v=1">
+<script>try{var t=localStorage.getItem('liq-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":"https://www.logicstiq.com/"},
+{"@type":"ListItem","position":2,"name":"Order Management","item":"https://www.logicstiq.com/oms.html"}]}
 </script>
-<!--/LQDS-->
 </head>
 <body>
-<!-- ===== LogicstIQ unified navigation ===== -->
-<style id="lnav-css">
-.lnav{position:sticky;top:0;z-index:9000;background:#fff;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:18px;padding:0 22px;height:64px;font-family:'Inter','Plus Jakarta Sans',sans-serif}
-.lnav-logo{display:inline-flex;align-items:center;text-decoration:none;flex-shrink:0}
-.lnav-menu{display:flex;align-items:center;gap:2px;margin-left:auto}
-.lnav-item{position:static;display:flex;align-items:center;align-self:stretch}
-.lnav-top{display:inline-flex;align-items:center;gap:5px;padding:9px 11px;border-radius:9px;font-size:13.5px;font-weight:600;color:#0F172A;text-decoration:none;white-space:nowrap;cursor:pointer;background:none;border:none;font-family:inherit}
-.lnav-top:hover{background:#EFF3FF;color:#3A55FF}
-.lnav-car{font-size:9px;opacity:.55;transition:transform .18s}
-.lnav-beta{background:linear-gradient(135deg,#4F6BFF,#9B6BFF);color:#fff;font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:999px;letter-spacing:.5px}
-.lnav-panel{position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid #E2E8F0;box-shadow:0 18px 40px rgba(15,23,42,.12);display:none;padding:26px 32px;z-index:9001}
-.lnav-panel-in{max-width:1080px;margin:0 auto;display:flex;gap:40px;flex-wrap:wrap}
-.lnav-col{min-width:200px}
-.lnav-colt{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#94A3B8;margin-bottom:9px}
-.lnav-panel a{display:block;padding:6px 8px;margin:0 -8px;border-radius:7px;font-size:13px;font-weight:600;color:#1E293B;text-decoration:none}
-.lnav-panel a:hover{background:#EFF3FF;color:#3A55FF}
-.lnav-mini{font-size:10px;font-weight:700;color:#9B6BFF;background:rgba(155,107,255,.1);padding:1px 7px;border-radius:999px;margin-left:6px}
-.lnav-viewall{margin-top:14px;padding-top:14px;border-top:1px solid #E2E8F0;width:100%}
-.lnav-viewall a{display:inline-block;font-size:13px;font-weight:800;color:#3A55FF!important}
-.lnav-burger{display:none;margin-left:auto;background:#fff;border:1px solid #CBD5E1;border-radius:9px;width:40px;height:40px;cursor:pointer;font-size:18px;color:#0F172A;line-height:1}
-@media(hover:hover) and (min-width:1101px){.lnav-item.open>.lnav-panel,.lnav-item:focus-within>.lnav-panel{display:block}.lnav-item.open .lnav-car{transform:rotate(180deg)}}
-@media(max-width:1100px){
- .lnav{flex-wrap:wrap;height:auto;min-height:60px;padding:8px 14px}
- .lnav-logo svg{height:34px;width:auto}
- .lnav-burger{display:inline-flex;align-items:center;justify-content:center}
- .lnav-menu{display:none;flex-direction:column;align-items:stretch;width:100%;gap:0;padding:6px 0 12px}
- .lnav.open .lnav-menu{display:flex}
- .lnav-item{position:relative;width:100%;display:block;align-self:auto}
- .lnav-top{width:100%;justify-content:space-between;padding:13px 8px;font-size:15px;border-bottom:1px solid #EEF2F7;border-radius:0}
- .lnav-panel{position:static;box-shadow:none;border:none;padding:4px 8px 10px;background:#F8FAFF}
- .lnav-item.open>.lnav-panel{display:block}
- .lnav-item.open .lnav-car{transform:rotate(180deg)}
- .lnav-panel-in{flex-direction:column;gap:14px}
-}
-[data-theme="dark"] .lnav{background:rgba(9,10,18,.94);border-bottom-color:rgba(255,255,255,.09)}
-[data-theme="dark"] .lnav-top{color:#E7ECFB}
-[data-theme="dark"] .lnav-top:hover{background:rgba(58,85,255,.14);color:#AEBCFF}
-[data-theme="dark"] .lnav-panel{background:#0D101C;border-color:rgba(255,255,255,.09)}
-[data-theme="dark"] .lnav-panel a{color:#DBE3F5}
-[data-theme="dark"] .lnav-panel a:hover{background:rgba(58,85,255,.14);color:#AEBCFF}
-[data-theme="dark"] .lnav-colt{color:#7E88A8}
-[data-theme="dark"] .lnav-burger{background:rgba(255,255,255,.06);color:#E7ECFB;border-color:rgba(255,255,255,.2)}
-[data-theme="dark"] .lnav-logo text tspan:first-child{fill:#FFFFFF}
-[data-theme="dark"] .lnav-viewall{border-top-color:rgba(255,255,255,.09)}
-[data-theme="dark"] .lnav-panel .lnav-viewall a{color:#AEBCFF!important}
-[data-theme="dark"] .lnav-top,[data-theme="dark"] .lnav-panel a{border-bottom-color:rgba(255,255,255,.06)}
-.lnav>.liq-theme-btn{flex-shrink:0;width:36px;height:36px;border-radius:9px;border:1px solid #CBD5E1;background:#fff;color:#0F172A;font-size:15px;line-height:1;cursor:pointer;display:inline-grid;place-items:center;padding:0}
-.lnav>.liq-theme-btn:hover{border-color:#3A55FF}
-[data-theme="dark"] .lnav>.liq-theme-btn{background:rgba(255,255,255,.07);color:#E7ECFB;border-color:rgba(255,255,255,.22)}
-@media(max-width:1100px){.lnav-menu{order:10}}
-</style>
-<nav class="lnav" id="lnav">
-<a href="/" class="lnav-logo" aria-label="LogicstIQ — Home">
-  <svg width="200" height="41" viewBox="0 0 440 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible">
-    <defs><linearGradient id="lnav_grad" x1="10" y1="70" x2="400" y2="20" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F6BFF"/><stop offset="100%" stop-color="#9B6BFF"/></linearGradient></defs>
-    <path d="M10 40 L26 40 L42 66 L64 22 L80 22" stroke="url(#lnav_grad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <path d="M74 14 L82 22 L74 30" stroke="#9B6BFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <circle cx="42" cy="66" r="4.5" fill="#4F6BFF"/><circle cx="64" cy="22" r="4.5" fill="#9B6BFF"/>
-    <text x="98" y="44" font-family="'Plus Jakarta Sans','Inter',sans-serif" font-size="36" font-weight="800" letter-spacing="-1.4"><tspan fill="#4F6BFF">Logicst</tspan><tspan fill="#9B6BFF">IQ</tspan></text>
-    <text x="99" y="70" font-family="'Inter',sans-serif" font-size="16" font-weight="600" letter-spacing="0.3" fill="#64748B">Where Logistics Meets Intelligence</text>
-  </svg>
-</a>
-  <button class="lnav-burger" id="lnavBurger" type="button" aria-label="Open menu">☰</button>
-  <div class="lnav-menu">
-    <div class="lnav-item">
-      <a class="lnav-top" href="/calculators.html">Calculators <span class="lnav-car">▼</span></a>
-      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col"><div class="lnav-colt">📦 Inventory & Planning</div><a href="/eoq-calculator">EOQ Calculator</a><a href="/safety-stock-calculator">Safety Stock</a><a href="/reorder-point-calculator">Reorder Point</a><a href="/abc-analysis-calculator">ABC Analysis</a><a href="/inventory-turnover-calculator">Inventory Turnover</a><a href="/moq-calculator">MOQ Calculator</a><a href="/dead-stock-calculator">Dead Stock</a><a href="/cycle-count-calculator">Cycle Count</a></div><div class="lnav-col"><div class="lnav-colt">⏱️ Performance & Suppliers</div><a href="/otif-calculator">OTIF Calculator</a><a href="/fill-rate-calculator">Fill Rate</a><a href="/demand-forecast-calculator">Demand Forecast</a><a href="/supplier-scorecard-calculator">Supplier Scorecard</a><a href="/supplier-lead-time-variability-calculator">Lead Time Variability</a><a href="/disruption-impact-calculator">Disruption Impact</a></div><div class="lnav-col"><div class="lnav-colt">💰 Costing & Finance</div><a href="/landed-cost-calculator">Landed Cost</a><a href="/gst-calculator-logistics">GST Calculator</a><a href="/cogs-calculator">COGS Calculator</a><a href="/gross-margin-calculator">Gross Margin</a><a href="/break-even-calculator">Break-Even</a><a href="/working-capital-calculator">Working Capital</a><a href="/carrying-cost-calculator">Carrying Cost</a><a href="/stockout-cost-calculator">Stockout Cost</a><a href="/days-inventory-outstanding-calculator">Days Inventory Outstanding</a><a href="/cash-conversion-cycle-calculator">Cash Conversion Cycle</a></div><div class="lnav-col"><div class="lnav-colt">🚛 Logistics & Warehouse</div><a href="/freight-cost-calculator">Freight Cost</a><a href="/warehouse-space-calculator">Warehouse Space</a><a href="/lead-time-calculator">Lead Time</a><a href="/shipping-cost-per-unit-calculator">Shipping Cost / Unit</a><a href="/volumetric-weight-calculator">Volumetric Weight</a><a href="/pick-pack-cost-calculator">Pick & Pack Cost</a><a href="/carbon-footprint-logistics">Carbon Footprint</a></div><div class="lnav-viewall"><a href="/calculators.html">View all 31 calculators →</a></div></div></div>
-    </div>
-    <a class="lnav-top" href="/demand-planner.html">AI Demand Planner</a>
-    <div class="lnav-item">
-      <a class="lnav-top" href="/documents-generator.html">Paperwork Hub <span class="lnav-car">▼</span></a>
-      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col"><div class="lnav-colt">🏪 Business Billing</div><a href="/documents-generator.html#invoice">GST Invoice</a><a href="/documents-generator.html#po">Purchase Order</a><a href="/documents-generator.html#proforma">Proforma</a><a href="/documents-generator.html#quotation">Quotation</a><a href="/documents-generator.html#challan">Delivery Challan</a><a href="/documents-generator.html#packing">Packing List</a></div><div class="lnav-col"><div class="lnav-colt">🔗 Supply Chain &amp; EXIM</div><a href="/documents-generator.html#ci">Commercial Invoice</a><a href="/documents-generator.html#epl">Export Packing List</a><a href="/documents-generator.html#epi">Export Proforma</a><a href="/documents-generator.html#coo">Certificate of Origin</a><a href="/documents-generator.html#bl">Bill of Lading / AWB</a><a href="/documents-generator.html#sb">Shipping Bill (ICEGATE)</a></div><div class="lnav-col"><div class="lnav-colt">&nbsp;</div><a href="/documents-generator.html#boe">Bill of Entry (ICEGATE)</a><a href="/documents-generator.html#lc">LC Checklist</a><a href="/documents-generator.html#boex">Bill of Exchange</a><a href="/documents-generator.html#ebrc">eBRC Worksheet</a><a href="/documents-generator.html#rodtep">RoDTEP / Drawback</a></div><div class="lnav-viewall"><a href="/documents-generator.html">Open Paperwork Hub →</a></div></div></div>
-    </div>
-    <div class="lnav-item">
-      <a class="lnav-top" href="/ecommerce.html">Ecommerce <span class="lnav-car">▼</span></a>
-      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col" style="min-width:280px"><div class="lnav-colt">🏪 Ecommerce Suite</div><a href="/demand-planner.html">🤖 AI Demand Planner <span class="lnav-mini">Live</span></a><a href="/sourcing-procurement.html">🛒 Sourcing &amp; Procurement — Seller Paperwork Hub <span class="lnav-mini">Live</span></a><a href="/fba-planner/">📦 FBA Planner <span class="lnav-mini">Live</span></a><a href="/tms.html">🚛 TMS — Transportation Management <span class="lnav-mini">Beta</span></a><a href="/oms.html">🧾 OMS — Order Management <span class="lnav-mini">Coming soon</span></a><a href="/wms.html">🏭 WMS — Warehouse Management <span class="lnav-mini">Coming soon</span></a><a href="/returns.html">↩️ Returns Management <span class="lnav-mini">Coming soon</span></a><div class="lnav-viewall"><a href="/ecommerce.html">Open Ecommerce hub →</a></div></div></div></div>
-    </div>
-    <div class="lnav-item">
-      <a class="lnav-top" href="/tms.html">TMS <span class="lnav-beta">Beta</span> <span class="lnav-car">▼</span></a>
-      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col"><div class="lnav-colt">🚛 Plan &amp; Book</div><a href="/tms.html#tower">◎ Control Tower</a><a href="/tms.html#ship">▤ Shipments</a><a href="/tms.html#carriers">◆ Carriers &amp; Rates</a><a href="/tms.html#load">▦ Load Planning</a><a href="/tms.html#route">⤳ Route Optimization</a></div><div class="lnav-col"><div class="lnav-colt">📡 Execute &amp; Audit</div><a href="/tms.html#dock">▥ Dock Scheduling</a><a href="/tms.html#track">◈ Tracking Tower</a><a href="/tms.html#audit">₹ Freight Audit</a><a href="/tms.html#reports">▧ Reports</a><a href="/tms.html#ai">✦ AI Copilot</a></div><div class="lnav-viewall"><a href="/tms.html">Open TMS →</a></div></div></div>
-    </div>
-    <div class="lnav-item">
-      <a class="lnav-top" href="/blog.html">Blog <span class="lnav-car">▼</span></a>
-      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col" style="min-width:320px"><div class="lnav-colt">📚 Guides</div><a href="/blog/landed-cost-guide.html">Landed Cost Explained</a><a href="/blog/eoq-calculator.html">EOQ — Complete Guide</a><a href="/blog/demand-planning-amazon-flipkart.html">Demand Planning for Amazon & Flipkart</a><a href="/blog/safety-stock-calculator.html">Safety Stock Formula</a><a href="/blog/what-is-otif.html">What is OTIF?</a><a href="/blog/inventory-turnover-formula.html">Inventory Turnover Formula</a><a href="/blog/abc-analysis-guide.html">ABC Analysis Guide</a><a href="/blog/gst-calculator-logistics.html">GST on Freight & Logistics</a><div class="lnav-viewall"><a href="/blog.html">View all articles →</a></div></div></div></div>
-    </div>
-    <a class="lnav-top" href="/about.html">About</a>
-    <a class="lnav-top" href="/contact.html">Contact</a>
-  </div>
-  <button id="liqTheme" class="liq-theme-btn" type="button" aria-label="Toggle light or dark mode" title="Toggle light / dark">🌙</button>
-</nav>
-<script id="lnav-js">
-(function(){var nav=document.getElementById('lnav');if(!nav)return;
-var burger=document.getElementById('lnavBurger');
-if(burger)burger.addEventListener('click',function(e){e.stopPropagation();nav.classList.toggle('open');});
-var mobile=function(){return window.matchMedia('(max-width:1100px)').matches;};
-nav.querySelectorAll('.lnav-item>.lnav-top').forEach(function(t){
- t.addEventListener('click',function(e){
-  if(mobile()){var it=t.parentElement;
-   if(!it.classList.contains('open')){e.preventDefault();
-    nav.querySelectorAll('.lnav-item.open').forEach(function(o){if(o!==it)o.classList.remove('open');});
-    it.classList.add('open');}
-  }});});
-var hoverTimer=null;
-nav.querySelectorAll('.lnav-item').forEach(function(it){
- it.addEventListener('mouseenter',function(){if(mobile())return;clearTimeout(hoverTimer);
-  nav.querySelectorAll('.lnav-item.open').forEach(function(o){if(o!==it)o.classList.remove('open');});it.classList.add('open');});
- it.addEventListener('mouseleave',function(){if(mobile())return;clearTimeout(hoverTimer);
-  hoverTimer=setTimeout(function(){it.classList.remove('open');},300);});
-});
-document.addEventListener('click',function(e){if(!nav.contains(e.target)){nav.classList.remove('open');nav.querySelectorAll('.lnav-item.open').forEach(function(o){o.classList.remove('open');});}});
-window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList.remove('open');nav.querySelectorAll('.lnav-item.open').forEach(function(o){o.classList.remove('open');});}});
-})();
-</script>
-<!-- ===== end unified navigation ===== -->
-<div class="wrap">
-  <div class="eyebrow">🧾 Ecommerce Suite</div>
-  <h1>OMS — Order Management System</h1>
-  <p class="sub">Every sale you make — on Amazon, Flipkart, Meesho, a quick-commerce platform or your own D2C store — becomes an <b>order</b> that must be confirmed, packed, invoiced, dispatched and delivered inside a strict SLA. Order management is the discipline of running that pipeline across all channels at once, and it is where multi-channel sellers most often lose money and ratings.</p>
-  <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;letter-spacing:-.02em;text-align:left;margin:26px 0 12px">⚙️ How order management works</h2>
-  <div class="grid" style="margin-bottom:6px">
-    <div class="card"><h3>Order capture</h3><p>Orders arrive continuously from every channel, each with its own portal, formats and SLA clocks. Without a single view, sellers tab-hop between five dashboards all day.</p></div>
-    <div class="card"><h3>Processing & dispatch</h3><p>Each order moves through confirm → pack → invoice → manifest → handover. Miss a step or a cutoff time and the marketplace penalises your seller metrics.</p></div>
-    <div class="card"><h3>The stock connection</h3><p>Every order must decrement the right stock pool. When channels sell from the same inventory without coordination, overselling and cancellations follow.</p></div>
-  </div>
-  <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;letter-spacing:-.02em;text-align:left;margin:26px 0 12px">🛠️ What our OMS will do</h2>
-  <div class="grid" style="margin-bottom:6px">
-    <div class="card"><h3>One inbox for all orders</h3><p>Amazon, Flipkart, Meesho, quick-commerce and D2C orders in a single queue with unified statuses and SLA countdowns.</p></div>
-    <div class="card"><h3>Dispatch readiness</h3><p>A packing queue that shows exactly what must ship today, in cutoff order, so nothing breaches SLA.</p></div>
-    <div class="card"><h3>Channel-aware stock view</h3><p>See which channel each unit is committed to, and get alerts before overselling happens.</p></div>
-  </div>
-  <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;letter-spacing:-.02em;text-align:left;margin:26px 0 12px">🎯 Problems we are solving</h2>
-  <div class="grid" style="margin-bottom:6px">
-    <div class="card"><h3>No single view</h3><p>Sellers juggle multiple seller panels with different rules — our OMS gives one operational picture.</p></div>
-    <div class="card"><h3>SLA breaches & penalties</h3><p>Missed cutoffs quietly damage account health; deadline-ordered queues prevent that.</p></div>
-    <div class="card"><h3>Overselling & cancellations</h3><p>Cancelled orders hurt ratings more than slow ones; a coordinated stock view stops selling what you do not have.</p></div>
-  </div>
-  <div class="notice">
-    <h2 style="font-family:'Plus Jakarta Sans',sans-serif">🚧 This tool is coming soon</h2>
-    <p>This tool is in active development and will launch here shortly — free, like everything else on LogicstIQ. Meanwhile, the FBA Planner is live, and all 31 calculators are ready to use.</p>
-    <a class="btn" href="/ecommerce.html">← Back to Ecommerce Suite</a>&nbsp;&nbsp;<a class="btn" style="background:linear-gradient(135deg,#0F172A,#334155)" href="/calculators.html">Explore 31 Free Calculators</a>
-  </div>
-</div>
-<footer>
-  <p>© 2026 <a href="https://www.logicstiq.com">LogicstIQ.com</a> · Where Logistics Meets Intelligence</p>
-  <p style="margin-top:10px;font-size:12px;color:#94A3B8;text-align:center">Contact: <a href="mailto:contactus@logicstiq.com" style="color:#9B6BFF">contactus@logicstiq.com</a></p>
-</footer>
-<script>
-(function(){var r=document.documentElement;
-function lbl(){var b=document.getElementById('liqTheme');if(b)b.textContent=r.getAttribute('data-theme')==='dark'?'\u2600\ufe0f':'\ud83c\udf19';}
-function set(t){r.setAttribute('data-theme',t);lbl();try{localStorage.setItem('liq-theme',t)}catch(e){}}
-try{var sv=localStorage.getItem('liq-theme');if(sv)r.setAttribute('data-theme',sv);}catch(e){}
-var btn=document.getElementById('liqTheme')||document.createElement('button');btn.id='liqTheme';btn.type='button';btn.className=btn.className||'liq-theme-btn';
-btn.setAttribute('aria-label','Toggle light or dark mode');btn.title='Toggle light / dark';btn.textContent='\ud83c\udf19';
-btn.addEventListener('click',function(){set(r.getAttribute('data-theme')==='dark'?'light':'dark');});
-if(!btn.parentNode){btn.classList.add('liq-theme-float');document.body.appendChild(btn);}lbl();})();
-</script>
 
-<script src="/js/liq-logo.js?v=2" defer></script>
-<script type="module" src="/js/liq-auth.js?v=14"></script>
-<script src="/js/liq-icons.js?v=4" defer></script>
+<!--#NAV-->
+<nav class="lnav" id="lnav">
+  <a href="/" class="lnav-logo" aria-label="LogicstIQ — Home">
+    <svg width="188" height="34" viewBox="0 0 440 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="lnav_grad" x1="10" y1="60" x2="330" y2="18" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#4F6BFF"/><stop offset="100%" stop-color="#9B6BFF"/></linearGradient></defs>
+      <path d="M8 36 L23 36 L38 60 L59 20 L74 20" stroke="url(#lnav_grad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M68 12 L76 20 L68 28" stroke="#9B6BFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="38" cy="60" r="4.5" fill="#4F6BFF"/><circle cx="59" cy="20" r="4.5" fill="#9B6BFF"/>
+      <text x="92" y="46" font-family="Inter,sans-serif" font-size="36" font-weight="600" letter-spacing="-1.6">
+        <tspan fill="#4F6BFF">Logicst</tspan><tspan fill="#9B6BFF">IQ</tspan></text>
+    </svg>
+  </a>
+
+  <div class="lnav-actions">
+    <button id="liqTheme" class="liq-theme-btn" type="button" aria-label="Toggle light or dark mode" title="Toggle light / dark">◐</button>
+    <a class="btn btn--primary btn--sm" href="/demand-planner.html?utm_content=nav_cta">Start free</a>
+  </div>
+  <button class="lnav-burger" id="lnavBurger" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+
+  <div class="lnav-menu">
+
+    <div class="lnav-item">
+      <a class="lnav-top" href="/tools.html">Products <span class="lnav-car" aria-hidden="true">▼</span></a>
+      <div class="lnav-panel lnav-panel--wide">
+        <div class="lnav-cols">
+          <div>
+            <div class="lnav-colt">Planning &amp; Forecasting</div>
+            <a href="/demand-planner.html">AI Demand Planner<span>Never lose sales to stockouts</span></a>
+            <a href="/unit-economics.html">True Margin per SKU<span>See profit after fees, GST and RTO</span></a>
+            <a href="/quick-commerce.html">Quick Commerce<span>Capture every instant purchase</span></a>
+            <a href="/fba-planner/">Amazon FBA Planner<span>Restock inside your limits</span></a>
+          </div>
+          <div>
+            <div class="lnav-colt">Inventory &amp; Warehouse</div>
+            <a href="/wms.html">Warehouse Management<span>Fulfil faster, cut operating cost</span></a>
+            <a href="/calculators.html">Inventory Control<span>EOQ, safety stock, reorder points</span></a>
+            <a href="/sourcing-procurement.html">Sourcing &amp; Procurement<span>PR to PO to GRN, matched</span></a>
+            <a href="/erp-sourcing-procurement.html">General ERP<span>Procure-to-pay for manufacturers</span></a>
+          </div>
+          <div>
+            <div class="lnav-colt">Order &amp; Fulfilment</div>
+            <a href="/oms.html">Order Management<span>One panel for every channel</span></a>
+            <a href="/tms.html">Transportation<span>Rate-shop carriers, track dispatch</span></a>
+            <a href="/returns.html">Returns &amp; RTO<span>Recover margin lost to returns</span></a>
+            <a href="/documents-generator.html">Paperwork &amp; EXIM<span>GST invoices to ICEGATE bills</span></a>
+          </div>
+        </div>
+        <div class="lnav-foot"><a href="/tools.html">See all tools and what each one does →</a></div>
+      </div>
+    </div>
+
+    <div class="lnav-item">
+      <a class="lnav-top" href="/integrations.html">Integrations <span class="lnav-car" aria-hidden="true">▼</span></a>
+      <div class="lnav-panel lnav-panel--wide">
+        <div class="lnav-cols">
+          <div>
+            <div class="lnav-colt">Marketplace &amp; Quick Commerce</div>
+            <a href="/integrations.html#marketplace">Amazon, Flipkart, Myntra<span>Expand reach, maximise sales</span></a>
+            <a href="/integrations.html#cart">Shopify, WooCommerce<span>Own your brand, control margins</span></a>
+            <a href="/integrations.html#qcom">Blinkit, Zepto, Instamart<span>Ten-minute delivery, planned</span></a>
+          </div>
+          <div>
+            <div class="lnav-colt">Shipping &amp; Logistics</div>
+            <a href="/integrations.html#carriers">Delhivery, Xpressbees, Bluedart<span>Pan-India coverage, compared</span></a>
+            <a href="/integrations.html#carriers">Shiprocket, Ecom Express<span>Multi-carrier choice, lower cost</span></a>
+            <a href="/tms.html#audit">Freight audit<span>Catch every billing error</span></a>
+          </div>
+          <div>
+            <div class="lnav-colt">Files, ERP &amp; API</div>
+            <a href="/integrations.html#files">Excel &amp; CSV, any source<span>Works with what you export today</span></a>
+            <a href="/integrations.html#erp">Accounting &amp; ERP<span>Tally-ready exports, GSTIN validated</span></a>
+            <a href="/integrations.html#api">API access<span>Feed your own systems, free</span></a>
+          </div>
+        </div>
+        <div class="lnav-foot"><a href="/integrations.html">See every supported channel, carrier and format →</a></div>
+      </div>
+    </div>
+
+    <div class="lnav-item">
+      <a class="lnav-top" href="/calculators.html">Calculators <span class="lnav-car" aria-hidden="true">▼</span></a>
+      <div class="lnav-panel">
+        <a href="/eoq-calculator">EOQ<span>How much to order per PO</span></a>
+        <a href="/safety-stock-calculator">Safety Stock<span>Buffer for demand and lead-time swings</span></a>
+        <a href="/reorder-point-calculator">Reorder Point<span>When to place the next order</span></a>
+        <a href="/landed-cost-calculator">Landed Cost<span>True cost after duty, freight and GST</span></a>
+        <hr>
+        <a href="/calculators.html">All 31 calculators →<span>Live results, no login, free forever</span></a>
+      </div>
+    </div>
+
+    <div class="lnav-item">
+      <a class="lnav-top" href="/pricing.html">Pricing</a>
+    </div>
+
+    <div class="lnav-item">
+      <a class="lnav-top" href="/blog.html">Resources <span class="lnav-car" aria-hidden="true">▼</span></a>
+      <div class="lnav-panel lnav-panel--wide">
+        <div class="lnav-cols lnav-cols--2">
+          <div>
+            <div class="lnav-colt">Learn</div>
+            <a href="/blog.html">Guides &amp; formulas<span>Worked Indian examples</span></a>
+            <a href="/big-billion-days-inventory-plan">Playbooks<span>Festive, FBA, q-com, dead stock</span></a>
+            <a href="/tools.html">What each tool does<span>The whole platform, explained</span></a>
+          </div>
+          <div>
+            <div class="lnav-colt">Company</div>
+            <a href="/vs-unicommerce.html">Compare<span>Where we fit alongside Unicommerce</span></a>
+            <a href="/about.html">About us<span>Why we built this</span></a>
+            <a href="/contact.html">Contact<span>Talk to a founder</span></a>
+            <a href="/feedback.html">Leave a review<span>Shape what we build next</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+<!--/#NAV-->
+
+<main>
+
+<header class="phero">
+  <div class="container">
+    <p class="eyebrow">Order &amp; fulfilment</p>
+    <h1 class="h1 mt-1">Every channel in one view, and what each order actually earned</h1>
+    <p class="lead">Most order management tools tell you an order arrived. Ours is being built to tell you what it contributed after commission, fulfilment fees, GST and the odds of it coming back. Same order list, a column nobody else shows.</p>
+    <div class="btn-row">
+      <a class="btn btn--primary" href="/demand-planner.html?utm_content=oms_hero">Use the planner today &rarr;</a>
+      <a class="btn btn--ghost" href="/contact.html?utm_content=oms_waitlist">Join the OMS waitlist</a>
+    </div>
+    <p class="small mt-2">Status: in active development. The economics engine behind it is live today inside the AI Demand Planner.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <h2 class="h2 center">What it is being built to do</h2>
+    <p class="lead measure-center center mt-2">Deliberately narrow. We are not rebuilding a warehouse execution system. We are adding the decision layer that order lists normally lack.</p>
+    <div class="grid grid--3 mt-4">
+      <div class="card card--flat">
+        <h3 class="card__title">One order list, every channel</h3>
+        <p class="card__body">Marketplace, D2C and quick-commerce orders normalised into a single view with consistent SKU identity, so a Flipkart FSN and an Amazon ASIN for the same product stop being two different products.</p>
+      </div>
+      <div class="card card--flat">
+        <h3 class="card__title">Contribution per order, not just value</h3>
+        <p class="card__body">Order value is easy. Order <em>contribution</em>, after that channel's commission, fulfilment and closing fees, net GST and its RTO profile, is the number that tells you whether the day was good.</p>
+      </div>
+      <div class="card card--flat">
+        <h3 class="card__title">Exceptions worth your attention</h3>
+        <p class="card__body">Not a wall of notifications. Orders flagged because they are unprofitable at that discount, at risk of breaching a promise date, or concentrated in a pincode with a poor delivery record.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <h2 class="h2 center">How it will fit with what you already run</h2>
+    <ol class="steps measure-center mt-4">
+      <li><div>
+        <b>It reads, it doesn't take over</b>
+        <p>Your marketplace panels and any WMS you use stay the source of truth for fulfilment. We read order data through official APIs and file exports, and write back nothing.</p>
+      </div></li>
+      <li><div>
+        <b>SKU identity gets resolved first</b>
+        <p>The same normaliser that powers the demand planner maps FSN, ASIN, FNSKU and your internal SKU codes onto one product identity. Without that step, per-order economics are meaningless.</p>
+      </div></li>
+      <li><div>
+        <b>Channel economics are applied per order</b>
+        <p>Commission, fees, net GST and the channel RTO profile come from the same models the planner uses, so the number on an order agrees with the number in your forecast. <a href="/unit-economics.html">See the calculation &rarr;</a></p>
+      </div></li>
+      <li><div>
+        <b>Then it feeds the plan</b>
+        <p>Actual orders become the history the forecast learns from, and the forecast-versus-actual accuracy badge gets sharper every cycle. The loop closing is the point of building this at all.</p>
+      </div></li>
+
+    </ol>
+    <p class="callout measure-center mt-4"><b>Where an OMS like ours is the wrong tool.</b> If you need order routing across multiple fulfilment centres, pick-pack workflows on handheld scanners, or courier label generation at scale, a dedicated execution platform will serve you far better and we will happily say so. <a href="/vs-unicommerce.html">Where the line sits &rarr;</a></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="h2 center">Available today, while this is in build</h2>
+    <p class="lead measure-center center mt-2">The parts of this that already exist are live in other tools. Nothing is being held back behind the OMS label.</p>
+    <div class="channels mt-3">
+      <a class="chip" href="/demand-planner.html">Multi-channel forecasting</a>
+      <a class="chip" href="/unit-economics.html">Contribution per SKU after RTO</a>
+      <a class="chip" href="/documents-generator.html">GST invoices &amp; challans</a>
+      <a class="chip" href="/sourcing-procurement.html">Purchase orders &amp; GRNs</a>
+      <a class="chip" href="/tms.html">Dispatch &amp; carrier rates</a>
+
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight section--soft">
+  <div class="container center">
+    <h2 class="h2">Tell us what your order list is missing</h2>
+    <p class="lead measure-center mt-2">We are building this from what sellers describe, not from a feature matrix. The waitlist is a conversation, not a mailing list.</p>
+    <div class="btn-row btn-row--center mt-3">
+      <a class="btn btn--primary" href="/demand-planner.html?utm_content=oms_hero">Use the planner today &rarr;</a>
+      <a class="btn btn--ghost" href="/contact.html">Tell us what you need from it</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!--#FOOTER-->
+<footer class="lfoot">
+  <div class="container">
+    <div class="lfoot-grid">
+      <div>
+        <h4>LogicstIQ</h4>
+        <p class="small" style="max-width:34ch">
+          Where logistics meets intelligence. Planning and unit-economics tools for
+          Indian sellers and D2C brands. Made in India.
+        </p>
+        <p class="small mt-2">
+          <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp;
+          <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a>, co-founders
+        </p>
+      </div>
+      <div>
+        <h4>Plan</h4>
+        <a href="/demand-planner.html">AI Demand Planner</a>
+        <a href="/unit-economics.html">True margin per SKU</a>
+        <a href="/quick-commerce.html">Quick commerce</a>
+        <a href="/fba-planner/">FBA Planner</a>
+        <a href="/tms.html">Transportation</a>
+        <a href="/tools.html">All tools</a>
+      </div>
+      <div>
+        <h4>Calculators</h4>
+        <a href="/eoq-calculator">EOQ</a>
+        <a href="/safety-stock-calculator">Safety stock</a>
+        <a href="/reorder-point-calculator">Reorder point</a>
+        <a href="/landed-cost-calculator">Landed cost</a>
+        <a href="/gst-calculator-logistics">GST on freight</a>
+        <a href="/calculators.html">All 31 →</a>
+      </div>
+      <div>
+        <h4>Paperwork</h4>
+        <a href="/documents-generator.html">GST &amp; EXIM documents</a>
+        <a href="/sourcing-procurement.html">Sourcing &amp; procurement</a>
+        <a href="/erp-sourcing-procurement.html">General ERP</a>
+        <h4 class="mt-3">Learn</h4>
+        <a href="/blog.html">Guides</a>
+        <a href="/pricing.html">Pricing (free)</a>
+        <a href="/vs-unicommerce.html">Compare</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/feedback.html">Leave a review</a>
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+      </div>
+    </div>
+    <div class="lfoot-bottom">
+      <span>© 2026 LogicstIQ.com · Free to use · 31 calculators need no login</span>
+      <span>Results are planning inputs. Validate against your ERP or WMS before purchasing.
+        <a href="/disclaimer.html">Affiliate disclosure</a></span>
+    </div>
+  </div>
+</footer>
+<!--/#FOOTER-->
+
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/js/liq-auth.js?v=14"></script>
+<script defer src="/copilot-widget.js"></script>
+<script defer src="/js/liq-shell.js?v=1"></script>
 </body>
 </html>

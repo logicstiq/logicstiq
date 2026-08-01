@@ -102,8 +102,7 @@
     @media(max-width:600px){.nav{padding:14px 20px}.hero{padding:32px 20px 24px}.calc-body{padding:16px}}
 </style>
 <style id="liq-theme-css">
-.liq-theme-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--white);color:var(--text);font-size:15px;line-height:1;cursor:pointer;display:inline-grid;place-items:center;transition:.18s;margin-left:4px}
-.liq-theme-btn:hover{border-color:#3A55FF;transform:translateY(-1px)}
+
 .liq-theme-float{position:fixed;right:18px;bottom:18px;z-index:99999;width:44px;height:44px;border-radius:50%;box-shadow:0 8px 22px rgba(0,0,0,.28)}
 [data-theme="dark"]{
   --bg:#0A0D16;--white:#141824;--border:rgba(255,255,255,.10);--border2:rgba(255,255,255,.17);
@@ -113,7 +112,6 @@
 }
 [data-theme="dark"] body{background:#0A0D16}
 [data-theme="dark"] .nav{background:rgba(9,10,18,.92)!important;border-bottom-color:rgba(255,255,255,.08)}
-[data-theme="dark"] .liq-theme-btn{background:rgba(255,255,255,.06)}
 [data-theme="dark"] .nav-logo text tspan:first-child{fill:#FFFFFF}
 [data-theme="dark"] .nav-logo span{color:#7D92FF!important}
 [data-theme="dark"] .card,[data-theme="dark"] .why-card,[data-theme="dark"] .results,[data-theme="dark"] .result-item,[data-theme="dark"] .related-card,[data-theme="dark"] .calc-card,[data-theme="dark"] .badge-bar,[data-theme="dark"] .result-stat,[data-theme="dark"] .f-var,[data-theme="dark"] .formula-var,[data-theme="dark"] .breakdown-item,[data-theme="dark"] .safety-card,[data-theme="dark"] .modal-card,[data-theme="dark"] .legal-note,[data-theme="dark"] .tab,[data-theme="dark"] .faq-q,[data-theme="dark"] .faq-item{background:#141824!important;border-color:rgba(255,255,255,.12)!important}
@@ -210,99 +208,140 @@ setTimeout(function(){els.forEach(function(e){e.classList.add('lqin');});},1800)
 if(document.readyState!=='loading')init();else document.addEventListener('DOMContentLoaded',init);})();
 </script>
 <!--/LQDS-->
+<link rel="stylesheet" href="/css/liq.css?v=1">
+<script>try{var t=localStorage.getItem('liq-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 </head>
 <body>
 
 <!-- ===== LogicstIQ unified navigation ===== -->
 <style id="lnav-css">
-.lnav{position:sticky;top:0;z-index:9000;background:#fff;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:18px;padding:0 22px;height:64px;font-family:'Inter','Plus Jakarta Sans',sans-serif}
-.lnav-logo{display:inline-flex;align-items:center;text-decoration:none;flex-shrink:0}
-.lnav-menu{display:flex;align-items:center;gap:2px;margin-left:auto}
-.lnav-item{position:static;display:flex;align-items:center;align-self:stretch}
-.lnav-top{display:inline-flex;align-items:center;gap:5px;padding:9px 11px;border-radius:9px;font-size:13.5px;font-weight:600;color:#0F172A;text-decoration:none;white-space:nowrap;cursor:pointer;background:none;border:none;font-family:inherit}
-.lnav-top:hover{background:#EFF3FF;color:#3A55FF}
-.lnav-car{font-size:9px;opacity:.55;transition:transform .18s}
-.lnav-beta{background:linear-gradient(135deg,#4F6BFF,#9B6BFF);color:#fff;font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:999px;letter-spacing:.5px}
-.lnav-panel{position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid #E2E8F0;box-shadow:0 18px 40px rgba(15,23,42,.12);display:none;padding:26px 32px;z-index:9001}
-.lnav-panel-in{max-width:1080px;margin:0 auto;display:flex;gap:40px;flex-wrap:wrap}
-.lnav-col{min-width:200px}
-.lnav-colt{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#94A3B8;margin-bottom:9px}
-.lnav-panel a{display:block;padding:6px 8px;margin:0 -8px;border-radius:7px;font-size:13px;font-weight:600;color:#1E293B;text-decoration:none}
-.lnav-panel a:hover{background:#EFF3FF;color:#3A55FF}
-.lnav-mini{font-size:10px;font-weight:700;color:#9B6BFF;background:rgba(155,107,255,.1);padding:1px 7px;border-radius:999px;margin-left:6px}
-.lnav-viewall{margin-top:14px;padding-top:14px;border-top:1px solid #E2E8F0;width:100%}
-.lnav-viewall a{display:inline-block;font-size:13px;font-weight:800;color:#3A55FF!important}
-.lnav-burger{display:none;margin-left:auto;background:#fff;border:1px solid #CBD5E1;border-radius:9px;width:40px;height:40px;cursor:pointer;font-size:18px;color:#0F172A;line-height:1}
-@media(hover:hover) and (min-width:1101px){.lnav-item.open>.lnav-panel,.lnav-item:focus-within>.lnav-panel{display:block}.lnav-item.open .lnav-car{transform:rotate(180deg)}}
+
+@media(hover:hover) and (min-width:1101px){.lnav-item.open }
 @media(max-width:1100px){
- .lnav{flex-wrap:wrap;height:auto;min-height:60px;padding:8px 14px}
- .lnav-logo svg{height:34px;width:auto}
- .lnav-burger{display:inline-flex;align-items:center;justify-content:center}
- .lnav-menu{display:none;flex-direction:column;align-items:stretch;width:100%;gap:0;padding:6px 0 12px}
- .lnav.open .lnav-menu{display:flex}
- .lnav-item{position:relative;width:100%;display:block;align-self:auto}
- .lnav-top{width:100%;justify-content:space-between;padding:13px 8px;font-size:15px;border-bottom:1px solid #EEF2F7;border-radius:0}
- .lnav-panel{position:static;box-shadow:none;border:none;padding:4px 8px 10px;background:#F8FAFF}
- .lnav-item.open>.lnav-panel{display:block}
- .lnav-item.open .lnav-car{transform:rotate(180deg)}
- .lnav-panel-in{flex-direction:column;gap:14px}
+
 }
-[data-theme="dark"] .lnav{background:rgba(9,10,18,.94);border-bottom-color:rgba(255,255,255,.09)}
-[data-theme="dark"] .lnav-top{color:#E7ECFB}
-[data-theme="dark"] .lnav-top:hover{background:rgba(58,85,255,.14);color:#AEBCFF}
-[data-theme="dark"] .lnav-panel{background:#0D101C;border-color:rgba(255,255,255,.09)}
-[data-theme="dark"] .lnav-panel a{color:#DBE3F5}
-[data-theme="dark"] .lnav-panel a:hover{background:rgba(58,85,255,.14);color:#AEBCFF}
-[data-theme="dark"] .lnav-colt{color:#7E88A8}
-[data-theme="dark"] .lnav-burger{background:rgba(255,255,255,.06);color:#E7ECFB;border-color:rgba(255,255,255,.2)}
-[data-theme="dark"] .lnav-logo text tspan:first-child{fill:#FFFFFF}
-[data-theme="dark"] .lnav-viewall{border-top-color:rgba(255,255,255,.09)}
-[data-theme="dark"] .lnav-panel .lnav-viewall a{color:#AEBCFF!important}
-[data-theme="dark"] .lnav-top,[data-theme="dark"] .lnav-panel a{border-bottom-color:rgba(255,255,255,.06)}
-.lnav>.liq-theme-btn{flex-shrink:0;width:36px;height:36px;border-radius:9px;border:1px solid #CBD5E1;background:#fff;color:#0F172A;font-size:15px;line-height:1;cursor:pointer;display:inline-grid;place-items:center;padding:0}
-.lnav>.liq-theme-btn:hover{border-color:#3A55FF}
-[data-theme="dark"] .lnav>.liq-theme-btn{background:rgba(255,255,255,.07);color:#E7ECFB;border-color:rgba(255,255,255,.22)}
-@media(max-width:1100px){.lnav-menu{order:10}}
+
+@media(max-width:1100px){}
 </style>
+<!--#NAV-->
 <nav class="lnav" id="lnav">
-<a href="/" class="lnav-logo" aria-label="LogicstIQ — Home">
-  <svg width="200" height="41" viewBox="0 0 440 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible">
-    <defs><linearGradient id="lnav_grad" x1="10" y1="70" x2="400" y2="20" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4F6BFF"/><stop offset="100%" stop-color="#9B6BFF"/></linearGradient></defs>
-    <path d="M10 40 L26 40 L42 66 L64 22 L80 22" stroke="url(#lnav_grad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <path d="M74 14 L82 22 L74 30" stroke="#9B6BFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <circle cx="42" cy="66" r="4.5" fill="#4F6BFF"/><circle cx="64" cy="22" r="4.5" fill="#9B6BFF"/>
-    <text x="98" y="44" font-family="'Plus Jakarta Sans','Inter',sans-serif" font-size="36" font-weight="800" letter-spacing="-1.4"><tspan fill="#4F6BFF">Logicst</tspan><tspan fill="#9B6BFF">IQ</tspan></text>
-    <text x="99" y="70" font-family="'Inter',sans-serif" font-size="16" font-weight="600" letter-spacing="0.3" fill="#64748B">Where Logistics Meets Intelligence</text>
-  </svg>
-</a>
-  <button class="lnav-burger" id="lnavBurger" type="button" aria-label="Open menu">☰</button>
-  <div class="lnav-menu">
-    <div class="lnav-item">
-      <a class="lnav-top" href="/calculators.html">Calculators <span class="lnav-car">▼</span></a>
-      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col"><div class="lnav-colt">📦 Inventory & Planning</div><a href="/eoq-calculator">EOQ Calculator</a><a href="/safety-stock-calculator">Safety Stock</a><a href="/reorder-point-calculator">Reorder Point</a><a href="/abc-analysis-calculator">ABC Analysis</a><a href="/inventory-turnover-calculator">Inventory Turnover</a><a href="/moq-calculator">MOQ Calculator</a><a href="/dead-stock-calculator">Dead Stock</a><a href="/cycle-count-calculator">Cycle Count</a></div><div class="lnav-col"><div class="lnav-colt">⏱️ Performance & Suppliers</div><a href="/otif-calculator">OTIF Calculator</a><a href="/fill-rate-calculator">Fill Rate</a><a href="/demand-forecast-calculator">Demand Forecast</a><a href="/supplier-scorecard-calculator">Supplier Scorecard</a><a href="/supplier-lead-time-variability-calculator">Lead Time Variability</a><a href="/disruption-impact-calculator">Disruption Impact</a></div><div class="lnav-col"><div class="lnav-colt">💰 Costing & Finance</div><a href="/landed-cost-calculator">Landed Cost</a><a href="/gst-calculator-logistics">GST Calculator</a><a href="/cogs-calculator">COGS Calculator</a><a href="/gross-margin-calculator">Gross Margin</a><a href="/break-even-calculator">Break-Even</a><a href="/working-capital-calculator">Working Capital</a><a href="/carrying-cost-calculator">Carrying Cost</a><a href="/stockout-cost-calculator">Stockout Cost</a><a href="/days-inventory-outstanding-calculator">Days Inventory Outstanding</a><a href="/cash-conversion-cycle-calculator">Cash Conversion Cycle</a></div><div class="lnav-col"><div class="lnav-colt">🚛 Logistics & Warehouse</div><a href="/freight-cost-calculator">Freight Cost</a><a href="/warehouse-space-calculator">Warehouse Space</a><a href="/lead-time-calculator">Lead Time</a><a href="/shipping-cost-per-unit-calculator">Shipping Cost / Unit</a><a href="/volumetric-weight-calculator">Volumetric Weight</a><a href="/pick-pack-cost-calculator">Pick & Pack Cost</a><a href="/carbon-footprint-logistics">Carbon Footprint</a></div><div class="lnav-viewall"><a href="/calculators.html">View all 31 calculators →</a></div></div></div>
-    </div>
-    <a class="lnav-top" href="/demand-planner.html">AI Demand Planner</a>
-    <div class="lnav-item">
-      <a class="lnav-top" href="/documents-generator.html">Paperwork Hub <span class="lnav-car">▼</span></a>
-      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col"><div class="lnav-colt">🏪 Business Billing</div><a href="/documents-generator.html#invoice">GST Invoice</a><a href="/documents-generator.html#po">Purchase Order</a><a href="/documents-generator.html#proforma">Proforma</a><a href="/documents-generator.html#quotation">Quotation</a><a href="/documents-generator.html#challan">Delivery Challan</a><a href="/documents-generator.html#packing">Packing List</a></div><div class="lnav-col"><div class="lnav-colt">🔗 Supply Chain &amp; EXIM</div><a href="/documents-generator.html#ci">Commercial Invoice</a><a href="/documents-generator.html#epl">Export Packing List</a><a href="/documents-generator.html#epi">Export Proforma</a><a href="/documents-generator.html#coo">Certificate of Origin</a><a href="/documents-generator.html#bl">Bill of Lading / AWB</a><a href="/documents-generator.html#sb">Shipping Bill (ICEGATE)</a></div><div class="lnav-col"><div class="lnav-colt">&nbsp;</div><a href="/documents-generator.html#boe">Bill of Entry (ICEGATE)</a><a href="/documents-generator.html#lc">LC Checklist</a><a href="/documents-generator.html#boex">Bill of Exchange</a><a href="/documents-generator.html#ebrc">eBRC Worksheet</a><a href="/documents-generator.html#rodtep">RoDTEP / Drawback</a></div><div class="lnav-viewall"><a href="/documents-generator.html">Open Paperwork Hub →</a></div></div></div>
-    </div>
-    <div class="lnav-item">
-      <a class="lnav-top" href="/ecommerce.html">Ecommerce <span class="lnav-car">▼</span></a>
-      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col" style="min-width:280px"><div class="lnav-colt">🏪 Ecommerce Suite</div><a href="/demand-planner.html">🤖 AI Demand Planner <span class="lnav-mini">Live</span></a><a href="/sourcing-procurement.html">🛒 Sourcing &amp; Procurement — Seller Paperwork Hub <span class="lnav-mini">Live</span></a><a href="/fba-planner/">📦 FBA Planner <span class="lnav-mini">Live</span></a><a href="/tms.html">🚛 TMS — Transportation Management <span class="lnav-mini">Beta</span></a><a href="/oms.html">🧾 OMS — Order Management <span class="lnav-mini">Coming soon</span></a><a href="/wms.html">🏭 WMS — Warehouse Management <span class="lnav-mini">Coming soon</span></a><a href="/returns.html">↩️ Returns Management <span class="lnav-mini">Coming soon</span></a><div class="lnav-viewall"><a href="/ecommerce.html">Open Ecommerce hub →</a></div></div></div></div>
-    </div>
-    <div class="lnav-item">
-      <a class="lnav-top" href="/tms.html">TMS <span class="lnav-beta">Beta</span> <span class="lnav-car">▼</span></a>
-      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col"><div class="lnav-colt">🚛 Plan &amp; Book</div><a href="/tms.html#tower">◎ Control Tower</a><a href="/tms.html#ship">▤ Shipments</a><a href="/tms.html#carriers">◆ Carriers &amp; Rates</a><a href="/tms.html#load">▦ Load Planning</a><a href="/tms.html#route">⤳ Route Optimization</a></div><div class="lnav-col"><div class="lnav-colt">📡 Execute &amp; Audit</div><a href="/tms.html#dock">▥ Dock Scheduling</a><a href="/tms.html#track">◈ Tracking Tower</a><a href="/tms.html#audit">₹ Freight Audit</a><a href="/tms.html#reports">▧ Reports</a><a href="/tms.html#ai">✦ AI Copilot</a></div><div class="lnav-viewall"><a href="/tms.html">Open TMS →</a></div></div></div>
-    </div>
-    <div class="lnav-item">
-      <a class="lnav-top" href="/blog.html">Blog <span class="lnav-car">▼</span></a>
-      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col" style="min-width:320px"><div class="lnav-colt">📚 Guides</div><a href="/blog/landed-cost-guide.html">Landed Cost Explained</a><a href="/blog/eoq-calculator.html">EOQ — Complete Guide</a><a href="/blog/demand-planning-amazon-flipkart.html">Demand Planning for Amazon & Flipkart</a><a href="/blog/safety-stock-calculator.html">Safety Stock Formula</a><a href="/blog/what-is-otif.html">What is OTIF?</a><a href="/blog/inventory-turnover-formula.html">Inventory Turnover Formula</a><a href="/blog/abc-analysis-guide.html">ABC Analysis Guide</a><a href="/blog/gst-calculator-logistics.html">GST on Freight & Logistics</a><div class="lnav-viewall"><a href="/blog.html">View all articles →</a></div></div></div></div>
-    </div>
-    <a class="lnav-top" href="/about.html">About</a>
-    <a class="lnav-top" href="/contact.html">Contact</a>
+  <a href="/" class="lnav-logo" aria-label="LogicstIQ — Home">
+    <svg width="188" height="34" viewBox="0 0 440 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="lnav_grad" x1="10" y1="60" x2="330" y2="18" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#4F6BFF"/><stop offset="100%" stop-color="#9B6BFF"/></linearGradient></defs>
+      <path d="M8 36 L23 36 L38 60 L59 20 L74 20" stroke="url(#lnav_grad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M68 12 L76 20 L68 28" stroke="#9B6BFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="38" cy="60" r="4.5" fill="#4F6BFF"/><circle cx="59" cy="20" r="4.5" fill="#9B6BFF"/>
+      <text x="92" y="46" font-family="Inter,sans-serif" font-size="36" font-weight="600" letter-spacing="-1.6">
+        <tspan fill="#4F6BFF">Logicst</tspan><tspan fill="#9B6BFF">IQ</tspan></text>
+    </svg>
+  </a>
+
+  <div class="lnav-actions">
+    <button id="liqTheme" class="liq-theme-btn" type="button" aria-label="Toggle light or dark mode" title="Toggle light / dark">◐</button>
+    <a class="btn btn--primary btn--sm" href="/demand-planner.html?utm_content=nav_cta">Start free</a>
   </div>
-  <button id="liqTheme" class="liq-theme-btn" type="button" aria-label="Toggle light or dark mode" title="Toggle light / dark">🌙</button>
+  <button class="lnav-burger" id="lnavBurger" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+
+  <div class="lnav-menu">
+
+    <div class="lnav-item">
+      <a class="lnav-top" href="/tools.html">Products <span class="lnav-car" aria-hidden="true">▼</span></a>
+      <div class="lnav-panel lnav-panel--wide">
+        <div class="lnav-cols">
+          <div>
+            <div class="lnav-colt">Planning &amp; Forecasting</div>
+            <a href="/demand-planner.html">AI Demand Planner<span>Never lose sales to stockouts</span></a>
+            <a href="/unit-economics.html">True Margin per SKU<span>See profit after fees, GST and RTO</span></a>
+            <a href="/quick-commerce.html">Quick Commerce<span>Capture every instant purchase</span></a>
+            <a href="/fba-planner/">Amazon FBA Planner<span>Restock inside your limits</span></a>
+          </div>
+          <div>
+            <div class="lnav-colt">Inventory &amp; Warehouse</div>
+            <a href="/wms.html">Warehouse Management<span>Fulfil faster, cut operating cost</span></a>
+            <a href="/calculators.html">Inventory Control<span>EOQ, safety stock, reorder points</span></a>
+            <a href="/sourcing-procurement.html">Sourcing &amp; Procurement<span>PR to PO to GRN, matched</span></a>
+            <a href="/erp-sourcing-procurement.html">General ERP<span>Procure-to-pay for manufacturers</span></a>
+          </div>
+          <div>
+            <div class="lnav-colt">Order &amp; Fulfilment</div>
+            <a href="/oms.html">Order Management<span>One panel for every channel</span></a>
+            <a href="/tms.html">Transportation<span>Rate-shop carriers, track dispatch</span></a>
+            <a href="/returns.html">Returns &amp; RTO<span>Recover margin lost to returns</span></a>
+            <a href="/documents-generator.html">Paperwork &amp; EXIM<span>GST invoices to ICEGATE bills</span></a>
+          </div>
+        </div>
+        <div class="lnav-foot"><a href="/tools.html">See all tools and what each one does →</a></div>
+      </div>
+    </div>
+
+    <div class="lnav-item">
+      <a class="lnav-top" href="/integrations.html">Integrations <span class="lnav-car" aria-hidden="true">▼</span></a>
+      <div class="lnav-panel lnav-panel--wide">
+        <div class="lnav-cols">
+          <div>
+            <div class="lnav-colt">Marketplace &amp; Quick Commerce</div>
+            <a href="/integrations.html#marketplace">Amazon, Flipkart, Myntra<span>Expand reach, maximise sales</span></a>
+            <a href="/integrations.html#cart">Shopify, WooCommerce<span>Own your brand, control margins</span></a>
+            <a href="/integrations.html#qcom">Blinkit, Zepto, Instamart<span>Ten-minute delivery, planned</span></a>
+          </div>
+          <div>
+            <div class="lnav-colt">Shipping &amp; Logistics</div>
+            <a href="/integrations.html#carriers">Delhivery, Xpressbees, Bluedart<span>Pan-India coverage, compared</span></a>
+            <a href="/integrations.html#carriers">Shiprocket, Ecom Express<span>Multi-carrier choice, lower cost</span></a>
+            <a href="/tms.html#audit">Freight audit<span>Catch every billing error</span></a>
+          </div>
+          <div>
+            <div class="lnav-colt">Files, ERP &amp; API</div>
+            <a href="/integrations.html#files">Excel &amp; CSV, any source<span>Works with what you export today</span></a>
+            <a href="/integrations.html#erp">Accounting &amp; ERP<span>Tally-ready exports, GSTIN validated</span></a>
+            <a href="/integrations.html#api">API access<span>Feed your own systems, free</span></a>
+          </div>
+        </div>
+        <div class="lnav-foot"><a href="/integrations.html">See every supported channel, carrier and format →</a></div>
+      </div>
+    </div>
+
+    <div class="lnav-item">
+      <a class="lnav-top" href="/calculators.html">Calculators <span class="lnav-car" aria-hidden="true">▼</span></a>
+      <div class="lnav-panel">
+        <a href="/eoq-calculator">EOQ<span>How much to order per PO</span></a>
+        <a href="/safety-stock-calculator">Safety Stock<span>Buffer for demand and lead-time swings</span></a>
+        <a href="/reorder-point-calculator">Reorder Point<span>When to place the next order</span></a>
+        <a href="/landed-cost-calculator">Landed Cost<span>True cost after duty, freight and GST</span></a>
+        <hr>
+        <a href="/calculators.html">All 31 calculators →<span>Live results, no login, free forever</span></a>
+      </div>
+    </div>
+
+    <div class="lnav-item">
+      <a class="lnav-top" href="/pricing.html">Pricing</a>
+    </div>
+
+    <div class="lnav-item">
+      <a class="lnav-top" href="/blog.html">Resources <span class="lnav-car" aria-hidden="true">▼</span></a>
+      <div class="lnav-panel lnav-panel--wide">
+        <div class="lnav-cols lnav-cols--2">
+          <div>
+            <div class="lnav-colt">Learn</div>
+            <a href="/blog.html">Guides &amp; formulas<span>Worked Indian examples</span></a>
+            <a href="/big-billion-days-inventory-plan">Playbooks<span>Festive, FBA, q-com, dead stock</span></a>
+            <a href="/tools.html">What each tool does<span>The whole platform, explained</span></a>
+          </div>
+          <div>
+            <div class="lnav-colt">Company</div>
+            <a href="/vs-unicommerce.html">Compare<span>Where we fit alongside Unicommerce</span></a>
+            <a href="/about.html">About us<span>Why we built this</span></a>
+            <a href="/contact.html">Contact<span>Talk to a founder</span></a>
+            <a href="/feedback.html">Leave a review<span>Shape what we build next</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </nav>
+<!--/#NAV-->
 <script id="lnav-js">
 (function(){var nav=document.getElementById('lnav');if(!nav)return;
 var burger=document.getElementById('lnavBurger');
@@ -415,25 +454,67 @@ window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList
 
 </section>
 
-<footer>
-  <p class="footer-copy">
-    <strong>31 Free Supply Chain Calculators · No Login Required · Free Forever</strong><br><br>
-    © 2026 <a href="https://www.logicstiq.com">LogicstIQ.com</a> ·
-    <a href="https://www.logicstiq.com/privacy-policy.html">Privacy Policy</a> ·
-    <a href="https://www.logicstiq.com/terms.html">Terms</a> ·
-    Results are for reference only.<br>
-    <strong>Affiliate Disclosure:</strong> LogicstIQ.com may contain affiliate links. We may earn a commission at no extra cost to you. All calculators are free forever.<br>
-    Co-Founders: <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp; <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a>
-  </p>
-<p style="margin-top:10px;font-size:12px;color:#94A3B8;text-align:center">
-Contact: <a href="mailto:contactus@logicstiq.com"
-style="color:#9B6BFF;text-decoration:none;font-weight:600">contactus@logicstiq.com</a>
-</p>
-<p style="margin-top:6px;font-size:12px;color:#94A3B8;text-align:center">
-Tool question or bug? <a href="mailto:customercare@logicstiq.com"
-style="color:#9B6BFF;text-decoration:none;font-weight:600">customercare@logicstiq.com</a>
-</p>
+<!--#FOOTER-->
+<footer class="lfoot">
+  <div class="container">
+    <div class="lfoot-grid">
+      <div>
+        <h4>LogicstIQ</h4>
+        <p class="small" style="max-width:34ch">
+          Where logistics meets intelligence. Planning and unit-economics tools for
+          Indian sellers and D2C brands. Made in India.
+        </p>
+        <p class="small mt-2">
+          <a href="https://www.linkedin.com/in/amiitkumar">Amit Kumar</a> &amp;
+          <a href="https://www.linkedin.com/in/sachin-s-0b1179162">Sachin Sirwani</a>, co-founders
+        </p>
+      </div>
+      <div>
+        <h4>Plan</h4>
+        <a href="/demand-planner.html">AI Demand Planner</a>
+        <a href="/unit-economics.html">True margin per SKU</a>
+        <a href="/quick-commerce.html">Quick commerce</a>
+        <a href="/fba-planner/">FBA Planner</a>
+        <a href="/tms.html">Transportation</a>
+        <a href="/tools.html">All tools</a>
+      </div>
+      <div>
+        <h4>Calculators</h4>
+        <a href="/eoq-calculator">EOQ</a>
+        <a href="/safety-stock-calculator">Safety stock</a>
+        <a href="/reorder-point-calculator">Reorder point</a>
+        <a href="/landed-cost-calculator">Landed cost</a>
+        <a href="/gst-calculator-logistics">GST on freight</a>
+        <a href="/calculators.html">All 31 →</a>
+      </div>
+      <div>
+        <h4>Paperwork</h4>
+        <a href="/documents-generator.html">GST &amp; EXIM documents</a>
+        <a href="/sourcing-procurement.html">Sourcing &amp; procurement</a>
+        <a href="/erp-sourcing-procurement.html">General ERP</a>
+        <h4 class="mt-3">Learn</h4>
+        <a href="/blog.html">Guides</a>
+        <a href="/pricing.html">Pricing (free)</a>
+        <a href="/vs-unicommerce.html">Compare</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/feedback.html">Leave a review</a>
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+      </div>
+    </div>
+    <div class="lfoot-bottom">
+      <span>© 2026 LogicstIQ.com · Free to use · 31 calculators need no login</span>
+      <span>Results are planning inputs. Validate against your ERP or WMS before purchasing.
+        <a href="/disclaimer.html">Affiliate disclosure</a></span>
+    </div>
+  </div>
 </footer>
+<!--/#FOOTER-->
 
 <script>function toggleFaq(el){el.closest('.faq-item').classList.toggle('open');}</script>
 <script>function runCalc(){
@@ -461,23 +542,10 @@ style="color:#9B6BFF;text-decoration:none;font-weight:600">customercare@logicsti
   document.getElementById('results').classList.add('show');
 }</script>
 
-<script>
-(function(){var r=document.documentElement;
-function lbl(){var b=document.getElementById('liqTheme');if(b)b.textContent=r.getAttribute('data-theme')==='dark'?'☀️':'🌙';}
-function set(t){r.setAttribute('data-theme',t);lbl();try{localStorage.setItem('liq-theme',t)}catch(e){}}
-try{var sv=localStorage.getItem('liq-theme');if(sv)r.setAttribute('data-theme',sv);}catch(e){}
-var btn=document.getElementById('liqTheme')||document.createElement('button');btn.id='liqTheme';btn.type='button';btn.className='liq-theme-btn';
-btn.setAttribute('aria-label','Toggle light or dark mode');btn.title='Toggle light / dark';btn.textContent='🌙';
-btn.addEventListener('click',function(){set(r.getAttribute('data-theme')==='dark'?'light':'dark');});
-function place(){if(btn.parentNode){lbl();return;}var nav=document.querySelector('.nav');
- if(nav){var cta=nav.querySelector('.nav-cta');if(cta&&cta.parentNode){cta.parentNode.insertBefore(btn,cta);}
-   else{var l=nav.querySelector('.nav-links');(l||nav).appendChild(btn);}}
- else{btn.classList.add('liq-theme-float');document.body.appendChild(btn);}lbl();}
-if(document.readyState!=='loading')place();else document.addEventListener('DOMContentLoaded',place);})();
-</script>
-
 <script src="/js/liq-logo.js?v=2" defer></script>
 <script type="module" src="/js/liq-auth.js?v=14"></script>
 <script src="/js/liq-icons.js?v=4" defer></script>
+<script defer src="/js/liq-shell.js?v=1"></script>
+<script defer src="/js/liq-live.js?v=1"></script>
 </body>
 </html>
