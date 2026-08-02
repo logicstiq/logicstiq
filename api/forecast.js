@@ -114,6 +114,13 @@ export function runForecast(csvText, cfg) {
     .filter(r => !isJunkRow(r, map));
 
   const { skuMap, isTS, catStats } = buildSkuMap(dataRows, map, cfg);
+  // FIX(v12): the forecast origin is TODAY, but nothing checked how old the file is.
+  // Upload a history ending two months ago with festival mode on and the engine happily
+  // applies a festive-sale uplift for a window the data has never seen, with no warning.
+  let dataEnd = null;
+  for (const s of Object.values(skuMap)) for (const p of (s.periods || [])) {
+    const d = new Date(p.period); if (!isNaN(d) && (!dataEnd || d > dataEnd)) dataEnd = d;
+  }
   const skuList = Object.values(skuMap);
   if (!skuList.length) return { error: 'No valid SKUs found after cleaning the file.' };
 
@@ -122,7 +129,8 @@ export function runForecast(csvText, cfg) {
   // GOD-MODE: enrich every SKU with India unit economics (additive — original fields untouched).
   results = enrichWithEconomics(results, { codShare: cfg.codShare, overrides: cfg.econOverrides || {} });
 
-  const summary = buildSummary(results, isTS, cfg, map);
+  const originGapDays = dataEnd ? Math.max(0, Math.round((today - dataEnd) / 86400000)) : null;
+  const summary = buildSummary(results, isTS, cfg, map, { dataEnd, originGapDays });
   const active = results.filter(s => s.isActive);
   const pOrd = { URGENT: 0, HIGH: 1, MEDIUM: 2, LOW: 3 };
   const reorderPlanArr = results.filter(s => s.needsReorder).sort((a, b) => (pOrd[a.priority] || 3) - (pOrd[b.priority] || 3)).slice(0, 60);
@@ -274,7 +282,7 @@ export function buildSkuMap(dataRows, map, cfg) {
     const period = get(row, 'period');
     const mom = map.momTrend !== undefined ? pSignedNum(get(row, 'momTrend')) : null;
     const seas = map.seasonalIndex !== undefined ? pNum(get(row, 'seasonalIndex')) : null;
-    const availFrac = rowAvailability(row, get, map, period);   // 0..1 or null
+    let availFrac = rowAvailability(row, get, map, period);   // 0..1 or null
 
     if (!skuMap[key]) {
       skuMap[key] = {
@@ -329,6 +337,13 @@ export function buildSkuMap(dataRows, map, cfg) {
     if (period) {
       const np = normalisePeriod(period);
       const net = Math.max(0, grossAdd - returnAdd);
+      // FIX(v12): most marketplace exports carry an on-hand quantity and no stockout
+      // flag, so rowAvailability() returned null and censored demand was read as real
+      // zero demand. A dated row with zero sales AND zero sellable stock is a stockout.
+      if (availFrac == null && map.available !== undefined && net <= 0) {
+        const onHand = pNum(get(row, 'available'));
+        if (isFinite(onHand) && onHand <= 0) availFrac = 0;
+      }
       const fullyOut = availFrac != null && availFrac <= 0.05;
       const trueDemand = (availFrac != null && availFrac > 0.05 && availFrac < 1) ? net / Math.max(0.2, availFrac) : net;
       if (!e._pidx) e._pidx = {};
@@ -451,7 +466,12 @@ export function tsbForecast(demands, a = 0.2, b = 0.1) {
   let p = demands.filter(d => d > 0).length / demands.length || 0.1;
   let z = mean(demands.filter(d => d > 0)) || 0;
   for (const d of demands) { if (d > 0) { z = z + a * (d - z); p = p + b * (1 - p); } else { p = p + b * (0 - p); } }
-  return Math.max(0, p * z);
+  // FIX(v12): the smoothed occurrence rate has an effective window of ~1/b periods,
+  // so on lumpy demand it swings on whether the last few days happened to be quiet.
+  // Blend it with the long-run rate, which is the better estimator of a 60-day total.
+  const nz = demands.filter(d => d > 0);
+  const longRun = demands.length ? (nz.length / demands.length) * (mean(nz) || 0) : 0;
+  return Math.max(0, 0.5 * (p * z) + 0.5 * longRun);
 }
 function seasonalIndices(y, m) {
   if (y.length < 2 * m) return null; const o = mean(y); if (o <= 0) return null;
@@ -477,10 +497,18 @@ export function buildForecaster(demands, method, gap) {
   const ma = mean(w.slice(-Math.max(1, maWin)));                 // window widens on noisy daily data
   const alpha = (gap != null && gap < 2) ? 0.25 : 0.4;           // smoother on daily, reactive on coarse
   let lvl = w[0]; for (let i = 1; i < n; i++) lvl = alpha * w[i] + (1 - alpha) * lvl;
-  const { a, b } = linreg(w); const last = n - 1;
-  const phi = 0.9;   // FIX(v10): damped trend bounds runaway long-horizon extrapolation
+  // FIX(v12): anchor the level and slope on the recent regime. Fitting a 500-day
+  // history whole puts the regression intercept a year in the past, which lags a
+  // trending SKU and over-forecasts a declining one.
+  const fitWin = Math.min(n, (gap != null && gap < 2) ? Math.max(56, Math.ceil(n * 0.25)) : Math.max(8, Math.ceil(n * 0.5)));
+  const wr = w.slice(-fitWin);
+  const { a, b } = linreg(wr); const lastFit = wr.length - 1; const last = n - 1;
+  // FIX(v12): phi=0.9 on DAILY data kills the trend inside ~10 days, so a 60-day
+  // forecast is effectively flat and a declining SKU never comes down. Tie the damping
+  // to granularity: gentle per-day, firmer per-month.
+  const phi = (gap != null && gap < 2) ? 0.985 : (gap != null && gap < 10) ? 0.95 : 0.9;
   const trendSum = k => { let s = 0; for (let i = 1; i <= k; i++) s += Math.pow(phi, i); return s; };
-  const holt = k => Math.max(0, (a + b * last) + b * trendSum(k));
+  const holt = k => Math.max(0, (a + b * lastFit) + b * trendSum(k));
   const seasCands = gap == null ? [12, 7, 4] : (gap < 2 ? [7] : gap < 10 ? [] : gap < 45 ? [12] : gap < 135 ? [4] : []);   // FIX(v10): seasonal period tied to granularity
   let season = null, m = 0; for (const c of seasCands) { const s = seasonalIndices(w, c); if (s) { season = s; m = c; break; } }
 
@@ -497,10 +525,20 @@ export function buildForecaster(demands, method, gap) {
   };
   let fn;
   if (method === 'Auto' || !base[method]) {
-    const slopeShare = ma > 0 ? Math.abs(b) / ma : 0;
+    // FIX(v12): the gate compared a PER-PERIOD slope to the level, so on daily data a
+    // genuine 4%/month decline scores 0.0014 and never trips 0.05 — the trend model was
+    // unreachable on exactly the granularity most sellers upload. Measure the slope's
+    // effect across the fitted window instead.
+    const slopeShare = ma > 0 ? Math.abs(b * Math.max(1, wr.length - 1)) / ma : 0;
     // strong sustained trend → damped Holt (weighted with the level); otherwise a robust 3-way ensemble
     // (MA + smoothing level + damped Holt) — ensembling cuts model-selection risk and lowers error.
-    if (n >= 6 && slopeShare > 0.05) fn = k => Math.max(0, 0.6 * holt(k) + 0.4 * Math.max(0, lvl));
+    // FIX(v12): weight the trend model by how pronounced the trend actually is. A fixed
+    // 0.6/0.4 blend held a declining SKU up (the level term carries no trend) and clipped
+    // the climb on a growing one. Ramps 0.6 -> 0.85 as the fitted move grows.
+    if (n >= 6 && slopeShare > 0.05) {
+      const wHolt = Math.min(0.85, 0.6 + 0.5 * Math.min(0.5, slopeShare - 0.05));
+      fn = k => Math.max(0, wHolt * holt(k) + (1 - wHolt) * Math.max(0, lvl));
+    }
     else if (n >= 4) fn = k => Math.max(0, (ma + Math.max(0, lvl) + holt(k)) / 3);
     else fn = (n >= 2) ? () => Math.max(0, lvl) : () => ma;
   } else fn = base[method];
@@ -564,15 +602,45 @@ export function computeSKU(s, isTS, today, cfg, map, catStats) {
 
   if (isTS && s.periods.length >= 2) {
     const usable = s.periods.filter(p => !p.stockout);            // stockout days excluded so they don't deflate demand
-    const demands = (usable.length >= 2 ? usable : s.periods).map(p => p.units).filter(d => d >= 0);
+    const demands0 = (usable.length >= 2 ? usable : s.periods).map(p => p.units).filter(d => d >= 0);
+    // FIX(v12): LAUNCH DETECTION. A SKU that went live part-way through the export
+    // carries a long run of leading zeros. Left in place the series classifies as
+    // 'intermittent' and TSB forecasts ~0, so a newly launched product is told to
+    // stock nothing. Trim the pre-launch zeros when demand has been sustained since.
+    let preLaunchZeros = 0, launched = false;
+    {
+      const fsIdx = demands0.findIndex(v => v > 0);
+      if (fsIdx > 0) {
+        const tail = demands0.slice(fsIdx);
+        const nzShare = tail.length ? tail.filter(v => v > 0).length / tail.length : 0;
+        if (nzShare >= 0.5 && fsIdx >= Math.max(5, 0.08 * demands0.length)) { preLaunchZeros = fsIdx; launched = true; }
+      }
+    }
+    const demands = launched ? demands0.slice(preLaunchZeros) : demands0;
     if (s.periods.some(p => p.stockout)) censored = true;
     tsDemands = demands;   // GOD-MODE: retained for probabilistic quantile band
     const n = demands.length; gap = detectGapDays(usable.length >= 2 ? usable : s.periods); periodGranularity = gapLabel(gap);
     const pm = mean(demands);
     avgMonthly = Math.round(pm * (30 / gap) * 10) / 10;
     if (n >= 4) { const { b } = linreg(demands); const pct = pm > 0 ? (b * (n - 1) / pm) * 100 : 0; trend = pct > 8 ? 'up' : pct < -8 ? 'down' : 'flat'; trendPct = (pct >= 0 ? '+' : '') + Math.round(pct) + '%'; }
-    fc = buildForecaster(demands, cfg.method, gap); pattern = fc.pattern;
-    const bt = backtest(demands, cfg.method, gap); mape = bt.mape; wmape = bt.wmape; bias = bt.bias; mase = bt.mase;
+    // FIX(v12): "Auto (AI selects best)" was a hand-written heuristic on the slope, and it
+    // lost to plain "Trend + Seasonality" on ordinary daily data. The rolling-origin
+    // back-test already in this file is a better judge, so let Auto actually select:
+    // score every candidate out-of-sample and keep the lowest WMAPE.
+    let chosenMethod = cfg.method;
+    if (cfg.method === 'Auto' && demands.length >= 12) {
+      const cands = ['Auto', 'Trend + Seasonality', 'ML Ensemble', 'Exponential Smoothing', 'Moving Average'];
+      let best = null;
+      for (const m of cands) {
+        const r = backtest(demands, m, gap);
+        if (r.wmape == null) continue;
+        if (!best || r.wmape < best.wmape - 0.5) best = { m, wmape: r.wmape };
+      }
+      if (best) chosenMethod = best.m;
+    }
+    fc = buildForecaster(demands, chosenMethod, gap); pattern = fc.pattern;
+    const bt = backtest(demands, chosenMethod, gap); mape = bt.mape; wmape = bt.wmape; bias = bt.bias; mase = bt.mase;
+    if (cfg.method === 'Auto' && chosenMethod !== 'Auto') pattern = pattern + ' · ' + chosenMethod;
     dailyVel = fc.f(1) / gap;
     sigmaDaily = std(demands) / Math.sqrt(gap);   // FIX(v10): period sigma -> daily scales by sqrt(gap), not gap
     conf = wmape != null ? (wmape <= 20 ? 'High' : wmape <= 40 ? 'Medium' : 'Low') : (n >= 4 ? 'Medium' : 'Low');
@@ -585,7 +653,15 @@ export function computeSKU(s, isTS, today, cfg, map, catStats) {
     let coldStart = false;
     if (baseDaily <= 0) {
       if (s.oosFlag) { censored = true; }                         // out of stock → demand unknown (not new, not dead)
-      else { const cm = catStats[catBucket]; if (cm > 0) { baseDaily = cm * 0.5; coldStart = true; } }
+      else {
+        // FIX(v12): don't seed a dead SKU as a new one. In snapshot mode there is no
+        // history to tell them apart, but stock on hand does: a product sitting on
+        // inventory that sold nothing is dead, and seeding it from the category median
+        // tells the seller to reorder a product that is not moving.
+        const looksDead = (s.available > 0 || s.stock > 0) && !s.oosFlag;
+        const cm = catStats[catBucket];
+        if (cm > 0 && !looksDead) { baseDaily = cm * 0.5; coldStart = true; }
+      }
     }
     const base30 = baseDaily * 30;
     const g = (s.momTrend != null && isFinite(s.momTrend)) ? Math.max(-0.3, Math.min(0.3, s.momTrend)) : 0;
@@ -677,7 +753,7 @@ export function computeSKU(s, isTS, today, cfg, map, catStats) {
   };
 }
 
-function buildSummary(results, isTS, cfg, map) {
+function buildSummary(results, isTS, cfg, map, freshness = {}) {
   const active = results.filter(s => s.isActive);
   const w = active.filter(s => s.wmape != null);
   const avgWmape = w.length ? Math.round(w.reduce((a, r) => a + r.wmape, 0) / w.length) : null;
@@ -686,9 +762,20 @@ function buildSummary(results, isTS, cfg, map) {
   const avgMape = mp.length ? Math.round(mp.reduce((a, r) => a + r.mape, 0) / mp.length) : null;
   const censoredN = results.filter(r => r.censored).length;
   const dataQuality = [];
+  // FIX(v12): surface a stale file before anything else — it is the single biggest
+  // silent source of a wrong forecast, and it looks like a model error to the user.
+  if (freshness.originGapDays != null && freshness.originGapDays > 7) {
+    const upTo = freshness.dataEnd ? freshness.dataEnd.toISOString().slice(0, 10) : 'unknown';
+    dataQuality.unshift(`Your data ends ${upTo}, ${freshness.originGapDays} days ago, but the forecast starts today. The gap is not modelled${cfg.applyFestival ? ', and festive-sale uplift is being applied to a window your history has never seen' : ''}. Upload data up to yesterday, or expect the forecast to describe a different period than your file.`);
+  }
   if (!isTS) dataQuality.push(`Snapshot file: sales treated as a ${cfg.salesWindow}-day figure. Set the correct Data Sales Period or daily numbers will be off. Upload dated rows for true trend/seasonality and back-tested accuracy.`);
   if (map.status === undefined && map.returns === undefined) dataQuality.push('No order-status or returns column detected — demand is gross of returns. Add one for net-demand accuracy.');
-  if (map.stockoutFlag === undefined && map.availMins === undefined && map.inStockDays === undefined && map.daysOutOfStock === undefined && map.alert === undefined) dataQuality.push('No availability/stockout signal — stockout-suppressed demand cannot be reconstructed, so bestsellers that ran out may read low.');
+  if (map.stockoutFlag === undefined && map.availMins === undefined && map.inStockDays === undefined && map.daysOutOfStock === undefined && map.alert === undefined) {
+    // FIX(v12): an on-hand quantity column is now used to infer stockouts on dated rows,
+    // so only warn when there is genuinely nothing to go on.
+    if (map.available === undefined || !isTS) dataQuality.push('No availability/stockout signal — stockout-suppressed demand cannot be reconstructed, so bestsellers that ran out may read low.');
+    else dataQuality.push('No explicit stockout column — stockouts were inferred from dated rows where sellable stock was zero and nothing sold. Add a stockout flag for a firmer signal.');
+  }
   if (map.alert !== undefined && censoredN) dataQuality.push(`${censoredN} SKU(s) flagged out-of-stock by the file's alert column — labelled demand-unknown rather than dead (add dated history to recover their true demand).`);
   if (censoredN) dataQuality.push(`${censoredN} SKU(s) had stockout-censored sales; their demand was reconstructed or flagged rather than counted as zero.`);
   if (map.price === undefined && map.cost === undefined) dataQuality.push('No price/cost column — revenue-at-risk and inventory value show 0.');
@@ -705,6 +792,10 @@ function buildSummary(results, isTS, cfg, map) {
     slowMoverSKUs: results.filter(s => s.isSlowMover && !s.isDead).length,
     urgentSKUs: results.filter(s => s.priority === 'URGENT' || s.priority === 'HIGH').length,
     censoredSKUs: censoredN,
+    // FIX(v12): expose the file's last date and how far the forecast origin sits from it,
+    // so the UI can show which period the forecast actually describes.
+    dataEndDate: freshness.dataEnd ? freshness.dataEnd.toISOString().slice(0, 10) : null,
+    forecastOriginGapDays: freshness.originGapDays != null ? freshness.originGapDays : null,
     totalInvValue: results.reduce((a, r) => a + r.invValue, 0),
     totalAtRisk: results.reduce((a, r) => a + r.revenueAtRisk, 0),
     totalExcess: results.reduce((a, r) => a + r.excessValue, 0),
