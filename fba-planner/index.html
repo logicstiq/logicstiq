@@ -2,6 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
+<script>(function(){try{var s=localStorage.getItem('liq-theme'),d=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',d);}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FBA Planner — Demand Planning &amp; Inventory Status | LogicstIQ</title>
 <link rel="canonical" href="https://www.logicstiq.com/fba-planner/">
@@ -147,6 +148,14 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
 </script>
 <!--/LQDS-->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"LogicstIQ FBA Planner","operatingSystem":"Web","applicationCategory":"BusinessApplication","description":"Free Amazon FBA planner online: FBA demand planning & forecasting plus fulfillable vs unfulfillable inventory status for Amazon sellers in India.","url":"https://www.logicstiq.com/fba-planner/","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"publisher":{"@type":"Organization","name":"LogicstIQ","url":"https://www.logicstiq.com"}}</script>
+<style id="liq-emoji-icons">
+/* emoji swapped for line icons, tinted with the site accent */
+.liq-ei{width:1.05em;height:1.05em;vertical-align:-.16em;flex:0 0 auto;color:var(--b600);display:inline-block}
+.lnav-colt .liq-ei{width:1em;height:1em;margin-right:2px}
+.calc-ico .liq-ei,.twd-ico .liq-ei{width:23px;height:23px}
+.section-eyebrow .liq-ei{width:1em;height:1em}
+[data-theme="dark"] .liq-ei{color:#7385FF}
+</style>
 </head>
 <body data-liq-gate>
   <header class="shell">
@@ -166,13 +175,13 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
     <text x="99" y="70" font-family="'Inter',sans-serif" font-size="16" font-weight="600" letter-spacing="0.3" fill="#64748B">Where Logistics Meets Intelligence</text>
   </svg>
 </a>
-      <span class="shell-title">📦 FBA Planner <span class="tagline">· runs in your browser · data stays on your device</span></span>
+      <span class="shell-title"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5"/><path d="M12 12v9"/></svg> FBA Planner <span class="tagline">· runs in your browser · data stays on your device</span></span>
       <span class="spacer"></span>
-      <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle light or dark mode" title="Toggle light / dark">🌙</button>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle light or dark mode" title="Toggle light / dark"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></button>
     </div>
     <nav class="shell-tabs" id="shellTabs">
-      <button data-frame="framePlanner" class="on">📈 FBA Planner <span class="desc">Demand planning &amp; forecasting</span></button>
-      <button data-frame="frameDisposition">📦 Inventory Status <span class="desc">Fulfillable vs unfulfillable</span></button>
+      <button data-frame="framePlanner" class="on"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5v14h16"/><path d="M8 15l3-3 3 2 5-6"/></svg> FBA Planner <span class="desc">Demand planning &amp; forecasting</span></button>
+      <button data-frame="frameDisposition"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5"/><path d="M12 12v9"/></svg> Inventory Status <span class="desc">Fulfillable vs unfulfillable</span></button>
     </nav>
   </header>
 

@@ -2,6 +2,7 @@
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
+<script>(function(){try{var s=localStorage.getItem('liq-theme'),d=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',d);}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Demand Planner for India + 31 Supply Chain Calculators | LogicstIQ</title>
 <meta name="description" content="India's free AI Demand Planner for Flipkart, Myntra, Meesho, Shopify &amp; Amazon.in plus Blinkit, Zepto, Flipkart Minutes &amp; Amazon Fresh quick commerce. Festive-sale (Big Billion Days, Diwali, EORS) demand forecasting + 31 free supply chain calculators (no login for calculators, ever).">
@@ -768,6 +769,122 @@ setTimeout(function(){els.forEach(function(e){e.classList.add('lqin');});},1800)
 if(document.readyState!=='loading')init();else document.addEventListener('DOMContentLoaded',init);})();
 </script>
 <!--/LQDS-->
+<style id="liq-hero-v2">
+/* Homepage hero, rebuilt. One glass panel holds the headline, the CTAs and the
+   Ecommerce Suite, then a quiet run of proof underneath it. Colours come from the
+   Deep Blue tokens, so this follows dark/light automatically. */
+.lqh{position:relative;overflow:hidden;padding:clamp(34px,5vw,66px) clamp(16px,4vw,40px) clamp(30px,4vw,52px);
+  background:
+    radial-gradient(700px 380px at 84% -8%,rgba(119,11,255,.15),transparent 62%),
+    radial-gradient(640px 400px at 6% 4%,rgba(58,85,255,.15),transparent 58%),
+    var(--bg)}
+/* grid, then grain over it. flat gradients on their own look synthetic */
+.lqh::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(58,85,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(58,85,255,.05) 1px,transparent 1px);
+  background-size:52px 52px;
+  -webkit-mask:radial-gradient(820px 500px at 50% 12%,#000,transparent 74%);mask:radial-gradient(820px 500px at 50% 12%,#000,transparent 74%)}
+.lqh::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.11;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/><feColorMatrix type='saturate' values='0'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.22'/></svg>")}
+[data-theme="dark"] .lqh::before{opacity:.34;mix-blend-mode:overlay}
+[data-theme="dark"] .lqh{background:
+  radial-gradient(700px 380px at 84% -8%,rgba(119,11,255,.26),transparent 62%),
+  radial-gradient(640px 400px at 6% 4%,rgba(58,85,255,.22),transparent 58%),#0A0D16}
+.lqh-wrap{max-width:1140px;margin:0 auto;position:relative;z-index:2}
+
+.lqh-panel{position:relative;overflow:hidden;text-align:center;border:1px solid var(--border);border-radius:26px;
+  background:rgba(15,23,42,.015);backdrop-filter:blur(16px);
+  padding:clamp(28px,3.6vw,48px) clamp(20px,3vw,40px) clamp(18px,2vw,24px);
+  box-shadow:0 1px 0 #fff inset,0 1px 2px rgba(15,23,42,.05),0 8px 18px rgba(15,23,42,.06),0 34px 64px rgba(15,23,42,.08)}
+[data-theme="dark"] .lqh-panel{background:rgba(255,255,255,.025);border-color:rgba(255,255,255,.08);
+  box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 2px 4px rgba(0,0,0,.14),0 12px 24px rgba(0,0,0,.16),0 40px 80px rgba(0,0,0,.26)}
+/* hairline catching the light along the top edge */
+.lqh-panel::before{content:"";position:absolute;top:0;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent,rgba(58,85,255,.8),transparent)}
+
+.lqh-i{width:16px;height:16px;flex:0 0 auto}
+.lqh-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(58,85,255,.09);border:1px solid rgba(58,85,255,.24);
+  color:#2E42D6;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
+[data-theme="dark"] .lqh-badge{color:#7C8CFF}
+.lqh-dot{width:5px;height:5px;border-radius:50%;background:#34D399;box-shadow:0 0 0 3px rgba(52,211,153,.2);animation:lqh-pl 2s infinite}
+@keyframes lqh-pl{50%{opacity:.35}}
+
+.lqh-h1{font-family:'Wix Madefor Display','Plus Jakarta Sans',sans-serif;font-weight:800;line-height:1.05;letter-spacing:-.035em;
+  font-size:clamp(31px,5.1vw,60px);color:var(--text);margin:18px auto 15px;max-width:15ch;text-wrap:balance}
+.lqh-h1 .g{background:linear-gradient(115deg,#3A55FF,#770BFF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+[data-theme="dark"] .lqh-h1 .g{background:linear-gradient(115deg,#7385FF,#4E66FF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.lqh-sub{font-size:clamp(14.5px,1.35vw,17px);color:var(--text3);line-height:1.62;max-width:600px;margin:0 auto;text-wrap:pretty}
+.lqh-cta{display:flex;gap:11px;flex-wrap:wrap;justify-content:center;margin-top:26px}
+.lqh-btn{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:700;border-radius:11px;padding:13px 21px;
+  text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .16s cubic-bezier(.22,.68,.16,1),box-shadow .16s cubic-bezier(.22,.68,.16,1)}
+.lqh-btn:hover{transform:translateY(-2px)}
+.lqh-b1{background:linear-gradient(120deg,#3A55FF,#770BFF);color:#fff;box-shadow:0 10px 26px rgba(58,85,255,.36)}
+.lqh-b1:hover{box-shadow:0 16px 34px rgba(58,85,255,.44)}
+.lqh-b2{background:var(--card);border-color:var(--border2);color:var(--text)}
+.lqh-b2:hover{border-color:#3A55FF;color:#3A55FF}
+[data-theme="dark"] .lqh-b2:hover{border-color:#7385FF;color:#7C8CFF}
+
+.lqh-div{height:1px;background:var(--border);margin:30px -18px 18px}
+.lqh-suite-top{display:flex;align-items:center;justify-content:center;gap:12px;padding:2px 6px 12px}
+.lqh-suite-ttl{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--text3)}
+.lqh-suite-ttl svg{color:#3A55FF}
+[data-theme="dark"] .lqh-suite-ttl svg{color:#7385FF}
+.lqh-chip{font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#770BFF;
+  background:rgba(119,11,255,.1);border:1px solid rgba(119,11,255,.24);padding:4px 10px;border-radius:999px}
+[data-theme="dark"] .lqh-chip{color:#7C8CFF;background:rgba(78,102,255,.14);border-color:rgba(78,102,255,.3)}
+
+.lqh-tools{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;text-align:left}
+@media(max-width:900px){.lqh-tools{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.lqh-tools{grid-template-columns:1fr}}
+.lqh-tool{display:block;text-decoration:none;background:var(--card);border:1px solid var(--border);border-radius:13px;padding:14px 15px;
+  transition:transform .2s cubic-bezier(.22,.68,.16,1),box-shadow .2s,border-color .2s;
+  box-shadow:0 1px 0 #fff inset,0 1px 2px rgba(15,23,42,.04)}
+[data-theme="dark"] .lqh-tool{box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 1px 2px rgba(0,0,0,.1)}
+.lqh-tool:hover{border-color:rgba(58,85,255,.45);transform:translateY(-3px);box-shadow:0 14px 32px rgba(58,85,255,.14)}
+.lqh-ti{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:rgba(58,85,255,.1);
+  border:1px solid rgba(58,85,255,.2);color:#3A55FF;margin-bottom:11px}
+.lqh-ti svg{width:16px;height:16px}
+[data-theme="dark"] .lqh-ti{color:#7385FF}
+.lqh-tool b{display:block;font-size:13.5px;font-weight:700;color:var(--text);letter-spacing:-.01em;line-height:1.3}
+.lqh-tool s{display:block;text-decoration:none;font-size:11.5px;color:var(--text4);margin-top:4px;font-weight:500}
+.lqh-tool s .ar{display:inline-block;color:#3A55FF;font-weight:800;opacity:0;margin-left:2px;transition:.2s cubic-bezier(.22,.68,.16,1)}
+.lqh-tool:hover s .ar{opacity:1;transform:translateX(3px)}
+
+.lqh-rows{max-width:1140px;margin:clamp(22px,3vw,34px) auto 0;position:relative;z-index:2}
+/* two marquees, different speeds so they never sync up and look mechanical */
+.lqh-ptick,.lqh-mq{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.lqh-ptick-t{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;animation:lqh-mq 46s linear infinite;will-change:transform}
+.lqh-mq{margin-top:20px}
+.lqh-mq-t{display:inline-flex;align-items:center;gap:34px;white-space:nowrap;animation:lqh-mq 36s linear infinite;will-change:transform}
+.lqh-ptick:hover .lqh-ptick-t,.lqh-mq:hover .lqh-mq-t{animation-play-state:paused}
+@keyframes lqh-mq{to{transform:translateX(-50%)}}
+.lqh-pain{flex:0 0 auto;background:transparent;border:1px solid var(--border2);border-radius:999px;padding:7px 15px;
+  font-size:12.5px;font-weight:600;color:var(--text3)}
+.lqh-pain em{font-style:normal;font-weight:800;color:var(--text)}
+.lqh-mq-t span{font-size:13px;font-weight:700;color:var(--text4);letter-spacing:-.01em;opacity:.75}
+
+.lqh-tstats{display:flex;flex-wrap:wrap;gap:26px;margin-top:22px;padding-top:20px;border-top:1px solid var(--border)}
+.lqh-tstat b{display:block;font-size:21px;font-weight:800;letter-spacing:-.03em;color:var(--text);font-variant-numeric:tabular-nums lining-nums}
+.lqh-tstat s{display:block;text-decoration:none;font-size:11px;font-weight:600;color:var(--text4);margin-top:2px}
+.lqh-meta{display:flex;flex-wrap:wrap;align-items:center;gap:7px 14px;margin-top:20px;font-size:12px;font-weight:600;color:var(--text4)}
+.lqh-meta i{width:3px;height:3px;border-radius:50%;background:var(--text4);opacity:.5;display:block}
+.lqh-meta .hl{color:#2E42D6;font-weight:700;text-decoration:none}
+[data-theme="dark"] .lqh-meta .hl{color:#7C8CFF}
+
+.lqh a:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(58,85,255,.34);border-radius:11px}
+@media(prefers-reduced-motion:reduce){
+  .lqh-ptick-t,.lqh-mq-t,.lqh-dot{animation:none}
+  .lqh-btn:hover,.lqh-tool:hover{transform:none}
+}
+</style>
+<style id="liq-emoji-icons">
+/* emoji swapped for line icons, tinted with the site accent */
+.liq-ei-warn{color:var(--amber)!important}
+.liq-ei-flag{width:1.35em;height:.9em;border-radius:2px}
+.liq-ei{width:1.05em;height:1.05em;vertical-align:-.16em;flex:0 0 auto;color:var(--b600);display:inline-block}
+.lnav-colt .liq-ei{width:1em;height:1em;margin-right:2px}
+.calc-ico .liq-ei,.twd-ico .liq-ei{width:23px;height:23px}
+.section-eyebrow .liq-ei{width:1em;height:1em}
+[data-theme="dark"] .liq-ei{color:#7385FF}
+</style>
 </head>
 <body>
 <!-- ── NAVIGATION ── -->
@@ -911,33 +1028,27 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
     <text x="99" y="70" font-family="'Inter',sans-serif" font-size="16" font-weight="600" letter-spacing="0.3" fill="#64748B">Where Logistics Meets Intelligence</text>
   </svg>
 </a>
-  <button class="lnav-burger" id="lnavBurger" type="button" aria-label="Open menu">☰</button>
+  <button class="lnav-burger" id="lnavBurger" type="button" aria-label="Open menu"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   <div class="lnav-menu">
     <div class="lnav-item">
       <a class="lnav-top" href="/calculators.html">Calculators <span class="lnav-car">▼</span></a>
-      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col"><div class="lnav-colt">📦 Inventory & Planning</div><a href="/eoq-calculator">EOQ Calculator</a><a href="/safety-stock-calculator">Safety Stock</a><a href="/reorder-point-calculator">Reorder Point</a><a href="/abc-analysis-calculator">ABC Analysis</a><a href="/inventory-turnover-calculator">Inventory Turnover</a><a href="/moq-calculator">MOQ Calculator</a><a href="/dead-stock-calculator">Dead Stock</a><a href="/cycle-count-calculator">Cycle Count</a></div><div class="lnav-col"><div class="lnav-colt">⏱️ Performance & Suppliers</div><a href="/otif-calculator">OTIF Calculator</a><a href="/fill-rate-calculator">Fill Rate</a><a href="/demand-forecast-calculator">Demand Forecast</a><a href="/supplier-scorecard-calculator">Supplier Scorecard</a><a href="/supplier-lead-time-variability-calculator">Lead Time Variability</a><a href="/disruption-impact-calculator">Disruption Impact</a></div><div class="lnav-col"><div class="lnav-colt">💰 Costing & Finance</div><a href="/landed-cost-calculator">Landed Cost</a><a href="/gst-calculator-logistics">GST Calculator</a><a href="/cogs-calculator">COGS Calculator</a><a href="/gross-margin-calculator">Gross Margin</a><a href="/break-even-calculator">Break-Even</a><a href="/working-capital-calculator">Working Capital</a><a href="/carrying-cost-calculator">Carrying Cost</a><a href="/stockout-cost-calculator">Stockout Cost</a><a href="/days-inventory-outstanding-calculator">Days Inventory Outstanding</a><a href="/cash-conversion-cycle-calculator">Cash Conversion Cycle</a></div><div class="lnav-col"><div class="lnav-colt">🚛 Logistics & Warehouse</div><a href="/freight-cost-calculator">Freight Cost</a><a href="/warehouse-space-calculator">Warehouse Space</a><a href="/lead-time-calculator">Lead Time</a><a href="/shipping-cost-per-unit-calculator">Shipping Cost / Unit</a><a href="/volumetric-weight-calculator">Volumetric Weight</a><a href="/pick-pack-cost-calculator">Pick & Pack Cost</a><a href="/carbon-footprint-logistics">Carbon Footprint</a></div><div class="lnav-viewall"><a href="/calculators.html">View all 31 calculators →</a></div></div></div>
-    </div>
-    <a class="lnav-top" href="/demand-planner.html">AI Demand Planner</a>
-    <div class="lnav-item">
-      <a class="lnav-top" href="/documents-generator.html">Paperwork Hub <span class="lnav-car">▼</span></a>
-      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col"><div class="lnav-colt">🏪 Business Billing</div><a href="/documents-generator.html#invoice">GST Invoice</a><a href="/documents-generator.html#po">Purchase Order</a><a href="/documents-generator.html#proforma">Proforma</a><a href="/documents-generator.html#quotation">Quotation</a><a href="/documents-generator.html#challan">Delivery Challan</a><a href="/documents-generator.html#packing">Packing List</a></div><div class="lnav-col"><div class="lnav-colt">🔗 Supply Chain &amp; EXIM</div><a href="/documents-generator.html#ci">Commercial Invoice</a><a href="/documents-generator.html#epl">Export Packing List</a><a href="/documents-generator.html#epi">Export Proforma</a><a href="/documents-generator.html#coo">Certificate of Origin</a><a href="/documents-generator.html#bl">Bill of Lading / AWB</a><a href="/documents-generator.html#sb">Shipping Bill (ICEGATE)</a></div><div class="lnav-col"><div class="lnav-colt">&nbsp;</div><a href="/documents-generator.html#boe">Bill of Entry (ICEGATE)</a><a href="/documents-generator.html#lc">LC Checklist</a><a href="/documents-generator.html#boex">Bill of Exchange</a><a href="/documents-generator.html#ebrc">eBRC Worksheet</a><a href="/documents-generator.html#rodtep">RoDTEP / Drawback</a></div><div class="lnav-viewall"><a href="/documents-generator.html">Open Paperwork Hub →</a></div></div></div>
+      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col"><div class="lnav-colt"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5"/><path d="M12 12v9"/></svg> Inventory & Planning</div><a href="/eoq-calculator">EOQ Calculator</a><a href="/safety-stock-calculator">Safety Stock</a><a href="/reorder-point-calculator">Reorder Point</a><a href="/abc-analysis-calculator">ABC Analysis</a><a href="/inventory-turnover-calculator">Inventory Turnover</a><a href="/moq-calculator">MOQ Calculator</a><a href="/dead-stock-calculator">Dead Stock</a><a href="/cycle-count-calculator">Cycle Count</a></div><div class="lnav-col"><div class="lnav-colt"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 10v3l2 2"/><path d="M9 3h6"/><path d="M12 3v3"/></svg> Performance & Suppliers</div><a href="/otif-calculator">OTIF Calculator</a><a href="/fill-rate-calculator">Fill Rate</a><a href="/demand-forecast-calculator">Demand Forecast</a><a href="/supplier-scorecard-calculator">Supplier Scorecard</a><a href="/supplier-lead-time-variability-calculator">Lead Time Variability</a><a href="/disruption-impact-calculator">Disruption Impact</a></div><div class="lnav-col"><div class="lnav-colt"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="5"/><path d="M15.5 6.2A5 5 0 1 1 14 19.6"/></svg> Costing & Finance</div><a href="/landed-cost-calculator">Landed Cost</a><a href="/gst-calculator-logistics">GST Calculator</a><a href="/cogs-calculator">COGS Calculator</a><a href="/gross-margin-calculator">Gross Margin</a><a href="/break-even-calculator">Break-Even</a><a href="/working-capital-calculator">Working Capital</a><a href="/carrying-cost-calculator">Carrying Cost</a><a href="/stockout-cost-calculator">Stockout Cost</a><a href="/days-inventory-outstanding-calculator">Days Inventory Outstanding</a><a href="/cash-conversion-cycle-calculator">Cash Conversion Cycle</a></div><div class="lnav-col"><div class="lnav-colt"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17V6h11v11"/><path d="M14 9h4l3 3v5h-7"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg> Logistics & Warehouse</div><a href="/freight-cost-calculator">Freight Cost</a><a href="/warehouse-space-calculator">Warehouse Space</a><a href="/lead-time-calculator">Lead Time</a><a href="/shipping-cost-per-unit-calculator">Shipping Cost / Unit</a><a href="/volumetric-weight-calculator">Volumetric Weight</a><a href="/pick-pack-cost-calculator">Pick & Pack Cost</a><a href="/carbon-footprint-logistics">Carbon Footprint</a></div><div class="lnav-viewall"><a href="/calculators.html">View all 31 calculators →</a></div></div></div>
     </div>
     <div class="lnav-item">
       <a class="lnav-top" href="/ecommerce.html">Ecommerce <span class="lnav-car">▼</span></a>
-      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col" style="min-width:280px"><div class="lnav-colt">🏪 Ecommerce Suite</div><a href="/demand-planner.html">🤖 AI Demand Planner <span class="lnav-mini">Live</span></a><a href="/sourcing-procurement.html">🛒 Sourcing &amp; Procurement — Seller Paperwork Hub <span class="lnav-mini">Live</span></a><a href="/fba-planner/">📦 FBA Planner <span class="lnav-mini">Live</span></a><a href="/tms.html">🚛 TMS — Transportation Management <span class="lnav-mini">Beta</span></a><a href="/oms.html">🧾 OMS — Order Management <span class="lnav-mini">Coming soon</span></a><a href="/wms.html">🏭 WMS — Warehouse Management <span class="lnav-mini">Coming soon</span></a><a href="/returns.html">↩️ Returns Management <span class="lnav-mini">Coming soon</span></a><div class="lnav-viewall"><a href="/ecommerce.html">Open Ecommerce hub →</a></div></div></div></div>
+      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col" style="min-width:280px"><div class="lnav-colt"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h16v11H4z"/><path d="M3 9l1.5-5h15L21 9"/><path d="M9 20v-6h6v6"/></svg> Ecommerce Suite</div><a href="/demand-planner.html"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 8V4"/><circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/></svg> AI Demand Planner <span class="lnav-mini">Live</span></a><a href="/sourcing-procurement.html"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L23 6H6"/></svg> Sourcing &amp; Procurement — Seller Paperwork Hub <span class="lnav-mini">Live</span></a><a href="/fba-planner/"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5"/><path d="M12 12v9"/></svg> FBA Planner <span class="lnav-mini">Live</span></a><a href="/tms.html"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17V6h11v11"/><path d="M14 9h4l3 3v5h-7"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg> TMS — Transportation Management <span class="lnav-mini">Beta</span></a><a href="/oms.html"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg> OMS — Order Management <span class="lnav-mini">Coming soon</span></a><a href="/wms.html"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V10l5 3V10l5 3V10l5 3v7z"/><path d="M8 20v-4M13 20v-4M18 20v-4"/></svg> WMS — Warehouse Management <span class="lnav-mini">Coming soon</span></a><a href="/returns.html">↩ Returns Management <span class="lnav-mini">Coming soon</span></a><div class="lnav-viewall"><a href="/ecommerce.html">Open Ecommerce hub →</a></div></div></div></div>
     </div>
     <div class="lnav-item">
-      <a class="lnav-top" href="/tms.html">TMS <span class="lnav-beta">Beta</span> <span class="lnav-car">▼</span></a>
-      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col"><div class="lnav-colt">🚛 Plan &amp; Book</div><a href="/tms.html#tower">◎ Control Tower</a><a href="/tms.html#ship">▤ Shipments</a><a href="/tms.html#carriers">◆ Carriers &amp; Rates</a><a href="/tms.html#load">▦ Load Planning</a><a href="/tms.html#route">⤳ Route Optimization</a></div><div class="lnav-col"><div class="lnav-colt">📡 Execute &amp; Audit</div><a href="/tms.html#dock">▥ Dock Scheduling</a><a href="/tms.html#track">◈ Tracking Tower</a><a href="/tms.html#audit">₹ Freight Audit</a><a href="/tms.html#reports">▧ Reports</a><a href="/tms.html#ai">✦ AI Copilot</a></div><div class="lnav-viewall"><a href="/tms.html">Open TMS →</a></div></div></div>
+      <a class="lnav-top" href="/documents-generator.html">Paperwork Hub <span class="lnav-car">▼</span></a>
+      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col"><div class="lnav-colt"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h16v11H4z"/><path d="M3 9l1.5-5h15L21 9"/><path d="M9 20v-6h6v6"/></svg> Business Billing</div><a href="/documents-generator.html#invoice">GST Invoice</a><a href="/documents-generator.html#po">Purchase Order</a><a href="/documents-generator.html#proforma">Proforma</a><a href="/documents-generator.html#quotation">Quotation</a><a href="/documents-generator.html#challan">Delivery Challan</a><a href="/documents-generator.html#packing">Packing List</a></div><div class="lnav-col"><div class="lnav-colt"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></svg> Supply Chain &amp; EXIM</div><a href="/documents-generator.html#ci">Commercial Invoice</a><a href="/documents-generator.html#epl">Export Packing List</a><a href="/documents-generator.html#epi">Export Proforma</a><a href="/documents-generator.html#coo">Certificate of Origin</a><a href="/documents-generator.html#bl">Bill of Lading / AWB</a><a href="/documents-generator.html#sb">Shipping Bill (ICEGATE)</a></div><div class="lnav-col"><div class="lnav-colt">&nbsp;</div><a href="/documents-generator.html#boe">Bill of Entry (ICEGATE)</a><a href="/documents-generator.html#lc">LC Checklist</a><a href="/documents-generator.html#boex">Bill of Exchange</a><a href="/documents-generator.html#ebrc">eBRC Worksheet</a><a href="/documents-generator.html#rodtep">RoDTEP / Drawback</a></div><div class="lnav-viewall"><a href="/documents-generator.html">Open Paperwork Hub →</a></div></div></div>
     </div>
+    <a class="lnav-top" href="/find-your-tool.html">Find Your Tool</a>
     <div class="lnav-item">
-      <a class="lnav-top" href="/blog.html">Blog <span class="lnav-car">▼</span></a>
-      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col" style="min-width:320px"><div class="lnav-colt">📚 Guides</div><a href="/blog/landed-cost-guide.html">Landed Cost Explained</a><a href="/blog/eoq-calculator.html">EOQ — Complete Guide</a><a href="/blog/demand-planning-amazon-flipkart.html">Demand Planning for Amazon & Flipkart</a><a href="/blog/safety-stock-calculator.html">Safety Stock Formula</a><a href="/blog/what-is-otif.html">What is OTIF?</a><a href="/blog/inventory-turnover-formula.html">Inventory Turnover Formula</a><a href="/blog/abc-analysis-guide.html">ABC Analysis Guide</a><a href="/blog/gst-calculator-logistics.html">GST on Freight & Logistics</a><div class="lnav-viewall"><a href="/blog.html">View all articles →</a></div></div></div></div>
+      <a class="lnav-top" href="/blog.html">Resources <span class="lnav-car">▼</span></a>
+      <div class="lnav-panel"><div class="lnav-panel-in"><div class="lnav-col" style="min-width:320px"><div class="lnav-colt"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h6v16H6a2 2 0 0 0-2 2z"/><path d="M20 5a2 2 0 0 0-2-2h-6v16h6a2 2 0 0 1 2 2z"/></svg> Guides</div><a href="/blog/landed-cost-guide.html">Landed Cost Explained</a><a href="/blog/eoq-calculator.html">EOQ — Complete Guide</a><a href="/blog/demand-planning-amazon-flipkart.html">Demand Planning for Amazon & Flipkart</a><a href="/blog/safety-stock-calculator.html">Safety Stock Formula</a><a href="/blog/what-is-otif.html">What is OTIF?</a><a href="/blog/inventory-turnover-formula.html">Inventory Turnover Formula</a><a href="/blog/abc-analysis-guide.html">ABC Analysis Guide</a><a href="/blog/gst-calculator-logistics.html">GST on Freight & Logistics</a><div class="lnav-viewall"><a href="/blog.html">View all articles →</a></div></div><div class="lnav-col" style="min-width:290px"><div class="lnav-colt"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5v14h16"/><path d="M8 15l3-3 3 2 5-6"/></svg> Playbooks &amp; Case Studies</div><a href="/big-billion-days-inventory-plan">Big Billion Days Inventory Plan</a><a href="/fba-restock-before-big-billion-days">FBA Restock Before Big Billion Days</a><a href="/quick-commerce-replenishment-blinkit-zepto">Blinkit &amp; Zepto Replenishment</a><a href="/cut-dead-stock-free-working-capital">Cut Dead Stock, Free Cash</a><div class="lnav-viewall"><a href="/playbooks.html">All playbooks &amp; case studies →</a></div></div><div class="lnav-col" style="min-width:200px"><div class="lnav-colt"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4h9v17"/><path d="M14 9h5v12"/><path d="M8 8h3M8 12h3M8 16h3"/></svg> Company</div><a href="/about.html">About LogicstIQ</a><a href="/contact.html">Contact</a></div></div></div>
     </div>
-    <a class="lnav-top" href="/about.html">About</a>
-    <a class="lnav-top" href="/contact.html">Contact</a>
   </div>
-  <button id="liqTheme" class="liq-theme-btn" type="button" aria-label="Toggle light or dark mode" title="Toggle light / dark">🌙</button>
+  <button id="liqTheme" class="liq-theme-btn" type="button" aria-label="Toggle light or dark mode" title="Toggle light / dark"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></button>
 </nav>
 <script id="lnav-js">
 (function(){var nav=document.getElementById('lnav');if(!nav)return;
@@ -985,49 +1096,63 @@ window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList
 .liqs-d2{font-size:11px;color:var(--text4);font-weight:600;line-height:1.25}
 .liqs-d2 .ar{color:var(--b600);font-weight:900}
 </style>
-<section class="pf-hero">
-  <div class="pf-wrap">
-    <div>
-      <span class="pf-badge"><span class="hero-dot"></span>Free Calculators · AI Tools · Built for Indian Sellers</span>
-      <h1>India's free <span class="g">supply chain intelligence</span> platform</h1>
-      <p class="pf-sub">Forecast demand, plan inventory, generate GST & EXIM documents, and run e-commerce sourcing & procurement — free. Built for Amazon, Flipkart, Meesho and quick-commerce sellers in India. 31 calculators, an AI Demand Planner, and a new AI Copilot.</p>
-      <div class="pf-cta">
-        <a href="/demand-planner.html" class="pf-btn pf-btn-primary"><svg class="liq-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 L5 13 h5 l-1 8 8-11 h-5 z"/></svg> Launch AI Demand Planner</a>
-        <a href="/calculators.html" class="pf-btn pf-btn-ghost">Explore 31 calculators</a>
+<section class="lqh">
+  <div class="lqh-wrap">
+    <div class="lqh-panel">
+      <span class="lqh-badge"><span class="lqh-dot"></span>Free calculators &middot; Built for Indian sellers</span>
+      <h1 class="lqh-h1">India's free <span class="g">supply chain intelligence</span> platform</h1>
+      <p class="lqh-sub">Forecasting, inventory planning, GST and EXIM paperwork, and sourcing. Free for Amazon, Flipkart, Meesho and quick-commerce sellers.</p>
+      <div class="lqh-cta">
+        <a href="/demand-planner.html" class="lqh-btn lqh-b1"><svg class="lqh-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 L5 13 h5 l-1 8 8-11 h-5 z"/></svg>Launch AI Demand Planner</a>
+        <a href="/calculators.html" class="lqh-btn lqh-b2">Explore 31 calculators</a>
       </div>
-      <div class="pf-ticks"><span><span class="c">✓</span>31 free calculators</span><span><span class="c">✓</span>AI-powered</span><span><span class="c">✓</span>Any device</span><span><span class="c">✓</span>Excel &amp; CSV</span></div>       <div style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:var(--b50);border:1px solid var(--b200);color:var(--b700);border-radius:999px;padding:8px 16px;font-size:13px;font-weight:700"><svg class="liq-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l1.6 3.8L17.5 9l-3.9 1.2L12 14l-1.6-3.8L6.5 9l3.9-1.2z"/><path d="M18 14.5l.7 1.7 1.8.8-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.8z"/></svg> New — ask our free AI Copilot (bottom-right) anything about e-commerce supply chain</div>
-    </div>
-    <div class="pf-card">
-      <div class="pf-card-top"><b style="font-size:14px;color:var(--text)"><svg class="liq-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--b600)"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg> Ecommerce Suite</b><span class="pf-chip">4 tools &middot; live</span></div>
-      <div class="pf-minis">
-        <a class="pf-mini liqs-m" href="/demand-planner.html"><div class="liqs-nm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5v14h16"/><path d="M8 15l3-3 3 2 5-6"/></svg> AI Demand Planner</div><div class="liqs-d2">Forecasts &amp; replenishment <span class="ar">&rarr;</span></div></a>
-        <a class="pf-mini liqs-m" href="/fba-planner/"><div class="liqs-nm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5"/><path d="M12 12v9"/></svg> FBA Planner &amp; Disposition</div><div class="liqs-d2">Fulfillable vs unfulfillable <span class="ar">&rarr;</span></div></a>
-        <a class="pf-mini liqs-m" href="/sourcing-procurement.html"><div class="liqs-nm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M2 3h3l2.4 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L23 6H6"/></svg> Sourcing &amp; Procurement</div><div class="liqs-d2">Supplier &amp; seller paperwork <span class="ar">&rarr;</span></div></a>
-        <a class="pf-mini liqs-m" href="/documents-generator.html"><div class="liqs-nm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></svg> EXIM &amp; GST paperwork</div><div class="liqs-d2">Invoices, BOL, COO, more <span class="ar">&rarr;</span></div></a>
+
+      <div class="lqh-div"></div>
+
+      <div class="lqh-suite-top">
+        <span class="lqh-suite-ttl"><svg class="lqh-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>Ecommerce Suite</span>
+        <span class="lqh-chip">4 tools live</span>
       </div>
-      <div class="pf-bars"><i style="height:40%"></i><i style="height:62%"></i><i style="height:50%"></i><i style="height:78%"></i><i style="height:66%"></i><i style="height:90%"></i><i style="height:72%"></i><i style="height:84%"></i><i style="height:96%"></i></div>
+      <div class="lqh-tools">
+        <a class="lqh-tool" href="/demand-planner.html">
+          <i class="lqh-ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5v14h16"/><path d="M8 15l3-3 3 2 5-6"/></svg></i>
+          <b>AI Demand Planner</b><s>Forecasts &amp; replenishment <span class="ar">&rarr;</span></s>
+        </a>
+        <a class="lqh-tool" href="/fba-planner/">
+          <i class="lqh-ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5"/><path d="M12 12v9"/></svg></i>
+          <b>FBA Planner &amp; Disposition</b><s>Fulfillable vs unfulfillable <span class="ar">&rarr;</span></s>
+        </a>
+        <a class="lqh-tool" href="/sourcing-procurement.html">
+          <i class="lqh-ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M2 3h3l2.4 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></i>
+          <b>Sourcing &amp; Procurement</b><s>Supplier &amp; seller paperwork <span class="ar">&rarr;</span></s>
+        </a>
+        <a class="lqh-tool" href="/documents-generator.html">
+          <i class="lqh-ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></svg></i>
+          <b>EXIM &amp; GST paperwork</b><s>Invoices, BOL, COO, more <span class="ar">&rarr;</span></s>
+        </a>
+      </div>
     </div>
   </div>
-  <div class="pf-rows">
-    <div class="pf-pains">
-      <span class="pf-pain"><em>Stockouts</em> killing your rank?</span>
-      <span class="pf-pain"><em>Dead stock</em> eating your cash?</span>
-      <span class="pf-pain">5 courier logins, <em>zero visibility?</em></span>
-      <span class="pf-pain">Planning on <em>Excel &amp; WhatsApp?</em></span>
-      <span class="pf-pain">SAP too <em>expensive</em> for your scale?</span>
+
+  <div class="lqh-rows">
+    <!-- objections, one continuous line so five unequal chips never rag -->
+    <div class="lqh-ptick"><span class="lqh-ptick-t">
+      <span class="lqh-pain"><em>Stockouts</em> killing your rank?</span><span class="lqh-pain"><em>Dead stock</em> eating your cash?</span><span class="lqh-pain">5 courier logins, <em>zero visibility?</em></span><span class="lqh-pain">Planning on <em>Excel &amp; WhatsApp?</em></span><span class="lqh-pain">SAP too <em>expensive</em> for your scale?</span><span class="lqh-pain"><em>Stockouts</em> killing your rank?</span><span class="lqh-pain"><em>Dead stock</em> eating your cash?</span><span class="lqh-pain">5 courier logins, <em>zero visibility?</em></span><span class="lqh-pain">Planning on <em>Excel &amp; WhatsApp?</em></span><span class="lqh-pain">SAP too <em>expensive</em> for your scale?</span>
+    </span></div>
+
+    <div class="lqh-mq"><span class="lqh-mq-t">
+      <span>Flipkart</span><span>Myntra</span><span>Meesho</span><span>Amazon.in</span><span>Shopify</span><span>Nykaa</span><span>Ajio</span><span>Blinkit</span><span>Zepto</span><span>Swiggy Instamart</span><span>Flipkart Minutes</span><span>Amazon Fresh</span><span>BigBasket</span><span>Flipkart</span><span>Myntra</span><span>Meesho</span><span>Amazon.in</span><span>Shopify</span><span>Nykaa</span><span>Ajio</span><span>Blinkit</span><span>Zepto</span><span>Swiggy Instamart</span><span>Flipkart Minutes</span><span>Amazon Fresh</span><span>BigBasket</span>
+    </span></div>
+
+    <div class="lqh-tstats">
+      <div class="lqh-tstat"><b>31</b><s>Free calculators, no login</s></div>
+      <div class="lqh-tstat"><b>4 live</b><s>Ecommerce Suite tools</s></div>
+      <div class="lqh-tstat"><b>30+</b><s>Channels supported</s></div>
     </div>
-    <div class="pf-logos-l">Works with exports from</div>
-    <div class="pf-logos">
-      <span class="pf-logo">Flipkart</span><span class="pf-logo">Myntra</span><span class="pf-logo">Meesho</span><span class="pf-logo">Amazon.in</span><span class="pf-logo">Shopify</span><span class="pf-logo">Nykaa</span><span class="pf-logo">Ajio</span><span class="pf-logo">Blinkit</span><span class="pf-logo">Zepto</span><span class="pf-logo">Swiggy Instamart</span><span class="pf-logo">Flipkart Minutes</span><span class="pf-logo">Amazon Fresh</span><span class="pf-logo">BigBasket</span>
+
+    <div class="lqh-meta">
+      <span>Excel &amp; CSV</span><i></i><span>Any device</span><i></i><span>1-click free signup</span><i></i><a class="hl" href="#" onclick="return false">Free AI Copilot</a><i></i><span>Made in India</span>
     </div>
-    <div class="pf-stats">
-      <div class="pf-stat"><div class="n">31</div><div class="l">Free Tools</div></div>
-      <div class="pf-stat"><div class="n">AI</div><div class="l">Powered</div></div>
-      <div class="pf-stat"><div class="n">1-Click</div><div class="l">Free Signup</div></div>
-      <div class="pf-stat"><div class="n">∞</div><div class="l">Free Calculators</div></div>
-      <div class="pf-stat"><div class="n">30+</div><div class="l">Channels</div></div>
-    </div>
-    <div><span class="pf-india">🇮🇳 Made in India · Built for India &amp; Global Markets</span></div>
   </div>
 </section>
   <!-- ── WHICH TOOL? · India Demand Planner vs Global Amazon FBA Planner ── -->
@@ -1041,18 +1166,18 @@ window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList
 <!-- ── CALCULATORS ── -->
 
 <section id="tools" class="section center">
-  <div class="section-eyebrow">🚀 The Platform</div>
+  <div class="section-eyebrow"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 3.5c3 0 7 4 7 7-2.5 4-6 6.5-9 8l-3.5-3.5c1.5-3 4-6.5 5.5-11.5z"/><path d="M8 14l-3 3 2 2 3-3"/></svg> The Platform</div>
   <h2 class="section-title">Everything LogicstIQ Offers</h2>
   <p class="section-sub">One free platform, eight tool suites. Click any card to open the full tool on its own page.</p>
   <div class="calc-grid cg-4" style="max-width:1120px">
-    <a href="/calculators.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🧮</div><div class="calc-tag">Free Tools</div><div class="calc-name">31 Calculators</div><div class="calc-desc">EOQ, safety stock, landed cost, GST, freight &amp; 26 more — instant, no login</div></div></a>
-    <a href="/demand-planner.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🤖</div><div class="calc-tag">AI</div><div class="calc-name">AI Demand Planner</div><div class="calc-desc">Upload sales history — get forecasts, stockout alerts &amp; reorder points</div></div></a>
-    <a href="/documents-generator.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📄</div><div class="calc-tag">Documents</div><div class="calc-name">Paperwork Hub</div><div class="calc-desc">Bills &amp; GST invoices for every business + full supply chain &amp; EXIM documents</div></div></a>
-    <a href="/erp-sourcing-procurement.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🏭</div><div class="calc-tag">General ERP</div><div class="calc-name">Sourcing &amp; Procurement</div><div class="calc-desc">PR → RFQ → PO → GRN procure-to-pay for importers, manufacturers &amp; distributors</div></div></a>
-    <a href="/ecommerce.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🏪</div><div class="calc-tag">Ecommerce</div><div class="calc-name">Ecommerce Suite</div><div class="calc-desc">AI Planner, Sourcing &amp; Procurement, FBA + TMS live · OMS, WMS &amp; Returns soon</div></div></a>
-    <a href="/tms.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🚛</div><div class="calc-tag">Beta</div><div class="calc-name">TMS</div><div class="calc-desc">Transportation management — carriers, rates, tracking &amp; dispatch</div></div></a>
-    <a href="/blog.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📚</div><div class="calc-tag">Learn</div><div class="calc-name">Blog &amp; Guides</div><div class="calc-desc">Formulas, worked examples and India-specific supply chain guides</div></div></a>
-    <a href="/about.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">🇮🇳</div><div class="calc-tag">Our Story</div><div class="calc-name">Why LogicstIQ</div><div class="calc-desc">Fortune-500 grade tools, free for every Indian seller — our story</div></div></a>
+    <a href="/calculators.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8"/><path d="M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01"/></svg></div><div class="calc-tag">Free Tools</div><div class="calc-name">31 Calculators</div><div class="calc-desc">EOQ, safety stock, landed cost, GST, freight &amp; 26 more — instant, no login</div></div></a>
+    <a href="/demand-planner.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 8V4"/><circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/></svg></div><div class="calc-tag">AI</div><div class="calc-name">AI Demand Planner</div><div class="calc-desc">Upload sales history — get forecasts, stockout alerts &amp; reorder points</div></div></a>
+    <a href="/documents-generator.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></svg></div><div class="calc-tag">Documents</div><div class="calc-name">Paperwork Hub</div><div class="calc-desc">Bills &amp; GST invoices for every business + full supply chain &amp; EXIM documents</div></div></a>
+    <a href="/erp-sourcing-procurement.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V10l5 3V10l5 3V10l5 3v7z"/><path d="M8 20v-4M13 20v-4M18 20v-4"/></svg></div><div class="calc-tag">General ERP</div><div class="calc-name">Sourcing &amp; Procurement</div><div class="calc-desc">PR → RFQ → PO → GRN procure-to-pay for importers, manufacturers &amp; distributors</div></div></a>
+    <a href="/ecommerce.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h16v11H4z"/><path d="M3 9l1.5-5h15L21 9"/><path d="M9 20v-6h6v6"/></svg></div><div class="calc-tag">Ecommerce</div><div class="calc-name">Ecommerce Suite</div><div class="calc-desc">AI Planner, Sourcing &amp; Procurement, FBA + TMS live · OMS, WMS &amp; Returns soon</div></div></a>
+    <a href="/tms.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17V6h11v11"/><path d="M14 9h4l3 3v5h-7"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg></div><div class="calc-tag">Beta</div><div class="calc-name">TMS</div><div class="calc-desc">Transportation management — carriers, rates, tracking &amp; dispatch</div></div></a>
+    <a href="/blog.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h6v16H6a2 2 0 0 0-2 2z"/><path d="M20 5a2 2 0 0 0-2-2h-6v16h6a2 2 0 0 1 2 2z"/></svg></div><div class="calc-tag">Learn</div><div class="calc-name">Blog &amp; Guides</div><div class="calc-desc">Formulas, worked examples and India-specific supply chain guides</div></div></a>
+    <a href="/about.html" style="text-decoration:none"><div class="calc-card"><div class="calc-ico"><svg class="liq-ei liq-ei-flag" viewBox="0 0 24 16" fill="none" aria-hidden="true"><rect x="1" y="1" width="22" height="4.6" fill="#FF9933"/><rect x="1" y="5.6" width="22" height="4.6" fill="#ffffff"/><rect x="1" y="10.2" width="22" height="4.6" fill="#138808"/><circle cx="12" cy="7.9" r="1.7" fill="none" stroke="#0A3EA3" stroke-width="1"/><rect x="1" y="1" width="22" height="14" fill="none" stroke="currentColor" stroke-opacity=".25"/></svg></div><div class="calc-tag">Our Story</div><div class="calc-name">Why LogicstIQ</div><div class="calc-desc">Fortune-500 grade tools, free for every Indian seller — our story</div></div></a>
   </div>
 </section>
 
@@ -1081,36 +1206,11 @@ window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList
 .twd-go{font-size:13.5px;font-weight:800;color:#3A55FF;text-decoration:none;margin-top:auto;padding-top:4px}
 [data-theme="dark"] .twd-go{color:#7A92FF}
 </style>
-<section class="section center" style="padding-bottom:0">
-  <div class="section-eyebrow">🧭 Find Your Tool</div>
-  <h2 class="section-title">What Each Tool Does</h2>
-  <p class="section-sub">Not sure where to start? Here is every tool on LogicstIQ, what it does, and who it is built for.</p>
-</section>
-<div class="twd"><div class="twd-grid">
-<div class="twd-card"><div class="twd-head"><span class="twd-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="12" x2="8.01" y2="12"/><line x1="12" y1="12" x2="12.01" y2="12"/><line x1="16" y1="12" x2="16.01" y2="12"/><line x1="8" y1="16" x2="8.01" y2="16"/><line x1="12" y1="16" x2="12.01" y2="16"/><line x1="16" y1="16" x2="16.01" y2="16"/></svg></span><span class="twd-title">31 Free Calculators</span></div><div class="twd-body"><p>Instant answers to everyday supply chain maths: how much to order (EOQ, MOQ), how much buffer to keep (safety stock, reorder point), what things truly cost (landed cost, COGS, carrying cost, freight, GST), and how healthy your operation is (inventory turnover, OTIF, fill rate, cash conversion cycle). Every calculator shows the formula, a worked example and FAQs.</p><div class="twd-tags"><span class="twd-for">Everyone — no login, ever</span></div><a class="twd-go" href="/calculators.html">Open Calculators →</a></div></div>
-<div class="twd-card"><div class="twd-head"><span class="twd-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5v14h16"/><path d="M8 15l3-3 3 2 5-6"/></svg></span><span class="twd-title">AI Demand Planner</span></div><div class="twd-body"><p>Upload your sales history (Excel or CSV export from any marketplace) and get demand forecasts per SKU, stockout alerts, seasonality patterns, safety stock and reorder points — with the results explained in plain language by AI, not just numbers in a grid.</p><div class="twd-tags"><span class="twd-for">Marketplace &amp; D2C sellers planning inventory</span></div><a class="twd-go" href="/demand-planner.html">Open AI Demand Planner →</a></div></div>
-<div class="twd-card"><div class="twd-head"><span class="twd-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></svg></span><span class="twd-title">Paperwork Hub</span></div><div class="twd-body"><p>Every business document in one place, in two sections. <b>Business Billing</b>: GST invoices, proformas, quotations, delivery challans and packing lists — perfect for shops, retailers and small businesses that just need clean, correct bills. <b>Supply Chain &amp; EXIM Documentation</b>: commercial invoices, certificates of origin, bills of lading, ICEGATE shipping bills, LC checklists and more for importers and exporters — connected to the landed cost and GST calculators.</p><div class="twd-tags"><span class="twd-for">Shops &amp; small businesses</span><span class="twd-for">Manufacturers, importers &amp; exporters</span></div><a class="twd-go" href="/documents-generator.html">Open Paperwork Hub →</a></div></div>
-<div class="twd-card"><div class="twd-head"><span class="twd-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M2 3h3l2.4 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></span><span class="twd-title">Sourcing &amp; Procurement — Seller Paperwork Hub</span><span class="twd-badge" style="color:#3C2A80;background:#D9CCFF">Ecommerce Suite</span></div><div class="twd-body"><p>The complete procure-to-pay paper trail for e-commerce: purchase requisitions, RFQs, supplier comparisons, purchase orders with marketplace identifiers (ASIN / FNSKU / FSN), landed cost worksheets, inbound ASN and carton manifests for FC deliveries, GRNs and 2-way / 3-way matching. Includes a full guide explaining what every document does.</p><div class="twd-tags"><span class="twd-for">Amazon, Flipkart, Myntra, Meesho, quick-com &amp; D2C sellers</span></div><a class="twd-go" href="/sourcing-procurement.html">Open Seller Paperwork Hub →</a></div></div>
-<div class="twd-card"><div class="twd-head"><span class="twd-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg></span><span class="twd-title">Ecommerce Suite</span></div><div class="twd-body"><p>Operations after the order: the <b>AI Demand Planner</b> (live) for forecasting, the <b>Sourcing &amp; Procurement — Seller Paperwork Hub</b> (live) for procurement documents, the <b>FBA Planner</b> (live) for Amazon replenishment, the <b>TMS</b> (beta) for shipping, dispatch and carrier management, and <b>OMS</b>, <b>WMS</b> and <b>Returns Management</b> arriving soon to manage orders, warehouse operations and returns across all your channels.</p><div class="twd-tags"><span class="twd-for">Marketplace sellers scaling operations</span></div><a class="twd-go" href="/ecommerce.html">Open Ecommerce Suite →</a></div></div>
-<div class="twd-card"><div class="twd-head"><span class="twd-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg></span><span class="twd-title">TMS — Transportation Management</span><span class="twd-badge" style="color:#60360b;background:#FFD79A">Beta</span></div><div class="twd-body"><p>Plan and track shipments: compare carrier rates, build multi-stop routes, generate dispatch documents and monitor deliveries — a lightweight TMS built for Indian SME logistics rather than enterprise complexity.</p><div class="twd-tags"><span class="twd-for">Businesses managing their own dispatch &amp; freight</span></div><a class="twd-go" href="/tms.html">Open TMS →</a></div></div>
-<div class="twd-card twd-full"><div class="twd-head"><span class="twd-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h6v16H6a2 2 0 0 0-2 2z"/><path d="M20 5a2 2 0 0 0-2-2h-6v16h6a2 2 0 0 1 2 2z"/></svg></span><span class="twd-title">Blog &amp; Guides</span></div><div class="twd-body"><p>Practical, India-specific guides with formulas and worked examples: landed cost and import duty, EOQ, safety stock, demand planning for Amazon &amp; Flipkart, GST on freight, OTIF, inventory turnover and ABC analysis — each linked to its free calculator.</p><div class="twd-tags"><span class="twd-for">Anyone learning supply chain</span></div><a class="twd-go" href="/blog.html">Read the Blog →</a></div></div>
-</div></div>
 
 
 
 
 <!-- ── CASE STUDIES / PLAYBOOKS ── -->
-<section id="case-studies" class="section center">
-  <div class="section-eyebrow">📘 Playbooks</div>
-  <h2 class="section-title">Worked Examples &amp; Case Studies</h2>
-  <p class="section-sub">Step-by-step playbooks showing how Indian sellers use LogicstIQ to solve real supply chain problems — with the exact formulas and tools.</p>
-  <div class="calc-grid cg-2" style="max-width:760px">
-    <a href="/big-billion-days-inventory-plan" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📦</div><div class="calc-tag">Festive Planning</div><div class="calc-name">Big Billion Days Inventory Plan</div><div class="calc-desc">How a Flipkart &amp; Amazon seller plans stock for the festive peak — baseline, uplift, safety stock &amp; reorder timing</div></div></a>
-    <a href="/fba-restock-before-big-billion-days" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">📦</div><div class="calc-tag">Amazon FBA</div><div class="calc-name">FBA Restock Before Big Billion Days</div><div class="calc-desc">How much to send into FBA, when to ship, and staying inside restock limits</div></div></a>
-    <a href="/quick-commerce-replenishment-blinkit-zepto" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">⚡</div><div class="calc-tag">Quick Commerce</div><div class="calc-name">Blinkit &amp; Zepto Replenishment</div><div class="calc-desc">Per-dark-store reorder points for 10-minute delivery, with short lead times</div></div></a>
-    <a href="/cut-dead-stock-free-working-capital" style="text-decoration:none"><div class="calc-card"><div class="calc-ico">💀</div><div class="calc-tag">Working Capital</div><div class="calc-name">Cut Dead Stock, Free Cash</div><div class="calc-desc">Find non-moving SKUs, quantify trapped capital, and turn it back into cash</div></div></a>
-  </div>
-</section>
 
 
 <!-- ── ADSENSE SLOT 2 — Mid page (activate after AdSense approval) ── -->
@@ -1144,13 +1244,13 @@ window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList
 </style>
 <section class="testi-section" id="feedback">
   <div style="text-align:center;margin-bottom:28px">
-    <div class="section-eyebrow">⭐ Reviews</div>
+    <div class="section-eyebrow"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l2.4 5 5.6.7-4 3.9 1 5.4-5-2.7-5 2.7 1-5.4-4-3.9 5.6-.7z"/></svg> Reviews</div>
     <h2 class="section-title">Share Your Experience</h2>
     <p class="section-sub" style="margin:8px auto 0">Used a LogicstIQ calculator or the AI Demand Planner? Tell us how it went — your feedback helps other supply chain teams and shapes what we build next.</p>
   </div>
   <div style="max-width:720px;margin:0 auto">
     <!-- ════════════════════════════════════════════════════════════════
-         ⚠️ SETUP: Replace the 6 placeholders below with your real Google Form IDs.
+         <svg class="liq-ei liq-ei-warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg> SETUP: Replace the 6 placeholders below with your real Google Form IDs.
          1. In your Google Form, click "Send" → link icon → copy the URL.
             Change the ending "/viewform" to "/formResponse" and paste it as the action= value.
          2. For each field, open "Get pre-filled link", fill dummy values, click "Get link",
@@ -1180,12 +1280,12 @@ window.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList
       <div class="liq-field" style="margin-bottom:18px"><label class="liq-label">Your Review</label>
         <textarea class="liq-select" name="entry.2057559239" rows="4" aria-label="Your review" placeholder="What did you use, and how did it help?" style="resize:vertical;font-family:inherit" required></textarea></div>
       <div class="liq-cta" style="margin-top:0">
-        <button type="submit" class="liq-btn liq-btn-primary">✦ Submit Feedback</button>
+        <button type="submit" class="liq-btn liq-btn-primary"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l1.7 4L18 9.5l-4.3 1.4L12 15l-1.7-4.1L6 9.5 10.3 8z"/><path d="M18 15l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8z"/></svg> Submit Feedback</button>
       </div>
       <div class="liq-disclaimer-bar" style="margin-top:14px">
-        ✦ <span>Your feedback may be featured on LogicstIQ. We never share your details with third parties.</span>
+        <svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l1.7 4L18 9.5l-4.3 1.4L12 15l-1.7-4.1L6 9.5 10.3 8z"/><path d="M18 15l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8z"/></svg> <span>Your feedback may be featured on LogicstIQ. We never share your details with third parties.</span>
       </div>
-      <div id="liq-feedback-thanks" style="display:none;margin-top:14px;background:var(--glight);border:1px solid #6EE7B7;border-radius:10px;padding:12px 16px;color:#065F46;font-weight:600;font-size:13px">✅ Thank you! Your feedback has been submitted.</div>
+      <div id="liq-feedback-thanks" style="display:none;margin-top:14px;background:var(--glight);border:1px solid #6EE7B7;border-radius:10px;padding:12px 16px;color:#065F46;font-weight:600;font-size:13px"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg> Thank you! Your feedback has been submitted.</div>
     </form>
     <iframe name="liq-hidden-iframe" id="liq-hidden-iframe" style="display:none" title="hidden form target"></iframe>
   </div>
@@ -1202,18 +1302,18 @@ function liqFeedbackSubmit(){
 </script>
 <!-- ── DATA SAFETY SECTION ── -->
 <div class="safety-section">
-  <div class="safety-shield">🔒</div>
+  <div class="safety-shield"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
   <div class="safety-content">
     <div class="safety-tag">✓ Privacy First · HTTPS Secured · Encrypted &amp; Private · DPDP Act 2023 Compliant</div>
     <div class="safety-title">Your Data, Secured</div>
     <p class="safety-sub">You're working with real business data — SKUs, sales volumes, stock levels, prices. We take that seriously. Here's exactly how each part of LogicstIQ handles it.</p>
     <div class="safety-grid">
-      <div class="safety-card"><div class="safety-card-ico">🚫</div><div><div class="safety-card-t">Calculators: Nothing Stored</div><div class="safety-card-b">Calculators run entirely in your browser. No upload, no signup, no storage — ever.</div></div></div>
-      <div class="safety-card"><div class="safety-card-ico">🔐</div><div><div class="safety-card-t">Signed-in Tools: Your Private Account</div><div class="safety-card-b">Your files and forecasts are saved to your account — isolated per user — so you can come back to them.</div></div></div>
-      <div class="safety-card"><div class="safety-card-ico">🚷</div><div><div class="safety-card-t">Never Shared</div><div class="safety-card-b">Your data is never sold or shared with advertisers or third parties for commercial use.</div></div></div>
-      <div class="safety-card"><div class="safety-card-ico">⚡</div><div><div class="safety-card-t">Delete Anytime</div><div class="safety-card-b">Close your account or hit delete in settings and we permanently remove your saved data.</div></div></div>
-      <div class="safety-card"><div class="safety-card-ico">🌐</div><div><div class="safety-card-t">Encrypted</div><div class="safety-card-b">All data is encrypted in transit (HTTPS/TLS) and at rest (AES-256) — the same standard used by banks.</div></div></div>
-      <div class="safety-card"><div class="safety-card-ico">🤖</div><div><div class="safety-card-t">AI Analysis Only</div><div class="safety-card-b">Gemini AI receives only computed summary numbers — never your raw inventory file or personal data.</div></div></div>
+      <div class="safety-card"><div class="safety-card-ico"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg></div><div><div class="safety-card-t">Calculators: Nothing Stored</div><div class="safety-card-b">Calculators run entirely in your browser. No upload, no signup, no storage — ever.</div></div></div>
+      <div class="safety-card"><div class="safety-card-ico"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><div><div class="safety-card-t">Signed-in Tools: Your Private Account</div><div class="safety-card-b">Your files and forecasts are saved to your account — isolated per user — so you can come back to them.</div></div></div>
+      <div class="safety-card"><div class="safety-card-ico"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg></div><div><div class="safety-card-t">Never Shared</div><div class="safety-card-b">Your data is never sold or shared with advertisers or third parties for commercial use.</div></div></div>
+      <div class="safety-card"><div class="safety-card-ico"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3L5 13h5l-1 8 8-11h-5z"/></svg></div><div><div class="safety-card-t">Delete Anytime</div><div class="safety-card-b">Close your account or hit delete in settings and we permanently remove your saved data.</div></div></div>
+      <div class="safety-card"><div class="safety-card-ico"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z"/></svg></div><div><div class="safety-card-t">Encrypted</div><div class="safety-card-b">All data is encrypted in transit (HTTPS/TLS) and at rest (AES-256) — the same standard used by banks.</div></div></div>
+      <div class="safety-card"><div class="safety-card-ico"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 8V4"/><circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/></svg></div><div><div class="safety-card-t">AI Analysis Only</div><div class="safety-card-b">Gemini AI receives only computed summary numbers — never your raw inventory file or personal data.</div></div></div>
     </div>
   </div>
 </div>
@@ -1221,7 +1321,7 @@ function liqFeedbackSubmit(){
 
 <section class="faq-section">
   <div style="text-align:center;margin-bottom:28px">
-    <div class="section-eyebrow">❓ FAQ</div>
+    <div class="section-eyebrow"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3 2.4V14"/><path d="M12 17.5h.01"/></svg> FAQ</div>
     <h2 class="section-title">Frequently Asked Questions</h2>
   </div>
   <div class="faq-list">
@@ -1397,8 +1497,8 @@ style="color:#9B6BFF;text-decoration:none;font-weight:600">contactus@logicstiq.c
 </script>
 <script>
 (function(){var r=document.documentElement,b=document.getElementById('liqTheme');
-function set(t){r.setAttribute('data-theme',t);if(b)b.textContent=(t==='dark')?'☀️':'🌙';try{localStorage.setItem('liq-theme',t)}catch(e){}}
-try{var sv=localStorage.getItem('liq-theme');if(sv)set(sv);}catch(e){}
+function set(t){r.setAttribute('data-theme',t);if(b)b.innerHTML=(t==='dark')?'<svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>':'<svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>';try{localStorage.setItem('liq-theme',t)}catch(e){}}
+try{var sv=localStorage.getItem('liq-theme')||r.getAttribute('data-theme')||'light';r.setAttribute('data-theme',sv);}catch(e){}
 if(b)b.addEventListener('click',function(){set(r.getAttribute('data-theme')==='dark'?'light':'dark');});})();
 </script>
 <!-- ===== end LogicstIQ Demo Video Popup ===== -->

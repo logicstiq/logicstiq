@@ -2,6 +2,7 @@
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
+<script>(function(){try{var s=localStorage.getItem('liq-theme'),d=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',d);}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Amazon FBA Demand Planning &amp; Forecasting Tool | LogicstIQ</title>
 <meta name="description" content="Free Amazon FBA demand planning & forecasting tool. Reorder quantities corrected for lost sales, seasonality and trend, plus overstock insight.">
@@ -190,6 +191,14 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
 </script>
 <!--/LQDS-->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"LogicstIQ FBA Demand Planning Tool","operatingSystem":"Web","applicationCategory":"BusinessApplication","description":"Free Amazon FBA demand planning & forecasting tool — reorder quantities corrected for lost sales, seasonality and trend.","url":"https://www.logicstiq.com/fba-planner/fba-demand-planner","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"publisher":{"@type":"Organization","name":"LogicstIQ","url":"https://www.logicstiq.com"}}</script>
+<style id="liq-emoji-icons">
+/* emoji swapped for line icons, tinted with the site accent */
+.liq-ei{width:1.05em;height:1.05em;vertical-align:-.16em;flex:0 0 auto;color:var(--b600);display:inline-block}
+.lnav-colt .liq-ei{width:1em;height:1em;margin-right:2px}
+.calc-ico .liq-ei,.twd-ico .liq-ei{width:23px;height:23px}
+.section-eyebrow .liq-ei{width:1em;height:1em}
+[data-theme="dark"] .liq-ei{color:#7385FF}
+</style>
 </head>
 <body data-liq-gate>
 <style id="fbp-css">
@@ -288,7 +297,7 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
 
 </style>
 <main id="fbp"><div class="fbp-wrap">
-  <h1>📦 Amazon FBA Demand Planning &amp; Forecasting Tool</h1>
+  <h1><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5"/><path d="M12 12v9"/></svg> Amazon FBA Demand Planning &amp; Forecasting Tool</h1>
   <p class="sub">Upload your reports, set your planning rules, and download a forecast that tells you exactly what to reorder — corrected for lost sales, seasonality and trend — plus what you're sitting on too much of.</p>
 
   <!-- STEP 1: UPLOAD -->
@@ -297,25 +306,25 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
     <div class="uploads4">
       <label class="drop" id="dropRestock">
         <input type="file" accept=".csv,.tsv,.txt,.xlsx,.xls" id="fileRestock">
-        <div class="tag">📈 Restock Inventory report <span style="color:var(--fred)">(required)</span></div>
+        <div class="tag"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5v14h16"/><path d="M8 15l3-3 3 2 5-6"/></svg> Restock Inventory report <span style="color:var(--fred)">(required)</span></div>
         <div class="hint">Seller Central → Inventory → Inventory Planning → Restock Inventory. Sales velocity, stock &amp; Amazon's recommendations. Excel or CSV/TSV.</div>
         <div class="fname" id="nameRestock"></div>
       </label>
       <label class="drop" id="dropInv">
         <input type="file" accept=".csv,.tsv,.txt,.xlsx,.xls" id="fileInv">
-        <div class="tag">🏷️ FBA Inventory snapshot <span style="color:var(--fm)">(optional)</span></div>
+        <div class="tag"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12V4h8l9 9-8 8z"/><circle cx="7.5" cy="7.5" r="1.3"/></svg> FBA Inventory snapshot <span style="color:var(--fm)">(optional)</span></div>
         <div class="hint">Manage FBA / Amazon Fulfilled Inventory report. Adds reserved, unsellable &amp; price detail.</div>
         <div class="fname" id="nameInv"></div>
       </label>
       <label class="drop" id="dropTrend">
         <input type="file" accept=".csv,.xlsx,.xls" id="fileTrend">
-        <div class="tag">📊 Sales trend &amp; in-stock data <span style="color:var(--fm)">(optional · boosts accuracy)</span></div>
+        <div class="tag"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5v14h16"/><path d="M8 16v-4M12 16v-7M16 16v-2"/></svg> Sales trend &amp; in-stock data <span style="color:var(--fm)">(optional · boosts accuracy)</span></div>
         <div class="hint">Brand/marketplace dashboard export with monthly Marketplace × Units (+ In&nbsp;Stock&nbsp;%, Buy&nbsp;Box, ASP). Unlocks seasonality, trend &amp; lost-sales correction.</div>
         <div class="fname" id="nameTrend"></div>
       </label>
       <label class="drop" id="dropAsp">
         <input type="file" accept=".csv,.xlsx,.xls" id="fileAsp">
-        <div class="tag">💲 Revenue &amp; Units (ASP) <span style="color:var(--fm)">(optional)</span></div>
+        <div class="tag"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg> Revenue &amp; Units (ASP) <span style="color:var(--fm)">(optional)</span></div>
         <div class="hint">Per-ASIN Units &amp; Revenue export. Gives a real average selling price per product for valuation &amp; at-risk revenue.</div>
         <div class="fname" id="nameAsp"></div>
       </label>
@@ -383,7 +392,7 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
     </div>
 
     <div class="row" style="margin-top:18px">
-      <button class="btn" id="runBtn" disabled>Generate forecast ▶</button>
+      <button class="btn" id="runBtn" disabled>Generate forecast <svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5l11 7-11 7z"/></svg></button>
       <span class="note" id="runHint">Upload the Restock Inventory report to enable.</span>
     </div>
   </div>
@@ -415,8 +424,8 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
       <div class="row" style="justify-content:space-between">
         <h2 style="margin:0">Forecast &amp; reorder plan</h2>
         <div class="row">
-          <button class="btn green" id="dlFull">⬇ Download full report (CSV)</button>
-          <button class="btn ghost" id="dlReorder">⬇ Download reorder list only</button>
+          <button class="btn green" id="dlFull"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v14"/><path d="M6 13l6 6 6-6"/></svg> Download full report (CSV)</button>
+          <button class="btn ghost" id="dlReorder"><svg class="liq-ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v14"/><path d="M6 13l6 6 6-6"/></svg> Download reorder list only</button>
         </div>
       </div>
       <div class="controls" style="margin-top:14px">
